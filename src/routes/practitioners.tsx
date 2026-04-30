@@ -18,7 +18,7 @@ const team = [
 
 function PractitionersPage() {
   return (
-    <PageShell eyebrow="Our Team" title="The Keepers of the Space" intro="Each practitioner brings decades of devotion to their craft. All work in service of your unfolding.">
+    <PageShell eyebrow="✦ The Veil Is Thinning · Our Team ✦" title="The Keepers of the Space" intro="Each practitioner brings decades of devotion to their craft. They are here, in this moment of thinning veils, to walk beside you.">
       <div className="grid gap-6 md:grid-cols-2">
         {team.map((p) => (
           <article key={p.name} className="rounded-2xl border border-border bg-card p-7">
