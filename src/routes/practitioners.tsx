@@ -40,7 +40,7 @@ function PractitionersPage() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
               {isFounder && (
                 <Link
-                  to="/visit"
+                  to="/contact-william"
                   className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90"
                 >
                   Request a Private or Group Ceremony

@@ -15,6 +15,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as ContactWilliamRouteImport } from './routes/contact-william'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -48,6 +49,11 @@ const EventsRoute = EventsRouteImport.update({
   path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactWilliamRoute = ContactWilliamRouteImport.update({
+  id: '/contact-william',
+  path: '/contact-william',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -62,6 +68,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact-william': typeof ContactWilliamRoute
   '/events': typeof EventsRoute
   '/health': typeof HealthRoute
   '/practitioners': typeof PractitionersRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact-william': typeof ContactWilliamRoute
   '/events': typeof EventsRoute
   '/health': typeof HealthRoute
   '/practitioners': typeof PractitionersRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact-william': typeof ContactWilliamRoute
   '/events': typeof EventsRoute
   '/health': typeof HealthRoute
   '/practitioners': typeof PractitionersRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/contact-william'
     | '/events'
     | '/health'
     | '/practitioners'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/contact-william'
     | '/events'
     | '/health'
     | '/practitioners'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/contact-william'
     | '/events'
     | '/health'
     | '/practitioners'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactWilliamRoute: typeof ContactWilliamRoute
   EventsRoute: typeof EventsRoute
   HealthRoute: typeof HealthRoute
   PractitionersRoute: typeof PractitionersRoute
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact-william': {
+      id: '/contact-william'
+      path: '/contact-william'
+      fullPath: '/contact-william'
+      preLoaderRoute: typeof ContactWilliamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactWilliamRoute: ContactWilliamRoute,
   EventsRoute: EventsRoute,
   HealthRoute: HealthRoute,
   PractitionersRoute: PractitionersRoute,
