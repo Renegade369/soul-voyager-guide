@@ -469,170 +469,6 @@ function TeachingsPage() {
       </section>
 
       <section className="mt-16">
-        <div className="rounded-3xl border border-border bg-[image:var(--gradient-aurora)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">✦ The Veil Is Thinning · Policy & Path Forward ✦</p>
-          <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Legalization of Sacred Plant Medicines</h2>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
-            For most of the last century, the medicines that have healed humanity for tens of thousands of
-            years were declared criminal. That era is ending. A quiet, careful, often state-by-state and
-            country-by-country opening is underway — driven by neuroscience, veterans' advocacy, indigenous
-            sovereignty movements, and a culture that can no longer ignore the depth of the mental-health
-            crisis. Below is the current landscape and the road ahead.
-          </p>
-
-          <div className="mt-12">
-            <h3 className="font-serif text-3xl text-foreground">Where Things Stand Today</h3>
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              {[
-                {
-                  t: "Psilocybin — United States",
-                  d: "Oregon (Measure 109, services since 2023) and Colorado (Prop 122, services launching) have legalized supervised psilocybin therapy. Decriminalized in Denver, Oakland, Santa Cruz, Seattle, Detroit, DC, Somerville, Cambridge, and Ann Arbor. The FDA has granted Breakthrough Therapy designation for treatment-resistant depression and PTSD.",
-                },
-                {
-                  t: "MDMA-Assisted Therapy",
-                  d: "MAPS' Phase 3 trials showed roughly 67% of severe PTSD patients no longer met diagnostic criteria after three guided sessions. The FDA declined initial approval in 2024, requesting another study, but most observers expect approval within the next 2–4 years.",
-                },
-                {
-                  t: "Ketamine (Legal Now)",
-                  d: "Already federally legal as an anesthetic and used off-label for depression, PTSD, and chronic pain. Spravato (esketamine) is FDA-approved. Ketamine clinics now operate in nearly every major US city — currently the most accessible legal entry point into psychedelic-assisted healing.",
-                },
-                {
-                  t: "Ayahuasca",
-                  d: "Legal in Brazil, Peru, Ecuador, and Costa Rica when used in religious context. In the US, the Santo Daime and União do Vegetal churches have federal religious exemptions. Otherwise still federally controlled — though prosecutions are rare and decreasing.",
-                },
-                {
-                  t: "Peyote",
-                  d: "Federally legal in the US only for enrolled members of the Native American Church. Wild populations are critically endangered; ethical practice means honoring NAC sovereignty and not extracting from indigenous supply chains.",
-                },
-                {
-                  t: "Ibogaine",
-                  d: "Legal in Mexico, New Zealand, Brazil, and South Africa. Kentucky has explored state funding for ibogaine research targeting the opioid crisis. Multiple states are following. Cardiac screening remains medically essential.",
-                },
-                {
-                  t: "Cannabis",
-                  d: "Medically legal in 38+ US states, recreationally in 24+. Federally still Schedule I as of 2025, though the DEA has moved toward Schedule III rescheduling. Fully legal recreationally in Canada, Germany, Thailand, Uruguay, Malta, Luxembourg, and growing.",
-                },
-                {
-                  t: "5-MeO-DMT, DMT, Mescaline",
-                  d: "Federally Schedule I in the US, but increasingly the focus of clinical research. Decriminalized in some of the same cities as psilocybin. Religious-use exemptions are expanding case by case.",
-                },
-                {
-                  t: "Australia — A Global First",
-                  d: "In July 2023, Australia became the first country to authorize psychiatrists to prescribe MDMA for PTSD and psilocybin for treatment-resistant depression. A working model the rest of the world is studying.",
-                },
-                {
-                  t: "Europe & Beyond",
-                  d: "Switzerland allows compassionate-use psilocybin and LSD therapy. The Netherlands has a long-tolerated psilocybin truffle market. Portugal decriminalized all personal drug use in 2001 and saw addiction rates fall dramatically — proof of what a public-health frame can achieve.",
-                },
-              ].map((c) => (
-                <article key={c.t} className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
-                  <h4 className="font-serif text-xl text-foreground">{c.t}</h4>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-12">
-            <h3 className="font-serif text-3xl text-foreground">What Is Driving the Shift</h3>
-            <div className="mt-6 grid gap-4 md:grid-cols-3">
-              {[
-                { t: "The Mental-Health Crisis", d: "Antidepressants help only some, partially, slowly. The data on psychedelic-assisted therapy — sustained remission after a small number of sessions — is rewriting the standard of care." },
-                { t: "Veterans' Advocacy", d: "Combat veterans, families of those lost to suicide, and bipartisan champions in Congress have made psychedelic therapy one of the rare issues uniting both political parties." },
-                { t: "Neuroscience Catching Up", d: "fMRI imaging now shows what mystics described — ego dissolution, default-mode quieting, neuroplasticity. The science has finally given language to the experience." },
-                { t: "Indigenous Voices Rising", d: "After centuries of suppression, the lineage holders are being heard. Reciprocity, attribution, and protection of source communities are now central to the conversation." },
-                { t: "End-of-Life Care", d: "Studies at Johns Hopkins and NYU on terminal patients show single psilocybin sessions producing lasting reductions in death anxiety. Hospice and palliative care are quietly leading the way." },
-                { t: "Cultural Permission", d: "Public figures speaking openly — from athletes to investors to former skeptics — has dissolved the stigma. The conversation has crossed a threshold no policy can put back." },
-              ].map((p) => (
-                <article key={p.t} className="rounded-2xl border border-border/60 bg-background/60 p-5 backdrop-blur">
-                  <div className="h-1 w-8 rounded-full bg-primary" />
-                  <h4 className="mt-3 font-serif text-lg text-foreground">{p.t}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-12">
-            <h3 className="font-serif text-3xl text-foreground">How They Will Be Used to Heal — Moving Forward</h3>
-            <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
-              The veil is thinning, and so is the wall between medicine and ceremony. The most promising
-              models emerging combine clinical rigor with the depth the elders have always insisted upon.
-            </p>
-            <div className="mt-6 space-y-4">
-              {[
-                {
-                  t: "Licensed Therapeutic Centers",
-                  d: "Oregon-style service centers staffed by trained facilitators, integrated with mental-health care. Sessions held in beautiful, intentional spaces — not hospital rooms. Preparation, journey, and integration as one continuous arc.",
-                },
-                {
-                  t: "Insurance-Covered Protocols",
-                  d: "MDMA and psilocybin therapy are on track to be covered by major insurers within this decade. Once that crosses, access shifts from a privileged few to anyone who needs it. The economics begin to mirror the ethics.",
-                },
-                {
-                  t: "Veteran & First-Responder Programs",
-                  d: "Dedicated centers for those who carry the country's trauma. Many states are already piloting subsidized programs. The political coalition behind these is broad and growing.",
-                },
-                {
-                  t: "Indigenous-Led Sanctuaries",
-                  d: "The deepest healing will continue to happen in lineage settings — with the medicines, songs, and prayers as they have been held for generations. The clinical model and the ceremonial model are not in competition; they are two hands of the same body.",
-                },
-                {
-                  t: "Integration as Standard Practice",
-                  d: "Therapists trained specifically in post-journey integration will become as common as primary-care physicians. The medicine opens the door; integration is what allows you to walk through it and stay changed.",
-                },
-                {
-                  t: "Group & Community Models",
-                  d: "Small-group ceremony — vetted, facilitated, integrated — is showing equal or greater outcomes than one-on-one work in some studies, at a fraction of the cost. The community itself becomes part of the medicine.",
-                },
-                {
-                  t: "Microdosing Protocols",
-                  d: "Sub-perceptual doses of psilocybin or LSD, rigorously studied for depression, focus, and creativity, are likely to be among the first widely-prescribed psychedelic offerings. Quiet, daily, sustainable.",
-                },
-                {
-                  t: "End-of-Life Hospice Care",
-                  d: "Death-with-dignity meets psychedelic-assisted peace. Among the most humane uses of these medicines, and one of the easiest to legislate. Many hospice programs are already preparing.",
-                },
-                {
-                  t: "Trauma-Specific Tracks",
-                  d: "Different medicines for different wounds — MDMA for relational trauma, psilocybin for depression and existential distress, ibogaine for addiction interruption, ketamine for acute crisis. Personalized, not one-size-fits-all.",
-                },
-              ].map((row) => (
-                <article key={row.t} className="rounded-xl border border-primary/30 bg-background/60 p-5 backdrop-blur">
-                  <h4 className="font-serif text-xl text-foreground">{row.t}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{row.d}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-12 rounded-2xl border border-primary/30 bg-background/40 p-8 backdrop-blur">
-            <h3 className="font-serif text-2xl text-foreground">The Sacred Concern</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              As legalization expands, the elders' warning grows louder: <em>do not let the medicines be
-              stripped of their spirit.</em> A clinical session without preparation, prayer, integration, or
-              reverence is a half-medicine. Profit-driven scaling, weekend-certified facilitators, and the
-              reduction of these intelligences to "molecules" is the real danger of this moment. The path
-              forward is access <em>and</em> reverence — both, or neither.
-            </p>
-          </div>
-
-          <div className="mt-8 rounded-2xl border border-primary/30 bg-background/40 p-8 backdrop-blur">
-            <h3 className="font-serif text-2xl text-foreground">A Vision of the Decade Ahead</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              By 2035, it is plausible — even likely — that PTSD, treatment-resistant depression, end-of-life
-              distress, and major addictions will all have psychedelic-assisted protocols as a standard of
-              care, covered by insurance, available within driving distance of most people. Indigenous
-              sanctuaries will be protected, source communities resourced, and ceremony recognized
-              alongside clinic. The veil that has separated medicine from spirit, science from sacred,
-              healing from remembrance — that veil is the one that is thinning fastest of all.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-cosmos)] p-10 md:p-14">
           <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Sacred Plant Medicines</h2>
@@ -815,6 +651,170 @@ function TeachingsPage() {
           </div>
         </div>
       </section>
+
+      <section className="mt-16">
+        <div className="rounded-3xl border border-border bg-[image:var(--gradient-aurora)] p-10 md:p-14">
+          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">✦ The Veil Is Thinning · Policy & Path Forward ✦</p>
+          <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Legalization of Sacred Plant Medicines</h2>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
+            For most of the last century, the medicines that have healed humanity for tens of thousands of
+            years were declared criminal. That era is ending. A quiet, careful, often state-by-state and
+            country-by-country opening is underway — driven by neuroscience, veterans' advocacy, indigenous
+            sovereignty movements, and a culture that can no longer ignore the depth of the mental-health
+            crisis. Below is the current landscape and the road ahead.
+          </p>
+
+          <div className="mt-12">
+            <h3 className="font-serif text-3xl text-foreground">Where Things Stand Today</h3>
+            <div className="mt-6 grid gap-6 md:grid-cols-2">
+              {[
+                {
+                  t: "Psilocybin — United States",
+                  d: "Oregon (Measure 109, services since 2023) and Colorado (Prop 122, services launching) have legalized supervised psilocybin therapy. Decriminalized in Denver, Oakland, Santa Cruz, Seattle, Detroit, DC, Somerville, Cambridge, and Ann Arbor. The FDA has granted Breakthrough Therapy designation for treatment-resistant depression and PTSD.",
+                },
+                {
+                  t: "MDMA-Assisted Therapy",
+                  d: "MAPS' Phase 3 trials showed roughly 67% of severe PTSD patients no longer met diagnostic criteria after three guided sessions. The FDA declined initial approval in 2024, requesting another study, but most observers expect approval within the next 2–4 years.",
+                },
+                {
+                  t: "Ketamine (Legal Now)",
+                  d: "Already federally legal as an anesthetic and used off-label for depression, PTSD, and chronic pain. Spravato (esketamine) is FDA-approved. Ketamine clinics now operate in nearly every major US city — currently the most accessible legal entry point into psychedelic-assisted healing.",
+                },
+                {
+                  t: "Ayahuasca",
+                  d: "Legal in Brazil, Peru, Ecuador, and Costa Rica when used in religious context. In the US, the Santo Daime and União do Vegetal churches have federal religious exemptions. Otherwise still federally controlled — though prosecutions are rare and decreasing.",
+                },
+                {
+                  t: "Peyote",
+                  d: "Federally legal in the US only for enrolled members of the Native American Church. Wild populations are critically endangered; ethical practice means honoring NAC sovereignty and not extracting from indigenous supply chains.",
+                },
+                {
+                  t: "Ibogaine",
+                  d: "Legal in Mexico, New Zealand, Brazil, and South Africa. Kentucky has explored state funding for ibogaine research targeting the opioid crisis. Multiple states are following. Cardiac screening remains medically essential.",
+                },
+                {
+                  t: "Cannabis",
+                  d: "Medically legal in 38+ US states, recreationally in 24+. Federally still Schedule I as of 2025, though the DEA has moved toward Schedule III rescheduling. Fully legal recreationally in Canada, Germany, Thailand, Uruguay, Malta, Luxembourg, and growing.",
+                },
+                {
+                  t: "5-MeO-DMT, DMT, Mescaline",
+                  d: "Federally Schedule I in the US, but increasingly the focus of clinical research. Decriminalized in some of the same cities as psilocybin. Religious-use exemptions are expanding case by case.",
+                },
+                {
+                  t: "Australia — A Global First",
+                  d: "In July 2023, Australia became the first country to authorize psychiatrists to prescribe MDMA for PTSD and psilocybin for treatment-resistant depression. A working model the rest of the world is studying.",
+                },
+                {
+                  t: "Europe & Beyond",
+                  d: "Switzerland allows compassionate-use psilocybin and LSD therapy. The Netherlands has a long-tolerated psilocybin truffle market. Portugal decriminalized all personal drug use in 2001 and saw addiction rates fall dramatically — proof of what a public-health frame can achieve.",
+                },
+              ].map((c) => (
+                <article key={c.t} className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+                  <h4 className="font-serif text-xl text-foreground">{c.t}</h4>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <h3 className="font-serif text-3xl text-foreground">What Is Driving the Shift</h3>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {[
+                { t: "The Mental-Health Crisis", d: "Antidepressants help only some, partially, slowly. The data on psychedelic-assisted therapy — sustained remission after a small number of sessions — is rewriting the standard of care." },
+                { t: "Veterans' Advocacy", d: "Combat veterans, families of those lost to suicide, and bipartisan champions in Congress have made psychedelic therapy one of the rare issues uniting both political parties." },
+                { t: "Neuroscience Catching Up", d: "fMRI imaging now shows what mystics described — ego dissolution, default-mode quieting, neuroplasticity. The science has finally given language to the experience." },
+                { t: "Indigenous Voices Rising", d: "After centuries of suppression, the lineage holders are being heard. Reciprocity, attribution, and protection of source communities are now central to the conversation." },
+                { t: "End-of-Life Care", d: "Studies at Johns Hopkins and NYU on terminal patients show single psilocybin sessions producing lasting reductions in death anxiety. Hospice and palliative care are quietly leading the way." },
+                { t: "Cultural Permission", d: "Public figures speaking openly — from athletes to investors to former skeptics — has dissolved the stigma. The conversation has crossed a threshold no policy can put back." },
+              ].map((p) => (
+                <article key={p.t} className="rounded-2xl border border-border/60 bg-background/60 p-5 backdrop-blur">
+                  <div className="h-1 w-8 rounded-full bg-primary" />
+                  <h4 className="mt-3 font-serif text-lg text-foreground">{p.t}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <h3 className="font-serif text-3xl text-foreground">How They Will Be Used to Heal — Moving Forward</h3>
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
+              The veil is thinning, and so is the wall between medicine and ceremony. The most promising
+              models emerging combine clinical rigor with the depth the elders have always insisted upon.
+            </p>
+            <div className="mt-6 space-y-4">
+              {[
+                {
+                  t: "Licensed Therapeutic Centers",
+                  d: "Oregon-style service centers staffed by trained facilitators, integrated with mental-health care. Sessions held in beautiful, intentional spaces — not hospital rooms. Preparation, journey, and integration as one continuous arc.",
+                },
+                {
+                  t: "Insurance-Covered Protocols",
+                  d: "MDMA and psilocybin therapy are on track to be covered by major insurers within this decade. Once that crosses, access shifts from a privileged few to anyone who needs it. The economics begin to mirror the ethics.",
+                },
+                {
+                  t: "Veteran & First-Responder Programs",
+                  d: "Dedicated centers for those who carry the country's trauma. Many states are already piloting subsidized programs. The political coalition behind these is broad and growing.",
+                },
+                {
+                  t: "Indigenous-Led Sanctuaries",
+                  d: "The deepest healing will continue to happen in lineage settings — with the medicines, songs, and prayers as they have been held for generations. The clinical model and the ceremonial model are not in competition; they are two hands of the same body.",
+                },
+                {
+                  t: "Integration as Standard Practice",
+                  d: "Therapists trained specifically in post-journey integration will become as common as primary-care physicians. The medicine opens the door; integration is what allows you to walk through it and stay changed.",
+                },
+                {
+                  t: "Group & Community Models",
+                  d: "Small-group ceremony — vetted, facilitated, integrated — is showing equal or greater outcomes than one-on-one work in some studies, at a fraction of the cost. The community itself becomes part of the medicine.",
+                },
+                {
+                  t: "Microdosing Protocols",
+                  d: "Sub-perceptual doses of psilocybin or LSD, rigorously studied for depression, focus, and creativity, are likely to be among the first widely-prescribed psychedelic offerings. Quiet, daily, sustainable.",
+                },
+                {
+                  t: "End-of-Life Hospice Care",
+                  d: "Death-with-dignity meets psychedelic-assisted peace. Among the most humane uses of these medicines, and one of the easiest to legislate. Many hospice programs are already preparing.",
+                },
+                {
+                  t: "Trauma-Specific Tracks",
+                  d: "Different medicines for different wounds — MDMA for relational trauma, psilocybin for depression and existential distress, ibogaine for addiction interruption, ketamine for acute crisis. Personalized, not one-size-fits-all.",
+                },
+              ].map((row) => (
+                <article key={row.t} className="rounded-xl border border-primary/30 bg-background/60 p-5 backdrop-blur">
+                  <h4 className="font-serif text-xl text-foreground">{row.t}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{row.d}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 rounded-2xl border border-primary/30 bg-background/40 p-8 backdrop-blur">
+            <h3 className="font-serif text-2xl text-foreground">The Sacred Concern</h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              As legalization expands, the elders' warning grows louder: <em>do not let the medicines be
+              stripped of their spirit.</em> A clinical session without preparation, prayer, integration, or
+              reverence is a half-medicine. Profit-driven scaling, weekend-certified facilitators, and the
+              reduction of these intelligences to "molecules" is the real danger of this moment. The path
+              forward is access <em>and</em> reverence — both, or neither.
+            </p>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-primary/30 bg-background/40 p-8 backdrop-blur">
+            <h3 className="font-serif text-2xl text-foreground">A Vision of the Decade Ahead</h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              By 2035, it is plausible — even likely — that PTSD, treatment-resistant depression, end-of-life
+              distress, and major addictions will all have psychedelic-assisted protocols as a standard of
+              care, covered by insurance, available within driving distance of most people. Indigenous
+              sanctuaries will be protected, source communities resourced, and ceremony recognized
+              alongside clinic. The veil that has separated medicine from spirit, science from sacred,
+              healing from remembrance — that veil is the one that is thinning fastest of all.
+            </p>
+          </div>
+        </div>
+      </section>
+
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-sanctuary)] p-10 md:p-14">
