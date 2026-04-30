@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/practitioners")({
@@ -21,16 +21,34 @@ function PractitionersPage() {
   return (
     <PageShell eyebrow="✦ The Veil Is Thinning · Our Team ✦" title="The Keepers of the Space" intro="Each practitioner brings decades of devotion to their craft. They are here, in this moment of thinning veils, to walk beside you.">
       <div className="grid gap-6 md:grid-cols-2">
-        {team.map((p) => (
-          <article key={p.name} className="rounded-2xl border border-border bg-card p-7">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[image:var(--gradient-warm)] font-serif text-2xl text-primary-foreground">
-              {p.name.split(" ").map((n) => n[0]).join("")}
-            </div>
-            <h3 className="mt-5 font-serif text-2xl text-foreground">{p.name}</h3>
-            <p className="text-sm uppercase tracking-wider text-primary">{p.role}</p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
-          </article>
-        ))}
+        {team.map((p) => {
+          const isFounder = p.name === "William Roberts";
+          return (
+            <article
+              key={p.name}
+              className={`rounded-2xl border p-7 ${
+                isFounder
+                  ? "border-primary/40 bg-[image:var(--gradient-sanctuary)] shadow-[var(--shadow-glow)]"
+                  : "border-border bg-card"
+              }`}
+            >
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[image:var(--gradient-warm)] font-serif text-2xl text-primary-foreground">
+                {p.name.split(" ").map((n) => n[0]).join("")}
+              </div>
+              <h3 className="mt-5 font-serif text-2xl text-foreground">{p.name}</h3>
+              <p className="text-sm uppercase tracking-wider text-primary">{p.role}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
+              {isFounder && (
+                <Link
+                  to="/visit"
+                  className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90"
+                >
+                  Request a Private or Group Ceremony
+                </Link>
+              )}
+            </article>
+          );
+        })}
       </div>
     </PageShell>
   );
