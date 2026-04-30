@@ -10,7 +10,8 @@ export const Route = createFileRoute("/practitioners")({
 });
 
 const team = [
-  { name: "Aria Solenne", role: "Founder · Energy Healer", bio: "20 years of study across Reiki, shamanic traditions, and quantum healing." },
+  { name: "William Roberts", role: "Founder · Healer at Sacred Journey", bio: "Founder of Sacred Journey, William holds the sanctuary as a place of remembrance — guiding souls through healing, ceremony, and the thinning of the veil with deep reverence and care." },
+  { name: "Aria Solenne", role: "Energy Healer", bio: "20 years of study across Reiki, shamanic traditions, and quantum healing." },
   { name: "Mateo Rivers", role: "Sound Healer · Breathwork", bio: "Trained in Himalayan sound traditions and Holotropic breathwork." },
   { name: "Selene Wren", role: "Akashic Reader · Mentor", bio: "A clear channel for the records, devoted to discernment and sovereignty." },
   { name: "Dr. Iyana Cole", role: "Holistic Health · Bodywork", bio: "Naturopath bridging clinical wellness with sacred embodiment." },
