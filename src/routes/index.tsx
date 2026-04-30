@@ -25,10 +25,11 @@ function Index() {
           height={1080}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_var(--background)_85%)]" />
         <div className="relative mx-auto max-w-4xl px-6 py-32 text-center md:py-44">
-          <p className="mb-4 text-xs uppercase tracking-[0.3em] text-accent-foreground/80">
-            A Sanctuary of Remembrance
+          <p className="mb-4 text-xs uppercase tracking-[0.4em] text-primary">
+            ✦ A Sanctuary of Remembrance ✦
           </p>
           <h1 className="font-serif text-5xl leading-tight text-foreground md:text-7xl">
             Sacred Journey
