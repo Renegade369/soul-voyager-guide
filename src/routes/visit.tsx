@@ -14,7 +14,7 @@ export const Route = createFileRoute("/visit")({
 function VisitPage() {
   const [sent, setSent] = useState(false);
   return (
-    <PageShell eyebrow="Find Us" title="Visit the Sanctuary" intro="We welcome you in. Reach out to book a session, ask a question, or simply say hello.">
+    <PageShell eyebrow="✦ The Veil Is Thinning · Find Us ✦" title="Visit the Sanctuary" intro="We welcome you in. Reach out to book a session, ask a question, or simply say hello — the door, like the veil, is open.">
       <div className="grid gap-10 md:grid-cols-2">
         <div className="space-y-6">
           <InfoRow icon={<MapPin size={20} />} title="Location" lines={["123 Sage Hollow Lane", "Sedona, AZ 86336"]} />
