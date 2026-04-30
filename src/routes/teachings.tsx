@@ -653,6 +653,205 @@ function TeachingsPage() {
         </div>
       </section>
 
+      <section className="mt-16">
+        <div className="rounded-3xl border border-border bg-[image:var(--gradient-sanctuary)] p-10 md:p-14">
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
+          <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Dr. Joe Dispenza · Becoming Supernatural</h2>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            A neuroscientist, chiropractor, and researcher who has documented thousands of cases of
+            spontaneous healing in his week-long retreats. His work braids quantum physics, epigenetics,
+            and meditation into a teachable method: the body can be changed by the mind, and the
+            future can be changed by the present moment held in coherence.
+          </p>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {[
+              {
+                t: "The Body as the Unconscious Mind",
+                d: "After enough repetition, thoughts become feelings, feelings become moods, moods become temperaments, and temperaments become personality traits. Your body is, quite literally, your past. Healing begins when you stop being the memorized self.",
+              },
+              {
+                t: "Breaking the Habit of Being Yourself",
+                d: "The same thoughts produce the same choices, which produce the same behaviors, which produce the same experiences, which produce the same emotions — which fire the same thoughts. The loop must be broken consciously, every morning, before the body takes over.",
+              },
+              {
+                t: "Thinking Greater Than Your Environment",
+                d: "Most people wait for circumstances to change before they feel different. The supernatural inversion: feel the elevated emotion of the future first, and the environment will rearrange to match.",
+              },
+              {
+                t: "The Energy of Elevated Emotion",
+                d: "Gratitude, love, joy, and awe are the carrier waves of new biology. Coherent heart + clear intention = signal sent into the field. Without elevated emotion, intention is a thought without a body.",
+              },
+              {
+                t: "Mind Movies & Mental Rehearsal",
+                d: "The brain does not distinguish between vividly imagined experience and lived experience. Mental rehearsal of a future self — felt, not just visualized — installs new neural circuitry before the event occurs.",
+              },
+              {
+                t: "The Pineal Gland & Mystical Experience",
+                d: "Through specific breath and focused awareness, Dispenza teaches activation of the pineal — the small endocrine gland the mystics called the seat of the soul. The reported experiences echo what contemplatives have described for millennia.",
+              },
+            ].map((c) => (
+              <article key={c.t} className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+                <h3 className="font-serif text-2xl text-foreground">{c.t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-12">
+            <h3 className="font-serif text-3xl text-foreground">Practice · Becoming Someone Else (Adapted)</h3>
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
+              A simplified morning meditation drawn from Dispenza's protocols. 30–60 minutes. Best done
+              before the body wakes into its old emotional baseline.
+            </p>
+            <ol className="mt-6 space-y-4">
+              {[
+                { n: "01", t: "Induction", d: "Sit upright. Eyes closed. Slow the breath. Bring awareness to the space the body occupies and then to the space around it. Become no body, no thing, no time." },
+                { n: "02", t: "Recognize the Old Self", d: "Without judgment, name the unconscious thoughts, automatic emotions, and habitual behaviors of the self you no longer wish to be. See them clearly so they cannot run you in shadow." },
+                { n: "03", t: "Let Them Go", d: "Exhale and release. Decide. The old self does not need to be defeated — only un-chosen." },
+                { n: "04", t: "Rehearse the New Self", d: "What thoughts will the new you think? What choices will they make? What will they feel walking through their day? Rehearse it inwardly, in the first person, with feeling." },
+                { n: "05", t: "Open the Heart", d: "Generate gratitude as if the future has already arrived. Hold it in the chest. The body now believes." },
+                { n: "06", t: "Bless the Day", d: "Bring the same elevated state into your eyes opening, into your first steps, into the first interaction. Carry the new self into the old environment without flinching." },
+              ].map((s) => (
+                <li key={s.n} className="rounded-xl border border-primary/30 bg-background/60 p-5 backdrop-blur">
+                  <p className="font-serif text-2xl text-primary">{s.n}</p>
+                  <p className="mt-1 font-serif text-lg text-foreground">{s.t}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+            <h3 className="font-serif text-xl text-foreground">Recommended Dispenza Meditations</h3>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>🎧 <em>Blessing of the Energy Centers</em> — the foundational practice; clears and activates the chakras</li>
+              <li>🎧 <em>Tuning In to New Potentials in the Quantum Field</em> — choosing a future from the unified field</li>
+              <li>🎧 <em>Reaching for a New Personality</em> — the Becoming Someone Else meditation</li>
+              <li>🎧 <em>Body Parts Meditation</em> — restoring coherent communication with the autonomic nervous system</li>
+              <li>📖 <em>Becoming Supernatural</em> · <em>Breaking the Habit of Being Yourself</em> · <em>You Are the Placebo</em></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <div className="rounded-3xl border border-border bg-[image:var(--gradient-cosmos)] p-10 md:p-14">
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
+          <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Alan Watts · The Wisdom of Insecurity</h2>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            The British philosopher who translated Zen, Taoism, and Vedanta into the most luminous English
+            of the 20th century. His gift was to dissolve — gently, with humor — the very assumptions that
+            create suffering: that the self is separate, that life is a problem to be solved, that the
+            future is where the answer lives. With Watts, the path is not to <em>become</em> awakened but
+            to notice you already are.
+          </p>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {[
+              {
+                t: "You Are It",
+                d: "The universe is not something you were dropped into; you are something the universe is doing — the same way a wave is something the ocean is doing. The 'you' that feels separate is a useful illusion, no more solid than a vortex in a river.",
+              },
+              {
+                t: "The Backwards Law",
+                d: "The harder you grasp at peace, joy, or enlightenment, the more they retreat. Trying to be calm is the opposite of calm. Wisdom is letting go of the very effort to grasp.",
+              },
+              {
+                t: "The Eternal Now",
+                d: "There is no such thing as the future or the past — only memories and anticipations happening now. To live fully is to recognize that this moment is the only place anything has ever happened.",
+              },
+              {
+                t: "The Game of Hide and Seek",
+                d: "The Hindu image of Brahman: the One forgetting it is the One, in order to play at being the many — so that one day, with great delight, it can remember. You are the Self, peeking through.",
+              },
+              {
+                t: "Music & the Meaning of Life",
+                d: "Watts' famous teaching: life is not a journey to a destination. It is a musical thing, meant to be danced and sung while it is being played. We have been miseducated to treat it like a race.",
+              },
+              {
+                t: "The Wisdom of Insecurity",
+                d: "Trying to make the changing solid is the root of suffering. Security cannot be found by clinging — only by realizing that the one who would cling is itself part of the flow. Then the flow becomes the home.",
+              },
+            ].map((c) => (
+              <article key={c.t} className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+                <h3 className="font-serif text-2xl text-foreground">{c.t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-12">
+            <h3 className="font-serif text-3xl text-foreground">Practice · The Watts-Style Awareness Meditation</h3>
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
+              Watts taught meditation not as effort but as <em>letting be</em>. There is nothing to achieve.
+              Nothing to fix. Sit, and notice that life is already happening — without your management.
+              20 minutes is plenty.
+            </p>
+            <ol className="mt-6 space-y-4">
+              {[
+                { n: "01", t: "Sit & Listen", d: "Sit comfortably, eyes open or soft. Listen to the sounds around you — not for anything, just listen. Let sound arrive. You don't make hearing happen; it happens to you." },
+                { n: "02", t: "Notice the Breath Breathing You", d: "You are not breathing. Breathing is occurring. The lungs fill and empty without your permission. Notice this. The body is wiser than the manager." },
+                { n: "03", t: "Drop the Watcher", d: "When you notice yourself watching the meditation, ask: who is watching? Look for the watcher. You will not find one. There is only the looking. Rest there." },
+                { n: "04", t: "Let Thoughts Be Sounds", d: "Treat thoughts the same as the bird outside. They arise, they pass. They are not yours. They are not problems. They are just the mind doing its thing." },
+                { n: "05", t: "Rest as Awareness", d: "What is left when you stop trying to be anyone? Awareness — open, knowing, peaceful, already complete. This is what you are. You always were." },
+              ].map((s) => (
+                <li key={s.n} className="rounded-xl border border-primary/30 bg-background/60 p-5 backdrop-blur">
+                  <p className="font-serif text-2xl text-primary">{s.n}</p>
+                  <p className="mt-1 font-serif text-lg text-foreground">{s.t}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+            <h3 className="font-serif text-xl text-foreground">Essential Watts Lectures & Books</h3>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>🎧 <em>The Real You</em> — short, perfect introduction (also widely shared as a music remix)</li>
+              <li>🎧 <em>Out of Your Mind</em> (lecture series) — Watts at the height of his powers</li>
+              <li>🎧 <em>The Nature of Consciousness</em> — the Big Self / Little Self teaching</li>
+              <li>🎧 <em>Life is a Musical Thing</em> — the dance metaphor in full</li>
+              <li>📖 <em>The Wisdom of Insecurity</em> — his clearest book</li>
+              <li>📖 <em>The Book: On the Taboo Against Knowing Who You Are</em> — the cosmic game made plain</li>
+              <li>📖 <em>The Way of Zen</em> · <em>Tao: The Watercourse Way</em></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <div className="rounded-3xl border border-primary/30 bg-[image:var(--gradient-warm)] p-10 md:p-14">
+          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">✦ Two Doors, One Room ✦</p>
+          <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Dispenza & Watts — The Daily Pairing</h2>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
+            Two complementary doorways. Dispenza, in the morning: become the new self, install the future,
+            move the body forward with intention and elevated emotion. Watts, in the evening: drop the
+            manager, let the day go, recognize you were already That all along. Effort and effortlessness.
+            Becoming and being. Together they make a complete day.
+          </p>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <p className="text-xs uppercase tracking-[0.25em] text-primary">Morning · 30–45 min</p>
+              <h3 className="mt-2 font-serif text-2xl text-foreground">Dispenza Becoming</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Before reaching for the phone. Activate the energy centers, rehearse the new self, generate
+                gratitude for what hasn't yet arrived. Walk into the day as the future you.
+              </p>
+            </article>
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <p className="text-xs uppercase tracking-[0.25em] text-primary">Evening · 15–20 min</p>
+              <h3 className="mt-2 font-serif text-2xl text-foreground">Watts Releasing</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                After the day is done. Sit, listen, drop the watcher, let thoughts be birds. Rest as the
+                awareness in which the whole day arose and passed. Sleep follows naturally.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <p className="mt-12 text-center text-sm italic text-muted-foreground">
         New teachings are added with each cycle. Visit the center for full study circles and guided discussions.
       </p>
