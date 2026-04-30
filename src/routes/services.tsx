@@ -20,7 +20,7 @@ const services = [
 
 function ServicesPage() {
   return (
-    <PageShell eyebrow="Offerings" title="Services & Sessions" intro="Each session is held in sacred space, tailored to where you are on your path.">
+    <PageShell eyebrow="✦ The Veil Is Thinning · Offerings ✦" title="Services & Sessions" intro="Each session is held in sacred space, tailored to where you are on your path. As the veil thins, the body asks to be met with deeper care.">
       <div className="grid gap-6 md:grid-cols-2">
         {services.map((s) => (
           <article key={s.t} className="group rounded-2xl border border-border bg-card p-7 transition hover:shadow-[var(--shadow-soft)]">
