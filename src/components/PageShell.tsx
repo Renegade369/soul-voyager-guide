@@ -1,7 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-
-type Meta = { title: string; description: string };
 
 export function PageShell({ eyebrow, title, intro, children }: { eyebrow?: string; title: string; intro?: string; children: ReactNode }) {
   return (
@@ -18,7 +15,7 @@ export function PageShell({ eyebrow, title, intro, children }: { eyebrow?: strin
   );
 }
 
-export function makeRouteMeta(meta: Meta) {
+export function makeRouteMeta(meta: { title: string; description: string }) {
   return {
     meta: [
       { title: meta.title },
@@ -28,6 +25,3 @@ export function makeRouteMeta(meta: Meta) {
     ],
   };
 }
-
-// dummy export to keep this as a regular module (no route)
-export const _ = createFileRoute;
