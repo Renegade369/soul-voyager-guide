@@ -468,6 +468,191 @@ function TeachingsPage() {
         </div>
       </section>
 
+
+      <section className="mt-16">
+        <div className="rounded-3xl border border-border bg-[image:var(--gradient-cosmos)] p-10 md:p-14">
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
+          <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Sacred Plant Medicines</h2>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            Plant medicines are ancient teachers — sentient intelligences the elders have sat with for
+            millennia. Each carries a distinct spirit, a distinct gift, and a distinct warning. Below is
+            an offering of the most widely-honored sacraments, what they are known for, and the life
+            challenges they have most often been called to meet. This is teaching, not prescription.
+            Every medicine asks for preparation, vetted facilitation, integration, and reverence.
+          </p>
+
+          <div className="mt-10 space-y-6">
+            {[
+              {
+                name: "Ayahuasca",
+                origin: "Amazon Basin · Shipibo, Shuar, Quechua lineages",
+                spirit: "The Grandmother. A purgative, visionary teacher who shows the soul what it has buried. Works through the gut, the lineage, and the unseen realms.",
+                health: "Studied for treatment-resistant depression, PTSD, addiction, and trauma. Increases neuroplasticity, BDNF expression, and default-mode-network reorganization.",
+                challenges: ["Deep depression", "PTSD & complex trauma", "Addiction (alcohol, opioids, cocaine)", "Spiritual disconnection", "Ancestral wounds"],
+              },
+              {
+                name: "Psilocybin Mushrooms",
+                origin: "Worldwide · Mazatec (María Sabina), Aztec teonanácatl",
+                spirit: "The Quiet Teachers. Gentle yet uncompromising — they unbind the small self and reveal the felt sense of unity. Often described as the medicine that loves you.",
+                health: "FDA Breakthrough Therapy for depression and end-of-life distress. Strong evidence for OCD, alcohol use disorder, and existential anxiety in terminal illness.",
+                challenges: ["Depression & rumination", "Death anxiety", "Creative & spiritual stagnation", "OCD", "Self-loathing"],
+              },
+              {
+                name: "San Pedro (Huachuma)",
+                origin: "Andes · Quechua & Chavín lineages",
+                spirit: "The Grandfather. The heart-opener of the mountains. Slow, warm, day-long — works through gentle expansion rather than confrontation. Reconnects you to nature and the felt presence of the divine.",
+                health: "Cardiovascular activation, increased empathy and prosocial feeling, somatic warmth, nature reconnection.",
+                challenges: ["Closed or grieving heart", "Disconnection from nature", "Emotional numbness", "Difficulty receiving love", "Spiritual loneliness"],
+              },
+              {
+                name: "Peyote",
+                origin: "Northern Mexico & SW US · Wixárika (Huichol), Native American Church",
+                spirit: "Grandfather Hikuri. The medicine of the desert and the long prayer. Holds ceremony through the night and reveals the sacredness of suffering. Endangered — sit only with indigenous-led traditions.",
+                health: "Used for centuries within the Native American Church for alcoholism recovery; profound effects on community belonging and identity restoration.",
+                challenges: ["Alcoholism", "Loss of cultural or ancestral identity", "Long, dark nights of the soul", "Need for community and prayer"],
+              },
+              {
+                name: "Iboga / Ibogaine",
+                origin: "West-Central Africa · Bwiti tradition (Gabon)",
+                spirit: "The Father. A confronting, root-level teacher who shows you your life like a film. Long, demanding, not recreational. Works in deep medical settings.",
+                health: "Documented interruption of opioid, methamphetamine, and alcohol addiction — often in a single session. Cardiac screening is mandatory; deaths have occurred without it.",
+                challenges: ["Opioid & heroin addiction", "Methamphetamine addiction", "Severe trauma reckoning", "Pattern that won't break"],
+              },
+              {
+                name: "5-MeO-DMT (Bufo / Sapo)",
+                origin: "Sonoran Desert · Bufo alvarius toad secretion (now also synthesized to protect the toad)",
+                spirit: "The God Molecule. Brief, total dissolution into pure source consciousness. Not a journey — an unmaking. The most powerful entheogen known and the one demanding the deepest preparation.",
+                health: "Early research shows rapid relief of depression, anxiety, and PTSD. Integration is everything; without it, destabilization is real.",
+                challenges: ["Existential terror", "Spiritual ego / bypassing", "Need for direct nondual realization", "Treatment-resistant depression (under careful supervision)"],
+              },
+              {
+                name: "Cannabis (Sacred Use)",
+                origin: "Central Asia · Vedic, Sufi, Rastafari, and Scythian traditions",
+                spirit: "Ganja, the gentle teacher. When used ceremonially and sparingly, opens the heart and softens the analytic mind. Daily recreational use closes the very door it can open.",
+                health: "Ceremonial use as bridge to meditation and prayer; medical applications in chronic pain, sleep, appetite, and end-of-life care.",
+                challenges: ["Chronic pain", "Insomnia", "Difficulty meditating (occasional ceremonial use)", "End-of-life suffering"],
+              },
+              {
+                name: "Kambo",
+                origin: "Amazon · Matsés, Katukina, Yawanawá",
+                spirit: "The Frog Medicine. Not psychoactive — a fierce physical purge from the secretion of the giant monkey frog. Clears panema (heavy energy), strengthens the immune and lymphatic systems.",
+                health: "Studied peptides (dermorphin, deltorphin, phyllomedusin) with antimicrobial, analgesic, and immune-modulating effects. Lyme, chronic infection, and inflammation are common contexts.",
+                challenges: ["Stagnant or heavy energy", "Chronic infection (Lyme, EBV)", "Lethargy & depression", "Need for somatic clearing"],
+              },
+              {
+                name: "Rapé (Hapé)",
+                origin: "Amazon · multiple tribal lineages",
+                spirit: "Sacred snuff blown through a tepi pipe. Grounds, focuses, opens the third eye, and clears the energetic field. Often used to open and close other ceremonies.",
+                health: "Sinus clearing, mental focus, parasympathetic activation when held in ceremony.",
+                challenges: ["Scattered mind", "Trouble grounding", "Pre-meditation preparation", "Energetic clearing"],
+              },
+              {
+                name: "Sananga",
+                origin: "Amazon · Kaxinawá, Matsés",
+                spirit: "Eye drops from a jungle root. Burns intensely for minutes, then clears — physical and spiritual vision both. Used by hunters and seers.",
+                health: "Traditional use for ocular health, glaucoma, and cataracts; spiritual use for clearing the inner sight.",
+                challenges: ["Clouded discernment", "Spiritual vision blocks", "Ocular conditions (traditional contexts)"],
+              },
+              {
+                name: "Cacao (Ceremonial)",
+                origin: "Mesoamerica · Maya, Olmec, Aztec",
+                spirit: "The gentle Mother. Heart-opener, gateway medicine. Safe, food-grade, increases blood flow to the heart and brain — perfect for women's circles, daily practice, and beginners.",
+                health: "Theobromine and PEA support mood, focus, and cardiovascular health. Widely accessible and integratable.",
+                challenges: ["Heart heaviness", "Daily reconnection practice", "Beginning the path", "Group circles & creativity"],
+              },
+              {
+                name: "MDMA (Therapeutic Use)",
+                origin: "Synthesized 1912 · therapeutic protocols developed since the 1970s",
+                spirit: "Not a traditional plant, but held alongside the medicines for the heart-opening it offers. Reduces fear, allowing trauma to be revisited safely. FDA-acknowledged as breakthrough therapy.",
+                health: "MAPS Phase 3 trials: ~67% of severe PTSD patients no longer met diagnostic criteria after three sessions with therapy.",
+                challenges: ["PTSD (especially relational/sexual trauma)", "Couples in disconnection", "Inability to feel safe in the body"],
+              },
+              {
+                name: "Mescaline (Synthesized & Cactus)",
+                origin: "San Pedro & Peyote alkaloid",
+                spirit: "The long, lucid teacher. Less visionary than psilocybin, more reflective. Sustained clarity of thought and feeling for many hours.",
+                health: "Emerging research on depression, alcoholism, and contemplative insight.",
+                challenges: ["Need for sustained reflection", "Life transitions", "Integration of past medicine work"],
+              },
+            ].map((m) => (
+              <article key={m.name} className="rounded-2xl border border-border/60 bg-background/60 p-7 backdrop-blur">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+                  <h3 className="font-serif text-2xl text-foreground">{m.name}</h3>
+                  <p className="text-xs uppercase tracking-[0.2em] text-primary">{m.origin}</p>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-medium text-foreground">Spirit & Tradition · </span>{m.spirit}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-medium text-foreground">Health & Research · </span>{m.health}
+                </p>
+                <div className="mt-4">
+                  <p className="text-xs font-medium uppercase tracking-wider text-primary">Most Often Called For</p>
+                  <ul className="mt-2 flex flex-wrap gap-2">
+                    {m.challenges.map((c) => (
+                      <li key={c} className="rounded-full border border-border/60 bg-muted/40 px-3 py-1 text-xs text-foreground">
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-12">
+            <h3 className="font-serif text-3xl text-foreground">By Life Challenge — A Quick Reference</h3>
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
+              Many medicines can meet the same wound; the right one depends on the soul, the lineage, and
+              the moment. This is a starting orientation, not an answer.
+            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              {[
+                { c: "Depression", m: "Psilocybin · Ayahuasca · San Pedro · Cacao" },
+                { c: "PTSD & Complex Trauma", m: "MDMA · Ayahuasca · Psilocybin · 5-MeO-DMT (advanced)" },
+                { c: "Addiction — Opioids & Stimulants", m: "Iboga / Ibogaine · Ayahuasca" },
+                { c: "Addiction — Alcohol", m: "Peyote · Psilocybin · Ayahuasca" },
+                { c: "Death Anxiety & End-of-Life", m: "Psilocybin · Cannabis · 5-MeO-DMT" },
+                { c: "Closed or Grieving Heart", m: "San Pedro · Cacao · MDMA · Ayahuasca" },
+                { c: "Spiritual Disconnection", m: "Ayahuasca · San Pedro · 5-MeO-DMT · Peyote" },
+                { c: "Stagnant Energy & Chronic Illness", m: "Kambo · Rapé · Ayahuasca" },
+                { c: "Scattered Mind & Lack of Focus", m: "Rapé · Cacao · Ceremonial Cannabis" },
+                { c: "Ancestral & Lineage Wounds", m: "Ayahuasca · Peyote · Iboga" },
+                { c: "Need for Nondual Realization", m: "5-MeO-DMT · Mescaline · Psilocybin (high dose)" },
+                { c: "Beginning the Path", m: "Cacao · Microdose Psilocybin · Ceremonial Cannabis" },
+              ].map((row) => (
+                <article key={row.c} className="rounded-xl border border-border/60 bg-background/60 p-5 backdrop-blur">
+                  <p className="font-serif text-lg text-foreground">{row.c}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{row.m}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+            <h3 className="font-serif text-xl text-foreground">Sacred Principles</h3>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>🌿 <span className="text-foreground">Reverence over recreation.</span> The medicine knows the difference.</li>
+              <li>🌿 <span className="text-foreground">Vetted facilitators only.</span> Lineage, training, and ethics matter more than charisma.</li>
+              <li>🌿 <span className="text-foreground">Preparation is half the medicine.</span> Diet, prayer, and intention shape the journey.</li>
+              <li>🌿 <span className="text-foreground">Integration is the other half.</span> Without it, insight evaporates.</li>
+              <li>🌿 <span className="text-foreground">Honor the source cultures.</span> Reciprocity, attribution, and protection of endangered plants and peoples.</li>
+              <li>🌿 <span className="text-foreground">Medical screening is non-negotiable</span> for Iboga, Ayahuasca (SSRIs), and 5-MeO-DMT.</li>
+            </ul>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              <strong className="text-foreground">A note of care:</strong> this teaching is offered for
+              education and discernment, not as medical advice or invitation to seek out substances. Many
+              of these medicines are legally controlled and carry real risks without proper container,
+              screening, and integration. If a medicine is calling you, sit with it slowly — and reach out
+              to William or a trusted facilitator before taking any step.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <p className="mt-12 text-center text-sm italic text-muted-foreground">
         New teachings are added with each cycle. Visit the center for full study circles and guided discussions.
       </p>
