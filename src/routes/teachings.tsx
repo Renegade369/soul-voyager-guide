@@ -30,6 +30,11 @@ const categories = [
     d: "Ancestors, guides, departed loved ones, and the realms between lives. How to listen, and how to verify.",
     items: ["Ancestral healing", "Working with guides", "Between-life realms"],
   },
+  {
+    t: "Heart-Brain Coherence",
+    d: "The measurable, sacred state where heart and mind synchronize — a doorway to intuition, healing, and remembrance.",
+    items: ["The heart's electromagnetic field", "Coherence breathing", "Group field amplification"],
+  },
 ];
 
 function TeachingsPage() {
