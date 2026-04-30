@@ -143,6 +143,93 @@ function TeachingsPage() {
         </div>
       </section>
 
+      <section className="mt-16">
+        <div className="rounded-3xl border border-border bg-[image:var(--gradient-sanctuary)] p-10 md:p-14">
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
+          <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">
+            The Sensitive Soul & the Weight of the Veil
+          </h2>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            Many of the most spiritually sensitive people on Earth have, at some point, struggled
+            with alcohol, drugs, food, or other compulsions. This is not a moral failing — it is
+            often a sign of a soul wired to perceive more than the dense 3D world is comfortable
+            holding. Understanding <em>why</em> the suffering arose is, for many, the beginning of
+            the way through it.
+          </p>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">Why Sensitives Are Vulnerable</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Empaths, starseeds, and those Dolores Cannon called the "Volunteers" often arrive
+                with thinner veils. They feel collective grief, ancestral pain, and unseen
+                presences without being taught what they are. Substances become a way to mute a
+                signal that was never meant to be muted — only understood and channelled.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">The Numbing Contract</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Alcohol and many drugs create gaps in the auric field. Cannon's QHHT sessions and
+                Newton's between-life work both describe how these openings can invite attachments
+                or draining energies that intensify the cycle. The substance promises peace and
+                quietly deepens the static.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">Remembering Who You Are</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Again and again, people in recovery describe a turning point that was not
+                willpower but <em>recognition</em>: I am a soul. I chose this life. The pain I am
+                drinking away is information, not a defect. When the self is re-met as eternal,
+                the craving loses its grip on the human personality.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">The Truth About the Universe</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Learning that consciousness survives death, that soul families exist, that this
+                Earth experience is a chosen curriculum — these are not abstract ideas for the
+                sensitive. They are nervous-system medicine. The world stops feeling hostile and
+                random; the sensitivity reveals itself as the gift it always was.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">Practices That Replace the Substance</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Breathwork, somatic release, time in nature, grounding, energetic hygiene, sacred
+                community, and contemplative study give the body the regulation it was seeking.
+                The hunger was never for the drink — it was for stillness, belonging, and contact
+                with the unseen. These can be met directly.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">The Healed Sensitive</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Those who walk through this passage often become the very healers, teachers, and
+                guides their younger self needed. The addiction, in hindsight, was the soul
+                knocking — insisting that a deeper truth be remembered. Many describe it as the
+                hardest and most sacred initiation of their life.
+              </p>
+            </article>
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              <strong className="text-foreground">A note of care:</strong> these teachings honour
+              the spiritual dimension of addiction, but they are not a replacement for medical
+              support. If you or someone you love is in active crisis, please reach out to a
+              qualified professional alongside this work. Both paths belong.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <p className="mt-12 text-center text-sm italic text-muted-foreground">
         New teachings are added with each cycle. Visit the center for full study circles and guided discussions.
       </p>
