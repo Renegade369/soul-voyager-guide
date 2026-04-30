@@ -11,7 +11,7 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   return (
-    <PageShell eyebrow="Our Story" title="A Sanctuary for Truth-Seekers" intro="Sacred Journey was born from a calling: to create a physical home where healing, knowledge, and the sacred meet.">
+    <PageShell eyebrow="✦ The Veil Is Thinning · Our Story ✦" title="A Sanctuary for Truth-Seekers" intro="Sacred Journey was born from a calling: to create a physical home where healing, knowledge, and the sacred meet — for a moment in time when the veil grows thin.">
       <div className="prose prose-stone mx-auto max-w-3xl text-foreground">
         <p className="text-lg leading-relaxed text-muted-foreground">
           We live in a moment of great unveiling. Truths long hidden — about consciousness,
