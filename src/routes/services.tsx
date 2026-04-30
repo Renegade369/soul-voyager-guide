@@ -18,6 +18,11 @@ const services = [
   { t: "Spiritual Mentorship", d: "One-on-one guidance for awakening, integration, and discernment.", duration: "60 min" },
 ];
 
+const plantMedicine = [
+  { t: "Private Plant Medicine Ceremony", d: "An intimate, one-on-one ceremony held with deep reverence — tailored to your intention, lineage, and readiness. Pre-ceremony preparation and post-ceremony integration included.", duration: "Full day" },
+  { t: "Group Plant Medicine Ceremony", d: "A held container of fellow seekers gathering in sacred circle. Songs, prayer, and skilled facilitation guide the journey from opening to closing of the space.", duration: "Overnight" },
+];
+
 function ServicesPage() {
   return (
     <PageShell eyebrow="✦ The Veil Is Thinning · Offerings ✦" title="Services & Sessions" intro="Each session is held in sacred space, tailored to where you are on your path. As the veil thins, the body asks to be met with deeper care.">
