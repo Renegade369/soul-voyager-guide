@@ -17,6 +17,28 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div>
+      {/* Heavenly Opening */}
+      <section className="relative isolate overflow-hidden bg-background">
+        <img
+          src={angelHandsImg}
+          alt="Painterly scene of luminous angelic hands parting golden clouds as souls descend in beams of sacred light"
+          width={1920}
+          height={1080}
+          className="h-[70vh] w-full object-cover md:h-[85vh]"
+        />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background via-background/60 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background via-background/80 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 px-6 pb-16 text-center md:pb-24">
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ The Veil Is Thinning ✦</p>
+          <h2 className="mx-auto mt-4 max-w-3xl font-serif text-3xl text-foreground md:text-5xl">
+            We are the souls who chose this lifetime
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground md:text-base">
+            Held by the unseen, descending into the beauty and weight of being human — together, in remembrance.
+          </p>
+        </div>
+      </section>
+
       {/* Hero */}
       <section className="relative isolate overflow-hidden">
         <img
