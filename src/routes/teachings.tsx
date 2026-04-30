@@ -35,7 +35,7 @@ const categories = [
 function TeachingsPage() {
   return (
     <PageShell
-      eyebrow="The Codex"
+      eyebrow="✦ The Veil Is Thinning · The Codex ✦"
       title="Hidden Truths of Life"
       intro="A living library of teachings from the seen and unseen — offered as inquiry, not dogma. Take what resonates, leave the rest."
     >
