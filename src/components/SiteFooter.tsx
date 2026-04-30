@@ -27,8 +27,9 @@ export function SiteFooter() {
           </p>
         </div>
       </div>
-      <div className="border-t border-border/60 py-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Sacred Journey. All paths welcome.
+      <div className="border-t border-border/60 py-6 text-center">
+        <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ The Veil Is Thinning ✦</p>
+        <p className="mt-2 text-xs text-muted-foreground">© {new Date().getFullYear()} Sacred Journey. All paths welcome.</p>
       </div>
     </footer>
   );

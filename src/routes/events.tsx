@@ -19,7 +19,7 @@ const events = [
 
 function EventsPage() {
   return (
-    <PageShell eyebrow="Gather" title="Events & Classes" intro="Live ceremonies, workshops, and circles held in our sanctuary space.">
+    <PageShell eyebrow="✦ The Veil Is Thinning · Gather ✦" title="Events & Classes" intro="Live ceremonies, workshops, and circles held in our sanctuary space — gatherings for a time when the unseen is drawing closer.">
       <div className="space-y-4">
         {events.map((e) => (
           <article key={e.t} className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 sm:flex-row sm:items-center">

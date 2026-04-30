@@ -21,9 +21,9 @@ const pillars = [
 function HealthPage() {
   return (
     <PageShell
-      eyebrow="The Vessel"
+      eyebrow="✦ The Veil Is Thinning · The Vessel ✦"
       title="Holistic Health"
-      intro="The body is not separate from the spirit — it is its temple. True health is wholeness across every layer of being."
+      intro="The body is not separate from the spirit — it is its temple. As the veil thins, the vessel must be tended with greater devotion than ever before."
     >
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {pillars.map((p) => (
