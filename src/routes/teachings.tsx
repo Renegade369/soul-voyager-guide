@@ -30,6 +30,11 @@ const categories = [
     d: "Ancestors, guides, departed loved ones, and the realms between lives. How to listen, and how to verify.",
     items: ["Ancestral healing", "Working with guides", "Between-life realms"],
   },
+  {
+    t: "Heart-Brain Coherence",
+    d: "The measurable, sacred state where heart and mind synchronize — a doorway to intuition, healing, and remembrance.",
+    items: ["The heart's electromagnetic field", "Coherence breathing", "Group field amplification"],
+  },
 ];
 
 function TeachingsPage() {
@@ -317,6 +322,147 @@ function TeachingsPage() {
               the spiritual dimension of addiction, but they are not a replacement for medical
               support. If you or someone you love is in active crisis, please reach out to a
               qualified professional alongside this work. Both paths belong.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <div className="rounded-3xl border border-border bg-[image:var(--gradient-aurora)] p-10 md:p-14">
+          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">✦ Featured Teaching ✦</p>
+          <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Heart-Brain Coherence</h2>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
+            The heart is not merely a pump. It is the body's most powerful electromagnetic generator — producing
+            a field roughly <em>60 times stronger electrically</em> and up to <em>5,000 times stronger magnetically</em>
+            than the brain (HeartMath Institute). When heart rhythm, breath, and brainwaves synchronize into a smooth,
+            harmonic pattern, the body enters <em>coherence</em>: a measurable state where intuition sharpens, healing
+            accelerates, and the veil between self and Source thins.
+          </p>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">The Heart's Intelligence</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                The heart contains roughly 40,000 sensory neurons — its own "little brain" (the intrinsic cardiac
+                nervous system) that senses, learns, remembers, and sends more signals up to the brain than the brain
+                sends down. Ancient traditions placed wisdom in the heart for good reason; modern neurocardiology is
+                only now catching up.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">What Coherence Feels Like</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                A quiet warmth in the chest. The mind softens. Time slows. Decisions become obvious rather than
+                effortful. This is not a metaphor — it is the physiological signature of the autonomic nervous
+                system moving from chaos into order, parasympathetic and sympathetic branches dancing in rhythm.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">The Field Around You</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Your heart's electromagnetic field radiates several feet beyond the body and is detectable by the
+                hearts of others nearby. When two coherent people share space, their fields entrain. This is the
+                physics behind why a calm presence calms a room — and why ceremony amplifies what one person alone
+                cannot reach.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">Coherence as Prayer</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Dr. Joe Dispenza's research with HeartMath has documented measurable shifts in genetic expression,
+                inflammation, and even tumor markers in subjects sustaining elevated heart-coherent states paired with
+                clear intention. Coherence is the carrier wave; intention is the message. Without the wave, the message
+                does not travel far.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">Group Coherence</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                The Global Coherence Initiative monitors Earth's magnetic field and has gathered evidence that large
+                groups holding coherent, loving states can shift the local — and possibly global — magnetic
+                environment. Circles, ceremonies, and prayer groups are not symbolic. They are physics.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-serif text-2xl text-foreground">Why It Matters Now</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                As the veil thins, the nervous system needs an anchor. Coherence is that anchor — the steady ground
+                from which expanded perception becomes safe, integrated, and useful. Without it, awakening
+                destabilizes. With it, awakening matures.
+              </p>
+            </article>
+          </div>
+
+          <div className="mt-12">
+            <h3 className="font-serif text-3xl text-foreground">The Quick Coherence Practice</h3>
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
+              Adapted from HeartMath's foundational technique. Three steps, five minutes. Practice daily and the
+              baseline of your nervous system shifts.
+            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  n: "01",
+                  t: "Heart Focus",
+                  d: "Place a hand on the center of your chest. Bring your attention into the heart space, behind the sternum. Stay there.",
+                },
+                {
+                  n: "02",
+                  t: "Heart Breathing",
+                  d: "Breathe slowly through the heart — in for 5 seconds, out for 5 seconds. Imagine the breath flowing in and out of the heart itself.",
+                },
+                {
+                  n: "03",
+                  t: "Heart Feeling",
+                  d: "While breathing, recall a moment of genuine appreciation, love, or care. Hold the feeling, not the memory. Let it radiate.",
+                },
+              ].map((s) => (
+                <article key={s.n} className="rounded-2xl border border-primary/30 bg-background/60 p-6 backdrop-blur">
+                  <p className="font-serif text-3xl text-primary">{s.n}</p>
+                  <h4 className="mt-2 font-serif text-xl text-foreground">{s.t}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <h3 className="font-serif text-3xl text-foreground">Daily Doorways into Coherence</h3>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { t: "Resonance Breathing", d: "Five to six breaths per minute is the cardiac sweet spot. A simple metronome will do." },
+                { t: "Gratitude on Waking", d: "Three felt thank-yous before the feet touch the floor. Sets the day's baseline frequency." },
+                { t: "Heart-Held Decisions", d: "Drop the question into the chest, not the head. Wait. The heart answers in warmth, contraction, or stillness." },
+                { t: "Nature Immersion", d: "The Earth itself is in a coherent rhythm (Schumann resonance, ~7.83 Hz). Bare feet, slow walks, and sky-gazing entrain you to it." },
+                { t: "Pre-Ceremony Coherence", d: "Five minutes of heart breathing before any prayer, ceremony, or healing session multiplies the field you bring." },
+                { t: "Coherence with Another", d: "Sit knee-to-knee, eyes soft, breathing together. Two coherent fields entrain faster than one alone." },
+              ].map((p) => (
+                <article key={p.t} className="rounded-2xl border border-border/60 bg-background/60 p-5 backdrop-blur">
+                  <div className="h-1 w-8 rounded-full bg-primary" />
+                  <h4 className="mt-3 font-serif text-lg text-foreground">{p.t}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+            <h3 className="font-serif text-xl text-foreground">Further Study</h3>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>📖 <em>The HeartMath Solution</em> — Doc Childre & Howard Martin</li>
+              <li>📖 <em>Becoming Supernatural</em> — Dr. Joe Dispenza</li>
+              <li>📖 <em>The Heart's Code</em> — Dr. Paul Pearsall</li>
+              <li>🔬 HeartMath Institute research library — heartmath.org/research</li>
+              <li>🌍 Global Coherence Initiative — heartmath.org/gci</li>
+            </ul>
+            <p className="mt-4 text-xs italic text-muted-foreground">
+              We hold weekly Heart Coherence circles at the center — guided practice, group entrainment, and
+              gentle integration. See Events for the next gathering.
             </p>
           </div>
         </div>
