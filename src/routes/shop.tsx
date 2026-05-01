@@ -49,25 +49,26 @@ function ShopPage() {
       title="The Shop"
       intro="Branded Sacred Journey apparel, sacred objects, cleansing tools, and healing companions — every item is chosen or made with intention. Proceeds support the sanctuary."
     >
-      {loading && <p className="text-center text-sm text-muted-foreground">Gathering offerings…</p>}
+      {loading && (
+        <p className="text-center text-sm font-light italic text-muted-foreground">Gathering offerings…</p>
+      )}
       {error && (
-        <div className="rounded-xl border border-destructive/40 bg-destructive/10 p-4 text-center text-sm text-destructive">
+        <div className="mx-auto max-w-xl border-y border-border py-8 text-center text-sm font-light text-foreground">
           {error}
         </div>
       )}
 
       {!loading && !error && products.length === 0 && (
-        <div className="mx-auto max-w-xl rounded-2xl border border-border bg-card p-10 text-center">
-          <p className="font-serif text-xl text-foreground">No products yet</p>
-          <p className="mt-3 text-sm text-muted-foreground">
-            The shop is being prepared. Tell William what you'd like to see — Sacred Journey shirts,
-            hats, sweatshirts, mugs, sage bundles, crystals, oils, books — and he'll add them.
+        <div className="mx-auto max-w-xl border-y border-border py-16 text-center">
+          <p className="font-serif text-3xl font-light italic text-foreground">No products yet.</p>
+          <p className="mx-auto mt-5 max-w-md text-sm font-light leading-relaxed text-muted-foreground">
+            The shop is being prepared. Tell William what you'd like to see — Sacred Journey shirts, hats, sweatshirts, mugs, sage bundles, crystals, oils, books — and he'll add them.
           </p>
         </div>
       )}
 
       {!loading && products.length > 0 && (
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p) => (
             <ProductCard key={p.node.id} product={p} />
           ))}
@@ -84,34 +85,34 @@ function ProductCard({ product }: { product: ShopifyProduct }) {
     <Link
       to="/product/$handle"
       params={{ handle: product.node.handle }}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary"
+      className="group flex flex-col"
     >
       <div className="aspect-square w-full overflow-hidden bg-muted">
         {img ? (
           <img
             src={img.url}
             alt={img.altText ?? product.node.title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             loading="lazy"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-xs text-muted-foreground">
+          <div className="flex h-full w-full items-center justify-center text-xs font-light italic text-muted-foreground">
             No image
           </div>
         )}
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-serif text-lg text-foreground">{product.node.title}</h3>
-        <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
-          {product.node.description}
-        </p>
-        <div className="mt-auto flex items-center justify-between pt-4">
-          <span className="font-medium text-foreground">
-            {formatPrice(price.amount, price.currencyCode)}
-          </span>
-          <span className="text-xs uppercase tracking-[0.2em] text-primary">View →</span>
-        </div>
+      <div className="mt-5 flex items-baseline justify-between gap-4">
+        <h3 className="font-serif text-xl font-normal text-foreground">{product.node.title}</h3>
+        <span className="text-sm font-light text-foreground">
+          {formatPrice(price.amount, price.currencyCode)}
+        </span>
       </div>
+      <p className="mt-2 line-clamp-2 text-sm font-light leading-relaxed text-muted-foreground">
+        {product.node.description}
+      </p>
+      <span className="mt-4 text-[11px] font-normal uppercase tracking-[0.22em] text-foreground/60 group-hover:text-foreground">
+        View →
+      </span>
     </Link>
   );
 }

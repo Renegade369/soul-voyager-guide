@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/health")({
   head: () => makeRouteMeta({
     title: "Health — Sacred Journey",
-    description: "Holistic health resources: nutrition, detoxification, herbal allies, and the body as a sacred vessel.",
+    description: "Holistic health resources: nourishment, detoxification, herbal allies, and the body as a sacred vessel.",
   }),
   component: HealthPage,
 });
@@ -23,23 +23,52 @@ function HealthPage() {
     <PageShell
       eyebrow="The Vessel"
       title="Holistic Health"
-      intro="The body is not separate from the spirit — it is its temple. As the veil thins, the vessel must be tended with greater devotion than ever before."
+      intro="The body is not separate from the spirit — it is its temple. The vessel asks to be tended with devotion."
     >
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {pillars.map((p) => (
-          <article key={p.t} className="rounded-2xl border border-border bg-card p-6">
-            <div className="h-1 w-10 rounded-full bg-primary" />
-            <h3 className="mt-4 font-serif text-xl text-foreground">{p.t}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
-          </article>
-        ))}
-      </div>
-      <div className="mt-14 rounded-2xl border border-border bg-[image:var(--gradient-sanctuary)] p-8 text-center">
-        <h2 className="font-serif text-2xl text-foreground">Personalized Wellness Consultations</h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
-          Work with our practitioners to design a holistic protocol attuned to your body, your story, and your spirit.
+      <section className="mx-auto max-w-2xl text-center">
+        <p className="font-serif text-2xl font-light italic leading-snug text-muted-foreground md:text-3xl">
+          Six quiet pillars. One steady practice of return.
         </p>
+      </section>
+
+      <div className="mt-16 grid grid-cols-1 border-t border-border md:grid-cols-2">
+        {pillars.map((s, i) => {
+          const isLast = i === pillars.length - 1;
+          return (
+            <article
+              key={s.t}
+              className={[
+                "px-2 py-12 md:px-10 md:py-14",
+                "border-b border-border",
+                i % 2 === 0 ? "md:border-r" : "",
+                i >= pillars.length - 2 ? "md:border-b-0" : "",
+                isLast ? "border-b-0" : "",
+              ].join(" ")}
+            >
+              <p className="font-serif text-sm font-light italic text-muted-foreground">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-4 font-serif text-2xl font-normal text-foreground md:text-3xl">{s.t}</h3>
+              <p className="mt-5 max-w-md text-sm font-light leading-relaxed text-muted-foreground">{s.d}</p>
+            </article>
+          );
+        })}
       </div>
+
+      <section className="mt-32 border-t border-border py-20 text-center">
+        <p className="font-serif text-3xl font-light italic text-foreground md:text-4xl">
+          A protocol attuned to your body, your story, your spirit.
+        </p>
+        <p className="mx-auto mt-5 max-w-md text-sm font-light text-muted-foreground">
+          Personalized wellness consultations with our practitioners.
+        </p>
+        <Link
+          to="/discovery"
+          className="mt-10 inline-block border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
+        >
+          Begin Your Discovery
+        </Link>
+      </section>
     </PageShell>
   );
 }
