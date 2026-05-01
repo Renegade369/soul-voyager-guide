@@ -185,23 +185,40 @@ function Index() {
                     "tile-hover group relative h-full px-2 py-12 md:px-12 md:py-16",
                     "border-b border-border",
                     !lastAlone && i % 2 === 0 ? "md:border-r" : "",
-                    lastAlone ? "md:col-span-2" : "",
+                    lastAlone ? "md:col-span-2 text-center" : "",
                     i >= services.length - (isOdd ? 1 : 2) ? "md:border-b-0" : "",
                     isLast ? "border-b-0" : "",
                   ].join(" ")}
+                  style={lastAlone ? { backgroundColor: "rgba(212,175,100,0.05)" } : undefined}
                 >
                   <ServiceCornerBracket variant={i} />
-                  <div className="flex items-center gap-4">
-                    <Icon size={28} color="#1C1B3A" opacity={0.5} strokeWidth={0.7} />
+                  <div className={["flex items-center gap-4", lastAlone ? "justify-center" : ""].join(" ")}>
+                    <Icon size={lastAlone ? 32 : 28} color="#1C1B3A" opacity={0.5} strokeWidth={0.7} />
                     <p className="font-serif text-sm font-light italic" style={{ color: "#D4AF64" }}>{s.n}</p>
                   </div>
-                  <h3 className="mt-5 font-serif text-3xl font-normal text-foreground">{s.t}</h3>
+                  <h3
+                    className={[
+                      "mt-5 font-serif font-normal text-foreground",
+                      lastAlone ? "text-4xl md:text-5xl" : "text-3xl",
+                    ].join(" ")}
+                  >
+                    {s.t}
+                  </h3>
                   <div
                     aria-hidden
-                    className="tile-bar mt-4"
-                    style={{ height: "1px", width: "32px", backgroundColor: "#D4AF64" }}
+                    className={["tile-bar mt-4", lastAlone ? "mx-auto" : ""].join(" ")}
+                    style={{
+                      height: lastAlone ? "2px" : "1px",
+                      width: lastAlone ? "80px" : "32px",
+                      backgroundColor: "#D4AF64",
+                    }}
                   />
-                  <p className="mt-5 max-w-sm text-sm font-light leading-relaxed text-muted-foreground">
+                  <p
+                    className={[
+                      "mt-5 text-sm font-light leading-relaxed text-muted-foreground",
+                      lastAlone ? "mx-auto max-w-2xl" : "max-w-sm",
+                    ].join(" ")}
+                  >
                     {s.d}
                   </p>
                   <Link
