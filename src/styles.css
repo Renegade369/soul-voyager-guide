@@ -40,43 +40,44 @@
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 
-  /* Sacred minimalism: warm off-white, charcoal, single muted sage accent */
-  --background: oklch(0.969 0.012 85);             /* #F9F6F0 warm off-white */
+  /* Sacred minimalism: warm off-white, deep charcoal, single muted sage accent */
+  --background: oklch(0.965 0.012 80);             /* #F8F5F0 warm off-white */
   --foreground: oklch(0.235 0.005 60);             /* #2C2B29 deep charcoal */
 
-  --card: oklch(0.985 0.006 85);                   /* near-white card */
+  --card: oklch(0.98 0.008 80);
   --card-foreground: oklch(0.235 0.005 60);
 
-  --popover: oklch(0.985 0.006 85);
+  --popover: oklch(0.98 0.008 80);
   --popover-foreground: oklch(0.235 0.005 60);
 
-  --primary: oklch(0.55 0.04 145);                 /* muted sage green accent */
-  --primary-foreground: oklch(0.985 0.006 85);
+  --primary: oklch(0.5 0.04 145);                  /* muted sage */
+  --primary-foreground: oklch(0.98 0.008 80);
 
-  --secondary: oklch(0.93 0.012 85);               /* soft linen */
+  --secondary: oklch(0.92 0.012 80);
   --secondary-foreground: oklch(0.235 0.005 60);
 
-  --muted: oklch(0.93 0.012 85);                   /* pale stone */
-  --muted-foreground: oklch(0.45 0.008 60);        /* warm grey */
+  --muted: oklch(0.92 0.012 80);
+  --muted-foreground: oklch(0.42 0.008 60);
 
-  --accent: oklch(0.55 0.04 145);                  /* same sage — single accent */
-  --accent-foreground: oklch(0.985 0.006 85);
+  --accent: oklch(0.5 0.04 145);
+  --accent-foreground: oklch(0.98 0.008 80);
 
   --destructive: oklch(0.55 0.18 25);
-  --destructive-foreground: oklch(0.985 0.006 85);
+  --destructive-foreground: oklch(0.98 0.008 80);
 
-  --border: oklch(0.235 0.005 60 / 10%);           /* hairline charcoal */
-  --input: oklch(0.235 0.005 60 / 14%);
-  --ring: oklch(0.55 0.04 145 / 50%);
+  --border: oklch(0.235 0.005 60 / 14%);           /* hairline charcoal */
+  --input: oklch(0.235 0.005 60 / 18%);
+  --ring: oklch(0.5 0.04 145 / 50%);
 
-  --linen: oklch(0.93 0.012 85);
-  --stone-soft: oklch(0.9 0.01 80);
-  --sage: oklch(0.55 0.04 145);
+  --linen: oklch(0.92 0.012 80);
+  --stone-soft: oklch(0.88 0.01 80);
+  --sage: oklch(0.5 0.04 145);
 
-  --shadow-soft: 0 1px 2px oklch(0.235 0.005 60 / 0.04), 0 8px 24px -12px oklch(0.235 0.005 60 / 0.08);
-  --shadow-card: 0 1px 3px oklch(0.235 0.005 60 / 0.05), 0 12px 32px -16px oklch(0.235 0.005 60 / 0.10);
+  /* No shadows in sacred minimalism — keep tokens but null them */
+  --shadow-soft: 0 0 0 0 transparent;
+  --shadow-card: 0 0 0 0 transparent;
 }
 
 .dark {
@@ -109,22 +110,22 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -0.015em;
     color: var(--color-foreground);
   }
 
   /* Hairline rule used between sections */
   .hairline {
-    height: 1px;
+    height: 0.5px;
     width: 100%;
-    background-color: oklch(0.235 0.005 60 / 0.12);
+    background-color: oklch(0.235 0.005 60 / 0.18);
   }
 }
