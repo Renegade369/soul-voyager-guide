@@ -143,8 +143,7 @@ function Index() {
           {pillars.map(({ Icon, t, d }, i) => (
             <Reveal key={t} delay={i * 120} as="article">
               <article
-                className="relative h-full overflow-hidden border border-border p-8 text-center md:p-10"
-                style={{ backgroundColor: "#F8F5F0" }}
+                className="relative h-full overflow-hidden p-8 text-center md:p-10"
               >
                 <Icon size={36} color="#1C1B3A" opacity={0.95} strokeWidth={0.7} className="mx-auto" />
                 <div
