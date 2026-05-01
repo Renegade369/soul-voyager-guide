@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
+import { ServiceCornerBracket, GeometricDivider } from "../components/SacredGeometry";
 
 export const Route = createFileRoute("/services")({
   head: () => makeRouteMeta({
@@ -202,8 +203,9 @@ function ServicesPage() {
           {bodywork.map((s, i) => (
             <article
               key={s.t}
-              className="overflow-hidden rounded-md border border-border"
+              className="relative overflow-hidden rounded-md border border-border"
             >
+              <ServiceCornerBracket variant={i} />
               {s.img && (
                 <div className="relative h-[200px] w-full md:h-[220px]">
                   <img
