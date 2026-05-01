@@ -127,7 +127,7 @@ function Index() {
 
       {/* Services — 2×2 numbered grid with corner brackets */}
       <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
-        <div className="mx-auto mb-20 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-2xl text-center md:mb-12">
           <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Offerings</p>
           <h2 className="mt-6 font-serif text-4xl font-light text-foreground md:text-5xl">
             What we hold.
