@@ -278,6 +278,7 @@ function ServicesPage() {
       </section>
 
       <ServiceSection
+        icon={OrnamentDoubleCircle}
         title="Sound, Breath & Stillness"
         subtitle="Frequency, breath, and silence — the oldest medicines."
         intro="These practices drop the nervous system into states where deep healing can happen on its own."
@@ -285,6 +286,7 @@ function ServicesPage() {
       />
 
       <ServiceSection
+        icon={PillarMetatronCube}
         title="Spirit, Soul & Nature"
         subtitle="The deeper layers — purpose, lineage, and the wisdom of the natural world."
         items={spiritAndSoul}
