@@ -116,6 +116,7 @@ function ServiceSection({
 }) {
   return (
     <section className="mt-32 md:mt-40">
+      <GeometricDivider variant={1} className="mb-20" maxWidth="max-w-2xl" />
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">{title}</h2>
         {subtitle && (
