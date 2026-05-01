@@ -327,12 +327,12 @@ function ServicesPage() {
 
         <NumberedGrid
           items={[
-            { t: "Equine-Assisted Healing", d: "Held sessions with horses on the land. Horses are master mirrors of the human heart — they show you, without words, where you are armored and where presence is asking to return." },
-            { t: "Horse Reiki", d: "Energy work offered with and through the horses — a sacred triangulation of practitioner, animal, and seeker. Profound for trauma, grief, and reawakening trust." },
-            { t: "Forest & Land Immersion", d: "Guided 'forest bathing' walks on the sanctuary grounds. Slow, sensory, prayerful — relearning how to listen to the trees, the wind, and your own footsteps." },
-            { t: "Earthing & Grounding", d: "Barefoot practice on earth, often combined with breathwork and coherence training. A simple, free medicine most modern bodies are starving for." },
-            { t: "Ocean & Water Ceremony", d: "South Florida-based saltwater ceremonies — ocean immersion, prayer, and integration. The sea is one of our oldest healers." },
-            { t: "Animal Companionship", d: "Guidance for those whose path includes adopting, working with, or grieving an animal companion — honoring the bond as part of the healing journey." },
+            { t: "Equine-Assisted Healing", d: "Held sessions with horses on the land. Horses are master mirrors of the human heart — they show you, without words, where you are armored and where presence is asking to return.", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80" },
+            { t: "Horse Reiki", d: "Energy work offered with and through the horses — a sacred triangulation of practitioner, animal, and seeker. Profound for trauma, grief, and reawakening trust.", img: "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?w=800&q=80" },
+            { t: "Forest & Land Immersion", d: "Guided 'forest bathing' walks on the sanctuary grounds. Slow, sensory, prayerful — relearning how to listen to the trees, the wind, and your own footsteps.", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80" },
+            { t: "Earthing & Grounding", d: "Barefoot practice on earth, often combined with breathwork and coherence training. A simple, free medicine most modern bodies are starving for.", img: "https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=800&q=80" },
+            { t: "Ocean & Water Ceremony", d: "South Florida-based saltwater ceremonies — ocean immersion, prayer, and integration. The sea is one of our oldest healers.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" },
+            { t: "Animal Companionship", d: "Guidance for those whose path includes adopting, working with, or grieving an animal companion — honoring the bond as part of the healing journey.", img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80" },
           ]}
         />
 
