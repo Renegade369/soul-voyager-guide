@@ -176,8 +176,6 @@ Deno.serve(async (req: Request) => {
         } catch (e) {
           console.error("stream error", e);
         } finally {
-          controller.close();
-
           // Persist after stream ends.
           const reflectionMatch = assistantText.includes("[[DISCOVERY_COMPLETE]]");
           const cleaned = assistantText.replace("[[DISCOVERY_COMPLETE]]", "").trim();
@@ -186,14 +184,37 @@ Deno.serve(async (req: Request) => {
             { role: "assistant", content: cleaned },
           ];
 
-          await supabase
-            .from("soul_discovery_sessions")
-            .update({
-              messages: newMessages,
-              ...(reflectionMatch ? { reflection: cleaned, status: "complete" } : {}),
-              updated_at: new Date().toISOString(),
-            })
-            .eq("id", id);
+          let saved = false;
+          try {
+            const { error: upErr } = await supabase
+              .from("soul_discovery_sessions")
+              .update({
+                messages: newMessages,
+                ...(reflectionMatch ? { reflection: cleaned, status: "complete" } : {}),
+                updated_at: new Date().toISOString(),
+              })
+              .eq("id", id);
+            saved = !upErr;
+            if (upErr) console.error("persist error", upErr);
+          } catch (e) {
+            console.error("persist threw", e);
+          }
+
+          // Tell the client whether the reflection was saved.
+          try {
+            const enc = new TextEncoder();
+            controller.enqueue(
+              enc.encode(
+                `data: ${JSON.stringify({
+                  saved,
+                  complete: reflectionMatch,
+                  sessionId: id,
+                })}\n\n`,
+              ),
+            );
+            controller.enqueue(enc.encode(`data: [DONE]\n\n`));
+          } catch { /* controller may already be closed */ }
+          controller.close();
         }
       },
     });
