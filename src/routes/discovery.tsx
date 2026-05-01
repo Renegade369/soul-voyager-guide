@@ -259,8 +259,19 @@ function DiscoveryPage() {
         ) : (
           <div className="border-t border-border bg-[image:var(--gradient-warm)] p-6 text-center text-primary-foreground">
             <p className="font-serif text-xl">Your reflection has been received 🙏</p>
-            <p className="mt-2 text-sm opacity-90">
-              William has been notified and will reach out personally within 1–3 days.
+            {saved ? (
+              <p className="mt-2 inline-flex items-center gap-2 rounded-full bg-background/20 px-3 py-1 text-xs uppercase tracking-[0.2em] text-primary-foreground">
+                <span aria-hidden>✓</span> Saved securely · William has been notified
+              </p>
+            ) : (
+              <p className="mt-2 inline-flex items-center gap-2 rounded-full bg-background/20 px-3 py-1 text-xs uppercase tracking-[0.2em] text-primary-foreground">
+                <span aria-hidden>…</span> Finalizing save…
+              </p>
+            )}
+            <p className="mt-3 text-sm opacity-90">
+              {saved
+                ? "Your words are held in confidence. William will reach out personally within 1–3 days."
+                : "Please keep this page open for a moment while we store your reflection."}
             </p>
             <a
               href="/contact-william"
