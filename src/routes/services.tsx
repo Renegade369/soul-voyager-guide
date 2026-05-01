@@ -130,7 +130,7 @@ function ServiceSection({
   title: string;
   subtitle?: string;
   intro?: string;
-  items: { t: string; d: string }[];
+  items: { t: string; d: string; img?: string }[];
   icon?: IconCmp;
 }) {
   return (
