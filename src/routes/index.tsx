@@ -140,15 +140,20 @@ function Index() {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2">
-          {services.map((s, i) => (
+          {services.map((s, i) => {
+            const isLast = i === services.length - 1;
+            const isOdd = services.length % 2 === 1;
+            const lastAlone = isLast && isOdd;
+            return (
             <article
               key={s.n}
               className={[
                 "relative px-2 py-12 md:px-12 md:py-16",
                 "border-b border-border",
-                i % 2 === 0 ? "md:border-r" : "",
-                i >= services.length - 2 ? "md:border-b-0" : "",
-                i === services.length - 1 ? "border-b-0" : "",
+                !lastAlone && i % 2 === 0 ? "md:border-r" : "",
+                lastAlone ? "md:col-span-2" : "",
+                i >= services.length - (isOdd ? 1 : 2) ? "md:border-b-0" : "",
+                isLast ? "border-b-0" : "",
               ].join(" ")}
             >
               <ServiceCornerBracket variant={i} />
