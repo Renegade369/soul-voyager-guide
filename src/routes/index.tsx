@@ -1,5 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Leaf, Flame, Mountain } from "lucide-react";
+import {
+  FlowerOfLife,
+  GeometricDivider,
+  PillarSeedOfLife,
+  PillarMetatronCube,
+  PillarVesica,
+  CardWatermark,
+  ServiceCornerBracket,
+  VesicaBotanical,
+} from "../components/SacredGeometry";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -15,17 +24,17 @@ export const Route = createFileRoute("/")({
 
 const pillars = [
   {
-    Icon: Leaf,
+    Icon: PillarSeedOfLife,
     t: "Holistic Healing",
     d: "Bodywork, breath, and somatic care — a return to wholeness, one quiet layer at a time.",
   },
   {
-    Icon: Flame,
+    Icon: PillarMetatronCube,
     t: "Sacred Teachings",
     d: "Grounded inquiry into consciousness, ceremony, and the wisdom that lives beneath the noise.",
   },
   {
-    Icon: Mountain,
+    Icon: PillarVesica,
     t: "Living Practice",
     d: "Daily rhythms, circle, and community — remembrance carried gently into ordinary life.",
   },
@@ -41,15 +50,22 @@ const services = [
 function Index() {
   return (
     <div>
-      {/* Hero — warm gradient, large italic serif */}
+      {/* Hero — warm gradient with flower-of-life mandala watermark */}
       <section
-        className="relative isolate"
+        className="relative isolate overflow-hidden"
         style={{
           background:
             "linear-gradient(180deg, oklch(0.965 0.012 80) 0%, oklch(0.93 0.018 70) 60%, oklch(0.9 0.022 65) 100%)",
         }}
       >
-        <div className="mx-auto max-w-4xl px-6 py-32 text-center md:py-44">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        >
+          <FlowerOfLife size={520} color="#2C2B29" opacity={0.07} strokeWidth={0.5} />
+        </div>
+
+        <div className="relative mx-auto max-w-4xl px-6 py-32 text-center md:py-44">
           <p className="text-[11px] font-light uppercase tracking-[0.32em] text-foreground/65">
             A Sanctuary of Remembrance
           </p>
@@ -88,24 +104,28 @@ function Index() {
         </h2>
       </section>
 
-      <div className="mx-auto max-w-6xl px-6"><div className="hairline" /></div>
+      <GeometricDivider variant={0} />
 
-      {/* Three pillars — horizontal grid, thin icon, serif title */}
+      {/* Three pillars — sacred geometry icons + corner watermark */}
       <section className="mx-auto max-w-6xl px-6 py-28 md:py-36">
-        <div className="grid gap-16 md:grid-cols-3 md:gap-12">
+        <div className="grid gap-10 md:grid-cols-3 md:gap-8">
           {pillars.map(({ Icon, t, d }) => (
-            <article key={t} className="text-center md:text-left">
-              <Icon strokeWidth={1} className="mx-auto h-8 w-8 text-foreground md:mx-0" />
+            <article
+              key={t}
+              className="relative overflow-hidden border border-border bg-card p-8 text-center md:p-10 md:text-left"
+            >
+              <Icon size={36} color="#2C2B29" opacity={0.95} strokeWidth={0.7} className="mx-auto md:mx-0" />
               <h3 className="mt-7 font-serif text-2xl font-normal text-foreground">{t}</h3>
               <p className="mt-4 text-sm font-light leading-relaxed text-muted-foreground">{d}</p>
+              <CardWatermark variant={pillars.indexOf(pillars.find((p) => p.t === t)!) as 0 | 1 | 2} />
             </article>
           ))}
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-6"><div className="hairline" /></div>
+      <GeometricDivider variant={1} />
 
-      {/* Services — 2×2 numbered grid */}
+      {/* Services — 2×2 numbered grid with corner brackets */}
       <section className="mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="mx-auto mb-20 max-w-2xl text-center">
           <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Offerings</p>
@@ -118,13 +138,14 @@ function Index() {
             <article
               key={s.n}
               className={[
-                "px-2 py-12 md:px-12 md:py-16",
+                "relative px-2 py-12 md:px-12 md:py-16",
                 "border-b border-border",
                 i % 2 === 0 ? "md:border-r" : "",
                 i >= services.length - 2 ? "md:border-b-0" : "",
                 i === services.length - 1 ? "border-b-0" : "",
               ].join(" ")}
             >
+              <ServiceCornerBracket variant={i} />
               <p className="font-serif text-sm font-light italic text-muted-foreground">{s.n}</p>
               <h3 className="mt-4 font-serif text-3xl font-normal text-foreground">{s.t}</h3>
               <p className="mt-5 max-w-sm text-sm font-light leading-relaxed text-muted-foreground">
@@ -141,9 +162,17 @@ function Index() {
         </div>
       </section>
 
-      {/* Full-width dark quote block */}
-      <section className="bg-foreground py-32 md:py-44">
-        <div className="mx-auto max-w-3xl px-6 text-center">
+      <GeometricDivider variant={2} />
+
+      {/* Full-width dark quote block — large mandala watermark in cream */}
+      <section className="relative isolate overflow-hidden bg-foreground py-32 md:py-44">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        >
+          <FlowerOfLife size={400} color="#F8F5F0" opacity={0.06} strokeWidth={0.5} />
+        </div>
+        <div className="relative mx-auto max-w-3xl px-6 text-center">
           <p className="font-serif text-3xl font-light italic leading-snug text-background md:text-5xl">
             “Healing is not a return to who you were.
             It is a slow remembering of who you have always been.”
@@ -154,27 +183,35 @@ function Index() {
         </div>
       </section>
 
-      {/* Closing CTA */}
-      <section className="mx-auto max-w-3xl px-6 py-32 text-center md:py-40">
-        <h2 className="font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
-          Step into the sanctuary.
-        </h2>
-        <p className="mx-auto mt-7 max-w-lg text-base font-light leading-relaxed text-muted-foreground">
-          Book a session, join a circle, or come and be quiet with us for an afternoon.
-        </p>
-        <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <Link
-            to="/discovery"
-            className="border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
+      {/* Closing CTA — vesica botanical at the bottom */}
+      <section className="relative isolate overflow-hidden">
+        <div className="mx-auto max-w-3xl px-6 py-32 text-center md:py-40">
+          <h2 className="font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
+            Step into the sanctuary.
+          </h2>
+          <p className="mx-auto mt-7 max-w-lg text-base font-light leading-relaxed text-muted-foreground">
+            Book a session, join a circle, or come and be quiet with us for an afternoon.
+          </p>
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <Link
+              to="/discovery"
+              className="border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
+            >
+              Begin Here
+            </Link>
+            <Link
+              to="/visit"
+              className="border border-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-foreground transition hover:bg-foreground hover:text-background"
+            >
+              Plan Your Visit
+            </Link>
+          </div>
+          <div
+            aria-hidden
+            className="pointer-events-none mx-auto mt-20 flex justify-center"
           >
-            Begin Here
-          </Link>
-          <Link
-            to="/visit"
-            className="border border-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-foreground transition hover:bg-foreground hover:text-background"
-          >
-            Plan Your Visit
-          </Link>
+            <VesicaBotanical size={280} color="#2C2B29" opacity={0.07} strokeWidth={0.5} />
+          </div>
         </div>
       </section>
     </div>
