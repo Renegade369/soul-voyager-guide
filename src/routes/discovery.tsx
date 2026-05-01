@@ -97,6 +97,11 @@ function DiscoveryPage() {
           try {
             const parsed = JSON.parse(json);
             if (parsed.sessionId && !sessionId) setSessionId(parsed.sessionId);
+            if (typeof parsed.saved === "boolean") {
+              setSaved(parsed.saved);
+              if (parsed.complete) foundComplete = true;
+              continue;
+            }
             const delta = parsed.choices?.[0]?.delta?.content;
             if (typeof delta === "string") {
               assistant += delta;
