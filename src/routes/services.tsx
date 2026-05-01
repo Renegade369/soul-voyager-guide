@@ -131,16 +131,19 @@ function ServiceSection({
   subtitle,
   intro,
   items,
+  icon: Icon,
 }: {
   title: string;
   subtitle?: string;
   intro?: string;
   items: { t: string; d: string }[];
+  icon?: IconCmp;
 }) {
   return (
     <section className="mt-32 md:mt-40">
       <GeometricDivider variant={1} className="mb-20" maxWidth="max-w-2xl" />
       <div className="mx-auto max-w-2xl text-center">
+        {Icon && <SectionIcon Icon={Icon} />}
         <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">{title}</h2>
         {subtitle && (
           <p className="mt-6 font-serif text-xl font-light italic leading-snug text-muted-foreground md:text-2xl">
