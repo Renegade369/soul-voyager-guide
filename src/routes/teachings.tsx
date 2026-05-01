@@ -43,26 +43,36 @@ const categories = [
     t: "The 3D World",
     d: "The hidden architecture of life on Earth — history rewritten, the nature of money and matter, the body as a sacred instrument.",
     items: ["Lost human history", "The veiled nature of money", "The body as antenna"],
+    img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=70",
+    alt: "Earth seen from orbit — the 3D world.",
   },
   {
     t: "Beyond the Stars",
     d: "Other planets, star systems, and the civilizations seeded across the cosmos — what the elders and the new contactees agree upon.",
     items: ["Pleiadian, Sirian & Arcturian lineages", "The Galactic federation question", "Star seeds & soul origins"],
+    img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=70",
+    alt: "Distant galaxy and stars — beyond the stars.",
   },
   {
     t: "Intelligent Species",
     d: "The many forms consciousness takes — benevolent, neutral, and shadow. Discernment as spiritual practice.",
     items: ["Benevolent guardians", "Tricksters & service-to-self beings", "Inter-species communication"],
+    img: "https://images.unsplash.com/photo-1532009324734-20a7a5813719?auto=format&fit=crop&w=1200&q=70",
+    alt: "Colorful nebula — intelligent species across the cosmos.",
   },
   {
     t: "The Spirit World",
     d: "Ancestors, guides, departed loved ones, and the realms between lives. How to listen, and how to verify.",
     items: ["Ancestral healing", "Working with guides", "Between-life realms"],
+    img: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1200&q=70",
+    alt: "Candle in darkness — the spirit world.",
   },
   {
     t: "Heart-Brain Coherence",
     d: "The measurable, sacred state where heart and mind synchronize — a doorway to intuition, healing, and remembrance.",
     items: ["The heart's electromagnetic field", "Coherence breathing", "Group field amplification"],
+    img: "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1200&q=70",
+    alt: "Soft light through trees — heart coherence.",
   },
 ];
 
