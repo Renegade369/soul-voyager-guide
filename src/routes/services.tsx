@@ -172,6 +172,7 @@ function ServicesPage() {
         <div className="mt-8 text-center">
           <Link
             to="/nature-booking"
+            search={{ modality: "equine" }}
             className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90"
           >
             Book a Nature & Animal Healing Session
