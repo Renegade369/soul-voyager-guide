@@ -224,6 +224,7 @@ function ServicesPage() {
         </div>
 
         <div className="mx-auto mt-14 max-w-2xl text-center">
+          <SectionIcon Icon={PillarVesica} />
           <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">
             Bodywork & Massage Therapy
           </h2>
