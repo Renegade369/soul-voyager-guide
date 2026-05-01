@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
-import { MapPin, Clock, Mail, Phone } from "lucide-react";
+import { MapPin, Clock, Mail, Plane } from "lucide-react";
 
 export const Route = createFileRoute("/visit")({
   head: () => makeRouteMeta({
-    title: "Visit & Contact — Sacred Journey",
-    description: "Find us, reach out, and plan your visit to the Sacred Journey wellness center.",
+    title: "Visit Sacred Journey — South Florida",
+    description: "Sacred Journey is being built as a destination sanctuary in South Florida — most likely Davie, FL — with land, horses, ceremony space, and guest accommodations.",
   }),
   component: VisitPage,
 });
@@ -14,18 +14,24 @@ export const Route = createFileRoute("/visit")({
 function VisitPage() {
   const [sent, setSent] = useState(false);
   return (
-    <PageShell eyebrow="✦ The Veil Is Thinning · Find Us ✦" title="Visit the Sanctuary" intro="We welcome you in. Reach out to book a session, ask a question, or simply say hello — the door, like the veil, is open.">
+    <PageShell
+      eyebrow="✦ Find Us · South Florida ✦"
+      title="Visit the Sanctuary"
+      intro="Sacred Journey is being built as a destination — a place worth traveling for. Online intake and consultations are available now while the South Florida property is being established."
+    >
       <div className="grid gap-10 md:grid-cols-2">
         <div className="space-y-6">
-          <InfoRow icon={<MapPin size={20} />} title="Location" lines={["123 Sage Hollow Lane", "Sedona, AZ 86336"]} />
-          <InfoRow icon={<Clock size={20} />} title="Hours" lines={["Tuesday – Sunday", "9:00 AM – 7:00 PM", "Closed Mondays"]} />
-          <InfoRow icon={<Phone size={20} />} title="Phone" lines={["(555) 012-3456"]} />
-          <InfoRow icon={<Mail size={20} />} title="Email" lines={["hello@sacredjourney.center"]} />
+          <InfoRow icon={<MapPin size={20} />} title="Where We're Building" lines={["South Florida — Davie, FL (in progress)", "Serving Broward, Miami-Dade & Palm Beach", "Accessible from all of South Florida"]} />
+          <InfoRow icon={<Plane size={20} />} title="A Destination Sanctuary" lines={["Guest house & extended-stay accommodations", "For seekers traveling from across the US and the world", "International draw for immersive retreats"]} />
+          <InfoRow icon={<Clock size={20} />} title="Online Sessions Available Now" lines={["Intake assessments", "Consultations & integration", "Mentorship & coherence training"]} />
+          <InfoRow icon={<Mail size={20} />} title="Reach William" lines={["Use the form, or send a direct note via the Discovery page."]} />
 
-          <div className="overflow-hidden rounded-2xl border border-border">
-            <div className="flex h-56 items-center justify-center bg-[image:var(--gradient-sanctuary)] text-sm text-muted-foreground">
-              Map preview — embed your map here
-            </div>
+          <div className="overflow-hidden rounded-2xl border border-primary/30 bg-[image:var(--gradient-sanctuary)] p-6">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ The Vision ✦</p>
+            <p className="mt-3 font-serif text-xl text-foreground">A sacred property with land, horses, ceremony space, treatment rooms, and gathering grounds.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              An equestrian-rooted community with the sanctuary feel of remote land — yet reachable from the largest population of seekers in the southeast.
+            </p>
           </div>
         </div>
 
@@ -34,7 +40,7 @@ function VisitPage() {
           className="rounded-2xl border border-border bg-card p-7"
         >
           <h2 className="font-serif text-2xl text-foreground">Send us a message</h2>
-          <p className="mt-1 text-sm text-muted-foreground">We respond within 1–2 days.</p>
+          <p className="mt-1 text-sm text-muted-foreground">William responds personally within 1–3 days.</p>
 
           {sent ? (
             <div className="mt-8 rounded-xl border border-border bg-background p-6 text-center">
