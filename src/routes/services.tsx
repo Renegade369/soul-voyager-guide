@@ -363,6 +363,7 @@ function ServicesPage() {
       </section>
 
       <ServiceSection
+        icon={OrnamentDiamond}
         title="Sacred Plant Medicine"
         subtitle="Held with the deepest reverence for the plants, the lineages, and the souls who come to sit with them."
         intro="William speaks from lived experience — and every container is built around proper set, setting, and intention. Plant medicine work requires a preparation conversation. We honor discernment, safety, and the sovereignty of every soul who sits with us."
@@ -371,6 +372,14 @@ function ServicesPage() {
 
       {/* Closing CTA */}
       <section className="mt-32 border-t border-border py-20 text-center md:py-24">
+        <div className="mx-auto mb-8 flex justify-center" aria-hidden>
+          <VesicaBotanical
+            size={220}
+            color="#1C1B3A"
+            opacity={0.35}
+            strokeWidth={0.6}
+          />
+        </div>
         <p className="font-serif text-2xl font-light italic text-foreground md:text-3xl">
           All sessions are by appointment and built into your customized plan.
         </p>
