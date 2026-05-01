@@ -1,6 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
-import { ServiceCornerBracket, GeometricDivider } from "../components/SacredGeometry";
+import {
+  ServiceCornerBracket,
+  GeometricDivider,
+  FlowerOfLife,
+  PillarSeedOfLife,
+  PillarMetatronCube,
+  PillarVesica,
+  OrnamentRadiating,
+  OrnamentDiamond,
+  OrnamentDoubleCircle,
+  VesicaBotanical,
+} from "../components/SacredGeometry";
+
+type IconCmp = (p: { size?: number; color?: string; opacity?: number; strokeWidth?: number; className?: string }) => JSX.Element;
+
+function SectionIcon({ Icon }: { Icon: IconCmp }) {
+  return (
+    <div className="mx-auto mb-6 flex justify-center" aria-hidden>
+      <Icon size={44} color="#1C1B3A" opacity={0.55} strokeWidth={0.7} />
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/services")({
   head: () => makeRouteMeta({
