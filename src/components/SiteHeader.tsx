@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
+import logo from "@/assets/sacred-journey-logo.png";
 
 const links = [
   { to: "/", label: "Home" },
