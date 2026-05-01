@@ -699,6 +699,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1589216532372-1c2a367900d9?auto=format&fit=crop&w=1600&q=70"
+            alt="Sunrise over capitol pillars — the slow opening of policy."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-background/80">Policy & Path Forward</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Legalization of Sacred Plant Medicines</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
