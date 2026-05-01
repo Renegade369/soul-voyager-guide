@@ -35,6 +35,11 @@
   --color-linen: var(--linen);
   --color-stone-soft: var(--stone-soft);
   --color-sage: var(--sage);
+  --color-indigo: var(--indigo);
+  --color-indigo-muted: var(--indigo-muted);
+  --color-gold: var(--gold);
+  --color-forest: var(--forest);
+  --color-footer-indigo: var(--footer-indigo);
   --font-serif: "Cormorant Garamond", "Times New Roman", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -42,40 +47,47 @@
 :root {
   --radius: 0.25rem;
 
-  /* Sacred minimalism: warm off-white, deep charcoal, single muted sage accent */
+  /* Deep sacred palette: cream content, indigo dark sections, gold accents, forest quote */
   --background: oklch(0.965 0.012 80);             /* #F8F5F0 warm off-white */
-  --foreground: oklch(0.235 0.005 60);             /* #2C2B29 deep charcoal */
+  --foreground: oklch(0.262 0.05 285);             /* #1C1B3A deep indigo */
 
   --card: oklch(0.98 0.008 80);
-  --card-foreground: oklch(0.235 0.005 60);
+  --card-foreground: oklch(0.262 0.05 285);
 
   --popover: oklch(0.98 0.008 80);
-  --popover-foreground: oklch(0.235 0.005 60);
+  --popover-foreground: oklch(0.262 0.05 285);
 
-  --primary: oklch(0.5 0.04 145);                  /* muted sage */
-  --primary-foreground: oklch(0.98 0.008 80);
+  --primary: oklch(0.262 0.05 285);                /* indigo */
+  --primary-foreground: oklch(0.965 0.012 80);
 
   --secondary: oklch(0.92 0.012 80);
-  --secondary-foreground: oklch(0.235 0.005 60);
+  --secondary-foreground: oklch(0.262 0.05 285);
 
   --muted: oklch(0.92 0.012 80);
-  --muted-foreground: oklch(0.42 0.008 60);
+  --muted-foreground: oklch(0.495 0.045 285);      /* #5C5A7A soft indigo-gray */
 
-  --accent: oklch(0.5 0.04 145);
-  --accent-foreground: oklch(0.98 0.008 80);
+  --accent: oklch(0.755 0.095 80);                 /* #D4AF64 warm gold */
+  --accent-foreground: oklch(0.262 0.05 285);
 
   --destructive: oklch(0.55 0.18 25);
   --destructive-foreground: oklch(0.98 0.008 80);
 
-  --border: oklch(0.235 0.005 60 / 14%);           /* hairline charcoal */
-  --input: oklch(0.235 0.005 60 / 18%);
-  --ring: oklch(0.5 0.04 145 / 50%);
+  --border: oklch(0.262 0.05 285 / 14%);           /* hairline indigo */
+  --input: oklch(0.262 0.05 285 / 18%);
+  --ring: oklch(0.755 0.095 80 / 50%);
 
   --linen: oklch(0.92 0.012 80);
   --stone-soft: oklch(0.88 0.01 80);
   --sage: oklch(0.5 0.04 145);
 
-  /* No shadows in sacred minimalism — keep tokens but null them */
+  /* Sacred deep palette tokens */
+  --indigo: #1C1B3A;
+  --indigo-muted: #5C5A7A;
+  --gold: #D4AF64;
+  --forest: #2D5A3D;
+  --footer-indigo: #141327;
+
+  /* No shadows — keep tokens but null them */
   --shadow-soft: 0 0 0 0 transparent;
   --shadow-card: 0 0 0 0 transparent;
 }

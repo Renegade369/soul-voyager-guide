@@ -116,18 +116,26 @@ export function GeometricDivider({
   variant = 0,
   className = "",
   maxWidth = "max-w-6xl",
+  tone = "light",
 }: {
   variant?: 0 | 1 | 2;
   className?: string;
   maxWidth?: string;
+  tone?: "light" | "dark";
 }) {
   const Ornament = ORNAMENTS[variant % 3];
+  const stroke = tone === "dark" ? "#D4AF64" : "#1C1B3A";
+  const opacity = tone === "dark" ? 0.55 : 0.3;
+  const lineStyle =
+    tone === "dark"
+      ? { backgroundColor: "rgba(212,175,100,0.35)" }
+      : { backgroundColor: "rgba(28,27,58,0.3)" };
   return (
     <div className={`mx-auto ${maxWidth} px-6 ${className}`}>
       <div className="flex items-center gap-6">
-        <div className="hairline flex-1" />
-        <Ornament size={28} color="#2C2B29" opacity={0.35} strokeWidth={0.6} />
-        <div className="hairline flex-1" />
+        <div className="h-px flex-1" style={lineStyle} />
+        <Ornament size={28} color={stroke} opacity={opacity} strokeWidth={0.6} />
+        <div className="h-px flex-1" style={lineStyle} />
       </div>
     </div>
   );
