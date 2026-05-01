@@ -141,3 +141,53 @@
     background-color: oklch(0.235 0.005 60 / 0.18);
   }
 }
+
+/* ---------- Sacred motion ---------- */
+@keyframes sacred-rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.sacred-rotate-slow {
+  animation: sacred-rotate 120s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes sacred-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  animation: sacred-fade-up 900ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+/* Soft lift on offering tiles */
+.tile-hover {
+  transition: background-color 600ms ease, transform 600ms ease;
+}
+.tile-hover:hover {
+  background-color: rgba(212, 175, 100, 0.04);
+}
+.tile-hover .tile-bar {
+  transition: width 600ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.tile-hover:hover .tile-bar {
+  width: 64px;
+}
+.tile-hover .tile-arrow {
+  display: inline-block;
+  transition: transform 400ms ease;
+}
+.tile-hover:hover .tile-arrow {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sacred-rotate-slow { animation: none; }
+  .reveal { opacity: 1; }
+  .reveal.is-visible { animation: none; }
+  .tile-hover, .tile-hover .tile-bar, .tile-hover .tile-arrow { transition: none; }
+}

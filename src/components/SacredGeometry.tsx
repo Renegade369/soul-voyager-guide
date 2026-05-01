@@ -27,6 +27,9 @@ const baseProps = (p: SvgProps, viewBox = "0 0 100 100") => ({
 
 /* ---------- Hero / quote watermarks ---------- */
 
+// Round to 3 decimals to avoid SSR/CSR hydration mismatches from float string differences.
+const R3 = (n: number) => Math.round(n * 1000) / 1000;
+
 // Flower of life + star of David + axis lines. Centered mandala.
 export function FlowerOfLife(p: SvgProps) {
   const r = 14;
@@ -34,13 +37,13 @@ export function FlowerOfLife(p: SvgProps) {
   // 6 surrounding circles of seed of life
   const seeds = Array.from({ length: 6 }, (_, i) => {
     const a = (Math.PI / 3) * i;
-    return { cx: cx + r * Math.cos(a), cy: cy + r * Math.sin(a) };
+    return { cx: R3(cx + r * Math.cos(a)), cy: R3(cy + r * Math.sin(a)) };
   });
   // outer ring of 12 circles
   const outer = Array.from({ length: 12 }, (_, i) => {
     const a = (Math.PI / 6) * i;
     const R = r * 2;
-    return { cx: cx + R * Math.cos(a), cy: cy + R * Math.sin(a) };
+    return { cx: R3(cx + R * Math.cos(a)), cy: R3(cy + R * Math.sin(a)) };
   });
   return (
     <svg {...baseProps(p)}>
@@ -71,10 +74,10 @@ export function OrnamentRadiating(p: SvgProps) {
   const rays = Array.from({ length: 12 }, (_, i) => {
     const a = (Math.PI / 6) * i;
     return {
-      x1: cx + (r + 2) * Math.cos(a),
-      y1: cy + (r + 2) * Math.sin(a),
-      x2: cx + (r + 8) * Math.cos(a),
-      y2: cy + (r + 8) * Math.sin(a),
+      x1: R3(cx + (r + 2) * Math.cos(a)),
+      y1: R3(cy + (r + 2) * Math.sin(a)),
+      x2: R3(cx + (r + 8) * Math.cos(a)),
+      y2: R3(cy + (r + 8) * Math.sin(a)),
     };
   });
   return (
@@ -147,7 +150,7 @@ export function PillarSeedOfLife(p: SvgProps) {
   const cx = 50, cy = 50, r = 14;
   const seeds = Array.from({ length: 6 }, (_, i) => {
     const a = (Math.PI / 3) * i;
-    return { cx: cx + r * Math.cos(a), cy: cy + r * Math.sin(a) };
+    return { cx: R3(cx + r * Math.cos(a)), cy: R3(cy + r * Math.sin(a)) };
   });
   return (
     <svg {...baseProps({ ...p, strokeWidth: p.strokeWidth ?? 0.7 })}>
@@ -161,7 +164,7 @@ export function PillarMetatronCube(p: SvgProps) {
   const cx = 50, cy = 50, R = 22, r = 4;
   const pts = Array.from({ length: 6 }, (_, i) => {
     const a = (Math.PI / 3) * i - Math.PI / 2;
-    return [cx + R * Math.cos(a), cy + R * Math.sin(a)] as const;
+    return [R3(cx + R * Math.cos(a)), R3(cy + R * Math.sin(a))] as const;
   });
   const lines: Array<[number, number, number, number]> = [];
   for (let i = 0; i < pts.length; i++) {
@@ -182,10 +185,10 @@ export function PillarVesica(p: SvgProps) {
   const cx = 50, cy = 50, r = 22;
   return (
     <svg {...baseProps({ ...p, strokeWidth: p.strokeWidth ?? 0.7 })}>
-      <circle cx={cx - r / 2} cy={cy} r={r} />
-      <circle cx={cx + r / 2} cy={cy} r={r} />
+      <circle cx={R3(cx - r / 2)} cy={cy} r={r} />
+      <circle cx={R3(cx + r / 2)} cy={cy} r={r} />
       <circle cx={cx} cy={cy} r={r} />
-      <line x1={cx} y1={cy - r * 0.866} x2={cx} y2={cy + r * 0.866} />
+      <line x1={cx} y1={R3(cy - r * 0.866)} x2={cx} y2={R3(cy + r * 0.866)} />
     </svg>
   );
 }
