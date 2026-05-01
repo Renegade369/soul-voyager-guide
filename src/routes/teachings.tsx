@@ -1080,6 +1080,10 @@ function TeachingsPage() {
       {/* EXTRATERRESTRIALS, DISCLOSURE & DR. STEVEN GREER              */}
       {/* ============================================================ */}
       <section className="mt-16">
+        <TeachingImage
+          src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1600&q=70"
+          alt="Star-filled night sky over silent earth — the cosmic family."
+        />
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">The Cosmic Family</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Extraterrestrial Contact, Disclosure & The Work of Dr. Steven Greer</h2>
