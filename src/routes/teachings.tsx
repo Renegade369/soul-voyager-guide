@@ -183,6 +183,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-secondary/40 p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1600&q=70"
+            alt="Hands cupped in candlelight — sensitivity, vulnerability, and the way through."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">
             The Sensitive Soul & the Weight of the Veil
