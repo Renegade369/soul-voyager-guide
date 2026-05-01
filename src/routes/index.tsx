@@ -63,8 +63,14 @@ function Index() {
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
-              to="/visit"
+              to="/discovery"
               className="rounded-full bg-primary px-7 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-warm)] transition hover:opacity-90"
+            >
+              Begin Your Discovery
+            </Link>
+            <Link
+              to="/visit"
+              className="rounded-full border border-border bg-background/70 px-7 py-3 text-sm font-medium text-foreground backdrop-blur transition hover:bg-background"
             >
               Visit the Center
             </Link>
