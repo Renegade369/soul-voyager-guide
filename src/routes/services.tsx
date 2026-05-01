@@ -294,7 +294,9 @@ function ServicesPage() {
 
       {/* Nature & Animal Healing — text-led, no gradient cards */}
       <section className="mt-32 md:mt-40">
+        <GeometricDivider variant={2} className="mb-20" maxWidth="max-w-2xl" />
         <div className="mx-auto max-w-2xl text-center">
+          <SectionIcon Icon={PillarSeedOfLife} />
           <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">
             Nature & Animal Healing
           </h2>
