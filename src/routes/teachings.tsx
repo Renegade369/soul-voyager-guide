@@ -367,7 +367,7 @@ function TeachingsPage() {
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
           <TeachingImage
-            src="https://images.unsplash.com/photo-1518adam"
+            src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1600&q=70"
             alt="Heart-centered light — the electromagnetic field of the heart."
           />
           <p className="text-xs uppercase tracking-[0.4em] text-background/80">Featured Teaching</p>
