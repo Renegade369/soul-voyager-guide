@@ -45,7 +45,7 @@ function ShopPage() {
 
   return (
     <PageShell
-      eyebrow="✦ Sacred Goods ✦"
+      eyebrow="Sacred Goods"
       title="The Shop"
       intro="Branded Sacred Journey apparel, sacred objects, cleansing tools, and healing companions — every item is chosen or made with intention. Proceeds support the sanctuary."
     >

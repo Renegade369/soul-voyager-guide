@@ -40,7 +40,7 @@ const categories = [
 function TeachingsPage() {
   return (
     <PageShell
-      eyebrow="✦ The Veil Is Thinning · The Codex ✦"
+      eyebrow="The Codex"
       title="Hidden Truths of Life"
       intro="A living library of teachings from the seen and unseen — offered as inquiry, not dogma. Take what resonates, leave the rest."
     >
@@ -61,7 +61,7 @@ function TeachingsPage() {
       </div>
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-cosmos)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Life in the Spirit World</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
             What happens when the body falls away? Two of the most thorough modern explorers of this
@@ -150,7 +150,7 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-sanctuary)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">
             The Sensitive Soul & the Weight of the Veil
           </h2>
@@ -329,7 +329,7 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-aurora)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">✦ Featured Teaching ✦</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Heart-Brain Coherence</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
             The heart is not merely a pump. It is the body's most powerful electromagnetic generator — producing
@@ -470,7 +470,7 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-cosmos)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Sacred Plant Medicines</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
             Plant medicines are ancient teachers — sentient intelligences the elders have sat with for
@@ -654,7 +654,7 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-aurora)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">✦ The Veil Is Thinning · Policy & Path Forward ✦</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">Policy & Path Forward</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Legalization of Sacred Plant Medicines</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
             For most of the last century, the medicines that have healed humanity for tens of thousands of
@@ -818,7 +818,7 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-sanctuary)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Dr. Joe Dispenza · Becoming Supernatural</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
             A neuroscientist, chiropractor, and researcher who has documented thousands of cases of
@@ -900,7 +900,7 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-cosmos)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary">✦ Featured Teaching ✦</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Alan Watts · The Wisdom of Insecurity</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
             The British philosopher who translated Zen, Taoism, and Vedanta into the most luminous English
@@ -985,7 +985,7 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-primary/30 bg-[image:var(--gradient-warm)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">✦ Two Doors, One Room ✦</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">Two Doors, One Room</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Dispenza & Watts — The Daily Pairing</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
             Two complementary doorways. Dispenza, in the morning: become the new self, install the future,
@@ -1020,7 +1020,7 @@ function TeachingsPage() {
       {/* ============================================================ */}
       <section className="mt-16">
         <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ The Veil Is Thinning · The Cosmic Family ✦</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">The Cosmic Family</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Extraterrestrial Contact, Disclosure & The Work of Dr. Steven Greer</h2>
           <p className="mx-auto mt-5 max-w-3xl text-muted-foreground">
             One of the most consequential remembrances of our time is this: we are not alone, we have never been alone, and the truth has been deliberately hidden for nearly 80 years. The veil thinning is not only spiritual — it is informational. What follows is a clear-eyed account of the history, the evidence, the work of disclosure pioneer Dr. Steven Greer, and how close humanity now is to full, official acknowledgment.
@@ -1076,7 +1076,7 @@ function TeachingsPage() {
 
         {/* DR. STEVEN GREER */}
         <article className="mt-10 rounded-2xl border border-primary/40 bg-[image:var(--gradient-sanctuary)] p-8 shadow-[var(--shadow-glow)]">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ Pioneer of Disclosure ✦</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">Pioneer of Disclosure</p>
           <h3 className="mt-2 font-serif text-3xl text-foreground md:text-4xl">Dr. Steven Greer</h3>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             Few human beings have done more — at greater personal cost — to bring the truth of extraterrestrial presence into public consciousness than Dr. Steven Greer. A former emergency-room trauma physician (Chairman of the Department of Emergency Medicine at Caldwell Memorial Hospital), he walked away from a successful medical career to dedicate his life to disclosure, peaceful contact, and the release of suppressed clean-energy technologies.

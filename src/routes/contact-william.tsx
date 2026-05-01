@@ -67,7 +67,7 @@ function ContactWilliamPage() {
 
   return (
     <PageShell
-      eyebrow="✦ The Veil Is Thinning · Reach William ✦"
+      eyebrow="Reach William"
       title="Contact William Roberts"
       intro="Founder and healer at Sacred Journey. Share what's on your heart — questions about sacred journeys, private or group plant medicine ceremonies, or guidance on your path. William reads each message personally."
     >

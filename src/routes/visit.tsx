@@ -15,7 +15,7 @@ function VisitPage() {
   const [sent, setSent] = useState(false);
   return (
     <PageShell
-      eyebrow="✦ Find Us · South Florida ✦"
+      eyebrow="Find Us · South Florida"
       title="Visit the Sanctuary"
       intro="Sacred Journey is being built as a destination — a place worth traveling for. Online intake and consultations are available now while the South Florida property is being established."
     >
@@ -27,7 +27,7 @@ function VisitPage() {
           <InfoRow icon={<Mail size={20} />} title="Reach William" lines={["Use the form, or send a direct note via the Discovery page."]} />
 
           <div className="overflow-hidden rounded-2xl border border-primary/30 bg-[image:var(--gradient-sanctuary)] p-6">
-            <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ The Vision ✦</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-primary">The Vision</p>
             <p className="mt-3 font-serif text-xl text-foreground">A sacred property with land, horses, ceremony space, treatment rooms, and gathering grounds.</p>
             <p className="mt-2 text-sm text-muted-foreground">
               An equestrian-rooted community with the sanctuary feel of remote land — yet reachable from the largest population of seekers in the southeast.

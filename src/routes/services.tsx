@@ -80,13 +80,13 @@ function Section({ title, intro, children }: { title: string; intro?: string; ch
 function ServicesPage() {
   return (
     <PageShell
-      eyebrow="✦ Offerings · Mind · Body · Spirit ✦"
+      eyebrow="Offerings · Mind · Body · Spirit"
       title="Services & Modalities"
       intro="Sacred Journey works the whole person — root cause, not symptoms. Every path begins with a deep intake and a customized healing plan built around you."
     >
       {/* Intake — the doorway */}
       <div className="rounded-2xl border border-primary/40 bg-[image:var(--gradient-warm)] p-8 text-primary-foreground shadow-[var(--shadow-warm)]">
-        <p className="text-xs uppercase tracking-[0.3em] opacity-90">✦ Where Every Journey Begins ✦</p>
+        <p className="text-xs uppercase tracking-[0.3em] opacity-90">Where Every Journey Begins</p>
         <h2 className="mt-2 font-serif text-3xl">{intake.t}</h2>
         <p className="mt-3 max-w-2xl opacity-90">{intake.d}</p>
         <p className="mt-3 text-sm opacity-80">Duration: {intake.duration}</p>
@@ -113,7 +113,7 @@ function ServicesPage() {
       {/* Nature & Animal Medicine — dedicated deep-dive section */}
       <section className="mt-20">
         <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ The Original Medicine ✦</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">The Original Medicine</p>
           <h2 className="mt-3 font-serif text-4xl text-foreground md:text-5xl">Nature & Animal Healing</h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
             Before there were therapists, temples, or pharmacies, there were forests, oceans, and the steady heartbeat of animals beside us. Nature and the animal kingdom were our first healers — and they remain the most accessible, intelligent medicine on Earth.
@@ -189,7 +189,7 @@ function ServicesPage() {
 
       <section className="mt-20">
         <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ Sacred Medicine ✦</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">Sacred Medicine</p>
           <h2 className="mt-3 font-serif text-4xl text-foreground md:text-5xl">Sacred Plant Medicine</h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
             Held with the deepest reverence for the plants, the lineages, and the souls who come to sit with them. William speaks from lived experience — and every container is built around proper set, setting, and intention.

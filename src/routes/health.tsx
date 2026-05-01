@@ -21,7 +21,7 @@ const pillars = [
 function HealthPage() {
   return (
     <PageShell
-      eyebrow="✦ The Veil Is Thinning · The Vessel ✦"
+      eyebrow="The Vessel"
       title="Holistic Health"
       intro="The body is not separate from the spirit — it is its temple. As the veil thins, the vessel must be tended with greater devotion than ever before."
     >

@@ -31,7 +31,7 @@ const formats = [
 function EventsPage() {
   return (
     <PageShell
-      eyebrow="✦ Gather · Learn · Transform ✦"
+      eyebrow="Gather · Learn · Transform"
       title="Events, Retreats & Visiting Masters"
       intro="Live ceremonies, workshops, and circles in our South Florida sanctuary — plus weekend intensives with the world's most gifted visiting healers and teachers."
     >
@@ -59,7 +59,7 @@ function EventsPage() {
 
       <section className="mt-16">
         <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ Event Formats ✦</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">Event Formats</p>
           <h2 className="mt-3 font-serif text-3xl text-foreground md:text-4xl">How We Gather</h2>
         </div>
         <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

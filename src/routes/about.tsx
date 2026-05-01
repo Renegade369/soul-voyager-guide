@@ -12,7 +12,7 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <PageShell
-      eyebrow="✦ Our Story · Built from Lived Experience ✦"
+      eyebrow="Our Story · Built from Lived Experience"
       title="A Sanctuary for Truth-Seekers"
       intro="Sacred Journey is being built in South Florida by William Roberts — a 51-year-old entrepreneur, father, healer-in-becoming, and lifelong seeker who walked through addiction, trauma, and awakening to arrive at this work."
     >
