@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
+import { ServiceCornerBracket, GeometricDivider } from "../components/SacredGeometry";
 
 export const Route = createFileRoute("/services")({
   head: () => makeRouteMeta({
@@ -115,6 +116,7 @@ function ServiceSection({
 }) {
   return (
     <section className="mt-32 md:mt-40">
+      <GeometricDivider variant={1} className="mb-20" maxWidth="max-w-2xl" />
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">{title}</h2>
         {subtitle && (
@@ -202,8 +204,9 @@ function ServicesPage() {
           {bodywork.map((s, i) => (
             <article
               key={s.t}
-              className="overflow-hidden rounded-md border border-border"
+              className="relative overflow-hidden rounded-md border border-border"
             >
+              <ServiceCornerBracket variant={i} />
               {s.img && (
                 <div className="relative h-[200px] w-full md:h-[220px]">
                   <img
