@@ -85,16 +85,31 @@ function TeachingsPage() {
     >
       <div className="space-y-8">
         {categories.map((c) => (
-          <article key={c.t} className="rounded-none border border-border bg-card p-8">
-            <h2 className="font-serif text-3xl text-foreground">{c.t}</h2>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">{c.d}</p>
-            <ul className="mt-5 grid gap-2 sm:grid-cols-3">
-              {c.items.map((i) => (
-                <li key={i} className="rounded-lg border border-border/60 bg-background px-4 py-3 text-sm text-foreground">
-                  {i}
-                </li>
-              ))}
-            </ul>
+          <article key={c.t} className="overflow-hidden rounded-none border border-border bg-card md:grid md:grid-cols-[260px_1fr]">
+            <div className="relative h-48 w-full md:h-full">
+              <img
+                src={c.img}
+                alt={c.alt}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+              />
+            </div>
+            <div className="p-8">
+              <h2 className="font-serif text-3xl text-foreground">{c.t}</h2>
+              <p className="mt-3 text-base leading-relaxed text-muted-foreground">{c.d}</p>
+              <ul className="mt-5 grid gap-2 sm:grid-cols-3">
+                {c.items.map((i) => (
+                  <li key={i} className="rounded-lg border border-border/60 bg-background px-4 py-3 text-sm text-foreground">
+                    {i}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
       </div>
