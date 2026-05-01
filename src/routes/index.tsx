@@ -143,8 +143,7 @@ function Index() {
           {pillars.map(({ Icon, t, d }, i) => (
             <Reveal key={t} delay={i * 120} as="article">
               <article
-                className="relative h-full overflow-hidden border border-border p-8 text-center md:p-10"
-                style={{ backgroundColor: "#F8F5F0" }}
+                className="relative h-full overflow-hidden p-8 text-center md:p-10"
               >
                 <Icon size={36} color="#1C1B3A" opacity={0.95} strokeWidth={0.7} className="mx-auto" />
                 <div
@@ -186,23 +185,40 @@ function Index() {
                     "tile-hover group relative h-full px-2 py-12 md:px-12 md:py-16",
                     "border-b border-border",
                     !lastAlone && i % 2 === 0 ? "md:border-r" : "",
-                    lastAlone ? "md:col-span-2" : "",
+                    lastAlone ? "md:col-span-2 text-center" : "",
                     i >= services.length - (isOdd ? 1 : 2) ? "md:border-b-0" : "",
                     isLast ? "border-b-0" : "",
                   ].join(" ")}
+                  style={lastAlone ? { backgroundColor: "rgba(212,175,100,0.05)" } : undefined}
                 >
                   <ServiceCornerBracket variant={i} />
-                  <div className="flex items-center gap-4">
-                    <Icon size={28} color="#1C1B3A" opacity={0.5} strokeWidth={0.7} />
+                  <div className={["flex items-center gap-4", lastAlone ? "justify-center" : ""].join(" ")}>
+                    <Icon size={lastAlone ? 32 : 28} color="#1C1B3A" opacity={0.5} strokeWidth={0.7} />
                     <p className="font-serif text-sm font-light italic" style={{ color: "#D4AF64" }}>{s.n}</p>
                   </div>
-                  <h3 className="mt-5 font-serif text-3xl font-normal text-foreground">{s.t}</h3>
+                  <h3
+                    className={[
+                      "mt-5 font-serif font-normal text-foreground",
+                      lastAlone ? "text-4xl md:text-5xl" : "text-3xl",
+                    ].join(" ")}
+                  >
+                    {s.t}
+                  </h3>
                   <div
                     aria-hidden
-                    className="tile-bar mt-4"
-                    style={{ height: "1px", width: "32px", backgroundColor: "#D4AF64" }}
+                    className={["tile-bar mt-4", lastAlone ? "mx-auto" : ""].join(" ")}
+                    style={{
+                      height: lastAlone ? "2px" : "1px",
+                      width: lastAlone ? "80px" : "32px",
+                      backgroundColor: "#D4AF64",
+                    }}
                   />
-                  <p className="mt-5 max-w-sm text-sm font-light leading-relaxed text-muted-foreground">
+                  <p
+                    className={[
+                      "mt-5 text-sm font-light leading-relaxed text-muted-foreground",
+                      lastAlone ? "mx-auto max-w-2xl" : "max-w-sm",
+                    ].join(" ")}
+                  >
                     {s.d}
                   </p>
                   <Link
@@ -272,15 +288,18 @@ function Index() {
 
       {/* Closing CTA — deep indigo */}
       <section className="relative isolate overflow-hidden" style={{ backgroundColor: "#1C1B3A" }}>
-        <div className="mx-auto max-w-3xl px-6 py-12 text-center md:py-16">
+        <div className="mx-auto max-w-3xl px-6 text-center" style={{ paddingTop: "64px", paddingBottom: "64px" }}>
           <Reveal>
-            <h2 className="font-serif text-4xl font-light leading-tight md:text-5xl" style={{ color: "#F8F5F0" }}>
-              Step into the <em className="italic font-light" style={{ color: "#D4AF64" }}>sanctuary</em>.
+            <h2
+              className="font-serif leading-tight"
+              style={{ color: "#F8F5F0", fontWeight: 300, fontSize: "clamp(2.25rem, 5vw, 3rem)" }}
+            >
+              Step into the sanctuary.
             </h2>
             <p className="mx-auto mt-7 max-w-lg text-base font-light leading-relaxed" style={{ color: "rgba(248,245,240,0.7)" }}>
               Book a session, join a circle, or come and be quiet with us for an afternoon.
             </p>
-            <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link
                 to="/discovery"
                 className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
@@ -297,12 +316,6 @@ function Index() {
               </Link>
             </div>
           </Reveal>
-          <div
-            aria-hidden
-            className="pointer-events-none mx-auto mt-20 flex justify-center"
-          >
-            <VesicaBotanical size={280} color="#D4AF64" opacity={0.1} strokeWidth={0.5} />
-          </div>
         </div>
       </section>
     </div>
