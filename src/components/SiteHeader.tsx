@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { CartDrawer } from "./CartDrawer";
 
 const links = [
   { to: "/", label: "Home" },
@@ -10,6 +11,7 @@ const links = [
   { to: "/events", label: "Events" },
   { to: "/practitioners", label: "Practitioners" },
   { to: "/health", label: "Health" },
+  { to: "/shop", label: "Shop" },
   { to: "/discovery", label: "Discovery" },
   { to: "/visit", label: "Visit" },
 ] as const;
