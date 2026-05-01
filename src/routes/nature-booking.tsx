@@ -123,7 +123,7 @@ function NatureBookingPage() {
   if (success) {
     return (
       <PageShell
-        eyebrow="✦ Request received ✦"
+        eyebrow="Request received"
         title="Your request has reached William"
         intro="We will be in touch personally — usually within 1–3 days — to weave the details together with you."
       >
@@ -156,7 +156,7 @@ function NatureBookingPage() {
 
   return (
     <PageShell
-      eyebrow="✦ Nature & Animal Healing ✦"
+      eyebrow="Nature & Animal Healing"
       title="Request a Session"
       intro="Tell us a little about who you are and what you are seeking. Every booking is hand-held — there is no automated calendar, because the land, the horses, and the tides ask to be honored."
     >

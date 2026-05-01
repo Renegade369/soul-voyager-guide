@@ -132,7 +132,7 @@ function DiscoveryPage() {
   if (!started) {
     return (
       <PageShell
-        eyebrow="✦ Soul Discovery ✦"
+        eyebrow="Soul Discovery"
         title="Begin Your Discovery"
         intro="A sacred, AI-guided conversation to gently get to know where you are — spiritually, physically, mentally — so William can discern how Sacred Journey may best serve your path."
       >
@@ -179,7 +179,7 @@ function DiscoveryPage() {
 
   return (
     <PageShell
-      eyebrow={`✦ In Conversation${name ? ` with ${name}` : ""} ✦`}
+      eyebrow={`In Conversation${name ? ` with ${name}` : ""}`}
       title="Soul Discovery"
       intro="Take your time. There are no wrong answers — only what is true for you right now."
     >

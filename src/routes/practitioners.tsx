@@ -36,7 +36,7 @@ const visiting = [
 function PractitionersPage() {
   return (
     <PageShell
-      eyebrow="✦ The Keepers of the Space ✦"
+      eyebrow="The Keepers of the Space"
       title="Founder, Network & Visiting Masters"
       intro="Sacred Journey is built around William, a curated practitioner network, and an ongoing series of visiting luminaries brought to South Florida to share their medicine."
     >
@@ -65,7 +65,7 @@ function PractitionersPage() {
       {/* Network */}
       <section className="mt-16">
         <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ Practitioner Network ✦</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">Practitioner Network</p>
           <h2 className="mt-3 font-serif text-3xl text-foreground md:text-4xl">A Curated Circle of Healers</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
             Sacred Journey is not a one-person practice. Your customized healing plan draws from a vetted network of specialists across modalities — each chosen for skill, integrity, and reverence.
@@ -85,7 +85,7 @@ function PractitionersPage() {
       {/* Visiting Masters */}
       <section className="mt-20">
         <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ Visiting Luminaries ✦</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">Visiting Luminaries</p>
           <h2 className="mt-3 font-serif text-3xl text-foreground md:text-4xl">Hosted Guest Masters</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
             Sacred Journey is becoming the place in South Florida where the world's most gifted teachers and healers come to share their work.
