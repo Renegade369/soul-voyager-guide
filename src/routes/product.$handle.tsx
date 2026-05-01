@@ -11,10 +11,11 @@ import {
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 
-type LoaderData = { product: ShopifyProduct["node"] };
+type ProductNode = ShopifyProduct["node"];
+type LoaderData = { product: ProductNode };
 
 export const Route = createFileRoute("/product/$handle")({
-  head: ({ loaderData }) => {
+  head: ({ loaderData }: { loaderData?: LoaderData }) => {
     const p = loaderData?.product;
     const title = p ? `${p.title} — Sacred Journey Shop` : "Product — Sacred Journey Shop";
     const desc = p?.description?.slice(0, 160) || "Sacred Journey shop item.";
@@ -32,7 +33,7 @@ export const Route = createFileRoute("/product/$handle")({
     const data = await storefrontApiRequest(STOREFRONT_PRODUCT_BY_HANDLE_QUERY, {
       handle: params.handle,
     });
-    const product = data?.data?.product;
+    const product = data?.data?.product as ProductNode | null | undefined;
     if (!product) throw notFound();
     return { product };
   },
@@ -54,7 +55,7 @@ export const Route = createFileRoute("/product/$handle")({
 });
 
 function ProductPage() {
-  const { product } = Route.useLoaderData();
+  const { product } = Route.useLoaderData() as LoaderData;
   const variants = product.variants.edges.map((e) => e.node);
   const [variantId, setVariantId] = useState<string>(variants[0]?.id ?? "");
   const selected = useMemo(
