@@ -72,6 +72,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  useCartSync();
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -79,6 +80,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <Toaster position="top-center" richColors closeButton />
     </div>
   );
 }
