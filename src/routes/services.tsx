@@ -22,15 +22,29 @@ const energyAndBody = [
   { t: "Heart-Brain Coherence", d: "HeartMath-based and somatic practices to align heart and mind, reduce stress, and access higher states of awareness." },
 ];
 
-const bodywork = [
+const bodywork: { t: string; d: string; img?: string }[] = [
   { t: "Swedish Massage", d: "Foundational relaxation, circulation, and nervous system reset." },
   { t: "Deep Tissue", d: "Targeted work on chronic tension, adhesions, and structural holding patterns." },
-  { t: "Hot Stone Therapy", d: "Heat as medicine — melting deep layers, calming the nervous system at root level." },
-  { t: "Craniosacral Therapy", d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — powerful for trauma, migraines, and nervous system dysregulation." },
+  {
+    t: "Hot Stone Therapy",
+    d: "Heat as medicine — melting deep layers, calming the nervous system at root level.",
+    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80",
+  },
+  {
+    t: "Craniosacral Therapy",
+    d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — powerful for trauma, migraines, and nervous system dysregulation.",
+    img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80",
+  },
   { t: "Lymphatic Drainage", d: "Gentle, precise strokes to move lymph, reduce inflammation, and support immune function." },
   { t: "Myofascial Release", d: "Sustained pressure into the connective tissue web — releasing what no amount of stretching can reach." },
-  { t: "Somatic Bodywork", d: "Body-centered trauma release integrating breath, sensation, and awareness — where the physical and emotional meet." },
+  {
+    t: "Somatic Bodywork",
+    d: "Body-centered trauma release integrating breath, sensation, and awareness — where the physical and emotional meet.",
+    img: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80",
+  },
 ];
+
+const BODYWORK_HERO = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1400&q=80";
 
 const soundAndBreath = [
   { t: "Sound Healing", d: "Crystal and Himalayan bowls, gongs, and tuning forks — sacred frequencies that drop the body into theta restoration." },
