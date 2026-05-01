@@ -9,31 +9,70 @@ export const Route = createFileRoute("/teachings")({
   component: TeachingsPage,
 });
 
+// Atmospheric header image used at the top of each featured teaching section.
+// Matches the card-image style used on /services: 200px tall, subtle cream overlay,
+// lazy-loaded, no rounding (per design system).
+function TeachingImage({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="relative mb-8 h-[220px] w-full overflow-hidden md:h-[260px]">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-16"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(248,245,240,0) 0%, rgba(248,245,240,0.6) 100%)",
+        }}
+      />
+    </div>
+  );
+}
+
 const categories = [
   {
     t: "The 3D World",
     d: "The hidden architecture of life on Earth — history rewritten, the nature of money and matter, the body as a sacred instrument.",
     items: ["Lost human history", "The veiled nature of money", "The body as antenna"],
+    img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=70",
+    alt: "Earth seen from orbit — the 3D world.",
   },
   {
     t: "Beyond the Stars",
     d: "Other planets, star systems, and the civilizations seeded across the cosmos — what the elders and the new contactees agree upon.",
     items: ["Pleiadian, Sirian & Arcturian lineages", "The Galactic federation question", "Star seeds & soul origins"],
+    img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=70",
+    alt: "Distant galaxy and stars — beyond the stars.",
   },
   {
     t: "Intelligent Species",
     d: "The many forms consciousness takes — benevolent, neutral, and shadow. Discernment as spiritual practice.",
     items: ["Benevolent guardians", "Tricksters & service-to-self beings", "Inter-species communication"],
+    img: "https://images.unsplash.com/photo-1532009324734-20a7a5813719?auto=format&fit=crop&w=1200&q=70",
+    alt: "Colorful nebula — intelligent species across the cosmos.",
   },
   {
     t: "The Spirit World",
     d: "Ancestors, guides, departed loved ones, and the realms between lives. How to listen, and how to verify.",
     items: ["Ancestral healing", "Working with guides", "Between-life realms"],
+    img: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1200&q=70",
+    alt: "Candle in darkness — the spirit world.",
   },
   {
     t: "Heart-Brain Coherence",
     d: "The measurable, sacred state where heart and mind synchronize — a doorway to intuition, healing, and remembrance.",
     items: ["The heart's electromagnetic field", "Coherence breathing", "Group field amplification"],
+    img: "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1200&q=70",
+    alt: "Soft light through trees — heart coherence.",
   },
 ];
 
@@ -46,21 +85,40 @@ function TeachingsPage() {
     >
       <div className="space-y-8">
         {categories.map((c) => (
-          <article key={c.t} className="rounded-none border border-border bg-card p-8">
-            <h2 className="font-serif text-3xl text-foreground">{c.t}</h2>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">{c.d}</p>
-            <ul className="mt-5 grid gap-2 sm:grid-cols-3">
-              {c.items.map((i) => (
-                <li key={i} className="rounded-lg border border-border/60 bg-background px-4 py-3 text-sm text-foreground">
-                  {i}
-                </li>
-              ))}
-            </ul>
+          <article key={c.t} className="overflow-hidden rounded-none border border-border bg-card md:grid md:grid-cols-[260px_1fr]">
+            <div className="relative h-48 w-full md:h-full">
+              <img
+                src={c.img}
+                alt={c.alt}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+              />
+            </div>
+            <div className="p-8">
+              <h2 className="font-serif text-3xl text-foreground">{c.t}</h2>
+              <p className="mt-3 text-base leading-relaxed text-muted-foreground">{c.d}</p>
+              <ul className="mt-5 grid gap-2 sm:grid-cols-3">
+                {c.items.map((i) => (
+                  <li key={i} className="rounded-lg border border-border/60 bg-background px-4 py-3 text-sm text-foreground">
+                    {i}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
       </div>
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=1600&q=70"
+            alt="Soft golden light through misted forest — evoking the realms between lives."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Life in the Spirit World</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
@@ -150,6 +208,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-secondary/40 p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1600&q=70"
+            alt="Hands cupped in candlelight — sensitivity, vulnerability, and the way through."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">
             The Sensitive Soul & the Weight of the Veil
@@ -329,6 +391,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1600&q=70"
+            alt="Heart-centered light — the electromagnetic field of the heart."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-background/80">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Heart-Brain Coherence</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
@@ -470,6 +536,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1611735341450-74d61e660ad2?auto=format&fit=crop&w=1600&q=70"
+            alt="Botanical leaves and roots — the sacred plant medicines."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Sacred Plant Medicines</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
@@ -654,6 +724,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1589216532372-1c2a367900d9?auto=format&fit=crop&w=1600&q=70"
+            alt="Sunrise over capitol pillars — the slow opening of policy."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-background/80">Policy & Path Forward</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Legalization of Sacred Plant Medicines</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
@@ -818,6 +892,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-secondary/40 p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1600&q=70"
+            alt="Brain and neural pathways glowing — becoming supernatural."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Dr. Joe Dispenza · Becoming Supernatural</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
@@ -900,6 +978,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=1600&q=70"
+            alt="Still water reflecting mountains — the wisdom of insecurity."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Alan Watts · The Wisdom of Insecurity</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
@@ -985,6 +1067,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-foreground p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?auto=format&fit=crop&w=1600&q=70"
+            alt="Sunrise and dusk together — morning becoming, evening releasing."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-background/80">Two Doors, One Room</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Dispenza & Watts — The Daily Pairing</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
@@ -1019,6 +1105,10 @@ function TeachingsPage() {
       {/* EXTRATERRESTRIALS, DISCLOSURE & DR. STEVEN GREER              */}
       {/* ============================================================ */}
       <section className="mt-16">
+        <TeachingImage
+          src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1600&q=70"
+          alt="Star-filled night sky over silent earth — the cosmic family."
+        />
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">The Cosmic Family</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Extraterrestrial Contact, Disclosure & The Work of Dr. Steven Greer</h2>
