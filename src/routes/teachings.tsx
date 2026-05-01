@@ -46,7 +46,7 @@ function TeachingsPage() {
     >
       <div className="space-y-8">
         {categories.map((c) => (
-          <article key={c.t} className="rounded-2xl border border-border bg-card p-8">
+          <article key={c.t} className="rounded-none border border-border bg-card p-8">
             <h2 className="font-serif text-3xl text-foreground">{c.t}</h2>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">{c.d}</p>
             <ul className="mt-5 grid gap-2 sm:grid-cols-3">
@@ -72,7 +72,7 @@ function TeachingsPage() {
           </p>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">The Crossing</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Newton's subjects describe leaving the body gently, often greeted by a guide or a
@@ -82,7 +82,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Soul Groups & Cluster Families</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 In <em>Destiny of Souls</em>, Newton maps how souls travel in primary clusters of
@@ -92,7 +92,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">The Council of Elders</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Newton describes a panel of advanced beings — wise, loving, never punitive — who
@@ -102,7 +102,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Healing & Restoration</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Souls returning from traumatic lifetimes are bathed in healing light, sometimes for
@@ -112,7 +112,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Soul Specializations</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 <em>Destiny of Souls</em> details how older souls take on roles — Healers, Teachers,
@@ -122,7 +122,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Choosing the Next Life</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Before returning, the soul previews potential lives — bodies, parents, eras, the
@@ -133,7 +133,7 @@ function TeachingsPage() {
             </article>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+          <div className="mt-10 rounded-none border border-border bg-background/40 p-6 backdrop-blur">
             <h3 className="font-serif text-xl text-foreground">Further Study</h3>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>📖 <em>Destiny of Souls</em> — Michael Newton (the deeper companion to <em>Journey of Souls</em>)</li>
@@ -149,7 +149,7 @@ function TeachingsPage() {
       </section>
 
       <section className="mt-16">
-        <div className="rounded-3xl border border-border bg-[image:var(--gradient-sanctuary)] p-10 md:p-14">
+        <div className="rounded-3xl border border-border bg-secondary/40 p-10 md:p-14">
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">
             The Sensitive Soul & the Weight of the Veil
@@ -163,7 +163,7 @@ function TeachingsPage() {
           </p>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Why Sensitives Are Vulnerable</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Empaths, starseeds, and those Dolores Cannon called the "Volunteers" often arrive
@@ -173,7 +173,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">The Numbing Contract</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Alcohol and many drugs create gaps in the auric field. Cannon's QHHT sessions and
@@ -183,7 +183,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Remembering Who You Are</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Again and again, people in recovery describe a turning point that was not
@@ -193,7 +193,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">The Truth About the Universe</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Learning that consciousness survives death, that soul families exist, that this
@@ -203,7 +203,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Practices That Replace the Substance</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Breathwork, somatic release, time in nature, grounding, energetic hygiene, sacred
@@ -213,7 +213,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">The Healed Sensitive</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Those who walk through this passage often become the very healers, teachers, and
@@ -231,7 +231,7 @@ function TeachingsPage() {
               sensitives who walked this path. Names and details are changed; the arc is real.
             </p>
             <div className="mt-6 grid gap-6 md:grid-cols-3">
-              <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
                 <p className="text-xs uppercase tracking-[0.25em] text-primary">Maren, 38</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Drank nightly for a decade to quiet the "noise" of other people. A QHHT session
@@ -239,7 +239,7 @@ function TeachingsPage() {
                   learned grounding, stopped within months, and now teaches energetic hygiene to nurses.
                 </p>
               </article>
-              <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
                 <p className="text-xs uppercase tracking-[0.25em] text-primary">Daniel, 45</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Cocaine became the only thing that matched the velocity of his mind. Reading
@@ -247,7 +247,7 @@ function TeachingsPage() {
                   exhausted by a heavy contract. Stillness, not stimulation, became his medicine.
                 </p>
               </article>
-              <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
                 <p className="text-xs uppercase tracking-[0.25em] text-primary">Ana, 29</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Pills kept the visions away since childhood. When a teacher named her gift instead
@@ -276,8 +276,8 @@ function TeachingsPage() {
                 { t: "Community", d: "At least one circle, sangha, or recovery group where the soul is seen, not just the symptom." },
                 { t: "Sleep & Sunlight", d: "Circadian alignment is the unsexy foundation that makes every other practice work." },
               ].map((p) => (
-                <article key={p.t} className="rounded-2xl border border-border/60 bg-background/60 p-5 backdrop-blur">
-                  <div className="h-1 w-8 rounded-full bg-primary" />
+                <article key={p.t} className="rounded-none border border-border/60 bg-background/60 p-5 backdrop-blur">
+                  <div className="h-1 w-8 border border-foreground bg-foreground" />
                   <h4 className="mt-3 font-serif text-lg text-foreground">{p.t}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
                 </article>
@@ -285,7 +285,7 @@ function TeachingsPage() {
             </div>
           </div>
 
-          <div className="mt-12 rounded-2xl border border-primary/30 bg-background/40 p-8 backdrop-blur">
+          <div className="mt-12 rounded-none border border-border bg-background/40 p-8 backdrop-blur">
             <h3 className="font-serif text-2xl text-foreground">Reading & Resources</h3>
             <p className="mt-2 text-sm text-muted-foreground">
               Voices that have helped many sensitives meet their addiction with understanding instead of shame.
@@ -316,7 +316,7 @@ function TeachingsPage() {
             </div>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+          <div className="mt-10 rounded-none border border-border bg-background/40 p-6 backdrop-blur">
             <p className="text-sm leading-relaxed text-muted-foreground">
               <strong className="text-foreground">A note of care:</strong> these teachings honour
               the spiritual dimension of addiction, but they are not a replacement for medical
@@ -329,7 +329,7 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-aurora)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">Featured Teaching</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-background/80">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Heart-Brain Coherence</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
             The heart is not merely a pump. It is the body's most powerful electromagnetic generator — producing
@@ -340,7 +340,7 @@ function TeachingsPage() {
           </p>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">The Heart's Intelligence</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 The heart contains roughly 40,000 sensory neurons — its own "little brain" (the intrinsic cardiac
@@ -350,7 +350,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">What Coherence Feels Like</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 A quiet warmth in the chest. The mind softens. Time slows. Decisions become obvious rather than
@@ -359,7 +359,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">The Field Around You</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Your heart's electromagnetic field radiates several feet beyond the body and is detectable by the
@@ -369,7 +369,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Coherence as Prayer</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Dr. Joe Dispenza's research with HeartMath has documented measurable shifts in genetic expression,
@@ -379,7 +379,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Group Coherence</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 The Global Coherence Initiative monitors Earth's magnetic field and has gathered evidence that large
@@ -388,7 +388,7 @@ function TeachingsPage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <h3 className="font-serif text-2xl text-foreground">Why It Matters Now</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 As the veil thins, the nervous system needs an anchor. Coherence is that anchor — the steady ground
@@ -422,7 +422,7 @@ function TeachingsPage() {
                   d: "While breathing, recall a moment of genuine appreciation, love, or care. Hold the feeling, not the memory. Let it radiate.",
                 },
               ].map((s) => (
-                <article key={s.n} className="rounded-2xl border border-primary/30 bg-background/60 p-6 backdrop-blur">
+                <article key={s.n} className="rounded-none border border-border bg-background/60 p-6 backdrop-blur">
                   <p className="font-serif text-3xl text-primary">{s.n}</p>
                   <h4 className="mt-2 font-serif text-xl text-foreground">{s.t}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
@@ -442,8 +442,8 @@ function TeachingsPage() {
                 { t: "Pre-Ceremony Coherence", d: "Five minutes of heart breathing before any prayer, ceremony, or healing session multiplies the field you bring." },
                 { t: "Coherence with Another", d: "Sit knee-to-knee, eyes soft, breathing together. Two coherent fields entrain faster than one alone." },
               ].map((p) => (
-                <article key={p.t} className="rounded-2xl border border-border/60 bg-background/60 p-5 backdrop-blur">
-                  <div className="h-1 w-8 rounded-full bg-primary" />
+                <article key={p.t} className="rounded-none border border-border/60 bg-background/60 p-5 backdrop-blur">
+                  <div className="h-1 w-8 border border-foreground bg-foreground" />
                   <h4 className="mt-3 font-serif text-lg text-foreground">{p.t}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
                 </article>
@@ -451,7 +451,7 @@ function TeachingsPage() {
             </div>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+          <div className="mt-10 rounded-none border border-border bg-background/40 p-6 backdrop-blur">
             <h3 className="font-serif text-xl text-foreground">Further Study</h3>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>📖 <em>The HeartMath Solution</em> — Doc Childre & Howard Martin</li>
@@ -574,7 +574,7 @@ function TeachingsPage() {
                 challenges: ["Need for sustained reflection", "Life transitions", "Integration of past medicine work"],
               },
             ].map((m) => (
-              <article key={m.name} className="rounded-2xl border border-border/60 bg-background/60 p-7 backdrop-blur">
+              <article key={m.name} className="rounded-none border border-border/60 bg-background/60 p-7 backdrop-blur">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
                   <h3 className="font-serif text-2xl text-foreground">{m.name}</h3>
                   <p className="text-xs uppercase tracking-[0.2em] text-primary">{m.origin}</p>
@@ -620,7 +620,7 @@ function TeachingsPage() {
                 { c: "Need for Nondual Realization", m: "5-MeO-DMT · Mescaline · Psilocybin (high dose)" },
                 { c: "Beginning the Path", m: "Cacao · Microdose Psilocybin · Ceremonial Cannabis" },
               ].map((row) => (
-                <article key={row.c} className="rounded-xl border border-border/60 bg-background/60 p-5 backdrop-blur">
+                <article key={row.c} className="rounded-none border border-border/60 bg-background/60 p-5 backdrop-blur">
                   <p className="font-serif text-lg text-foreground">{row.c}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{row.m}</p>
                 </article>
@@ -628,7 +628,7 @@ function TeachingsPage() {
             </div>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+          <div className="mt-10 rounded-none border border-border bg-background/40 p-6 backdrop-blur">
             <h3 className="font-serif text-xl text-foreground">Sacred Principles</h3>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>🌿 <span className="text-foreground">Reverence over recreation.</span> The medicine knows the difference.</li>
@@ -640,7 +640,7 @@ function TeachingsPage() {
             </ul>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+          <div className="mt-8 rounded-none border border-border bg-background/40 p-6 backdrop-blur">
             <p className="text-sm leading-relaxed text-muted-foreground">
               <strong className="text-foreground">A note of care:</strong> this teaching is offered for
               education and discernment, not as medical advice or invitation to seek out substances. Many
@@ -654,7 +654,7 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-[image:var(--gradient-aurora)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">Policy & Path Forward</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-background/80">Policy & Path Forward</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Legalization of Sacred Plant Medicines</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
             For most of the last century, the medicines that have healed humanity for tens of thousands of
@@ -709,7 +709,7 @@ function TeachingsPage() {
                   d: "Switzerland allows compassionate-use psilocybin and LSD therapy. The Netherlands has a long-tolerated psilocybin truffle market. Portugal decriminalized all personal drug use in 2001 and saw addiction rates fall dramatically — proof of what a public-health frame can achieve.",
                 },
               ].map((c) => (
-                <article key={c.t} className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+                <article key={c.t} className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
                   <h4 className="font-serif text-xl text-foreground">{c.t}</h4>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
                 </article>
@@ -728,8 +728,8 @@ function TeachingsPage() {
                 { t: "End-of-Life Care", d: "Studies at Johns Hopkins and NYU on terminal patients show single psilocybin sessions producing lasting reductions in death anxiety. Hospice and palliative care are quietly leading the way." },
                 { t: "Cultural Permission", d: "Public figures speaking openly — from athletes to investors to former skeptics — has dissolved the stigma. The conversation has crossed a threshold no policy can put back." },
               ].map((p) => (
-                <article key={p.t} className="rounded-2xl border border-border/60 bg-background/60 p-5 backdrop-blur">
-                  <div className="h-1 w-8 rounded-full bg-primary" />
+                <article key={p.t} className="rounded-none border border-border/60 bg-background/60 p-5 backdrop-blur">
+                  <div className="h-1 w-8 border border-foreground bg-foreground" />
                   <h4 className="mt-3 font-serif text-lg text-foreground">{p.t}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
                 </article>
@@ -782,7 +782,7 @@ function TeachingsPage() {
                   d: "Different medicines for different wounds — MDMA for relational trauma, psilocybin for depression and existential distress, ibogaine for addiction interruption, ketamine for acute crisis. Personalized, not one-size-fits-all.",
                 },
               ].map((row) => (
-                <article key={row.t} className="rounded-xl border border-primary/30 bg-background/60 p-5 backdrop-blur">
+                <article key={row.t} className="rounded-none border border-border bg-background/60 p-5 backdrop-blur">
                   <h4 className="font-serif text-xl text-foreground">{row.t}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{row.d}</p>
                 </article>
@@ -790,7 +790,7 @@ function TeachingsPage() {
             </div>
           </div>
 
-          <div className="mt-12 rounded-2xl border border-primary/30 bg-background/40 p-8 backdrop-blur">
+          <div className="mt-12 rounded-none border border-border bg-background/40 p-8 backdrop-blur">
             <h3 className="font-serif text-2xl text-foreground">The Sacred Concern</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               As legalization expands, the elders' warning grows louder: <em>do not let the medicines be
@@ -801,7 +801,7 @@ function TeachingsPage() {
             </p>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-primary/30 bg-background/40 p-8 backdrop-blur">
+          <div className="mt-8 rounded-none border border-border bg-background/40 p-8 backdrop-blur">
             <h3 className="font-serif text-2xl text-foreground">A Vision of the Decade Ahead</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               By 2035, it is plausible — even likely — that PTSD, treatment-resistant depression, end-of-life
@@ -817,7 +817,7 @@ function TeachingsPage() {
 
 
       <section className="mt-16">
-        <div className="rounded-3xl border border-border bg-[image:var(--gradient-sanctuary)] p-10 md:p-14">
+        <div className="rounded-3xl border border-border bg-secondary/40 p-10 md:p-14">
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Dr. Joe Dispenza · Becoming Supernatural</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
@@ -854,7 +854,7 @@ function TeachingsPage() {
                 d: "Through specific breath and focused awareness, Dispenza teaches activation of the pineal — the small endocrine gland the mystics called the seat of the soul. The reported experiences echo what contemplatives have described for millennia.",
               },
             ].map((c) => (
-              <article key={c.t} className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <article key={c.t} className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
                 <h3 className="font-serif text-2xl text-foreground">{c.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
               </article>
@@ -876,7 +876,7 @@ function TeachingsPage() {
                 { n: "05", t: "Open the Heart", d: "Generate gratitude as if the future has already arrived. Hold it in the chest. The body now believes." },
                 { n: "06", t: "Bless the Day", d: "Bring the same elevated state into your eyes opening, into your first steps, into the first interaction. Carry the new self into the old environment without flinching." },
               ].map((s) => (
-                <li key={s.n} className="rounded-xl border border-primary/30 bg-background/60 p-5 backdrop-blur">
+                <li key={s.n} className="rounded-none border border-border bg-background/60 p-5 backdrop-blur">
                   <p className="font-serif text-2xl text-primary">{s.n}</p>
                   <p className="mt-1 font-serif text-lg text-foreground">{s.t}</p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
@@ -885,7 +885,7 @@ function TeachingsPage() {
             </ol>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+          <div className="mt-10 rounded-none border border-border bg-background/40 p-6 backdrop-blur">
             <h3 className="font-serif text-xl text-foreground">Recommended Dispenza Meditations</h3>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>🎧 <em>Blessing of the Energy Centers</em> — the foundational practice; clears and activates the chakras</li>
@@ -937,7 +937,7 @@ function TeachingsPage() {
                 d: "Trying to make the changing solid is the root of suffering. Security cannot be found by clinging — only by realizing that the one who would cling is itself part of the flow. Then the flow becomes the home.",
               },
             ].map((c) => (
-              <article key={c.t} className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+              <article key={c.t} className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
                 <h3 className="font-serif text-2xl text-foreground">{c.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
               </article>
@@ -959,7 +959,7 @@ function TeachingsPage() {
                 { n: "04", t: "Let Thoughts Be Sounds", d: "Treat thoughts the same as the bird outside. They arise, they pass. They are not yours. They are not problems. They are just the mind doing its thing." },
                 { n: "05", t: "Rest as Awareness", d: "What is left when you stop trying to be anyone? Awareness — open, knowing, peaceful, already complete. This is what you are. You always were." },
               ].map((s) => (
-                <li key={s.n} className="rounded-xl border border-primary/30 bg-background/60 p-5 backdrop-blur">
+                <li key={s.n} className="rounded-none border border-border bg-background/60 p-5 backdrop-blur">
                   <p className="font-serif text-2xl text-primary">{s.n}</p>
                   <p className="mt-1 font-serif text-lg text-foreground">{s.t}</p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
@@ -968,7 +968,7 @@ function TeachingsPage() {
             </ol>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-primary/30 bg-background/40 p-6 backdrop-blur">
+          <div className="mt-10 rounded-none border border-border bg-background/40 p-6 backdrop-blur">
             <h3 className="font-serif text-xl text-foreground">Essential Watts Lectures & Books</h3>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>🎧 <em>The Real You</em> — short, perfect introduction (also widely shared as a music remix)</li>
@@ -984,8 +984,8 @@ function TeachingsPage() {
       </section>
 
       <section className="mt-16">
-        <div className="rounded-3xl border border-primary/30 bg-[image:var(--gradient-warm)] p-10 md:p-14">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary-foreground/80">Two Doors, One Room</p>
+        <div className="rounded-3xl border border-border bg-foreground p-10 md:p-14">
+          <p className="text-xs uppercase tracking-[0.4em] text-background/80">Two Doors, One Room</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Dispenza & Watts — The Daily Pairing</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
             Two complementary doorways. Dispenza, in the morning: become the new self, install the future,
@@ -995,7 +995,7 @@ function TeachingsPage() {
           </p>
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <p className="text-xs uppercase tracking-[0.25em] text-primary">Morning · 30–45 min</p>
               <h3 className="mt-2 font-serif text-2xl text-foreground">Dispenza Becoming</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -1003,7 +1003,7 @@ function TeachingsPage() {
                 gratitude for what hasn't yet arrived. Walk into the day as the future you.
               </p>
             </article>
-            <article className="rounded-2xl border border-border/60 bg-background/60 p-6 backdrop-blur">
+            <article className="rounded-none border border-border/60 bg-background/60 p-6 backdrop-blur">
               <p className="text-xs uppercase tracking-[0.25em] text-primary">Evening · 15–20 min</p>
               <h3 className="mt-2 font-serif text-2xl text-foreground">Watts Releasing</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -1028,7 +1028,7 @@ function TeachingsPage() {
         </div>
 
         {/* The Long Hidden History */}
-        <article className="mt-10 rounded-2xl border border-primary/30 bg-[image:var(--gradient-sanctuary)] p-8">
+        <article className="mt-10 rounded-none border border-border bg-secondary/40 p-8">
           <h3 className="font-serif text-3xl text-foreground">The Hidden History — A Timeline</h3>
           <ul className="mt-5 space-y-4 text-sm text-muted-foreground">
             <li><strong className="text-foreground">Ancient times.</strong> Cultures across every continent — Sumerian, Egyptian, Mesoamerican, Vedic, Aboriginal, Hopi — describe "sky beings," "shining ones," and craft of the gods. The Vimanas of the Mahabharata, the Anunnaki of Sumer, the Star People of the Lakota. This was not metaphor; it was reportage.</li>
@@ -1050,7 +1050,7 @@ function TeachingsPage() {
         </article>
 
         {/* The Categories of Evidence */}
-        <article className="mt-8 rounded-2xl border border-border bg-card p-8">
+        <article className="mt-8 rounded-none border border-border bg-card p-8">
           <h3 className="font-serif text-3xl text-foreground">The Categories of Evidence</h3>
           <p className="mt-3 text-sm text-muted-foreground">
             The phenomenon is not supported by a single proof but by multiple, independent, mutually-corroborating bodies of evidence:
@@ -1066,7 +1066,7 @@ function TeachingsPage() {
               { t: "Experiencer & Contactee Testimony", d: "Millions of credible accounts globally, gathered by Dr. John Mack of Harvard (Pulitzer winner), Dr. Edgar Mitchell (Apollo 14 astronaut), and ongoing academic studies. Patterns are remarkably consistent across cultures." },
               { t: "Indigenous & Ancient Records", d: "Star lineage traditions (Hopi, Dogon, Aboriginal, Maori), petroglyphs, and oral histories that describe contact with sky beings in language strikingly consistent with modern reports." },
             ].map((e) => (
-              <div key={e.t} className="rounded-xl border border-border bg-background/50 p-5">
+              <div key={e.t} className="rounded-none border border-border bg-background/50 p-5">
                 <h4 className="font-serif text-lg text-foreground">{e.t}</h4>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{e.d}</p>
               </div>
@@ -1075,7 +1075,7 @@ function TeachingsPage() {
         </article>
 
         {/* DR. STEVEN GREER */}
-        <article className="mt-10 rounded-2xl border border-primary/40 bg-[image:var(--gradient-sanctuary)] p-8 shadow-[var(--shadow-glow)]">
+        <article className="mt-10 rounded-none border border-border bg-secondary/40 p-8 ">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Pioneer of Disclosure</p>
           <h3 className="mt-2 font-serif text-3xl text-foreground md:text-4xl">Dr. Steven Greer</h3>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -1092,7 +1092,7 @@ function TeachingsPage() {
               { t: "Suppressed Energy Technology", d: "Greer has long maintained that classified programs hold zero-point and over-unity energy systems reverse-engineered from recovered craft — and that the suppression of these technologies is the deepest reason for the cover-up. His Orion Project works to bring them to the public." },
               { t: "Briefings to Government", d: "Greer has personally briefed members of Congress, the Clinton administration, the Director of the CIA (R. James Woolsey), Pentagon officials, and members of European parliaments. Many he briefed went on to become public disclosure advocates." },
             ].map((c) => (
-              <div key={c.t} className="rounded-xl border border-primary/20 bg-background/60 p-5">
+              <div key={c.t} className="rounded-none border border-border bg-background/60 p-5">
                 <h5 className="font-serif text-lg text-foreground">{c.t}</h5>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
               </div>
@@ -1125,7 +1125,7 @@ function TeachingsPage() {
         </article>
 
         {/* HOW CLOSE WE ARE */}
-        <article className="mt-10 rounded-2xl border border-border bg-card p-8">
+        <article className="mt-10 rounded-none border border-border bg-card p-8">
           <h3 className="font-serif text-3xl text-foreground">How Close Are We to Full Disclosure?</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             Closer than at any point in human history. The shift from "fringe" to congressional record happened in less than a decade. Here is a clear-eyed assessment of where we stand in 2026:
@@ -1138,14 +1138,14 @@ function TeachingsPage() {
               { t: "✓ Legal Architecture in Place", d: "The Schumer-Rounds UAP Disclosure Act establishes a federal review board with eminent domain over recovered materials. Even in its weakened final form, it is the first U.S. law that legally acknowledges 'non-human intelligence' and 'recovered technologies of unknown origin.'" },
               { t: "→ Remaining Stages", d: "(1) Acknowledgment that craft and biologics have been recovered. (2) Acknowledgment of contact with non-human intelligence. (3) Release of suppressed propulsion and energy technologies. (4) Open dialogue with the public about the nature, intent, and origin of visiting civilizations. Stage 1 is unfolding now." },
             ].map((s) => (
-              <div key={s.t} className="rounded-xl border border-primary/20 bg-background/50 p-5">
+              <div key={s.t} className="rounded-none border border-border bg-background/50 p-5">
                 <h4 className="font-serif text-lg text-foreground">{s.t}</h4>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-7 rounded-xl border border-primary/30 bg-[image:var(--gradient-sanctuary)] p-6">
+          <div className="mt-7 rounded-none border border-border bg-secondary/40 p-6">
             <h4 className="font-serif text-xl text-foreground">The Honest Assessment</h4>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               Limited disclosure — official acknowledgment of a real, unidentified phenomenon — is <strong className="text-foreground">already underway</strong>. Full disclosure — open public engagement with the reality of non-human intelligence and the release of suppressed technologies — is being actively negotiated within governments, intelligence services, and international bodies. Most veteran researchers (Greer, Elizondo, Coulthart, Sheehan) believe we are within <strong className="text-foreground">3 to 7 years</strong> of an undeniable, world-changing acknowledgment. Some believe events on the ground will force it sooner.
@@ -1157,7 +1157,7 @@ function TeachingsPage() {
         </article>
 
         {/* WHY THIS MATTERS SPIRITUALLY */}
-        <article className="mt-10 rounded-2xl border border-border bg-card p-8">
+        <article className="mt-10 rounded-none border border-border bg-card p-8">
           <h3 className="font-serif text-3xl text-foreground">Why This Matters Spiritually</h3>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             Disclosure is not a story about craft. It is a story about <em>who we are</em>. To remember that we are part of a vast, ensouled cosmos populated by countless intelligent civilizations is to permanently alter how we live, govern, consume, and relate to one another. It collapses tribalism. It makes endless war absurd. It restores the indigenous understanding of a living, peopled universe. It returns us to wonder.
@@ -1168,7 +1168,7 @@ function TeachingsPage() {
         </article>
 
         {/* RESOURCES */}
-        <article className="mt-10 rounded-2xl border border-border bg-card p-8">
+        <article className="mt-10 rounded-none border border-border bg-card p-8">
           <h3 className="font-serif text-3xl text-foreground">For the Serious Student</h3>
           <div className="mt-5 grid gap-6 md:grid-cols-2">
             <div>
