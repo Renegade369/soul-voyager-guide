@@ -1,15 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
-import { MapPin, Clock, Mail, Plane } from "lucide-react";
 
 export const Route = createFileRoute("/visit")({
   head: () => makeRouteMeta({
     title: "Visit Sacred Journey — South Florida",
-    description: "Sacred Journey is being built as a destination sanctuary in South Florida — most likely Davie, FL — with land, horses, ceremony space, and guest accommodations.",
+    description: "Sacred Journey is being built as a destination sanctuary in South Florida — Davie, FL — with land, horses, ceremony space, and guest accommodations.",
   }),
   component: VisitPage,
 });
+
+const info = [
+  { t: "Where We're Building", lines: ["South Florida — Davie, FL (in progress)", "Serving Broward, Miami-Dade & Palm Beach", "Accessible from all of South Florida"] },
+  { t: "A Destination Sanctuary", lines: ["Guest house & extended-stay accommodations", "For seekers traveling from across the US and the world", "An international draw for immersive retreats"] },
+  { t: "Online Sessions Available Now", lines: ["Intake assessments", "Consultations & integration", "Mentorship & coherence training"] },
+  { t: "Reach William", lines: ["Use the form, or send a direct note via the Discovery page."] },
+];
 
 function VisitPage() {
   const [sent, setSent] = useState(false);
@@ -19,85 +25,86 @@ function VisitPage() {
       title="Visit the Sanctuary"
       intro="Sacred Journey is being built as a destination — a place worth traveling for. Online intake and consultations are available now while the South Florida property is being established."
     >
-      <div className="grid gap-10 md:grid-cols-2">
-        <div className="space-y-6">
-          <InfoRow icon={<MapPin size={20} />} title="Where We're Building" lines={["South Florida — Davie, FL (in progress)", "Serving Broward, Miami-Dade & Palm Beach", "Accessible from all of South Florida"]} />
-          <InfoRow icon={<Plane size={20} />} title="A Destination Sanctuary" lines={["Guest house & extended-stay accommodations", "For seekers traveling from across the US and the world", "International draw for immersive retreats"]} />
-          <InfoRow icon={<Clock size={20} />} title="Online Sessions Available Now" lines={["Intake assessments", "Consultations & integration", "Mentorship & coherence training"]} />
-          <InfoRow icon={<Mail size={20} />} title="Reach William" lines={["Use the form, or send a direct note via the Discovery page."]} />
+      <section className="mx-auto max-w-2xl text-center">
+        <p className="font-serif text-2xl font-light italic leading-snug text-muted-foreground md:text-3xl">
+          A sacred property with land, horses, ceremony space, and gathering grounds.
+        </p>
+        <p className="mx-auto mt-6 max-w-xl text-sm font-light leading-relaxed text-muted-foreground">
+          An equestrian-rooted community with the sanctuary feel of remote land — yet reachable from the largest population of seekers in the southeast.
+        </p>
+      </section>
 
-          <div className="overflow-hidden rounded-2xl border border-primary/30 bg-[image:var(--gradient-sanctuary)] p-6">
-            <p className="text-xs uppercase tracking-[0.3em] text-primary">The Vision</p>
-            <p className="mt-3 font-serif text-xl text-foreground">A sacred property with land, horses, ceremony space, treatment rooms, and gathering grounds.</p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              An equestrian-rooted community with the sanctuary feel of remote land — yet reachable from the largest population of seekers in the southeast.
-            </p>
+      <section className="mt-24 grid gap-12 border-t border-border pt-16 md:grid-cols-2 md:gap-x-16 md:gap-y-14">
+        {info.map((row) => (
+          <div key={row.t}>
+            <h3 className="font-serif text-2xl font-normal text-foreground">{row.t}</h3>
+            <div className="mt-4 space-y-2 text-sm font-light leading-relaxed text-muted-foreground">
+              {row.lines.map((l) => <p key={l}>{l}</p>)}
+            </div>
           </div>
+        ))}
+      </section>
+
+      <section className="mt-32 border-t border-border pt-16">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">Send Us a Message</h2>
+          <p className="mt-6 font-serif text-xl font-light italic text-muted-foreground">
+            William responds personally within one to three days.
+          </p>
         </div>
 
         <form
           onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-          className="rounded-2xl border border-border bg-card p-7"
+          className="mx-auto mt-14 max-w-xl"
         >
-          <h2 className="font-serif text-2xl text-foreground">Send us a message</h2>
-          <p className="mt-1 text-sm text-muted-foreground">William responds personally within 1–3 days.</p>
-
           {sent ? (
-            <div className="mt-8 rounded-xl border border-border bg-background p-6 text-center">
-              <p className="font-serif text-xl text-foreground">Thank you 🙏</p>
-              <p className="mt-2 text-sm text-muted-foreground">Your message has been received. We'll be in touch soon.</p>
+            <div className="border-t border-b border-border py-12 text-center">
+              <p className="font-serif text-3xl font-light italic text-foreground">Thank you.</p>
+              <p className="mx-auto mt-4 max-w-sm text-sm font-light text-muted-foreground">
+                Your message has been received. We'll be in touch soon.
+              </p>
             </div>
           ) : (
-            <div className="mt-6 space-y-4">
+            <div className="space-y-8">
               <Field label="Name" name="name" required />
               <Field label="Email" name="email" type="email" required />
               <Field label="What brings you here?" name="topic" />
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-foreground">Message</label>
+                <label className="mb-2 block text-[11px] font-light uppercase tracking-[0.22em] text-foreground/65">
+                  Message
+                </label>
                 <textarea
                   required
                   rows={5}
-                  className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  className="w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm font-light text-foreground outline-none focus:border-foreground"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+                className="border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
               >
                 Send Message
               </button>
             </div>
           )}
         </form>
-      </div>
+      </section>
     </PageShell>
-  );
-}
-
-function InfoRow({ icon, title, lines }: { icon: React.ReactNode; title: string; lines: string[] }) {
-  return (
-    <div className="flex gap-4">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">{icon}</div>
-      <div>
-        <h3 className="font-serif text-lg text-foreground">{title}</h3>
-        {lines.map((l) => (
-          <p key={l} className="text-sm text-muted-foreground">{l}</p>
-        ))}
-      </div>
-    </div>
   );
 }
 
 function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <div>
-      <label htmlFor={name} className="mb-1.5 block text-sm font-medium text-foreground">{label}</label>
+      <label htmlFor={name} className="mb-2 block text-[11px] font-light uppercase tracking-[0.22em] text-foreground/65">
+        {label}
+      </label>
       <input
         id={name}
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+        className="w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm font-light text-foreground outline-none focus:border-foreground"
       />
     </div>
   );

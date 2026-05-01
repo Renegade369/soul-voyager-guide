@@ -136,30 +136,34 @@ function DiscoveryPage() {
         title="Begin Your Discovery"
         intro="A sacred, AI-guided conversation to gently get to know where you are — spiritually, physically, mentally — so William can discern how Sacred Journey may best serve your path."
       >
-        <div className="mx-auto max-w-xl rounded-2xl border border-primary/30 bg-[image:var(--gradient-sanctuary)] p-8 shadow-[var(--shadow-glow)]">
-          <p className="font-serif text-xl text-foreground">Before we begin</p>
-          <p className="mt-2 text-sm text-muted-foreground">
+        <div className="mx-auto max-w-xl border-y border-border py-12">
+          <p className="text-center font-serif text-2xl font-light italic text-foreground">Before we begin.</p>
+          <p className="mx-auto mt-4 max-w-md text-center text-sm font-light leading-relaxed text-muted-foreground">
             Share a name and (optionally) an email so William may reach you afterwards. Your words are held in confidence.
           </p>
-          <div className="mt-6 space-y-4">
+          <div className="mt-10 space-y-8">
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-foreground">First name *</label>
+              <label className="mb-2 block text-[11px] font-light uppercase tracking-[0.22em] text-foreground/65">
+                First name
+              </label>
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 maxLength={80}
-                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                className="w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm font-light text-foreground outline-none focus:border-foreground"
                 placeholder="What shall I call you?"
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-foreground">Email (optional)</label>
+              <label className="mb-2 block text-[11px] font-light uppercase tracking-[0.22em] text-foreground/65">
+                Email (optional)
+              </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 maxLength={255}
-                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                className="w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm font-light text-foreground outline-none focus:border-foreground"
                 placeholder="So William may follow up"
               />
             </div>
@@ -167,9 +171,9 @@ function DiscoveryPage() {
               type="button"
               disabled={!name.trim()}
               onClick={() => setStarted(true)}
-              className="w-full rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-warm)] transition hover:opacity-90 disabled:opacity-50"
+              className="w-full border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground disabled:opacity-40 disabled:hover:bg-foreground disabled:hover:text-background"
             >
-              Enter the conversation
+              Enter the Conversation
             </button>
           </div>
         </div>
@@ -183,7 +187,7 @@ function DiscoveryPage() {
       title="Soul Discovery"
       intro="Take your time. There are no wrong answers — only what is true for you right now."
     >
-      <div className="rounded-2xl border border-border bg-card shadow-[var(--shadow-soft)]">
+      <div className="border border-border bg-card">
         <div
           ref={scrollRef}
           className="max-h-[60vh] min-h-[420px] space-y-5 overflow-y-auto px-5 py-6 md:px-8"
@@ -196,12 +200,12 @@ function DiscoveryPage() {
               <div
                 className={
                   m.role === "user"
-                    ? "max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-3 text-sm text-primary-foreground"
-                    : "max-w-[90%] rounded-2xl rounded-bl-sm border border-border bg-background px-4 py-3 text-sm text-foreground"
+                    ? "max-w-[85%] bg-foreground px-4 py-3 text-sm font-light text-background"
+                    : "max-w-[90%] border border-border bg-background px-4 py-3 text-sm font-light text-foreground"
                 }
               >
                 {m.role === "assistant" ? (
-                  <div className="prose prose-sm max-w-none prose-headings:font-serif prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-li:text-foreground prose-em:text-primary">
+                  <div className="prose prose-sm max-w-none prose-headings:font-serif prose-headings:font-normal prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-strong:font-normal prose-li:text-foreground prose-em:italic prose-em:text-foreground">
                     <ReactMarkdown>
                       {m.content || "…"}
                     </ReactMarkdown>
@@ -213,14 +217,14 @@ function DiscoveryPage() {
             </div>
           ))}
           {streaming && (
-            <p className="text-center text-xs uppercase tracking-[0.3em] text-primary">
+            <p className="text-center text-[11px] font-light uppercase tracking-[0.28em] text-muted-foreground">
               listening…
             </p>
           )}
         </div>
 
         {error && (
-          <p className="border-t border-border px-6 py-3 text-center text-xs text-destructive">
+          <p className="border-t border-border px-6 py-3 text-center text-xs font-light text-destructive">
             {error}
           </p>
         )}
@@ -231,7 +235,7 @@ function DiscoveryPage() {
               e.preventDefault();
               send(input);
             }}
-            className="flex items-end gap-3 border-t border-border bg-background/60 p-4 md:p-5"
+            className="flex items-end gap-3 border-t border-border bg-background p-4 md:p-5"
           >
             <textarea
               value={input}
@@ -245,39 +249,33 @@ function DiscoveryPage() {
               rows={2}
               maxLength={2000}
               placeholder="Speak from the heart…"
-              className="flex-1 resize-none rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="flex-1 resize-none border border-border bg-background px-3 py-2 text-sm font-light text-foreground outline-none focus:border-foreground"
               disabled={streaming}
             />
             <button
               type="submit"
               disabled={streaming || !input.trim()}
-              className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-[var(--shadow-warm)] transition hover:opacity-90 disabled:opacity-50"
+              className="border border-foreground bg-foreground px-7 py-3 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground disabled:opacity-40 disabled:hover:bg-foreground disabled:hover:text-background"
             >
               Send
             </button>
           </form>
         ) : (
-          <div className="border-t border-border bg-[image:var(--gradient-warm)] p-6 text-center text-primary-foreground">
-            <p className="font-serif text-xl">Your reflection has been received 🙏</p>
-            {saved ? (
-              <p className="mt-2 inline-flex items-center gap-2 rounded-full bg-background/20 px-3 py-1 text-xs uppercase tracking-[0.2em] text-primary-foreground">
-                <span aria-hidden>✓</span> Saved securely · William has been notified
-              </p>
-            ) : (
-              <p className="mt-2 inline-flex items-center gap-2 rounded-full bg-background/20 px-3 py-1 text-xs uppercase tracking-[0.2em] text-primary-foreground">
-                <span aria-hidden>…</span> Finalizing save…
-              </p>
-            )}
-            <p className="mt-3 text-sm opacity-90">
+          <div className="border-t border-border bg-foreground p-10 text-center text-background">
+            <p className="font-serif text-2xl font-light italic">Your reflection has been received.</p>
+            <p className="mt-4 text-[11px] font-light uppercase tracking-[0.22em] text-background/70">
+              {saved ? "Saved · William has been notified" : "Finalizing save…"}
+            </p>
+            <p className="mx-auto mt-5 max-w-md text-sm font-light leading-relaxed text-background/85">
               {saved
-                ? "Your words are held in confidence. William will reach out personally within 1–3 days."
+                ? "Your words are held in confidence. William will reach out personally within one to three days."
                 : "Please keep this page open for a moment while we store your reflection."}
             </p>
             <a
               href="/contact-william"
-              className="mt-4 inline-block rounded-full bg-background px-6 py-2.5 text-sm font-medium text-foreground transition hover:bg-background/90"
+              className="mt-8 inline-block border border-background px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-background hover:text-foreground"
             >
-              Send William a direct note
+              Send William a Direct Note
             </a>
           </div>
         )}
