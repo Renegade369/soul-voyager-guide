@@ -50,43 +50,42 @@ const services = [
 function Index() {
   return (
     <div>
-      {/* Hero — warm gradient with flower-of-life mandala watermark */}
+      {/* Hero — deep indigo with gold sacred geometry watermark */}
       <section
         className="relative isolate overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(180deg, oklch(0.965 0.012 80) 0%, oklch(0.93 0.018 70) 60%, oklch(0.9 0.022 65) 100%)",
-        }}
+        style={{ backgroundColor: "#1C1B3A" }}
       >
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          <FlowerOfLife size={520} color="#2C2B29" opacity={0.07} strokeWidth={0.5} />
+          <FlowerOfLife size={520} color="#D4AF64" opacity={0.11} strokeWidth={0.5} />
         </div>
 
         <div className="relative mx-auto max-w-4xl px-6 py-16 text-center md:py-20">
-          <p className="text-[11px] font-light uppercase tracking-[0.32em] text-foreground/65">
+          <p className="text-[11px] font-light uppercase tracking-[0.32em]" style={{ color: "#D4AF64" }}>
             A Sanctuary of Remembrance
           </p>
-          <h1 className="mx-auto mt-10 max-w-3xl font-serif text-5xl font-light leading-[1.05] text-foreground md:text-7xl">
+          <h1 className="mx-auto mt-10 max-w-3xl font-serif text-5xl font-light leading-[1.05] md:text-7xl" style={{ color: "#F8F5F0" }}>
             Quiet medicine
             <br />
-            for a <em className="italic font-light">noisy</em> world.
+            for a <em className="italic font-light" style={{ color: "#D4AF64" }}>noisy</em> world.
           </h1>
-          <p className="mx-auto mt-10 max-w-xl text-base font-light leading-relaxed text-foreground/75 md:text-lg">
+          <p className="mx-auto mt-10 max-w-xl text-base font-light leading-relaxed md:text-lg" style={{ color: "rgba(248,245,240,0.75)" }}>
             Holistic wellness, sacred teachings, and ceremony — held with care, rooted in nature.
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-4">
             <Link
               to="/discovery"
-              className="border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
+              className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
+              style={{ backgroundColor: "#D4AF64", color: "#1C1B3A", border: "1px solid #D4AF64" }}
             >
               Begin Here
             </Link>
             <Link
               to="/visit"
-              className="border border-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-foreground transition hover:bg-foreground hover:text-background"
+              className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
+              style={{ color: "#F8F5F0", border: "1px solid rgba(248,245,240,0.5)" }}
             >
               Plan Your Visit
             </Link>
