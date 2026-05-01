@@ -102,6 +102,63 @@ function ServicesPage() {
         {energyAndBody.map((s) => <Card key={s.t} {...s} />)}
       </Section>
 
+      {/* Bodywork & Massage Therapy — sacred minimalism numbered grid */}
+      <section className="mt-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">
+            Bodywork & Massage Therapy
+          </h2>
+          <p className="mt-6 font-serif text-xl font-light italic leading-snug text-muted-foreground md:text-2xl">
+            The body remembers everything. These modalities help it finally let go.
+          </p>
+          <p className="mx-auto mt-8 max-w-2xl text-left text-sm font-light leading-relaxed text-muted-foreground md:text-base">
+            The nervous system cannot heal in a state of tension. Bodywork is often the first medicine — and sometimes the most profound. Sacred Journey offers a full spectrum of therapeutic and healing-focused bodywork, delivered by licensed therapists and specialized practitioners on staff and within our vetted network.
+          </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 border-t border-border md:grid-cols-2">
+          {[
+            { t: "Swedish Massage", d: "Foundational relaxation, circulation, and nervous system reset." },
+            { t: "Deep Tissue", d: "Targeted work on chronic tension, adhesions, and structural holding patterns." },
+            { t: "Hot Stone Therapy", d: "Heat as medicine — melting deep layers, calming the nervous system at root level." },
+            { t: "Craniosacral Therapy", d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — powerful for trauma, migraines, and nervous system dysregulation." },
+            { t: "Lymphatic Drainage", d: "Gentle, precise strokes to move lymph, reduce inflammation, and support immune function." },
+            { t: "Myofascial Release", d: "Sustained pressure into the connective tissue web — releasing what no amount of stretching can reach." },
+            { t: "Somatic Bodywork", d: "Body-centered trauma release integrating breath, sensation, and awareness — where the physical and emotional meet." },
+          ].map((s, i, arr) => {
+            const isLast = i === arr.length - 1;
+            const isOddCount = arr.length % 2 === 1;
+            return (
+              <article
+                key={s.t}
+                className={[
+                  "px-2 py-12 md:px-10 md:py-14",
+                  "border-b border-border",
+                  i % 2 === 0 ? "md:border-r" : "",
+                  // remove bottom border on last row
+                  isLast && isOddCount ? "md:border-b-0" : "",
+                  !isLast && i === arr.length - 2 && !isOddCount ? "md:border-b-0" : "",
+                ].join(" ")}
+              >
+                <p className="font-serif text-sm font-light italic text-muted-foreground">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-4 font-serif text-2xl font-normal text-foreground md:text-3xl">
+                  {s.t}
+                </h3>
+                <p className="mt-5 max-w-md text-sm font-light leading-relaxed text-muted-foreground">
+                  {s.d}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+
+        <p className="mx-auto mt-12 max-w-2xl text-center text-sm font-light italic text-muted-foreground">
+          All sessions begin with a brief intake. Bodywork can be booked as a standalone session or integrated into your customized healing plan.
+        </p>
+      </section>
+
       <Section title="Sound, Breath & Stillness" intro="Frequencies and practices that drop the nervous system into healing states.">
         {soundAndBreath.map((s) => <Card key={s.t} {...s} />)}
       </Section>
