@@ -1,6 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
-import { ServiceCornerBracket, GeometricDivider } from "../components/SacredGeometry";
+import {
+  ServiceCornerBracket,
+  GeometricDivider,
+  FlowerOfLife,
+  PillarSeedOfLife,
+  PillarMetatronCube,
+  PillarVesica,
+  OrnamentRadiating,
+  OrnamentDiamond,
+  OrnamentDoubleCircle,
+  VesicaBotanical,
+} from "../components/SacredGeometry";
+
+type IconCmp = (p: { size?: number; color?: string; opacity?: number; strokeWidth?: number; className?: string }) => React.ReactElement;
+
+function SectionIcon({ Icon }: { Icon: IconCmp }) {
+  return (
+    <div className="mx-auto mb-6 flex justify-center" aria-hidden>
+      <Icon size={44} color="#1C1B3A" opacity={0.55} strokeWidth={0.7} />
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/services")({
   head: () => makeRouteMeta({
@@ -110,16 +131,19 @@ function ServiceSection({
   subtitle,
   intro,
   items,
+  icon: Icon,
 }: {
   title: string;
   subtitle?: string;
   intro?: string;
   items: { t: string; d: string }[];
+  icon?: IconCmp;
 }) {
   return (
     <section className="mt-32 md:mt-40">
       <GeometricDivider variant={1} className="mb-20" maxWidth="max-w-2xl" />
       <div className="mx-auto max-w-2xl text-center">
+        {Icon && <SectionIcon Icon={Icon} />}
         <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">{title}</h2>
         {subtitle && (
           <p className="mt-6 font-serif text-xl font-light italic leading-snug text-muted-foreground md:text-2xl">
@@ -145,28 +169,37 @@ function ServicesPage() {
       intro="Sacred Journey works the whole person — root cause, not symptoms. Every path begins with a deep intake and a customized healing plan built around you."
     >
       {/* Intake — the doorway */}
-      <section className="border-y border-border py-16 text-center md:py-20">
-        <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">
-          Where Every Journey Begins
-        </p>
-        <h2 className="mt-6 font-serif text-3xl font-light text-foreground md:text-4xl">
-          {intake.t}
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-          {intake.d}
-        </p>
-        <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em] text-muted-foreground">
-          {intake.duration}
-        </p>
-        <Link
-          to="/discovery"
-          className="mt-9 inline-block border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
+      <section className="relative isolate overflow-hidden border-y border-border py-16 text-center md:py-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          Begin with Soul Discovery
-        </Link>
+          <FlowerOfLife size={420} color="#1C1B3A" opacity={0.06} strokeWidth={0.5} />
+        </div>
+        <div className="relative">
+          <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">
+            Where Every Journey Begins
+          </p>
+          <h2 className="mt-6 font-serif text-3xl font-light text-foreground md:text-4xl">
+            {intake.t}
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-sm font-light leading-relaxed text-muted-foreground md:text-base">
+            {intake.d}
+          </p>
+          <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em] text-muted-foreground">
+            {intake.duration}
+          </p>
+          <Link
+            to="/discovery"
+            className="mt-9 inline-block border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
+          >
+            Begin with Soul Discovery
+          </Link>
+        </div>
       </section>
 
       <ServiceSection
+        icon={OrnamentRadiating}
         title="Energy & Biofield Work"
         subtitle="Where the unseen meets the body."
         intro="Subtle systems carry profound information. These modalities clear, restore, and align the energetic field — often the doorway to deeper physical healing."
@@ -191,6 +224,7 @@ function ServicesPage() {
         </div>
 
         <div className="mx-auto mt-14 max-w-2xl text-center">
+          <SectionIcon Icon={PillarVesica} />
           <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">
             Bodywork & Massage Therapy
           </h2>
@@ -244,6 +278,7 @@ function ServicesPage() {
       </section>
 
       <ServiceSection
+        icon={OrnamentDoubleCircle}
         title="Sound, Breath & Stillness"
         subtitle="Frequency, breath, and silence — the oldest medicines."
         intro="These practices drop the nervous system into states where deep healing can happen on its own."
@@ -251,6 +286,7 @@ function ServicesPage() {
       />
 
       <ServiceSection
+        icon={PillarMetatronCube}
         title="Spirit, Soul & Nature"
         subtitle="The deeper layers — purpose, lineage, and the wisdom of the natural world."
         items={spiritAndSoul}
@@ -258,7 +294,9 @@ function ServicesPage() {
 
       {/* Nature & Animal Healing — text-led, no gradient cards */}
       <section className="mt-32 md:mt-40">
+        <GeometricDivider variant={2} className="mb-20" maxWidth="max-w-2xl" />
         <div className="mx-auto max-w-2xl text-center">
+          <SectionIcon Icon={PillarSeedOfLife} />
           <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">
             Nature & Animal Healing
           </h2>
@@ -325,6 +363,7 @@ function ServicesPage() {
       </section>
 
       <ServiceSection
+        icon={OrnamentDiamond}
         title="Sacred Plant Medicine"
         subtitle="Held with the deepest reverence for the plants, the lineages, and the souls who come to sit with them."
         intro="William speaks from lived experience — and every container is built around proper set, setting, and intention. Plant medicine work requires a preparation conversation. We honor discernment, safety, and the sovereignty of every soul who sits with us."
@@ -333,6 +372,14 @@ function ServicesPage() {
 
       {/* Closing CTA */}
       <section className="mt-32 border-t border-border py-20 text-center md:py-24">
+        <div className="mx-auto mb-8 flex justify-center" aria-hidden>
+          <VesicaBotanical
+            size={220}
+            color="#1C1B3A"
+            opacity={0.35}
+            strokeWidth={0.6}
+          />
+        </div>
         <p className="font-serif text-2xl font-light italic text-foreground md:text-3xl">
           All sessions are by appointment and built into your customized plan.
         </p>
