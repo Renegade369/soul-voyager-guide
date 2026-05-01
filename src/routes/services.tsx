@@ -146,13 +146,37 @@ function ServicesPage() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {[
-            { t: "Equine-Assisted Healing", d: "Held sessions with horses on the land. Horses are master mirrors of the human heart — they show you, without words, where you are armored, where you are open, and where presence is asking to return. No riding required; the medicine lives in the relationship." },
-            { t: "Horse Reiki", d: "Energy work offered with and through the horses — a sacred triangulation of practitioner, animal, and seeker. Profound for trauma, grief, and reawakening trust." },
-            { t: "Forest & Land Immersion", d: "Guided 'forest bathing'-style walks on the sanctuary grounds. Slow, sensory, prayerful — relearning how to listen to the trees, the wind, and your own footsteps." },
-            { t: "Earthing & Grounding Sessions", d: "Barefoot practice on earth, often combined with breathwork and coherence training. A simple, free medicine most modern bodies are starving for." },
-            { t: "Ocean & Water Ceremony", d: "South Florida-based saltwater ceremonies — ocean immersion, prayer, and integration. The sea remembers everything; she is one of our oldest healers." },
-            { t: "Animal Companionship Integration", d: "Guidance for those whose path includes adopting, working with, or grieving an animal companion — honoring the bond as part of the healing journey." },
-          ].map((s) => <Card key={s.t} {...s} />)}
+            { v: "equine", t: "Equine-Assisted Healing", d: "Held sessions with horses on the land. Horses are master mirrors of the human heart — they show you, without words, where you are armored, where you are open, and where presence is asking to return. No riding required; the medicine lives in the relationship." },
+            { v: "horse_reiki", t: "Horse Reiki", d: "Energy work offered with and through the horses — a sacred triangulation of practitioner, animal, and seeker. Profound for trauma, grief, and reawakening trust." },
+            { v: "forest", t: "Forest & Land Immersion", d: "Guided 'forest bathing'-style walks on the sanctuary grounds. Slow, sensory, prayerful — relearning how to listen to the trees, the wind, and your own footsteps." },
+            { v: "earthing", t: "Earthing & Grounding Sessions", d: "Barefoot practice on earth, often combined with breathwork and coherence training. A simple, free medicine most modern bodies are starving for." },
+            { v: "ocean", t: "Ocean & Water Ceremony", d: "South Florida-based saltwater ceremonies — ocean immersion, prayer, and integration. The sea remembers everything; she is one of our oldest healers." },
+            { v: "animal_companionship", t: "Animal Companionship Integration", d: "Guidance for those whose path includes adopting, working with, or grieving an animal companion — honoring the bond as part of the healing journey." },
+          ].map((s) => (
+            <Link
+              key={s.v}
+              to="/nature-booking"
+              search={{ modality: s.v }}
+              className="group block rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="font-serif text-lg text-foreground">{s.t}</h3>
+                <span className="text-xs text-primary opacity-0 transition-opacity group-hover:opacity-100">Book →</span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-primary">Request a session →</p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            to="/nature-booking"
+            search={{ modality: "equine" }}
+            className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+          >
+            Book a Nature & Animal Healing Session
+          </Link>
         </div>
 
         <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border bg-card p-7 text-center">
