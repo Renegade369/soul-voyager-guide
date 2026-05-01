@@ -169,28 +169,37 @@ function ServicesPage() {
       intro="Sacred Journey works the whole person — root cause, not symptoms. Every path begins with a deep intake and a customized healing plan built around you."
     >
       {/* Intake — the doorway */}
-      <section className="border-y border-border py-16 text-center md:py-20">
-        <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">
-          Where Every Journey Begins
-        </p>
-        <h2 className="mt-6 font-serif text-3xl font-light text-foreground md:text-4xl">
-          {intake.t}
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-          {intake.d}
-        </p>
-        <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em] text-muted-foreground">
-          {intake.duration}
-        </p>
-        <Link
-          to="/discovery"
-          className="mt-9 inline-block border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
+      <section className="relative isolate overflow-hidden border-y border-border py-16 text-center md:py-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          Begin with Soul Discovery
-        </Link>
+          <FlowerOfLife size={420} color="#1C1B3A" opacity={0.06} strokeWidth={0.5} />
+        </div>
+        <div className="relative">
+          <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">
+            Where Every Journey Begins
+          </p>
+          <h2 className="mt-6 font-serif text-3xl font-light text-foreground md:text-4xl">
+            {intake.t}
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-sm font-light leading-relaxed text-muted-foreground md:text-base">
+            {intake.d}
+          </p>
+          <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em] text-muted-foreground">
+            {intake.duration}
+          </p>
+          <Link
+            to="/discovery"
+            className="mt-9 inline-block border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
+          >
+            Begin with Soul Discovery
+          </Link>
+        </div>
       </section>
 
       <ServiceSection
+        icon={OrnamentRadiating}
         title="Energy & Biofield Work"
         subtitle="Where the unseen meets the body."
         intro="Subtle systems carry profound information. These modalities clear, restore, and align the energetic field — often the doorway to deeper physical healing."
