@@ -80,24 +80,30 @@ const plantMedicine: { t: string; d: string; img: string }[] = [
   { t: "Preparation & Integration", d: "The medicine begins before the ceremony and continues long after. Dedicated 1:1 work to prepare your container and integrate what arrives.", img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&q=80" },
 ];
 
-function NumberedGrid({ items }: { items: { t: string; d: string }[] }) {
+function NumberedGrid({ items }: { items: { t: string; d: string; img?: string }[] }) {
   return (
-    <div className="mt-12 grid grid-cols-1 border-t border-border md:grid-cols-2">
-      {items.map((s, i) => {
-        const isLast = i === items.length - 1;
-        const isOdd = items.length % 2 === 1;
-        return (
-          <article
-            key={s.t}
-            className={[
-              "px-2 py-12 md:px-10 md:py-14",
-              "border-b border-border",
-              i % 2 === 0 ? "md:border-r" : "",
-              isLast && isOdd ? "md:border-b-0" : "",
-              !isLast && i === items.length - 2 && !isOdd ? "md:border-b-0" : "",
-              isLast ? "border-b-0" : "",
-            ].join(" ")}
-          >
+    <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+      {items.map((s, i) => (
+        <article
+          key={s.t}
+          className="relative overflow-hidden rounded-md border border-border"
+        >
+          <ServiceCornerBracket variant={i} />
+          {s.img && (
+            <div className="relative h-[200px] w-full md:h-[220px]">
+              <img
+                src={s.img}
+                alt={s.t}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+              />
+            </div>
+          )}
+          <div className="px-6 py-10 md:px-10 md:py-12">
             <p className="font-serif text-sm font-light italic text-muted-foreground">
               {String(i + 1).padStart(2, "0")}
             </p>
@@ -107,9 +113,9 @@ function NumberedGrid({ items }: { items: { t: string; d: string }[] }) {
             <p className="mt-5 max-w-md text-sm font-light leading-relaxed text-muted-foreground">
               {s.d}
             </p>
-          </article>
-        );
-      })}
+          </div>
+        </article>
+      ))}
     </div>
   );
 }
