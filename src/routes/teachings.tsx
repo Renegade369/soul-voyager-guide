@@ -511,6 +511,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1611735341450-74d61e660ad2?auto=format&fit=crop&w=1600&q=70"
+            alt="Botanical leaves and roots — the sacred plant medicines."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Sacred Plant Medicines</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
