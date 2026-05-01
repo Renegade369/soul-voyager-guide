@@ -22,15 +22,29 @@ const energyAndBody = [
   { t: "Heart-Brain Coherence", d: "HeartMath-based and somatic practices to align heart and mind, reduce stress, and access higher states of awareness." },
 ];
 
-const bodywork = [
+const bodywork: { t: string; d: string; img?: string }[] = [
   { t: "Swedish Massage", d: "Foundational relaxation, circulation, and nervous system reset." },
   { t: "Deep Tissue", d: "Targeted work on chronic tension, adhesions, and structural holding patterns." },
-  { t: "Hot Stone Therapy", d: "Heat as medicine — melting deep layers, calming the nervous system at root level." },
-  { t: "Craniosacral Therapy", d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — powerful for trauma, migraines, and nervous system dysregulation." },
+  {
+    t: "Hot Stone Therapy",
+    d: "Heat as medicine — melting deep layers, calming the nervous system at root level.",
+    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80",
+  },
+  {
+    t: "Craniosacral Therapy",
+    d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — powerful for trauma, migraines, and nervous system dysregulation.",
+    img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80",
+  },
   { t: "Lymphatic Drainage", d: "Gentle, precise strokes to move lymph, reduce inflammation, and support immune function." },
   { t: "Myofascial Release", d: "Sustained pressure into the connective tissue web — releasing what no amount of stretching can reach." },
-  { t: "Somatic Bodywork", d: "Body-centered trauma release integrating breath, sensation, and awareness — where the physical and emotional meet." },
+  {
+    t: "Somatic Bodywork",
+    d: "Body-centered trauma release integrating breath, sensation, and awareness — where the physical and emotional meet.",
+    img: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80",
+  },
 ];
+
+const BODYWORK_HERO = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1400&q=80";
 
 const soundAndBreath = [
   { t: "Sound Healing", d: "Crystal and Himalayan bowls, gongs, and tuning forks — sacred frequencies that drop the body into theta restoration." },
@@ -155,12 +169,74 @@ function ServicesPage() {
         items={energyAndBody}
       />
 
-      <ServiceSection
-        title="Bodywork & Massage Therapy"
-        subtitle="The body remembers everything. These modalities help it finally let go."
-        intro="The nervous system cannot heal in a state of tension. Bodywork is often the first medicine — and sometimes the most profound. Sacred Journey offers a full spectrum of therapeutic and healing-focused bodywork, delivered by licensed therapists and specialized practitioners on staff and within our vetted network."
-        items={bodywork}
-      />
+      {/* Bodywork & Massage Therapy — with imagery */}
+      <section className="mt-32 md:mt-40">
+        <div className="overflow-hidden rounded-md border border-border">
+          <div className="relative h-[260px] w-full md:h-[400px]">
+            <img
+              src={BODYWORK_HERO}
+              alt="Hands resting on a back during massage therapy in warm, soft light"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div
+              className="absolute inset-0"
+              style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+            />
+          </div>
+        </div>
+
+        <div className="mx-auto mt-14 max-w-2xl text-center">
+          <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">
+            Bodywork & Massage Therapy
+          </h2>
+          <p className="mt-6 font-serif text-xl font-light italic leading-snug text-muted-foreground md:text-2xl">
+            The body remembers everything. These modalities help it finally let go.
+          </p>
+          <p className="mx-auto mt-8 max-w-2xl text-left text-sm font-light leading-relaxed text-muted-foreground md:text-base">
+            The nervous system cannot heal in a state of tension. Bodywork is often the first medicine — and sometimes the most profound. Sacred Journey offers a full spectrum of therapeutic and healing-focused bodywork, delivered by licensed therapists and specialized practitioners on staff and within our vetted network.
+          </p>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {bodywork.map((s, i) => (
+            <article
+              key={s.t}
+              className="overflow-hidden rounded-md border border-border"
+            >
+              {s.img && (
+                <div className="relative h-[200px] w-full md:h-[220px]">
+                  <img
+                    src={s.img}
+                    alt={s.t}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+                  />
+                </div>
+              )}
+              <div className="px-6 py-10 md:px-10 md:py-12">
+                <p className="font-serif text-sm font-light italic text-muted-foreground">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-4 font-serif text-2xl font-normal text-foreground md:text-3xl">
+                  {s.t}
+                </h3>
+                <p className="mt-5 max-w-md text-sm font-light leading-relaxed text-muted-foreground">
+                  {s.d}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p className="mx-auto mt-10 max-w-2xl text-center font-serif text-sm font-light italic leading-relaxed text-muted-foreground">
+          All sessions begin with a brief intake. Bodywork can be booked as a standalone session or integrated into your customized healing plan.
+        </p>
+      </section>
 
       <ServiceSection
         title="Sound, Breath & Stillness"
