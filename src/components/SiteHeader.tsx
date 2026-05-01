@@ -22,9 +22,15 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2 font-serif text-xl tracking-wide text-foreground">
-          <span className="inline-block h-2 w-2 rounded-full bg-primary" />
-          Sacred Journey
+        <Link to="/" className="flex items-center gap-3 text-foreground" aria-label="Sacred Journey home">
+          <img
+            src={logo}
+            alt="Sacred Journey"
+            width={40}
+            height={40}
+            className="h-10 w-10 object-contain"
+          />
+          <span className="font-serif text-xl tracking-wide">Sacred Journey</span>
         </Link>
         <nav className="hidden items-center gap-7 md:flex">
           {links.map((l) => (
