@@ -59,7 +59,6 @@ function ContactWilliamPage() {
     }
 
     setSubmitting(true);
-    // Simulated submit. Hook this up to your email/back-end when ready.
     await new Promise((r) => setTimeout(r, 600));
     setSubmitting(false);
     setSent(true);
@@ -71,71 +70,73 @@ function ContactWilliamPage() {
       title="Contact William Roberts"
       intro="Founder and healer at Sacred Journey. Share what's on your heart — questions about sacred journeys, private or group plant medicine ceremonies, or guidance on your path. William reads each message personally."
     >
-      <div className="grid gap-10 md:grid-cols-[1fr_1.4fr]">
-        <aside className="space-y-6">
-          <div className="rounded-2xl border border-primary/30 bg-[image:var(--gradient-sanctuary)] p-7 shadow-[var(--shadow-glow)]">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[image:var(--gradient-warm)] font-serif text-2xl text-primary-foreground">
-              WR
-            </div>
-            <h2 className="mt-5 font-serif text-2xl text-foreground">William Roberts</h2>
-            <p className="text-sm uppercase tracking-wider text-primary">Founder · Healer</p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              William holds Sacred Journey as a sanctuary of remembrance — guiding souls through ceremony, healing, and the thinning of the veil with reverence and care.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-border bg-card p-6 text-sm text-muted-foreground">
-            <p className="font-serif text-base text-foreground">What to expect</p>
-            <ul className="mt-3 space-y-2">
-              <li>• A personal reply within 1–3 days</li>
-              <li>• A preparation conversation before any ceremony</li>
-              <li>• Discernment, safety, and sovereignty held throughout</li>
-            </ul>
-          </div>
-        </aside>
+      <section className="mx-auto max-w-2xl border-y border-border py-16 text-center">
+        <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Founder · Healer</p>
+        <h2 className="mt-6 font-serif text-4xl font-light text-foreground md:text-5xl">William Roberts</h2>
+        <p className="mx-auto mt-8 max-w-xl text-sm font-light leading-relaxed text-muted-foreground md:text-base">
+          William holds Sacred Journey as a sanctuary of remembrance — guiding souls through ceremony, healing, and the slow work of becoming whole.
+        </p>
+      </section>
 
-        <form onSubmit={handleSubmit} className="rounded-2xl border border-border bg-card p-7">
+      <section className="mt-20 grid grid-cols-1 gap-12 md:grid-cols-3">
+        {[
+          { t: "Personal reply", d: "Within one to three days." },
+          { t: "Preparation", d: "A conversation before any ceremony." },
+          { t: "Sovereignty", d: "Discernment and safety held throughout." },
+        ].map((c, i) => (
+          <div key={c.t} className="text-center md:text-left">
+            <p className="font-serif text-sm font-light italic text-muted-foreground">{String(i + 1).padStart(2, "0")}</p>
+            <h3 className="mt-3 font-serif text-2xl font-normal text-foreground">{c.t}</h3>
+            <p className="mt-3 text-sm font-light leading-relaxed text-muted-foreground">{c.d}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mt-32 border-t border-border pt-16">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">Send a Message</h2>
+        </div>
+
+        <form onSubmit={handleSubmit} className="mx-auto mt-14 max-w-2xl">
           {sent ? (
-            <div className="rounded-xl border border-border bg-background p-8 text-center">
-              <p className="font-serif text-2xl text-foreground">Received with gratitude 🙏</p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Your message has reached William. He'll be in touch personally within 1–3 days.
+            <div className="border-y border-border py-16 text-center">
+              <p className="font-serif text-3xl font-light italic text-foreground">Received with gratitude.</p>
+              <p className="mx-auto mt-5 max-w-md text-sm font-light leading-relaxed text-muted-foreground">
+                Your message has reached William. He'll be in touch personally within one to three days.
               </p>
             </div>
           ) : (
-            <div className="space-y-5">
-              <div>
-                <h2 className="font-serif text-2xl text-foreground">Send William a message</h2>
-                <p className="mt-1 text-sm text-muted-foreground">All fields marked with an asterisk are required.</p>
-              </div>
-
-              <Field label="Your name *" name="name" error={errors.name} maxLength={100} />
-              <Field label="Email *" name="email" type="email" error={errors.email} maxLength={255} />
+            <div className="space-y-10">
+              <Field label="Your name" name="name" error={errors.name} maxLength={100} required />
+              <Field label="Email" name="email" type="email" error={errors.email} maxLength={255} required />
               <Field label="Phone (optional)" name="phone" type="tel" error={errors.phone} maxLength={40} />
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-foreground">I'm reaching out about *</label>
-                <div className="space-y-2">
+                <label className="mb-4 block text-[11px] font-light uppercase tracking-[0.22em] text-foreground/65">
+                  I'm reaching out about
+                </label>
+                <div className="space-y-3">
                   {interestOptions.map((opt, i) => (
-                    <label key={opt.value} className="flex cursor-pointer items-start gap-3 rounded-lg border border-input bg-background p-3 hover:border-primary/60">
+                    <label key={opt.value} className="flex cursor-pointer items-start gap-4 border border-border p-4 hover:border-foreground">
                       <input
                         type="radio"
                         name="interest"
                         value={opt.value}
                         defaultChecked={i === 0}
-                        className="mt-1 accent-[color:var(--primary)]"
+                        className="mt-1 accent-[color:var(--foreground)]"
                       />
                       <span>
-                        <span className="block text-sm font-medium text-foreground">{opt.label}</span>
-                        <span className="block text-xs text-muted-foreground">{opt.description}</span>
+                        <span className="block font-serif text-lg font-normal text-foreground">{opt.label}</span>
+                        <span className="mt-1 block text-sm font-light text-muted-foreground">{opt.description}</span>
                       </span>
                     </label>
                   ))}
                 </div>
-                {errors.interest && <p className="mt-1 text-xs text-destructive">{errors.interest}</p>}
+                {errors.interest && <p className="mt-2 text-xs font-light text-destructive">{errors.interest}</p>}
               </div>
 
               <div>
-                <label htmlFor="experience" className="mb-1.5 block text-sm font-medium text-foreground">
+                <label htmlFor="experience" className="mb-2 block text-[11px] font-light uppercase tracking-[0.22em] text-foreground/65">
                   Your experience with ceremony or healing work (optional)
                 </label>
                 <textarea
@@ -143,56 +144,63 @@ function ContactWilliamPage() {
                   name="experience"
                   rows={3}
                   maxLength={500}
-                  className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  className="w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm font-light text-foreground outline-none focus:border-foreground"
                 />
-                {errors.experience && <p className="mt-1 text-xs text-destructive">{errors.experience}</p>}
+                {errors.experience && <p className="mt-2 text-xs font-light text-destructive">{errors.experience}</p>}
               </div>
 
               <div>
-                <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-foreground">Your message *</label>
+                <label htmlFor="message" className="mb-2 block text-[11px] font-light uppercase tracking-[0.22em] text-foreground/65">
+                  Your message
+                </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={6}
                   maxLength={2000}
-                  className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  className="w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm font-light text-foreground outline-none focus:border-foreground"
                   placeholder="Share what's calling you, any questions, and what you're hoping for…"
                 />
-                {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
+                {errors.message && <p className="mt-2 text-xs font-light text-destructive">{errors.message}</p>}
               </div>
 
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:opacity-60"
-              >
-                {submitting ? "Sending…" : "Send to William"}
-              </button>
-              <p className="text-center text-xs text-muted-foreground">
-                Your words are held in confidence.
-              </p>
+              <div className="text-center">
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground disabled:opacity-40"
+                >
+                  {submitting ? "Sending…" : "Send to William"}
+                </button>
+                <p className="mt-5 text-xs font-light italic text-muted-foreground">
+                  Your words are held in confidence.
+                </p>
+              </div>
             </div>
           )}
         </form>
-      </div>
+      </section>
     </PageShell>
   );
 }
 
 function Field({
-  label, name, type = "text", error, maxLength,
-}: { label: string; name: string; type?: string; error?: string; maxLength?: number }) {
+  label, name, type = "text", error, maxLength, required,
+}: { label: string; name: string; type?: string; error?: string; maxLength?: number; required?: boolean }) {
   return (
     <div>
-      <label htmlFor={name} className="mb-1.5 block text-sm font-medium text-foreground">{label}</label>
+      <label htmlFor={name} className="mb-2 block text-[11px] font-light uppercase tracking-[0.22em] text-foreground/65">
+        {label}
+      </label>
       <input
         id={name}
         name={name}
         type={type}
         maxLength={maxLength}
-        className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+        required={required}
+        className="w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm font-light text-foreground outline-none focus:border-foreground"
       />
-      {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
+      {error && <p className="mt-2 text-xs font-light text-destructive">{error}</p>}
     </div>
   );
 }
