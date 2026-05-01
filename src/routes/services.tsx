@@ -37,11 +37,11 @@ const intake = {
   duration: "90–120 min",
 };
 
-const energyAndBody = [
-  { t: "Reiki & Energy Healing", d: "Hands-on Reiki and intuitive biofield work to clear, restore, and balance your energetic system at cellular and soul level." },
-  { t: "Rife Frequency Therapy", d: "Targeted frequency-based therapy for cellular healing — used in supportive protocols across a wide range of conditions." },
-  { t: "BioWell 2.0 Assessment", d: "Bioenergetic field reading that maps your chakras, organ energy, stress levels, and vitality — a baseline for your healing plan." },
-  { t: "Heart-Brain Coherence", d: "HeartMath-based and somatic practices to align heart and mind, reduce stress, and access higher states of awareness." },
+const energyAndBody: { t: string; d: string; img: string }[] = [
+  { t: "Reiki & Energy Healing", d: "Hands-on Reiki and intuitive biofield work to clear, restore, and balance your energetic system at cellular and soul level.", img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" },
+  { t: "Rife Frequency Therapy", d: "Targeted frequency-based therapy for cellular healing — used in supportive protocols across a wide range of conditions.", img: "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&q=80" },
+  { t: "BioWell 2.0 Assessment", d: "Bioenergetic field reading that maps your chakras, organ energy, stress levels, and vitality — a baseline for your healing plan.", img: "https://images.unsplash.com/photo-1518050227004-c4cb7104d79a?w=800&q=80" },
+  { t: "Heart-Brain Coherence", d: "HeartMath-based and somatic practices to align heart and mind, reduce stress, and access higher states of awareness.", img: "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80" },
 ];
 
 const bodywork: { t: string; d: string; img?: string }[] = [
