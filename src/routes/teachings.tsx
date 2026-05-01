@@ -953,6 +953,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=1600&q=70"
+            alt="Still water reflecting mountains — the wisdom of insecurity."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Alan Watts · The Wisdom of Insecurity</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
