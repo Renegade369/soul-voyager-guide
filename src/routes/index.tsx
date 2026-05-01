@@ -288,15 +288,18 @@ function Index() {
 
       {/* Closing CTA — deep indigo */}
       <section className="relative isolate overflow-hidden" style={{ backgroundColor: "#1C1B3A" }}>
-        <div className="mx-auto max-w-3xl px-6 py-12 text-center md:py-16">
+        <div className="mx-auto max-w-3xl px-6 text-center" style={{ paddingTop: "64px", paddingBottom: "64px" }}>
           <Reveal>
-            <h2 className="font-serif text-4xl font-light leading-tight md:text-5xl" style={{ color: "#F8F5F0" }}>
-              Step into the <em className="italic font-light" style={{ color: "#D4AF64" }}>sanctuary</em>.
+            <h2
+              className="font-serif leading-tight"
+              style={{ color: "#F8F5F0", fontWeight: 300, fontSize: "clamp(2.25rem, 5vw, 3rem)" }}
+            >
+              Step into the sanctuary.
             </h2>
             <p className="mx-auto mt-7 max-w-lg text-base font-light leading-relaxed" style={{ color: "rgba(248,245,240,0.7)" }}>
               Book a session, join a circle, or come and be quiet with us for an afternoon.
             </p>
-            <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link
                 to="/discovery"
                 className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
@@ -313,12 +316,6 @@ function Index() {
               </Link>
             </div>
           </Reveal>
-          <div
-            aria-hidden
-            className="pointer-events-none mx-auto mt-20 flex justify-center"
-          >
-            <VesicaBotanical size={280} color="#D4AF64" opacity={0.1} strokeWidth={0.5} />
-          </div>
         </div>
       </section>
     </div>
