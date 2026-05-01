@@ -1042,6 +1042,10 @@ function TeachingsPage() {
 
       <section className="mt-16">
         <div className="rounded-3xl border border-border bg-foreground p-10 md:p-14">
+          <TeachingImage
+            src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?auto=format&fit=crop&w=1600&q=70"
+            alt="Sunrise and dusk together — morning becoming, evening releasing."
+          />
           <p className="text-xs uppercase tracking-[0.4em] text-background/80">Two Doors, One Room</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Dispenza & Watts — The Daily Pairing</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
