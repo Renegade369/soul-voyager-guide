@@ -45,6 +45,7 @@ const services = [
   { n: "02", t: "Equine & Nature", d: "Horse-assisted sessions and forest walks for nervous-system regulation and remembrance." },
   { n: "03", t: "Ceremony & Circle", d: "Cacao, breathwork, and seasonal gatherings to mark thresholds and tend the soul." },
   { n: "04", t: "Teachings & Study", d: "Slow study circles in consciousness, plant wisdom, and embodied practice." },
+  { n: "05", t: "Kava Ceremony & Circle", d: "Ancient Pacific tradition — kava is shared in sacred circle as a gentle, grounding plant medicine. Promotes deep relaxation, open heart, and community connection. Held with intention, prayer, and presence." },
 ];
 
 function Index() {
