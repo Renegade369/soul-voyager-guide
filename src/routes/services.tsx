@@ -110,6 +110,59 @@ function ServicesPage() {
         {spiritAndSoul.map((s) => <Card key={s.t} {...s} />)}
       </Section>
 
+      {/* Nature & Animal Medicine — dedicated deep-dive section */}
+      <section className="mt-20">
+        <div className="text-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ The Original Medicine ✦</p>
+          <h2 className="mt-3 font-serif text-4xl text-foreground md:text-5xl">Nature & Animal Healing</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            Before there were therapists, temples, or pharmacies, there were forests, oceans, and the steady heartbeat of animals beside us. Nature and the animal kingdom were our first healers — and they remain the most accessible, intelligent medicine on Earth.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <article className="rounded-2xl border border-primary/30 bg-[image:var(--gradient-sanctuary)] p-7">
+            <h3 className="font-serif text-2xl text-foreground">How Nature Heals</h3>
+            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <li><strong className="text-foreground">Grounding (earthing).</strong> Direct contact with the earth — bare feet on soil, sand, or grass — discharges built-up static, lowers inflammation, and synchronizes the body to the planet's natural pulse (the Schumann resonance, ~7.83 Hz).</li>
+              <li><strong className="text-foreground">Forest medicine.</strong> Trees release phytoncides — airborne compounds that lower cortisol and blood pressure while raising natural killer cell activity in the immune system.</li>
+              <li><strong className="text-foreground">Ocean & water.</strong> Negative ions near moving water (waves, rivers, waterfalls) lift mood, sharpen focus, and reset the nervous system. Saltwater itself is one of the oldest known anti-inflammatories.</li>
+              <li><strong className="text-foreground">Sunlight.</strong> Morning sun on bare skin and eyes regulates circadian rhythm, melatonin, vitamin D, mood, and metabolic health.</li>
+              <li><strong className="text-foreground">Awe & vastness.</strong> Time spent under big sky, old trees, or open ocean shrinks the ego, dissolves rumination, and reawakens reverence — a documented antidepressant effect.</li>
+            </ul>
+          </article>
+
+          <article className="rounded-2xl border border-primary/30 bg-[image:var(--gradient-sanctuary)] p-7">
+            <h3 className="font-serif text-2xl text-foreground">How Animals Heal</h3>
+            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <li><strong className="text-foreground">Co-regulation.</strong> Animals regulate their own nervous systems faster than ours — and when we are near them, our heart rhythm, breath, and brainwaves entrain to theirs. The body remembers safety.</li>
+              <li><strong className="text-foreground">Unconditional presence.</strong> Animals do not judge, perform, or hold grudges. They meet us exactly as we are — a depth of acceptance many humans have never known.</li>
+              <li><strong className="text-foreground">Touch & oxytocin.</strong> Petting, holding, and being beside an animal releases oxytocin in both creatures, lowers cortisol, and reduces blood pressure and heart rate.</li>
+              <li><strong className="text-foreground">Mirror medicine.</strong> Horses, cats, and dogs reflect what we are unconsciously carrying. Their reactions show us what is true beneath our story — a form of biofeedback no machine can match.</li>
+              <li><strong className="text-foreground">Soul companionship.</strong> Animals are luminous beings with their own intelligence and purpose. They choose us. Many recovering souls credit an animal with keeping them alive.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {[
+            { t: "Equine-Assisted Healing", d: "Held sessions with horses on the land. Horses are master mirrors of the human heart — they show you, without words, where you are armored, where you are open, and where presence is asking to return. No riding required; the medicine lives in the relationship." },
+            { t: "Horse Reiki", d: "Energy work offered with and through the horses — a sacred triangulation of practitioner, animal, and seeker. Profound for trauma, grief, and reawakening trust." },
+            { t: "Forest & Land Immersion", d: "Guided 'forest bathing'-style walks on the sanctuary grounds. Slow, sensory, prayerful — relearning how to listen to the trees, the wind, and your own footsteps." },
+            { t: "Earthing & Grounding Sessions", d: "Barefoot practice on earth, often combined with breathwork and coherence training. A simple, free medicine most modern bodies are starving for." },
+            { t: "Ocean & Water Ceremony", d: "South Florida-based saltwater ceremonies — ocean immersion, prayer, and integration. The sea remembers everything; she is one of our oldest healers." },
+            { t: "Animal Companionship Integration", d: "Guidance for those whose path includes adopting, working with, or grieving an animal companion — honoring the bond as part of the healing journey." },
+          ].map((s) => <Card key={s.t} {...s} />)}
+        </div>
+
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border bg-card p-7 text-center">
+          <p className="font-serif text-lg text-foreground">A note from William</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            Two Siamese cats — Spirit and Mia — have been some of my greatest teachers. Animals have walked with me through the darkest passages of my life. The Sacred Journey property is being built around this truth: land, horses, and animals are not amenities. They are the medicine.
+          </p>
+        </div>
+      </section>
+
       <section className="mt-20">
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">✦ Sacred Medicine ✦</p>
