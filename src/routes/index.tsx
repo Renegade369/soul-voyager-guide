@@ -65,7 +65,7 @@ function Index() {
           <FlowerOfLife size={520} color="#2C2B29" opacity={0.07} strokeWidth={0.5} />
         </div>
 
-        <div className="relative mx-auto max-w-4xl px-6 py-32 text-center md:py-44">
+        <div className="relative mx-auto max-w-4xl px-6 py-16 text-center md:py-20">
           <p className="text-[11px] font-light uppercase tracking-[0.32em] text-foreground/65">
             A Sanctuary of Remembrance
           </p>
@@ -95,7 +95,7 @@ function Index() {
       </section>
 
       {/* Statement */}
-      <section className="mx-auto max-w-3xl px-6 py-32 text-center md:py-40">
+      <section className="mx-auto max-w-3xl px-6 py-12 text-center md:py-16">
         <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Our Intention</p>
         <h2 className="mt-8 font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
           A place to slow down,
@@ -107,17 +107,17 @@ function Index() {
       <GeometricDivider variant={0} />
 
       {/* Three pillars — sacred geometry icons + corner watermark */}
-      <section className="mx-auto max-w-6xl px-6 py-28 md:py-36">
-        <div className="grid gap-10 md:grid-cols-3 md:gap-8">
-          {pillars.map(({ Icon, t, d }) => (
+      <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-8">
+          {pillars.map(({ Icon, t, d }, i) => (
             <article
               key={t}
-              className="relative overflow-hidden border border-border bg-card p-8 text-center md:p-10 md:text-left"
+              className="relative overflow-hidden border border-border bg-card p-8 text-center md:p-10"
             >
-              <Icon size={36} color="#2C2B29" opacity={0.95} strokeWidth={0.7} className="mx-auto md:mx-0" />
+              <Icon size={36} color="#2C2B29" opacity={0.95} strokeWidth={0.7} className="mx-auto" />
               <h3 className="mt-7 font-serif text-2xl font-normal text-foreground">{t}</h3>
               <p className="mt-4 text-sm font-light leading-relaxed text-muted-foreground">{d}</p>
-              <CardWatermark variant={pillars.indexOf(pillars.find((p) => p.t === t)!) as 0 | 1 | 2} />
+              <CardWatermark variant={i as 0 | 1 | 2} />
             </article>
           ))}
         </div>
@@ -126,8 +126,8 @@ function Index() {
       <GeometricDivider variant={1} />
 
       {/* Services — 2×2 numbered grid with corner brackets */}
-      <section className="mx-auto max-w-6xl px-6 py-28 md:py-36">
-        <div className="mx-auto mb-20 max-w-2xl text-center">
+      <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
+        <div className="mx-auto mb-10 max-w-2xl text-center md:mb-12">
           <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Offerings</p>
           <h2 className="mt-6 font-serif text-4xl font-light text-foreground md:text-5xl">
             What we hold.
@@ -165,7 +165,7 @@ function Index() {
       <GeometricDivider variant={2} />
 
       {/* Full-width dark quote block — large mandala watermark in cream */}
-      <section className="relative isolate overflow-hidden bg-foreground py-32 md:py-44">
+      <section className="relative isolate overflow-hidden bg-foreground py-16 md:py-20">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -185,7 +185,7 @@ function Index() {
 
       {/* Closing CTA — vesica botanical at the bottom */}
       <section className="relative isolate overflow-hidden">
-        <div className="mx-auto max-w-3xl px-6 py-32 text-center md:py-40">
+        <div className="mx-auto max-w-3xl px-6 py-12 text-center md:py-16">
           <h2 className="font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
             Step into the sanctuary.
           </h2>
