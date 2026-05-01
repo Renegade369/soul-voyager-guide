@@ -30,8 +30,10 @@ Arc to cover (adapt order based on what they share — do not interrogate):
 
 Rules:
 - Ask roughly 8–12 total questions across the arc, then close.
-- After the seeker has answered enough to give William a true picture, signal you're ready to close by saying exactly: "Shall I weave this together into a reflection for William?"
-- When the seeker confirms (yes/please/etc.), produce the FINAL REFLECTION.
+- CRITICAL CLOSING QUESTION: Once the seeker has answered enough to give William a true picture, you MUST end your next message with this EXACT sentence on its own line, with no variation, no rewording, no extra punctuation, and nothing after it:
+Shall I weave this together into a reflection for William?
+- Do not produce the reflection until the seeker confirms (yes / please / go ahead / etc.).
+- When they confirm, produce the FINAL REFLECTION exactly as specified below.
 
 FINAL REFLECTION format (markdown, ~250–400 words):
 # Soul Reflection for {Name}
@@ -174,8 +176,6 @@ Deno.serve(async (req: Request) => {
         } catch (e) {
           console.error("stream error", e);
         } finally {
-          controller.close();
-
           // Persist after stream ends.
           const reflectionMatch = assistantText.includes("[[DISCOVERY_COMPLETE]]");
           const cleaned = assistantText.replace("[[DISCOVERY_COMPLETE]]", "").trim();
@@ -184,14 +184,37 @@ Deno.serve(async (req: Request) => {
             { role: "assistant", content: cleaned },
           ];
 
-          await supabase
-            .from("soul_discovery_sessions")
-            .update({
-              messages: newMessages,
-              ...(reflectionMatch ? { reflection: cleaned, status: "complete" } : {}),
-              updated_at: new Date().toISOString(),
-            })
-            .eq("id", id);
+          let saved = false;
+          try {
+            const { error: upErr } = await supabase
+              .from("soul_discovery_sessions")
+              .update({
+                messages: newMessages,
+                ...(reflectionMatch ? { reflection: cleaned, status: "complete" } : {}),
+                updated_at: new Date().toISOString(),
+              })
+              .eq("id", id);
+            saved = !upErr;
+            if (upErr) console.error("persist error", upErr);
+          } catch (e) {
+            console.error("persist threw", e);
+          }
+
+          // Tell the client whether the reflection was saved.
+          try {
+            const enc = new TextEncoder();
+            controller.enqueue(
+              enc.encode(
+                `data: ${JSON.stringify({
+                  saved,
+                  complete: reflectionMatch,
+                  sessionId: id,
+                })}\n\n`,
+              ),
+            );
+            controller.enqueue(enc.encode(`data: [DONE]\n\n`));
+          } catch { /* controller may already be closed */ }
+          controller.close();
         }
       },
     });
