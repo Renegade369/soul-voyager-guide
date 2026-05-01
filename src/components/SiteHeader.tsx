@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { CartDrawer } from "./CartDrawer";
 
 const links = [
   { to: "/", label: "Home" },
@@ -10,6 +11,7 @@ const links = [
   { to: "/events", label: "Events" },
   { to: "/practitioners", label: "Practitioners" },
   { to: "/health", label: "Health" },
+  { to: "/shop", label: "Shop" },
   { to: "/discovery", label: "Discovery" },
   { to: "/visit", label: "Visit" },
 ] as const;
@@ -36,13 +38,16 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <button
-          aria-label="Toggle menu"
-          className="md:hidden text-foreground"
-          onClick={() => setOpen((s) => !s)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-3">
+          <CartDrawer />
+          <button
+            aria-label="Toggle menu"
+            className="md:hidden text-foreground"
+            onClick={() => setOpen((s) => !s)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
       {open && (
         <div className="border-t border-border/60 bg-background md:hidden">

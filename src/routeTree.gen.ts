@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisitRouteImport } from './routes/visit'
 import { Route as TeachingsRouteImport } from './routes/teachings'
+import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
@@ -20,6 +21,7 @@ import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as ContactWilliamRouteImport } from './routes/contact-william'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 
 const VisitRoute = VisitRouteImport.update({
   id: '/visit',
@@ -29,6 +31,11 @@ const VisitRoute = VisitRouteImport.update({
 const TeachingsRoute = TeachingsRouteImport.update({
   id: '/teachings',
   path: '/teachings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -76,6 +83,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductHandleRoute = ProductHandleRouteImport.update({
+  id: '/product/$handle',
+  path: '/product/$handle',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -87,8 +99,10 @@ export interface FileRoutesByFullPath {
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/services': typeof ServicesRoute
+  '/shop': typeof ShopRoute
   '/teachings': typeof TeachingsRoute
   '/visit': typeof VisitRoute
+  '/product/$handle': typeof ProductHandleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -100,8 +114,10 @@ export interface FileRoutesByTo {
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/services': typeof ServicesRoute
+  '/shop': typeof ShopRoute
   '/teachings': typeof TeachingsRoute
   '/visit': typeof VisitRoute
+  '/product/$handle': typeof ProductHandleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -114,8 +130,10 @@ export interface FileRoutesById {
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/services': typeof ServicesRoute
+  '/shop': typeof ShopRoute
   '/teachings': typeof TeachingsRoute
   '/visit': typeof VisitRoute
+  '/product/$handle': typeof ProductHandleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -129,8 +147,10 @@ export interface FileRouteTypes {
     | '/nature-booking'
     | '/practitioners'
     | '/services'
+    | '/shop'
     | '/teachings'
     | '/visit'
+    | '/product/$handle'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -142,8 +162,10 @@ export interface FileRouteTypes {
     | '/nature-booking'
     | '/practitioners'
     | '/services'
+    | '/shop'
     | '/teachings'
     | '/visit'
+    | '/product/$handle'
   id:
     | '__root__'
     | '/'
@@ -155,8 +177,10 @@ export interface FileRouteTypes {
     | '/nature-booking'
     | '/practitioners'
     | '/services'
+    | '/shop'
     | '/teachings'
     | '/visit'
+    | '/product/$handle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -169,8 +193,10 @@ export interface RootRouteChildren {
   NatureBookingRoute: typeof NatureBookingRoute
   PractitionersRoute: typeof PractitionersRoute
   ServicesRoute: typeof ServicesRoute
+  ShopRoute: typeof ShopRoute
   TeachingsRoute: typeof TeachingsRoute
   VisitRoute: typeof VisitRoute
+  ProductHandleRoute: typeof ProductHandleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -187,6 +213,13 @@ declare module '@tanstack/react-router' {
       path: '/teachings'
       fullPath: '/teachings'
       preLoaderRoute: typeof TeachingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -252,6 +285,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product/$handle': {
+      id: '/product/$handle'
+      path: '/product/$handle'
+      fullPath: '/product/$handle'
+      preLoaderRoute: typeof ProductHandleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -265,18 +305,11 @@ const rootRouteChildren: RootRouteChildren = {
   NatureBookingRoute: NatureBookingRoute,
   PractitionersRoute: PractitionersRoute,
   ServicesRoute: ServicesRoute,
+  ShopRoute: ShopRoute,
   TeachingsRoute: TeachingsRoute,
   VisitRoute: VisitRoute,
+  ProductHandleRoute: ProductHandleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
