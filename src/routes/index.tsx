@@ -170,7 +170,8 @@ function Index() {
                 Learn more
               </Link>
             </article>
-          ))}
+            );
+          })}
         </div>
       </section>
 
