@@ -9,6 +9,35 @@ export const Route = createFileRoute("/teachings")({
   component: TeachingsPage,
 });
 
+// Atmospheric header image used at the top of each featured teaching section.
+// Matches the card-image style used on /services: 200px tall, subtle cream overlay,
+// lazy-loaded, no rounding (per design system).
+function TeachingImage({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="relative mb-8 h-[220px] w-full overflow-hidden md:h-[260px]">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-16"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(248,245,240,0) 0%, rgba(248,245,240,0.6) 100%)",
+        }}
+      />
+    </div>
+  );
+}
+
 const categories = [
   {
     t: "The 3D World",
