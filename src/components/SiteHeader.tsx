@@ -38,13 +38,16 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <button
-          aria-label="Toggle menu"
-          className="md:hidden text-foreground"
-          onClick={() => setOpen((s) => !s)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-3">
+          <CartDrawer />
+          <button
+            aria-label="Toggle menu"
+            className="md:hidden text-foreground"
+            onClick={() => setOpen((s) => !s)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
       {open && (
         <div className="border-t border-border/60 bg-background md:hidden">
