@@ -30,6 +30,7 @@ function DiscoveryPage() {
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
   const [complete, setComplete] = useState(false);
+  const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
