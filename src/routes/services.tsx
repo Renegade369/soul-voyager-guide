@@ -66,6 +66,8 @@ const spiritAndSoul = [
 const plantMedicine = [
   { t: "Private Ceremony", d: "An intimate, one-on-one ceremony held with deep reverence — tailored to your intention, lineage, and readiness. Preparation and integration included." },
   { t: "Group Ceremony", d: "A held container of fellow seekers gathering in sacred circle. Songs, prayer, and skilled facilitation guide the journey from opening to closing of the space." },
+  { t: "Cacao & Breathwork Circle", d: "Ceremonial cacao paired with guided breathwork — a heart-opening, gently expansive container for prayer, song, and inner inquiry." },
+  { t: "Kava Ceremony & Circle", d: "An ancient Pacific tradition. Kava — the sacred root of Polynesia — is shared in circle as a grounding, heart-opening plant medicine. Held with prayer, presence, and the same reverence as all medicines at Sacred Journey. Participants can expect a slow, quiet ceremony: a brief teaching on kava's lineage and protocol, the shared cup passed in turn, then a held space for stillness, soft conversation, and communion. Kava brings deep relaxation to the body, clarity to the mind, and a softening of the heart that opens the way for honest fellowship." },
   { t: "Preparation & Integration", d: "The medicine begins before the ceremony and continues long after. Dedicated 1:1 work to prepare your container and integrate what arrives." },
 ];
 
