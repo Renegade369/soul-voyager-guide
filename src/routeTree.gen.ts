@@ -15,6 +15,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as ContactWilliamRouteImport } from './routes/contact-william'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -49,6 +50,11 @@ const EventsRoute = EventsRouteImport.update({
   path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DiscoveryRoute = DiscoveryRouteImport.update({
+  id: '/discovery',
+  path: '/discovery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactWilliamRoute = ContactWilliamRouteImport.update({
   id: '/contact-william',
   path: '/contact-william',
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact-william': typeof ContactWilliamRoute
+  '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
   '/health': typeof HealthRoute
   '/practitioners': typeof PractitionersRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact-william': typeof ContactWilliamRoute
+  '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
   '/health': typeof HealthRoute
   '/practitioners': typeof PractitionersRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact-william': typeof ContactWilliamRoute
+  '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
   '/health': typeof HealthRoute
   '/practitioners': typeof PractitionersRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact-william'
+    | '/discovery'
     | '/events'
     | '/health'
     | '/practitioners'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact-william'
+    | '/discovery'
     | '/events'
     | '/health'
     | '/practitioners'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact-william'
+    | '/discovery'
     | '/events'
     | '/health'
     | '/practitioners'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactWilliamRoute: typeof ContactWilliamRoute
+  DiscoveryRoute: typeof DiscoveryRoute
   EventsRoute: typeof EventsRoute
   HealthRoute: typeof HealthRoute
   PractitionersRoute: typeof PractitionersRoute
@@ -191,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/discovery': {
+      id: '/discovery'
+      path: '/discovery'
+      fullPath: '/discovery'
+      preLoaderRoute: typeof DiscoveryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact-william': {
       id: '/contact-william'
       path: '/contact-william'
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactWilliamRoute: ContactWilliamRoute,
+  DiscoveryRoute: DiscoveryRoute,
   EventsRoute: EventsRoute,
   HealthRoute: HealthRoute,
   PractitionersRoute: PractitionersRoute,
@@ -229,12 +250,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
