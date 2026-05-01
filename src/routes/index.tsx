@@ -95,7 +95,7 @@ function Index() {
 
       {/* Statement */}
       <section className="mx-auto max-w-3xl px-6 py-12 text-center md:py-16">
-        <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Our Intention</p>
+        <p className="text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "#D4AF64" }}>Our Intention</p>
         <h2 className="mt-8 font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
           A place to slow down,
           <br />
@@ -105,16 +105,22 @@ function Index() {
 
       <GeometricDivider variant={0} />
 
-      {/* Three pillars — sacred geometry icons + corner watermark */}
+      {/* Three pillars — gold accent bar above title */}
       <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-8">
           {pillars.map(({ Icon, t, d }, i) => (
             <article
               key={t}
-              className="relative overflow-hidden border border-border bg-card p-8 text-center md:p-10"
+              className="relative overflow-hidden border border-border p-8 text-center md:p-10"
+              style={{ backgroundColor: "#F8F5F0" }}
             >
-              <Icon size={36} color="#2C2B29" opacity={0.95} strokeWidth={0.7} className="mx-auto" />
-              <h3 className="mt-7 font-serif text-2xl font-normal text-foreground">{t}</h3>
+              <Icon size={36} color="#1C1B3A" opacity={0.95} strokeWidth={0.7} className="mx-auto" />
+              <div
+                aria-hidden
+                className="mx-auto mt-6"
+                style={{ width: "3px", height: "32px", backgroundColor: "#D4AF64" }}
+              />
+              <h3 className="mt-4 font-serif text-2xl font-normal text-foreground">{t}</h3>
               <p className="mt-4 text-sm font-light leading-relaxed text-muted-foreground">{d}</p>
               <CardWatermark variant={i as 0 | 1 | 2} />
             </article>
@@ -127,7 +133,7 @@ function Index() {
       {/* Services — 2×2 numbered grid with corner brackets */}
       <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <div className="mx-auto mb-10 max-w-2xl text-center md:mb-12">
-          <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Offerings</p>
+          <p className="text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "#D4AF64" }}>Offerings</p>
           <h2 className="mt-6 font-serif text-4xl font-light text-foreground md:text-5xl">
             What we hold.
           </h2>
@@ -145,14 +151,15 @@ function Index() {
               ].join(" ")}
             >
               <ServiceCornerBracket variant={i} />
-              <p className="font-serif text-sm font-light italic text-muted-foreground">{s.n}</p>
+              <p className="font-serif text-sm font-light italic" style={{ color: "#D4AF64" }}>{s.n}</p>
               <h3 className="mt-4 font-serif text-3xl font-normal text-foreground">{s.t}</h3>
               <p className="mt-5 max-w-sm text-sm font-light leading-relaxed text-muted-foreground">
                 {s.d}
               </p>
               <Link
                 to="/services"
-                className="mt-7 inline-block text-[11px] font-normal uppercase tracking-[0.22em] text-foreground underline-offset-4 hover:underline"
+                className="mt-7 inline-block text-[11px] font-normal uppercase tracking-[0.22em] underline-offset-4 hover:underline"
+                style={{ color: "#2D5A3D" }}
               >
                 Learn more
               </Link>
@@ -163,44 +170,46 @@ function Index() {
 
       <GeometricDivider variant={2} />
 
-      {/* Full-width dark quote block — large mandala watermark in cream */}
-      <section className="relative isolate overflow-hidden bg-foreground py-16 md:py-20">
+      {/* Forest-green quote block */}
+      <section className="relative isolate overflow-hidden py-16 md:py-20" style={{ backgroundColor: "#2D5A3D" }}>
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          <FlowerOfLife size={400} color="#F8F5F0" opacity={0.06} strokeWidth={0.5} />
+          <FlowerOfLife size={400} color="#D4AF64" opacity={0.1} strokeWidth={0.5} />
         </div>
         <div className="relative mx-auto max-w-3xl px-6 text-center">
-          <p className="font-serif text-3xl font-light italic leading-snug text-background md:text-5xl">
+          <p className="font-serif text-3xl font-light italic leading-snug md:text-5xl" style={{ color: "#F8F5F0" }}>
             “Healing is not a return to who you were.
             It is a slow remembering of who you have always been.”
           </p>
-          <p className="mt-10 text-[11px] font-light uppercase tracking-[0.28em] text-background/60">
+          <p className="mt-10 text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "rgba(212,175,100,0.7)" }}>
             A Founding Principle
           </p>
         </div>
       </section>
 
-      {/* Closing CTA — vesica botanical at the bottom */}
-      <section className="relative isolate overflow-hidden">
+      {/* Closing CTA — deep indigo */}
+      <section className="relative isolate overflow-hidden" style={{ backgroundColor: "#1C1B3A" }}>
         <div className="mx-auto max-w-3xl px-6 py-12 text-center md:py-16">
-          <h2 className="font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
-            Step into the sanctuary.
+          <h2 className="font-serif text-4xl font-light leading-tight md:text-5xl" style={{ color: "#F8F5F0" }}>
+            Step into the <em className="italic font-light" style={{ color: "#D4AF64" }}>sanctuary</em>.
           </h2>
-          <p className="mx-auto mt-7 max-w-lg text-base font-light leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-7 max-w-lg text-base font-light leading-relaxed" style={{ color: "rgba(248,245,240,0.7)" }}>
             Book a session, join a circle, or come and be quiet with us for an afternoon.
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-4">
             <Link
               to="/discovery"
-              className="border border-foreground bg-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground"
+              className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
+              style={{ backgroundColor: "#D4AF64", color: "#1C1B3A", border: "1px solid #D4AF64" }}
             >
               Begin Here
             </Link>
             <Link
               to="/visit"
-              className="border border-foreground px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] text-foreground transition hover:bg-foreground hover:text-background"
+              className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
+              style={{ color: "#F8F5F0", border: "1px solid rgba(248,245,240,0.5)" }}
             >
               Plan Your Visit
             </Link>
@@ -209,7 +218,7 @@ function Index() {
             aria-hidden
             className="pointer-events-none mx-auto mt-20 flex justify-center"
           >
-            <VesicaBotanical size={280} color="#2C2B29" opacity={0.07} strokeWidth={0.5} />
+            <VesicaBotanical size={280} color="#D4AF64" opacity={0.1} strokeWidth={0.5} />
           </div>
         </div>
       </section>
