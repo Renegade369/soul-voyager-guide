@@ -13,7 +13,7 @@ import {
   VesicaBotanical,
 } from "../components/SacredGeometry";
 
-type IconCmp = (p: { size?: number; color?: string; opacity?: number; strokeWidth?: number; className?: string }) => JSX.Element;
+type IconCmp = (p: { size?: number; color?: string; opacity?: number; strokeWidth?: number; className?: string }) => React.ReactElement;
 
 function SectionIcon({ Icon }: { Icon: IconCmp }) {
   return (
