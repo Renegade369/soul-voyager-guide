@@ -44,52 +44,40 @@ const energyAndBody: { t: string; d: string; img: string }[] = [
   { t: "Heart-Brain Coherence", d: "HeartMath-based and somatic practices to align heart and mind, reduce stress, and access higher states of awareness.", img: "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80" },
 ];
 
-const bodywork: { t: string; d: string; img?: string }[] = [
-  { t: "Swedish Massage", d: "Foundational relaxation, circulation, and nervous system reset." },
-  { t: "Deep Tissue", d: "Targeted work on chronic tension, adhesions, and structural holding patterns." },
-  {
-    t: "Hot Stone Therapy",
-    d: "Heat as medicine — melting deep layers, calming the nervous system at root level.",
-    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80",
-  },
-  {
-    t: "Craniosacral Therapy",
-    d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — powerful for trauma, migraines, and nervous system dysregulation.",
-    img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80",
-  },
-  { t: "Lymphatic Drainage", d: "Gentle, precise strokes to move lymph, reduce inflammation, and support immune function." },
-  { t: "Myofascial Release", d: "Sustained pressure into the connective tissue web — releasing what no amount of stretching can reach." },
-  {
-    t: "Somatic Bodywork",
-    d: "Body-centered trauma release integrating breath, sensation, and awareness — where the physical and emotional meet.",
-    img: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80",
-  },
+const bodywork: { t: string; d: string; img: string }[] = [
+  { t: "Swedish Massage", d: "Foundational relaxation, circulation, and nervous system reset.", img: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80" },
+  { t: "Deep Tissue", d: "Targeted work on chronic tension, adhesions, and structural holding patterns.", img: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80" },
+  { t: "Hot Stone Therapy", d: "Heat as medicine — melting deep layers, calming the nervous system at root level.", img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80" },
+  { t: "Craniosacral Therapy", d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — powerful for trauma, migraines, and nervous system dysregulation.", img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" },
+  { t: "Lymphatic Drainage", d: "Gentle, precise strokes to move lymph, reduce inflammation, and support immune function.", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" },
+  { t: "Myofascial Release", d: "Sustained pressure into the connective tissue web — releasing what no amount of stretching can reach.", img: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80" },
+  { t: "Somatic Bodywork", d: "Body-centered trauma release integrating breath, sensation, and awareness — where the physical and emotional meet.", img: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80" },
 ];
 
 const BODYWORK_HERO = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1400&q=80";
 
-const soundAndBreath = [
-  { t: "Sound Healing", d: "Crystal and Himalayan bowls, gongs, and tuning forks — sacred frequencies that drop the body into theta restoration." },
-  { t: "Breathwork Journeys", d: "Transformational breathwork — Holotropic-style, Wim Hof, and pranayama traditions — for release and expanded states." },
-  { t: "Guided Meditation", d: "Individual, group, and recorded sessions — adaptive practices for nervous-system regulation and inner stillness." },
-  { t: "Trauma-Informed Yoga", d: "Individual and small group sessions oriented toward spiritual embodiment and somatic safety." },
+const soundAndBreath: { t: string; d: string; img: string }[] = [
+  { t: "Sound Healing", d: "Crystal and Himalayan bowls, gongs, and tuning forks — sacred frequencies that drop the body into theta restoration.", img: "https://images.unsplash.com/photo-1591291621164-2c6367723315?w=800&q=80" },
+  { t: "Breathwork Journeys", d: "Transformational breathwork — Holotropic-style, Wim Hof, and pranayama traditions — for release and expanded states.", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=800&q=80" },
+  { t: "Guided Meditation", d: "Individual, group, and recorded sessions — adaptive practices for nervous-system regulation and inner stillness.", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80" },
+  { t: "Trauma-Informed Yoga", d: "Individual and small group sessions oriented toward spiritual embodiment and somatic safety.", img: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&q=80" },
 ];
 
-const spiritAndSoul = [
-  { t: "Spiritual Mentorship", d: "One-on-one guidance with William for awakening, integration, and walking the path with someone who has walked it." },
-  { t: "Soul Purpose Discovery", d: "Guided 1:1 and group work to reconnect with your soul's calling, identify your gifts, and find clarity on why you are here." },
-  { t: "Mediumship & Intuitive Readings", d: "Connection with vetted, gifted channels and medical intuitives in our practitioner network." },
-  { t: "Equine-Assisted Healing", d: "Held sessions with horses on the land — nervous system, presence, and heart awakening through the animal kingdom." },
-  { t: "Nature Immersion", d: "Held experiences on the land — grounding, plant communion, and the simple medicine of being outside." },
-  { t: "Holistic Recovery", d: "Lived-experience guidance combining inner work, community, and physical and energetic restoration." },
+const spiritAndSoul: { t: string; d: string; img: string }[] = [
+  { t: "Spiritual Mentorship", d: "One-on-one guidance with William for awakening, integration, and walking the path with someone who has walked it.", img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=80" },
+  { t: "Soul Purpose Discovery", d: "Guided 1:1 and group work to reconnect with your soul's calling, identify your gifts, and find clarity on why you are here.", img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=80" },
+  { t: "Mediumship & Intuitive Readings", d: "Connection with vetted, gifted channels and medical intuitives in our practitioner network.", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" },
+  { t: "Equine-Assisted Healing", d: "Held sessions with horses on the land — nervous system, presence, and heart awakening through the animal kingdom.", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80" },
+  { t: "Nature Immersion", d: "Held experiences on the land — grounding, plant communion, and the simple medicine of being outside.", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" },
+  { t: "Holistic Recovery", d: "Lived-experience guidance combining inner work, community, and physical and energetic restoration.", img: "https://images.unsplash.com/photo-1476611317561-60117649dd94?w=800&q=80" },
 ];
 
-const plantMedicine = [
-  { t: "Private Ceremony", d: "An intimate, one-on-one ceremony held with deep reverence — tailored to your intention, lineage, and readiness. Preparation and integration included." },
-  { t: "Group Ceremony", d: "A held container of fellow seekers gathering in sacred circle. Songs, prayer, and skilled facilitation guide the journey from opening to closing of the space." },
-  { t: "Cacao & Breathwork Circle", d: "Ceremonial cacao paired with guided breathwork — a heart-opening, gently expansive container for prayer, song, and inner inquiry." },
-  { t: "Kava Ceremony & Circle", d: "An ancient Pacific tradition. Kava — the sacred root of Polynesia — is shared in circle as a grounding, heart-opening plant medicine. Held with prayer, presence, and the same reverence as all medicines at Sacred Journey. Participants can expect a slow, quiet ceremony: a brief teaching on kava's lineage and protocol, the shared cup passed in turn, then a held space for stillness, soft conversation, and communion. Kava brings deep relaxation to the body, clarity to the mind, and a softening of the heart that opens the way for honest fellowship." },
-  { t: "Preparation & Integration", d: "The medicine begins before the ceremony and continues long after. Dedicated 1:1 work to prepare your container and integrate what arrives." },
+const plantMedicine: { t: string; d: string; img: string }[] = [
+  { t: "Private Ceremony", d: "An intimate, one-on-one ceremony held with deep reverence — tailored to your intention, lineage, and readiness. Preparation and integration included.", img: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=800&q=80" },
+  { t: "Group Ceremony", d: "A held container of fellow seekers gathering in sacred circle. Songs, prayer, and skilled facilitation guide the journey from opening to closing of the space.", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80" },
+  { t: "Cacao & Breathwork Circle", d: "Ceremonial cacao paired with guided breathwork — a heart-opening, gently expansive container for prayer, song, and inner inquiry.", img: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=800&q=80" },
+  { t: "Kava Ceremony & Circle", d: "An ancient Pacific tradition. Kava — the sacred root of Polynesia — is shared in circle as a grounding, heart-opening plant medicine. Held with prayer, presence, and the same reverence as all medicines at Sacred Journey. Participants can expect a slow, quiet ceremony: a brief teaching on kava's lineage and protocol, the shared cup passed in turn, then a held space for stillness, soft conversation, and communion. Kava brings deep relaxation to the body, clarity to the mind, and a softening of the heart that opens the way for honest fellowship.", img: "https://images.unsplash.com/photo-1571167530149-c1105da4c2c7?w=800&q=80" },
+  { t: "Preparation & Integration", d: "The medicine begins before the ceremony and continues long after. Dedicated 1:1 work to prepare your container and integrate what arrives.", img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&q=80" },
 ];
 
 function NumberedGrid({ items }: { items: { t: string; d: string }[] }) {
