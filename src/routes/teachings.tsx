@@ -60,7 +60,7 @@ function TeachingsPage() {
         ))}
       </div>
       <section className="mt-16">
-        <div className="rounded-3xl border border-border bg-[image:var(--gradient-cosmos)] p-10 md:p-14">
+        <div className="border border-border bg-card p-10 md:p-14">
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Life in the Spirit World</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
@@ -328,7 +328,7 @@ function TeachingsPage() {
       </section>
 
       <section className="mt-16">
-        <div className="rounded-3xl border border-border bg-[image:var(--gradient-aurora)] p-10 md:p-14">
+        <div className="border border-border bg-card p-10 md:p-14">
           <p className="text-xs uppercase tracking-[0.4em] text-background/80">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Heart-Brain Coherence</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
@@ -469,7 +469,7 @@ function TeachingsPage() {
       </section>
 
       <section className="mt-16">
-        <div className="rounded-3xl border border-border bg-[image:var(--gradient-cosmos)] p-10 md:p-14">
+        <div className="border border-border bg-card p-10 md:p-14">
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Sacred Plant Medicines</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
@@ -653,7 +653,7 @@ function TeachingsPage() {
       </section>
 
       <section className="mt-16">
-        <div className="rounded-3xl border border-border bg-[image:var(--gradient-aurora)] p-10 md:p-14">
+        <div className="border border-border bg-card p-10 md:p-14">
           <p className="text-xs uppercase tracking-[0.4em] text-background/80">Policy & Path Forward</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">The Legalization of Sacred Plant Medicines</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foreground/85">
@@ -899,7 +899,7 @@ function TeachingsPage() {
       </section>
 
       <section className="mt-16">
-        <div className="rounded-3xl border border-border bg-[image:var(--gradient-cosmos)] p-10 md:p-14">
+        <div className="border border-border bg-card p-10 md:p-14">
           <p className="text-xs uppercase tracking-[0.4em] text-primary">Featured Teaching</p>
           <h2 className="mt-4 font-serif text-4xl text-foreground md:text-5xl">Alan Watts · The Wisdom of Insecurity</h2>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
