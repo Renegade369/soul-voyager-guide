@@ -72,7 +72,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <Link
-              to="/discovery"
+              to="/begin-here"
               onClick={() => setOpen(false)}
               className="mt-3 px-5 py-3 text-center text-[11px] uppercase tracking-[0.22em]"
               style={{ color: "#D4AF64", border: "1px solid #D4AF64" }}
