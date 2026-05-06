@@ -719,6 +719,31 @@ function TeachingsPage() {
               to William or a trusted facilitator before taking any step.
             </p>
           </div>
+
+          <div className="mt-8 rounded-none border-2 border-[#D4AF64]/40 bg-[#1C1B3A]/5 p-8 backdrop-blur">
+            <h3 className="font-serif text-xl font-light text-foreground">⚠️ Your Safety Comes First</h3>
+            <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
+              <p>
+                <strong className="text-foreground">These are powerful medicines that demand respect, proper guidance, and a safe container.</strong> When held by experienced, ethical shamans and facilitators with genuine lineage and training, plant medicine work can be profoundly transformative. When held by the wrong people — or without proper screening, preparation, and support — serious harm can occur.
+              </p>
+              <p>
+                Bad experiences are not just uncomfortable — they can be physically dangerous and psychologically destabilizing. Unvetted facilitators, improper dosing, lack of medical screening, mixing contraindicated medications, and ceremonies without proper safety protocols have led to real tragedies.
+              </p>
+              <p className="text-foreground font-light">
+                <strong>Before sitting with any plant medicine, please:</strong>
+              </p>
+              <ul className="ml-4 space-y-2">
+                <li>🌿 <span className="text-foreground">Seek out reputable, experienced shamans and facilitators</span> — ask about their training, lineage, years of experience, and how they handle emergencies.</li>
+                <li>🌿 <span className="text-foreground">Verify safety protocols</span> — medical screening, contraindication checks (especially SSRIs and heart conditions), proper set and setting, and trained support staff should all be non-negotiable.</li>
+                <li>🌿 <span className="text-foreground">Trust your intuition</span> — if something feels off about a facilitator or a ceremony, honor that feeling and walk away. The right guide will never pressure you.</li>
+                <li>🌿 <span className="text-foreground">Consult your physician</span> — especially if you are on any medications or have pre-existing health conditions.</li>
+                <li>🌿 <span className="text-foreground">Never work with these medicines alone.</span> A safe, held container with experienced support is essential.</li>
+              </ul>
+              <p className="mt-2 italic">
+                Sacred Journey shares this information for educational purposes only. We do not facilitate, provide, or administer any plant medicines. We strongly urge anyone drawn to this path to do thorough research and only work with reputable, vetted practitioners who prioritize your safety above all else.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
