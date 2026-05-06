@@ -26,38 +26,38 @@ function SectionIcon({ Icon }: { Icon: IconCmp }) {
 export const Route = createFileRoute("/services")({
   head: () => makeRouteMeta({
     title: "Services & Modalities — Sacred Journey",
-    description: "Bodywork, energy work, sound, breath, ceremony, and nature medicine — held with reverence at Sacred Journey.",
+    description: "Bodywork, energy work, sound, breath, and nature-based practices — informational and inspirational resources held with reverence at Sacred Journey.",
   }),
   component: ServicesPage,
 });
 
 const intake = {
   t: "Intake & Initial Consultation",
-  d: "Every soul who comes to Sacred Journey begins here. A deep-listening intake — body, mind, spirit — followed by a customized healing plan built for you alone. No cookie-cutter approaches.",
+  d: "Every soul who comes to Sacred Journey begins here. A deep-listening intake — body, mind, spirit — followed by a customized wellness plan built for you alone. No cookie-cutter approaches.",
   duration: "90–120 min",
 };
 
 const energyAndBody: { t: string; d: string; img: string }[] = [
-  { t: "Reiki & Energy Healing", d: "Hands-on Reiki and intuitive biofield work to clear, restore, and balance your energetic system at cellular and soul level.", img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" },
-  { t: "Rife Frequency Therapy", d: "Targeted frequency-based therapy for cellular healing — used in supportive protocols across a wide range of conditions.", img: "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&q=80" },
-  { t: "BioWell 2.0 Assessment", d: "Bioenergetic field reading that maps your chakras, organ energy, stress levels, and vitality — a baseline for your healing plan.", img: "https://images.unsplash.com/photo-1518050227004-c4cb7104d79a?w=800&q=80" },
+  { t: "Reiki & Energy Work", d: "Hands-on Reiki and intuitive biofield work to support clearing, restoring, and balancing your energetic system.", img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" },
+  { t: "Rife Frequency Therapy", d: "Targeted frequency-based sessions used in supportive wellness protocols.", img: "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&q=80" },
+  { t: "BioWell 2.0 Assessment", d: "Bioenergetic field reading that maps your chakras, organ energy, stress levels, and vitality — a baseline for your wellness plan.", img: "https://images.unsplash.com/photo-1518050227004-c4cb7104d79a?w=800&q=80" },
   { t: "Heart-Brain Coherence", d: "HeartMath-based and somatic practices to align heart and mind, reduce stress, and access higher states of awareness.", img: "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80" },
 ];
 
 const bodywork: { t: string; d: string; img: string }[] = [
   { t: "Swedish Massage", d: "Foundational relaxation, circulation, and nervous system reset.", img: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80" },
   { t: "Deep Tissue", d: "Targeted work on chronic tension, adhesions, and structural holding patterns.", img: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80" },
-  { t: "Hot Stone Therapy", d: "Heat as medicine — melting deep layers, calming the nervous system at root level.", img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80" },
-  { t: "Craniosacral Therapy", d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — powerful for trauma, migraines, and nervous system dysregulation.", img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" },
+  { t: "Hot Stone Therapy", d: "Deep warmth — melting layers of tension, calming the nervous system at root level.", img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80" },
+  { t: "Craniosacral Therapy", d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — supportive for tension, migraines, and nervous system dysregulation.", img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" },
   { t: "Lymphatic Drainage", d: "Gentle, precise strokes to move lymph, reduce inflammation, and support immune function.", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" },
   { t: "Myofascial Release", d: "Sustained pressure into the connective tissue web — releasing what no amount of stretching can reach.", img: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80" },
-  { t: "Somatic Bodywork", d: "Body-centered trauma release integrating breath, sensation, and awareness — where the physical and emotional meet.", img: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80" },
+  { t: "Somatic Bodywork", d: "Body-centered release integrating breath, sensation, and awareness — where the physical and emotional meet.", img: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80" },
 ];
 
 const BODYWORK_HERO = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1400&q=80";
 
 const soundAndBreath: { t: string; d: string; img: string }[] = [
-  { t: "Sound Healing", d: "Crystal and Himalayan bowls, gongs, and tuning forks — sacred frequencies that drop the body into theta restoration.", img: "https://images.unsplash.com/photo-1591291621164-2c6367723315?w=800&q=80" },
+  { t: "Sound Immersion", d: "Crystal and Himalayan bowls, gongs, and tuning forks — sacred frequencies that support the body's natural state of restoration.", img: "https://images.unsplash.com/photo-1591291621164-2c6367723315?w=800&q=80" },
   { t: "Breathwork Journeys", d: "Transformational breathwork — Holotropic-style, Wim Hof, and pranayama traditions — for release and expanded states.", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=800&q=80" },
   { t: "Guided Meditation", d: "Individual, group, and recorded sessions — adaptive practices for nervous-system regulation and inner stillness.", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80" },
   { t: "Trauma-Informed Yoga", d: "Individual and small group sessions oriented toward spiritual embodiment and somatic safety.", img: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&q=80" },
@@ -66,18 +66,18 @@ const soundAndBreath: { t: string; d: string; img: string }[] = [
 const spiritAndSoul: { t: string; d: string; img: string }[] = [
   { t: "Spiritual Mentorship", d: "One-on-one guidance with William for awakening, integration, and walking the path with someone who has walked it.", img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=80" },
   { t: "Soul Purpose Discovery", d: "Guided 1:1 and group work to reconnect with your soul's calling, identify your gifts, and find clarity on why you are here.", img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=80" },
-  { t: "Mediumship & Intuitive Readings", d: "Connection with vetted, gifted channels and medical intuitives in our practitioner network.", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" },
-  { t: "Equine-Assisted Healing", d: "Held sessions with horses on the land — nervous system, presence, and heart awakening through the animal kingdom.", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80" },
-  { t: "Nature Immersion", d: "Held experiences on the land — grounding, plant communion, and the simple medicine of being outside.", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" },
-  { t: "Holistic Recovery", d: "Lived-experience guidance combining inner work, community, and physical and energetic restoration.", img: "https://images.unsplash.com/photo-1476611317561-60117649dd94?w=800&q=80" },
+  { t: "Mediumship & Intuitive Readings", d: "Connection with vetted, gifted channels and intuitives in our practitioner network.", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" },
+  { t: "Equine-Assisted Experiences", d: "Held sessions with horses on the land — nervous system, presence, and heart awakening through the animal kingdom.", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80" },
+  { t: "Nature Immersion", d: "Held experiences on the land — grounding, stillness, and the simple gift of being outside.", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" },
+  { t: "Holistic Recovery Support", d: "Lived-experience guidance combining inner work, community, and physical and energetic restoration.", img: "https://images.unsplash.com/photo-1476611317561-60117649dd94?w=800&q=80" },
 ];
 
-const plantMedicine: { t: string; d: string; img: string }[] = [
-  { t: "Private Ceremony", d: "An intimate, one-on-one ceremony held with deep reverence — tailored to your intention, lineage, and readiness. Preparation and integration included.", img: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=800&q=80" },
-  { t: "Group Ceremony", d: "A held container of fellow seekers gathering in sacred circle. Songs, prayer, and skilled facilitation guide the journey from opening to closing of the space.", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80" },
+const sacredPlantInfo: { t: string; d: string; img: string }[] = [
+  { t: "Private Guided Experience", d: "An intimate, one-on-one experience held with deep reverence — tailored to your intention and readiness. Preparation and integration included.", img: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=800&q=80" },
+  { t: "Group Circle", d: "A held container of fellow seekers gathering in sacred circle. Songs, prayer, and skilled facilitation guide the experience from opening to closing.", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80" },
   { t: "Cacao & Breathwork Circle", d: "Ceremonial cacao paired with guided breathwork — a heart-opening, gently expansive container for prayer, song, and inner inquiry.", img: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=800&q=80" },
-  { t: "Kava Ceremony & Circle", d: "An ancient Pacific tradition. Kava — the sacred root of Polynesia — is shared in circle as a grounding, heart-opening plant medicine. Held with prayer, presence, and the same reverence as all medicines at Sacred Journey. Participants can expect a slow, quiet ceremony: a brief teaching on kava's lineage and protocol, the shared cup passed in turn, then a held space for stillness, soft conversation, and communion. Kava brings deep relaxation to the body, clarity to the mind, and a softening of the heart that opens the way for honest fellowship.", img: "https://images.unsplash.com/photo-1571167530149-c1105da4c2c7?w=800&q=80" },
-  { t: "Preparation & Integration", d: "The medicine begins before the ceremony and continues long after. Dedicated 1:1 work to prepare your container and integrate what arrives.", img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&q=80" },
+  { t: "Kava Circle", d: "An ancient Pacific tradition. Kava — the sacred root of Polynesia — is shared in circle as a gentle, grounding practice. Promotes deep relaxation, open heart, and community connection. Held with intention, prayer, and presence.", img: "https://images.unsplash.com/photo-1571167530149-c1105da4c2c7?w=800&q=80" },
+  { t: "Preparation & Integration", d: "The journey begins before the experience and continues long after. Dedicated 1:1 work to prepare your container and integrate what arrives.", img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&q=80" },
 ];
 
 function NumberedGrid({ items }: { items: { t: string; d: string; img?: string }[] }) {
@@ -160,7 +160,7 @@ function ServicesPage() {
     <PageShell
       eyebrow="Offerings"
       title="Services & Modalities"
-      intro="Sacred Journey works the whole person — root cause, not symptoms. Every path begins with a deep intake and a customized healing plan built around you."
+      intro="Sacred Journey addresses the whole person — root cause, not symptoms. Every path begins with a deep intake and a customized wellness plan built around you. All information provided is for educational and inspirational purposes only."
     >
       {/* Intake — the doorway */}
       <section className="relative isolate overflow-hidden border-y border-border py-16 text-center md:py-20">
@@ -196,11 +196,11 @@ function ServicesPage() {
         icon={OrnamentRadiating}
         title="Energy & Biofield Work"
         subtitle="Where the unseen meets the body."
-        intro="Subtle systems carry profound information. These modalities clear, restore, and align the energetic field — often the doorway to deeper physical healing."
+        intro="Subtle systems carry profound information. These modalities support clearing, restoring, and aligning the energetic field — often a doorway to deeper physical wellbeing."
         items={energyAndBody}
       />
 
-      {/* Bodywork & Massage Therapy — with imagery */}
+      {/* Bodywork & Massage Therapy */}
       <section className="mt-32 md:mt-40">
         <div className="overflow-hidden rounded-md border border-border">
           <div className="relative h-[260px] w-full md:h-[400px]">
@@ -226,7 +226,7 @@ function ServicesPage() {
             The body remembers everything. These modalities help it finally let go.
           </p>
           <p className="mx-auto mt-8 max-w-2xl text-left text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-            The nervous system cannot heal in a state of tension. Bodywork is often the first medicine — and sometimes the most profound. Sacred Journey offers a full spectrum of therapeutic and healing-focused bodywork, delivered by licensed therapists and specialized practitioners on staff and within our vetted network.
+            The nervous system cannot release in a state of tension. Bodywork is often the first step — and sometimes the most profound. Sacred Journey offers a full spectrum of therapeutic and wellness-focused bodywork, delivered by licensed therapists and specialized practitioners on staff and within our vetted network.
           </p>
         </div>
 
@@ -267,15 +267,15 @@ function ServicesPage() {
         </div>
 
         <p className="mx-auto mt-10 max-w-2xl text-center font-serif text-sm font-light italic leading-relaxed text-muted-foreground">
-          All sessions begin with a brief intake. Bodywork can be booked as a standalone session or integrated into your customized healing plan.
+          All sessions begin with a brief intake. Bodywork can be booked as a standalone session or integrated into your customized wellness plan.
         </p>
       </section>
 
       <ServiceSection
         icon={OrnamentDoubleCircle}
         title="Sound, Breath & Stillness"
-        subtitle="Frequency, breath, and silence — the oldest medicines."
-        intro="These practices drop the nervous system into states where deep healing can happen on its own."
+        subtitle="Frequency, breath, and silence — the oldest practices."
+        intro="These practices support the nervous system in entering states where deep restoration can happen naturally."
         items={soundAndBreath}
       />
 
@@ -286,40 +286,40 @@ function ServicesPage() {
         items={spiritAndSoul}
       />
 
-      {/* Nature & Animal Healing — text-led, no gradient cards */}
+      {/* Nature & Animal Connection */}
       <section className="mt-32 md:mt-40">
         <GeometricDivider variant={2} className="mb-20" maxWidth="max-w-2xl" />
         <div className="mx-auto max-w-2xl text-center">
           <SectionIcon Icon={PillarSeedOfLife} />
           <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">
-            Nature & Animal Healing
+            Nature & Animal Connection
           </h2>
           <p className="mt-6 font-serif text-xl font-light italic leading-snug text-muted-foreground md:text-2xl">
-            The original medicine — and still the most intelligent.
+            The original teachers — and still the most intelligent.
           </p>
           <p className="mx-auto mt-8 max-w-2xl text-left text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-            Before there were therapists, temples, or pharmacies, there were forests, oceans, and the steady heartbeat of animals beside us. Nature and the animal kingdom were our first healers — and they remain among the most accessible, intelligent medicines on Earth.
+            Before there were therapists, temples, or pharmacies, there were forests, oceans, and the steady heartbeat of animals beside us. Nature and the animal kingdom were our first companions — and they remain among the most accessible, intelligent resources on Earth.
           </p>
         </div>
 
         <div className="mt-16 grid gap-x-12 gap-y-14 border-t border-border pt-14 md:grid-cols-2">
           <div>
-            <h3 className="font-serif text-2xl font-normal text-foreground">How Nature Heals</h3>
+            <h3 className="font-serif text-2xl font-normal text-foreground">How Nature Supports Us</h3>
             <ul className="mt-6 space-y-5 text-sm font-light leading-relaxed text-muted-foreground">
               <li><span className="text-foreground">Grounding.</span> Direct contact with the earth discharges built-up static, lowers inflammation, and synchronizes the body to the planet's natural pulse.</li>
-              <li><span className="text-foreground">Forest medicine.</span> Trees release phytoncides — airborne compounds that lower cortisol and raise immune activity.</li>
+              <li><span className="text-foreground">Forest bathing.</span> Trees release phytoncides — airborne compounds that lower cortisol and raise immune activity.</li>
               <li><span className="text-foreground">Ocean and water.</span> Negative ions near moving water lift mood, sharpen focus, and reset the nervous system.</li>
               <li><span className="text-foreground">Sunlight.</span> Morning sun on bare skin and eyes regulates circadian rhythm, melatonin, vitamin D, and metabolic health.</li>
               <li><span className="text-foreground">Awe and vastness.</span> Time spent under big sky and old trees dissolves rumination and reawakens reverence.</li>
             </ul>
           </div>
           <div>
-            <h3 className="font-serif text-2xl font-normal text-foreground">How Animals Heal</h3>
+            <h3 className="font-serif text-2xl font-normal text-foreground">How Animals Support Us</h3>
             <ul className="mt-6 space-y-5 text-sm font-light leading-relaxed text-muted-foreground">
               <li><span className="text-foreground">Co-regulation.</span> Animals regulate their nervous systems faster than ours — when we're near them, our heart, breath, and brainwaves entrain to theirs.</li>
               <li><span className="text-foreground">Unconditional presence.</span> Animals don't judge or perform. They meet us exactly as we are.</li>
               <li><span className="text-foreground">Touch and oxytocin.</span> Petting and being beside an animal releases oxytocin in both creatures and lowers cortisol.</li>
-              <li><span className="text-foreground">Mirror medicine.</span> Horses, cats, and dogs reflect what we are unconsciously carrying — biofeedback no machine can match.</li>
+              <li><span className="text-foreground">Mirror reflection.</span> Horses, cats, and dogs reflect what we are unconsciously carrying — biofeedback no machine can match.</li>
               <li><span className="text-foreground">Soul companionship.</span> Animals are luminous beings with their own intelligence and purpose. They choose us.</li>
             </ul>
           </div>
@@ -327,12 +327,12 @@ function ServicesPage() {
 
         <NumberedGrid
           items={[
-            { t: "Equine-Assisted Healing", d: "Held sessions with horses on the land. Horses are master mirrors of the human heart — they show you, without words, where you are armored and where presence is asking to return.", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80" },
-            { t: "Horse Reiki", d: "Energy work offered with and through the horses — a sacred triangulation of practitioner, animal, and seeker. Profound for trauma, grief, and reawakening trust.", img: "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?w=800&q=80" },
+            { t: "Equine-Assisted Experiences", d: "Held sessions with horses on the land. Horses are master mirrors of the human heart — they show you, without words, where you are armored and where presence is asking to return.", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80" },
+            { t: "Horse Reiki", d: "Energy work offered with and through the horses — a sacred triangulation of practitioner, animal, and seeker. Supportive for grief, trust, and reconnection.", img: "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?w=800&q=80" },
             { t: "Forest & Land Immersion", d: "Guided 'forest bathing' walks on the sanctuary grounds. Slow, sensory, prayerful — relearning how to listen to the trees, the wind, and your own footsteps.", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80" },
-            { t: "Earthing & Grounding", d: "Barefoot practice on earth, often combined with breathwork and coherence training. A simple, free medicine most modern bodies are starving for.", img: "https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=800&q=80" },
-            { t: "Ocean & Water Ceremony", d: "South Florida-based saltwater ceremonies — ocean immersion, prayer, and integration. The sea is one of our oldest healers.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" },
-            { t: "Animal Companionship", d: "Guidance for those whose path includes adopting, working with, or grieving an animal companion — honoring the bond as part of the healing journey.", img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80" },
+            { t: "Earthing & Grounding", d: "Barefoot practice on earth, often combined with breathwork and coherence training. A simple, free practice most modern bodies are longing for.", img: "https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=800&q=80" },
+            { t: "Ocean & Water Immersion", d: "South Florida-based saltwater experiences — ocean immersion, prayer, and integration. The sea is one of our oldest teachers.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" },
+            { t: "Animal Companionship", d: "Guidance for those whose path includes adopting, working with, or grieving an animal companion — honoring the bond as part of the journey.", img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80" },
           ]}
         />
 
@@ -351,17 +351,17 @@ function ServicesPage() {
             A note from William
           </p>
           <p className="mx-auto mt-5 max-w-xl text-sm font-light leading-relaxed text-muted-foreground">
-            Two Siamese cats — Spirit and Mia — have been some of my greatest teachers. Animals have walked with me through the darkest passages of my life. The Sacred Journey property is being built around this truth: land, horses, and animals are not amenities. They are the medicine.
+            Two Siamese cats — Spirit and Mia — have been some of my greatest teachers. Animals have walked with me through the darkest passages of my life. The Sacred Journey property is being built around this truth: land, horses, and animals are not amenities. They are at the heart of what we do.
           </p>
         </div>
       </section>
 
       <ServiceSection
         icon={OrnamentDiamond}
-        title="Sacred Plant Medicine"
-        subtitle="Held with the deepest reverence for the plants, the lineages, and the souls who come to sit with them."
-        intro="William speaks from lived experience — and every container is built around proper set, setting, and intention. Plant medicine work requires a preparation conversation. We honor discernment, safety, and the sovereignty of every soul who sits with us."
-        items={plantMedicine}
+        title="Sacred Plant Traditions"
+        subtitle="Informational resources about ancient plant wisdom, held with the deepest reverence for the plants, the lineages, and the souls drawn to learn about them."
+        intro="Sacred Journey provides educational information about plant traditions. We do not prescribe, recommend, or administer any substances. William speaks from lived experience — and all content is shared for inspirational and educational purposes only. Always consult a qualified healthcare professional."
+        items={sacredPlantInfo}
       />
 
       {/* Closing CTA */}
@@ -383,6 +383,13 @@ function ServicesPage() {
         >
           Begin Your Discovery
         </Link>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="border-t border-border py-10">
+        <p className="mx-auto max-w-3xl text-center text-[11px] font-light leading-relaxed tracking-wide text-muted-foreground">
+          Sacred Journey is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
+        </p>
       </section>
     </PageShell>
   );

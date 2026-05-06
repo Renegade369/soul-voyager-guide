@@ -3,8 +3,8 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/events")({
   head: () => makeRouteMeta({
-    title: "Events, Retreats & Visiting Masters — Sacred Journey",
-    description: "Sound baths, breathwork, ceremonies, weekend immersives with visiting shamans and master healers, and multi-day retreats at Sacred Journey in South Florida.",
+    title: "Events, Retreats & Visiting Teachers — Sacred Journey",
+    description: "Sound baths, breathwork, workshops, weekend immersives with visiting teachers and practitioners, and multi-day retreats at Sacred Journey in South Florida.",
   }),
   component: EventsPage,
 });
@@ -13,27 +13,27 @@ const events = [
   { date: "May 18", t: "New Moon Sound Bath", d: "Set intentions under the dark moon with crystal bowls and guided meditation.", time: "7:00 – 8:30 PM", tag: "Community" },
   { date: "May 25", t: "Hidden Truths Circle", d: "Open discussion on consciousness, the multiverse, and the great unveiling.", time: "6:30 – 8:30 PM", tag: "Community" },
   { date: "Jun 02", t: "Heart-Brain Coherence Workshop", d: "A HeartMath-rooted workshop to align heart and mind, regulate the nervous system, and unlock clarity.", time: "10:00 AM – 1:00 PM", tag: "Workshop" },
-  { date: "Jun 14", t: "Holotropic Breathwork Journey", d: "A 90-minute conscious connected breath ceremony for trauma release and expanded states.", time: "1:00 – 4:00 PM", tag: "Ceremony" },
-  { date: "Jun 21", t: "Solstice Ceremony", d: "A community gathering to honor the turning of the wheel — fire, sound, prayer.", time: "Sunset", tag: "Ceremony" },
-  { date: "Jul 12", t: "Visiting Shaman Weekend Intensive", d: "A two-day immersive with a traditional plant medicine carrier from South America. Limited seats.", time: "Fri – Sun", tag: "Visiting Master" },
-  { date: "Aug 09", t: "Sacred Journey Retreat", d: "A multi-day immersive at the sanctuary — ceremonies, healing modalities, nature, community, meals.", time: "5 days", tag: "Retreat" },
+  { date: "Jun 14", t: "Holotropic Breathwork Journey", d: "A 90-minute conscious connected breath experience for release and expanded states.", time: "1:00 – 4:00 PM", tag: "Experience" },
+  { date: "Jun 21", t: "Solstice Gathering", d: "A community gathering to honor the turning of the wheel — fire, sound, prayer.", time: "Sunset", tag: "Gathering" },
+  { date: "Jul 12", t: "Visiting Teacher Weekend Intensive", d: "A two-day immersive with a traditional wisdom keeper from South America. Limited seats.", time: "Fri – Sun", tag: "Visiting Teacher" },
+  { date: "Aug 09", t: "Sacred Journey Retreat", d: "A multi-day immersive at the sanctuary — gatherings, wellness modalities, nature, community, meals.", time: "5 days", tag: "Retreat" },
 ];
 
 const formats = [
   { t: "Community Gatherings", d: "Sound baths, circles, and meditation evenings — accessible entry points to the sanctuary." },
-  { t: "Workshops", d: "Half-day and full-day teachings on coherence, breath, plant medicine preparation, and consciousness." },
-  { t: "Ceremonies", d: "Held containers — breathwork, fire, sound, and (in proper context) sacred plant medicine." },
-  { t: "Visiting Master Intensives", d: "Weekend immersives with hosted shamans, energy masters, sound healers, mediums, and consciousness teachers." },
-  { t: "Multi-Day Retreats", d: "The flagship offering — fully immersive transformation with accommodations, meals, modalities, and ceremony." },
+  { t: "Workshops", d: "Half-day and full-day teachings on coherence, breath, plant wisdom education, and consciousness." },
+  { t: "Sacred Gatherings", d: "Held containers — breathwork, fire, sound, and mindful practice." },
+  { t: "Visiting Teacher Intensives", d: "Weekend immersives with hosted wisdom keepers, energy practitioners, sound artists, intuitives, and consciousness teachers." },
+  { t: "Multi-Day Retreats", d: "The flagship offering — fully immersive transformation with accommodations, meals, modalities, and community." },
   { t: "Online & Live-Streamed", d: "Recorded teachings and live events for the digital community across the world." },
 ];
 
 function EventsPage() {
   return (
     <PageShell
-      eyebrow="Gather · Learn · Transform"
-      title="Events, Retreats & Visiting Masters"
-      intro="Live ceremonies, workshops, and circles in our South Florida sanctuary — plus weekend intensives with the world's most gifted visiting healers and teachers."
+      eyebrow="Gather · Learn · Grow"
+      title="Events, Retreats & Visiting Teachers"
+      intro="Live gatherings, workshops, and circles in our South Florida sanctuary — plus weekend intensives with the world's most gifted visiting teachers and practitioners."
     >
       <section>
         <h2 className="font-serif text-3xl font-light text-foreground md:text-4xl">Upcoming</h2>

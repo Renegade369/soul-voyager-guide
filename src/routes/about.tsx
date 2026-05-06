@@ -4,26 +4,26 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 export const Route = createFileRoute("/about")({
   head: () => makeRouteMeta({
     title: "About William & Sacred Journey — South Florida Sanctuary",
-    description: "Sacred Journey was born from William's lifelong awakening, lived experience with sacred plant medicines, recovery, and a calling to build a true sanctuary in South Florida.",
+    description: "Sacred Journey was born from William's lifelong awakening, lived experience, recovery, and a calling to build a true sanctuary in South Florida.",
   }),
   component: AboutPage,
 });
 
 const principles = [
-  { t: "Root Cause", d: "Never symptom management. We work the source — physical, emotional, energetic." },
+  { t: "Root Cause", d: "Never symptom management. We explore the source — physical, emotional, energetic." },
   { t: "Holistic & Functional", d: "Mind, body, and spirit as one interconnected system. None of it lives in isolation." },
-  { t: "Integrative", d: "Ancient plant wisdom and sound medicine braided with modern science and clinical insight." },
-  { t: "Heart-Brain Coherence", d: "When heart and brain align, the body remembers how to heal itself." },
-  { t: "Energy as Foundation", d: "Physical, emotional, and mental symptoms are downstream of energetic imbalance." },
-  { t: "Soul Reconnection", d: "The deepest healing is remembering who you have always been." },
+  { t: "Integrative", d: "Ancient wisdom traditions braided with modern science and insight." },
+  { t: "Heart-Brain Coherence", d: "When heart and brain align, the body remembers its natural state of balance." },
+  { t: "Energy as Foundation", d: "Physical, emotional, and mental challenges are often downstream of energetic imbalance." },
+  { t: "Soul Reconnection", d: "The deepest growth is remembering who you have always been." },
 ];
 
 const credentials = [
-  { t: "Reiki Level 2", d: "Certified hands-on energy healing practitioner." },
-  { t: "Spooky2 Rife", d: "Frequency-based therapy in clinical use, including supportive cancer protocols." },
+  { t: "Reiki Level 2", d: "Certified energy work practitioner." },
+  { t: "Spooky2 Rife", d: "Frequency-based wellness technology in supportive protocols." },
   { t: "BioWell 2.0", d: "Bioenergetic field assessment and energy reading." },
-  { t: "Singing Bowls", d: "Trained in vibrational and sound healing practice." },
-  { t: "Plant Medicine Guide", d: "Lived experience with mushrooms, DMT, 5-MeO-DMT, Ayahuasca, and Cannabis." },
+  { t: "Singing Bowls", d: "Trained in vibrational and sound practices." },
+  { t: "Plant Wisdom Guide", d: "Lived experience with sacred plant traditions including mushrooms, DMT, 5-MeO-DMT, Ayahuasca, and Cannabis." },
   { t: "Twenty-Year Entrepreneur", d: "Two decades of building, leading, and serving people." },
 ];
 
@@ -68,7 +68,7 @@ function AboutPage() {
     <PageShell
       eyebrow="Our Story"
       title="A Sanctuary for Truth-Seekers"
-      intro="Sacred Journey is being built in South Florida by William Roberts — entrepreneur, father, healer-in-becoming, and lifelong seeker who walked through addiction, trauma, and awakening to arrive at this work."
+      intro="Sacred Journey is being built in South Florida by William Roberts — entrepreneur, father, seeker, and guide-in-becoming who walked through addiction, trauma, and awakening to arrive at this work."
     >
       <section className="mx-auto max-w-2xl text-center">
         <p className="font-serif text-2xl font-light italic leading-snug text-muted-foreground md:text-3xl">
@@ -91,14 +91,14 @@ function AboutPage() {
             At the start of 2026 — after a lifetime with alcohol and cocaine — he stopped, an act of profound courage that became the foundation for everything Sacred Journey is becoming.
           </p>
           <p>
-            His teachers have included sacred plant medicines — psilocybin mushrooms, DMT, 5-MeO-DMT, Ayahuasca, and Cannabis — approached always with reverence, proper set, and setting. He speaks from lived wisdom, not theory. He has sat with the dark, walked through it, and is still walking.
+            His teachers have included sacred plant traditions — psilocybin mushrooms, DMT, 5-MeO-DMT, Ayahuasca, and Cannabis — approached always with reverence, proper set, and setting. He speaks from lived wisdom, not theory. He has sat with the dark, walked through it, and is still walking.
           </p>
         </div>
       </section>
 
       <section className="mt-32">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">Our Healing Philosophy</h2>
+          <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">Our Wellness Philosophy</h2>
           <p className="mt-6 font-serif text-xl font-light italic leading-snug text-muted-foreground md:text-2xl">
             Six principles. One unbroken thread.
           </p>
@@ -113,7 +113,7 @@ function AboutPage() {
           <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">Who We're Called to Serve</h2>
         </div>
         <p className="mx-auto mt-10 max-w-2xl text-base font-light leading-relaxed text-muted-foreground">
-          Souls walking through trauma, addiction, depression, and major life transitions. Burned-out entrepreneurs. People with physical health problems seeking real answers. Spiritual seekers. And especially — the quietly suffering majority who sense there is more but don't yet know how to find it.
+          Souls walking through addiction, depression, and major life transitions. Burned-out entrepreneurs. People seeking real answers for their wellbeing. Spiritual seekers. And especially — the quietly suffering majority who sense there is more but don't yet know how to find it.
         </p>
       </section>
 
@@ -131,7 +131,7 @@ function AboutPage() {
           <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">The Vision Ahead</h2>
         </div>
         <p className="mx-auto mt-10 max-w-2xl text-base font-light leading-relaxed text-muted-foreground">
-          Sacred Journey is being built as a destination sanctuary in South Florida — most likely Davie, on land with horses, ceremony space, treatment rooms, a guest house, and grounds for nature immersion. A place where seekers from across the country and the world can do the deepest work of their lives, and where the most gifted healers, shamans, and teachers are hosted to bring their medicine here.
+          Sacred Journey is being built as a destination sanctuary in South Florida — most likely Davie, on land with horses, gathering spaces, wellness rooms, a guest house, and grounds for nature immersion. A place where seekers from across the country and the world can do the deepest work of their lives, and where the most gifted practitioners, teachers, and guides are hosted to share their wisdom here.
         </p>
       </section>
 
@@ -149,7 +149,7 @@ function AboutPage() {
 
       <section className="mt-32 border-t border-border py-20 text-center">
         <p className="font-serif text-3xl font-light italic text-foreground md:text-4xl">
-          Heal the body. Awaken the soul. Find your people.
+          Nourish the body. Awaken the soul. Find your people.
         </p>
         <Link
           to="/discovery"
@@ -157,6 +157,13 @@ function AboutPage() {
         >
           Begin Your Discovery
         </Link>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="border-t border-border py-10">
+        <p className="mx-auto max-w-3xl text-center text-[11px] font-light leading-relaxed tracking-wide text-muted-foreground">
+          Sacred Journey is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
+        </p>
       </section>
     </PageShell>
   );
