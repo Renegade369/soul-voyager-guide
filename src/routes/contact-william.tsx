@@ -5,8 +5,8 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/contact-william")({
   head: () => makeRouteMeta({
-    title: "Contact William Roberts — Sacred Journey",
-    description: "Reach William Roberts, founder of Sacred Journey, with questions about your wellness journey, spiritual guidance, or the sanctuary.",
+    title: "Contact William Roberts — Soul True",
+    description: "Reach William Roberts, founder of Soul True, with questions about your wellness journey, spiritual guidance, or the sanctuary.",
   }),
   component: ContactWilliamPage,
 });
@@ -25,7 +25,7 @@ type FormValues = z.infer<typeof contactSchema>;
 const interestOptions: { value: FormValues["interest"]; label: string; description: string }[] = [
   { value: "private-session", label: "Private Guided Experience", description: "An intimate, one-on-one experience tailored to you." },
   { value: "group-experience", label: "Group Circle or Gathering", description: "Join in sacred circle with fellow seekers." },
-  { value: "sacred-journey", label: "Sacred Journey Guidance", description: "Mentorship for your unfolding path." },
+  { value: "sacred-journey", label: "Soul True Guidance", description: "Mentorship for your unfolding path." },
   { value: "general", label: "General Question", description: "Something else on your heart." },
 ];
 
@@ -68,13 +68,13 @@ function ContactWilliamPage() {
     <PageShell
       eyebrow="Reach William"
       title="Contact William Roberts"
-      intro="Founder and guide at Sacred Journey. Share what's on your heart — questions about your path, guided experiences, or the sanctuary itself. William reads each message personally."
+      intro="Founder and guide at Soul True. Share what's on your heart — questions about your path, guided experiences, or the sanctuary itself. William reads each message personally."
     >
       <section className="mx-auto max-w-2xl border-y border-border py-16 text-center">
         <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Founder · Guide</p>
         <h2 className="mt-6 font-serif text-4xl font-light text-foreground md:text-5xl">William Roberts</h2>
         <p className="mx-auto mt-8 max-w-xl text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-          William holds Sacred Journey as a sanctuary of remembrance — guiding souls through their personal journey and the slow work of becoming whole.
+          William holds Soul True as a sanctuary of remembrance — guiding souls through their personal journey and the slow work of becoming whole.
         </p>
       </section>
 

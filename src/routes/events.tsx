@@ -3,8 +3,8 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/events")({
   head: () => makeRouteMeta({
-    title: "Events, Retreats & Visiting Teachers — Sacred Journey",
-    description: "Sound baths, breathwork, workshops, weekend immersives with visiting teachers and practitioners, and multi-day retreats at Sacred Journey in South Florida.",
+    title: "Events, Retreats & Visiting Teachers — Soul True",
+    description: "Sound baths, breathwork, workshops, weekend immersives with visiting teachers and practitioners, and multi-day retreats at Soul True in South Florida.",
   }),
   component: EventsPage,
 });
@@ -16,7 +16,7 @@ const events = [
   { date: "Jun 14", t: "Holotropic Breathwork Journey", d: "A 90-minute conscious connected breath experience for release and expanded states.", time: "1:00 – 4:00 PM", tag: "Experience" },
   { date: "Jun 21", t: "Solstice Gathering", d: "A community gathering to honor the turning of the wheel — fire, sound, prayer.", time: "Sunset", tag: "Gathering" },
   { date: "Jul 12", t: "Visiting Teacher Weekend Intensive", d: "A two-day immersive with a traditional wisdom keeper from South America. Limited seats.", time: "Fri – Sun", tag: "Visiting Teacher" },
-  { date: "Aug 09", t: "Sacred Journey Retreat", d: "A multi-day immersive at the sanctuary — gatherings, wellness modalities, nature, community, meals.", time: "5 days", tag: "Retreat" },
+  { date: "Aug 09", t: "Soul True Retreat", d: "A multi-day immersive at the sanctuary — gatherings, wellness modalities, nature, community, meals.", time: "5 days", tag: "Retreat" },
 ];
 
 const formats = [

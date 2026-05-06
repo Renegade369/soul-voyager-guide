@@ -7,16 +7,16 @@ import heroForest from "../assets/hero-begin-here-forest.jpg";
 export const Route = createFileRoute("/begin-here")({
   head: () => ({
     meta: [
-      { title: "Begin Here — Sacred Journey" },
+      { title: "Begin Here — Soul True" },
       { name: "description", content: "A warm, guided conversation to discover your path forward — personalized recommendations based on where you are and where you want to go." },
-      { property: "og:title", content: "Begin Here — Sacred Journey" },
+      { property: "og:title", content: "Begin Here — Soul True" },
       { property: "og:description", content: "A warm, guided conversation to discover your path forward." },
     ],
   }),
   component: BeginHerePage,
 });
 
-const DISCLAIMER = "Sacred Journey is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.";
+const DISCLAIMER = "Soul True is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -224,7 +224,7 @@ function BeginHerePage() {
               className="font-serif text-lg font-light leading-[1.7] md:text-xl lg:text-[1.35rem]"
               style={{ color: "rgba(248,245,240,0.85)" }}
             >
-              Sacred Journey exists for one reason — to help you find your way back home.
+              Soul True exists for one reason — to help you find your way back home.
             </p>
 
             <p

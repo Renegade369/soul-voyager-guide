@@ -3,8 +3,8 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/about")({
   head: () => makeRouteMeta({
-    title: "About William & Sacred Journey — South Florida Sanctuary",
-    description: "Sacred Journey was born from William's lifelong awakening, lived experience, recovery, and a calling to build a true sanctuary in South Florida.",
+    title: "About William & Soul True — South Florida Sanctuary",
+    description: "Soul True was born from William's lifelong awakening, lived experience, recovery, and a calling to build a true sanctuary in South Florida.",
   }),
   component: AboutPage,
 });
@@ -68,14 +68,14 @@ function AboutPage() {
     <PageShell
       eyebrow="Our Story"
       title="A Sanctuary for Truth-Seekers"
-      intro="Sacred Journey is being built in South Florida by William Roberts — entrepreneur, father, seeker, and guide-in-becoming who walked through addiction, trauma, and awakening to arrive at this work."
+      intro="Soul True is being built in South Florida by William Roberts — entrepreneur, father, seeker, and guide-in-becoming who walked through addiction, trauma, and awakening to arrive at this work."
     >
       <section className="mx-auto max-w-2xl text-center">
         <p className="font-serif text-2xl font-light italic leading-snug text-muted-foreground md:text-3xl">
           We live in a moment of great unveiling.
         </p>
         <p className="mx-auto mt-8 max-w-2xl text-left text-base font-light leading-relaxed text-muted-foreground">
-          Truths long hidden — about consciousness, the cosmos, the species who walk among us, and the spirit world that has always been here — are returning to the surface of human awareness. Sacred Journey exists to help souls remember who they truly are.
+          Truths long hidden — about consciousness, the cosmos, the species who walk among us, and the spirit world that has always been here — are returning to the surface of human awareness. Soul True exists to help souls remember who they truly are.
         </p>
       </section>
 
@@ -88,7 +88,7 @@ function AboutPage() {
             For 20 years, William built and ran a roofing and construction business in South Florida. Fifteen years ago, a spiritual awakening permanently shifted his values. A near-fatal motorcycle accident closed one chapter of physical labor and opened another.
           </p>
           <p>
-            At the start of 2026 — after a lifetime with alcohol and cocaine — he stopped, an act of profound courage that became the foundation for everything Sacred Journey is becoming.
+            At the start of 2026 — after a lifetime with alcohol and cocaine — he stopped, an act of profound courage that became the foundation for everything Soul True is becoming.
           </p>
           <p>
             His teachers have included sacred plant traditions — psilocybin mushrooms, DMT, 5-MeO-DMT, Ayahuasca, and Cannabis — approached always with reverence, proper set, and setting. He speaks from lived wisdom, not theory. He has sat with the dark, walked through it, and is still walking.
@@ -131,7 +131,7 @@ function AboutPage() {
           <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">The Vision Ahead</h2>
         </div>
         <p className="mx-auto mt-10 max-w-2xl text-base font-light leading-relaxed text-muted-foreground">
-          Sacred Journey is being built as a destination sanctuary in South Florida — most likely Davie, on land with horses, gathering spaces, wellness rooms, a guest house, and grounds for nature immersion. A place where seekers from across the country and the world can do the deepest work of their lives, and where the most gifted practitioners, teachers, and guides are hosted to share their wisdom here.
+          Soul True is being built as a destination sanctuary in South Florida — most likely Davie, on land with horses, gathering spaces, wellness rooms, a guest house, and grounds for nature immersion. A place where seekers from across the country and the world can do the deepest work of their lives, and where the most gifted practitioners, teachers, and guides are hosted to share their wisdom here.
         </p>
       </section>
 
@@ -162,7 +162,7 @@ function AboutPage() {
       {/* Disclaimer */}
       <section className="border-t border-border py-10">
         <p className="mx-auto max-w-3xl text-center text-[11px] font-light leading-relaxed tracking-wide text-muted-foreground">
-          Sacred Journey is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
+          Soul True is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
         </p>
       </section>
     </PageShell>

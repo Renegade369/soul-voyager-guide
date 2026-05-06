@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/nature-booking")({
   head: () =>
     makeRouteMeta({
-      title: "Book a Nature & Animal Healing Session — Sacred Journey",
+      title: "Book a Nature & Animal Healing Session — Soul True",
       description:
         "Request an equine session, forest immersion, earthing practice, ocean ceremony, horse reiki, or animal companionship integration with William.",
     }),

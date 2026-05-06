@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="mt-32" style={{ backgroundColor: "#141327" }}>
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-3 md:px-12">
         <div>
-          <h3 className="font-serif text-2xl font-normal" style={{ color: "#D4AF64" }}>Sacred Journey</h3>
+          <h3 className="font-serif text-2xl font-normal" style={{ color: "#D4AF64" }}>Soul True</h3>
           <p className="mt-5 max-w-xs text-sm font-light leading-relaxed" style={linkStyle}>
             A sanctuary for holistic wellness and the quiet unfolding of remembrance.
           </p>
@@ -36,7 +36,7 @@ export function SiteFooter() {
       </div>
       <div className="py-8 text-center" style={{ borderTop: "1px solid rgba(212,175,100,0.15)" }}>
         <p className="text-[11px] font-light uppercase tracking-[0.18em]" style={linkStyle}>
-          © {new Date().getFullYear()} Sacred Journey
+          © {new Date().getFullYear()} Soul True
         </p>
       </div>
     </footer>

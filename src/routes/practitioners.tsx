@@ -3,8 +3,8 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/practitioners")({
   head: () => makeRouteMeta({
-    title: "Practitioners & Visiting Masters — Sacred Journey",
-    description: "Meet William and the network of healers, shamans, sound masters, and visiting luminaries holding space at Sacred Journey in South Florida.",
+    title: "Practitioners & Visiting Masters — Soul True",
+    description: "Meet William and the network of healers, shamans, sound masters, and visiting luminaries holding space at Soul True in South Florida.",
   }),
   component: PractitionersPage,
 });
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/practitioners")({
 const founder = {
   name: "William Roberts",
   role: "Founder · Healer · Plant Medicine Guide",
-  bio: "Founder of Sacred Journey. 51 years old, born in 1974, rooted in Broward County, Florida. Twenty-year entrepreneur, fifteen-year spiritual seeker, Reiki Level 2 practitioner, BioWell and Spooky2 Rife operator, and lived-experience guide for plant medicine and recovery. William stopped drinking and using cocaine at the start of 2026 — and he holds this work as his life's purpose. He speaks from what he has walked, not what he has read.",
+  bio: "Founder of Soul True. 51 years old, born in 1974, rooted in Broward County, Florida. Twenty-year entrepreneur, fifteen-year spiritual seeker, Reiki Level 2 practitioner, BioWell and Spooky2 Rife operator, and lived-experience guide for plant medicine and recovery. William stopped drinking and using cocaine at the start of 2026 — and he holds this work as his life's purpose. He speaks from what he has walked, not what he has read.",
 };
 
 const network = [
@@ -68,7 +68,7 @@ function PractitionersPage() {
     <PageShell
       eyebrow="The Keepers of the Space"
       title="Founder, Network & Visiting Masters"
-      intro="Sacred Journey is built around William, a curated practitioner network, and an ongoing series of visiting luminaries brought to South Florida to share their medicine."
+      intro="Soul True is built around William, a curated practitioner network, and an ongoing series of visiting luminaries brought to South Florida to share their medicine."
     >
       {/* Founder */}
       <section className="border-y border-border py-16 md:py-20">
@@ -103,7 +103,7 @@ function PractitionersPage() {
             Skill, integrity, reverence — chosen one by one.
           </p>
           <p className="mx-auto mt-8 max-w-2xl text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-            Sacred Journey is not a one-person practice. Your customized healing plan draws from a vetted network of specialists across modalities.
+            Soul True is not a one-person practice. Your customized healing plan draws from a vetted network of specialists across modalities.
           </p>
         </div>
         <div className="mt-12">
@@ -116,7 +116,7 @@ function PractitionersPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-serif text-4xl font-light text-foreground md:text-5xl">Hosted Guest Masters</h2>
           <p className="mx-auto mt-8 max-w-2xl text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-            Sacred Journey is becoming the place in South Florida where the world's most gifted teachers and healers come to share their work.
+            Soul True is becoming the place in South Florida where the world's most gifted teachers and healers come to share their work.
           </p>
         </div>
         <div className="mt-12">

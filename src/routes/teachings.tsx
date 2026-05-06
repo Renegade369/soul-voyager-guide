@@ -740,7 +740,7 @@ function TeachingsPage() {
                 <li>🌿 <span className="text-foreground">Never work with these medicines alone.</span> A safe, held container with experienced support is essential.</li>
               </ul>
               <p className="mt-2 italic">
-                Sacred Journey shares this information for educational purposes only. We do not facilitate, provide, or administer any plant medicines. We strongly urge anyone drawn to this path to do thorough research and only work with reputable, vetted practitioners who prioritize your safety above all else.
+                Soul True shares this information for educational purposes only. We do not facilitate, provide, or administer any plant medicines. We strongly urge anyone drawn to this path to do thorough research and only work with reputable, vetted practitioners who prioritize your safety above all else.
               </p>
             </div>
           </div>
@@ -1227,7 +1227,7 @@ function TeachingsPage() {
             <li><strong className="text-foreground">6. Document and integrate</strong> what arises with the same reverence given to plant medicine work.</li>
           </ol>
           <p className="mt-4 text-sm italic text-muted-foreground">
-            Sacred Journey honors CE-5 as a contemplative discipline and incorporates coherent-meditation circles inspired by Greer's work into select gatherings.
+            Soul True honors CE-5 as a contemplative discipline and incorporates coherent-meditation circles inspired by Greer's work into select gatherings.
           </p>
 
           <h4 className="mt-8 font-serif text-2xl text-foreground">Greer's Core Teachings</h4>
@@ -1278,7 +1278,7 @@ function TeachingsPage() {
             Disclosure is not a story about craft. It is a story about <em>who we are</em>. To remember that we are part of a vast, ensouled cosmos populated by countless intelligent civilizations is to permanently alter how we live, govern, consume, and relate to one another. It collapses tribalism. It makes endless war absurd. It restores the indigenous understanding of a living, peopled universe. It returns us to wonder.
           </p>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Sacred Journey holds extraterrestrial contact, plant medicine, near-death experience, and direct mystical experience as <strong className="text-foreground">four doorways to the same room</strong>: the remembrance that consciousness is primary, that we are not alone, and that we are loved by intelligences we are only beginning to perceive.
+            Soul True holds extraterrestrial contact, plant medicine, near-death experience, and direct mystical experience as <strong className="text-foreground">four doorways to the same room</strong>: the remembrance that consciousness is primary, that we are not alone, and that we are loved by intelligences we are only beginning to perceive.
           </p>
         </article>
 
@@ -1324,7 +1324,7 @@ function TeachingsPage() {
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                 <li>🧘 CE-5 Contact Meditation (free CE-5 Contact app by Dr. Greer)</li>
                 <li>🧘 Heart-brain coherence as the doorway</li>
-                <li>🧘 Sacred Journey contact circles — held quarterly</li>
+                <li>🧘 Soul True contact circles — held quarterly</li>
                 <li>📜 Journal every dream, synchronicity, and felt sense</li>
               </ul>
             </div>

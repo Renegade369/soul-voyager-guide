@@ -3,7 +3,7 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/health")({
   head: () => makeRouteMeta({
-    title: "Health — Sacred Journey",
+    title: "Health — Soul True",
     description: "Holistic health resources: nourishment, detoxification, herbal allies, and the body as a sacred vessel.",
   }),
   component: HealthPage,

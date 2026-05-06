@@ -6,7 +6,7 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 export const Route = createFileRoute("/discovery")({
   head: () =>
     makeRouteMeta({
-      title: "Soul Discovery — Sacred Journey",
+      title: "Soul Discovery — Soul True",
       description:
         "An AI-guided sacred conversation to discover where you are spiritually, physically and mentally — so William can serve you well.",
     }),
@@ -134,7 +134,7 @@ function DiscoveryPage() {
       <PageShell
         eyebrow="Soul Discovery"
         title="Begin Your Discovery"
-        intro="A sacred, AI-guided conversation to gently get to know where you are — spiritually, physically, mentally — so William can discern how Sacred Journey may best serve your path."
+        intro="A sacred, AI-guided conversation to gently get to know where you are — spiritually, physically, mentally — so William can discern how Soul True may best serve your path."
       >
         <div className="mx-auto max-w-xl border-y border-border py-12">
           <p className="text-center font-serif text-2xl font-light italic text-foreground">Before we begin.</p>

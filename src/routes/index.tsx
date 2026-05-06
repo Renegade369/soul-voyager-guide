@@ -18,9 +18,9 @@ import heroOcean from "../assets/hero-sacred-ocean.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sacred Journey — A Sanctuary for Holistic Wellness & Inspiration" },
+      { title: "Soul True — A Sanctuary for Holistic Wellness & Inspiration" },
       { name: "description", content: "A grounded sanctuary for holistic wellness, sacred teachings, and inspirational resources — quiet wisdom for a noisy world." },
-      { property: "og:title", content: "Sacred Journey — A Sanctuary for Holistic Wellness & Inspiration" },
+      { property: "og:title", content: "Soul True — A Sanctuary for Holistic Wellness & Inspiration" },
       { property: "og:description", content: "Holistic wellness, sacred teachings, and inspirational resources — quiet wisdom for a noisy world." },
     ],
   }),
@@ -78,7 +78,7 @@ function Index() {
 
         <div className="relative mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center px-6 py-24 text-center md:py-32">
           <p className="text-[11px] font-light uppercase tracking-[0.32em]" style={{ color: "#D4AF64" }}>
-            Sacred Journey
+            Soul True
           </p>
 
           {/* Mission statement */}
