@@ -19,6 +19,7 @@ import { Route as HealthRouteImport } from './routes/health'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as ContactWilliamRouteImport } from './routes/contact-william'
+import { Route as BeginHereRouteImport } from './routes/begin-here'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
@@ -73,6 +74,11 @@ const ContactWilliamRoute = ContactWilliamRouteImport.update({
   path: '/contact-william',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BeginHereRoute = BeginHereRouteImport.update({
+  id: '/begin-here',
+  path: '/begin-here',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -92,6 +98,7 @@ const ProductHandleRoute = ProductHandleRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/begin-here': typeof BeginHereRoute
   '/contact-william': typeof ContactWilliamRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/begin-here': typeof BeginHereRoute
   '/contact-william': typeof ContactWilliamRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/begin-here': typeof BeginHereRoute
   '/contact-william': typeof ContactWilliamRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/begin-here'
     | '/contact-william'
     | '/discovery'
     | '/events'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/begin-here'
     | '/contact-william'
     | '/discovery'
     | '/events'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/begin-here'
     | '/contact-william'
     | '/discovery'
     | '/events'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BeginHereRoute: typeof BeginHereRoute
   ContactWilliamRoute: typeof ContactWilliamRoute
   DiscoveryRoute: typeof DiscoveryRoute
   EventsRoute: typeof EventsRoute
@@ -271,6 +284,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactWilliamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/begin-here': {
+      id: '/begin-here'
+      path: '/begin-here'
+      fullPath: '/begin-here'
+      preLoaderRoute: typeof BeginHereRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -298,6 +318,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BeginHereRoute: BeginHereRoute,
   ContactWilliamRoute: ContactWilliamRoute,
   DiscoveryRoute: DiscoveryRoute,
   EventsRoute: EventsRoute,
@@ -313,12 +334,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
