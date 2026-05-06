@@ -53,7 +53,6 @@ function ContactPage() {
 
     setSubmitting(true);
     try {
-      const { data: { session } } = await supabase.auth.getSession();
       const resp = await supabase.functions.invoke("contact-submit", {
         body: parsed.data,
       });
