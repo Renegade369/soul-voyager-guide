@@ -56,68 +56,70 @@ const services = [
 function Index() {
   return (
     <div>
-      {/* Hero — deep indigo with slowly rotating gold sacred geometry */}
-      <section
-        className="relative isolate overflow-hidden"
-        style={{ backgroundColor: "#1C1B3A" }}
-      >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 sacred-rotate-slow"
-        >
-          <FlowerOfLife size={520} color="#D4AF64" opacity={0.11} strokeWidth={0.5} />
+      {/* Hero — full-bleed sacred ocean with mission statement */}
+      <section className="relative isolate overflow-hidden" style={{ minHeight: "100vh" }}>
+        {/* Background image */}
+        <img
+          src={heroOcean}
+          alt=""
+          width={1920}
+          height={1080}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ filter: "brightness(0.35) saturate(0.9)" }}
+        />
+        {/* Gradient overlays for text readability */}
+        <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center 30%, rgba(28,27,58,0.3) 0%, rgba(28,27,58,0.75) 100%)" }} />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40" style={{ background: "linear-gradient(to bottom, transparent, rgba(28,27,58,0.95))" }} />
+
+        {/* Sacred geometry watermark */}
+        <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sacred-rotate-slow">
+          <FlowerOfLife size={600} color="#D4AF64" opacity={0.08} strokeWidth={0.4} />
         </div>
 
-        <div className="relative mx-auto max-w-4xl px-6 py-16 text-center md:py-20">
+        <div className="relative mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center px-6 py-24 text-center md:py-32">
           <p className="text-[11px] font-light uppercase tracking-[0.32em]" style={{ color: "#D4AF64" }}>
-            A Sanctuary of Remembrance
+            Sacred Journey
           </p>
-          <h1 className="mx-auto mt-10 max-w-3xl font-serif text-5xl font-light leading-[1.05] md:text-7xl" style={{ color: "#F8F5F0" }}>
-            Quiet wisdom
-            <br />
-            for a <em className="italic font-light" style={{ color: "#D4AF64" }}>noisy</em> world.
-          </h1>
-          <p className="mx-auto mt-10 max-w-xl text-base font-light leading-relaxed md:text-lg" style={{ color: "rgba(248,245,240,0.75)" }}>
-            Holistic wellness, sacred teachings, and inspirational resources — held with care, rooted in nature.
-          </p>
-          <div className="mt-12 flex flex-wrap justify-center gap-4">
+
+          {/* Mission statement */}
+          <div className="mt-10 space-y-6">
+            <h1 className="font-serif text-2xl font-light leading-relaxed md:text-3xl lg:text-4xl" style={{ color: "#F8F5F0" }}>
+              At the core of every struggle — every feeling of emptiness, lost purpose, burnout, addiction, or disconnection — is one fundamental truth:{" "}
+              <em className="italic" style={{ color: "#D4AF64" }}>we have drifted from our own souls.</em>
+            </h1>
+            <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(248,245,240,0.82)" }}>
+              This is not weakness. This is the human condition in the world we live in today.
+            </p>
+            <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(248,245,240,0.82)" }}>
+              Reconnecting with who you truly are at soul level is not just a healing journey — it is the most important work of your lifetime.
+            </p>
+            <p className="font-serif text-xl font-light italic leading-relaxed md:text-2xl" style={{ color: "#D4AF64" }}>
+              Your soul is not something you find. It is where you truly live. It is home.
+            </p>
+            <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(248,245,240,0.85)" }}>
+              Everything changes when you do.
+            </p>
+          </div>
+
+          {/* Prominent BEGIN HERE CTA */}
+          <div className="mt-14">
             <Link
-              to="/discovery"
-              className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
-              style={{ backgroundColor: "#D4AF64", color: "#1C1B3A", border: "1px solid #D4AF64" }}
+              to="/begin-here"
+              className="group relative inline-block px-14 py-5 text-sm font-normal uppercase tracking-[0.28em] transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,100,0.35)]"
+              style={{
+                backgroundColor: "#D4AF64",
+                color: "#1C1B3A",
+                borderRadius: "0.25rem",
+                fontSize: "14px",
+                letterSpacing: "0.28em",
+              }}
             >
               Begin Here
             </Link>
-            <Link
-              to="/visit"
-              className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
-              style={{ color: "#F8F5F0", border: "1px solid rgba(248,245,240,0.5)" }}
-            >
-              Plan Your Visit
-            </Link>
+            <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em]" style={{ color: "rgba(248,245,240,0.5)" }}>
+              Your journey home starts now
+            </p>
           </div>
-        </div>
-      </section>
-
-      {/* Atmospheric image band — hands holding water */}
-      <section aria-hidden className="relative isolate overflow-hidden" style={{ backgroundColor: "#1C1B3A" }}>
-        <div className="relative mx-auto max-w-7xl">
-          <img
-            src={heroHands}
-            alt=""
-            width={1920}
-            height={1080}
-            className="h-[42vh] min-h-[280px] w-full object-cover md:h-[58vh]"
-            style={{ filter: "saturate(0.85) brightness(0.95)" }}
-          />
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
-            style={{ background: "linear-gradient(to bottom, transparent, #F8F5F0)" }}
-          />
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-16"
-            style={{ background: "linear-gradient(to top, transparent, rgba(28,27,58,0.6))" }}
-          />
         </div>
       </section>
 
