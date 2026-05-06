@@ -13,7 +13,7 @@ import {
   OrnamentDoubleCircle,
 } from "../components/SacredGeometry";
 import { Reveal } from "../components/Reveal";
-import heroHands from "../assets/hero-hands-water.jpg";
+import heroOcean from "../assets/hero-sacred-ocean.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
