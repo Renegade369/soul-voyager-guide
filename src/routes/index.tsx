@@ -18,10 +18,10 @@ import heroHands from "../assets/hero-hands-water.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sacred Journey — A Sanctuary for Holistic Wellness" },
-      { name: "description", content: "A grounded sanctuary for holistic healing, sacred teachings, and ceremony — quiet medicine for a noisy world." },
-      { property: "og:title", content: "Sacred Journey — A Sanctuary for Holistic Wellness" },
-      { property: "og:description", content: "Holistic healing, sacred teachings, and ceremony — quiet medicine for a noisy world." },
+      { title: "Sacred Journey — A Sanctuary for Holistic Wellness & Inspiration" },
+      { name: "description", content: "A grounded sanctuary for holistic wellness, sacred teachings, and inspirational resources — quiet wisdom for a noisy world." },
+      { property: "og:title", content: "Sacred Journey — A Sanctuary for Holistic Wellness & Inspiration" },
+      { property: "og:description", content: "Holistic wellness, sacred teachings, and inspirational resources — quiet wisdom for a noisy world." },
     ],
   }),
   component: Index,
@@ -30,13 +30,13 @@ export const Route = createFileRoute("/")({
 const pillars = [
   {
     Icon: PillarSeedOfLife,
-    t: "Holistic Healing",
+    t: "Holistic Wellness",
     d: "Bodywork, breath, and somatic care — a return to wholeness, one quiet layer at a time.",
   },
   {
     Icon: PillarMetatronCube,
     t: "Sacred Teachings",
-    d: "Grounded inquiry into consciousness, ceremony, and the wisdom that lives beneath the noise.",
+    d: "Grounded inquiry into consciousness, wisdom traditions, and the knowledge that lives beneath the noise.",
   },
   {
     Icon: PillarVesica,
@@ -48,9 +48,9 @@ const pillars = [
 const services = [
   { n: "01", t: "Bodywork & Energy", d: "Therapeutic massage, craniosacral work, and Reiki — held in a quiet, devotional space.", Icon: PillarVesica },
   { n: "02", t: "Equine & Nature", d: "Horse-assisted sessions and forest walks for nervous-system regulation and remembrance.", Icon: PillarSeedOfLife },
-  { n: "03", t: "Ceremony & Circle", d: "Cacao, breathwork, and seasonal gatherings to mark thresholds and tend the soul.", Icon: OrnamentRadiating },
-  { n: "04", t: "Teachings & Study", d: "Slow study circles in consciousness, plant wisdom, and embodied practice.", Icon: PillarMetatronCube },
-  { n: "05", t: "Kava Ceremony & Circle", d: "Ancient Pacific tradition — kava is shared in sacred circle as a gentle, grounding plant medicine. Promotes deep relaxation, open heart, and community connection. Held with intention, prayer, and presence.", Icon: OrnamentDoubleCircle },
+  { n: "03", t: "Gathering & Circle", d: "Cacao, breathwork, and seasonal gatherings to mark thresholds and tend the soul.", Icon: OrnamentRadiating },
+  { n: "04", t: "Teachings & Study", d: "Slow study circles in consciousness, wisdom traditions, and embodied practice.", Icon: PillarMetatronCube },
+  { n: "05", t: "Kava Circle", d: "Ancient Pacific tradition — kava is shared in sacred circle as a gentle, grounding practice. Promotes deep relaxation, open heart, and community connection. Held with intention, prayer, and presence.", Icon: OrnamentDoubleCircle },
 ];
 
 function Index() {
@@ -73,12 +73,12 @@ function Index() {
             A Sanctuary of Remembrance
           </p>
           <h1 className="mx-auto mt-10 max-w-3xl font-serif text-5xl font-light leading-[1.05] md:text-7xl" style={{ color: "#F8F5F0" }}>
-            Quiet medicine
+            Quiet wisdom
             <br />
             for a <em className="italic font-light" style={{ color: "#D4AF64" }}>noisy</em> world.
           </h1>
           <p className="mx-auto mt-10 max-w-xl text-base font-light leading-relaxed md:text-lg" style={{ color: "rgba(248,245,240,0.75)" }}>
-            Holistic wellness, sacred teachings, and ceremony — held with care, rooted in nature.
+            Holistic wellness, sacred teachings, and inspirational resources — held with care, rooted in nature.
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-4">
             <Link
@@ -110,12 +110,10 @@ function Index() {
             className="h-[42vh] min-h-[280px] w-full object-cover md:h-[58vh]"
             style={{ filter: "saturate(0.85) brightness(0.95)" }}
           />
-          {/* cream fade into next section */}
           <div
             className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
             style={{ background: "linear-gradient(to bottom, transparent, #F8F5F0)" }}
           />
-          {/* indigo top fade for continuity with hero */}
           <div
             className="pointer-events-none absolute inset-x-0 top-0 h-16"
             style={{ background: "linear-gradient(to top, transparent, rgba(28,27,58,0.6))" }}
@@ -137,14 +135,12 @@ function Index() {
 
       <GeometricDivider variant={0} />
 
-      {/* Three pillars — gold accent bar above title */}
+      {/* Three pillars */}
       <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-8">
           {pillars.map(({ Icon, t, d }, i) => (
             <Reveal key={t} delay={i * 120} as="article">
-              <article
-                className="relative h-full overflow-hidden p-8 text-center md:p-10"
-              >
+              <article className="relative h-full overflow-hidden p-8 text-center md:p-10">
                 <Icon size={36} color="#1C1B3A" opacity={0.95} strokeWidth={0.7} className="mx-auto" />
                 <div
                   aria-hidden
@@ -162,7 +158,7 @@ function Index() {
 
       <GeometricDivider variant={1} />
 
-      {/* Services — 2-col numbered grid with icons + hover treatment */}
+      {/* Services */}
       <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <Reveal>
           <div className="mx-auto mb-10 max-w-2xl text-center md:mb-12">
@@ -237,7 +233,7 @@ function Index() {
 
       <GeometricDivider variant={2} />
 
-      {/* Forest-green quote block with slow-rotating mandala */}
+      {/* Forest-green quote block */}
       <section className="relative isolate overflow-hidden py-16 md:py-20" style={{ backgroundColor: "#2D5A3D" }}>
         <div
           aria-hidden
@@ -248,7 +244,7 @@ function Index() {
         <Reveal>
           <div className="relative mx-auto max-w-3xl px-6 text-center">
             <p className="font-serif text-3xl font-light italic leading-snug md:text-5xl" style={{ color: "#F8F5F0" }}>
-              &ldquo;Healing is not a return to who you were.
+              &ldquo;Growth is not a return to who you were.
               It is a slow remembering of who you have always been.&rdquo;
             </p>
             <p className="mt-10 text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "rgba(212,175,100,0.7)" }}>
@@ -258,7 +254,7 @@ function Index() {
         </Reveal>
       </section>
 
-      {/* Three-step ritual — Discover / Choose / Arrive */}
+      {/* Three-step ritual */}
       <section className="mx-auto max-w-5xl px-6 py-16 md:py-20">
         <Reveal>
           <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
@@ -271,7 +267,7 @@ function Index() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
           {[
             { n: "I", t: "Discover", d: "A quiet conversation to understand what you carry, and what you seek." , Icon: OrnamentRadiating },
-            { n: "II", t: "Choose your medicine", d: "Together we shape a path — bodywork, ceremony, teaching, or stillness." , Icon: OrnamentDiamond },
+            { n: "II", t: "Choose your path", d: "Together we shape a direction — bodywork, teachings, community, or stillness." , Icon: OrnamentDiamond },
             { n: "III", t: "Arrive", d: "Step into the sanctuary. Be held. Begin again." , Icon: OrnamentDoubleCircle },
           ].map((step, i) => (
             <Reveal key={step.n} delay={i * 140}>
@@ -286,7 +282,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Closing CTA — deep indigo */}
+      {/* Closing CTA */}
       <section className="relative isolate overflow-hidden" style={{ backgroundColor: "#1C1B3A" }}>
         <div className="mx-auto max-w-3xl px-6 text-center" style={{ paddingTop: "64px", paddingBottom: "64px" }}>
           <Reveal>
