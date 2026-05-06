@@ -186,7 +186,7 @@ function BeginHerePage() {
               className="font-serif text-xl font-light leading-relaxed md:text-2xl"
               style={{ color: "rgba(248,245,240,0.85)" }}
             >
-              Reconnecting with who you truly are at soul level is not just a healing journey — it is the most important work of your lifetime. It is the reason you are here. And it is the root cause beneath every challenge you are facing.
+              Reconnecting with who you truly are at soul level is not just a journey — it is the most important work of your lifetime. It is the reason you are here. And it is the root cause beneath every challenge you are facing.
             </p>
             <p
               className="font-serif text-2xl font-light italic leading-relaxed md:text-3xl"
@@ -232,7 +232,7 @@ function BeginHerePage() {
               </p>
               <p className="mx-auto mt-4 max-w-md text-center text-sm font-light leading-relaxed" style={{ color: "#5C5A7A" }}>
                 We'll ask you a handful of thoughtful questions about where you are and where you want to go.
-                Then we'll weave together a personalized healing path — specific practices, resources,
+                Then we'll weave together a personalized path forward — specific practices, resources,
                 and daily steps matched to your unique journey.
               </p>
               <button
@@ -251,7 +251,7 @@ function BeginHerePage() {
           ) : (
             <>
               <h2 className="mb-8 text-center font-serif text-3xl font-light" style={{ color: "#1C1B3A" }}>
-                Your Healing Path
+                Your Path Forward
               </h2>
               <p className="mx-auto mb-8 max-w-xl text-center text-sm font-light" style={{ color: "#5C5A7A" }}>
                 Take your time. There are no wrong answers — only what is true for you right now.
@@ -345,7 +345,7 @@ function BeginHerePage() {
                     className="p-10 text-center"
                     style={{ backgroundColor: "#1C1B3A", color: "#F8F5F0", borderTop: "0.5px solid rgba(28,27,58,0.12)" }}
                   >
-                    <p className="font-serif text-2xl font-light italic">Your healing path has been revealed.</p>
+                    <p className="font-serif text-2xl font-light italic">Your path forward has been revealed.</p>
                     <p
                       className="mt-4 text-[11px] font-light uppercase tracking-[0.22em]"
                       style={{ color: "rgba(248,245,240,0.7)" }}
