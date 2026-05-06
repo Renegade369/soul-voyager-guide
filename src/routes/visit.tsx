@@ -5,7 +5,7 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 export const Route = createFileRoute("/visit")({
   head: () => makeRouteMeta({
     title: "Visit Sacred Journey — South Florida",
-    description: "Sacred Journey is being built as a destination sanctuary in South Florida — Davie, FL — with land, horses, ceremony space, and guest accommodations.",
+    description: "Sacred Journey is being built as a destination sanctuary in South Florida — Davie, FL — with land, horses, gathering spaces, and guest accommodations.",
   }),
   component: VisitPage,
 });
@@ -27,7 +27,7 @@ function VisitPage() {
     >
       <section className="mx-auto max-w-2xl text-center">
         <p className="font-serif text-2xl font-light italic leading-snug text-muted-foreground md:text-3xl">
-          A sacred property with land, horses, ceremony space, and gathering grounds.
+          A sacred property with land, horses, gathering spaces, and grounds for stillness.
         </p>
         <p className="mx-auto mt-6 max-w-xl text-sm font-light leading-relaxed text-muted-foreground">
           An equestrian-rooted community with the sanctuary feel of remote land — yet reachable from the largest population of seekers in the southeast.
