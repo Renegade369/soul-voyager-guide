@@ -6,7 +6,7 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 export const Route = createFileRoute("/contact-william")({
   head: () => makeRouteMeta({
     title: "Contact William Roberts — Sacred Journey",
-    description: "Reach William Roberts, founder of Sacred Journey, with questions about sacred journeys, private and group plant medicine ceremonies.",
+    description: "Reach William Roberts, founder of Sacred Journey, with questions about your wellness journey, spiritual guidance, or the sanctuary.",
   }),
   component: ContactWilliamPage,
 });
@@ -15,7 +15,7 @@ const contactSchema = z.object({
   name: z.string().trim().min(1, "Please share your name").max(100, "Name is too long"),
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().max(40, "Phone is too long").optional().or(z.literal("")),
-  interest: z.enum(["private-ceremony", "group-ceremony", "sacred-journey", "general"]),
+  interest: z.enum(["private-session", "group-experience", "sacred-journey", "general"]),
   experience: z.string().trim().max(500, "Please keep this under 500 characters").optional().or(z.literal("")),
   message: z.string().trim().min(1, "Please share a message").max(2000, "Message is too long"),
 });
@@ -23,8 +23,8 @@ const contactSchema = z.object({
 type FormValues = z.infer<typeof contactSchema>;
 
 const interestOptions: { value: FormValues["interest"]; label: string; description: string }[] = [
-  { value: "private-ceremony", label: "Private Plant Medicine Ceremony", description: "An intimate, one-on-one ceremony tailored to you." },
-  { value: "group-ceremony", label: "Group Plant Medicine Ceremony", description: "Sit in sacred circle with fellow seekers." },
+  { value: "private-session", label: "Private Guided Experience", description: "An intimate, one-on-one experience tailored to you." },
+  { value: "group-experience", label: "Group Circle or Gathering", description: "Join in sacred circle with fellow seekers." },
   { value: "sacred-journey", label: "Sacred Journey Guidance", description: "Mentorship for your unfolding path." },
   { value: "general", label: "General Question", description: "Something else on your heart." },
 ];
@@ -68,20 +68,20 @@ function ContactWilliamPage() {
     <PageShell
       eyebrow="Reach William"
       title="Contact William Roberts"
-      intro="Founder and healer at Sacred Journey. Share what's on your heart — questions about sacred journeys, private or group plant medicine ceremonies, or guidance on your path. William reads each message personally."
+      intro="Founder and guide at Sacred Journey. Share what's on your heart — questions about your path, guided experiences, or the sanctuary itself. William reads each message personally."
     >
       <section className="mx-auto max-w-2xl border-y border-border py-16 text-center">
-        <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Founder · Healer</p>
+        <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">Founder · Guide</p>
         <h2 className="mt-6 font-serif text-4xl font-light text-foreground md:text-5xl">William Roberts</h2>
         <p className="mx-auto mt-8 max-w-xl text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-          William holds Sacred Journey as a sanctuary of remembrance — guiding souls through ceremony, healing, and the slow work of becoming whole.
+          William holds Sacred Journey as a sanctuary of remembrance — guiding souls through their personal journey and the slow work of becoming whole.
         </p>
       </section>
 
       <section className="mt-20 grid grid-cols-1 gap-12 md:grid-cols-3">
         {[
           { t: "Personal reply", d: "Within one to three days." },
-          { t: "Preparation", d: "A conversation before any ceremony." },
+          { t: "Preparation", d: "A conversation before any guided experience." },
           { t: "Sovereignty", d: "Discernment and safety held throughout." },
         ].map((c, i) => (
           <div key={c.t} className="text-center md:text-left">
@@ -137,7 +137,7 @@ function ContactWilliamPage() {
 
               <div>
                 <label htmlFor="experience" className="mb-2 block text-[11px] font-light uppercase tracking-[0.22em] text-foreground/65">
-                  Your experience with ceremony or healing work (optional)
+                  Your experience with wellness or spiritual practices (optional)
                 </label>
                 <textarea
                   id="experience"
