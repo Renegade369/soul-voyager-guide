@@ -6,8 +6,8 @@ import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/contact")({
   head: () => makeRouteMeta({
-    title: "Contact — Sacred Journey",
-    description: "Reach out to Sacred Journey with questions, guidance, or to connect. You are not alone on this journey.",
+    title: "Contact — Soul True",
+    description: "Reach out to Soul True with questions, guidance, or to connect. You are not alone on this journey.",
   }),
   component: ContactPage,
 });
@@ -82,7 +82,7 @@ function ContactPage() {
             Thank you for reaching out.
           </p>
           <p className="mx-auto mt-8 max-w-lg text-base font-light leading-relaxed text-muted-foreground">
-            Your message has been received and someone from Sacred Journey will be in touch with you soon. You are in the right place.
+            Your message has been received and someone from Soul True will be in touch with you soon. You are in the right place.
           </p>
           <div className="mx-auto mt-8 h-px w-16" style={{ backgroundColor: "#D4AF64" }} />
         </section>
@@ -90,7 +90,7 @@ function ContactPage() {
         {/* Disclaimer */}
         <section className="border-t border-border py-10">
           <p className="mx-auto max-w-3xl text-center text-[11px] font-light leading-relaxed tracking-wide text-muted-foreground">
-            Sacred Journey is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
+            Soul True is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
           </p>
         </section>
       </PageShell>
@@ -192,7 +192,7 @@ function ContactPage() {
       {/* Disclaimer */}
       <section className="mt-32 border-t border-border py-10">
         <p className="mx-auto max-w-3xl text-center text-[11px] font-light leading-relaxed tracking-wide text-muted-foreground">
-          Sacred Journey is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
+          Soul True is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
         </p>
       </section>
     </PageShell>

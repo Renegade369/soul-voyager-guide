@@ -19,8 +19,8 @@ export function SiteHeader() {
       style={{ backgroundColor: "rgba(28,27,58,0.95)", borderBottom: "1px solid rgba(212,175,100,0.18)" }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-12">
-        <Link to="/" aria-label="Sacred Journey home" style={{ color: "#D4AF64" }}>
-          <span className="font-serif text-2xl font-normal tracking-tight">Sacred Journey</span>
+        <Link to="/" aria-label="Soul True home" style={{ color: "#D4AF64" }}>
+          <span className="font-serif text-2xl font-normal tracking-tight">Soul True</span>
         </Link>
         <nav className="hidden items-center gap-10 md:flex">
           {links.map((l) => (

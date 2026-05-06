@@ -25,15 +25,15 @@ function SectionIcon({ Icon }: { Icon: IconCmp }) {
 
 export const Route = createFileRoute("/services")({
   head: () => makeRouteMeta({
-    title: "Services & Modalities — Sacred Journey",
-    description: "Bodywork, energy work, sound, breath, and nature-based practices — informational and inspirational resources held with reverence at Sacred Journey.",
+    title: "Services & Modalities — Soul True",
+    description: "Bodywork, energy work, sound, breath, and nature-based practices — informational and inspirational resources held with reverence at Soul True.",
   }),
   component: ServicesPage,
 });
 
 const intake = {
   t: "Intake & Initial Consultation",
-  d: "Every soul who comes to Sacred Journey begins here. A deep-listening intake — body, mind, spirit — followed by a customized wellness plan built for you alone. No cookie-cutter approaches.",
+  d: "Every soul who comes to Soul True begins here. A deep-listening intake — body, mind, spirit — followed by a customized wellness plan built for you alone. No cookie-cutter approaches.",
   duration: "90–120 min",
 };
 
@@ -160,7 +160,7 @@ function ServicesPage() {
     <PageShell
       eyebrow="Offerings"
       title="Services & Modalities"
-      intro="Sacred Journey addresses the whole person — root cause, not symptoms. Every path begins with a deep intake and a customized wellness plan built around you. All information provided is for educational and inspirational purposes only."
+      intro="Soul True addresses the whole person — root cause, not symptoms. Every path begins with a deep intake and a customized wellness plan built around you. All information provided is for educational and inspirational purposes only."
     >
       {/* Intake — the doorway */}
       <section className="relative isolate overflow-hidden border-y border-border py-16 text-center md:py-20">
@@ -226,7 +226,7 @@ function ServicesPage() {
             The body remembers everything. These modalities help it finally let go.
           </p>
           <p className="mx-auto mt-8 max-w-2xl text-left text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-            The nervous system cannot release in a state of tension. Bodywork is often the first step — and sometimes the most profound. Sacred Journey offers a full spectrum of therapeutic and wellness-focused bodywork, delivered by licensed therapists and specialized practitioners on staff and within our vetted network.
+            The nervous system cannot release in a state of tension. Bodywork is often the first step — and sometimes the most profound. Soul True offers a full spectrum of therapeutic and wellness-focused bodywork, delivered by licensed therapists and specialized practitioners on staff and within our vetted network.
           </p>
         </div>
 
@@ -351,7 +351,7 @@ function ServicesPage() {
             A note from William
           </p>
           <p className="mx-auto mt-5 max-w-xl text-sm font-light leading-relaxed text-muted-foreground">
-            Two Siamese cats — Spirit and Mia — have been some of my greatest teachers. Animals have walked with me through the darkest passages of my life. The Sacred Journey property is being built around this truth: land, horses, and animals are not amenities. They are at the heart of what we do.
+            Two Siamese cats — Spirit and Mia — have been some of my greatest teachers. Animals have walked with me through the darkest passages of my life. The Soul True property is being built around this truth: land, horses, and animals are not amenities. They are at the heart of what we do.
           </p>
         </div>
       </section>
@@ -360,7 +360,7 @@ function ServicesPage() {
         icon={OrnamentDiamond}
         title="Sacred Plant Traditions"
         subtitle="Informational resources about ancient plant wisdom, held with the deepest reverence for the plants, the lineages, and the souls drawn to learn about them."
-        intro="Sacred Journey provides educational information about plant traditions. We do not prescribe, recommend, or administer any substances. William speaks from lived experience — and all content is shared for inspirational and educational purposes only. Always consult a qualified healthcare professional."
+        intro="Soul True provides educational information about plant traditions. We do not prescribe, recommend, or administer any substances. William speaks from lived experience — and all content is shared for inspirational and educational purposes only. Always consult a qualified healthcare professional."
         items={sacredPlantInfo}
       />
 
@@ -388,7 +388,7 @@ function ServicesPage() {
       {/* Disclaimer */}
       <section className="border-t border-border py-10">
         <p className="mx-auto max-w-3xl text-center text-[11px] font-light leading-relaxed tracking-wide text-muted-foreground">
-          Sacred Journey is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
+          Soul True is a holistic wellness and spiritual guidance platform. The information, resources, and guidance provided here are for educational and inspirational purposes only and do not constitute medical, psychological, or healthcare advice. Always consult your primary care physician or a qualified healthcare professional regarding any health concerns or before making any changes to your health regimen.
         </p>
       </section>
     </PageShell>

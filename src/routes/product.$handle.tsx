@@ -17,8 +17,8 @@ type LoaderData = { product: ProductNode };
 export const Route = createFileRoute("/product/$handle")({
   head: ({ loaderData }: { loaderData?: LoaderData }) => {
     const p = loaderData?.product;
-    const title = p ? `${p.title} — Sacred Journey Shop` : "Product — Sacred Journey Shop";
-    const desc = p?.description?.slice(0, 160) || "Sacred Journey shop item.";
+    const title = p ? `${p.title} — Soul True Shop` : "Product — Soul True Shop";
+    const desc = p?.description?.slice(0, 160) || "Soul True shop item.";
     const img = p?.images?.edges?.[0]?.node?.url;
     const meta = makeRouteMeta({ title, description: desc });
     if (img) {

@@ -4,8 +4,8 @@ import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/visit")({
   head: () => makeRouteMeta({
-    title: "Visit Sacred Journey — South Florida",
-    description: "Sacred Journey is being built as a destination sanctuary in South Florida — Davie, FL — with land, horses, gathering spaces, and guest accommodations.",
+    title: "Visit Soul True — South Florida",
+    description: "Soul True is being built as a destination sanctuary in South Florida — Davie, FL — with land, horses, gathering spaces, and guest accommodations.",
   }),
   component: VisitPage,
 });
@@ -23,7 +23,7 @@ function VisitPage() {
     <PageShell
       eyebrow="Find Us · South Florida"
       title="Visit the Sanctuary"
-      intro="Sacred Journey is being built as a destination — a place worth traveling for. Online intake and consultations are available now while the South Florida property is being established."
+      intro="Soul True is being built as a destination — a place worth traveling for. Online intake and consultations are available now while the South Florida property is being established."
     >
       <section className="mx-auto max-w-2xl text-center">
         <p className="font-serif text-2xl font-light italic leading-snug text-muted-foreground md:text-3xl">
