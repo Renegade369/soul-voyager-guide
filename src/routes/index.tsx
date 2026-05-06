@@ -292,25 +292,25 @@ function Index() {
               className="font-serif leading-tight"
               style={{ color: "#F8F5F0", fontWeight: 300, fontSize: "clamp(2.25rem, 5vw, 3rem)" }}
             >
-              Step into the sanctuary.
+              You have arrived somewhere that understands.
             </h2>
             <p className="mx-auto mt-7 max-w-lg text-base font-light leading-relaxed" style={{ color: "rgba(248,245,240,0.7)" }}>
-              Book a session, join a circle, or come and be quiet with us for an afternoon.
+              The most important work of your lifetime begins with a single step inward.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link
-                to="/discovery"
-                className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
-                style={{ backgroundColor: "#D4AF64", color: "#1C1B3A", border: "1px solid #D4AF64" }}
+                to="/begin-here"
+                className="px-12 py-4 text-sm font-normal uppercase tracking-[0.24em] transition hover:shadow-[0_0_30px_rgba(212,175,100,0.3)]"
+                style={{ backgroundColor: "#D4AF64", color: "#1C1B3A", borderRadius: "0.25rem" }}
               >
                 Begin Here
               </Link>
               <Link
-                to="/visit"
+                to="/services"
                 className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
                 style={{ color: "#F8F5F0", border: "1px solid rgba(248,245,240,0.5)" }}
               >
-                Plan Your Visit
+                Explore Services
               </Link>
             </div>
           </Reveal>
