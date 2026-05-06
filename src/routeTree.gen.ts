@@ -19,6 +19,7 @@ import { Route as HealthRouteImport } from './routes/health'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as ContactWilliamRouteImport } from './routes/contact-william'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BeginHereRouteImport } from './routes/begin-here'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -74,6 +75,11 @@ const ContactWilliamRoute = ContactWilliamRouteImport.update({
   path: '/contact-william',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BeginHereRoute = BeginHereRouteImport.update({
   id: '/begin-here',
   path: '/begin-here',
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/begin-here': typeof BeginHereRoute
+  '/contact': typeof ContactRoute
   '/contact-william': typeof ContactWilliamRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/begin-here': typeof BeginHereRoute
+  '/contact': typeof ContactRoute
   '/contact-william': typeof ContactWilliamRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/begin-here': typeof BeginHereRoute
+  '/contact': typeof ContactRoute
   '/contact-william': typeof ContactWilliamRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/begin-here'
+    | '/contact'
     | '/contact-william'
     | '/discovery'
     | '/events'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/begin-here'
+    | '/contact'
     | '/contact-william'
     | '/discovery'
     | '/events'
@@ -182,6 +193,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/begin-here'
+    | '/contact'
     | '/contact-william'
     | '/discovery'
     | '/events'
@@ -199,6 +211,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BeginHereRoute: typeof BeginHereRoute
+  ContactRoute: typeof ContactRoute
   ContactWilliamRoute: typeof ContactWilliamRoute
   DiscoveryRoute: typeof DiscoveryRoute
   EventsRoute: typeof EventsRoute
@@ -284,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactWilliamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/begin-here': {
       id: '/begin-here'
       path: '/begin-here'
@@ -319,6 +339,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BeginHereRoute: BeginHereRoute,
+  ContactRoute: ContactRoute,
   ContactWilliamRoute: ContactWilliamRoute,
   DiscoveryRoute: DiscoveryRoute,
   EventsRoute: EventsRoute,

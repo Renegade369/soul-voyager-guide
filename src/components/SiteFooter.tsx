@@ -20,6 +20,7 @@ export function SiteFooter() {
             <li><Link to="/teachings" style={linkStyle}>Teachings</Link></li>
             <li><Link to="/events" style={linkStyle}>Events</Link></li>
             <li><Link to="/visit" style={linkStyle}>Visit</Link></li>
+            <li><Link to="/contact" style={linkStyle}>Contact</Link></li>
           </ul>
         </div>
         <div>
