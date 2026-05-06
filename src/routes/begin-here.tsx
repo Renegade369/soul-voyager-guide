@@ -2,14 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { FlowerOfLife } from "../components/SacredGeometry";
+import heroForest from "../assets/hero-begin-here-forest.jpg";
 
 export const Route = createFileRoute("/begin-here")({
   head: () => ({
     meta: [
       { title: "Begin Here — Sacred Journey" },
-      { name: "description", content: "A warm, AI-guided conversation to discover your healing path — personalized recommendations based on where you are and where you want to go." },
+      { name: "description", content: "A warm, guided conversation to discover your path forward — personalized recommendations based on where you are and where you want to go." },
       { property: "og:title", content: "Begin Here — Sacred Journey" },
-      { property: "og:description", content: "A warm, AI-guided conversation to discover your healing path." },
+      { property: "og:description", content: "A warm, guided conversation to discover your path forward." },
     ],
   }),
   component: BeginHerePage,
@@ -150,113 +151,192 @@ function BeginHerePage() {
 
   return (
     <div>
-      {/* ─── HERO STATEMENT ─── */}
-      <section
-        className="relative isolate overflow-hidden"
-        style={{ backgroundColor: "#1C1B3A" }}
-      >
+      {/* ═══ FULL-BLEED HERO WITH FOREST IMAGE ═══ */}
+      <section className="relative isolate overflow-hidden" style={{ minHeight: "100vh" }}>
+        {/* Background image */}
+        <img
+          src={heroForest}
+          alt=""
+          width={1920}
+          height={1080}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ filter: "brightness(0.28) saturate(0.85)" }}
+        />
+        {/* Gradient overlays */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "radial-gradient(ellipse at center 40%, rgba(28,27,58,0.2) 0%, rgba(28,27,58,0.7) 100%)" }}
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-48"
+          style={{ background: "linear-gradient(to bottom, transparent, rgba(28,27,58,0.95))" }}
+        />
+
+        {/* Sacred geometry watermark */}
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sacred-rotate-slow"
         >
-          <FlowerOfLife size={520} color="#D4AF64" opacity={0.11} strokeWidth={0.5} />
+          <FlowerOfLife size={650} color="#D4AF64" opacity={0.06} strokeWidth={0.35} />
         </div>
-        <div className="relative mx-auto max-w-3xl px-6 py-28 text-center md:py-40">
+
+        {/* Content */}
+        <div className="relative mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center px-6 py-24 text-center md:px-8 md:py-32">
           <p
-            className="text-[11px] font-light uppercase tracking-[0.28em]"
+            className="text-[11px] font-light uppercase tracking-[0.32em]"
             style={{ color: "#D4AF64" }}
           >
             Begin Here
           </p>
-          <div className="mt-10 space-y-6">
-            <p
-              className="font-serif text-2xl font-light leading-relaxed md:text-3xl"
+
+          {/* Mission statement — generous spacing, breathing typography */}
+          <div className="mt-12 space-y-10 md:mt-16 md:space-y-12">
+            <h1
+              className="font-serif text-[1.65rem] font-light leading-[1.55] md:text-[2rem] lg:text-[2.25rem] lg:leading-[1.5]"
               style={{ color: "#F8F5F0" }}
             >
               At the core of every struggle — every feeling of emptiness, lost purpose, burnout, addiction, or disconnection — is one fundamental truth:{" "}
-              <em>we have drifted from our own souls.</em>
-            </p>
+              <em className="italic" style={{ color: "#D4AF64" }}>we have drifted from our own souls.</em>
+            </h1>
+
             <p
-              className="font-serif text-xl font-light leading-relaxed md:text-2xl"
-              style={{ color: "rgba(248,245,240,0.85)" }}
+              className="font-serif text-lg font-light leading-[1.7] md:text-xl lg:text-[1.35rem]"
+              style={{ color: "rgba(248,245,240,0.8)" }}
             >
               This is not weakness. This is the human condition in the world we live in today.
             </p>
+
             <p
-              className="font-serif text-xl font-light leading-relaxed md:text-2xl"
-              style={{ color: "rgba(248,245,240,0.85)" }}
+              className="font-serif text-lg font-light leading-[1.7] md:text-xl lg:text-[1.35rem]"
+              style={{ color: "rgba(248,245,240,0.8)" }}
             >
               Reconnecting with who you truly are at soul level is not just a healing journey — it is the most important work of your lifetime. It is the reason you are here. And it is the root cause beneath every challenge you are facing.
             </p>
+
             <p
-              className="font-serif text-2xl font-light italic leading-relaxed md:text-3xl"
+              className="font-serif text-xl font-light italic leading-[1.6] md:text-2xl lg:text-[1.75rem]"
               style={{ color: "#D4AF64" }}
             >
               Your soul is not something you find. It is where you truly live. It is home.
             </p>
+
             <p
-              className="font-serif text-xl font-light leading-relaxed md:text-2xl"
+              className="font-serif text-lg font-light leading-[1.7] md:text-xl lg:text-[1.35rem]"
               style={{ color: "rgba(248,245,240,0.85)" }}
             >
               Sacred Journey exists for one reason — to help you find your way back home.
             </p>
+
             <p
-              className="font-serif text-2xl font-light italic leading-relaxed md:text-3xl"
+              className="font-serif text-xl font-light italic leading-[1.6] md:text-2xl lg:text-[1.75rem]"
               style={{ color: "#F8F5F0" }}
             >
               Everything changes when you do.
             </p>
           </div>
+
+          {/* Scroll indicator */}
+          <div className="mt-16 animate-bounce md:mt-20">
+            <svg width="20" height="28" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2 L10 22 M3 16 L10 23 L17 16" stroke="rgba(212,175,100,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
         </div>
       </section>
 
-      {/* ─── DISCLAIMER ─── */}
-      <section style={{ backgroundColor: "#F8F5F0" }}>
-        <div className="mx-auto max-w-3xl px-6 py-10">
-          <p
-            className="text-center text-[11px] font-light leading-relaxed tracking-wide"
-            style={{ color: "#5C5A7A" }}
-          >
-            {DISCLAIMER}
-          </p>
+      {/* ═══ DISCLAIMER — subtle, separated ═══ */}
+      <section style={{ backgroundColor: "#1C1B3A" }}>
+        <div className="mx-auto max-w-2xl px-6 py-8">
+          <div style={{ borderTop: "0.5px solid rgba(212,175,100,0.15)", paddingTop: "24px" }}>
+            <p
+              className="text-center text-[10px] font-light leading-[1.8] tracking-wide"
+              style={{ color: "rgba(248,245,240,0.4)" }}
+            >
+              {DISCLAIMER}
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ─── CONVERSATIONAL INTAKE ─── */}
+      {/* ═══ TRANSITION — invitation to converse ═══ */}
       <section style={{ backgroundColor: "#F8F5F0" }}>
-        <div className="mx-auto max-w-5xl px-6 pb-20 pt-8 md:pb-28">
+        <div className="mx-auto max-w-3xl px-6 py-20 text-center md:py-28">
           {!started ? (
-            <div className="mx-auto max-w-xl py-12" style={{ borderTop: "0.5px solid rgba(28,27,58,0.12)", borderBottom: "0.5px solid rgba(28,27,58,0.12)" }}>
-              <p className="text-center font-serif text-2xl font-light italic" style={{ color: "#1C1B3A" }}>
-                A few minutes of presence.
-              </p>
-              <p className="mx-auto mt-4 max-w-md text-center text-sm font-light leading-relaxed" style={{ color: "#5C5A7A" }}>
-                We'll ask you a handful of thoughtful questions about where you are and where you want to go.
-                Then we'll weave together a personalized path forward — specific practices, resources,
-                and daily steps matched to your unique journey.
-              </p>
-              <button
-                type="button"
-                onClick={startConversation}
-                className="mt-10 w-full px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
-                style={{
-                  backgroundColor: "#D4AF64",
-                  color: "#1C1B3A",
-                  borderRadius: "0.25rem",
-                }}
-              >
-                Begin the Conversation
-              </button>
-            </div>
+            <>
+              {/* Pre-conversation: invitation + prominent button */}
+              <div className="relative">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  <FlowerOfLife size={280} color="#1C1B3A" opacity={0.04} strokeWidth={0.5} />
+                </div>
+
+                <p
+                  className="text-[11px] font-light uppercase tracking-[0.28em]"
+                  style={{ color: "#D4AF64" }}
+                >
+                  Your Journey Begins
+                </p>
+                <h2
+                  className="mt-8 font-serif text-3xl font-light italic leading-snug md:text-4xl lg:text-5xl"
+                  style={{ color: "#1C1B3A" }}
+                >
+                  A few minutes of presence.
+                </h2>
+                <p
+                  className="mx-auto mt-6 max-w-lg text-base font-light leading-relaxed md:text-lg"
+                  style={{ color: "#5C5A7A" }}
+                >
+                  We'll ask you a handful of thoughtful questions about where you are and where you want to go.
+                  Then we'll weave together a personalized path forward — specific practices, resources,
+                  and daily steps matched to your unique journey.
+                </p>
+
+                {/* THE BUTTON — large, centered, impossible to miss */}
+                <div className="mt-14">
+                  <button
+                    type="button"
+                    onClick={startConversation}
+                    className="group relative inline-block px-16 py-6 text-sm font-normal uppercase tracking-[0.3em] transition-all duration-300 hover:shadow-[0_0_50px_rgba(212,175,100,0.4)]"
+                    style={{
+                      backgroundColor: "#D4AF64",
+                      color: "#1C1B3A",
+                      borderRadius: "0.25rem",
+                      fontSize: "15px",
+                    }}
+                  >
+                    Begin the Conversation
+                  </button>
+                  <p
+                    className="mt-5 text-[11px] font-light uppercase tracking-[0.2em]"
+                    style={{ color: "rgba(92,90,122,0.5)" }}
+                  >
+                    No account needed · Completely free · Takes 5–10 minutes
+                  </p>
+                </div>
+              </div>
+            </>
           ) : (
             <>
-              <h2 className="mb-8 text-center font-serif text-3xl font-light" style={{ color: "#1C1B3A" }}>
+              {/* Active conversation */}
+              <h2
+                className="mb-4 font-serif text-3xl font-light md:text-4xl"
+                style={{ color: "#1C1B3A" }}
+              >
                 Your Path Forward
               </h2>
-              <p className="mx-auto mb-8 max-w-xl text-center text-sm font-light" style={{ color: "#5C5A7A" }}>
+              <p
+                className="mx-auto mb-10 max-w-xl text-sm font-light leading-relaxed"
+                style={{ color: "#5C5A7A" }}
+              >
                 Take your time. There are no wrong answers — only what is true for you right now.
               </p>
-              <div style={{ border: "0.5px solid rgba(28,27,58,0.12)" }}>
+
+              <div
+                className="mx-auto max-w-2xl text-left"
+                style={{ border: "0.5px solid rgba(28,27,58,0.12)", borderRadius: "0.25rem", overflow: "hidden" }}
+              >
                 <div
                   ref={scrollRef}
                   className="max-h-[60vh] min-h-[420px] space-y-5 overflow-y-auto px-5 py-6 md:px-8"
@@ -280,7 +360,10 @@ function BeginHerePage() {
                         }
                       >
                         {m.role === "assistant" ? (
-                          <div className="prose prose-sm max-w-none prose-headings:font-serif prose-headings:font-normal prose-p:font-light prose-strong:font-normal prose-em:italic" style={{ color: "#1C1B3A" }}>
+                          <div
+                            className="prose prose-sm max-w-none prose-headings:font-serif prose-headings:font-normal prose-p:font-light prose-strong:font-normal prose-em:italic prose-a:text-[#2D5A3D] prose-a:underline prose-a:underline-offset-2"
+                            style={{ color: "#1C1B3A" }}
+                          >
                             <ReactMarkdown>{m.content || "…"}</ReactMarkdown>
                           </div>
                         ) : (
@@ -290,14 +373,20 @@ function BeginHerePage() {
                     </div>
                   ))}
                   {streaming && (
-                    <p className="text-center text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "#5C5A7A" }}>
+                    <p
+                      className="text-center text-[11px] font-light uppercase tracking-[0.28em]"
+                      style={{ color: "#5C5A7A" }}
+                    >
                       listening…
                     </p>
                   )}
                 </div>
 
                 {error && (
-                  <p className="px-6 py-3 text-center text-xs font-light" style={{ color: "#c44", borderTop: "0.5px solid rgba(28,27,58,0.12)" }}>
+                  <p
+                    className="px-6 py-3 text-center text-xs font-light"
+                    style={{ color: "#c44", borderTop: "0.5px solid rgba(28,27,58,0.12)" }}
+                  >
                     {error}
                   </p>
                 )}
@@ -323,7 +412,7 @@ function BeginHerePage() {
                       rows={2}
                       maxLength={2000}
                       placeholder="Speak from the heart…"
-                      className="flex-1 resize-none px-3 py-2 text-sm font-light outline-none"
+                      className="flex-1 resize-none rounded px-3 py-2 text-sm font-light outline-none"
                       style={{ border: "0.5px solid rgba(28,27,58,0.15)", color: "#1C1B3A", backgroundColor: "#FFFFFF" }}
                       disabled={streaming}
                     />
@@ -343,7 +432,7 @@ function BeginHerePage() {
                 ) : (
                   <div
                     className="p-10 text-center"
-                    style={{ backgroundColor: "#1C1B3A", color: "#F8F5F0", borderTop: "0.5px solid rgba(28,27,58,0.12)" }}
+                    style={{ backgroundColor: "#1C1B3A", color: "#F8F5F0" }}
                   >
                     <p className="font-serif text-2xl font-light italic">Your path forward has been revealed.</p>
                     <p
@@ -357,7 +446,7 @@ function BeginHerePage() {
                         href="/contact-william"
                         className="inline-block px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
                         style={{
-                          border: "1px solid #F8F5F0",
+                          border: "1px solid rgba(248,245,240,0.5)",
                           color: "#F8F5F0",
                           borderRadius: "0.25rem",
                         }}
@@ -380,15 +469,17 @@ function BeginHerePage() {
                 )}
               </div>
 
-              {/* ─── BOTTOM DISCLAIMER (after healing path) ─── */}
+              {/* Bottom disclaimer after complete */}
               {complete && (
-                <div className="mx-auto mt-10 max-w-3xl">
-                  <p
-                    className="text-center text-[11px] font-light leading-relaxed tracking-wide"
-                    style={{ color: "#5C5A7A" }}
-                  >
-                    {DISCLAIMER}
-                  </p>
+                <div className="mx-auto mt-10 max-w-2xl">
+                  <div style={{ borderTop: "0.5px solid rgba(28,27,58,0.1)", paddingTop: "20px" }}>
+                    <p
+                      className="text-center text-[10px] font-light leading-[1.8] tracking-wide"
+                      style={{ color: "rgba(92,90,122,0.5)" }}
+                    >
+                      {DISCLAIMER}
+                    </p>
+                  </div>
                 </div>
               )}
             </>
