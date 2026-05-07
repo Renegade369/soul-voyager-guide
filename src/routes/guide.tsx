@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Home, Zap, Grid3X3, Headphones, Wrench, Trophy } from "lucide-react";
+import { Home, Zap, Grid3X3, Headphones, Wrench, Trophy, Sparkles } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthModal } from "@/components/guide/AuthModal";
 import { HomeTab } from "@/components/guide/HomeTab";
@@ -9,6 +9,7 @@ import { PillarsTab } from "@/components/guide/PillarsTab";
 import { MeditationsTab } from "@/components/guide/MeditationsTab";
 import { ToolsTab } from "@/components/guide/ToolsTab";
 import { ChallengeTab } from "@/components/guide/ChallengeTab";
+import { SoulQuizTab } from "@/components/guide/SoulQuizTab";
 
 const C = { bg: "#0D0F0E", border: "#2E3A35", gold: "#C9A84C", text: "#E8EDE9", muted: "#8A9E94" };
 const fonts = { body: '"Outfit", sans-serif' };
