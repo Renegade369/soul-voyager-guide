@@ -442,6 +442,48 @@ export function MeditationsTab() {
               </div>
             </div>
 
+            {/* Audio Player — shows when audio is loaded */}
+            {ttsState !== "idle" && ttsState !== "loading" && (
+              <div className="border-t px-5 pt-4 pb-2" style={{ borderColor: C.border }}>
+                <div className="flex items-center gap-3 rounded-lg p-3" style={{ backgroundColor: C.inner }}>
+                  <button
+                    onClick={ttsState === "playing" ? pauseTTS : requestTTS}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors"
+                    style={{ backgroundColor: C.teal }}
+                  >
+                    {ttsState === "playing"
+                      ? <Pause size={15} fill="white" color="white" />
+                      : <Play size={15} fill="white" color="white" />}
+                  </button>
+                  <div className="flex-1">
+                    <div
+                      className="h-1.5 cursor-pointer overflow-hidden rounded-full"
+                      style={{ backgroundColor: `${C.dim}40` }}
+                      onClick={(e) => {
+                        if (!audioRef.current || !audioDuration) return;
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        const pct = (e.clientX - rect.left) / rect.width;
+                        audioRef.current.currentTime = pct * audioDuration;
+                      }}
+                    >
+                      <div className="h-full rounded-full transition-all" style={{ backgroundColor: C.gold, width: `${audioProgress}%` }} />
+                    </div>
+                    <div className="mt-1 flex justify-between">
+                      <span className="text-[10px]" style={{ fontFamily: fonts.body, color: C.dim }}>{fmtTime(audioCurrentTime)}</span>
+                      <span className="text-[10px]" style={{ fontFamily: fonts.body, color: C.dim }}>{fmtTime(audioDuration)}</span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={stopTTS}
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+                    style={{ backgroundColor: `${C.border}` }}
+                  >
+                    <Square size={12} style={{ color: C.muted }} />
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Actions */}
             <div className="flex flex-wrap gap-3 border-t p-5" style={{ borderColor: C.border }}>
               <button
@@ -460,41 +502,14 @@ export function MeditationsTab() {
                   <Volume2 size={14} /> Read This to Me
                 </button>
               )}
-              {ttsState === "playing" && (
-                <>
-                  <button
-                    onClick={pauseTTS}
-                    className="flex animate-pulse items-center gap-2 rounded-md px-4 py-2 text-xs"
-                    style={{ backgroundColor: `${C.teal}20`, color: C.teal, fontFamily: fonts.body }}
-                  >
-                    <Pause size={14} /> Pause
-                  </button>
-                  <button
-                    onClick={stopTTS}
-                    className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
-                    style={{ borderColor: C.border, color: C.muted, fontFamily: fonts.body }}
-                  >
-                    <Square size={14} /> Stop
-                  </button>
-                </>
-              )}
-              {ttsState === "paused" && (
-                <>
-                  <button
-                    onClick={requestTTS}
-                    className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
-                    style={{ borderColor: C.teal, color: C.teal, fontFamily: fonts.body }}
-                  >
-                    <Play size={14} /> Resume
-                  </button>
-                  <button
-                    onClick={stopTTS}
-                    className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
-                    style={{ borderColor: C.border, color: C.muted, fontFamily: fonts.body }}
-                  >
-                    <Square size={14} /> Stop
-                  </button>
-                </>
+              {ttsState === "loading" && (
+                <button
+                  disabled
+                  className="flex items-center gap-2 rounded-md px-4 py-2 text-xs"
+                  style={{ backgroundColor: `${C.teal}20`, color: C.teal, fontFamily: fonts.body }}
+                >
+                  <Loader2 size={14} className="animate-spin" /> Generating voice...
+                </button>
               )}
               <button
                 onClick={saveMeditation}
