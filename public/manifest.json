@@ -1,0 +1,25 @@
+{
+  "name": "Soul True",
+  "short_name": "Soul True",
+  "description": "AI Life Guide — Design Your Most Fulfilled Life",
+  "start_url": "/welcome",
+  "display": "standalone",
+  "theme_color": "#0D0F0E",
+  "background_color": "#0D0F0E",
+  "orientation": "portrait-primary",
+  "categories": ["lifestyle", "health", "education"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
