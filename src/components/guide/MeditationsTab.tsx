@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   Brain, Heart, Sun, Sparkles, Eye, Flame, Target, Shield,
-  Play, Pause, Copy, BookOpen, Save, ChevronDown, Loader2,
+  Play, Pause, Square, Copy, BookOpen, Save, ChevronDown, Loader2, Volume2,
 } from "lucide-react";
 import { C, fonts, Emblem, Eyebrow, HeroTitle, GoldText, GoldRule } from "./GuideShared";
 import { supabase } from "@/integrations/supabase/client";
