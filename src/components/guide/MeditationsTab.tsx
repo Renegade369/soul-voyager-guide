@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   Brain, Heart, Sun, Sparkles, Eye, Flame, Target, Shield,
-  Play, Pause, Copy, BookOpen, Save, ChevronDown, Loader2,
+  Play, Pause, Square, Copy, BookOpen, Save, ChevronDown, Loader2, Volume2,
 } from "lucide-react";
 import { C, fonts, Emblem, Eyebrow, HeroTitle, GoldText, GoldRule } from "./GuideShared";
 import { supabase } from "@/integrations/supabase/client";
@@ -83,6 +83,47 @@ export function MeditationsTab() {
   const [saving, setSaving] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
+  /* ── TTS state ── */
+  const [ttsState, setTtsState] = useState<"idle" | "playing" | "paused">("idle");
+  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  // Clean up speech on unmount
+  useEffect(() => {
+    return () => { speechSynthesis.cancel(); };
+  }, []);
+
+  const stripMarkdown = (md: string) =>
+    md.replace(/#{1,6}\s?/g, "").replace(/\*{1,3}(.*?)\*{1,3}/g, "$1").replace(/_+(.*?)_+/g, "$1").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[`~>]/g, "").replace(/\n{2,}/g, "\n").trim();
+
+  const getCalm = (): SpeechSynthesisVoice | null => {
+    const voices = speechSynthesis.getVoices();
+    const female = voices.find(v => /female|samantha|victoria|karen|fiona|zira|hazel/i.test(v.name));
+    return female || voices[0] || null;
+  };
+
+  const startTTS = useCallback(() => {
+    if (ttsState === "paused") { speechSynthesis.resume(); setTtsState("playing"); return; }
+    speechSynthesis.cancel();
+    const text = stripMarkdown(meditation);
+    const utter = new SpeechSynthesisUtterance(text);
+    const voice = getCalm();
+    if (voice) utter.voice = voice;
+    utter.rate = 0.85;
+    utter.pitch = 0.9;
+    utter.volume = 1.0;
+    utter.onend = () => setTtsState("idle");
+    utter.onerror = () => setTtsState("idle");
+    utterRef.current = utter;
+    speechSynthesis.speak(utter);
+    setTtsState("playing");
+  }, [meditation, ttsState]);
+
+  const pauseTTS = () => { speechSynthesis.pause(); setTtsState("paused"); };
+  const stopTTS = () => { speechSynthesis.cancel(); setTtsState("idle"); };
+
+  // Ensure voices are loaded
+  useEffect(() => { speechSynthesis.getVoices(); }, []);
+
   const generate = async () => {
     if (!feeling.trim() || !shiftTarget.trim() || !pillar) {
       toast.error("Please fill out all three fields");
@@ -90,6 +131,7 @@ export function MeditationsTab() {
     }
     setGenerating(true);
     setMeditation("");
+    stopTTS();
 
     try {
       abortRef.current = new AbortController();
@@ -354,13 +396,51 @@ export function MeditationsTab() {
               >
                 <Copy size={14} /> Copy Full Meditation
               </button>
-              <button
-                disabled
-                className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs opacity-40"
-                style={{ borderColor: C.border, color: C.muted, fontFamily: fonts.body }}
-              >
-                <BookOpen size={14} /> Read This to Me — Coming Soon
-              </button>
+              {ttsState === "idle" && (
+                <button
+                  onClick={startTTS}
+                  className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs transition-colors"
+                  style={{ borderColor: C.teal, color: C.teal, fontFamily: fonts.body }}
+                >
+                  <Volume2 size={14} /> Read This to Me
+                </button>
+              )}
+              {ttsState === "playing" && (
+                <>
+                  <button
+                    onClick={pauseTTS}
+                    className="flex animate-pulse items-center gap-2 rounded-md px-4 py-2 text-xs"
+                    style={{ backgroundColor: `${C.teal}20`, color: C.teal, fontFamily: fonts.body }}
+                  >
+                    <Pause size={14} /> Pause
+                  </button>
+                  <button
+                    onClick={stopTTS}
+                    className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
+                    style={{ borderColor: C.border, color: C.muted, fontFamily: fonts.body }}
+                  >
+                    <Square size={14} /> Stop
+                  </button>
+                </>
+              )}
+              {ttsState === "paused" && (
+                <>
+                  <button
+                    onClick={startTTS}
+                    className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
+                    style={{ borderColor: C.teal, color: C.teal, fontFamily: fonts.body }}
+                  >
+                    <Play size={14} /> Resume
+                  </button>
+                  <button
+                    onClick={stopTTS}
+                    className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
+                    style={{ borderColor: C.border, color: C.muted, fontFamily: fonts.body }}
+                  >
+                    <Square size={14} /> Stop
+                  </button>
+                </>
+              )}
               <button
                 onClick={saveMeditation}
                 disabled={saving}
