@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      certificates: {
+        Row: {
+          full_name: string
+          id: string
+          issued_at: string | null
+          score: number
+          user_id: string
+        }
+        Insert: {
+          full_name: string
+          id?: string
+          issued_at?: string | null
+          score: number
+          user_id: string
+        }
+        Update: {
+          full_name?: string
+          id?: string
+          issued_at?: string | null
+          score?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      challenge_progress: {
+        Row: {
+          completed: boolean | null
+          completed_at: string | null
+          day_number: number
+          id: string
+          user_id: string
+        }
+        Insert: {
+          completed?: boolean | null
+          completed_at?: string | null
+          day_number: number
+          id?: string
+          user_id: string
+        }
+        Update: {
+          completed?: boolean | null
+          completed_at?: string | null
+          day_number?: number
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           created_at: string
@@ -38,6 +86,90 @@ export type Database = {
           message?: string
           name?: string
           phone?: string | null
+        }
+        Relationships: []
+      }
+      contacts: {
+        Row: {
+          city: string | null
+          consent_date: string | null
+          country: string | null
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          lead_source: string | null
+          marketing_consent: boolean | null
+          phone: string | null
+          state: string | null
+          tags: string[] | null
+          user_id: string | null
+        }
+        Insert: {
+          city?: string | null
+          consent_date?: string | null
+          country?: string | null
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          lead_source?: string | null
+          marketing_consent?: boolean | null
+          phone?: string | null
+          state?: string | null
+          tags?: string[] | null
+          user_id?: string | null
+        }
+        Update: {
+          city?: string | null
+          consent_date?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          lead_source?: string | null
+          marketing_consent?: boolean | null
+          phone?: string | null
+          state?: string | null
+          tags?: string[] | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          duration_ms: number | null
+          event_type: string
+          id: string
+          occurred_at: string | null
+          properties: Json | null
+          section: string | null
+          session_id: string
+          user_id: string | null
+        }
+        Insert: {
+          duration_ms?: number | null
+          event_type: string
+          id?: string
+          occurred_at?: string | null
+          properties?: Json | null
+          section?: string | null
+          session_id: string
+          user_id?: string | null
+        }
+        Update: {
+          duration_ms?: number | null
+          event_type?: string
+          id?: string
+          occurred_at?: string | null
+          properties?: Json | null
+          section?: string | null
+          session_id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -92,6 +224,87 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          certificate_earned_at: string | null
+          challenge_completed_at: string | null
+          challenge_started_at: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          certificate_earned_at?: string | null
+          challenge_completed_at?: string | null
+          challenge_started_at?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          certificate_earned_at?: string | null
+          challenge_completed_at?: string | null
+          challenge_started_at?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      sessions: {
+        Row: {
+          city: string | null
+          country: string | null
+          device_type: string | null
+          duration_ms: number | null
+          ended_at: string | null
+          entry_page: string | null
+          exit_page: string | null
+          id: string
+          pages_visited: string[] | null
+          started_at: string | null
+          user_id: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          city?: string | null
+          country?: string | null
+          device_type?: string | null
+          duration_ms?: number | null
+          ended_at?: string | null
+          entry_page?: string | null
+          exit_page?: string | null
+          id: string
+          pages_visited?: string[] | null
+          started_at?: string | null
+          user_id?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          city?: string | null
+          country?: string | null
+          device_type?: string | null
+          duration_ms?: number | null
+          ended_at?: string | null
+          entry_page?: string | null
+          exit_page?: string | null
+          id?: string
+          pages_visited?: string[] | null
+          started_at?: string | null
+          user_id?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
       soul_discovery_sessions: {
         Row: {
           created_at: string
@@ -122,6 +335,39 @@ export type Database = {
           reflection?: string | null
           status?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      test_results: {
+        Row: {
+          answers: Json | null
+          attempt_number: number | null
+          id: string
+          passed: boolean
+          percentage: number
+          score: number
+          taken_at: string | null
+          user_id: string
+        }
+        Insert: {
+          answers?: Json | null
+          attempt_number?: number | null
+          id?: string
+          passed: boolean
+          percentage: number
+          score: number
+          taken_at?: string | null
+          user_id: string
+        }
+        Update: {
+          answers?: Json | null
+          attempt_number?: number | null
+          id?: string
+          passed?: boolean
+          percentage?: number
+          score?: number
+          taken_at?: string | null
+          user_id?: string
         }
         Relationships: []
       }
