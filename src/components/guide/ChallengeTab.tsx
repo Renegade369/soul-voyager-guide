@@ -83,16 +83,59 @@ export function ChallengeTab() {
     }
 
     try {
+      const { data: authData, error: authError } = await supabase.auth.getUser();
+      if (authError) throw authError;
+
+      const authUserId = authData.user?.id;
+      if (!authUserId) {
+        console.error("challenge_progress save blocked: authenticated user id missing", {
+          hookUserId: user?.id ?? null,
+          authUser: authData.user ?? null,
+        });
+        throw new Error("Authenticated user ID is missing");
+      }
+
+      if (authUserId !== user.id) {
+        console.warn("challenge_progress user id mismatch", {
+          hookUserId: user.id,
+          authUserId,
+        });
+      }
+
+      const progressRow = {
+        user_id: authUserId,
+        day_number: day,
+        completed: newDone,
+        completed_at: newDone ? new Date().toISOString() : null,
+      };
+
+      console.info("Saving challenge_progress row", {
+        user_id: progressRow.user_id,
+        day_number: progressRow.day_number,
+        completed: progressRow.completed,
+        completed_at: progressRow.completed_at,
+      });
+
       const { error } = await supabase.from("challenge_progress").upsert(
-        { user_id: user.id, day_number: day, completed: newDone, completed_at: newDone ? new Date().toISOString() : null },
+        progressRow,
         { onConflict: "user_id,day_number" }
       );
-      if (error) throw error;
+      if (error) {
+        console.error("challenge_progress save failed", {
+          message: error.message,
+          code: error.code,
+          details: error.details,
+          hint: error.hint,
+          row: progressRow,
+        });
+        throw error;
+      }
       toast.success("Progress saved ✓");
       if (next.size === 10) {
-        await supabase.from("profiles").update({ challenge_completed_at: new Date().toISOString() }).eq("id", user.id);
+        await supabase.from("profiles").update({ challenge_completed_at: new Date().toISOString() }).eq("id", authUserId);
       }
-    } catch {
+    } catch (error) {
+      console.error("challenge_progress save exception", error);
       // revert
       const rev = new Set(completed);
       if (newDone) rev.delete(day); else rev.add(day);
