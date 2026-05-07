@@ -261,8 +261,8 @@ export function ChallengeTab() {
                   {q.opts.map((opt, oi) => {
                     const selected = answers[qi] === oi;
                     const isCorrect = oi === q.correct;
-                    let bg = C.inner;
-                    let border = C.border;
+                    let bg: string = C.inner;
+                    let border: string = C.border;
                     if (submitted) {
                       if (isCorrect) { bg = `${C.teal}20`; border = C.teal; }
                       else if (selected && !isCorrect) { bg = `${C.red}20`; border = C.red; }
