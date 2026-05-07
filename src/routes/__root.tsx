@@ -46,6 +46,10 @@ export const Route = createRootRoute({
       { name: "twitter:description", content: "A sanctuary for holistic wellness, sacred teachings, and the remembrance of who you truly are. For educational and inspirational purposes." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/62d98259-29c8-42bc-a035-99775a6111cd/id-preview-488d0e7d--6b1d5b22-48bd-4874-861e-25c7727c1da0.lovable.app-1777590049998.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/62d98259-29c8-42bc-a035-99775a6111cd/id-preview-488d0e7d--6b1d5b22-48bd-4874-861e-25c7727c1da0.lovable.app-1777590049998.png" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { name: "apple-mobile-web-app-title", content: "Soul True" },
+      { name: "theme-color", content: "#0D0F0E" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
