@@ -368,6 +368,30 @@ export type Database = {
         }
         Relationships: []
       }
+      soul_quiz_results: {
+        Row: {
+          created_at: string
+          id: string
+          scores: Json
+          soul_type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          scores?: Json
+          soul_type: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          scores?: Json
+          soul_type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       test_results: {
         Row: {
           answers: Json | null
