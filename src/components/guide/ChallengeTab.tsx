@@ -61,7 +61,7 @@ export function ChallengeTab() {
       if (progress.data) {
         setCompleted(new Set(progress.data.filter((d) => d.completed).map((d) => d.day_number)));
       }
-      if (tests.data?.[0]) setAttemptNumber(tests.data[0].attempt_number + 1);
+      if (tests.data?.[0]) setAttemptNumber((tests.data[0].attempt_number ?? 0) + 1);
       if (cert.data) {
         setCertName(cert.data.full_name);
         setCertDate(cert.data.issued_at ?? "");
