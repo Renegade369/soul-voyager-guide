@@ -81,6 +81,34 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   useCartSync();
+
+  // Register service worker (only in production, never in iframes/preview)
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return;
+
+    const isInIframe = (() => {
+      try { return window.self !== window.top; } catch { return true; }
+    })();
+
+    const isPreviewHost =
+      window.location.hostname.includes("id-preview--") ||
+      window.location.hostname.includes("lovableproject.com") ||
+      window.location.hostname.includes("lovableproject-dev.com") ||
+      window.location.hostname.includes("preview--");
+
+    if (isPreviewHost || isInIframe) {
+      // Unregister any existing SW in preview contexts
+      navigator.serviceWorker.getRegistrations().then((regs) =>
+        regs.forEach((r) => r.unregister())
+      );
+      return;
+    }
+
+    navigator.serviceWorker.register("/sw.js").catch((err) =>
+      console.warn("SW registration failed:", err)
+    );
+  }, []);
+
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -89,6 +117,7 @@ function RootComponent() {
       </main>
       <SiteFooter />
       <Toaster position="top-center" richColors closeButton />
+      <PwaInstallPrompt />
     </div>
   );
 }
