@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Home, Zap, Grid3X3, Wrench, Trophy } from "lucide-react";
+import { Home, Zap, Grid3X3, Headphones, Wrench, Trophy } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthModal } from "@/components/guide/AuthModal";
 import { HomeTab } from "@/components/guide/HomeTab";
 import { RevolutionTab } from "@/components/guide/RevolutionTab";
 import { PillarsTab } from "@/components/guide/PillarsTab";
+import { MeditationsTab } from "@/components/guide/MeditationsTab";
 import { ToolsTab } from "@/components/guide/ToolsTab";
 import { ChallengeTab } from "@/components/guide/ChallengeTab";
 
@@ -16,6 +17,7 @@ const tabs = [
   { id: "home", label: "Home", icon: Home },
   { id: "revolution", label: "Revolution", icon: Zap },
   { id: "pillars", label: "Pillars", icon: Grid3X3 },
+  { id: "meditations", label: "Meditations", icon: Headphones },
   { id: "tools", label: "Tools", icon: Wrench },
   { id: "challenge", label: "Challenge", icon: Trophy },
 ] as const;
@@ -92,6 +94,7 @@ function GuidePage() {
         {active === "home" && <HomeTab />}
         {active === "revolution" && <RevolutionTab />}
         {active === "pillars" && <PillarsTab />}
+        {active === "meditations" && <MeditationsTab />}
         {active === "tools" && <ToolsTab onGoToChallenge={() => setActive("challenge")} />}
         {active === "challenge" && <ChallengeTab />}
       </div>
