@@ -5,6 +5,8 @@ import { trackPageEnter, trackDayToggle, trackTestSubmit, trackCertificate, trac
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
+import { saveChallengeProgress } from "@/lib/challengeProgress.functions";
 
 /* ───── challenge data ───── */
 const DAYS = [
@@ -37,6 +39,7 @@ type Screen = "challenge" | "test" | "report" | "certificate";
 
 export function ChallengeTab() {
   const { user } = useAuth();
+  const saveProgress = useServerFn(saveChallengeProgress);
   const [screen, setScreen] = useState<Screen>("challenge");
   const [completed, setCompleted] = useState<Set<number>>(new Set());
   const [expanded, setExpanded] = useState<number | null>(null);
@@ -83,57 +86,8 @@ export function ChallengeTab() {
     }
 
     try {
-      const { data: authData, error: authError } = await supabase.auth.getUser();
-      if (authError) throw authError;
-
-      const authUserId = authData.user?.id;
-      if (!authUserId) {
-        console.error("challenge_progress save blocked: authenticated user id missing", {
-          hookUserId: user?.id ?? null,
-          authUser: authData.user ?? null,
-        });
-        throw new Error("Authenticated user ID is missing");
-      }
-
-      if (authUserId !== user.id) {
-        console.warn("challenge_progress user id mismatch", {
-          hookUserId: user.id,
-          authUserId,
-        });
-      }
-
-      const progressRow = {
-        user_id: authUserId,
-        day_number: day,
-        completed: newDone,
-        completed_at: newDone ? new Date().toISOString() : null,
-      };
-
-      console.info("Saving challenge_progress row", {
-        user_id: progressRow.user_id,
-        day_number: progressRow.day_number,
-        completed: progressRow.completed,
-        completed_at: progressRow.completed_at,
-      });
-
-      const { error } = await supabase.from("challenge_progress").upsert(
-        progressRow,
-        { onConflict: "user_id,day_number" }
-      );
-      if (error) {
-        console.error("challenge_progress save failed", {
-          message: error.message,
-          code: error.code,
-          details: error.details,
-          hint: error.hint,
-          row: progressRow,
-        });
-        throw error;
-      }
+      await saveProgress({ data: { dayNumber: day, completed: newDone } });
       toast.success("Progress saved ✓");
-      if (next.size === 10) {
-        await supabase.from("profiles").update({ challenge_completed_at: new Date().toISOString() }).eq("id", authUserId);
-      }
     } catch (error) {
       console.error("challenge_progress save exception", error);
       // revert
@@ -142,7 +96,7 @@ export function ChallengeTab() {
       setCompleted(rev);
       toast.error("Error saving — please try again");
     }
-  }, [completed, user]);
+  }, [completed, saveProgress, user]);
 
   const submitTest = async () => {
     if (answers.some((a) => a === null)) { toast.error("Please answer all 10 questions"); return; }
