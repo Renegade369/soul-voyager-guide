@@ -16,6 +16,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
 import { Route as HealthRouteImport } from './routes/health'
+import { Route as GuideRouteImport } from './routes/guide'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as ContactWilliamRouteImport } from './routes/contact-william'
@@ -58,6 +59,11 @@ const NatureBookingRoute = NatureBookingRouteImport.update({
 const HealthRoute = HealthRouteImport.update({
   id: '/health',
   path: '/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EventsRoute = EventsRouteImport.update({
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/contact-william': typeof ContactWilliamRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
+  '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/contact-william': typeof ContactWilliamRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
+  '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/contact-william': typeof ContactWilliamRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
+  '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
@@ -163,6 +172,7 @@ export interface FileRouteTypes {
     | '/contact-william'
     | '/discovery'
     | '/events'
+    | '/guide'
     | '/health'
     | '/nature-booking'
     | '/practitioners'
@@ -180,6 +190,7 @@ export interface FileRouteTypes {
     | '/contact-william'
     | '/discovery'
     | '/events'
+    | '/guide'
     | '/health'
     | '/nature-booking'
     | '/practitioners'
@@ -197,6 +208,7 @@ export interface FileRouteTypes {
     | '/contact-william'
     | '/discovery'
     | '/events'
+    | '/guide'
     | '/health'
     | '/nature-booking'
     | '/practitioners'
@@ -215,6 +227,7 @@ export interface RootRouteChildren {
   ContactWilliamRoute: typeof ContactWilliamRoute
   DiscoveryRoute: typeof DiscoveryRoute
   EventsRoute: typeof EventsRoute
+  GuideRoute: typeof GuideRoute
   HealthRoute: typeof HealthRoute
   NatureBookingRoute: typeof NatureBookingRoute
   PractitionersRoute: typeof PractitionersRoute
@@ -274,6 +287,13 @@ declare module '@tanstack/react-router' {
       path: '/health'
       fullPath: '/health'
       preLoaderRoute: typeof HealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/events': {
@@ -343,6 +363,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactWilliamRoute: ContactWilliamRoute,
   DiscoveryRoute: DiscoveryRoute,
   EventsRoute: EventsRoute,
+  GuideRoute: GuideRoute,
   HealthRoute: HealthRoute,
   NatureBookingRoute: NatureBookingRoute,
   PractitionersRoute: PractitionersRoute,
@@ -355,3 +376,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
