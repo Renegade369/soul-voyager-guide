@@ -9,6 +9,17 @@ import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 
+/* ───── helpers ───── */
+const stripMarkdown = (md: string) =>
+  md.replace(/#{1,6}\s?/g, "").replace(/\*{1,3}(.*?)\*{1,3}/g, "$1").replace(/_+(.*?)_+/g, "$1").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[`~>]/g, "").replace(/\n{2,}/g, "\n").trim();
+
+const fmtTime = (s: number) => {
+  if (!isFinite(s) || isNaN(s)) return "0:00";
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2, "0")}`;
+};
+
 /* ───── meditation data ───── */
 const MEDITATIONS = [
   { id: 1, icon: Brain, title: "Rewiring the Subconscious Mind", duration: "15 min", desc: "Break the invisible programs running your life. This meditation speaks directly to your subconscious, replacing fear, limitation, and old conditioning with new empowering beliefs. Best listened to just before sleep." },
