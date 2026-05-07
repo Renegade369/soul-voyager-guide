@@ -83,6 +83,47 @@ export function MeditationsTab() {
   const [saving, setSaving] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
+  /* ── TTS state ── */
+  const [ttsState, setTtsState] = useState<"idle" | "playing" | "paused">("idle");
+  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  // Clean up speech on unmount
+  useEffect(() => {
+    return () => { speechSynthesis.cancel(); };
+  }, []);
+
+  const stripMarkdown = (md: string) =>
+    md.replace(/#{1,6}\s?/g, "").replace(/\*{1,3}(.*?)\*{1,3}/g, "$1").replace(/_+(.*?)_+/g, "$1").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[`~>]/g, "").replace(/\n{2,}/g, "\n").trim();
+
+  const getCalm = (): SpeechSynthesisVoice | null => {
+    const voices = speechSynthesis.getVoices();
+    const female = voices.find(v => /female|samantha|victoria|karen|fiona|zira|hazel/i.test(v.name));
+    return female || voices[0] || null;
+  };
+
+  const startTTS = useCallback(() => {
+    if (ttsState === "paused") { speechSynthesis.resume(); setTtsState("playing"); return; }
+    speechSynthesis.cancel();
+    const text = stripMarkdown(meditation);
+    const utter = new SpeechSynthesisUtterance(text);
+    const voice = getCalm();
+    if (voice) utter.voice = voice;
+    utter.rate = 0.85;
+    utter.pitch = 0.9;
+    utter.volume = 1.0;
+    utter.onend = () => setTtsState("idle");
+    utter.onerror = () => setTtsState("idle");
+    utterRef.current = utter;
+    speechSynthesis.speak(utter);
+    setTtsState("playing");
+  }, [meditation, ttsState]);
+
+  const pauseTTS = () => { speechSynthesis.pause(); setTtsState("paused"); };
+  const stopTTS = () => { speechSynthesis.cancel(); setTtsState("idle"); };
+
+  // Ensure voices are loaded
+  useEffect(() => { speechSynthesis.getVoices(); }, []);
+
   const generate = async () => {
     if (!feeling.trim() || !shiftTarget.trim() || !pillar) {
       toast.error("Please fill out all three fields");
