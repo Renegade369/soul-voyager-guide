@@ -36,6 +36,10 @@ export const Route = createFileRoute("/guide")({
 
 function GuidePage() {
   const [active, setActive] = useState("home");
+  const handleTabChange = (id: string) => {
+    setActive(id);
+    window.scrollTo({ top: 0 });
+  };
   const [authOpen, setAuthOpen] = useState(false);
   const { user, signOut } = useAuth();
 
