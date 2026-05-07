@@ -94,43 +94,87 @@ export function MeditationsTab() {
   const [saving, setSaving] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
-  /* ── TTS state ── */
-  const [ttsState, setTtsState] = useState<"idle" | "playing" | "paused">("idle");
-  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+  /* ── TTS / audio state ── */
+  const [ttsState, setTtsState] = useState<"idle" | "loading" | "playing" | "paused">("idle");
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [audioProgress, setAudioProgress] = useState(0);
+  const [audioDuration, setAudioDuration] = useState(0);
+  const [audioCurrentTime, setAudioCurrentTime] = useState(0);
+  const audioUrlRef = useRef<string | null>(null);
 
-  // Clean up speech on unmount
+  // Cleanup audio on unmount
   useEffect(() => {
-    return () => { speechSynthesis.cancel(); };
+    return () => {
+      if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+      if (audioUrlRef.current) { URL.revokeObjectURL(audioUrlRef.current); }
+    };
   }, []);
 
-  const stripMarkdown = (md: string) =>
-    md.replace(/#{1,6}\s?/g, "").replace(/\*{1,3}(.*?)\*{1,3}/g, "$1").replace(/_+(.*?)_+/g, "$1").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[`~>]/g, "").replace(/\n{2,}/g, "\n").trim();
+  const requestTTS = useCallback(async () => {
+    if (ttsState === "paused" && audioRef.current) {
+      audioRef.current.play();
+      setTtsState("playing");
+      return;
+    }
+    // Stop any existing playback
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+    if (audioUrlRef.current) { URL.revokeObjectURL(audioUrlRef.current); audioUrlRef.current = null; }
 
-  const getCalm = (): SpeechSynthesisVoice | null => {
-    const voices = speechSynthesis.getVoices();
-    const female = voices.find(v => /female|samantha|victoria|karen|fiona|zira|hazel/i.test(v.name));
-    return female || voices[0] || null;
-  };
+    setTtsState("loading");
+    setAudioProgress(0);
+    setAudioCurrentTime(0);
+    setAudioDuration(0);
 
-  const startTTS = useCallback(() => {
-    if (ttsState === "paused") { speechSynthesis.resume(); setTtsState("playing"); return; }
-    speechSynthesis.cancel();
-    const text = stripMarkdown(meditation);
-    const utter = new SpeechSynthesisUtterance(text);
-    const voice = getCalm();
-    if (voice) utter.voice = voice;
-    utter.rate = 0.85;
-    utter.pitch = 0.9;
-    utter.volume = 1.0;
-    utter.onend = () => setTtsState("idle");
-    utter.onerror = () => setTtsState("idle");
-    utterRef.current = utter;
-    speechSynthesis.speak(utter);
-    setTtsState("playing");
+    try {
+      const text = stripMarkdown(meditation);
+      const resp = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/tts`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          },
+          body: JSON.stringify({ text }),
+        },
+      );
+
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({ error: "TTS failed" }));
+        toast.error(err.error || "Text-to-speech failed");
+        setTtsState("idle");
+        return;
+      }
+
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      audioUrlRef.current = url;
+
+      const audio = new Audio(url);
+      audioRef.current = audio;
+
+      audio.addEventListener("loadedmetadata", () => setAudioDuration(audio.duration));
+      audio.addEventListener("timeupdate", () => {
+        setAudioCurrentTime(audio.currentTime);
+        if (audio.duration) setAudioProgress((audio.currentTime / audio.duration) * 100);
+      });
+      audio.addEventListener("ended", () => setTtsState("idle"));
+      audio.addEventListener("error", () => { toast.error("Audio playback error"); setTtsState("idle"); });
+
+      await audio.play();
+      setTtsState("playing");
+    } catch (e) {
+      console.error("TTS error:", e);
+      toast.error("Something went wrong with text-to-speech");
+      setTtsState("idle");
+    }
   }, [meditation, ttsState]);
 
-  const pauseTTS = () => { speechSynthesis.pause(); setTtsState("paused"); };
-  const stopTTS = () => { speechSynthesis.cancel(); setTtsState("idle"); };
+  const pauseTTS = () => { audioRef.current?.pause(); setTtsState("paused"); };
+  const stopTTS = () => {
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; }
+    setTtsState("idle"); setAudioProgress(0); setAudioCurrentTime(0);
+  };
 
   // Ensure voices are loaded
   useEffect(() => { speechSynthesis.getVoices(); }, []);
