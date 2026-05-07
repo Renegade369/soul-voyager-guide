@@ -100,15 +100,81 @@ export function MeditationsTab() {
   const [audioProgress, setAudioProgress] = useState(0);
   const [audioDuration, setAudioDuration] = useState(0);
   const [audioCurrentTime, setAudioCurrentTime] = useState(0);
-  const audioUrlRef = useRef<string | null>(null);
+  const audioUrlsRef = useRef<string[]>([]);
+  const chunkIndexRef = useRef(0);
+  const totalChunksRef = useRef(0);
+  const [ttsChunkProgress, setTtsChunkProgress] = useState({ loaded: 0, total: 0 });
+  const ttsAbortRef = useRef(false);
+
+  // Split text into chunks at sentence boundaries, max ~500 chars each
+  const chunkText = (text: string, maxLen = 500): string[] => {
+    const sentences = text.match(/[^.!?]+[.!?]+[\s]*/g) || [text];
+    const chunks: string[] = [];
+    let current = "";
+    for (const s of sentences) {
+      if ((current + s).length > maxLen && current.length > 0) {
+        chunks.push(current.trim());
+        current = s;
+      } else {
+        current += s;
+      }
+    }
+    if (current.trim()) chunks.push(current.trim());
+    return chunks;
+  };
 
   // Cleanup audio on unmount
   useEffect(() => {
     return () => {
+      ttsAbortRef.current = true;
       if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
-      if (audioUrlRef.current) { URL.revokeObjectURL(audioUrlRef.current); }
+      audioUrlsRef.current.forEach((u) => URL.revokeObjectURL(u));
+      audioUrlsRef.current = [];
     };
   }, []);
+
+  const fetchChunkAudio = async (chunk: string): Promise<Blob> => {
+    const resp = await fetch(
+      `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/tts`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({ text: chunk }),
+      },
+    );
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({ error: "TTS failed" }));
+      throw new Error(err.error || `TTS failed: ${resp.status}`);
+    }
+    return resp.blob();
+  };
+
+  const playAudioBlob = (blob: Blob): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(blob);
+      audioUrlsRef.current.push(url);
+      const audio = new Audio(url);
+      audioRef.current = audio;
+
+      audio.addEventListener("loadedmetadata", () => {
+        setAudioDuration((prev) => prev + audio.duration);
+      });
+      audio.addEventListener("timeupdate", () => {
+        const chunkOffset = chunkIndexRef.current;
+        const total = totalChunksRef.current;
+        const chunkFraction = total > 0 ? (chunkOffset + (audio.duration ? audio.currentTime / audio.duration : 0)) / total : 0;
+        setAudioProgress(chunkFraction * 100);
+        setAudioCurrentTime(audio.currentTime);
+      });
+      audio.addEventListener("ended", () => resolve());
+      audio.addEventListener("error", () => reject(new Error("Audio playback failed")));
+
+      audio.play().catch(reject);
+    });
+  };
 
   const requestTTS = useCallback(async () => {
     if (ttsState === "paused" && audioRef.current) {
@@ -116,10 +182,14 @@ export function MeditationsTab() {
       setTtsState("playing");
       return;
     }
-    // Stop any existing playback
-    if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
-    if (audioUrlRef.current) { URL.revokeObjectURL(audioUrlRef.current); audioUrlRef.current = null; }
 
+    // Stop any existing playback
+    ttsAbortRef.current = true;
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+    audioUrlsRef.current.forEach((u) => URL.revokeObjectURL(u));
+    audioUrlsRef.current = [];
+
+    ttsAbortRef.current = false;
     setTtsState("loading");
     setAudioProgress(0);
     setAudioCurrentTime(0);
@@ -127,52 +197,47 @@ export function MeditationsTab() {
 
     try {
       const text = stripMarkdown(meditation);
-      const resp = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/tts`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-          },
-          body: JSON.stringify({ text }),
-        },
-      );
+      const chunks = chunkText(text);
+      totalChunksRef.current = chunks.length;
+      setTtsChunkProgress({ loaded: 0, total: chunks.length });
 
-      if (!resp.ok) {
-        const err = await resp.json().catch(() => ({ error: "TTS failed" }));
-        toast.error(err.error || "Text-to-speech failed");
-        setTtsState("idle");
-        return;
+      // Pre-fetch first chunk, then start playing while fetching rest
+      const blobs: Blob[] = [];
+
+      // Fetch all chunks first for smoother playback
+      for (let i = 0; i < chunks.length; i++) {
+        if (ttsAbortRef.current) return;
+        const blob = await fetchChunkAudio(chunks[i]);
+        blobs.push(blob);
+        setTtsChunkProgress({ loaded: i + 1, total: chunks.length });
+        // Start playing after first chunk is ready
+        if (i === 0) setTtsState("playing");
       }
 
-      const blob = await resp.blob();
-      const url = URL.createObjectURL(blob);
-      audioUrlRef.current = url;
+      // Play all chunks sequentially
+      for (let i = 0; i < blobs.length; i++) {
+        if (ttsAbortRef.current) return;
+        chunkIndexRef.current = i;
+        await playAudioBlob(blobs[i]);
+      }
 
-      const audio = new Audio(url);
-      audioRef.current = audio;
-
-      audio.addEventListener("loadedmetadata", () => setAudioDuration(audio.duration));
-      audio.addEventListener("timeupdate", () => {
-        setAudioCurrentTime(audio.currentTime);
-        if (audio.duration) setAudioProgress((audio.currentTime / audio.duration) * 100);
-      });
-      audio.addEventListener("ended", () => setTtsState("idle"));
-      audio.addEventListener("error", () => { toast.error("Audio playback error"); setTtsState("idle"); });
-
-      await audio.play();
-      setTtsState("playing");
-    } catch (e) {
-      console.error("TTS error:", e);
-      toast.error("Something went wrong with text-to-speech");
       setTtsState("idle");
+      setAudioProgress(0);
+    } catch (e: any) {
+      if (!ttsAbortRef.current) {
+        console.error("TTS error:", e);
+        toast.error(e.message || "Something went wrong with text-to-speech");
+        setTtsState("idle");
+      }
     }
   }, [meditation, ttsState]);
 
   const pauseTTS = () => { audioRef.current?.pause(); setTtsState("paused"); };
   const stopTTS = () => {
-    if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; }
+    ttsAbortRef.current = true;
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+    audioUrlsRef.current.forEach((u) => URL.revokeObjectURL(u));
+    audioUrlsRef.current = [];
     setTtsState("idle"); setAudioProgress(0); setAudioCurrentTime(0);
   };
 
