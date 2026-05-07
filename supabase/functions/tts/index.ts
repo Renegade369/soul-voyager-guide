@@ -39,10 +39,10 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         model: "tts-1",
-        voice: "nova",       // warm, calm female voice
+        voice: "shimmer",    // soft, warm, calming voice
         input: trimmed,
         response_format: "mp3",
-        speed: 0.9,          // slightly slower for meditation
+        speed: 0.82,         // peaceful meditation pace
       }),
     });
 
