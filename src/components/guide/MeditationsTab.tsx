@@ -131,6 +131,7 @@ export function MeditationsTab() {
     }
     setGenerating(true);
     setMeditation("");
+    stopTTS();
 
     try {
       abortRef.current = new AbortController();
