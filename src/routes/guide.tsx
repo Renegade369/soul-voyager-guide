@@ -103,6 +103,7 @@ function GuidePage() {
         {active === "meditations" && <MeditationsTab />}
         {active === "tools" && <ToolsTab onGoToChallenge={() => handleTabChange("challenge")} />}
         {active === "challenge" && <ChallengeTab />}
+        {active === "soulquiz" && <SoulQuizTab />}
       </div>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
