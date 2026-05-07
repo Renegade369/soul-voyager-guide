@@ -106,6 +106,7 @@ function GuidePage() {
         {active === "tools" && <ToolsTab onGoToChallenge={() => handleTabChange("challenge")} />}
         {active === "challenge" && <ChallengeTab />}
         {active === "soulquiz" && <SoulQuizTab />}
+        {active === "birthchart" && <BirthChartTab />}
       </div>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
