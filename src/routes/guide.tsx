@@ -17,6 +17,7 @@ const tabs = [
   { id: "home", label: "Home", icon: Home },
   { id: "revolution", label: "Revolution", icon: Zap },
   { id: "pillars", label: "Pillars", icon: Grid3X3 },
+  { id: "meditations", label: "Meditations", icon: Headphones },
   { id: "tools", label: "Tools", icon: Wrench },
   { id: "challenge", label: "Challenge", icon: Trophy },
 ] as const;
