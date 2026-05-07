@@ -9,6 +9,17 @@ import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 
+/* ───── helpers ───── */
+const stripMarkdown = (md: string) =>
+  md.replace(/#{1,6}\s?/g, "").replace(/\*{1,3}(.*?)\*{1,3}/g, "$1").replace(/_+(.*?)_+/g, "$1").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[`~>]/g, "").replace(/\n{2,}/g, "\n").trim();
+
+const fmtTime = (s: number) => {
+  if (!isFinite(s) || isNaN(s)) return "0:00";
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2, "0")}`;
+};
+
 /* ───── meditation data ───── */
 const MEDITATIONS = [
   { id: 1, icon: Brain, title: "Rewiring the Subconscious Mind", duration: "15 min", desc: "Break the invisible programs running your life. This meditation speaks directly to your subconscious, replacing fear, limitation, and old conditioning with new empowering beliefs. Best listened to just before sleep." },
@@ -83,43 +94,87 @@ export function MeditationsTab() {
   const [saving, setSaving] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
-  /* ── TTS state ── */
-  const [ttsState, setTtsState] = useState<"idle" | "playing" | "paused">("idle");
-  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+  /* ── TTS / audio state ── */
+  const [ttsState, setTtsState] = useState<"idle" | "loading" | "playing" | "paused">("idle");
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [audioProgress, setAudioProgress] = useState(0);
+  const [audioDuration, setAudioDuration] = useState(0);
+  const [audioCurrentTime, setAudioCurrentTime] = useState(0);
+  const audioUrlRef = useRef<string | null>(null);
 
-  // Clean up speech on unmount
+  // Cleanup audio on unmount
   useEffect(() => {
-    return () => { speechSynthesis.cancel(); };
+    return () => {
+      if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+      if (audioUrlRef.current) { URL.revokeObjectURL(audioUrlRef.current); }
+    };
   }, []);
 
-  const stripMarkdown = (md: string) =>
-    md.replace(/#{1,6}\s?/g, "").replace(/\*{1,3}(.*?)\*{1,3}/g, "$1").replace(/_+(.*?)_+/g, "$1").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[`~>]/g, "").replace(/\n{2,}/g, "\n").trim();
+  const requestTTS = useCallback(async () => {
+    if (ttsState === "paused" && audioRef.current) {
+      audioRef.current.play();
+      setTtsState("playing");
+      return;
+    }
+    // Stop any existing playback
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+    if (audioUrlRef.current) { URL.revokeObjectURL(audioUrlRef.current); audioUrlRef.current = null; }
 
-  const getCalm = (): SpeechSynthesisVoice | null => {
-    const voices = speechSynthesis.getVoices();
-    const female = voices.find(v => /female|samantha|victoria|karen|fiona|zira|hazel/i.test(v.name));
-    return female || voices[0] || null;
-  };
+    setTtsState("loading");
+    setAudioProgress(0);
+    setAudioCurrentTime(0);
+    setAudioDuration(0);
 
-  const startTTS = useCallback(() => {
-    if (ttsState === "paused") { speechSynthesis.resume(); setTtsState("playing"); return; }
-    speechSynthesis.cancel();
-    const text = stripMarkdown(meditation);
-    const utter = new SpeechSynthesisUtterance(text);
-    const voice = getCalm();
-    if (voice) utter.voice = voice;
-    utter.rate = 0.85;
-    utter.pitch = 0.9;
-    utter.volume = 1.0;
-    utter.onend = () => setTtsState("idle");
-    utter.onerror = () => setTtsState("idle");
-    utterRef.current = utter;
-    speechSynthesis.speak(utter);
-    setTtsState("playing");
+    try {
+      const text = stripMarkdown(meditation);
+      const resp = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/tts`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          },
+          body: JSON.stringify({ text }),
+        },
+      );
+
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({ error: "TTS failed" }));
+        toast.error(err.error || "Text-to-speech failed");
+        setTtsState("idle");
+        return;
+      }
+
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      audioUrlRef.current = url;
+
+      const audio = new Audio(url);
+      audioRef.current = audio;
+
+      audio.addEventListener("loadedmetadata", () => setAudioDuration(audio.duration));
+      audio.addEventListener("timeupdate", () => {
+        setAudioCurrentTime(audio.currentTime);
+        if (audio.duration) setAudioProgress((audio.currentTime / audio.duration) * 100);
+      });
+      audio.addEventListener("ended", () => setTtsState("idle"));
+      audio.addEventListener("error", () => { toast.error("Audio playback error"); setTtsState("idle"); });
+
+      await audio.play();
+      setTtsState("playing");
+    } catch (e) {
+      console.error("TTS error:", e);
+      toast.error("Something went wrong with text-to-speech");
+      setTtsState("idle");
+    }
   }, [meditation, ttsState]);
 
-  const pauseTTS = () => { speechSynthesis.pause(); setTtsState("paused"); };
-  const stopTTS = () => { speechSynthesis.cancel(); setTtsState("idle"); };
+  const pauseTTS = () => { audioRef.current?.pause(); setTtsState("paused"); };
+  const stopTTS = () => {
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; }
+    setTtsState("idle"); setAudioProgress(0); setAudioCurrentTime(0);
+  };
 
   // Ensure voices are loaded
   useEffect(() => { speechSynthesis.getVoices(); }, []);
@@ -387,6 +442,48 @@ export function MeditationsTab() {
               </div>
             </div>
 
+            {/* Audio Player — shows when audio is loaded */}
+            {ttsState !== "idle" && ttsState !== "loading" && (
+              <div className="border-t px-5 pt-4 pb-2" style={{ borderColor: C.border }}>
+                <div className="flex items-center gap-3 rounded-lg p-3" style={{ backgroundColor: C.inner }}>
+                  <button
+                    onClick={ttsState === "playing" ? pauseTTS : requestTTS}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors"
+                    style={{ backgroundColor: C.teal }}
+                  >
+                    {ttsState === "playing"
+                      ? <Pause size={15} fill="white" color="white" />
+                      : <Play size={15} fill="white" color="white" />}
+                  </button>
+                  <div className="flex-1">
+                    <div
+                      className="h-1.5 cursor-pointer overflow-hidden rounded-full"
+                      style={{ backgroundColor: `${C.dim}40` }}
+                      onClick={(e) => {
+                        if (!audioRef.current || !audioDuration) return;
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        const pct = (e.clientX - rect.left) / rect.width;
+                        audioRef.current.currentTime = pct * audioDuration;
+                      }}
+                    >
+                      <div className="h-full rounded-full transition-all" style={{ backgroundColor: C.gold, width: `${audioProgress}%` }} />
+                    </div>
+                    <div className="mt-1 flex justify-between">
+                      <span className="text-[10px]" style={{ fontFamily: fonts.body, color: C.dim }}>{fmtTime(audioCurrentTime)}</span>
+                      <span className="text-[10px]" style={{ fontFamily: fonts.body, color: C.dim }}>{fmtTime(audioDuration)}</span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={stopTTS}
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+                    style={{ backgroundColor: `${C.border}` }}
+                  >
+                    <Square size={12} style={{ color: C.muted }} />
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Actions */}
             <div className="flex flex-wrap gap-3 border-t p-5" style={{ borderColor: C.border }}>
               <button
@@ -398,48 +495,21 @@ export function MeditationsTab() {
               </button>
               {ttsState === "idle" && (
                 <button
-                  onClick={startTTS}
+                  onClick={requestTTS}
                   className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs transition-colors"
                   style={{ borderColor: C.teal, color: C.teal, fontFamily: fonts.body }}
                 >
                   <Volume2 size={14} /> Read This to Me
                 </button>
               )}
-              {ttsState === "playing" && (
-                <>
-                  <button
-                    onClick={pauseTTS}
-                    className="flex animate-pulse items-center gap-2 rounded-md px-4 py-2 text-xs"
-                    style={{ backgroundColor: `${C.teal}20`, color: C.teal, fontFamily: fonts.body }}
-                  >
-                    <Pause size={14} /> Pause
-                  </button>
-                  <button
-                    onClick={stopTTS}
-                    className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
-                    style={{ borderColor: C.border, color: C.muted, fontFamily: fonts.body }}
-                  >
-                    <Square size={14} /> Stop
-                  </button>
-                </>
-              )}
-              {ttsState === "paused" && (
-                <>
-                  <button
-                    onClick={startTTS}
-                    className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
-                    style={{ borderColor: C.teal, color: C.teal, fontFamily: fonts.body }}
-                  >
-                    <Play size={14} /> Resume
-                  </button>
-                  <button
-                    onClick={stopTTS}
-                    className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
-                    style={{ borderColor: C.border, color: C.muted, fontFamily: fonts.body }}
-                  >
-                    <Square size={14} /> Stop
-                  </button>
-                </>
+              {ttsState === "loading" && (
+                <button
+                  disabled
+                  className="flex items-center gap-2 rounded-md px-4 py-2 text-xs"
+                  style={{ backgroundColor: `${C.teal}20`, color: C.teal, fontFamily: fonts.body }}
+                >
+                  <Loader2 size={14} className="animate-spin" /> Generating voice...
+                </button>
               )}
               <button
                 onClick={saveMeditation}
