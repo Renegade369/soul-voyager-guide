@@ -8,15 +8,15 @@ export async function track(eventType: string, props?: Record<string, unknown>) 
   if (typeof window === "undefined") return;
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    await supabase.from("events").insert({
+    await supabase.from("events").insert([{
       user_id: user?.id ?? null,
       session_id: SESSION_ID,
       event_type: eventType,
       section: (props?.section as string) ?? currentPage,
-      properties: props ?? {},
+      properties: (props ?? {}) as Record<string, unknown>,
       duration_ms: (props?.duration_ms as number) ?? null,
       occurred_at: new Date().toISOString(),
-    });
+    }]);
   } catch {
     // analytics should never break the app
   }
