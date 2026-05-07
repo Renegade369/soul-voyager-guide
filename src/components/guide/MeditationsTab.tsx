@@ -522,20 +522,16 @@ export function MeditationsTab() {
                   </button>
                   <div className="flex-1">
                     <div
-                      className="h-1.5 cursor-pointer overflow-hidden rounded-full"
+                      className="h-1.5 overflow-hidden rounded-full"
                       style={{ backgroundColor: `${C.dim}40` }}
-                      onClick={(e) => {
-                        if (!audioRef.current || !audioDuration) return;
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        const pct = (e.clientX - rect.left) / rect.width;
-                        audioRef.current.currentTime = pct * audioDuration;
-                      }}
                     >
                       <div className="h-full rounded-full transition-all" style={{ backgroundColor: C.gold, width: `${audioProgress}%` }} />
                     </div>
                     <div className="mt-1 flex justify-between">
+                      <span className="text-[10px]" style={{ fontFamily: fonts.body, color: C.dim }}>
+                        Part {chunkIndexRef.current + 1} of {totalChunksRef.current}
+                      </span>
                       <span className="text-[10px]" style={{ fontFamily: fonts.body, color: C.dim }}>{fmtTime(audioCurrentTime)}</span>
-                      <span className="text-[10px]" style={{ fontFamily: fonts.body, color: C.dim }}>{fmtTime(audioDuration)}</span>
                     </div>
                   </div>
                   <button
