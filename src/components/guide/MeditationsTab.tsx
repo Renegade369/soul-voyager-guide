@@ -573,7 +573,10 @@ export function MeditationsTab() {
                   className="flex items-center gap-2 rounded-md px-4 py-2 text-xs"
                   style={{ backgroundColor: `${C.teal}20`, color: C.teal, fontFamily: fonts.body }}
                 >
-                  <Loader2 size={14} className="animate-spin" /> Generating voice...
+                  <Loader2 size={14} className="animate-spin" />
+                  {ttsChunkProgress.total > 0
+                    ? `Generating voice... (${ttsChunkProgress.loaded}/${ttsChunkProgress.total} parts)`
+                    : "Generating voice..."}
                 </button>
               )}
               <button
