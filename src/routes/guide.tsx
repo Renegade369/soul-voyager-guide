@@ -94,6 +94,7 @@ function GuidePage() {
         {active === "home" && <HomeTab />}
         {active === "revolution" && <RevolutionTab />}
         {active === "pillars" && <PillarsTab />}
+        {active === "meditations" && <MeditationsTab />}
         {active === "tools" && <ToolsTab onGoToChallenge={() => setActive("challenge")} />}
         {active === "challenge" && <ChallengeTab />}
       </div>
