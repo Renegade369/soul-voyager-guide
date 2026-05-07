@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Home, Zap, Grid3X3, Wrench, Trophy } from "lucide-react";
+import { Home, Zap, Grid3X3, Headphones, Wrench, Trophy } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthModal } from "@/components/guide/AuthModal";
 import { HomeTab } from "@/components/guide/HomeTab";
 import { RevolutionTab } from "@/components/guide/RevolutionTab";
 import { PillarsTab } from "@/components/guide/PillarsTab";
+import { MeditationsTab } from "@/components/guide/MeditationsTab";
 import { ToolsTab } from "@/components/guide/ToolsTab";
 import { ChallengeTab } from "@/components/guide/ChallengeTab";
 
