@@ -1,10 +1,12 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { Toaster } from "sonner";
+import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { useCartSync } from "../hooks/useCartSync";
+import { PwaInstallPrompt } from "../components/PwaInstallPrompt";
 
 function NotFoundComponent() {
   return (
