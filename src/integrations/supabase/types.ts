@@ -254,6 +254,36 @@ export type Database = {
         }
         Relationships: []
       }
+      saved_meditations: {
+        Row: {
+          content: string
+          created_at: string
+          feeling: string
+          id: string
+          pillar: string
+          shift_target: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          feeling: string
+          id?: string
+          pillar: string
+          shift_target: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          feeling?: string
+          id?: string
+          pillar?: string
+          shift_target?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       sessions: {
         Row: {
           city: string | null
