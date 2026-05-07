@@ -58,7 +58,7 @@ function GuidePage() {
               return (
                 <button
                   key={t.id}
-                  onClick={() => setActive(t.id)}
+                  onClick={() => handleTabChange(t.id)}
                   className="flex flex-col items-center gap-1 px-4 py-3 transition-colors"
                   style={{
                     borderBottom: isActive ? `2px solid ${C.gold}` : "2px solid transparent",
@@ -99,7 +99,7 @@ function GuidePage() {
         {active === "revolution" && <RevolutionTab />}
         {active === "pillars" && <PillarsTab />}
         {active === "meditations" && <MeditationsTab />}
-        {active === "tools" && <ToolsTab onGoToChallenge={() => setActive("challenge")} />}
+        {active === "tools" && <ToolsTab onGoToChallenge={() => handleTabChange("challenge")} />}
         {active === "challenge" && <ChallengeTab />}
       </div>
 
