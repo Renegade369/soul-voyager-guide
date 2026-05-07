@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import type { Json } from "@/integrations/supabase/types";
 
 const SESSION_ID = typeof crypto !== "undefined" ? crypto.randomUUID() : "ssr";
 const pageTimers: Record<string, number> = {};
