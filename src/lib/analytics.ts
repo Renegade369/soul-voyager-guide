@@ -14,7 +14,7 @@ export async function track(eventType: string, props?: Record<string, unknown>) 
       session_id: SESSION_ID,
       event_type: eventType,
       section: (props?.section as string) ?? currentPage,
-      properties: (props ?? {}) as Record<string, unknown>,
+      properties: (props ?? {}) as Json,
       duration_ms: (props?.duration_ms as number) ?? null,
       occurred_at: new Date().toISOString(),
     }]);
