@@ -103,14 +103,14 @@ export function ChallengeTab() {
 
   const submitTest = async () => {
     if (answers.some((a) => a === null)) { toast.error("Please answer all 10 questions"); return; }
-    const correct = answers.reduce((acc, a, i) => acc + (a === QUESTIONS[i].correct ? 1 : 0), 0);
+    const correct = answers.reduce<number>((acc, a, i) => acc + (a === QUESTIONS[i].correct ? 1 : 0), 0);
     const pct = correct * 10;
     const pass = pct >= 70;
     setScore(pct);
     setSubmitted(true);
 
     if (user) {
-      await supabase.from("test_results").insert({ user_id: user.id, attempt_number: attemptNumber, score: correct, percentage: pct, passed: pass, answers: answers as unknown as Record<string, unknown> });
+      await supabase.from("test_results").insert([{ user_id: user.id, attempt_number: attemptNumber, score: correct, percentage: pct, passed: pass, answers: answers as unknown as import("@/integrations/supabase/types").Json }]);
     }
     trackTestSubmit(pct, pass, attemptNumber);
   };
