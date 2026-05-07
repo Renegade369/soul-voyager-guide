@@ -453,7 +453,7 @@ export function MeditationsTab() {
               </button>
               {ttsState === "idle" && (
                 <button
-                  onClick={startTTS}
+                  onClick={requestTTS}
                   className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs transition-colors"
                   style={{ borderColor: C.teal, color: C.teal, fontFamily: fonts.body }}
                 >
@@ -481,7 +481,7 @@ export function MeditationsTab() {
               {ttsState === "paused" && (
                 <>
                   <button
-                    onClick={startTTS}
+                    onClick={requestTTS}
                     className="flex items-center gap-2 rounded-md border px-4 py-2 text-xs"
                     style={{ borderColor: C.teal, color: C.teal, fontFamily: fonts.body }}
                   >
