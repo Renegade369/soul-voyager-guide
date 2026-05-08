@@ -307,6 +307,10 @@ export function MeditationsTab() {
           } catch { /* partial */ }
         }
       }
+      // Send meditation email after stream completes
+      if (user?.email && full.length > 100) {
+        sendEmailFn({ data: { to: user.email, subject: "Your Personalized Soul True Meditation", html: meditationEmail(feeling, pillar, full) } }).catch(e => console.error("Meditation email failed:", e));
+      }
     } catch (e: any) {
       if (e.name !== "AbortError") {
         console.error("meditation generate error", e);
@@ -314,10 +318,6 @@ export function MeditationsTab() {
       }
     } finally {
       setGenerating(false);
-      // Send meditation email after generation completes
-      if (user?.email && meditation.length > 100) {
-        sendEmailFn({ data: { to: user.email, subject: "Your Personalized Soul True Meditation", html: meditationEmail(feeling, pillar, meditation) } }).catch(e => console.error("Meditation email failed:", e));
-      }
     }
   };
 
