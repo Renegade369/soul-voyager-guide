@@ -37,6 +37,8 @@ function WelcomePage() {
       const { error: dbErr } = await supabase.from("contacts").insert([{ first_name: form.firstName, last_name: form.lastName, email: form.email, phone: form.phone || null, city: form.city, state: form.state || null, country: form.country, marketing_consent: form.consent, consent_date: new Date().toISOString(), lead_source: "welcome_page" }]);
       if (dbErr) throw dbErr;
       trackLead(form.city, form.state, form.country);
+      // Send welcome email
+      sendEmailFn({ data: { to: form.email, subject: "Welcome to Soul True", html: welcomeEmail(form.firstName) } }).catch(e => console.error("Welcome email failed:", e));
       if (typeof window !== "undefined") localStorage.setItem("st_visited", "true");
       toast.success("Welcome to Soul True!");
       setTimeout(() => navigate({ to: "/guide" }), 1200);
