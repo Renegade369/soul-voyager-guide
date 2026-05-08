@@ -42,6 +42,7 @@ type Screen = "challenge" | "test" | "report" | "certificate";
 export function ChallengeTab() {
   const { user } = useAuth();
   const saveProgress = useServerFn(saveChallengeProgress);
+  const sendEmailFn = useServerFn(sendEmail);
   const [screen, setScreen] = useState<Screen>("challenge");
   const [completed, setCompleted] = useState<Set<number>>(new Set());
   const [expanded, setExpanded] = useState<number | null>(null);
