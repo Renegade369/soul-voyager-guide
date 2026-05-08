@@ -227,44 +227,50 @@ export function SoulQuizTab() {
   const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<"intro"|"quiz"|"result">("intro");
   const [qi, setQi] = useState(0);
-  const [answers, setAnswers] = useState<number[]>([]);
-  const [selected, setSelected] = useState<number|null>(null);
+  const [answers, setAnswers] = useState<number[][]>([]);
+  const [selected, setSelected] = useState<Set<number>>(new Set());
   const [fade, setFade] = useState(true);
   const [resultData, setResultData] = useState<ReturnType<typeof calcResult>|null>(null);
 
-  const startQuiz = () => { setPhase("quiz"); setQi(0); setAnswers([]); setSelected(null); setFade(true); };
+  const startQuiz = () => { setPhase("quiz"); setQi(0); setAnswers([]); setSelected(new Set()); setFade(true); };
 
-  const handleSelect = useCallback((idx: number) => {
-    if (selected !== null) return;
-    setSelected(idx);
-    const newAnswers = [...answers, idx];
+  const toggleOption = useCallback((idx: number) => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (next.has(idx)) next.delete(idx); else next.add(idx);
+      return next;
+    });
+  }, []);
+
+  const handleNext = useCallback(() => {
+    if (selected.size === 0) return;
+    const currentSelections = Array.from(selected);
+    const newAnswers = [...answers, currentSelections];
+    setFade(false);
     setTimeout(() => {
-      setFade(false);
-      setTimeout(() => {
-        if (qi < questions.length - 1) {
-          setQi(qi + 1);
-          setSelected(null);
-          setFade(true);
-        } else {
-          const res = calcResult(newAnswers);
-          setResultData(res);
-          setAnswers(newAnswers);
-          setPhase("result");
-          // save if logged in
-          if (user) {
-            supabase.from("soul_quiz_results").insert({
-              user_id: user.id,
-              soul_type: res.winner,
-              scores: res.scores,
-            } as any).then(() => {});
-            // Send soul quiz result email
-            if (user.email) {
-              sendEmailFn({ data: { to: user.email, subject: `${results[res.winner].title} — Your Soul Origin`, html: soulQuizEmail(res.winner, results[res.winner]) } }).catch(e => console.error("Soul quiz email failed:", e));
-            }
+      if (qi < questions.length - 1) {
+        setQi(qi + 1);
+        setSelected(new Set());
+        setFade(true);
+      } else {
+        const res = calcResult(newAnswers);
+        setResultData(res);
+        setAnswers(newAnswers);
+        setPhase("result");
+        // save if logged in
+        if (user) {
+          supabase.from("soul_quiz_results").insert({
+            user_id: user.id,
+            soul_type: res.winner,
+            scores: res.scores,
+          } as any).then(() => {});
+          // Send soul quiz result email
+          if (user.email) {
+            sendEmailFn({ data: { to: user.email, subject: `${results[res.winner].title} — Your Soul Origin`, html: soulQuizEmail(res.winner, results[res.winner]) } }).catch(e => console.error("Soul quiz email failed:", e));
           }
         }
-      }, 400);
-    }, 600);
+      }
+    }, 400);
     setAnswers(newAnswers);
   }, [selected, answers, qi, user]);
 
