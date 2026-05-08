@@ -4,6 +4,9 @@ import { Sparkles } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { trackLead } from "@/lib/analytics";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
+import { sendEmail } from "@/lib/email.functions";
+import { welcomeEmail } from "@/lib/emailTemplates";
 
 const C = { bg: "#0D0F0E", card: "#141917", inner: "#1C2420", border: "#2E3A35", teal: "#1D9E75", tealDark: "#0F6E56", gold: "#C9A84C", goldDark: "#8B6914", text: "#E8EDE9", muted: "#8A9E94", red: "#E24B4A" };
 const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-serif', label: '"Cinzel", serif' };
