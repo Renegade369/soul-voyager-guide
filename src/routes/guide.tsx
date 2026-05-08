@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Home, Zap, Grid3X3, Headphones, Wrench, Trophy, Sparkles, Orbit } from "lucide-react";
+import { Home, Zap, Grid3X3, Headphones, Wrench, Trophy, Sparkles, Orbit, Droplet } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthModal } from "@/components/guide/AuthModal";
 import { HomeTab } from "@/components/guide/HomeTab";
