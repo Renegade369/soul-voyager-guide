@@ -91,6 +91,10 @@ export function ChallengeTab() {
     try {
       await saveProgress({ data: { dayNumber: day, completed: newDone } });
       toast.success("Progress saved ✓");
+      // Send challenge completed email when all 10 days done
+      if (newDone && next.size === 10 && user.email) {
+        sendEmailFn({ data: { to: user.email, subject: "You Completed the 10-Day Challenge!", html: challengeCompletedEmail(user.user_metadata?.full_name?.split(" ")[0] || "Soul") } }).catch(e => console.error("Challenge email failed:", e));
+      }
     } catch (error) {
       console.error("challenge_progress save exception", error);
       // revert
