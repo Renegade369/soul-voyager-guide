@@ -15,11 +15,6 @@ type SoulType = (typeof SOUL_TYPES)[number];
 interface QuizOption { text: string; types: SoulType[]; }
 interface QuizQuestion { question: string; options: QuizOption[]; }
 
-function addAllOption(opts: QuizOption[]): QuizOption[] {
-  const allTypes = [...new Set(opts.flatMap(o => o.types))] as SoulType[];
-  return [...opts, { text: "All of the above — I resonate with every one of these", types: allTypes }];
-}
-
 const questions: QuizQuestion[] = [
   { question: "When you walk into a room full of people, you usually:", options: addAllOption([
     { text: "Feel everyone's emotions immediately and need time to recover", types: ["Earth Angel","Crystal Being"] },
