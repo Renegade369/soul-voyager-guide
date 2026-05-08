@@ -112,6 +112,7 @@ export function BirthChartTab() {
   const [birthHour, setBirthHour] = useState("");
   const [birthMinute, setBirthMinute] = useState("");
   const [birthCity, setBirthCity] = useState("");
+  const [birthState, setBirthState] = useState("");
   const [birthCountry, setBirthCountry] = useState("");
   const [email, setEmail] = useState("");
 
@@ -159,7 +160,7 @@ export function BirthChartTab() {
       name: fullName,
       birthDate: `${MONTHS[parseInt(birthMonth) - 1]} ${birthDay}, ${birthYear}`,
       birthTime: hasBirthTime ? `${birthHour}:${(birthMinute || "0").padStart(2, "0")}` : "Unknown",
-      birthPlace: `${birthCity}, ${birthCountry}`,
+      birthPlace: [birthCity, birthState, birthCountry].filter(Boolean).join(", "),
       planets: chartData.planets.map(p => ({
         name: p.name,
         sign: p.sign,
@@ -244,7 +245,7 @@ export function BirthChartTab() {
         setStreamDone(true);
       }
     }
-  }, [canSubmit, fullName, birthMonth, birthDay, birthYear, birthHour, birthMinute, birthCity, birthCountry, email]);
+  }, [canSubmit, fullName, birthMonth, birthDay, birthYear, birthHour, birthMinute, birthCity, birthState, birthCountry, email]);
 
   const handleReset = () => {
     abortRef.current?.abort();
@@ -316,6 +317,8 @@ export function BirthChartTab() {
               </div>
 
               <TextInput label="Birth City" value={birthCity} onChange={setBirthCity} placeholder="City you were born in" required note="City you were born in" />
+
+              <TextInput label="State / Province" value={birthState} onChange={setBirthState} placeholder="State or Province (recommended for accuracy)" note="Helps distinguish cities with the same name" />
 
               <Select label="Birth Country" value={birthCountry} onChange={setBirthCountry} required
                 options={COUNTRIES.map(c => ({ value: c, label: c }))} placeholder="Select country" />
