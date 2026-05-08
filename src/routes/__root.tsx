@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import { useEffect } from "react";
 
@@ -81,6 +81,8 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   useCartSync();
+  const location = useLocation();
+  const isGuidePage = location.pathname === "/guide" || location.pathname.startsWith("/guide/");
 
   // Register service worker (only in production, never in iframes/preview)
   useEffect(() => {
@@ -111,11 +113,11 @@ function RootComponent() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SiteHeader />
+      {!isGuidePage && <SiteHeader />}
       <main className="flex-1">
         <Outlet />
       </main>
-      <SiteFooter />
+      {!isGuidePage && <SiteFooter />}
       <Toaster position="top-center" richColors closeButton />
       <PwaInstallPrompt />
     </div>
