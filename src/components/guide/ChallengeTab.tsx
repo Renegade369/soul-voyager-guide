@@ -132,6 +132,10 @@ export function ChallengeTab() {
       );
       await supabase.from("profiles").update({ certificate_earned_at: new Date().toISOString() }).eq("id", user.id);
       trackCertificate(score);
+      // Send certificate email
+      if (user.email) {
+        sendEmailFn({ data: { to: user.email, subject: "Your Soul True Certificate", html: certificateEmail(certName, score) } }).catch(e => console.error("Certificate email failed:", e));
+      }
       toast.success("Certificate saved to your account ✓");
     } catch {
       toast.error("Error saving certificate");
