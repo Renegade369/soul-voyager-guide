@@ -222,6 +222,7 @@ function GoldParticles() {
 /* ═══════════════════════════ MAIN COMPONENT ═══════════════════════════ */
 export function SoulQuizTab() {
   const { user } = useAuth();
+  const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<"intro"|"quiz"|"result">("intro");
   const [qi, setQi] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
