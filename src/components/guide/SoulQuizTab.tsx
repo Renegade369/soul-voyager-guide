@@ -255,6 +255,10 @@ export function SoulQuizTab() {
               soul_type: res.winner,
               scores: res.scores,
             } as any).then(() => {});
+            // Send soul quiz result email
+            if (user.email) {
+              sendEmailFn({ data: { to: user.email, subject: `${results[res.winner].title} — Your Soul Origin`, html: soulQuizEmail(res.winner, results[res.winner]) } }).catch(e => console.error("Soul quiz email failed:", e));
+            }
           }
         }
       }, 400);
