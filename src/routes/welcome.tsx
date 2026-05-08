@@ -25,7 +25,6 @@ function WelcomePage() {
   const [error, setError] = useState("");
   const sendEmailFn = useServerFn(sendEmail);
   const set = (k: string, v: string | boolean) => setForm((f) => ({ ...f, [k]: v }));
-  const set = (k: string, v: string | boolean) => setForm((f) => ({ ...f, [k]: v }));
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
