@@ -7,6 +7,8 @@ import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { saveChallengeProgress } from "@/lib/challengeProgress.functions";
+import { sendEmail } from "@/lib/email.functions";
+import { challengeCompletedEmail, certificateEmail } from "@/lib/emailTemplates";
 
 /* ───── challenge data ───── */
 const DAYS = [
