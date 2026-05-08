@@ -82,7 +82,8 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   useCartSync();
   const location = useLocation();
-  const hideShell = location.pathname === "/guide" || location.pathname.startsWith("/guide/") || location.pathname === "/dashboard" || location.pathname.startsWith("/dashboard/");
+  const appRoutes = ["/guide", "/dashboard", "/admin", "/welcome"];
+  const hideShell = appRoutes.some(r => location.pathname === r || location.pathname.startsWith(r + "/"));
 
   // Register service worker (only in production, never in iframes/preview)
   useEffect(() => {
