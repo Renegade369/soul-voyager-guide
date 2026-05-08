@@ -3,6 +3,9 @@ import { Sparkles, RotateCcw, ArrowRight, Share2, Mail, Star } from "lucide-reac
 import { C, fonts, Emblem, Eyebrow, HeroTitle, GoldText, GoldRule } from "./GuideShared";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { useServerFn } from "@tanstack/react-start";
+import { sendEmail } from "@/lib/email.functions";
+import { soulQuizEmail } from "@/lib/emailTemplates";
 
 /* ───── soul types ───── */
 const SOUL_TYPES = ["Starseed","Earth Angel","Lightworker","Indigo Child","Crystal Being","Rainbow Warrior","Ancient Soul"] as const;
