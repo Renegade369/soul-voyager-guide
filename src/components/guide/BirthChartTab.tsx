@@ -160,7 +160,7 @@ export function BirthChartTab() {
       name: fullName,
       birthDate: `${MONTHS[parseInt(birthMonth) - 1]} ${birthDay}, ${birthYear}`,
       birthTime: hasBirthTime ? `${birthHour}:${(birthMinute || "0").padStart(2, "0")}` : "Unknown",
-      birthPlace: `${birthCity}, ${birthCountry}`,
+      birthPlace: [birthCity, birthState, birthCountry].filter(Boolean).join(", "),
       planets: chartData.planets.map(p => ({
         name: p.name,
         sign: p.sign,
