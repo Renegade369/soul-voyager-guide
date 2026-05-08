@@ -12,100 +12,105 @@ const SOUL_TYPES = ["Starseed","Earth Angel","Lightworker","Indigo Child","Cryst
 type SoulType = (typeof SOUL_TYPES)[number];
 
 /* ───── questions ───── */
-interface QuizOption { text: string; types: [SoulType, SoulType]; }
+interface QuizOption { text: string; types: SoulType[]; }
 interface QuizQuestion { question: string; options: QuizOption[]; }
 
+function addAllOption(opts: QuizOption[]): QuizOption[] {
+  const allTypes = [...new Set(opts.flatMap(o => o.types))] as SoulType[];
+  return [...opts, { text: "All of the above — I resonate with every one of these", types: allTypes }];
+}
+
 const questions: QuizQuestion[] = [
-  { question: "When you walk into a room full of people, you usually:", options: [
+  { question: "When you walk into a room full of people, you usually:", options: addAllOption([
     { text: "Feel everyone's emotions immediately and need time to recover", types: ["Earth Angel","Crystal Being"] },
     { text: "Sense something is \"off\" about certain people before they even speak", types: ["Starseed","Indigo Child"] },
     { text: "Feel a strong urge to help or fix whatever is wrong", types: ["Lightworker","Rainbow Warrior"] },
     { text: "Feel like you are observing from outside — like you don't quite belong", types: ["Starseed","Ancient Soul"] },
-  ]},
-  { question: "As a child you:", options: [
+  ])},
+  { question: "As a child you:", options: addAllOption([
     { text: "Saw or sensed things others couldn't — lights, beings, or presences", types: ["Starseed","Crystal Being"] },
     { text: "Felt deeply misunderstood and different from other children", types: ["Indigo Child","Starseed"] },
     { text: "Were the peacemaker — always trying to help others get along", types: ["Earth Angel","Lightworker"] },
     { text: "Had an unusually deep wisdom that surprised adults", types: ["Ancient Soul","Indigo Child"] },
-  ]},
-  { question: "Your relationship with nature is:", options: [
+  ])},
+  { question: "Your relationship with nature is:", options: addAllOption([
     { text: "Profound — you feel most alive and recharged in nature", types: ["Earth Angel","Rainbow Warrior"] },
     { text: "Interesting but you feel more drawn to the stars and cosmos", types: ["Starseed","Crystal Being"] },
     { text: "You feel you can communicate with animals and plants", types: ["Earth Angel","Crystal Being"] },
     { text: "You appreciate it but feel most at home in meditation or inner worlds", types: ["Ancient Soul","Lightworker"] },
-  ]},
-  { question: "When the world feels chaotic and dark you:", options: [
+  ])},
+  { question: "When the world feels chaotic and dark you:", options: addAllOption([
     { text: "Feel it physically in your body — it can make you ill", types: ["Crystal Being","Earth Angel"] },
     { text: "Get angry — you came here to change this and the pace feels too slow", types: ["Indigo Child","Rainbow Warrior"] },
     { text: "Hold the light anyway — you know this is part of the plan", types: ["Lightworker","Ancient Soul"] },
     { text: "Feel homesick for somewhere you cannot name", types: ["Starseed","Ancient Soul"] },
-  ]},
-  { question: "Your greatest gift to others is:", options: [
+  ])},
+  { question: "Your greatest gift to others is:", options: addAllOption([
     { text: "Unconditional love and emotional healing", types: ["Earth Angel","Crystal Being"] },
     { text: "Seeing the truth and speaking it even when it's uncomfortable", types: ["Indigo Child","Starseed"] },
     { text: "Inspiring others to wake up and see their potential", types: ["Lightworker","Rainbow Warrior"] },
     { text: "Ancient wisdom and perspective that comes from somewhere deep", types: ["Ancient Soul","Starseed"] },
-  ]},
-  { question: "You are most drawn to:", options: [
+  ])},
+  { question: "You are most drawn to:", options: addAllOption([
     { text: "Energy healing, crystals, frequency, and vibrational medicine", types: ["Crystal Being","Lightworker"] },
     { text: "Sacred texts, ancient civilizations, and hidden history", types: ["Ancient Soul","Starseed"] },
     { text: "Social justice, environmental causes, and changing broken systems", types: ["Indigo Child","Rainbow Warrior"] },
     { text: "Helping individuals heal their hearts and find their path", types: ["Earth Angel","Lightworker"] },
-  ]},
-  { question: "In your dreams you:", options: [
+  ])},
+  { question: "In your dreams you:", options: addAllOption([
     { text: "Visit other planets, star systems, or receive transmissions", types: ["Starseed","Crystal Being"] },
     { text: "Meet guides, angels, or beings of light who give you messages", types: ["Earth Angel","Ancient Soul"] },
     { text: "See visions of a better world and feel called to help build it", types: ["Rainbow Warrior","Lightworker"] },
     { text: "Relive ancient memories from other times and places", types: ["Ancient Soul","Starseed"] },
-  ]},
-  { question: "Your biggest challenge in this life has been:", options: [
+  ])},
+  { question: "Your biggest challenge in this life has been:", options: addAllOption([
     { text: "Feeling too sensitive — absorbing other people's pain", types: ["Earth Angel","Crystal Being"] },
     { text: "Anger at the state of the world and systems that suppress truth", types: ["Indigo Child","Rainbow Warrior"] },
     { text: "Feeling like you don't belong here — like Earth is not your home", types: ["Starseed","Ancient Soul"] },
     { text: "Knowing what needs to change but struggling to be heard", types: ["Indigo Child","Lightworker"] },
-  ]},
-  { question: "When you think about why you are here you feel:", options: [
+  ])},
+  { question: "When you think about why you are here you feel:", options: addAllOption([
     { text: "A deep sense of mission — you came here to help humanity shift", types: ["Lightworker","Rainbow Warrior"] },
     { text: "Like you volunteered for something enormous and forgot what it was", types: ["Starseed","Ancient Soul"] },
     { text: "Called to hold love and compassion as the world goes through change", types: ["Earth Angel","Crystal Being"] },
     { text: "Like you carry ancient knowledge that the world desperately needs now", types: ["Ancient Soul","Indigo Child"] },
-  ]},
-  { question: "Your relationship with technology and modern society is:", options: [
+  ])},
+  { question: "Your relationship with technology and modern society is:", options: addAllOption([
     { text: "Uncomfortable — you feel it dulls sensitivity and disconnects people", types: ["Crystal Being","Earth Angel"] },
     { text: "Frustrating — you see how it could be used for liberation but isn't", types: ["Indigo Child","Rainbow Warrior"] },
     { text: "Neutral — you use what serves the mission and release the rest", types: ["Lightworker","Ancient Soul"] },
     { text: "Alienating — none of it feels natural to who you truly are", types: ["Starseed","Ancient Soul"] },
-  ]},
-  { question: "People who know you would say you are:", options: [
+  ])},
+  { question: "People who know you would say you are:", options: addAllOption([
     { text: "The most empathetic and caring person they have ever met", types: ["Earth Angel","Crystal Being"] },
     { text: "Intense, direct, and impossible to manipulate", types: ["Indigo Child","Starseed"] },
     { text: "Inspiring — you make people believe change is possible", types: ["Rainbow Warrior","Lightworker"] },
     { text: "Wise beyond your years — like an old soul in a young body", types: ["Ancient Soul","Indigo Child"] },
-  ]},
-  { question: "Your physical sensitivity means:", options: [
+  ])},
+  { question: "Your physical sensitivity means:", options: addAllOption([
     { text: "You feel others' physical pain in your own body", types: ["Crystal Being","Earth Angel"] },
     { text: "Crowds, loud places, and harsh environments drain you quickly", types: ["Starseed","Crystal Being"] },
     { text: "You need significant alone time to reset and recharge", types: ["Ancient Soul","Lightworker"] },
     { text: "You have always been drawn to clean food, pure water, and natural environments", types: ["Rainbow Warrior","Earth Angel"] },
-  ]},
-  { question: "When you look at the night sky you feel:", options: [
+  ])},
+  { question: "When you look at the night sky you feel:", options: addAllOption([
     { text: "A deep longing — like you are looking at home", types: ["Starseed","Ancient Soul"] },
     { text: "Awe and wonder — you feel connected to something vast", types: ["Crystal Being","Lightworker"] },
     { text: "A sense of mission — beings out there are watching and supporting you", types: ["Starseed","Rainbow Warrior"] },
     { text: "Peace — you feel held by something much larger than this world", types: ["Earth Angel","Ancient Soul"] },
-  ]},
-  { question: "Your mission in this lifetime feels connected to:", options: [
+  ])},
+  { question: "Your mission in this lifetime feels connected to:", options: addAllOption([
     { text: "Healing — of people, relationships, and the collective heart", types: ["Earth Angel","Lightworker"] },
     { text: "Truth — exposing what is hidden and waking people up", types: ["Indigo Child","Starseed"] },
     { text: "Building — creating new systems, communities, and ways of living", types: ["Rainbow Warrior","Indigo Child"] },
     { text: "Remembering — recovering ancient wisdom and bringing it forward", types: ["Ancient Soul","Crystal Being"] },
-  ]},
-  { question: "Deep down, your greatest fear is:", options: [
+  ])},
+  { question: "Deep down, your greatest fear is:", options: addAllOption([
     { text: "That you will leave this life without completing your mission", types: ["Lightworker","Rainbow Warrior"] },
     { text: "That you came all this way and the world won't change in time", types: ["Indigo Child","Starseed"] },
     { text: "That you will lose yourself trying to save everyone else", types: ["Earth Angel","Crystal Being"] },
     { text: "That you will forget who you truly are and go back to sleep", types: ["Ancient Soul","Starseed"] },
-  ]},
+  ])},
 ];
 
 /* ───── result data ───── */
