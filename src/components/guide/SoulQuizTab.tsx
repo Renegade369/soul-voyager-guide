@@ -12,7 +12,7 @@ const SOUL_TYPES = ["Starseed","Earth Angel","Lightworker","Indigo Child","Cryst
 type SoulType = (typeof SOUL_TYPES)[number];
 
 /* ───── questions ───── */
-interface QuizOption { text: string; types: [SoulType, SoulType]; }
+interface QuizOption { text: string; types: SoulType[]; }
 interface QuizQuestion { question: string; options: QuizOption[]; }
 
 const questions: QuizQuestion[] = [
