@@ -170,12 +170,14 @@ const results: Record<SoulType, SoulResult> = {
 };
 
 /* ───── helpers ───── */
-function calcResult(answers: number[]): { winner: SoulType; tied: SoulType[]; scores: Record<string,number> } {
+function calcResult(answers: number[][]): { winner: SoulType; tied: SoulType[]; scores: Record<string,number> } {
   const scores: Record<string,number> = {};
   SOUL_TYPES.forEach(t => scores[t] = 0);
-  answers.forEach((choice, qi) => {
-    const opt = questions[qi].options[choice];
-    opt.types.forEach(t => scores[t] += 2);
+  answers.forEach((choices, qi) => {
+    choices.forEach(choice => {
+      const opt = questions[qi].options[choice];
+      opt.types.forEach(t => scores[t] += 2);
+    });
   });
   const max = Math.max(...Object.values(scores));
   const tied = SOUL_TYPES.filter(t => scores[t] === max);
