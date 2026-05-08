@@ -23,6 +23,8 @@ function WelcomePage() {
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", city: "", state: "", country: "United States", consent: true });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const sendEmailFn = useServerFn(sendEmail);
+  const set = (k: string, v: string | boolean) => setForm((f) => ({ ...f, [k]: v }));
   const set = (k: string, v: string | boolean) => setForm((f) => ({ ...f, [k]: v }));
 
   const submit = async (e: React.FormEvent) => {
