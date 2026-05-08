@@ -86,7 +86,7 @@ function GuidePage() {
                 <span className="text-xs" style={{ fontFamily: fonts.body, color: C.muted }}>
                   {user.user_metadata?.full_name || user.email?.split("@")[0]}
                 </span>
-                <a href="/dashboard" className="text-xs" style={{ color: C.gold, fontFamily: fonts.body }}>Dashboard</a>
+                <Link to="/dashboard" className="text-xs" style={{ color: C.gold, fontFamily: fonts.body }}>Dashboard</Link>
                 <button onClick={signOut} className="text-xs" style={{ color: C.muted, fontFamily: fonts.body }}>Sign Out</button>
               </div>
             ) : (
