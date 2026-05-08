@@ -330,6 +330,11 @@ export function SoulQuizTab() {
           <div className="h-full rounded-full transition-all duration-700" style={{ width: `${pct}%`, backgroundColor: C.gold }} />
         </div>
 
+        {/* instruction note */}
+        <p className="mx-auto mb-6 max-w-2xl text-center text-xs" style={{ fontFamily: fonts.body, color: C.gold, fontWeight: 300, fontStyle: "italic" }}>
+          Select all answers that apply to you — there are no wrong answers.
+        </p>
+
         {/* question card */}
         <div
           className="mx-auto max-w-2xl transition-all duration-400"
@@ -340,38 +345,54 @@ export function SoulQuizTab() {
           </h3>
           <div className="space-y-3">
             {q.options.map((opt, oi) => {
-              const isSelected = selected === oi;
+              const isChecked = selected.has(oi);
               return (
                 <button
                   key={oi}
-                  onClick={() => handleSelect(oi)}
-                  disabled={selected !== null}
+                  onClick={() => toggleOption(oi)}
                   className="block w-full rounded-xl border p-5 text-left transition-all duration-300"
                   style={{
-                    borderColor: isSelected ? C.gold : C.border,
-                    backgroundColor: isSelected ? `${C.gold}15` : C.card,
-                    cursor: selected !== null ? "default" : "pointer",
+                    borderColor: isChecked ? C.gold : C.border,
+                    backgroundColor: isChecked ? `${C.gold}15` : C.card,
+                    cursor: "pointer",
                   }}
                 >
                   <div className="flex items-start gap-4">
+                    {/* checkbox */}
                     <span
-                      className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-medium"
+                      className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded"
                       style={{
-                        border: `1.5px solid ${isSelected ? C.gold : C.border}`,
-                        color: isSelected ? C.gold : C.muted,
-                        backgroundColor: isSelected ? `${C.gold}20` : "transparent",
-                        fontFamily: fonts.body,
+                        border: `1.5px solid ${isChecked ? C.gold : C.border}`,
+                        backgroundColor: isChecked ? C.gold : "transparent",
+                        borderRadius: 4,
+                        transition: "all 0.2s ease",
                       }}
                     >
-                      {String.fromCharCode(65 + oi)}
+                      {isChecked && (
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <path d="M3 7L6 10L11 4" stroke={C.bg} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
                     </span>
-                    <span className="text-sm leading-relaxed" style={{ fontFamily: fonts.body, color: isSelected ? C.text : C.muted, fontWeight: 300 }}>
+                    <span className="text-sm leading-relaxed" style={{ fontFamily: fonts.body, color: isChecked ? C.text : C.muted, fontWeight: 300 }}>
                       {opt.text}
                     </span>
                   </div>
                 </button>
               );
             })}
+          </div>
+
+          {/* Next button */}
+          <div className="mt-8 text-center">
+            <button
+              onClick={handleNext}
+              disabled={selected.size === 0}
+              className="inline-flex items-center gap-2 rounded px-8 py-3 text-xs font-medium uppercase tracking-[0.22em] transition-opacity disabled:opacity-30"
+              style={{ backgroundColor: C.gold, color: C.bg, fontFamily: fonts.body }}
+            >
+              {qi < questions.length - 1 ? "Next" : "See My Soul Type"} <ArrowRight size={14} />
+            </button>
           </div>
         </div>
       </div>
