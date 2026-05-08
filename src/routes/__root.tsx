@@ -113,7 +113,7 @@ function RootComponent() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      {!isGuidePage && <SiteHeader />}
+      {!hideShell && <SiteHeader />}
       <main className="flex-1">
         <Outlet />
       </main>
