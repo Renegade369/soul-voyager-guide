@@ -113,11 +113,11 @@ function RootComponent() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SiteHeader />
+      {!isGuidePage && <SiteHeader />}
       <main className="flex-1">
         <Outlet />
       </main>
-      <SiteFooter />
+      {!isGuidePage && <SiteFooter />}
       <Toaster position="top-center" richColors closeButton />
       <PwaInstallPrompt />
     </div>
