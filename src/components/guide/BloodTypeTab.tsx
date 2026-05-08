@@ -148,18 +148,21 @@ export function BloodTypeTab() {
       }
     }
 
-    // Send email
-    try {
-      await supabase.functions.invoke("blood-type-email", {
-        body: {
-          name: fullName.trim(),
-          email: email.trim(),
-          bloodType,
-          rhFactor,
-        },
-      });
-    } catch (e) {
-      console.error("Email send failed:", e);
+    // Send email via Resend
+    if (profile && bloodType && rhFactor) {
+      sendEmailFn({ data: {
+        to: email.trim(),
+        subject: `${fullName.trim()}'s Blood Type Profile — ${bloodType}${rhFactor === "positive" ? "+" : "-"}`,
+        html: bloodTypeEmailTemplate(fullName.trim(), bloodType, rhFactor, {
+          title: profile.title,
+          soulConnection: profile.soulConnection,
+          personality: profile.personality,
+          strengths: profile.strengths,
+          challenges: profile.challenges,
+          bestFoods: profile.bestFoods.slice(0, 10),
+          avoidFoods: profile.avoidFoods.slice(0, 10),
+        }),
+      } }).catch(e => console.error("Blood type email failed:", e));
     }
   };
 
