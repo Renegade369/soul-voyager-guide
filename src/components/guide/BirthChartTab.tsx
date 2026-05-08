@@ -245,7 +245,7 @@ export function BirthChartTab() {
         setStreamDone(true);
       }
     }
-  }, [canSubmit, fullName, birthMonth, birthDay, birthYear, birthHour, birthMinute, birthCity, birthCountry, email]);
+  }, [canSubmit, fullName, birthMonth, birthDay, birthYear, birthHour, birthMinute, birthCity, birthState, birthCountry, email]);
 
   const handleReset = () => {
     abortRef.current?.abort();
