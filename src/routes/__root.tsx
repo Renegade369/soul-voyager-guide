@@ -117,7 +117,7 @@ function RootComponent() {
       <main className="flex-1">
         <Outlet />
       </main>
-      {!isGuidePage && <SiteFooter />}
+      {!hideShell && <SiteFooter />}
       <Toaster position="top-center" richColors closeButton />
       <PwaInstallPrompt />
     </div>
