@@ -150,17 +150,19 @@ export function BloodTypeTab() {
 
     // Send email via Resend
     if (profile && bloodType && rhFactor) {
+      const bestFoodsFlat = profile.beneficialFoods.flatMap(c => c.items).slice(0, 10);
+      const avoidFoodsFlat = profile.avoidFoods.flatMap(c => c.items).slice(0, 10);
       sendEmailFn({ data: {
         to: email.trim(),
         subject: `${fullName.trim()}'s Blood Type Profile — ${bloodType}${rhFactor === "positive" ? "+" : "-"}`,
         html: bloodTypeEmailTemplate(fullName.trim(), bloodType, rhFactor, {
-          title: profile.title,
-          soulConnection: profile.soulConnection,
-          personality: profile.personality,
-          strengths: profile.strengths,
-          challenges: profile.challenges,
-          bestFoods: profile.bestFoods.slice(0, 10),
-          avoidFoods: profile.avoidFoods.slice(0, 10),
+          title: profile.archetype,
+          soulConnection: profile.overview,
+          personality: profile.personalityTraits,
+          strengths: profile.healthStrengths,
+          challenges: profile.healthVulnerabilities,
+          bestFoods: bestFoodsFlat,
+          avoidFoods: avoidFoodsFlat,
         }),
       } }).catch(e => console.error("Blood type email failed:", e));
     }
