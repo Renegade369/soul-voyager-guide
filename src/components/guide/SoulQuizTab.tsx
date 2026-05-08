@@ -15,102 +15,97 @@ type SoulType = (typeof SOUL_TYPES)[number];
 interface QuizOption { text: string; types: SoulType[]; }
 interface QuizQuestion { question: string; options: QuizOption[]; }
 
-function addAllOption(opts: QuizOption[]): QuizOption[] {
-  const allTypes = [...new Set(opts.flatMap(o => o.types))] as SoulType[];
-  return [...opts, { text: "All of the above — I resonate with every one of these", types: allTypes }];
-}
-
 const questions: QuizQuestion[] = [
-  { question: "When you walk into a room full of people, you usually:", options: addAllOption([
+  { question: "When you walk into a room full of people, you usually:", options: [
     { text: "Feel everyone's emotions immediately and need time to recover", types: ["Earth Angel","Crystal Being"] },
     { text: "Sense something is \"off\" about certain people before they even speak", types: ["Starseed","Indigo Child"] },
     { text: "Feel a strong urge to help or fix whatever is wrong", types: ["Lightworker","Rainbow Warrior"] },
     { text: "Feel like you are observing from outside — like you don't quite belong", types: ["Starseed","Ancient Soul"] },
-  ])},
-  { question: "As a child you:", options: addAllOption([
+  ]},
+  { question: "As a child you:", options: [
     { text: "Saw or sensed things others couldn't — lights, beings, or presences", types: ["Starseed","Crystal Being"] },
     { text: "Felt deeply misunderstood and different from other children", types: ["Indigo Child","Starseed"] },
     { text: "Were the peacemaker — always trying to help others get along", types: ["Earth Angel","Lightworker"] },
     { text: "Had an unusually deep wisdom that surprised adults", types: ["Ancient Soul","Indigo Child"] },
-  ])},
-  { question: "Your relationship with nature is:", options: addAllOption([
+  ]},
+  { question: "Your relationship with nature is:", options: [
     { text: "Profound — you feel most alive and recharged in nature", types: ["Earth Angel","Rainbow Warrior"] },
     { text: "Interesting but you feel more drawn to the stars and cosmos", types: ["Starseed","Crystal Being"] },
     { text: "You feel you can communicate with animals and plants", types: ["Earth Angel","Crystal Being"] },
     { text: "You appreciate it but feel most at home in meditation or inner worlds", types: ["Ancient Soul","Lightworker"] },
-  ])},
-  { question: "When the world feels chaotic and dark you:", options: addAllOption([
+  ]},
+  { question: "When the world feels chaotic and dark you:", options: [
     { text: "Feel it physically in your body — it can make you ill", types: ["Crystal Being","Earth Angel"] },
     { text: "Get angry — you came here to change this and the pace feels too slow", types: ["Indigo Child","Rainbow Warrior"] },
     { text: "Hold the light anyway — you know this is part of the plan", types: ["Lightworker","Ancient Soul"] },
     { text: "Feel homesick for somewhere you cannot name", types: ["Starseed","Ancient Soul"] },
-  ])},
-  { question: "Your greatest gift to others is:", options: addAllOption([
+  ]},
+  { question: "Your greatest gift to others is:", options: [
     { text: "Unconditional love and emotional healing", types: ["Earth Angel","Crystal Being"] },
     { text: "Seeing the truth and speaking it even when it's uncomfortable", types: ["Indigo Child","Starseed"] },
     { text: "Inspiring others to wake up and see their potential", types: ["Lightworker","Rainbow Warrior"] },
     { text: "Ancient wisdom and perspective that comes from somewhere deep", types: ["Ancient Soul","Starseed"] },
-  ])},
-  { question: "You are most drawn to:", options: addAllOption([
+  ]},
+  { question: "You are most drawn to:", options: [
     { text: "Energy healing, crystals, frequency, and vibrational medicine", types: ["Crystal Being","Lightworker"] },
     { text: "Sacred texts, ancient civilizations, and hidden history", types: ["Ancient Soul","Starseed"] },
     { text: "Social justice, environmental causes, and changing broken systems", types: ["Indigo Child","Rainbow Warrior"] },
     { text: "Helping individuals heal their hearts and find their path", types: ["Earth Angel","Lightworker"] },
-  ])},
-  { question: "In your dreams you:", options: addAllOption([
+  ]},
+  { question: "In your dreams you:", options: [
     { text: "Visit other planets, star systems, or receive transmissions", types: ["Starseed","Crystal Being"] },
     { text: "Meet guides, angels, or beings of light who give you messages", types: ["Earth Angel","Ancient Soul"] },
     { text: "See visions of a better world and feel called to help build it", types: ["Rainbow Warrior","Lightworker"] },
     { text: "Relive ancient memories from other times and places", types: ["Ancient Soul","Starseed"] },
-  ])},
-  { question: "Your biggest challenge in this life has been:", options: addAllOption([
+  ]},
+  { question: "Your biggest challenge in this life has been:", options: [
     { text: "Feeling too sensitive — absorbing other people's pain", types: ["Earth Angel","Crystal Being"] },
     { text: "Anger at the state of the world and systems that suppress truth", types: ["Indigo Child","Rainbow Warrior"] },
     { text: "Feeling like you don't belong here — like Earth is not your home", types: ["Starseed","Ancient Soul"] },
     { text: "Knowing what needs to change but struggling to be heard", types: ["Indigo Child","Lightworker"] },
-  ])},
-  { question: "When you think about why you are here you feel:", options: addAllOption([
+  ]},
+  { question: "When you think about why you are here you feel:", options: [
     { text: "A deep sense of mission — you came here to help humanity shift", types: ["Lightworker","Rainbow Warrior"] },
     { text: "Like you volunteered for something enormous and forgot what it was", types: ["Starseed","Ancient Soul"] },
     { text: "Called to hold love and compassion as the world goes through change", types: ["Earth Angel","Crystal Being"] },
     { text: "Like you carry ancient knowledge that the world desperately needs now", types: ["Ancient Soul","Indigo Child"] },
-  ])},
-  { question: "Your relationship with technology and modern society is:", options: addAllOption([
+  ]},
+  { question: "Your relationship with technology and modern society is:", options: [
     { text: "Uncomfortable — you feel it dulls sensitivity and disconnects people", types: ["Crystal Being","Earth Angel"] },
     { text: "Frustrating — you see how it could be used for liberation but isn't", types: ["Indigo Child","Rainbow Warrior"] },
     { text: "Neutral — you use what serves the mission and release the rest", types: ["Lightworker","Ancient Soul"] },
     { text: "Alienating — none of it feels natural to who you truly are", types: ["Starseed","Ancient Soul"] },
-  ])},
-  { question: "People who know you would say you are:", options: addAllOption([
+  ]},
+  { question: "People who know you would say you are:", options: [
     { text: "The most empathetic and caring person they have ever met", types: ["Earth Angel","Crystal Being"] },
     { text: "Intense, direct, and impossible to manipulate", types: ["Indigo Child","Starseed"] },
     { text: "Inspiring — you make people believe change is possible", types: ["Rainbow Warrior","Lightworker"] },
     { text: "Wise beyond your years — like an old soul in a young body", types: ["Ancient Soul","Indigo Child"] },
-  ])},
-  { question: "Your physical sensitivity means:", options: addAllOption([
+  ]},
+  { question: "Your physical sensitivity means:", options: [
     { text: "You feel others' physical pain in your own body", types: ["Crystal Being","Earth Angel"] },
     { text: "Crowds, loud places, and harsh environments drain you quickly", types: ["Starseed","Crystal Being"] },
     { text: "You need significant alone time to reset and recharge", types: ["Ancient Soul","Lightworker"] },
     { text: "You have always been drawn to clean food, pure water, and natural environments", types: ["Rainbow Warrior","Earth Angel"] },
-  ])},
-  { question: "When you look at the night sky you feel:", options: addAllOption([
+  ]},
+  { question: "When you look at the night sky you feel:", options: [
     { text: "A deep longing — like you are looking at home", types: ["Starseed","Ancient Soul"] },
     { text: "Awe and wonder — you feel connected to something vast", types: ["Crystal Being","Lightworker"] },
     { text: "A sense of mission — beings out there are watching and supporting you", types: ["Starseed","Rainbow Warrior"] },
     { text: "Peace — you feel held by something much larger than this world", types: ["Earth Angel","Ancient Soul"] },
-  ])},
-  { question: "Your mission in this lifetime feels connected to:", options: addAllOption([
+  ]},
+  { question: "Your mission in this lifetime feels connected to:", options: [
     { text: "Healing — of people, relationships, and the collective heart", types: ["Earth Angel","Lightworker"] },
     { text: "Truth — exposing what is hidden and waking people up", types: ["Indigo Child","Starseed"] },
     { text: "Building — creating new systems, communities, and ways of living", types: ["Rainbow Warrior","Indigo Child"] },
     { text: "Remembering — recovering ancient wisdom and bringing it forward", types: ["Ancient Soul","Crystal Being"] },
-  ])},
-  { question: "Deep down, your greatest fear is:", options: addAllOption([
+  ]},
+  { question: "Deep down, your greatest fear is:", options: [
     { text: "That you will leave this life without completing your mission", types: ["Lightworker","Rainbow Warrior"] },
     { text: "That you came all this way and the world won't change in time", types: ["Indigo Child","Starseed"] },
     { text: "That you will lose yourself trying to save everyone else", types: ["Earth Angel","Crystal Being"] },
     { text: "That you will forget who you truly are and go back to sleep", types: ["Ancient Soul","Starseed"] },
-  ])},
+  ]},
 ];
 
 /* ───── result data ───── */
@@ -175,12 +170,14 @@ const results: Record<SoulType, SoulResult> = {
 };
 
 /* ───── helpers ───── */
-function calcResult(answers: number[]): { winner: SoulType; tied: SoulType[]; scores: Record<string,number> } {
+function calcResult(answers: number[][]): { winner: SoulType; tied: SoulType[]; scores: Record<string,number> } {
   const scores: Record<string,number> = {};
   SOUL_TYPES.forEach(t => scores[t] = 0);
-  answers.forEach((choice, qi) => {
-    const opt = questions[qi].options[choice];
-    opt.types.forEach(t => scores[t] += 2);
+  answers.forEach((choices, qi) => {
+    choices.forEach(choice => {
+      const opt = questions[qi].options[choice];
+      opt.types.forEach(t => scores[t] += 2);
+    });
   });
   const max = Math.max(...Object.values(scores));
   const tied = SOUL_TYPES.filter(t => scores[t] === max);
@@ -230,44 +227,50 @@ export function SoulQuizTab() {
   const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<"intro"|"quiz"|"result">("intro");
   const [qi, setQi] = useState(0);
-  const [answers, setAnswers] = useState<number[]>([]);
-  const [selected, setSelected] = useState<number|null>(null);
+  const [answers, setAnswers] = useState<number[][]>([]);
+  const [selected, setSelected] = useState<Set<number>>(new Set());
   const [fade, setFade] = useState(true);
   const [resultData, setResultData] = useState<ReturnType<typeof calcResult>|null>(null);
 
-  const startQuiz = () => { setPhase("quiz"); setQi(0); setAnswers([]); setSelected(null); setFade(true); };
+  const startQuiz = () => { setPhase("quiz"); setQi(0); setAnswers([]); setSelected(new Set()); setFade(true); };
 
-  const handleSelect = useCallback((idx: number) => {
-    if (selected !== null) return;
-    setSelected(idx);
-    const newAnswers = [...answers, idx];
+  const toggleOption = useCallback((idx: number) => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (next.has(idx)) next.delete(idx); else next.add(idx);
+      return next;
+    });
+  }, []);
+
+  const handleNext = useCallback(() => {
+    if (selected.size === 0) return;
+    const currentSelections = Array.from(selected);
+    const newAnswers = [...answers, currentSelections];
+    setFade(false);
     setTimeout(() => {
-      setFade(false);
-      setTimeout(() => {
-        if (qi < questions.length - 1) {
-          setQi(qi + 1);
-          setSelected(null);
-          setFade(true);
-        } else {
-          const res = calcResult(newAnswers);
-          setResultData(res);
-          setAnswers(newAnswers);
-          setPhase("result");
-          // save if logged in
-          if (user) {
-            supabase.from("soul_quiz_results").insert({
-              user_id: user.id,
-              soul_type: res.winner,
-              scores: res.scores,
-            } as any).then(() => {});
-            // Send soul quiz result email
-            if (user.email) {
-              sendEmailFn({ data: { to: user.email, subject: `${results[res.winner].title} — Your Soul Origin`, html: soulQuizEmail(res.winner, results[res.winner]) } }).catch(e => console.error("Soul quiz email failed:", e));
-            }
+      if (qi < questions.length - 1) {
+        setQi(qi + 1);
+        setSelected(new Set());
+        setFade(true);
+      } else {
+        const res = calcResult(newAnswers);
+        setResultData(res);
+        setAnswers(newAnswers);
+        setPhase("result");
+        // save if logged in
+        if (user) {
+          supabase.from("soul_quiz_results").insert({
+            user_id: user.id,
+            soul_type: res.winner,
+            scores: res.scores,
+          } as any).then(() => {});
+          // Send soul quiz result email
+          if (user.email) {
+            sendEmailFn({ data: { to: user.email, subject: `${results[res.winner].title} — Your Soul Origin`, html: soulQuizEmail(res.winner, results[res.winner]) } }).catch(e => console.error("Soul quiz email failed:", e));
           }
         }
-      }, 400);
-    }, 600);
+      }
+    }, 400);
     setAnswers(newAnswers);
   }, [selected, answers, qi, user]);
 
@@ -327,6 +330,11 @@ export function SoulQuizTab() {
           <div className="h-full rounded-full transition-all duration-700" style={{ width: `${pct}%`, backgroundColor: C.gold }} />
         </div>
 
+        {/* instruction note */}
+        <p className="mx-auto mb-6 max-w-2xl text-center text-xs" style={{ fontFamily: fonts.body, color: C.gold, fontWeight: 300, fontStyle: "italic" }}>
+          Select all answers that apply to you — there are no wrong answers.
+        </p>
+
         {/* question card */}
         <div
           className="mx-auto max-w-2xl transition-all duration-400"
@@ -337,38 +345,54 @@ export function SoulQuizTab() {
           </h3>
           <div className="space-y-3">
             {q.options.map((opt, oi) => {
-              const isSelected = selected === oi;
+              const isChecked = selected.has(oi);
               return (
                 <button
                   key={oi}
-                  onClick={() => handleSelect(oi)}
-                  disabled={selected !== null}
+                  onClick={() => toggleOption(oi)}
                   className="block w-full rounded-xl border p-5 text-left transition-all duration-300"
                   style={{
-                    borderColor: isSelected ? C.gold : C.border,
-                    backgroundColor: isSelected ? `${C.gold}15` : C.card,
-                    cursor: selected !== null ? "default" : "pointer",
+                    borderColor: isChecked ? C.gold : C.border,
+                    backgroundColor: isChecked ? `${C.gold}15` : C.card,
+                    cursor: "pointer",
                   }}
                 >
                   <div className="flex items-start gap-4">
+                    {/* checkbox */}
                     <span
-                      className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-medium"
+                      className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded"
                       style={{
-                        border: `1.5px solid ${isSelected ? C.gold : C.border}`,
-                        color: isSelected ? C.gold : C.muted,
-                        backgroundColor: isSelected ? `${C.gold}20` : "transparent",
-                        fontFamily: fonts.body,
+                        border: `1.5px solid ${isChecked ? C.gold : C.border}`,
+                        backgroundColor: isChecked ? C.gold : "transparent",
+                        borderRadius: 4,
+                        transition: "all 0.2s ease",
                       }}
                     >
-                      {String.fromCharCode(65 + oi)}
+                      {isChecked && (
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <path d="M3 7L6 10L11 4" stroke={C.bg} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
                     </span>
-                    <span className="text-sm leading-relaxed" style={{ fontFamily: fonts.body, color: isSelected ? C.text : C.muted, fontWeight: 300 }}>
+                    <span className="text-sm leading-relaxed" style={{ fontFamily: fonts.body, color: isChecked ? C.text : C.muted, fontWeight: 300 }}>
                       {opt.text}
                     </span>
                   </div>
                 </button>
               );
             })}
+          </div>
+
+          {/* Next button */}
+          <div className="mt-8 text-center">
+            <button
+              onClick={handleNext}
+              disabled={selected.size === 0}
+              className="inline-flex items-center gap-2 rounded px-8 py-3 text-xs font-medium uppercase tracking-[0.22em] transition-opacity disabled:opacity-30"
+              style={{ backgroundColor: C.gold, color: C.bg, fontFamily: fonts.body }}
+            >
+              {qi < questions.length - 1 ? "Next" : "See My Soul Type"} <ArrowRight size={14} />
+            </button>
           </div>
         </div>
       </div>
