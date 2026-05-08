@@ -105,6 +105,7 @@ function TextInput({ label, value, onChange, placeholder, required, type = "text
 
 /* ═══════ MAIN COMPONENT ═══════ */
 export function BirthChartTab() {
+  const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<"form" | "loading" | "reading">("form");
 
   /* form state */
