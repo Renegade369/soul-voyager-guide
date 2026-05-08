@@ -64,6 +64,7 @@ function GuidePage() {
               return (
                 <button
                   key={t.id}
+                  data-tab={t.id}
                   onClick={() => handleTabChange(t.id)}
                   className="flex flex-col items-center gap-1 px-4 py-3 transition-colors"
                   style={{
