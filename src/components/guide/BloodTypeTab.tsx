@@ -91,6 +91,7 @@ function TraitBadge({ label }: { label: string }) {
 
 /* ════════════ MAIN COMPONENT ════════════ */
 export function BloodTypeTab() {
+  const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<Phase>("input");
   const [bloodType, setBloodType] = useState<string | null>(null);
   const [rhFactor, setRhFactor] = useState<"positive" | "negative" | null>(null);
