@@ -89,6 +89,7 @@ function MeditationCard({ m }: { m: typeof MEDITATIONS[0] }) {
 /* ───── Main Tab ───── */
 export function MeditationsTab() {
   const { user } = useAuth();
+  const sendEmailFn = useServerFn(sendEmail);
   const [feeling, setFeeling] = useState("");
   const [shiftTarget, setShiftTarget] = useState("");
   const [pillar, setPillar] = useState("");
