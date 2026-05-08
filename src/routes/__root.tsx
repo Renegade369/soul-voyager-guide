@@ -82,7 +82,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   useCartSync();
   const location = useLocation();
-  const isGuidePage = location.pathname === "/guide" || location.pathname.startsWith("/guide/");
+  const hideShell = location.pathname === "/guide" || location.pathname.startsWith("/guide/") || location.pathname === "/dashboard" || location.pathname.startsWith("/dashboard/");
 
   // Register service worker (only in production, never in iframes/preview)
   useEffect(() => {
@@ -113,11 +113,11 @@ function RootComponent() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      {!isGuidePage && <SiteHeader />}
+      {!hideShell && <SiteHeader />}
       <main className="flex-1">
         <Outlet />
       </main>
-      {!isGuidePage && <SiteFooter />}
+      {!hideShell && <SiteFooter />}
       <Toaster position="top-center" richColors closeButton />
       <PwaInstallPrompt />
     </div>
