@@ -81,8 +81,8 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   useCartSync();
-  const pathname = typeof window !== "undefined" ? window.location.pathname : "";
-  const isGuidePage = pathname === "/guide" || pathname.startsWith("/guide/");
+  const location = useLocation();
+  const isGuidePage = location.pathname === "/guide" || location.pathname.startsWith("/guide/");
 
   // Register service worker (only in production, never in iframes/preview)
   useEffect(() => {
