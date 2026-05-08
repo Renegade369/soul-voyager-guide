@@ -4,6 +4,9 @@ import { C, fonts, GoldRule } from "./GuideShared";
 import { BLOOD_TYPE_PROFILES, RH_NEGATIVE_GUIDE, RH_NEGATIVE_RESOURCES, type BloodTypeProfile } from "./bloodTypeData";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { useServerFn } from "@tanstack/react-start";
+import { sendEmail } from "@/lib/email.functions";
+import { bloodTypeEmail as bloodTypeEmailTemplate } from "@/lib/emailTemplates";
 
 /* ── Phases ── */
 type Phase = "input" | "loading" | "result";
