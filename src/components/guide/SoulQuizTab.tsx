@@ -3,6 +3,9 @@ import { Sparkles, RotateCcw, ArrowRight, Share2, Mail, Star } from "lucide-reac
 import { C, fonts, Emblem, Eyebrow, HeroTitle, GoldText, GoldRule } from "./GuideShared";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { useServerFn } from "@tanstack/react-start";
+import { sendEmail } from "@/lib/email.functions";
+import { soulQuizEmail } from "@/lib/emailTemplates";
 
 /* ───── soul types ───── */
 const SOUL_TYPES = ["Starseed","Earth Angel","Lightworker","Indigo Child","Crystal Being","Rainbow Warrior","Ancient Soul"] as const;
@@ -219,6 +222,7 @@ function GoldParticles() {
 /* ═══════════════════════════ MAIN COMPONENT ═══════════════════════════ */
 export function SoulQuizTab() {
   const { user } = useAuth();
+  const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<"intro"|"quiz"|"result">("intro");
   const [qi, setQi] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
@@ -251,6 +255,10 @@ export function SoulQuizTab() {
               soul_type: res.winner,
               scores: res.scores,
             } as any).then(() => {});
+            // Send soul quiz result email
+            if (user.email) {
+              sendEmailFn({ data: { to: user.email, subject: `${results[res.winner].title} — Your Soul Origin`, html: soulQuizEmail(res.winner, results[res.winner]) } }).catch(e => console.error("Soul quiz email failed:", e));
+            }
           }
         }
       }, 400);

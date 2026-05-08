@@ -4,6 +4,9 @@ import { Sparkles } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { trackLead } from "@/lib/analytics";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
+import { sendEmail } from "@/lib/email.functions";
+import { welcomeEmail } from "@/lib/emailTemplates";
 
 const C = { bg: "#0D0F0E", card: "#141917", inner: "#1C2420", border: "#2E3A35", teal: "#1D9E75", tealDark: "#0F6E56", gold: "#C9A84C", goldDark: "#8B6914", text: "#E8EDE9", muted: "#8A9E94", red: "#E24B4A" };
 const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-serif', label: '"Cinzel", serif' };
@@ -20,6 +23,7 @@ function WelcomePage() {
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", city: "", state: "", country: "United States", consent: true });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const sendEmailFn = useServerFn(sendEmail);
   const set = (k: string, v: string | boolean) => setForm((f) => ({ ...f, [k]: v }));
 
   const submit = async (e: React.FormEvent) => {
@@ -33,6 +37,8 @@ function WelcomePage() {
       const { error: dbErr } = await supabase.from("contacts").insert([{ first_name: form.firstName, last_name: form.lastName, email: form.email, phone: form.phone || null, city: form.city, state: form.state || null, country: form.country, marketing_consent: form.consent, consent_date: new Date().toISOString(), lead_source: "welcome_page" }]);
       if (dbErr) throw dbErr;
       trackLead(form.city, form.state, form.country);
+      // Send welcome email
+      sendEmailFn({ data: { to: form.email, subject: "Welcome to Soul True", html: welcomeEmail(form.firstName) } }).catch(e => console.error("Welcome email failed:", e));
       if (typeof window !== "undefined") localStorage.setItem("st_visited", "true");
       toast.success("Welcome to Soul True!");
       setTimeout(() => navigate({ to: "/guide" }), 1200);

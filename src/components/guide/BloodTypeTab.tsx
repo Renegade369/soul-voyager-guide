@@ -4,6 +4,9 @@ import { C, fonts, GoldRule } from "./GuideShared";
 import { BLOOD_TYPE_PROFILES, RH_NEGATIVE_GUIDE, RH_NEGATIVE_RESOURCES, type BloodTypeProfile } from "./bloodTypeData";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { useServerFn } from "@tanstack/react-start";
+import { sendEmail } from "@/lib/email.functions";
+import { bloodTypeEmail as bloodTypeEmailTemplate } from "@/lib/emailTemplates";
 
 /* ── Phases ── */
 type Phase = "input" | "loading" | "result";
@@ -88,6 +91,7 @@ function TraitBadge({ label }: { label: string }) {
 
 /* ════════════ MAIN COMPONENT ════════════ */
 export function BloodTypeTab() {
+  const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<Phase>("input");
   const [bloodType, setBloodType] = useState<string | null>(null);
   const [rhFactor, setRhFactor] = useState<"positive" | "negative" | null>(null);
@@ -144,18 +148,23 @@ export function BloodTypeTab() {
       }
     }
 
-    // Send email
-    try {
-      await supabase.functions.invoke("blood-type-email", {
-        body: {
-          name: fullName.trim(),
-          email: email.trim(),
-          bloodType,
-          rhFactor,
-        },
-      });
-    } catch (e) {
-      console.error("Email send failed:", e);
+    // Send email via Resend
+    if (profile && bloodType && rhFactor) {
+      const bestFoodsFlat = profile.beneficialFoods.flatMap(c => c.items).slice(0, 10);
+      const avoidFoodsFlat = profile.avoidFoods.flatMap(c => c.items).slice(0, 10);
+      sendEmailFn({ data: {
+        to: email.trim(),
+        subject: `${fullName.trim()}'s Blood Type Profile — ${bloodType}${rhFactor === "positive" ? "+" : "-"}`,
+        html: bloodTypeEmailTemplate(fullName.trim(), bloodType, rhFactor, {
+          title: profile.archetype,
+          soulConnection: profile.overview,
+          personality: profile.personalityTraits,
+          strengths: profile.healthStrengths,
+          challenges: profile.healthVulnerabilities,
+          bestFoods: bestFoodsFlat,
+          avoidFoods: avoidFoodsFlat,
+        }),
+      } }).catch(e => console.error("Blood type email failed:", e));
     }
   };
 

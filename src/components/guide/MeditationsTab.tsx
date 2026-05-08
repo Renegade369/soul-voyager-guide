@@ -7,6 +7,9 @@ import { C, fonts, Emblem, Eyebrow, HeroTitle, GoldText, GoldRule } from "./Guid
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
+import { sendEmail } from "@/lib/email.functions";
+import { meditationEmail } from "@/lib/emailTemplates";
 import ReactMarkdown from "react-markdown";
 
 /* ───── helpers ───── */
@@ -86,6 +89,7 @@ function MeditationCard({ m }: { m: typeof MEDITATIONS[0] }) {
 /* ───── Main Tab ───── */
 export function MeditationsTab() {
   const { user } = useAuth();
+  const sendEmailFn = useServerFn(sendEmail);
   const [feeling, setFeeling] = useState("");
   const [shiftTarget, setShiftTarget] = useState("");
   const [pillar, setPillar] = useState("");
@@ -302,6 +306,10 @@ export function MeditationsTab() {
             }
           } catch { /* partial */ }
         }
+      }
+      // Send meditation email after stream completes
+      if (user?.email && full.length > 100) {
+        sendEmailFn({ data: { to: user.email, subject: "Your Personalized Soul True Meditation", html: meditationEmail(feeling, pillar, full) } }).catch(e => console.error("Meditation email failed:", e));
       }
     } catch (e: any) {
       if (e.name !== "AbortError") {

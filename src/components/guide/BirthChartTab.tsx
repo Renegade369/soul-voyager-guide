@@ -3,6 +3,9 @@ import { Orbit, ArrowRight, Star, RotateCcw, Mail, Download } from "lucide-react
 import { C, fonts, Emblem, Eyebrow, HeroTitle, GoldText, GoldRule } from "./GuideShared";
 import { calculateBirthChart, COUNTRIES, TIMEZONE_OFFSETS, getApproxCoords, type BirthChart } from "@/lib/astrology";
 import { supabase } from "@/integrations/supabase/client";
+import { useServerFn } from "@tanstack/react-start";
+import { sendEmail } from "@/lib/email.functions";
+import { birthChartEmail } from "@/lib/emailTemplates";
 
 /* ═══════ CONSTANTS ═══════ */
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -102,6 +105,7 @@ function TextInput({ label, value, onChange, placeholder, required, type = "text
 
 /* ═══════ MAIN COMPONENT ═══════ */
 export function BirthChartTab() {
+  const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<"form" | "loading" | "reading">("form");
 
   /* form state */
@@ -237,6 +241,17 @@ export function BirthChartTab() {
       }
 
       setStreamDone(true);
+      // Send birth chart email
+      if (email && fullText.length > 100 && chartData) {
+        const sunPlanet = chartData.planets.find(p => p.name === "Sun");
+        const moonPlanet = chartData.planets.find(p => p.name === "Moon");
+        const chartSummaryForEmail = {
+          sunSign: sunPlanet?.sign || "Unknown",
+          moonSign: moonPlanet?.sign || "Unknown",
+          risingSign: chartData.ascendant?.sign,
+        };
+        sendEmailFn({ data: { to: email, subject: `${fullName}'s Soul True Birth Chart Reading`, html: birthChartEmail(fullName, fullText, chartSummaryForEmail) } }).catch(e => console.error("Birth chart email failed:", e));
+      }
     } catch (e: any) {
       if (e.name !== "AbortError") {
         console.error("Stream error:", e);

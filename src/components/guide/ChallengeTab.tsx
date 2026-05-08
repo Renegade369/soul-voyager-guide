@@ -7,6 +7,8 @@ import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { saveChallengeProgress } from "@/lib/challengeProgress.functions";
+import { sendEmail } from "@/lib/email.functions";
+import { challengeCompletedEmail, certificateEmail } from "@/lib/emailTemplates";
 
 /* ───── challenge data ───── */
 const DAYS = [
@@ -40,6 +42,7 @@ type Screen = "challenge" | "test" | "report" | "certificate";
 export function ChallengeTab() {
   const { user } = useAuth();
   const saveProgress = useServerFn(saveChallengeProgress);
+  const sendEmailFn = useServerFn(sendEmail);
   const [screen, setScreen] = useState<Screen>("challenge");
   const [completed, setCompleted] = useState<Set<number>>(new Set());
   const [expanded, setExpanded] = useState<number | null>(null);
@@ -88,6 +91,10 @@ export function ChallengeTab() {
     try {
       await saveProgress({ data: { dayNumber: day, completed: newDone } });
       toast.success("Progress saved ✓");
+      // Send challenge completed email when all 10 days done
+      if (newDone && next.size === 10 && user.email) {
+        sendEmailFn({ data: { to: user.email, subject: "You Completed the 10-Day Challenge!", html: challengeCompletedEmail(user.user_metadata?.full_name?.split(" ")[0] || "Soul") } }).catch(e => console.error("Challenge email failed:", e));
+      }
     } catch (error) {
       console.error("challenge_progress save exception", error);
       // revert
@@ -125,6 +132,10 @@ export function ChallengeTab() {
       );
       await supabase.from("profiles").update({ certificate_earned_at: new Date().toISOString() }).eq("id", user.id);
       trackCertificate(score);
+      // Send certificate email
+      if (user.email) {
+        sendEmailFn({ data: { to: user.email, subject: "Your Soul True Certificate", html: certificateEmail(certName, score) } }).catch(e => console.error("Certificate email failed:", e));
+      }
       toast.success("Certificate saved to your account ✓");
     } catch {
       toast.error("Error saving certificate");
