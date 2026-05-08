@@ -11,6 +11,7 @@ import { ToolsTab } from "@/components/guide/ToolsTab";
 import { ChallengeTab } from "@/components/guide/ChallengeTab";
 import { SoulQuizTab } from "@/components/guide/SoulQuizTab";
 import { BirthChartTab } from "@/components/guide/BirthChartTab";
+import { BloodTypeTab } from "@/components/guide/BloodTypeTab";
 
 const C = { bg: "#0D0F0E", border: "#2E3A35", gold: "#C9A84C", text: "#E8EDE9", muted: "#8A9E94" };
 const fonts = { body: '"Outfit", sans-serif' };
@@ -24,6 +25,7 @@ const tabs = [
   { id: "challenge", label: "Challenge", icon: Trophy },
   { id: "soulquiz", label: "Soul Quiz", icon: Sparkles },
   { id: "birthchart", label: "Birth Chart", icon: Orbit },
+  { id: "bloodtype", label: "Blood Type", icon: Droplet },
 ] as const;
 
 export const Route = createFileRoute("/guide")({
@@ -107,6 +109,7 @@ function GuidePage() {
         {active === "challenge" && <ChallengeTab />}
         {active === "soulquiz" && <SoulQuizTab />}
         {active === "birthchart" && <BirthChartTab />}
+        {active === "bloodtype" && <BloodTypeTab />}
       </div>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
