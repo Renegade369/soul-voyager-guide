@@ -314,6 +314,10 @@ export function MeditationsTab() {
       }
     } finally {
       setGenerating(false);
+      // Send meditation email after generation completes
+      if (user?.email && meditation.length > 100) {
+        sendEmailFn({ data: { to: user.email, subject: "Your Personalized Soul True Meditation", html: meditationEmail(feeling, pillar, meditation) } }).catch(e => console.error("Meditation email failed:", e));
+      }
     }
   };
 
