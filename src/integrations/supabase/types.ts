@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      blood_type_results: {
+        Row: {
+          blood_type: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          rh_factor: string
+          user_id: string
+        }
+        Insert: {
+          blood_type: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          rh_factor: string
+          user_id: string
+        }
+        Update: {
+          blood_type?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          rh_factor?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       certificates: {
         Row: {
           full_name: string

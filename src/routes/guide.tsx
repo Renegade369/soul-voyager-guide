@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Home, Zap, Grid3X3, Headphones, Wrench, Trophy, Sparkles, Orbit } from "lucide-react";
+import { Home, Zap, Grid3X3, Headphones, Wrench, Trophy, Sparkles, Orbit, Droplet } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthModal } from "@/components/guide/AuthModal";
 import { HomeTab } from "@/components/guide/HomeTab";
@@ -11,6 +11,7 @@ import { ToolsTab } from "@/components/guide/ToolsTab";
 import { ChallengeTab } from "@/components/guide/ChallengeTab";
 import { SoulQuizTab } from "@/components/guide/SoulQuizTab";
 import { BirthChartTab } from "@/components/guide/BirthChartTab";
+import { BloodTypeTab } from "@/components/guide/BloodTypeTab";
 
 const C = { bg: "#0D0F0E", border: "#2E3A35", gold: "#C9A84C", text: "#E8EDE9", muted: "#8A9E94" };
 const fonts = { body: '"Outfit", sans-serif' };
@@ -24,6 +25,7 @@ const tabs = [
   { id: "challenge", label: "Challenge", icon: Trophy },
   { id: "soulquiz", label: "Soul Quiz", icon: Sparkles },
   { id: "birthchart", label: "Birth Chart", icon: Orbit },
+  { id: "bloodtype", label: "Blood Type", icon: Droplet },
 ] as const;
 
 export const Route = createFileRoute("/guide")({
@@ -62,6 +64,7 @@ function GuidePage() {
               return (
                 <button
                   key={t.id}
+                  data-tab={t.id}
                   onClick={() => handleTabChange(t.id)}
                   className="flex flex-col items-center gap-1 px-4 py-3 transition-colors"
                   style={{
@@ -107,6 +110,7 @@ function GuidePage() {
         {active === "challenge" && <ChallengeTab />}
         {active === "soulquiz" && <SoulQuizTab />}
         {active === "birthchart" && <BirthChartTab />}
+        {active === "bloodtype" && <BloodTypeTab />}
       </div>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
