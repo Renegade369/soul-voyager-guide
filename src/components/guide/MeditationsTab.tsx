@@ -7,6 +7,9 @@ import { C, fonts, Emblem, Eyebrow, HeroTitle, GoldText, GoldRule } from "./Guid
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
+import { sendEmail } from "@/lib/email.functions";
+import { meditationEmail } from "@/lib/emailTemplates";
 import ReactMarkdown from "react-markdown";
 
 /* ───── helpers ───── */
