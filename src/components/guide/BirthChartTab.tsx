@@ -241,6 +241,17 @@ export function BirthChartTab() {
       }
 
       setStreamDone(true);
+      // Send birth chart email
+      if (email && fullText.length > 100 && chartData) {
+        const sunPlanet = chartData.planets.find(p => p.name === "Sun");
+        const moonPlanet = chartData.planets.find(p => p.name === "Moon");
+        const chartSummaryForEmail = {
+          sunSign: sunPlanet?.sign || "Unknown",
+          moonSign: moonPlanet?.sign || "Unknown",
+          risingSign: chartData.ascendant?.sign,
+        };
+        sendEmailFn({ data: { to: email, subject: `${fullName}'s Soul True Birth Chart Reading`, html: birthChartEmail(fullName, fullText, chartSummaryForEmail) } }).catch(e => console.error("Birth chart email failed:", e));
+      }
     } catch (e: any) {
       if (e.name !== "AbortError") {
         console.error("Stream error:", e);
