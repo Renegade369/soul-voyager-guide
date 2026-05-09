@@ -13,7 +13,6 @@ import {
   OrnamentDoubleCircle,
 } from "../components/SacredGeometry";
 import { Reveal } from "../components/Reveal";
-import heroOcean from "../assets/hero-sacred-ocean.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,20 +55,10 @@ const services = [
 function Index() {
   return (
     <div>
-      {/* Hero — full-bleed sacred ocean with mission statement */}
-      <section className="relative isolate overflow-hidden" style={{ minHeight: "100vh" }}>
-        {/* Background image */}
-        <img
-          src={heroOcean}
-          alt=""
-          width={1920}
-          height={1080}
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ filter: "brightness(0.35) saturate(0.9)" }}
-        />
-        {/* Gradient overlays for text readability */}
-        <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center 30%, rgba(28,27,58,0.3) 0%, rgba(28,27,58,0.75) 100%)" }} />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40" style={{ background: "linear-gradient(to bottom, transparent, rgba(28,27,58,0.95))" }} />
+      {/* Hero — text-led deep indigo sanctuary statement */}
+      <section className="relative isolate overflow-hidden" style={{ minHeight: "92vh", backgroundColor: "var(--indigo)" }}>
+        <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center 20%, color-mix(in oklab, var(--gold) 12%, transparent) 0%, transparent 42%), linear-gradient(180deg, var(--indigo) 0%, var(--footer-indigo) 100%)" }} />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32" style={{ background: "linear-gradient(to bottom, transparent, var(--footer-indigo))" }} />
 
         {/* Sacred geometry watermark */}
         <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sacred-rotate-slow">
@@ -91,7 +80,7 @@ function Index() {
               This is not weakness. This is the human condition in the world we live in today.
             </p>
             <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(248,245,240,0.82)" }}>
-              Reconnecting with who you truly are at soul level is not just a healing journey — it is the most important work of your lifetime.
+              Reconnecting with who you truly are at soul level is not just a personal journey — it is the most important work of your lifetime.
             </p>
             <p className="font-serif text-xl font-light italic leading-relaxed md:text-2xl" style={{ color: "#D4AF64" }}>
               Your soul is not something you find. It is where you truly live. It is home.
