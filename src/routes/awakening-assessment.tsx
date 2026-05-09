@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+// @ts-expect-error - JSX component without type declarations
 import AwakeningAssessment from "../components/AwakeningAssessment";
 
 export const Route = createFileRoute("/awakening-assessment")({
