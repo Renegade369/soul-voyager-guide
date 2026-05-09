@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "sonner";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
 
 export const Route = createFileRoute("/events")({
@@ -9,16 +11,6 @@ export const Route = createFileRoute("/events")({
   component: EventsPage,
 });
 
-const events = [
-  { date: "May 18", t: "New Moon Sound Bath", d: "Set intentions under the dark moon with crystal bowls and guided meditation.", time: "7:00 – 8:30 PM", tag: "Community" },
-  { date: "May 25", t: "Hidden Truths Circle", d: "Open discussion on consciousness, the multiverse, and the great unveiling.", time: "6:30 – 8:30 PM", tag: "Community" },
-  { date: "Jun 02", t: "Heart-Brain Coherence Workshop", d: "A HeartMath-rooted workshop to align heart and mind, regulate the nervous system, and unlock clarity.", time: "10:00 AM – 1:00 PM", tag: "Workshop" },
-  { date: "Jun 14", t: "Holotropic Breathwork Journey", d: "A 90-minute conscious connected breath experience for release and expanded states.", time: "1:00 – 4:00 PM", tag: "Experience" },
-  { date: "Jun 21", t: "Solstice Gathering", d: "A community gathering to honor the turning of the wheel — fire, sound, prayer.", time: "Sunset", tag: "Gathering" },
-  { date: "Jul 12", t: "Visiting Teacher Weekend Intensive", d: "A two-day immersive with a traditional wisdom keeper from South America. Limited seats.", time: "Fri – Sun", tag: "Visiting Teacher" },
-  { date: "Aug 09", t: "Soul True Retreat", d: "A multi-day immersive at the sanctuary — gatherings, wellness modalities, nature, community, meals.", time: "5 days", tag: "Retreat" },
-];
-
 const formats = [
   { t: "Community Gatherings", d: "Sound baths, circles, and meditation evenings — accessible entry points to the sanctuary." },
   { t: "Workshops", d: "Half-day and full-day teachings on coherence, breath, plant wisdom education, and consciousness." },
@@ -27,6 +19,40 @@ const formats = [
   { t: "Multi-Day Retreats", d: "The flagship offering — fully immersive transformation with accommodations, meals, modalities, and community." },
   { t: "Online & Live-Streamed", d: "Recorded teachings and live events for the digital community across the world." },
 ];
+
+function NotifyForm() {
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setSubmitting(true);
+    setTimeout(() => {
+      setSubmitting(false);
+      setEmail("");
+      toast.success("You're on the list. We'll be in touch as gatherings are confirmed.");
+    }, 400);
+  };
+  return (
+    <form onSubmit={onSubmit} className="mx-auto mt-10 flex w-full max-w-lg flex-col gap-3 sm:flex-row">
+      <input
+        type="email"
+        required
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        className="flex-1 border border-border bg-background px-4 py-3 text-sm font-light text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-foreground"
+      />
+      <button
+        type="submit"
+        disabled={submitting}
+        className="border border-foreground bg-foreground px-7 py-3 text-[11px] font-normal uppercase tracking-[0.22em] text-background transition hover:bg-transparent hover:text-foreground disabled:opacity-60"
+      >
+        {submitting ? "Joining…" : "Join the List"}
+      </button>
+    </form>
+  );
+}
 
 function EventsPage() {
   return (
@@ -37,30 +63,11 @@ function EventsPage() {
     >
       <section>
         <h2 className="font-serif text-3xl font-light text-foreground md:text-4xl">Upcoming</h2>
-        <div className="mt-10 border-t border-border">
-          {events.map((e) => {
-            const [month, day] = e.date.split(" ");
-            return (
-              <article
-                key={e.t}
-                className="grid grid-cols-[80px_1fr] gap-6 border-b border-border py-8 md:grid-cols-[120px_1fr_140px] md:gap-10 md:py-10"
-              >
-                <div>
-                  <p className="font-serif text-3xl font-light text-foreground md:text-4xl">{day}</p>
-                  <p className="mt-1 text-[11px] font-light uppercase tracking-[0.22em] text-muted-foreground">{month}</p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-light uppercase tracking-[0.22em] text-foreground/55">{e.tag}</p>
-                  <h3 className="mt-2 font-serif text-2xl font-normal text-foreground md:text-3xl">{e.t}</h3>
-                  <p className="mt-3 max-w-xl text-sm font-light leading-relaxed text-muted-foreground">{e.d}</p>
-                </div>
-                <p className="hidden text-[11px] font-light uppercase tracking-[0.22em] text-muted-foreground md:block md:text-right">
-                  {e.time}
-                </p>
-                <p className="text-xs font-light uppercase tracking-[0.18em] text-muted-foreground md:hidden">{e.time}</p>
-              </article>
-            );
-          })}
+        <div className="mt-10 border-t border-border pt-12 text-center">
+          <p className="mx-auto max-w-2xl text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+            Events are being scheduled now for our South Florida sanctuary. Join the list to be first notified when gatherings, workshops, and retreats are confirmed.
+          </p>
+          <NotifyForm />
         </div>
       </section>
 
