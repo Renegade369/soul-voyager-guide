@@ -130,8 +130,13 @@
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
     font-weight: 400;
-    letter-spacing: -0.015em;
+    letter-spacing: 0;
     color: var(--color-foreground);
+  }
+
+  html,
+  body {
+    overflow-x: clip;
   }
 
   /* Hairline rule used between sections */
