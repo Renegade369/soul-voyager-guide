@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Home, Zap, Grid3X3, Headphones, Wrench, Trophy, Sparkles, Orbit, Droplet } from "lucide-react";
+import { Home, Grid3X3, Headphones, Wrench, Trophy, Sparkles, Orbit, Droplet } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthModal } from "@/components/guide/AuthModal";
 import { HomeTab } from "@/components/guide/HomeTab";
-import { RevolutionTab } from "@/components/guide/RevolutionTab";
 import { PillarsTab } from "@/components/guide/PillarsTab";
 import { MeditationsTab } from "@/components/guide/MeditationsTab";
 import { ToolsTab } from "@/components/guide/ToolsTab";
@@ -18,7 +17,6 @@ const fonts = { body: '"Outfit", sans-serif' };
 
 const tabs = [
   { id: "home", label: "Home", icon: Home },
-  { id: "revolution", label: "Revolution", icon: Zap },
   { id: "pillars", label: "Pillars", icon: Grid3X3 },
   { id: "meditations", label: "Meditations", icon: Headphones },
   { id: "tools", label: "Tools", icon: Wrench },
@@ -105,7 +103,6 @@ function GuidePage() {
       {/* Content */}
       <div className="mx-auto max-w-5xl px-4 pb-20">
         {active === "home" && <HomeTab />}
-        {active === "revolution" && <RevolutionTab />}
         {active === "pillars" && <PillarsTab />}
         {active === "meditations" && <MeditationsTab />}
         {active === "tools" && <ToolsTab onGoToChallenge={() => handleTabChange("challenge")} />}
