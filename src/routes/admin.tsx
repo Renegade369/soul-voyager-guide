@@ -43,7 +43,7 @@ function AdminPage() {
       // Admin check via attempted read on admin-only table
       const { data, error } = await supabase
         .from("nature_healing_bookings")
-        .select("id, full_name, email, phone, preferred_date, message, status, created_at")
+        .select("id, name, email, phone, preferred_date, modality, intention, status, created_at")
         .order("created_at", { ascending: false });
       if (error) {
         setIsAdmin(false);
