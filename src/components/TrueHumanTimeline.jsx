@@ -25,62 +25,65 @@ const EVENTS = [
   {
     id: "anunnaki-arrival",
     era: "intervention",
-    date: "~450,000 BC",
+    date: "~3,000 – 1,700 BC (texts written) · Events claimed much earlier",
     sortKey: -450000,
-    title: "The Anunnaki Arrive",
-    subtitle: "Sumerian Cuneiform Records · Enuma Elish · Atrahasis Epic",
+    title: "The Anunnaki — What the Sumerian Texts Actually Say",
+    subtitle: "Sumerian Cuneiform Records · Enuma Elish · Atrahasis Epic · One Researcher's Interpretation",
     symbol: "🌟",
     color: T.purple,
     category: "ANCIENT TEXTS",
-    summary: "The Sumerian King List — one of the oldest written documents on Earth, dating to approximately 2,100 BC but describing events it claims occurred hundreds of thousands of years earlier — records that beings called the Anunnaki ('those who came from heaven to Earth') arrived on Earth approximately 450,000 years ago. The Enuma Elish and Atrahasis Epic elaborate: they came seeking gold, established settlements in Mesopotamia and Africa, and eventually created a worker race through genetic modification of the existing primates.",
+    summary: "The Sumerian texts — among the oldest written records on Earth — describe beings called the Anunnaki in consistent detail across thousands of years of scribal tradition. The Atrahasis Epic describes the creation of humans to perform labor. The Enuma Elish describes cosmic events preceding the formation of Earth. The Sumerian King List records rulers with extraordinarily long reigns before a great flood. These texts are real, ancient, and remarkable. What they mean is genuinely contested.",
     evidence: [
-      { type: "ANCIENT TEXT", text: "The Sumerian Atrahasis Epic states explicitly: 'When the gods were man, they did the work, they bore the loads... the work was too much, the toil was great... Enki opened his mouth and addressed Ninhursag: Create a human being, that he may bear the yoke.'" },
-      { type: "ANCIENT TEXT", text: "The Sumerian King List records pre-flood kings ruling for periods of 18,000 to 43,200 years — suggesting either a radically different calendar system, a radically different lifespan, or beings who were not human in the conventional sense." },
-      { type: "ANCIENT TEXT", text: "The Akkadian name 'Anunnaki' translates as 'those who from heaven came' or 'princely offspring of Anu.' Anu was the chief deity of the Sumerian pantheon — described not as a metaphysical concept but as a physical being who resided on a celestial body." },
-      { type: "OBSERVED PATTERN", text: "The descriptions of the Anunnaki across Sumerian, Akkadian, and Babylonian texts are consistent over thousands of years and across multiple independent scribal traditions — suggesting they were describing something their culture understood as historical rather than mythological." },
+      { type: "DOCUMENTED", text: "The Sumerian Atrahasis Epic — dated to approximately 1,700 BC but believed to draw on much older oral tradition — describes the creation of humans to relieve the Anunnaki of labor. It states: 'Let a human being be created, that he may bear the yoke.' This is one of the oldest written accounts of human origins." },
+      { type: "DOCUMENTED", text: "The Sumerian King List, dated to approximately 2,100 BC, records kings ruling before a great flood for periods ranging from 18,000 to 43,200 years. After the flood, reign lengths drop to human-scale durations. The document is real and widely studied by mainstream scholars." },
+      { type: "DOCUMENTED", text: "The Akkadian term Anunnaki appears consistently across Sumerian, Akkadian, and Babylonian texts over approximately 1,500 years of written tradition — described as powerful beings associated with the sky, earth, and underworld." },
+      { type: "ONE RESEARCHER'S INTERPRETATION", text: "Zecharia Sitchin argued in The 12th Planet (1976) that the Anunnaki were physical extraterrestrials from a planet called Nibiru who genetically engineered Homo sapiens approximately 450,000 years ago. This interpretation is not accepted by mainstream Sumerologists, several of whom have published detailed critiques arguing that Sitchin's translations contain significant errors. His work is influential but contested." },
+      { type: "OBSERVED PATTERN", text: "The Sumerian texts make no stylistic distinction between accounts of kings and trade — which mainstream scholars treat as historical — and accounts of the Anunnaki. Why certain parts of the same documents are treated as history and others as myth is a question worth examining." },
     ],
-    researcher: "Zecharia Sitchin — The 12th Planet (1976) · Lloyd Pye — Everything You Know Is Wrong (1997)",
-    observation: "The standard academic position is that the Sumerian creation texts are mythology — allegory for natural forces. The counter position, argued by Sitchin and supported by the literal translations of the tablets, is that the Sumerians were describing events they understood as history. The tablets themselves make no distinction between their accounts of kings, cities, and trade — which academics treat as historical — and their accounts of the Anunnaki. The selectivity of which parts to treat as history and which as myth is a choice academics make, not a conclusion the texts themselves support.",
+    researcher: "Mainstream Sumerology: Thorkild Jacobsen · Samuel Noah Kramer · Alternative interpretation: Zecharia Sitchin (contested)",
+    observation: "The Sumerian texts are extraordinary documents regardless of interpretation. They describe a great flood, a creation of humanity, and beings of enormous power operating on Earth — in accounts that predate Genesis by over a thousand years. Whether those descriptions are allegory, mythology, or history is a question each reader must weigh against the evidence available to them. Soul True presents what the texts say and notes where interpretation begins.",
   },
   {
     id: "gold-mining",
     era: "intervention",
-    date: "~300,000 BC",
+    date: "~300,000 – 100,000 BC",
     sortKey: -300000,
-    title: "Ancient Gold Mines of Africa",
-    subtitle: "Empirical Anomaly · Genetic Bottleneck · Archaeological Evidence",
+    title: "Ancient Gold Mines of Africa — A Genuine Anomaly",
+    subtitle: "South African Archaeological Evidence · Genetic Bottleneck · Open Questions",
     symbol: "⛏",
     color: T.purple,
     category: "ARCHAEOLOGICAL",
-    summary: "Ancient gold mines in South Africa — the Abzu region described in Sumerian texts — have been dated to approximately 100,000-300,000 years ago. Simultaneously, the human genome shows evidence of a severe genetic bottleneck approximately 200,000-300,000 years ago — a period when the human population may have dropped to as few as 10,000 breeding individuals. This bottleneck coincides precisely with the emergence of anatomically modern Homo sapiens.",
+    summary: "Very ancient mining operations in South Africa represent one of the genuine unsolved puzzles of human prehistory. Simultaneously, the human genetic record shows a severe bottleneck approximately 200,000-300,000 years ago — a period when the human population may have dropped to a few thousand breeding individuals. These are documented facts. What they mean remains genuinely open.",
     evidence: [
-      { type: "DOCUMENTED", text: "Gold mines in the Mpumalanga region of South Africa have been dated by archaeologist Michael Tellinger to approximately 100,000-300,000 years ago using optically stimulated luminescence dating — a technique accepted by mainstream archaeology." },
-      { type: "DOCUMENTED", text: "The human genome shows a severe population bottleneck between 200,000-300,000 years ago. Genetic research published in the American Journal of Human Genetics (2010) confirmed this bottleneck is one of the most significant in human evolutionary history." },
-      { type: "DOCUMENTED", text: "223 genes in the human genome have no identifiable evolutionary precursors in any earlier species — no gradual mutation pathway, no analogues in the invertebrate, vertebrate, or primate lineage. This was noted in the Human Genome Project findings published in Nature (2001) and remains unexplained within standard evolutionary theory." },
-      { type: "OBSERVED PATTERN", text: "The coincidence of ancient mining operations, a genetic bottleneck, and the sudden appearance of anatomically modern humans with 223 anomalous genes — all in the same geographic region and the same timeframe — is either the most extraordinary convergence of coincidences in evolutionary history, or it is evidence of deliberate intervention." },
+      { type: "DOCUMENTED", text: "Ancient stone-walled structures and mining operations in the Mpumalanga region of South Africa have been studied by multiple researchers. Optically stimulated luminescence dating of some sites suggests activity in the range of 100,000-300,000 years ago. The dating methodology is accepted by mainstream archaeology; the interpretation of the sites is debated." },
+      { type: "DOCUMENTED", text: "The human genome shows a severe population bottleneck between approximately 200,000-300,000 years ago — confirmed by multiple independent genetic studies including research published in the American Journal of Human Genetics (2010). The cause of this bottleneck is not definitively established." },
+      { type: "DOCUMENTED", text: "Africa is consistently identified by genetic research as the origin point of anatomically modern Homo sapiens, with the oldest confirmed fossil evidence dating to approximately 300,000 years ago (Jebel Irhoud, Morocco — published in Nature, 2017)." },
+      { type: "CORRECTION", text: "A widely circulated claim states that 223 human genes have no evolutionary precursors — presented as evidence of genetic intervention. This originated from a 2001 paper in Nature that suggested horizontal gene transfer from bacteria as the explanation — not extraterrestrial modification. Subsequent research has revised the gene count significantly downward. This claim should not be presented as evidence of intervention." },
+      { type: "OBSERVED PATTERN", text: "The proximity of ancient mining operations in southern Africa to the period of the human genetic bottleneck and the emergence of anatomically modern humans is noted by several researchers as potentially significant. It does not constitute evidence of intervention — but it is a convergence that mainstream archaeology has not fully addressed." },
     ],
-    researcher: "Michael Tellinger · Lloyd Pye · Graham Hancock",
-    observation: "Standard evolutionary theory requires gradual change through random mutation and natural selection. The appearance of 223 genes with no evolutionary pathway — documented in the Human Genome Project — is not gradual. It is sudden. Mainstream geneticists acknowledge the anomaly. They do not have an explanation within the standard model that accounts for it.",
+    researcher: "Michael Tellinger (alternative interpretation) · Mainstream genetics: Sarah Tishkoff · Svante Pääbo",
+    observation: "The ancient mines of South Africa and the human genetic bottleneck are real documented phenomena. The connection between them and the Sumerian accounts of the Anunnaki is a hypothesis — a plausible one that some researchers find compelling, but a hypothesis nonetheless. Soul True presents the documented facts and notes where the interpretive leap begins.",
   },
   {
     id: "homo-sapiens",
     era: "intervention",
-    date: "~200,000 BC",
+    date: "~300,000 – 200,000 BC",
     sortKey: -200000,
-    title: "Homo Sapiens Appears — Fully Formed",
-    subtitle: "Genetic Anomaly · No Evolutionary Transition · 223 Unexplained Genes",
+    title: "The Anomalous Emergence of Homo Sapiens",
+    subtitle: "Documented Genetic Puzzles · Unanswered Questions · No Settled Explanation",
     symbol: "🧬",
     color: T.purple,
     category: "GENETIC EVIDENCE",
-    summary: "Anatomically modern Homo sapiens appeared approximately 200,000-300,000 years ago with a fully developed prefrontal cortex, language capability, complex abstract reasoning, and symbolic thought — with no gradual evolutionary transition from prior hominids in the fossil record. The standard evolutionary model predicts a slow, incremental transition. The fossil record shows an abrupt appearance. Lloyd Pye dedicated decades to documenting the specific genetic anomalies that distinguish Homo sapiens from every other primate and the impossibility of accounting for them through standard mutation rates.",
+    summary: "Anatomically modern Homo sapiens emerged approximately 200,000-300,000 years ago with cognitive capabilities — abstract reasoning, language, symbolic thought — that appear more abruptly in the fossil and genetic record than standard gradual evolutionary models predict. Several specific genetic features of Homo sapiens remain subjects of active research and genuine scientific debate. These are real puzzles — not proof of intervention, but open questions that mainstream science has not fully closed.",
     evidence: [
-      { type: "DOCUMENTED", text: "Mitochondrial Eve — the most recent common female ancestor of all living humans — is dated to approximately 200,000 years ago. The suddenness of this emergence relative to prior hominid evolution has been described by geneticists as 'a conundrum' within standard evolutionary theory." },
-      { type: "DOCUMENTED", text: "Human chromosome 2 appears to be the result of the fusion of two separate chromosomes. All other great apes have 48 chromosomes. Humans have 46. The fusion is precise and shows markers of an intentional joining rather than a natural chromosomal rearrangement." },
-      { type: "DOCUMENTED", text: "The human brain is disproportionately large relative to body size compared to any other primate — by a factor that has no clear adaptive explanation within standard evolutionary theory. The metabolic cost of maintaining it is extraordinary." },
-      { type: "OBSERVED PATTERN", text: "The Sumerian texts describe the creation of a worker race — Lulu Amelu — through the mixing of 'divine' genetic material with that of existing primates. The genetic anomalies documented in the Human Genome Project are consistent with what deliberate genetic modification of a primate would produce: retention of existing primate genes plus the addition of novel genes with no evolutionary history." },
+      { type: "DOCUMENTED", text: "Mitochondrial Eve — the most recent common female ancestor of all living humans — is dated to approximately 150,000-200,000 years ago. The relative speed of Homo sapiens' cognitive emergence compared to prior hominid evolution is acknowledged as requiring explanation within evolutionary biology." },
+      { type: "DOCUMENTED", text: "Human chromosome 2 shows clear evidence of an ancient fusion of two ancestral chromosomes — confirmed by genetic analysis. All other great apes have 48 chromosomes; humans have 46. This fusion is documented and accepted by mainstream genetics. It occurred in a common ancestor through a natural chromosomal rearrangement — not through deliberate modification. It is evidence of our relationship to other primates, not evidence of intervention." },
+      { type: "DOCUMENTED", text: "The human brain is metabolically expensive — consuming approximately 20% of the body's energy despite representing only 2% of body mass. Its rapid expansion in the hominid lineage over the past 2-3 million years is one of the most studied questions in evolutionary biology. No single explanation is universally accepted." },
+      { type: "DOCUMENTED", text: "Michael Cremo's Forbidden Archaeology (1993) documents numerous archaeological finds — tools, bones, and artifacts — found in geological strata that would predate the official emergence of modern humans. Mainstream archaeology disputes the dating methodology of many of these finds. The book documents a genuine pattern of anomalous discoveries that deserve examination regardless of the interpretive framework applied." },
+      { type: "OBSERVED PATTERN", text: "The combination of a relatively abrupt cognitive emergence, a severe genetic bottleneck, and ancient texts from multiple cultures describing the deliberate creation of humanity leads some researchers to propose an intervention hypothesis. This is a hypothesis — not an established conclusion. The anomalies it attempts to explain are real. The explanation remains unproven." },
     ],
-    researcher: "Lloyd Pye · Zecharia Sitchin · Michael Cremo (Forbidden Archaeology)",
-    observation: "Michael Cremo's Forbidden Archaeology (1993) — a 900-page academic work — documents hundreds of archaeological finds of anatomically modern human remains, tools, and artifacts in geological strata that predate the official emergence of Homo sapiens by hundreds of thousands or millions of years. Most were dismissed, suppressed, or ignored by mainstream institutions after discovery. The pattern of dismissal is itself a data point.",
+    researcher: "Mainstream: Svante Pääbo (Nobel Prize, Genetics 2022) · Alternative: Lloyd Pye · Michael Cremo",
+    observation: "The honest position on human origins is that several genuine puzzles remain unresolved within standard evolutionary theory. That does not mean the answer is extraterrestrial intervention — it means the question is not fully closed. Soul True presents the open questions accurately and notes where different researchers land. The questions themselves are extraordinary enough without overstating what the evidence supports.",
   },
 
   // ── LEMURIA ──────────────────────────────────────────────
@@ -94,16 +97,16 @@ const EVENTS = [
     symbol: "🌊",
     color: T.teal,
     category: "GEOLOGICAL & TEXTUAL",
-    summary: "Lemuria — also called Mu — is the name given to a proposed ancient civilization or landmass that existed in the Pacific Ocean and was subsequently submerged. The evidence for its existence comes from multiple independent streams: the geological record of sunken Pacific landmasses, the striking cultural and genetic similarities between Pacific island populations separated by thousands of miles of ocean with no documented contact, the oral traditions of those populations describing a lost homeland, and the records James Churchward claimed to have studied in Indian temples describing Mu as a civilization that predated all others.",
+    summary: "Lemuria — also called Mu — is the name given to a proposed ancient civilization or landmass in the Pacific Ocean. The concept originated in 19th century geology as an explanation for species distribution anomalies, and was later developed into a full civilization theory by James Churchward. What is genuinely documented: significant Pacific landmasses existed during periods of lower sea levels, Pacific island cultures share striking similarities across vast distances, and multiple populations carry oral traditions of a lost homeland. Whether these facts point to a single advanced civilization is an open question — not an established conclusion.",
     evidence: [
-      { type: "DOCUMENTED", text: "Geologist James Churchward documented evidence from Naacal tablets — ancient temple records he studied in India in the late 19th century — describing a Pacific civilization called Mu that was destroyed by volcanic and seismic catastrophe. His four-volume series (1926-1931) presented geological evidence for sunken Pacific landmasses consistent with this account." },
-      { type: "DOCUMENTED", text: "Pacific island populations separated by thousands of miles — including Hawaiian, Polynesian, Maori, and Easter Island cultures — share remarkably similar oral traditions describing a lost homeland to the west, similar astronomical knowledge, similar megalithic construction techniques, and similar creation myths. The probability of this convergence arising independently is vanishingly small." },
-      { type: "DOCUMENTED", text: "The distribution of identical plant species, animal species, and geological formations across Pacific islands separated by deep ocean trenches is consistent with a once-connected landmass. Alfred Russel Wallace — co-discoverer of evolution with Darwin — documented these distribution anomalies in the 19th century." },
-      { type: "DOCUMENTED", text: "The Easter Island statues (Moai) — 887 massive carved figures weighing up to 86 tons, created by a small island population — represent a level of engineering capability inconsistent with the island's known resources. The oral tradition of the Rapa Nui people describes their ancestors arriving from a larger land." },
-      { type: "OBSERVED PATTERN", text: "The convergence of geological evidence for sunken Pacific landmasses, cultural similarities across unconnected Pacific populations, and ancient texts describing a Pacific civilization suggests that Lemuria/Mu represents a real historical civilization now largely underwater — consistent with sea level changes at the end of the last ice age and earlier periods of Pacific geological instability." },
+      { type: "UNVERIFIED SOURCE", text: "James Churchward claimed in a four-volume series (1926-1931) to have studied ancient 'Naacal tablets' in Indian temples describing a Pacific civilization called Mu. These tablets have never been independently located, verified, or examined by any other researcher. Most scholars consider them unverified at best. Churchward's work should be read as a hypothesis, not as documented evidence." },
+      { type: "DOCUMENTED", text: "Pacific island populations — Hawaiian, Polynesian, Maori, and Easter Island cultures — share similar oral traditions describing a lost homeland, similar astronomical knowledge, and similar megalithic construction techniques despite being separated by thousands of miles of ocean. This pattern of similarity is real and documented by mainstream anthropology." },
+      { type: "DOCUMENTED", text: "Genetic research published in Nature (2020) confirmed that Polynesian populations made contact with South American populations approximately 1,200 years ago — long before European exploration. The Pacific was navigated more extensively in antiquity than mainstream history has traditionally acknowledged." },
+      { type: "DOCUMENTED", text: "Sea levels were significantly lower during the last ice age — exposing large areas of Pacific continental shelf that are now submerged. Human populations in the Pacific would have inhabited coastal areas now underwater. This is geological fact, not hypothesis." },
+      { type: "OBSERVED PATTERN", text: "The combination of shared Pacific cultural traditions, documented transoceanic contact, submerged landmasses, and unexplained megalithic sites leads some researchers to propose a common source civilization. This is a reasonable hypothesis given the evidence — but the specific name Lemuria and the detailed civilization described by Churchward go beyond what the documented evidence currently supports." },
     ],
-    researcher: "James Churchward · Helena Blavatsky · Rudolf Steiner",
-    observation: "Mainstream geology confirms that significant Pacific landmasses existed during periods of lower sea levels. The question is not whether land existed — it did — but whether it was inhabited by an advanced civilization. The cultural and genetic evidence across Pacific populations argues strongly that it was.",
+    researcher: "James Churchward (unverified primary source) · Thor Heyerdahl · Graham Hancock",
+    observation: "Something connected the Pacific world in deep prehistory — the genetic evidence, the cultural parallels, and the megalithic sites all point toward more contact and more complexity than the standard model acknowledges. Whether that something was a named civilization called Lemuria, or simply a broader and older maritime culture than we credit, is a question the evidence invites but does not yet answer.",
   },
   {
     id: "pacific-megaliths",
@@ -152,20 +155,21 @@ const EVENTS = [
     era: "atlantis",
     date: "~20,000 – 10,000 BC",
     sortKey: -20000,
-    title: "A Global Maritime Civilization",
-    subtitle: "Piri Reis Map · Antarctic Ice-Free Charts · Pre-Ice Age Navigation",
+    title: "Ancient Maps and the Question of Pre-Ice Age Navigation",
+    subtitle: "Piri Reis Map · Hapgood's Analysis · Contested Interpretation",
     symbol: "🗺",
     color: T.ocean,
-    category: "CARTOGRAPHIC EVIDENCE",
-    summary: "The Piri Reis map — drawn by Ottoman admiral Piri Reis in 1513 from source maps he described as ancient — shows the coastline of Antarctica with remarkable accuracy, including the subglacial topography beneath the ice sheet. Antarctica has been covered in ice for approximately 6,000-12,000 years. The source maps Piri Reis used were drawn when Antarctica was ice-free — meaning they predate any acknowledged civilization capable of global navigation by thousands of years.",
+    category: "CONTESTED INTERPRETATION",
+    summary: "The Piri Reis map (1513) and several other early modern maps have been cited as evidence of pre-ice age navigation capability — specifically as showing Antarctica's coastline before European discovery. This interpretation, developed by historian Charles Hapgood in the 1960s, is genuinely intriguing but is also genuinely contested by professional cartographers and historians. It is presented here as a contested claim worth examining — not as established evidence.",
     evidence: [
-      { type: "DOCUMENTED", text: "The Piri Reis map (1513) shows Antarctica's coastline with accuracy that was not matched by modern cartography until the 1950s Geophysical Year surveys, which used sonar to map the subglacial coastline beneath the ice. Cartographer Charles Hapgood presented this analysis to the US Air Force in 1960; their cartographic specialists confirmed the accuracy." },
-      { type: "DOCUMENTED", text: "The Orontius Finaeus map (1531) also shows an ice-free Antarctica with river systems and mountain ranges consistent with modern subglacial topography surveys. Both maps predate any acknowledged European knowledge of Antarctica by approximately 300 years." },
-      { type: "DOCUMENTED", text: "Multiple ancient maps — including the Buache map of 1737 — show Antarctic geographic features that were not discovered by modern exploration until the 20th century. The source data for these maps must have been collected when Antarctica was accessible — which means before the ice sheet reached its current extent." },
-      { type: "OBSERVED PATTERN", text: "A civilization capable of accurately mapping the entire globe — including Antarctica before it was covered in ice — was operating at a technological level inconsistent with any civilization in the official timeline. The maps are real. The accuracy is documented. The source civilization has no name in mainstream history." },
+      { type: "DOCUMENTED", text: "The Piri Reis map was drawn by Ottoman admiral Piri Reis in 1513. He noted in marginalia that he compiled it from older source maps, including some he attributed to Christopher Columbus. The map is real, well-preserved, and held in the Topkapi Palace Museum in Istanbul." },
+      { type: "DOCUMENTED", text: "Charles Hapgood — a history professor at Keene State College — published Maps of the Ancient Sea Kings in 1966, arguing that the Piri Reis map shows Antarctica's subglacial coastline with remarkable accuracy. He corresponded with Albert Einstein about his broader crustal displacement theory, though Einstein's endorsement was of that theory, not specifically the map analysis." },
+      { type: "CONTESTED", text: "Professional cartographers including Gregory McIntosh have published detailed analyses arguing that Hapgood's identification of the southern landmass as Antarctica is incorrect — that the landmass is more likely a speculative extension of South America, common in maps of that era when cartographers filled unknown regions with hypothetical land. The 'accuracy' Hapgood identified has been disputed on methodological grounds." },
+      { type: "DOCUMENTED", text: "Antarctica was not officially discovered until 1820. If the southern landmass on the Piri Reis map does represent Antarctica with genuine accuracy, the source data would have to predate the ice sheet — which has covered the continent for at least 6,000 years. This is the core of the claim and the core of the dispute." },
+      { type: "OBSERVED PATTERN", text: "Whether or not the Piri Reis map shows Antarctica, the broader question it raises is legitimate: how much navigational and geographical knowledge existed in antiquity that has not survived? The answer to that question is almost certainly: more than we acknowledge." },
     ],
-    researcher: "Charles Hapgood — Maps of the Ancient Sea Kings (1966) · Graham Hancock",
-    observation: "Charles Hapgood was a professor at Keene State College whose work on ancient maps was reviewed and endorsed by Albert Einstein shortly before Einstein's death in 1955. Einstein wrote the foreword to Hapgood's earlier work. The academic dismissal of Hapgood's cartographic analysis has never been based on a refutation of the specific accuracy claims — it has been based on the unacceptability of the conclusion.",
+    researcher: "Charles Hapgood — Maps of the Ancient Sea Kings (1966) · Critique: Gregory McIntosh — The Piri Reis Map of 1513 (2000)",
+    observation: "The Piri Reis map is presented here as a genuinely interesting open question — not as proof of a pre-ice age civilization. The cartographic dispute is real and has not been resolved in Hapgood's favor by mainstream scholarship. What is not in dispute is that ancient peoples navigated more extensively than the standard model acknowledges, and that significant geographic knowledge has been lost. The map is worth examining with that framing.",
   },
 
   // ── THE FLOOD ─────────────────────────────────────────────
@@ -355,6 +359,7 @@ function CategoryBadge({ type }) {
     "GEOLOGICAL & TEXTUAL": T.teal,
     "TEXTUAL & GEOLOGICAL": T.ocean,
     "CARTOGRAPHIC EVIDENCE": T.green,
+    "CONTESTED INTERPRETATION": "#e07020",
     "GEOLOGICALLY CONFIRMED": T.blood,
     "UNIVERSAL CULTURAL RECORD": T.blood,
     "ARCHAEOLOGICAL · CONFIRMED": T.amber,
@@ -373,12 +378,20 @@ function CategoryBadge({ type }) {
 
 // ─── EVIDENCE ITEM ────────────────────────────────────────────
 function EvidenceItem({ type, text }) {
-  const isDoc = type === "DOCUMENTED";
-  const col = isDoc ? T.gold : T.purple;
+  const colorMap = {
+    "DOCUMENTED": T.gold,
+    "ANCIENT TEXT": T.purple,
+    "OBSERVED PATTERN": T.purple,
+    "ONE RESEARCHER'S INTERPRETATION": "#e07020",
+    "CONTESTED": "#e07020",
+    "UNVERIFIED SOURCE": "#888888",
+    "CORRECTION": "#cc2222",
+  };
+  const col = colorMap[type] || T.gold;
   return (
-    <div style={{ display: "flex", gap: 10, marginBottom: 10, alignItems: "flex-start" }}>
-      <span style={{ fontFamily: "'Courier Prime', monospace", fontSize: 9, letterSpacing: "0.15em", color: col, border: `1px solid ${col}`, padding: "2px 6px", whiteSpace: "nowrap", marginTop: 2, flexShrink: 0, fontWeight: 700 }}>{type}</span>
-      <p style={{ fontSize: 13, lineHeight: 1.65, color: T.bone, fontWeight: 300 }}>{text}</p>
+    <div style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "flex-start" }}>
+      <span style={{ fontFamily: "'Courier Prime', monospace", fontSize: 9, letterSpacing: "0.12em", color: col, border: `1px solid ${col}`, padding: "3px 7px", whiteSpace: "nowrap", marginTop: 2, flexShrink: 0, fontWeight: 700, maxWidth: 160, textAlign: "center", lineHeight: 1.3 }}>{type}</span>
+      <p style={{ fontSize: 13, lineHeight: 1.65, color: type === "CORRECTION" ? "#d4a0a0" : type === "UNVERIFIED SOURCE" ? T.ash : T.bone, fontWeight: 300 }}>{text}</p>
     </div>
   );
 }
@@ -429,11 +442,11 @@ export default function TrueHumanTimeline() {
         </h1>
         <p style={{ fontSize: 12, letterSpacing: "0.28em", color: T.ash, textTransform: "uppercase", marginBottom: 28 }}>450,000 BC to Present · Evidence-Anchored · Nothing Omitted</p>
         <div style={{ maxWidth: 680, margin: "0 auto 36px", fontSize: 15, lineHeight: 1.78, color: T.bone, fontWeight: 300, borderLeft: `2px solid ${T.purple}`, paddingLeft: 22, textAlign: "left" }}>
-          The official human timeline begins with Mesopotamia around 3,500 BC. The evidence-supported timeline goes back at least 450,000 years — to beings the Sumerians called the Anunnaki, to civilizations called Lemuria and Atlantis, to a genetic intervention that produced modern humans, and to a catastrophic flood that reset everything around 9,600 BC.<br /><br />
-          <strong style={{ color: T.goldBright }}>Every event below is anchored to ancient texts, geological data, genetic research, or archaeological evidence. Labels distinguish documented fact from observed pattern.</strong>
+          The official human timeline begins with Mesopotamia around 3,500 BC. The evidence — ancient texts, genetics, geology, and archaeology — raises questions that push much further back. This timeline presents what the evidence actually shows, what researchers have concluded from it, and where the line between documented fact and interpretation falls.<br /><br />
+          <strong style={{ color: T.goldBright }}>Every item is labeled: DOCUMENTED means confirmed by primary sources. OBSERVED PATTERN means inference from facts. CONTESTED, UNVERIFIED SOURCE, and ONE RESEARCHER'S INTERPRETATION are clearly marked. You decide what to conclude.</strong>
         </div>
         <div style={{ display: "flex", justifyContent: "center", gap: 36, flexWrap: "wrap" }}>
-          {[["450,000 BC", "How far back\nthe evidence goes"], ["200+", "Cultures with\nflood myths"], ["223", "Human genes with\nno evolutionary source"], ["9,600 BC", "When Atlantis\nwas destroyed"]].map(([n, l]) => (
+          {[["300,000 BC", "Oldest evidence\nin the record"], ["200+", "Cultures with\nflood myths"], ["12,000 BC", "Age of\nGöbekli Tepe"], ["9,600 BC", "Plato's date for\nAtlantis' destruction"]].map(([n, l]) => (
             <div key={n} style={{ textAlign: "center" }}>
               <span style={{ fontFamily: "'Cinzel', serif", fontSize: "1.8rem", color: T.purple, display: "block" }}>{n}</span>
               <span style={{ fontSize: 10, letterSpacing: "0.12em", color: T.ash, textTransform: "uppercase", lineHeight: 1.4, whiteSpace: "pre-line", display: "block", marginTop: 4 }}>{l}</span>
