@@ -1,4 +1,4 @@
-const CACHE_NAME = "soul-true-v1";
+const CACHE_NAME = "soul-true-v2";
 const PRECACHE_URLS = [
   "/welcome",
   "/guide",
@@ -14,7 +14,8 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-// Activate — clean old caches
+// Activate — clean old caches, including prior Soul True caches that used
+// the same app shell but may contain stale published bundles.
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((names) =>
