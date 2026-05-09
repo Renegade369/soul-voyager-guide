@@ -4,6 +4,31 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── HARD OVERRIDE: dark luxury Soul True theme ── */
+:root {
+  --bg: #0D0F0E;
+  --surface: #141716;
+  --border: #1E2320;
+  --gold: #C9A84C;
+  --gold-light: #E8C87A;
+  --teal: #2DD4BF;
+  --text: #F5F0E8;
+  --muted: #8A9A8E;
+}
+
+* {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+body {
+  background-color: #0D0F0E !important;
+  color: #F5F0E8 !important;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
