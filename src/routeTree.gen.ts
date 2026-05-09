@@ -14,6 +14,7 @@ import { Route as VisitRouteImport } from './routes/visit'
 import { Route as TeachingsRouteImport } from './routes/teachings'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as RealityMapRouteImport } from './routes/reality-map'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
 import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
@@ -53,6 +54,11 @@ const ShopRoute = ShopRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RealityMapRoute = RealityMapRouteImport.update({
+  id: '/reality-map',
+  path: '/reality-map',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PractitionersRoute = PractitionersRouteImport.update({
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/hidden-truth': typeof HiddenTruthRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
+  '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
   '/teachings': typeof TeachingsRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/hidden-truth': typeof HiddenTruthRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
+  '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
   '/teachings': typeof TeachingsRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/hidden-truth': typeof HiddenTruthRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
+  '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
   '/teachings': typeof TeachingsRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
     | '/hidden-truth'
     | '/nature-booking'
     | '/practitioners'
+    | '/reality-map'
     | '/services'
     | '/shop'
     | '/teachings'
@@ -237,6 +247,7 @@ export interface FileRouteTypes {
     | '/hidden-truth'
     | '/nature-booking'
     | '/practitioners'
+    | '/reality-map'
     | '/services'
     | '/shop'
     | '/teachings'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/hidden-truth'
     | '/nature-booking'
     | '/practitioners'
+    | '/reality-map'
     | '/services'
     | '/shop'
     | '/teachings'
@@ -282,6 +294,7 @@ export interface RootRouteChildren {
   HiddenTruthRoute: typeof HiddenTruthRoute
   NatureBookingRoute: typeof NatureBookingRoute
   PractitionersRoute: typeof PractitionersRoute
+  RealityMapRoute: typeof RealityMapRoute
   ServicesRoute: typeof ServicesRoute
   ShopRoute: typeof ShopRoute
   TeachingsRoute: typeof TeachingsRoute
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reality-map': {
+      id: '/reality-map'
+      path: '/reality-map'
+      fullPath: '/reality-map'
+      preLoaderRoute: typeof RealityMapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/practitioners': {
@@ -450,6 +470,7 @@ const rootRouteChildren: RootRouteChildren = {
   HiddenTruthRoute: HiddenTruthRoute,
   NatureBookingRoute: NatureBookingRoute,
   PractitionersRoute: PractitionersRoute,
+  RealityMapRoute: RealityMapRoute,
   ServicesRoute: ServicesRoute,
   ShopRoute: ShopRoute,
   TeachingsRoute: TeachingsRoute,
@@ -460,3 +481,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
