@@ -26,8 +26,7 @@ export function SiteFooter() {
         <div>
           <h4 className="text-[11px] font-normal uppercase tracking-[0.22em]" style={labelStyle}>Visit</h4>
           <p className="mt-5 text-sm font-light leading-relaxed" style={linkStyle}>
-            Open Tue – Sun<br />
-            9am – 7pm
+            Coming Soon — South Florida
           </p>
           <Link to="/visit" className="mt-5 inline-block text-sm font-light underline-offset-4 hover:underline" style={linkStyle}>
             Plan your visit →

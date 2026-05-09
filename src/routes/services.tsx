@@ -226,7 +226,7 @@ function ServicesPage() {
             The body remembers everything. These modalities help it finally let go.
           </p>
           <p className="mx-auto mt-8 max-w-2xl text-left text-sm font-light leading-relaxed text-muted-foreground md:text-base">
-            The nervous system cannot release in a state of tension. Bodywork is often the first step — and sometimes the most profound. Soul True offers a full spectrum of therapeutic and wellness-focused bodywork, delivered by licensed therapists and specialized practitioners on staff and within our vetted network.
+            The nervous system cannot release in a state of tension. Bodywork is often the first step — and sometimes the most profound. Soul True offers a full spectrum of therapeutic and wellness-focused bodywork, delivered by licensed therapists and specialized practitioners within our vetted network.
           </p>
         </div>
 
