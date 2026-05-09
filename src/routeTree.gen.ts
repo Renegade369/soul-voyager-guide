@@ -16,6 +16,7 @@ import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
+import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as EventsRouteImport } from './routes/events'
@@ -61,6 +62,11 @@ const PractitionersRoute = PractitionersRouteImport.update({
 const NatureBookingRoute = NatureBookingRouteImport.update({
   id: '/nature-booking',
   path: '/nature-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HiddenTruthRoute = HiddenTruthRouteImport.update({
+  id: '/hidden-truth',
+  path: '/hidden-truth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HealthRoute = HealthRouteImport.update({
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/events': typeof EventsRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
+  '/hidden-truth': typeof HiddenTruthRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/services': typeof ServicesRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/events': typeof EventsRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
+  '/hidden-truth': typeof HiddenTruthRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/services': typeof ServicesRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   '/events': typeof EventsRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
+  '/hidden-truth': typeof HiddenTruthRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/services': typeof ServicesRoute
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/guide'
     | '/health'
+    | '/hidden-truth'
     | '/nature-booking'
     | '/practitioners'
     | '/services'
@@ -213,6 +223,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/guide'
     | '/health'
+    | '/hidden-truth'
     | '/nature-booking'
     | '/practitioners'
     | '/services'
@@ -233,6 +244,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/guide'
     | '/health'
+    | '/hidden-truth'
     | '/nature-booking'
     | '/practitioners'
     | '/services'
@@ -254,6 +266,7 @@ export interface RootRouteChildren {
   EventsRoute: typeof EventsRoute
   GuideRoute: typeof GuideRoute
   HealthRoute: typeof HealthRoute
+  HiddenTruthRoute: typeof HiddenTruthRoute
   NatureBookingRoute: typeof NatureBookingRoute
   PractitionersRoute: typeof PractitionersRoute
   ServicesRoute: typeof ServicesRoute
@@ -313,6 +326,13 @@ declare module '@tanstack/react-router' {
       path: '/nature-booking'
       fullPath: '/nature-booking'
       preLoaderRoute: typeof NatureBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hidden-truth': {
+      id: '/hidden-truth'
+      path: '/hidden-truth'
+      fullPath: '/hidden-truth'
+      preLoaderRoute: typeof HiddenTruthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/health': {
@@ -406,6 +426,7 @@ const rootRouteChildren: RootRouteChildren = {
   EventsRoute: EventsRoute,
   GuideRoute: GuideRoute,
   HealthRoute: HealthRoute,
+  HiddenTruthRoute: HiddenTruthRoute,
   NatureBookingRoute: NatureBookingRoute,
   PractitionersRoute: PractitionersRoute,
   ServicesRoute: ServicesRoute,
