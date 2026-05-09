@@ -38,20 +38,20 @@ const intake = {
 };
 
 const energyAndBody: { t: string; d: string; img: string }[] = [
-  { t: "Reiki & Energy Work", d: "Hands-on Reiki and intuitive biofield work to support clearing, restoring, and balancing your energetic system.", img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" },
-  { t: "Rife Frequency Therapy", d: "Targeted frequency-based sessions used in supportive wellness protocols.", img: "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&q=80" },
-  { t: "BioWell 2.0 Assessment", d: "Bioenergetic field reading that maps your chakras, organ energy, stress levels, and vitality — a baseline for your wellness plan.", img: "https://images.unsplash.com/photo-1518050227004-c4cb7104d79a?w=800&q=80" },
-  { t: "Heart-Brain Coherence", d: "HeartMath-based and somatic practices to align heart and mind, reduce stress, and access higher states of awareness.", img: "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80" },
+  { t: "Reiki & Energy Work", d: "Hands-on Reiki and intuitive biofield work to support clearing, restoring, and balancing your energetic system.", img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80" },
+  { t: "Rife Frequency Therapy", d: "Targeted frequency-based sessions used in supportive wellness protocols.", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" },
+  { t: "BioWell 2.0 Assessment", d: "Bioenergetic field reading that maps your chakras, organ energy, stress levels, and vitality — a baseline for your wellness plan.", img: "https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80" },
+  { t: "Heart-Brain Coherence", d: "HeartMath-based and somatic practices to align heart and mind, reduce stress, and access higher states of awareness.", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80" },
 ];
 
 const bodywork: { t: string; d: string; img: string }[] = [
-  { t: "Swedish Massage", d: "Foundational relaxation, circulation, and nervous system reset.", img: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80" },
+  { t: "Swedish Massage", d: "Foundational relaxation, circulation, and nervous system reset.", img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80" },
   { t: "Deep Tissue", d: "Targeted work on chronic tension, adhesions, and structural holding patterns.", img: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80" },
-  { t: "Hot Stone Therapy", d: "Deep warmth — melting layers of tension, calming the nervous system at root level.", img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80" },
+  { t: "Hot Stone Therapy", d: "Deep warmth — melting layers of tension, calming the nervous system at root level.", img: "https://images.unsplash.com/photo-1620733723572-11c53f73a416?w=800&q=80" },
   { t: "Craniosacral Therapy", d: "Subtle, profound work with the rhythm of the cerebrospinal fluid — supportive for tension, migraines, and nervous system dysregulation.", img: "https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" },
   { t: "Lymphatic Drainage", d: "Gentle, precise strokes to move lymph, reduce inflammation, and support immune function.", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" },
-  { t: "Myofascial Release", d: "Sustained pressure into the connective tissue web — releasing what no amount of stretching can reach.", img: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80" },
-  { t: "Somatic Bodywork", d: "Body-centered release integrating breath, sensation, and awareness — where the physical and emotional meet.", img: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80" },
+  { t: "Myofascial Release", d: "Sustained pressure into the connective tissue web — releasing what no amount of stretching can reach.", img: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=800&q=80" },
+  { t: "Somatic Bodywork", d: "Body-centered release integrating breath, sensation, and awareness — where the physical and emotional meet.", img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=80" },
 ];
 
 const BODYWORK_HERO = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1400&q=80";
@@ -59,14 +59,14 @@ const BODYWORK_HERO = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874
 const soundAndBreath: { t: string; d: string; img: string }[] = [
   { t: "Sound Immersion", d: "Crystal and Himalayan bowls, gongs, and tuning forks — sacred frequencies that support the body's natural state of restoration.", img: "https://images.unsplash.com/photo-1591291621164-2c6367723315?w=800&q=80" },
   { t: "Breathwork Journeys", d: "Transformational breathwork — Holotropic-style, Wim Hof, and pranayama traditions — for release and expanded states.", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=800&q=80" },
-  { t: "Guided Meditation", d: "Individual, group, and recorded sessions — adaptive practices for nervous-system regulation and inner stillness.", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80" },
+  { t: "Guided Meditation", d: "Individual, group, and recorded sessions — adaptive practices for nervous-system regulation and inner stillness.", img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=800&q=80" },
   { t: "Trauma-Informed Yoga", d: "Individual and small group sessions oriented toward spiritual embodiment and somatic safety.", img: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&q=80" },
 ];
 
 const spiritAndSoul: { t: string; d: string; img: string }[] = [
-  { t: "Spiritual Mentorship", d: "One-on-one guidance with William for awakening, integration, and walking the path with someone who has walked it.", img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=80" },
-  { t: "Soul Purpose Discovery", d: "Guided 1:1 and group work to reconnect with your soul's calling, identify your gifts, and find clarity on why you are here.", img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=80" },
-  { t: "Mediumship & Intuitive Readings", d: "Connection with vetted, gifted channels and intuitives in our practitioner network.", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" },
+  { t: "Spiritual Mentorship", d: "One-on-one guidance with William for awakening, integration, and walking the path with someone who has walked it.", img: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=800&q=80" },
+  { t: "Soul Purpose Discovery", d: "Guided 1:1 and group work to reconnect with your soul's calling, identify your gifts, and find clarity on why you are here.", img: "https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=800&q=80" },
+  { t: "Mediumship & Intuitive Readings", d: "Connection with vetted, gifted channels and intuitives in our practitioner network.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" },
   { t: "Equine-Assisted Experiences", d: "Held sessions with horses on the land — nervous system, presence, and heart awakening through the animal kingdom.", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80" },
   { t: "Nature Immersion", d: "Held experiences on the land — grounding, stillness, and the simple gift of being outside.", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" },
   { t: "Holistic Recovery Support", d: "Lived-experience guidance combining inner work, community, and physical and energetic restoration.", img: "https://images.unsplash.com/photo-1476611317561-60117649dd94?w=800&q=80" },
