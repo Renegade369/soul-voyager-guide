@@ -20,11 +20,12 @@ const body = { fontFamily: '"Outfit", sans-serif' };
 
 type Booking = {
   id: string;
-  full_name: string;
+  name: string;
   email: string;
   phone: string | null;
   preferred_date: string | null;
-  message: string | null;
+  modality: string;
+  intention: string;
   status: string | null;
   created_at: string;
 };
