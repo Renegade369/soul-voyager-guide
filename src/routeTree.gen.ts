@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as VisitRouteImport } from './routes/visit'
+import { Route as TrueTimelineRouteImport } from './routes/true-timeline'
 import { Route as TeachingsRouteImport } from './routes/teachings'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ServicesRouteImport } from './routes/services'
@@ -39,6 +40,11 @@ const WelcomeRoute = WelcomeRouteImport.update({
 const VisitRoute = VisitRouteImport.update({
   id: '/visit',
   path: '/visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrueTimelineRoute = TrueTimelineRouteImport.update({
+  id: '/true-timeline',
+  path: '/true-timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TeachingsRoute = TeachingsRouteImport.update({
@@ -156,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
   '/teachings': typeof TeachingsRoute
+  '/true-timeline': typeof TrueTimelineRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/product/$handle': typeof ProductHandleRoute
@@ -179,6 +186,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
   '/teachings': typeof TeachingsRoute
+  '/true-timeline': typeof TrueTimelineRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/product/$handle': typeof ProductHandleRoute
@@ -203,6 +211,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
   '/teachings': typeof TeachingsRoute
+  '/true-timeline': typeof TrueTimelineRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/product/$handle': typeof ProductHandleRoute
@@ -228,6 +237,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/shop'
     | '/teachings'
+    | '/true-timeline'
     | '/visit'
     | '/welcome'
     | '/product/$handle'
@@ -251,6 +261,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/shop'
     | '/teachings'
+    | '/true-timeline'
     | '/visit'
     | '/welcome'
     | '/product/$handle'
@@ -274,6 +285,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/shop'
     | '/teachings'
+    | '/true-timeline'
     | '/visit'
     | '/welcome'
     | '/product/$handle'
@@ -298,6 +310,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   ShopRoute: typeof ShopRoute
   TeachingsRoute: typeof TeachingsRoute
+  TrueTimelineRoute: typeof TrueTimelineRoute
   VisitRoute: typeof VisitRoute
   WelcomeRoute: typeof WelcomeRoute
   ProductHandleRoute: typeof ProductHandleRoute
@@ -317,6 +330,13 @@ declare module '@tanstack/react-router' {
       path: '/visit'
       fullPath: '/visit'
       preLoaderRoute: typeof VisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/true-timeline': {
+      id: '/true-timeline'
+      path: '/true-timeline'
+      fullPath: '/true-timeline'
+      preLoaderRoute: typeof TrueTimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/teachings': {
@@ -474,6 +494,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   ShopRoute: ShopRoute,
   TeachingsRoute: TeachingsRoute,
+  TrueTimelineRoute: TrueTimelineRoute,
   VisitRoute: VisitRoute,
   WelcomeRoute: WelcomeRoute,
   ProductHandleRoute: ProductHandleRoute,
