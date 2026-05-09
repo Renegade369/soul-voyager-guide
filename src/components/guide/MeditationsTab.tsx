@@ -205,24 +205,30 @@ export function MeditationsTab() {
       totalChunksRef.current = chunks.length;
       setTtsChunkProgress({ loaded: 0, total: chunks.length });
 
-      // Pre-fetch first chunk, then start playing while fetching rest
-      const blobs: Blob[] = [];
+      // Kick off all chunk fetches in parallel so playback isn't blocked.
+      const blobPromises: Promise<Blob>[] = chunks.map((c, i) =>
+        fetchChunkAudio(c).then((b) => {
+          setTtsChunkProgress((prev) => ({ loaded: prev.loaded + 1, total: chunks.length }));
+          return b;
+        }).catch((err) => {
+          console.error(`TTS chunk ${i} failed:`, err);
+          throw err;
+        }),
+      );
 
-      // Fetch all chunks first for smoother playback
-      for (let i = 0; i < chunks.length; i++) {
-        if (ttsAbortRef.current) return;
-        const blob = await fetchChunkAudio(chunks[i]);
-        blobs.push(blob);
-        setTtsChunkProgress({ loaded: i + 1, total: chunks.length });
-        // Start playing after first chunk is ready
-        if (i === 0) setTtsState("playing");
-      }
+      // Wait for the first chunk, then start playback immediately while
+      // remaining chunks continue downloading. This preserves the user-gesture
+      // autoplay grant on Safari/mobile.
+      const firstBlob = await blobPromises[0];
+      if (ttsAbortRef.current) return;
+      setTtsState("playing");
 
-      // Play all chunks sequentially
-      for (let i = 0; i < blobs.length; i++) {
+      for (let i = 0; i < blobPromises.length; i++) {
         if (ttsAbortRef.current) return;
         chunkIndexRef.current = i;
-        await playAudioBlob(blobs[i]);
+        const blob = i === 0 ? firstBlob : await blobPromises[i];
+        if (ttsAbortRef.current) return;
+        await playAudioBlob(blob);
       }
 
       setTtsState("idle");
