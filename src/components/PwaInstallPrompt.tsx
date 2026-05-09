@@ -91,7 +91,7 @@ export function PwaInstallPrompt() {
               </h3>
               <p
                 className="mt-1 text-xs leading-relaxed"
-                style={{ fontFamily: '"Inter", sans-serif', color: "#8A9E94", fontWeight: 300 }}
+                style={{ fontFamily: '"Outfit", sans-serif', color: "#8A9E94", fontWeight: 300 }}
               >
                 For instant access to your AI Life Guide
               </p>
@@ -104,7 +104,7 @@ export function PwaInstallPrompt() {
             style={{
               background: "linear-gradient(135deg, #B8952E, #C9A84C)",
               color: "#0D0F0E",
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: '"Outfit", sans-serif',
             }}
           >
             Install

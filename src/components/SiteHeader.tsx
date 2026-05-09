@@ -16,10 +16,10 @@ export function SiteHeader() {
   return (
     <header
       className="sticky top-0 z-40 backdrop-blur-sm"
-      style={{ backgroundColor: "rgba(28,27,58,0.95)", borderBottom: "1px solid rgba(212,175,100,0.18)" }}
+      style={{ backgroundColor: "rgba(20,23,22,0.95)", borderBottom: "1px solid rgba(212,175,100,0.18)" }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10 xl:px-12">
-        <Link to="/" aria-label="Soul True home" style={{ color: "#D4AF64" }}>
+        <Link to="/" aria-label="Soul True home" style={{ color: "#C9A84C" }}>
           <span className="font-serif text-2xl font-normal tracking-tight">Soul True</span>
         </Link>
         <nav className="hidden items-center gap-6 lg:flex xl:gap-10">
@@ -28,8 +28,8 @@ export function SiteHeader() {
               key={l.to}
               to={l.to}
               className="text-[11px] font-normal uppercase tracking-[0.22em] transition-colors"
-              style={{ color: "rgba(248,245,240,0.6)" }}
-              activeProps={{ style: { color: "#F8F5F0" } }}
+              style={{ color: "rgba(245,240,232,0.6)" }}
+              activeProps={{ style: { color: "#F5F0E8" } }}
             >
               {l.label}
             </Link>
@@ -37,7 +37,7 @@ export function SiteHeader() {
           <Link
             to="/begin-here"
             className="rounded-none px-5 py-2.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
-            style={{ color: "#D4AF64", border: "1px solid #D4AF64" }}
+            style={{ color: "#C9A84C", border: "1px solid #C9A84C" }}
           >
             Begin Here
           </Link>
@@ -47,7 +47,7 @@ export function SiteHeader() {
           <button
             aria-label="Toggle menu"
             aria-expanded={open}
-            style={{ color: "#F8F5F0" }}
+            style={{ color: "#F5F0E8" }}
             onClick={() => setOpen((s) => !s)}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
@@ -58,7 +58,7 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <div className="lg:hidden" style={{ backgroundColor: "#1C1B3A", borderTop: "1px solid rgba(212,175,100,0.18)" }}>
+        <div className="lg:hidden" style={{ backgroundColor: "#141716", borderTop: "1px solid rgba(212,175,100,0.18)" }}>
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
             {links.map((l) => (
               <Link
@@ -66,8 +66,8 @@ export function SiteHeader() {
                 to={l.to}
                 onClick={() => setOpen(false)}
                 className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]"
-                style={{ color: "rgba(248,245,240,0.7)" }}
-                activeProps={{ style: { color: "#F8F5F0" } }}
+                style={{ color: "rgba(245,240,232,0.7)" }}
+                activeProps={{ style: { color: "#F5F0E8" } }}
               >
                 {l.label}
               </Link>
@@ -76,7 +76,7 @@ export function SiteHeader() {
               to="/begin-here"
               onClick={() => setOpen(false)}
               className="mt-3 px-5 py-3 text-center text-[11px] uppercase tracking-[0.22em]"
-              style={{ color: "#D4AF64", border: "1px solid #D4AF64" }}
+              style={{ color: "#C9A84C", border: "1px solid #C9A84C" }}
             >
               Begin Here
             </Link>

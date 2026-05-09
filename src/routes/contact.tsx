@@ -77,14 +77,14 @@ function ContactPage() {
         intro=""
       >
         <section className="mx-auto max-w-2xl py-16 text-center">
-          <div className="mx-auto mb-8 h-px w-16" style={{ backgroundColor: "#D4AF64" }} />
+          <div className="mx-auto mb-8 h-px w-16" style={{ backgroundColor: "#C9A84C" }} />
           <p className="font-serif text-2xl font-light italic leading-snug text-foreground md:text-3xl">
             Thank you for reaching out.
           </p>
           <p className="mx-auto mt-8 max-w-lg text-base font-light leading-relaxed text-muted-foreground">
             Your message has been received and someone from Soul True will be in touch with you soon. You are in the right place.
           </p>
-          <div className="mx-auto mt-8 h-px w-16" style={{ backgroundColor: "#D4AF64" }} />
+          <div className="mx-auto mt-8 h-px w-16" style={{ backgroundColor: "#C9A84C" }} />
         </section>
 
         {/* Disclaimer */}
@@ -115,7 +115,7 @@ function ContactPage() {
               name="name"
               type="text"
               autoComplete="name"
-              className="mt-2 w-full border-b border-border bg-transparent pb-3 text-base font-light text-foreground outline-none transition placeholder:text-muted-foreground/50 focus:border-[#D4AF64]"
+              className="mt-2 w-full border-b border-border bg-transparent pb-3 text-base font-light text-foreground outline-none transition placeholder:text-muted-foreground/50 focus:border-[#C9A84C]"
               placeholder="Your name"
             />
             {errors.name && <p className="mt-2 text-xs text-red-600">{errors.name}</p>}
@@ -131,7 +131,7 @@ function ContactPage() {
               name="email"
               type="email"
               autoComplete="email"
-              className="mt-2 w-full border-b border-border bg-transparent pb-3 text-base font-light text-foreground outline-none transition placeholder:text-muted-foreground/50 focus:border-[#D4AF64]"
+              className="mt-2 w-full border-b border-border bg-transparent pb-3 text-base font-light text-foreground outline-none transition placeholder:text-muted-foreground/50 focus:border-[#C9A84C]"
               placeholder="your@email.com"
             />
             {errors.email && <p className="mt-2 text-xs text-red-600">{errors.email}</p>}
@@ -147,7 +147,7 @@ function ContactPage() {
               name="phone"
               type="tel"
               autoComplete="tel"
-              className="mt-2 w-full border-b border-border bg-transparent pb-3 text-base font-light text-foreground outline-none transition placeholder:text-muted-foreground/50 focus:border-[#D4AF64]"
+              className="mt-2 w-full border-b border-border bg-transparent pb-3 text-base font-light text-foreground outline-none transition placeholder:text-muted-foreground/50 focus:border-[#C9A84C]"
               placeholder="(555) 555-5555"
             />
             {errors.phone && <p className="mt-2 text-xs text-red-600">{errors.phone}</p>}
@@ -162,7 +162,7 @@ function ContactPage() {
               id="message"
               name="message"
               rows={5}
-              className="mt-2 w-full resize-none border-b border-border bg-transparent pb-3 text-base font-light text-foreground outline-none transition placeholder:text-muted-foreground/50 focus:border-[#D4AF64]"
+              className="mt-2 w-full resize-none border-b border-border bg-transparent pb-3 text-base font-light text-foreground outline-none transition placeholder:text-muted-foreground/50 focus:border-[#C9A84C]"
               placeholder="Share what's on your heart…"
             />
             {errors.message && <p className="mt-2 text-xs text-red-600">{errors.message}</p>}
@@ -178,8 +178,8 @@ function ContactPage() {
               disabled={submitting}
               className="w-full px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition disabled:opacity-50"
               style={{
-                backgroundColor: "#D4AF64",
-                color: "#1C1B3A",
+                backgroundColor: "#C9A84C",
+                color: "#141716",
                 borderRadius: "0.25rem",
               }}
             >

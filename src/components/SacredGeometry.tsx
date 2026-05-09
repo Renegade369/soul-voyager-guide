@@ -127,12 +127,12 @@ export function GeometricDivider({
   tone?: "light" | "dark";
 }) {
   const Ornament = ORNAMENTS[variant % 3];
-  const stroke = tone === "dark" ? "#D4AF64" : "#1C1B3A";
+  const stroke = tone === "dark" ? "#C9A84C" : "#141716";
   const opacity = tone === "dark" ? 0.55 : 0.3;
   const lineStyle =
     tone === "dark"
       ? { backgroundColor: "rgba(212,175,100,0.35)" }
-      : { backgroundColor: "rgba(28,27,58,0.3)" };
+      : { backgroundColor: "rgba(20,23,22,0.3)" };
   return (
     <div className={`mx-auto ${maxWidth} px-6 ${className}`}>
       <div className="flex items-center gap-6">

@@ -18,7 +18,7 @@ type IconCmp = (p: { size?: number; color?: string; opacity?: number; strokeWidt
 function SectionIcon({ Icon }: { Icon: IconCmp }) {
   return (
     <div className="mx-auto mb-6 flex justify-center" aria-hidden>
-      <Icon size={44} color="#1C1B3A" opacity={0.55} strokeWidth={0.7} />
+      <Icon size={44} color="#141716" opacity={0.55} strokeWidth={0.7} />
     </div>
   );
 }
@@ -99,7 +99,7 @@ function NumberedGrid({ items }: { items: { t: string; d: string; img?: string }
               />
               <div
                 className="absolute inset-0"
-                style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+                style={{ backgroundColor: "rgba(245,240,232,0.15)" }}
               />
             </div>
           )}
@@ -168,7 +168,7 @@ function ServicesPage() {
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          <FlowerOfLife size={420} color="#1C1B3A" opacity={0.06} strokeWidth={0.5} />
+          <FlowerOfLife size={420} color="#141716" opacity={0.06} strokeWidth={0.5} />
         </div>
         <div className="relative">
           <p className="text-[11px] font-light uppercase tracking-[0.28em] text-foreground/55">
@@ -212,7 +212,7 @@ function ServicesPage() {
             />
             <div
               className="absolute inset-0"
-              style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+              style={{ backgroundColor: "rgba(245,240,232,0.15)" }}
             />
           </div>
         </div>
@@ -247,7 +247,7 @@ function ServicesPage() {
                   />
                   <div
                     className="absolute inset-0"
-                    style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+                    style={{ backgroundColor: "rgba(245,240,232,0.15)" }}
                   />
                 </div>
               )}
@@ -369,7 +369,7 @@ function ServicesPage() {
         <div className="mx-auto mb-8 flex justify-center" aria-hidden>
           <VesicaBotanical
             size={220}
-            color="#1C1B3A"
+            color="#141716"
             opacity={0.35}
             strokeWidth={0.6}
           />

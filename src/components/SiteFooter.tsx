@@ -1,13 +1,13 @@
 import { Link } from "@tanstack/react-router";
 
 export function SiteFooter() {
-  const linkStyle = { color: "rgba(248,245,240,0.35)" };
+  const linkStyle = { color: "rgba(245,240,232,0.35)" };
   const labelStyle = { color: "rgba(212,175,100,0.7)" };
   return (
-    <footer className="mt-32" style={{ backgroundColor: "#141327" }}>
+    <footer className="mt-32" style={{ backgroundColor: "#0D0F0E" }}>
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-3 md:px-12">
         <div>
-          <h3 className="font-serif text-2xl font-normal" style={{ color: "#D4AF64" }}>Soul True</h3>
+          <h3 className="font-serif text-2xl font-normal" style={{ color: "#C9A84C" }}>Soul True</h3>
           <p className="mt-5 max-w-xs text-sm font-light leading-relaxed" style={linkStyle}>
             A sanctuary for holistic wellness and the quiet unfolding of remembrance.
           </p>

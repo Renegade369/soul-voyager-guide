@@ -62,30 +62,30 @@ function Index() {
 
         {/* Sacred geometry watermark */}
         <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sacred-rotate-slow">
-          <FlowerOfLife size={600} color="#D4AF64" opacity={0.08} strokeWidth={0.4} />
+          <FlowerOfLife size={600} color="#C9A84C" opacity={0.08} strokeWidth={0.4} />
         </div>
 
         <div className="relative mx-auto flex min-h-[calc(100vh-81px)] max-w-3xl flex-col items-center justify-center px-6 py-24 text-center md:py-28">
-          <p className="text-[11px] font-light uppercase tracking-[0.32em]" style={{ color: "#D4AF64" }}>
+          <p className="text-[11px] font-light uppercase tracking-[0.32em]" style={{ color: "#C9A84C" }}>
             Soul True
           </p>
 
           {/* Mission statement */}
           <div className="mt-10 space-y-6">
-            <h1 className="font-serif text-2xl font-light leading-relaxed md:text-3xl lg:text-4xl" style={{ color: "#F8F5F0", letterSpacing: 0 }}>
+            <h1 className="font-serif text-2xl font-light leading-relaxed md:text-3xl lg:text-4xl" style={{ color: "#F5F0E8", letterSpacing: 0 }}>
               At the core of every struggle — every feeling of emptiness, lost purpose, burnout, addiction, or disconnection — is one fundamental truth:{" "}
-              <em className="italic" style={{ color: "#D4AF64" }}>we have drifted from our own souls.</em>
+              <em className="italic" style={{ color: "#C9A84C" }}>we have drifted from our own souls.</em>
             </h1>
-            <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(248,245,240,0.82)" }}>
+            <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(245,240,232,0.82)" }}>
               This is not weakness. This is the human condition in the world we live in today.
             </p>
-            <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(248,245,240,0.82)" }}>
+            <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(245,240,232,0.82)" }}>
               Reconnecting with who you truly are at soul level is not just a personal journey — it is meaningful inner work.
             </p>
-            <p className="font-serif text-xl font-light italic leading-relaxed md:text-2xl" style={{ color: "#D4AF64" }}>
+            <p className="font-serif text-xl font-light italic leading-relaxed md:text-2xl" style={{ color: "#C9A84C" }}>
               Your soul is not something you find. It is where you truly live. It is home.
             </p>
-            <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(248,245,240,0.85)" }}>
+            <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(245,240,232,0.85)" }}>
               Everything changes when you do.
             </p>
           </div>
@@ -96,8 +96,8 @@ function Index() {
               to="/begin-here"
               className="group relative inline-block px-14 py-5 text-sm font-normal uppercase tracking-[0.28em] transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,100,0.35)]"
               style={{
-                backgroundColor: "#D4AF64",
-                color: "#1C1B3A",
+                backgroundColor: "#C9A84C",
+                color: "#141716",
                 borderRadius: "0.25rem",
                 fontSize: "14px",
                 letterSpacing: "0.28em",
@@ -105,7 +105,7 @@ function Index() {
             >
               Begin Here
             </Link>
-            <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em]" style={{ color: "rgba(248,245,240,0.5)" }}>
+            <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em]" style={{ color: "rgba(245,240,232,0.5)" }}>
               Your journey home starts now
             </p>
           </div>
@@ -115,7 +115,7 @@ function Index() {
       {/* Statement */}
       <section className="mx-auto max-w-3xl px-6 py-12 text-center md:py-16">
         <Reveal>
-          <p className="text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "#D4AF64" }}>Our Intention</p>
+          <p className="text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "#C9A84C" }}>Our Intention</p>
           <h2 className="mt-8 font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
             A place to slow down,
             <br />
@@ -132,11 +132,11 @@ function Index() {
           {pillars.map(({ Icon, t, d }, i) => (
             <Reveal key={t} delay={i * 120} as="article">
               <article className="relative h-full overflow-hidden p-8 text-center md:p-10">
-                <Icon size={36} color="#1C1B3A" opacity={0.95} strokeWidth={0.7} className="mx-auto" />
+                <Icon size={36} color="#141716" opacity={0.95} strokeWidth={0.7} className="mx-auto" />
                 <div
                   aria-hidden
                   className="mx-auto mt-6"
-                  style={{ width: "3px", height: "32px", backgroundColor: "#D4AF64" }}
+                  style={{ width: "3px", height: "32px", backgroundColor: "#C9A84C" }}
                 />
                 <h3 className="mt-4 font-serif text-2xl font-normal text-foreground">{t}</h3>
                 <p className="mt-4 text-sm font-light leading-relaxed text-muted-foreground">{d}</p>
@@ -153,7 +153,7 @@ function Index() {
       <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <Reveal>
           <div className="mx-auto mb-10 max-w-2xl text-center md:mb-12">
-            <p className="text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "#D4AF64" }}>Offerings</p>
+            <p className="text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "#C9A84C" }}>Offerings</p>
             <h2 className="mt-6 font-serif text-4xl font-light text-foreground md:text-5xl">
               What we hold.
             </h2>
@@ -180,8 +180,8 @@ function Index() {
                 >
                   <ServiceCornerBracket variant={i} />
                   <div className={["flex items-center gap-4", lastAlone ? "justify-center" : ""].join(" ")}>
-                    <Icon size={lastAlone ? 32 : 28} color="#1C1B3A" opacity={0.5} strokeWidth={0.7} />
-                    <p className="font-serif text-sm font-light italic" style={{ color: "#D4AF64" }}>{s.n}</p>
+                    <Icon size={lastAlone ? 32 : 28} color="#141716" opacity={0.5} strokeWidth={0.7} />
+                    <p className="font-serif text-sm font-light italic" style={{ color: "#C9A84C" }}>{s.n}</p>
                   </div>
                   <h3
                     className={[
@@ -197,7 +197,7 @@ function Index() {
                     style={{
                       height: lastAlone ? "2px" : "1px",
                       width: lastAlone ? "80px" : "32px",
-                      backgroundColor: "#D4AF64",
+                      backgroundColor: "#C9A84C",
                     }}
                   />
                   <p
@@ -211,7 +211,7 @@ function Index() {
                   <Link
                     to="/services"
                     className="mt-7 inline-block text-[11px] font-normal uppercase tracking-[0.22em] underline-offset-4 hover:underline"
-                    style={{ color: "#2D5A3D" }}
+                    style={{ color: "#141716" }}
                   >
                     Learn more <span className="tile-arrow ml-1">→</span>
                   </Link>
@@ -225,16 +225,16 @@ function Index() {
       <GeometricDivider variant={2} />
 
       {/* Forest-green quote block */}
-      <section className="relative isolate overflow-hidden py-16 md:py-20" style={{ backgroundColor: "#2D5A3D" }}>
+      <section className="relative isolate overflow-hidden py-16 md:py-20" style={{ backgroundColor: "#141716" }}>
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 sacred-rotate-slow"
         >
-          <FlowerOfLife size={400} color="#D4AF64" opacity={0.1} strokeWidth={0.5} />
+          <FlowerOfLife size={400} color="#C9A84C" opacity={0.1} strokeWidth={0.5} />
         </div>
         <Reveal>
           <div className="relative mx-auto max-w-3xl px-6 text-center">
-            <p className="font-serif text-3xl font-light italic leading-snug md:text-5xl" style={{ color: "#F8F5F0" }}>
+            <p className="font-serif text-3xl font-light italic leading-snug md:text-5xl" style={{ color: "#F5F0E8" }}>
               &ldquo;Growth is not a return to who you were.
               It is a slow remembering of who you have always been.&rdquo;
             </p>
@@ -249,7 +249,7 @@ function Index() {
       <section className="mx-auto max-w-5xl px-6 py-16 md:py-20">
         <Reveal>
           <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
-            <p className="text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "#D4AF64" }}>How to Begin</p>
+            <p className="text-[11px] font-light uppercase tracking-[0.28em]" style={{ color: "#C9A84C" }}>How to Begin</p>
             <h2 className="mt-6 font-serif text-4xl font-light text-foreground md:text-5xl">
               A simple <em className="italic">arrival</em>.
             </h2>
@@ -263,8 +263,8 @@ function Index() {
           ].map((step, i) => (
             <Reveal key={step.n} delay={i * 140}>
               <div className="relative flex flex-col items-center text-center">
-                <step.Icon size={48} color="#1C1B3A" opacity={0.55} strokeWidth={0.6} />
-                <p className="mt-5 font-serif text-xs font-light italic" style={{ color: "#D4AF64", letterSpacing: "0.2em" }}>{step.n}</p>
+                <step.Icon size={48} color="#141716" opacity={0.55} strokeWidth={0.6} />
+                <p className="mt-5 font-serif text-xs font-light italic" style={{ color: "#C9A84C", letterSpacing: "0.2em" }}>{step.n}</p>
                 <h3 className="mt-3 font-serif text-2xl font-normal text-foreground">{step.t}</h3>
                 <p className="mt-4 max-w-xs text-sm font-light leading-relaxed text-muted-foreground">{step.d}</p>
               </div>
@@ -274,30 +274,30 @@ function Index() {
       </section>
 
       {/* Closing CTA */}
-      <section className="relative isolate overflow-hidden" style={{ backgroundColor: "#1C1B3A" }}>
+      <section className="relative isolate overflow-hidden" style={{ backgroundColor: "#141716" }}>
         <div className="mx-auto max-w-3xl px-6 text-center" style={{ paddingTop: "64px", paddingBottom: "64px" }}>
           <Reveal>
             <h2
               className="font-serif leading-tight"
-              style={{ color: "#F8F5F0", fontWeight: 300, fontSize: "clamp(2.25rem, 5vw, 3rem)" }}
+              style={{ color: "#F5F0E8", fontWeight: 300, fontSize: "clamp(2.25rem, 5vw, 3rem)" }}
             >
               You have arrived somewhere that understands.
             </h2>
-            <p className="mx-auto mt-7 max-w-lg text-base font-light leading-relaxed" style={{ color: "rgba(248,245,240,0.7)" }}>
+            <p className="mx-auto mt-7 max-w-lg text-base font-light leading-relaxed" style={{ color: "rgba(245,240,232,0.7)" }}>
               The most important work of your lifetime begins with a single step inward.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link
                 to="/begin-here"
                 className="px-12 py-4 text-sm font-normal uppercase tracking-[0.24em] transition hover:shadow-[0_0_30px_rgba(212,175,100,0.3)]"
-                style={{ backgroundColor: "#D4AF64", color: "#1C1B3A", borderRadius: "0.25rem" }}
+                style={{ backgroundColor: "#C9A84C", color: "#141716", borderRadius: "0.25rem" }}
               >
                 Begin Here
               </Link>
               <Link
                 to="/services"
                 className="px-9 py-3.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
-                style={{ color: "#F8F5F0", border: "1px solid rgba(248,245,240,0.5)" }}
+                style={{ color: "#F5F0E8", border: "1px solid rgba(245,240,232,0.5)" }}
               >
                 Explore Services
               </Link>
