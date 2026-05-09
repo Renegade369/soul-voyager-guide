@@ -115,7 +115,7 @@ function AdminPage() {
                 <tbody style={{ color: C.text }}>
                   {bookings.map(b => (
                     <tr key={b.id} style={{ borderTop: `1px solid ${C.border}` }}>
-                      <td className="px-4 py-3">{b.full_name}</td>
+                      <td className="px-4 py-3">{b.name}</td>
                       <td className="px-4 py-3">{b.email}</td>
                       <td className="px-4 py-3">{b.phone ?? "—"}</td>
                       <td className="px-4 py-3">{b.preferred_date ?? "—"}</td>
