@@ -57,7 +57,7 @@ function Index() {
     <div>
       {/* Hero — text-led deep indigo sanctuary statement */}
       <section className="relative isolate overflow-hidden" style={{ minHeight: "92vh", backgroundColor: "var(--indigo)" }}>
-        <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center 20%, color-mix(in oklab, var(--gold) 12%, transparent) 0%, transparent 42%), linear-gradient(180deg, var(--indigo) 0%, var(--footer-indigo) 100%)" }} />
+        <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, var(--indigo) 0%, var(--footer-indigo) 100%)" }} />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32" style={{ background: "linear-gradient(to bottom, transparent, var(--footer-indigo))" }} />
 
         {/* Sacred geometry watermark */}
@@ -65,14 +65,14 @@ function Index() {
           <FlowerOfLife size={600} color="#D4AF64" opacity={0.08} strokeWidth={0.4} />
         </div>
 
-        <div className="relative mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center px-6 py-24 text-center md:py-32">
+        <div className="relative mx-auto flex min-h-[calc(100vh-81px)] max-w-3xl flex-col items-center justify-center px-6 py-24 text-center md:py-28">
           <p className="text-[11px] font-light uppercase tracking-[0.32em]" style={{ color: "#D4AF64" }}>
             Soul True
           </p>
 
           {/* Mission statement */}
           <div className="mt-10 space-y-6">
-            <h1 className="font-serif text-2xl font-light leading-relaxed md:text-3xl lg:text-4xl" style={{ color: "#F8F5F0" }}>
+            <h1 className="font-serif text-2xl font-light leading-relaxed md:text-3xl lg:text-4xl" style={{ color: "#F8F5F0", letterSpacing: 0 }}>
               At the core of every struggle — every feeling of emptiness, lost purpose, burnout, addiction, or disconnection — is one fundamental truth:{" "}
               <em className="italic" style={{ color: "#D4AF64" }}>we have drifted from our own souls.</em>
             </h1>
@@ -80,7 +80,7 @@ function Index() {
               This is not weakness. This is the human condition in the world we live in today.
             </p>
             <p className="font-serif text-lg font-light leading-relaxed md:text-xl" style={{ color: "rgba(248,245,240,0.82)" }}>
-              Reconnecting with who you truly are at soul level is not just a personal journey — it is the most important work of your lifetime.
+              Reconnecting with who you truly are at soul level is not just a personal journey — it is meaningful inner work.
             </p>
             <p className="font-serif text-xl font-light italic leading-relaxed md:text-2xl" style={{ color: "#D4AF64" }}>
               Your soul is not something you find. It is where you truly live. It is home.
