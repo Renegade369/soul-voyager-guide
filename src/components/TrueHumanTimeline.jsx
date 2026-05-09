@@ -11,7 +11,7 @@ const T = {
 
 // ─── ERA DEFINITIONS ─────────────────────────────────────────
 const ERAS = [
-  { id: "intervention", label: "The Intervention Era", color: T.purple, range: "450,000 – 200,000 BC" },
+  { id: "intervention", label: "Deep Prehistory — Open Questions", color: T.purple, range: "450,000 – 200,000 BC" },
   { id: "lemuria", label: "Lemuria & Early Civilization", color: T.teal, range: "100,000 – 50,000 BC" },
   { id: "atlantis", label: "The Atlantean Age", color: T.ocean, range: "50,000 – 9,600 BC" },
   { id: "flood", label: "The Great Catastrophe", color: T.blood, range: "10,900 – 9,600 BC" },
