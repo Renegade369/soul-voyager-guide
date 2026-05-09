@@ -25,6 +25,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactWilliamRouteImport } from './routes/contact-william'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BeginHereRouteImport } from './routes/begin-here'
+import { Route as AwakeningAssessmentRouteImport } from './routes/awakening-assessment'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
@@ -109,6 +110,11 @@ const BeginHereRoute = BeginHereRouteImport.update({
   path: '/begin-here',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AwakeningAssessmentRoute = AwakeningAssessmentRouteImport.update({
+  id: '/awakening-assessment',
+  path: '/awakening-assessment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -128,6 +134,7 @@ const ProductHandleRoute = ProductHandleRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
   '/contact': typeof ContactRoute
   '/contact-william': typeof ContactWilliamRoute
@@ -149,6 +156,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
   '/contact': typeof ContactRoute
   '/contact-william': typeof ContactWilliamRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
   '/contact': typeof ContactRoute
   '/contact-william': typeof ContactWilliamRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/awakening-assessment'
     | '/begin-here'
     | '/contact'
     | '/contact-william'
@@ -215,6 +225,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/awakening-assessment'
     | '/begin-here'
     | '/contact'
     | '/contact-william'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/awakening-assessment'
     | '/begin-here'
     | '/contact'
     | '/contact-william'
@@ -258,6 +270,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AwakeningAssessmentRoute: typeof AwakeningAssessmentRoute
   BeginHereRoute: typeof BeginHereRoute
   ContactRoute: typeof ContactRoute
   ContactWilliamRoute: typeof ContactWilliamRoute
@@ -391,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BeginHereRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/awakening-assessment': {
+      id: '/awakening-assessment'
+      path: '/awakening-assessment'
+      fullPath: '/awakening-assessment'
+      preLoaderRoute: typeof AwakeningAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -418,6 +438,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AwakeningAssessmentRoute: AwakeningAssessmentRoute,
   BeginHereRoute: BeginHereRoute,
   ContactRoute: ContactRoute,
   ContactWilliamRoute: ContactWilliamRoute,
