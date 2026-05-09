@@ -1,4 +1,4 @@
-const CACHE_NAME = "soul-true-v3";
+const CACHE_NAME = "soul-true-v4";
 const PRECACHE_URLS = [
   "/welcome",
   "/guide",
