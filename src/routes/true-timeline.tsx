@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+// @ts-expect-error - JSX component without type declarations
 import TrueHumanTimeline from "../components/TrueHumanTimeline";
 
 export const Route = createFileRoute("/true-timeline")({
