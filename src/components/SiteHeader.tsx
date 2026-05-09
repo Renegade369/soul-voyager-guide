@@ -7,7 +7,6 @@ const links = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/teachings", label: "Teachings" },
-  { to: "/awakening-assessment", label: "Discover Your Level" },
   { to: "/events", label: "Events" },
   { to: "/visit", label: "Visit" },
 ] as const;
@@ -19,11 +18,11 @@ export function SiteHeader() {
       className="sticky top-0 z-40 backdrop-blur-sm"
       style={{ backgroundColor: "rgba(28,27,58,0.95)", borderBottom: "1px solid rgba(212,175,100,0.18)" }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-12">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10 xl:px-12">
         <Link to="/" aria-label="Soul True home" style={{ color: "#D4AF64" }}>
           <span className="font-serif text-2xl font-normal tracking-tight">Soul True</span>
         </Link>
-        <nav className="hidden items-center gap-10 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-10">
           {links.map((l) => (
             <Link
               key={l.to}
@@ -43,22 +42,23 @@ export function SiteHeader() {
             Begin Here
           </Link>
         </nav>
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-3 lg:hidden">
           <CartDrawer />
           <button
             aria-label="Toggle menu"
+            aria-expanded={open}
             style={{ color: "#F8F5F0" }}
             onClick={() => setOpen((s) => !s)}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <CartDrawer />
         </div>
       </div>
       {open && (
-        <div className="md:hidden" style={{ backgroundColor: "#1C1B3A", borderTop: "1px solid rgba(212,175,100,0.18)" }}>
+        <div className="lg:hidden" style={{ backgroundColor: "#1C1B3A", borderTop: "1px solid rgba(212,175,100,0.18)" }}>
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
             {links.map((l) => (
               <Link
