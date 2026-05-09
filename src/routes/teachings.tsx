@@ -24,14 +24,14 @@ function TeachingImage({ src, alt }: { src: string; alt: string }) {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+        style={{ backgroundColor: "rgba(245,240,232,0.15)" }}
       />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 h-16"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(248,245,240,0) 0%, rgba(248,245,240,0.6) 100%)",
+            "linear-gradient(to bottom, rgba(245,240,232,0) 0%, rgba(245,240,232,0.6) 100%)",
         }}
       />
     </div>
@@ -96,7 +96,7 @@ function TeachingsPage() {
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0"
-                style={{ backgroundColor: "rgba(248,245,240,0.15)" }}
+                style={{ backgroundColor: "rgba(245,240,232,0.15)" }}
               />
             </div>
             <div className="p-8">
@@ -720,7 +720,7 @@ function TeachingsPage() {
             </p>
           </div>
 
-          <div className="mt-8 rounded-none border-2 border-[#D4AF64]/40 bg-[#1C1B3A]/5 p-8 backdrop-blur">
+          <div className="mt-8 rounded-none border-2 border-[#C9A84C]/40 bg-[#141716]/5 p-8 backdrop-blur">
             <h3 className="font-serif text-xl font-light text-foreground">⚠️ Your Safety Comes First</h3>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
               <p>

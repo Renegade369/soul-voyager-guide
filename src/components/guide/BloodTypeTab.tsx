@@ -281,7 +281,7 @@ export function BloodTypeTab() {
             className="w-full rounded py-4 text-[11px] uppercase tracking-[0.22em] transition-all disabled:opacity-40"
             style={{
               backgroundColor: C.gold,
-              color: "#1C1B3A",
+              color: "#141716",
               fontFamily: fonts.body,
               fontWeight: 500,
             }}
@@ -581,7 +581,7 @@ export function BloodTypeTab() {
               if (guideEl) (guideEl as HTMLElement).click();
             }}
             className="w-full rounded py-3 text-[11px] uppercase tracking-[0.22em]"
-            style={{ backgroundColor: C.gold, color: "#1C1B3A", fontFamily: fonts.body, fontWeight: 500 }}
+            style={{ backgroundColor: C.gold, color: "#141716", fontFamily: fonts.body, fontWeight: 500 }}
           >
             Start My 10-Day Challenge →
           </button>
@@ -589,7 +589,7 @@ export function BloodTypeTab() {
           <a
             href="mailto:highervibrations36@gmail.com"
             className="block w-full rounded py-3 text-center text-[11px] uppercase tracking-[0.22em]"
-            style={{ backgroundColor: C.gold, color: "#1C1B3A", fontFamily: fonts.body, fontWeight: 500 }}
+            style={{ backgroundColor: C.gold, color: "#141716", fontFamily: fonts.body, fontWeight: 500 }}
           >
             Book a Session with Kim Alfano →
           </a>

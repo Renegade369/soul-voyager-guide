@@ -32,85 +32,88 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-linen: var(--linen);
-  --color-stone-soft: var(--stone-soft);
-  --color-sage: var(--sage);
-  --color-indigo: var(--indigo);
-  --color-indigo-muted: var(--indigo-muted);
+  --color-surface: var(--surface);
   --color-gold: var(--gold);
-  --color-forest: var(--forest);
-  --color-footer-indigo: var(--footer-indigo);
+  --color-gold-light: var(--gold-light);
+  --color-teal: var(--teal);
+  --color-text-muted: var(--text-muted);
+  /* Legacy aliases — kept so existing class names don't break */
+  --color-linen: var(--surface);
+  --color-stone-soft: var(--surface);
+  --color-sage: var(--teal);
+  --color-indigo: var(--surface);
+  --color-indigo-muted: var(--text-muted);
+  --color-forest: var(--surface);
+  --color-footer-indigo: var(--background);
   --font-serif: "Cormorant Garamond", "Times New Roman", serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 :root {
   --radius: 0.25rem;
 
-  /* Deep sacred palette: cream content, indigo dark sections, gold accents, forest quote */
-  --background: oklch(0.965 0.012 80);             /* #F8F5F0 warm off-white */
-  --foreground: oklch(0.262 0.05 285);             /* #1C1B3A deep indigo */
+  /* Dark luxury Soul True palette */
+  --background: oklch(0.155 0.003 160);            /* #0D0F0E near black */
+  --foreground: oklch(0.945 0.012 75);             /* #F5F0E8 warm cream text */
 
-  --card: oklch(0.98 0.008 80);
-  --card-foreground: oklch(0.262 0.05 285);
+  --surface: oklch(0.205 0.005 160);               /* #141716 surface card */
+  --card: oklch(0.205 0.005 160);
+  --card-foreground: oklch(0.945 0.012 75);
 
-  --popover: oklch(0.98 0.008 80);
-  --popover-foreground: oklch(0.262 0.05 285);
+  --popover: oklch(0.205 0.005 160);
+  --popover-foreground: oklch(0.945 0.012 75);
 
-  --primary: oklch(0.262 0.05 285);                /* indigo */
-  --primary-foreground: oklch(0.965 0.012 80);
+  --primary: oklch(0.745 0.115 85);                /* #C9A84C gold */
+  --primary-foreground: oklch(0.155 0.003 160);
 
-  --secondary: oklch(0.92 0.012 80);
-  --secondary-foreground: oklch(0.262 0.05 285);
+  --secondary: oklch(0.78 0.13 180);               /* #2DD4BF teal */
+  --secondary-foreground: oklch(0.155 0.003 160);
 
-  --muted: oklch(0.92 0.012 80);
-  --muted-foreground: oklch(0.495 0.045 285);      /* #5C5A7A soft indigo-gray */
+  --muted: oklch(0.205 0.005 160);
+  --muted-foreground: oklch(0.66 0.018 160);       /* #8A9A8E muted */
 
-  --accent: oklch(0.755 0.095 80);                 /* #D4AF64 warm gold */
-  --accent-foreground: oklch(0.262 0.05 285);
+  --accent: oklch(0.745 0.115 85);                 /* gold */
+  --accent-foreground: oklch(0.155 0.003 160);
 
   --destructive: oklch(0.55 0.18 25);
-  --destructive-foreground: oklch(0.98 0.008 80);
+  --destructive-foreground: oklch(0.945 0.012 75);
 
-  --border: oklch(0.262 0.05 285 / 14%);           /* hairline indigo */
-  --input: oklch(0.262 0.05 285 / 18%);
-  --ring: oklch(0.755 0.095 80 / 50%);
+  --border: oklch(0.255 0.005 160);                /* #1E2320 border */
+  --input: oklch(0.255 0.005 160);
+  --ring: oklch(0.745 0.115 85 / 50%);
 
-  --linen: oklch(0.92 0.012 80);
-  --stone-soft: oklch(0.88 0.01 80);
-  --sage: oklch(0.5 0.04 145);
-
-  /* Sacred deep palette tokens */
-  --indigo: #1C1B3A;
-  --indigo-muted: #5C5A7A;
-  --gold: #D4AF64;
-  --forest: #2D5A3D;
-  --footer-indigo: #141327;
+  /* Brand tokens (hex for direct use) */
+  --gold: #C9A84C;
+  --gold-light: #E8C87A;
+  --teal: #2DD4BF;
+  --text-muted: #8A9A8E;
 
   /* No shadows — keep tokens but null them */
   --shadow-soft: 0 0 0 0 transparent;
   --shadow-card: 0 0 0 0 transparent;
+
+  color-scheme: dark;
 }
 
 .dark {
-  /* Keep dark mode usable but the brand stays light */
-  --background: oklch(0.969 0.012 85);
-  --foreground: oklch(0.235 0.005 60);
-  --card: oklch(0.985 0.006 85);
-  --card-foreground: oklch(0.235 0.005 60);
-  --popover: oklch(0.985 0.006 85);
-  --popover-foreground: oklch(0.235 0.005 60);
-  --primary: oklch(0.55 0.04 145);
-  --primary-foreground: oklch(0.985 0.006 85);
-  --secondary: oklch(0.93 0.012 85);
-  --secondary-foreground: oklch(0.235 0.005 60);
-  --muted: oklch(0.93 0.012 85);
-  --muted-foreground: oklch(0.45 0.008 60);
-  --accent: oklch(0.55 0.04 145);
-  --accent-foreground: oklch(0.985 0.006 85);
-  --border: oklch(0.235 0.005 60 / 10%);
-  --input: oklch(0.235 0.005 60 / 14%);
-  --ring: oklch(0.55 0.04 145 / 50%);
+  /* Same dark theme — site is always dark */
+  --background: oklch(0.155 0.003 160);
+  --foreground: oklch(0.945 0.012 75);
+  --card: oklch(0.205 0.005 160);
+  --card-foreground: oklch(0.945 0.012 75);
+  --popover: oklch(0.205 0.005 160);
+  --popover-foreground: oklch(0.945 0.012 75);
+  --primary: oklch(0.745 0.115 85);
+  --primary-foreground: oklch(0.155 0.003 160);
+  --secondary: oklch(0.78 0.13 180);
+  --secondary-foreground: oklch(0.155 0.003 160);
+  --muted: oklch(0.205 0.005 160);
+  --muted-foreground: oklch(0.66 0.018 160);
+  --accent: oklch(0.745 0.115 85);
+  --accent-foreground: oklch(0.155 0.003 160);
+  --border: oklch(0.255 0.005 160);
+  --input: oklch(0.255 0.005 160);
+  --ring: oklch(0.745 0.115 85 / 50%);
 }
 
 @layer base {
@@ -137,13 +140,14 @@
   html,
   body {
     overflow-x: clip;
+    background-color: #0D0F0E;
   }
 
   /* Hairline rule used between sections */
   .hairline {
     height: 0.5px;
     width: 100%;
-    background-color: oklch(0.235 0.005 60 / 0.18);
+    background-color: rgba(245, 240, 232, 0.12);
   }
 }
 
@@ -174,7 +178,7 @@
   transition: background-color 600ms ease, transform 600ms ease;
 }
 .tile-hover:hover {
-  background-color: rgba(212, 175, 100, 0.04);
+  background-color: rgba(201, 168, 76, 0.06);
 }
 .tile-hover .tile-bar {
   transition: width 600ms cubic-bezier(0.22, 0.61, 0.36, 1);

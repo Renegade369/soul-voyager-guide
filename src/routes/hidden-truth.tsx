@@ -23,17 +23,17 @@ export const Route = createFileRoute("/hidden-truth")({
 
 // ─── SOUL TRUE TOKENS ───────────────────────────────────────
 const T = {
-  bg: "#141327",          // deep void (footer indigo)
-  surface: "#1C1B3A",     // deep indigo brand
+  bg: "#0D0F0E",          // deep void (footer indigo)
+  surface: "#141716",     // deep indigo brand
   surfaceAlt: "#23224A",  // raised surface
-  cream: "#F8F5F0",       // primary text on dark
+  cream: "#F5F0E8",       // primary text on dark
   bone: "#E8E4DA",        // secondary text on dark
   muted: "#8E8AA8",       // dim
-  gold: "#D4AF64",        // single warm-gold accent
+  gold: "#C9A84C",        // single warm-gold accent
   goldSoft: "rgba(212,175,100,0.5)",
-  forest: "#2D5A3D",      // forest accent
+  forest: "#141716",      // forest accent
   border: "rgba(212,175,100,0.18)",
-  borderSoft: "rgba(248,245,240,0.08)",
+  borderSoft: "rgba(245,240,232,0.08)",
 } as const;
 
 const heading = { fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 };
