@@ -10,6 +10,7 @@ const links = [
   { to: "/hidden-truth", label: "Hidden Truth" },
   { to: "/awakening-assessment", label: "Discover Your Level" },
   { to: "/reality-map", label: "Reality Map" },
+  { to: "/true-timeline", label: "True Timeline" },
   { to: "/events", label: "Events" },
   { to: "/visit", label: "Visit" },
 ] as const;
