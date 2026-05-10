@@ -39,17 +39,19 @@ export function HomeTab() {
   return (
     <div style={{ color: C.text }}>
       {/* Hero */}
-      <div className="relative isolate -mx-4 overflow-hidden px-4 py-24 text-center md:py-32">
-        <img
-          src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&q=80"
-          alt=""
-          aria-hidden
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
-        />
+      <div
+        className="relative isolate -mx-4 overflow-hidden px-4 py-24 text-center md:py-32"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=1920&q=80')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
-          style={{ background: "rgba(0,0,0,0.6)" }}
+          style={{ background: "rgba(0,0,0,0.55)" }}
         />
         <Emblem icon={<Sun size={32} />} />
         <Eyebrow>SOUL TRUE — OFFICIAL AI LIFE GUIDE</Eyebrow>
