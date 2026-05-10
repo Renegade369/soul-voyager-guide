@@ -29,10 +29,10 @@ function PromptCard({ label, prompt, copyName, pillar }: { label: string; prompt
 }
 
 const pillars = [
-  { id: "physical", icon: Heart, label: "Physical", sub: "Body & Vitality" },
-  { id: "mental", icon: Sprout, label: "Mental & Emotional", sub: "Mind & Heart" },
-  { id: "spiritual", icon: Sun, label: "Spiritual", sub: "Purpose & Presence" },
-  { id: "work", icon: Flame, label: "Work, Wealth & Purpose", sub: "Money & Meaning" },
+  { id: "physical", icon: Heart, label: "Physical", sub: "Body & Vitality", bg: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447810986.png" },
+  { id: "mental", icon: Sprout, label: "Mental & Emotional", sub: "Mind & Heart", bg: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447857528.png" },
+  { id: "spiritual", icon: Sun, label: "Spiritual", sub: "Purpose & Presence", bg: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447858945.png" },
+  { id: "work", icon: Flame, label: "Work, Wealth & Purpose", sub: "Money & Meaning", bg: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447864555.png" },
 ] as const;
 
 export function PillarsTab() {
@@ -57,15 +57,22 @@ export function PillarsTab() {
             <button
               key={p.id}
               onClick={() => { setActive(p.id); trackPillar(p.id); }}
-              className="rounded-xl border p-4 text-center transition-all duration-200"
+              className="relative overflow-hidden rounded-xl border text-center transition-all duration-200 hover:scale-[1.02]"
               style={{
-                backgroundColor: isActive ? `${C.gold}12` : C.card,
+                minHeight: 160,
                 borderColor: isActive ? C.gold : C.border,
               }}
             >
-              <Icon size={24} style={{ color: isActive ? C.gold : C.muted }} className="mx-auto mb-2" />
-              <div className="text-sm font-medium" style={{ fontFamily: fonts.body, color: isActive ? C.gold : C.text }}>{p.label}</div>
-              <div className="text-[10px]" style={{ fontFamily: fonts.body, color: C.dim }}>{p.sub}</div>
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${p.bg})` }}
+              />
+              <div className="absolute inset-0" style={{ backgroundColor: isActive ? "rgba(0,0,0,0.45)" : "rgba(0,0,0,0.6)" }} />
+              <div className="relative z-10 flex h-full flex-col items-center justify-center p-4" style={{ minHeight: 160 }}>
+                <Icon size={24} style={{ color: isActive ? C.gold : "#E8C87A" }} className="mb-2" />
+                <div className="text-sm font-medium" style={{ fontFamily: fonts.body, color: isActive ? C.gold : "#F5F0E8" }}>{p.label}</div>
+                <div className="mt-1 text-[10px] opacity-80" style={{ fontFamily: fonts.body, color: "#E8C87A" }}>{p.sub}</div>
+              </div>
             </button>
           );
         })}
