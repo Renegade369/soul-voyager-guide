@@ -50,8 +50,7 @@ function GuidePage() {
   const { user, signOut } = useAuth();
 
   return (
-    <div className="relative min-h-screen" style={{ backgroundColor: C.bg }}>
-      <SacredBackdrop />
+    <div className="min-h-screen" style={{ backgroundColor: "#1a1410" }}>
       {/* Navbar */}
       <nav
         className="sticky top-0 z-40 border-b"
