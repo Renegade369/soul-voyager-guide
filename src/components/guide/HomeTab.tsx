@@ -39,7 +39,15 @@ export function HomeTab() {
   return (
     <div style={{ color: C.text }}>
       {/* Hero */}
-      <div className="py-16 text-center">
+      <div
+        className="relative isolate -mx-4 overflow-hidden px-4 py-24 text-center md:py-32"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <Emblem icon={<Sun size={32} />} />
         <Eyebrow>SOUL TRUE — OFFICIAL AI LIFE GUIDE</Eyebrow>
         <HeroTitle>
