@@ -209,14 +209,14 @@ section,
   html,
   body {
     overflow-x: clip;
-    background-color: #0D0F0E;
+    background-color: #1a1410;
   }
 
   /* Hairline rule used between sections */
   .hairline {
     height: 0.5px;
     width: 100%;
-    background-color: rgba(245, 240, 232, 0.12);
+    background-color: rgba(201, 168, 76, 0.18);
   }
 }
 
