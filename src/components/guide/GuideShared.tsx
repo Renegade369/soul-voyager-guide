@@ -24,12 +24,18 @@ export const fonts = {
   label: '"Cinzel", serif',
 };
 
+import dividerAccent from "@/assets/divider-accent.png";
+
 export function GoldRule() {
   return (
-    <div className="flex items-center justify-center gap-4 py-8">
-      <div className="h-px flex-1" style={{ backgroundColor: `${C.gold}33` }} />
-      <div className="h-3 w-3 rotate-45" style={{ border: `1px solid ${C.gold}`, opacity: 0.6 }} />
-      <div className="h-px flex-1" style={{ backgroundColor: `${C.gold}33` }} />
+    <div className="py-8">
+      <img
+        src={dividerAccent}
+        alt=""
+        aria-hidden
+        className="block"
+        style={{ width: "100%", maxWidth: 600, margin: "0 auto", height: "auto" }}
+      />
     </div>
   );
 }
