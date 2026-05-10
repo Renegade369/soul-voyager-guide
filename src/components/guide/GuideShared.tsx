@@ -24,7 +24,7 @@ export const fonts = {
   label: '"Cinzel", serif',
 };
 
-import dividerAccent from "@/assets/divider-accent.png";
+
 
 export function GoldRule() {
   return (
