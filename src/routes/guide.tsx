@@ -11,7 +11,6 @@ import { ChallengeTab } from "@/components/guide/ChallengeTab";
 import { SoulQuizTab } from "@/components/guide/SoulQuizTab";
 import { BirthChartTab } from "@/components/guide/BirthChartTab";
 import { BloodTypeTab } from "@/components/guide/BloodTypeTab";
-import { SacredBackdrop } from "@/components/guide/Atmosphere";
 
 const C = { bg: "#0D0F0E", border: "#2E3A35", gold: "#C9A84C", text: "#E8EDE9", muted: "#8A9E94" };
 const fonts = { body: '"Outfit", sans-serif' };
@@ -51,8 +50,7 @@ function GuidePage() {
   const { user, signOut } = useAuth();
 
   return (
-    <div className="relative min-h-screen" style={{ backgroundColor: C.bg }}>
-      <SacredBackdrop />
+    <div className="min-h-screen" style={{ backgroundColor: "#1a1410" }}>
       {/* Navbar */}
       <nav
         className="sticky top-0 z-40 border-b"

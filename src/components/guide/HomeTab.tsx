@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Heart, Sprout, Sun, Flame, Brain, Rocket, RefreshCw, Shield } from "lucide-react";
 import { C, fonts, GoldRule, StepCard, Emblem, Eyebrow, HeroTitle, GoldText } from "./GuideShared";
-import { HeroAtmosphere } from "./Atmosphere";
 import { trackPageEnter, trackCTA } from "@/lib/analytics";
 
 function AnimatedBar({ label, pct, delay }: { label: string; pct: number; delay: number }) {
@@ -40,8 +39,7 @@ export function HomeTab() {
   return (
     <div style={{ color: C.text }}>
       {/* Hero */}
-      <div className="relative isolate overflow-hidden rounded-2xl py-20 text-center md:py-28">
-        <HeroAtmosphere />
+      <div className="py-16 text-center">
         <Emblem icon={<Sun size={32} />} />
         <Eyebrow>SOUL TRUE — OFFICIAL AI LIFE GUIDE</Eyebrow>
         <HeroTitle>
