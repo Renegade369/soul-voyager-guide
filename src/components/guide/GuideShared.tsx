@@ -24,18 +24,18 @@ export const fonts = {
   label: '"Cinzel", serif',
 };
 
-import dividerAccent from "@/assets/divider-accent.png";
+
 
 export function GoldRule() {
   return (
-    <div className="py-8">
-      <img
-        src={dividerAccent}
-        alt=""
-        aria-hidden
-        className="block"
-        style={{ width: "100%", maxWidth: 600, margin: "0 auto", height: 40, objectFit: "cover", objectPosition: "center" }}
-      />
+    <div className="mx-auto w-full" style={{ maxWidth: 700, padding: "8px 0" }}>
+      <svg viewBox="0 0 800 30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" className="block w-full h-auto">
+        <line x1="0" y1="15" x2="370" y2="15" stroke="#c9a84c" strokeWidth="0.5" opacity="0.8" />
+        <line x1="430" y1="15" x2="800" y2="15" stroke="#c9a84c" strokeWidth="0.5" opacity="0.8" />
+        <circle cx="378" cy="15" r="1.5" fill="#c9a84c" />
+        <circle cx="422" cy="15" r="1.5" fill="#c9a84c" />
+        <polygon points="400,5 403,13 411,15 403,17 400,25 397,17 389,15 397,13" fill="#c9a84c" />
+      </svg>
     </div>
   );
 }
