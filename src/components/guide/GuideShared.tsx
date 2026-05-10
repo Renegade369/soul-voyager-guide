@@ -1,4 +1,6 @@
 /* Shared design constants for the dark-themed app pages */
+import { ATMOSPHERE, CrystalCorner, CrystalDivider } from "./Atmosphere";
+
 export const C = {
   bg: "#0D0F0E",
   card: "#141917",
