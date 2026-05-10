@@ -15,6 +15,15 @@ import { BloodTypeTab } from "@/components/guide/BloodTypeTab";
 const C = { bg: "#0D0F0E", border: "#2E3A35", gold: "#C9A84C", text: "#E8EDE9", muted: "#8A9E94" };
 const fonts = { body: '"Outfit", sans-serif' };
 
+const pageBackgrounds: Record<string, string> = {
+  meditations: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448421456.png",
+  tools: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448440620.png",
+  challenge: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448428398.png",
+  soulquiz: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448438907.png",
+  birthchart: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448428624.png",
+  bloodtype: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448443237.png",
+};
+
 const tabs = [
   { id: "home", label: "Home", icon: Home },
   { id: "pillars", label: "Pillars", icon: Grid3X3 },
@@ -101,15 +110,31 @@ function GuidePage() {
       </nav>
 
       {/* Content */}
-      <div className="mx-auto max-w-5xl px-4 pb-20">
-        {active === "home" && <HomeTab />}
-        {active === "pillars" && <PillarsTab />}
-        {active === "meditations" && <MeditationsTab />}
-        {active === "tools" && <ToolsTab onGoToChallenge={() => handleTabChange("challenge")} />}
-        {active === "challenge" && <ChallengeTab />}
-        {active === "soulquiz" && <SoulQuizTab />}
-        {active === "birthchart" && <BirthChartTab />}
-        {active === "bloodtype" && <BloodTypeTab />}
+      <div className="relative">
+        {pageBackgrounds[active] && (
+          <>
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                backgroundImage: `url(${pageBackgrounds[active]})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundAttachment: "fixed",
+              }}
+            />
+            <div className="pointer-events-none absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.6)" }} />
+          </>
+        )}
+        <div className="relative z-10 mx-auto max-w-5xl px-4 pb-20">
+          {active === "home" && <HomeTab />}
+          {active === "pillars" && <PillarsTab />}
+          {active === "meditations" && <MeditationsTab />}
+          {active === "tools" && <ToolsTab onGoToChallenge={() => handleTabChange("challenge")} />}
+          {active === "challenge" && <ChallengeTab />}
+          {active === "soulquiz" && <SoulQuizTab />}
+          {active === "birthchart" && <BirthChartTab />}
+          {active === "bloodtype" && <BloodTypeTab />}
+        </div>
       </div>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
