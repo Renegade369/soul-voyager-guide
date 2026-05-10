@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Heart, Sprout, Sun, Flame, Brain, Rocket, RefreshCw, Shield } from "lucide-react";
 import { C, fonts, GoldRule, StepCard, Emblem, Eyebrow, HeroTitle, GoldText } from "./GuideShared";
 import { trackPageEnter, trackCTA } from "@/lib/analytics";
+import heroMystical from "@/assets/hero-mystical.png";
 
 function AnimatedBar({ label, pct, delay }: { label: string; pct: number; delay: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -42,16 +43,17 @@ export function HomeTab() {
       <div
         className="relative isolate -mx-4 overflow-hidden px-4 py-24 text-center md:py-32"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=1920&q=80')",
+          backgroundImage: `url(${heroMystical})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "#0d0906",
         }}
       >
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
-          style={{ background: "rgba(0,0,0,0.55)" }}
+          style={{ background: "rgba(0,0,0,0.45)" }}
         />
         <Emblem icon={<Sun size={32} />} />
         <Eyebrow>SOUL TRUE — OFFICIAL AI LIFE GUIDE</Eyebrow>
