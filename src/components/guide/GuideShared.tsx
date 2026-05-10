@@ -34,7 +34,7 @@ export function GoldRule() {
         alt=""
         aria-hidden
         className="block"
-        style={{ width: "100%", maxWidth: 600, margin: "0 auto", height: "auto" }}
+        style={{ width: "100%", maxWidth: 600, margin: "0 auto", height: 40, objectFit: "cover", objectPosition: "center" }}
       />
     </div>
   );
