@@ -95,6 +95,14 @@ export function SiteHeader() {
               Guide
             </Link>
             <Link
+              to="/awakening-assessment"
+              onClick={() => setOpen(false)}
+              className="mt-2 px-5 py-3 text-center text-[11px] uppercase tracking-[0.22em]"
+              style={{ color: "#C9A84C", border: "1px solid #C9A84C" }}
+            >
+              Discover Your Level
+            </Link>
+            <Link
               to="/begin-here"
               onClick={() => setOpen(false)}
               className="mt-2 px-5 py-3 text-center text-[11px] uppercase tracking-[0.22em]"
