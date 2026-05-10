@@ -18,6 +18,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealityMapRouteImport } from './routes/reality-map'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
+import { Route as MeditationsRouteImport } from './routes/meditations'
 import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as GuideRouteImport } from './routes/guide'
@@ -76,6 +77,11 @@ const PractitionersRoute = PractitionersRouteImport.update({
 const NatureBookingRoute = NatureBookingRouteImport.update({
   id: '/nature-booking',
   path: '/nature-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeditationsRoute = MeditationsRouteImport.update({
+  id: '/meditations',
+  path: '/meditations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HiddenTruthRoute = HiddenTruthRouteImport.update({
@@ -163,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/meditations': typeof MeditationsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/reality-map': typeof RealityMapRoute
@@ -188,6 +195,7 @@ export interface FileRoutesByTo {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/meditations': typeof MeditationsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/reality-map': typeof RealityMapRoute
@@ -214,6 +222,7 @@ export interface FileRoutesById {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/meditations': typeof MeditationsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/reality-map': typeof RealityMapRoute
@@ -241,6 +250,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/meditations'
     | '/nature-booking'
     | '/practitioners'
     | '/reality-map'
@@ -266,6 +276,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/meditations'
     | '/nature-booking'
     | '/practitioners'
     | '/reality-map'
@@ -291,6 +302,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/meditations'
     | '/nature-booking'
     | '/practitioners'
     | '/reality-map'
@@ -317,6 +329,7 @@ export interface RootRouteChildren {
   GuideRoute: typeof GuideRoute
   HealthRoute: typeof HealthRoute
   HiddenTruthRoute: typeof HiddenTruthRoute
+  MeditationsRoute: typeof MeditationsRoute
   NatureBookingRoute: typeof NatureBookingRoute
   PractitionersRoute: typeof PractitionersRoute
   RealityMapRoute: typeof RealityMapRoute
@@ -392,6 +405,13 @@ declare module '@tanstack/react-router' {
       path: '/nature-booking'
       fullPath: '/nature-booking'
       preLoaderRoute: typeof NatureBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meditations': {
+      id: '/meditations'
+      path: '/meditations'
+      fullPath: '/meditations'
+      preLoaderRoute: typeof MeditationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hidden-truth': {
@@ -509,6 +529,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuideRoute: GuideRoute,
   HealthRoute: HealthRoute,
   HiddenTruthRoute: HiddenTruthRoute,
+  MeditationsRoute: MeditationsRoute,
   NatureBookingRoute: NatureBookingRoute,
   PractitionersRoute: PractitionersRoute,
   RealityMapRoute: RealityMapRoute,
