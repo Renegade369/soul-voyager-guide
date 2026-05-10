@@ -39,8 +39,7 @@ export function HomeTab() {
   return (
     <div style={{ color: C.text }}>
       {/* Hero */}
-      <div className="relative isolate overflow-hidden rounded-2xl py-20 text-center md:py-28">
-        <HeroAtmosphere />
+      <div className="py-16 text-center">
         <Emblem icon={<Sun size={32} />} />
         <Eyebrow>SOUL TRUE — OFFICIAL AI LIFE GUIDE</Eyebrow>
         <HeroTitle>
