@@ -25,26 +25,22 @@ export const fonts = {
 };
 
 export function GoldRule() {
-  // Re-exported as a glowing crystal divider for the candlelit aesthetic.
-  // Keeping the named export so all existing imports work unchanged.
-  return <CrystalDivider />;
+  return (
+    <div className="flex items-center justify-center gap-4 py-8">
+      <div className="h-px flex-1" style={{ backgroundColor: `${C.gold}33` }} />
+      <div className="h-3 w-3 rotate-45" style={{ border: `1px solid ${C.gold}`, opacity: 0.6 }} />
+      <div className="h-px flex-1" style={{ backgroundColor: `${C.gold}33` }} />
+    </div>
+  );
 }
 
 export function StepCard({ icon, title, desc, index }: { icon: React.ReactNode; title: string; desc: string; index?: number }) {
-  // Alternate the crystal accent so cards in a grid feel varied.
-  const crystals = [ATMOSPHERE.amethyst, ATMOSPHERE.quartz, ATMOSPHERE.selenite];
-  const crystal = crystals[(index ?? 0) % crystals.length];
   return (
     <div
-      className="relative overflow-hidden rounded-xl border p-6 transition-colors duration-200"
-      style={{
-        backgroundColor: C.card,
-        borderColor: C.border,
-        backgroundImage: `linear-gradient(135deg, rgba(201,168,76,0.04), transparent 60%)`,
-      }}
+      className="rounded-xl border p-6 transition-colors duration-200"
+      style={{ backgroundColor: C.card, borderColor: C.border }}
     >
-      <CrystalCorner image={crystal} position="tr" size={72} />
-      <div className="relative mb-4 flex items-center gap-3">
+      <div className="mb-4 flex items-center gap-3">
         {index !== undefined && (
           <span className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium" style={{ backgroundColor: `${C.teal}22`, color: C.teal, fontFamily: fonts.body }}>
             {index}
@@ -52,8 +48,8 @@ export function StepCard({ icon, title, desc, index }: { icon: React.ReactNode; 
         )}
         <span style={{ color: C.gold }}>{icon}</span>
       </div>
-      <h4 className="relative mb-2 text-lg font-medium" style={{ fontFamily: fonts.display, color: C.text }}>{title}</h4>
-      <p className="relative text-sm leading-relaxed" style={{ fontFamily: fonts.body, color: C.muted, fontWeight: 300 }}>{desc}</p>
+      <h4 className="mb-2 text-lg font-medium" style={{ fontFamily: fonts.display, color: C.text }}>{title}</h4>
+      <p className="text-sm leading-relaxed" style={{ fontFamily: fonts.body, color: C.muted, fontWeight: 300 }}>{desc}</p>
     </div>
   );
 }
