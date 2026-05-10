@@ -42,6 +42,13 @@ export function SiteHeader() {
             Guide
           </Link>
           <Link
+            to="/awakening-assessment"
+            className="rounded-none px-5 py-2.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
+            style={{ color: "#C9A84C", border: "1px solid #C9A84C" }}
+          >
+            Discover Your Level
+          </Link>
+          <Link
             to="/begin-here"
             className="rounded-none px-5 py-2.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
             style={{ color: "#0D0F0E", background: "linear-gradient(135deg,#C9A84C,#E8C87A)", border: "1px solid #C9A84C" }}
