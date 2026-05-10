@@ -4,16 +4,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ── HARD OVERRIDE: dark luxury Soul True theme ── */
+/* ── HARD OVERRIDE: candlelit sacred Soul True theme ── */
 :root {
-  --bg: #0D0F0E;
-  --surface: #141716;
-  --border: #1E2320;
+  --bg: #1a1410;             /* warm espresso */
+  --surface: #2a1f1a;        /* deep warm stone card */
+  --border: rgba(201,168,76,0.25);
   --gold: #C9A84C;
   --gold-light: #E8C87A;
   --teal: #2DD4BF;
-  --text: #F5F0E8;
-  --muted: #8A9A8E;
+  --text: #E8DCC8;           /* warm bone */
+  --muted: #8A7E6E;
+  --gold-glow: 0 0 24px rgba(201,168,76,0.12), 0 0 1px rgba(201,168,76,0.35);
 }
 
 * {
@@ -22,11 +23,57 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cormorant Garamond', serif !important;
+  color: #C9A84C !important;
 }
 
 body {
-  background-color: #0D0F0E !important;
-  color: #F5F0E8 !important;
+  background-color: #1a1410 !important;
+  color: #E8DCC8 !important;
+  background-image:
+    radial-gradient(ellipse at top, rgba(201,168,76,0.06), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(201,168,76,0.04), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* ── Global candlelit overrides for hardcoded inline styles ── */
+[style*="#0D0F0E"] { background-color: #1a1410 !important; }
+[style*="#141716"],
+[style*="#141917"],
+[style*="#1C2420"] { background-color: #2a1f1a !important; }
+[style*="#1E2320"],
+[style*="#2E3A35"] { border-color: rgba(201,168,76,0.25) !important; }
+
+/* Re-color the cream/text inline values to warm bone */
+[style*="#F5F0E8"] { color: #E8DCC8 !important; }
+[style*="rgba(245,240,232"] { color: rgba(232,220,200,0.75) !important; }
+
+/* Subtle gold glow on cards, sections, header, footer */
+header, footer,
+section,
+[class*="rounded"][style*="border"],
+[style*="border: 1px solid"] {
+  box-shadow: 0 0 24px rgba(201,168,76,0.05);
+}
+
+/* Card containers — gold hairline border */
+[style*="background-color: #141716"],
+[style*="background-color:#141716"],
+[style*="backgroundColor: #141716"],
+[style*="background-color: #141917"],
+[style*="background-color: #1C2420"] {
+  border: 1px solid rgba(201,168,76,0.25) !important;
+  box-shadow: 0 0 32px rgba(201,168,76,0.06), inset 0 0 1px rgba(201,168,76,0.15) !important;
+}
+
+/* Primary gold buttons keep gradient + add candle glow */
+[style*="linear-gradient(135deg,#C9A84C"],
+[style*="linear-gradient(135deg, #C9A84C"] {
+  box-shadow: 0 0 20px rgba(201,168,76,0.35), 0 0 40px rgba(201,168,76,0.15) !important;
+}
+
+/* Gold outlined elements */
+[style*="border: 1px solid #C9A84C"] {
+  box-shadow: 0 0 16px rgba(201,168,76,0.18) !important;
 }
 
 @theme inline {
