@@ -110,15 +110,31 @@ function GuidePage() {
       </nav>
 
       {/* Content */}
-      <div className="mx-auto max-w-5xl px-4 pb-20">
-        {active === "home" && <HomeTab />}
-        {active === "pillars" && <PillarsTab />}
-        {active === "meditations" && <MeditationsTab />}
-        {active === "tools" && <ToolsTab onGoToChallenge={() => handleTabChange("challenge")} />}
-        {active === "challenge" && <ChallengeTab />}
-        {active === "soulquiz" && <SoulQuizTab />}
-        {active === "birthchart" && <BirthChartTab />}
-        {active === "bloodtype" && <BloodTypeTab />}
+      <div className="relative">
+        {pageBackgrounds[active] && (
+          <>
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                backgroundImage: `url(${pageBackgrounds[active]})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundAttachment: "fixed",
+              }}
+            />
+            <div className="pointer-events-none absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.6)" }} />
+          </>
+        )}
+        <div className="relative z-10 mx-auto max-w-5xl px-4 pb-20">
+          {active === "home" && <HomeTab />}
+          {active === "pillars" && <PillarsTab />}
+          {active === "meditations" && <MeditationsTab />}
+          {active === "tools" && <ToolsTab onGoToChallenge={() => handleTabChange("challenge")} />}
+          {active === "challenge" && <ChallengeTab />}
+          {active === "soulquiz" && <SoulQuizTab />}
+          {active === "birthchart" && <BirthChartTab />}
+          {active === "bloodtype" && <BloodTypeTab />}
+        </div>
       </div>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
