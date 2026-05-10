@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Heart, Sprout, Sun, Flame, Brain, Rocket, RefreshCw, Shield } from "lucide-react";
 import { C, fonts, GoldRule, StepCard, Emblem, Eyebrow, HeroTitle, GoldText } from "./GuideShared";
-import { HeroAtmosphere } from "./Atmosphere";
 import { trackPageEnter, trackCTA } from "@/lib/analytics";
 
 function AnimatedBar({ label, pct, delay }: { label: string; pct: number; delay: number }) {
