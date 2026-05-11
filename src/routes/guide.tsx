@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Home, Grid3X3, Headphones, Wrench, Trophy, Sparkles, Orbit, Droplet } from "lucide-react";
+import { Home, Grid3X3, Headphones, Wrench, Trophy, Sparkles, Orbit, Droplet, Eye } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthModal } from "@/components/guide/AuthModal";
 import { HomeTab } from "@/components/guide/HomeTab";
@@ -11,6 +11,7 @@ import { ChallengeTab } from "@/components/guide/ChallengeTab";
 import { SoulQuizTab } from "@/components/guide/SoulQuizTab";
 import { BirthChartTab } from "@/components/guide/BirthChartTab";
 import { BloodTypeTab } from "@/components/guide/BloodTypeTab";
+import EnergyReaderTab from "@/components/guide/EnergyReaderTab";
 
 const C = { bg: "#0D0F0E", border: "#2E3A35", gold: "#C9A84C", text: "#E8EDE9", muted: "#8A9E94" };
 const fonts = { body: '"Outfit", sans-serif' };
@@ -33,6 +34,7 @@ const tabs = [
   { id: "soulquiz", label: "Soul Quiz", icon: Sparkles },
   { id: "birthchart", label: "Birth Chart", icon: Orbit },
   { id: "bloodtype", label: "Blood Type", icon: Droplet },
+  { id: "energy", label: "Energy Reader", icon: Eye },
 ] as const;
 
 export const Route = createFileRoute("/guide")({
@@ -134,6 +136,7 @@ function GuidePage() {
           {active === "soulquiz" && <SoulQuizTab />}
           {active === "birthchart" && <BirthChartTab />}
           {active === "bloodtype" && <BloodTypeTab />}
+          {active === "energy" && <EnergyReaderTab />}
         </div>
       </div>
 
