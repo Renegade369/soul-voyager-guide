@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Play, X, Clock } from "lucide-react";
+import MeditationGenerator from "@/components/MeditationGenerator";
 
 interface Meditation {
   id: string;
@@ -207,6 +208,7 @@ export default function MeditationsContent({ withHero = true }: { withHero?: boo
           ))}
         </div>
       </div>
+      <MeditationGenerator />
       {playingMeditation && (
         <PlayModal meditation={playingMeditation} onClose={() => setPlayingMeditation(null)} />
       )}
