@@ -183,7 +183,7 @@ export default function MeditationsContent({ withHero = true }: { withHero?: boo
         <div className="relative h-72 flex items-end pb-10 px-6 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1200')" }}
+            style={{ backgroundImage: `url('${IMAGE_HERO}')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
           <div className="relative max-w-4xl mx-auto w-full">
