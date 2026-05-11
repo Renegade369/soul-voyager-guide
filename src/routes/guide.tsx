@@ -34,6 +34,7 @@ const tabs = [
   { id: "soulquiz", label: "Soul Quiz", icon: Sparkles },
   { id: "birthchart", label: "Birth Chart", icon: Orbit },
   { id: "bloodtype", label: "Blood Type", icon: Droplet },
+  { id: "energy", label: "Energy Reader", icon: Eye },
 ] as const;
 
 export const Route = createFileRoute("/guide")({
