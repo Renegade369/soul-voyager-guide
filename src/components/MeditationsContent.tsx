@@ -2,6 +2,17 @@ import { useState } from "react";
 import { Play, X, Clock } from "lucide-react";
 import MeditationGenerator from "@/components/MeditationGenerator";
 
+const IMAGE_HERO = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778449067909.png";
+const IMAGE_RELEASING_FEAR = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447312570.png";
+const IMAGE_LIVING_HEART = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448438907.png";
+const IMAGE_THETA = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447011088.png";
+const IMAGE_PURPOSE = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448859613.png";
+const IMAGE_ABUNDANCE = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447857528.png";
+const IMAGE_COHERENCE = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448421456.png";
+const IMAGE_REWIRING = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778446922151.png";
+const IMAGE_PRESENT = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778449004974.png";
+const IMAGE_AI_GENERATOR = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778449001316.png";
+
 interface Meditation {
   id: string;
   title: string;
