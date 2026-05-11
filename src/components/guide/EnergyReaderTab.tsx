@@ -414,6 +414,10 @@ export default function EnergyReaderTab() {
 
 
   const handleCapture = async (readerType: ReaderType, imageBase64: string) => {
+    if (!imageBase64 || !imageBase64.startsWith("data:image/") || imageBase64.length < 200) {
+      setErr("That image didn't capture properly. Please try again or upload a photo.");
+      return;
+    }
     setLoading(readerType);
     setErr("");
     try {
