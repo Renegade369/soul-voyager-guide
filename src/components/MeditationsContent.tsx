@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Play, X, Clock } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Play, Pause, Square, X, Clock, Loader2 } from "lucide-react";
 import MeditationGenerator from "@/components/MeditationGenerator";
+import { supabase } from "@/integrations/supabase/client";
 
 const IMAGE_HERO = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1778539783382.png";
 const IMAGE_RELEASING_FEAR = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1778539831064.png";
