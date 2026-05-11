@@ -135,7 +135,10 @@ function CameraCapture({
 
   const capture = () => {
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || !v.videoWidth || !v.videoHeight) {
+      setErr("Camera not ready yet. Please wait a moment and try again.");
+      return;
+    }
     const canvas = document.createElement("canvas");
     canvas.width = v.videoWidth;
     canvas.height = v.videoHeight;
@@ -143,6 +146,10 @@ function CameraCapture({
     if (!ctx) return;
     ctx.drawImage(v, 0, 0);
     const dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+    if (!dataUrl || dataUrl.length < 100) {
+      setErr("Capture failed. Please try again or upload a photo.");
+      return;
+    }
     stop();
     onCapture(dataUrl);
   };
