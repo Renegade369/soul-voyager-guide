@@ -19,6 +19,7 @@ import { Route as RealityMapRouteImport } from './routes/reality-map'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
 import { Route as MeditationsRouteImport } from './routes/meditations'
+import { Route as IrisReaderRouteImport } from './routes/iris-reader'
 import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as GuideRouteImport } from './routes/guide'
@@ -29,6 +30,7 @@ import { Route as ContactWilliamRouteImport } from './routes/contact-william'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BeginHereRouteImport } from './routes/begin-here'
 import { Route as AwakeningAssessmentRouteImport } from './routes/awakening-assessment'
+import { Route as AuraReaderRouteImport } from './routes/aura-reader'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -84,6 +86,11 @@ const MeditationsRoute = MeditationsRouteImport.update({
   path: '/meditations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IrisReaderRoute = IrisReaderRouteImport.update({
+  id: '/iris-reader',
+  path: '/iris-reader',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HiddenTruthRoute = HiddenTruthRouteImport.update({
   id: '/hidden-truth',
   path: '/hidden-truth',
@@ -134,6 +141,11 @@ const AwakeningAssessmentRoute = AwakeningAssessmentRouteImport.update({
   path: '/awakening-assessment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuraReaderRoute = AuraReaderRouteImport.update({
+  id: '/aura-reader',
+  path: '/aura-reader',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -159,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
   '/contact': typeof ContactRoute
@@ -169,6 +182,7 @@ export interface FileRoutesByFullPath {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
@@ -185,6 +199,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
   '/contact': typeof ContactRoute
@@ -195,6 +210,7 @@ export interface FileRoutesByTo {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
@@ -212,6 +228,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
   '/contact': typeof ContactRoute
@@ -222,6 +239,7 @@ export interface FileRoutesById {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
@@ -240,6 +258,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
     | '/contact'
@@ -250,6 +269,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/iris-reader'
     | '/meditations'
     | '/nature-booking'
     | '/practitioners'
@@ -266,6 +286,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
     | '/contact'
@@ -276,6 +297,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/iris-reader'
     | '/meditations'
     | '/nature-booking'
     | '/practitioners'
@@ -292,6 +314,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
     | '/contact'
@@ -302,6 +325,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/iris-reader'
     | '/meditations'
     | '/nature-booking'
     | '/practitioners'
@@ -319,6 +343,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  AuraReaderRoute: typeof AuraReaderRoute
   AwakeningAssessmentRoute: typeof AwakeningAssessmentRoute
   BeginHereRoute: typeof BeginHereRoute
   ContactRoute: typeof ContactRoute
@@ -329,6 +354,7 @@ export interface RootRouteChildren {
   GuideRoute: typeof GuideRoute
   HealthRoute: typeof HealthRoute
   HiddenTruthRoute: typeof HiddenTruthRoute
+  IrisReaderRoute: typeof IrisReaderRoute
   MeditationsRoute: typeof MeditationsRoute
   NatureBookingRoute: typeof NatureBookingRoute
   PractitionersRoute: typeof PractitionersRoute
@@ -414,6 +440,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MeditationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/iris-reader': {
+      id: '/iris-reader'
+      path: '/iris-reader'
+      fullPath: '/iris-reader'
+      preLoaderRoute: typeof IrisReaderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hidden-truth': {
       id: '/hidden-truth'
       path: '/hidden-truth'
@@ -484,6 +517,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AwakeningAssessmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aura-reader': {
+      id: '/aura-reader'
+      path: '/aura-reader'
+      fullPath: '/aura-reader'
+      preLoaderRoute: typeof AuraReaderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
@@ -519,6 +559,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  AuraReaderRoute: AuraReaderRoute,
   AwakeningAssessmentRoute: AwakeningAssessmentRoute,
   BeginHereRoute: BeginHereRoute,
   ContactRoute: ContactRoute,
@@ -529,6 +570,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuideRoute: GuideRoute,
   HealthRoute: HealthRoute,
   HiddenTruthRoute: HiddenTruthRoute,
+  IrisReaderRoute: IrisReaderRoute,
   MeditationsRoute: MeditationsRoute,
   NatureBookingRoute: NatureBookingRoute,
   PractitionersRoute: PractitionersRoute,
