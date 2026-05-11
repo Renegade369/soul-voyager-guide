@@ -30,6 +30,7 @@ import { Route as ContactWilliamRouteImport } from './routes/contact-william'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BeginHereRouteImport } from './routes/begin-here'
 import { Route as AwakeningAssessmentRouteImport } from './routes/awakening-assessment'
+import { Route as AuraReaderRouteImport } from './routes/aura-reader'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -140,6 +141,11 @@ const AwakeningAssessmentRoute = AwakeningAssessmentRouteImport.update({
   path: '/awakening-assessment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuraReaderRoute = AuraReaderRouteImport.update({
+  id: '/aura-reader',
+  path: '/aura-reader',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
   '/contact': typeof ContactRoute
@@ -192,6 +199,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
   '/contact': typeof ContactRoute
@@ -220,6 +228,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
   '/contact': typeof ContactRoute
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
     | '/contact'
@@ -276,6 +286,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
     | '/contact'
@@ -303,6 +314,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
     | '/contact'
@@ -331,6 +343,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  AuraReaderRoute: typeof AuraReaderRoute
   AwakeningAssessmentRoute: typeof AwakeningAssessmentRoute
   BeginHereRoute: typeof BeginHereRoute
   ContactRoute: typeof ContactRoute
@@ -504,6 +517,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AwakeningAssessmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aura-reader': {
+      id: '/aura-reader'
+      path: '/aura-reader'
+      fullPath: '/aura-reader'
+      preLoaderRoute: typeof AuraReaderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
@@ -539,6 +559,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  AuraReaderRoute: AuraReaderRoute,
   AwakeningAssessmentRoute: AwakeningAssessmentRoute,
   BeginHereRoute: BeginHereRoute,
   ContactRoute: ContactRoute,
