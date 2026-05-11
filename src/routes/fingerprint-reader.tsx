@@ -1,0 +1,32 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/fingerprint-reader")({
+  head: () => ({
+    meta: [
+      { title: "Fingerprint Reading — Soul True" },
+      { name: "description", content: "Coming soon: the third step of your Soul Profile — the Fingerprint Reader." },
+    ],
+  }),
+  component: FingerprintReaderPlaceholder,
+});
+
+function FingerprintReaderPlaceholder() {
+  return (
+    <div className="min-h-screen flex items-center justify-center px-6" style={{ backgroundColor: "#0a0a0a", color: "#F5F0E8" }}>
+      <div className="max-w-md text-center">
+        <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Step 3 of 3</p>
+        <h1 className="mt-6 font-serif text-4xl font-light" style={{ color: "#E8C87A" }}>Fingerprint Reader</h1>
+        <p className="mt-6 text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.7)" }}>
+          The signature you were born with. This final reading arrives soon — a contemplative reflection on the patterns etched into your fingertips and the soul blueprint they carry.
+        </p>
+        <Link
+          to="/iris-reader"
+          className="mt-10 inline-block rounded-none px-6 py-3 text-[11px] uppercase tracking-[0.22em]"
+          style={{ color: "#C9A84C", border: "1px solid #C9A84C" }}
+        >
+          ← Back to Iris Reader
+        </Link>
+      </div>
+    </div>
+  );
+}

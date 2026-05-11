@@ -96,6 +96,9 @@ function AuraReaderPage() {
       return;
     }
     setSessionId(data.id);
+    try {
+      localStorage.setItem("soultrue_energy_session", JSON.stringify({ id: data.id, email }));
+    } catch {}
     setStep("mood");
   };
 
