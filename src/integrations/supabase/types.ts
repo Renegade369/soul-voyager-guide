@@ -170,6 +170,42 @@ export type Database = {
         }
         Relationships: []
       }
+      energy_reading_sessions: {
+        Row: {
+          aura_result: Json | null
+          created_at: string
+          email: string
+          fingerprint_result: Json | null
+          id: string
+          iris_result: Json | null
+          mood_answers: Json | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          aura_result?: Json | null
+          created_at?: string
+          email: string
+          fingerprint_result?: Json | null
+          id?: string
+          iris_result?: Json | null
+          mood_answers?: Json | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          aura_result?: Json | null
+          created_at?: string
+          email?: string
+          fingerprint_result?: Json | null
+          id?: string
+          iris_result?: Json | null
+          mood_answers?: Json | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       events: {
         Row: {
           duration_ms: number | null
