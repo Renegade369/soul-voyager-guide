@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.begin-here-chat]
 verify_jwt = false
+
+[functions.aura-reading]
+verify_jwt = false

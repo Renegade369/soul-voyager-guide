@@ -19,6 +19,7 @@ import { Route as RealityMapRouteImport } from './routes/reality-map'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
 import { Route as MeditationsRouteImport } from './routes/meditations'
+import { Route as IrisReaderRouteImport } from './routes/iris-reader'
 import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as GuideRouteImport } from './routes/guide'
@@ -82,6 +83,11 @@ const NatureBookingRoute = NatureBookingRouteImport.update({
 const MeditationsRoute = MeditationsRouteImport.update({
   id: '/meditations',
   path: '/meditations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IrisReaderRoute = IrisReaderRouteImport.update({
+  id: '/iris-reader',
+  path: '/iris-reader',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HiddenTruthRoute = HiddenTruthRouteImport.update({
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
@@ -195,6 +202,7 @@ export interface FileRoutesByTo {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
@@ -222,6 +230,7 @@ export interface FileRoutesById {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
@@ -250,6 +259,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/iris-reader'
     | '/meditations'
     | '/nature-booking'
     | '/practitioners'
@@ -276,6 +286,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/iris-reader'
     | '/meditations'
     | '/nature-booking'
     | '/practitioners'
@@ -302,6 +313,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/iris-reader'
     | '/meditations'
     | '/nature-booking'
     | '/practitioners'
@@ -329,6 +341,7 @@ export interface RootRouteChildren {
   GuideRoute: typeof GuideRoute
   HealthRoute: typeof HealthRoute
   HiddenTruthRoute: typeof HiddenTruthRoute
+  IrisReaderRoute: typeof IrisReaderRoute
   MeditationsRoute: typeof MeditationsRoute
   NatureBookingRoute: typeof NatureBookingRoute
   PractitionersRoute: typeof PractitionersRoute
@@ -412,6 +425,13 @@ declare module '@tanstack/react-router' {
       path: '/meditations'
       fullPath: '/meditations'
       preLoaderRoute: typeof MeditationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/iris-reader': {
+      id: '/iris-reader'
+      path: '/iris-reader'
+      fullPath: '/iris-reader'
+      preLoaderRoute: typeof IrisReaderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hidden-truth': {
@@ -529,6 +549,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuideRoute: GuideRoute,
   HealthRoute: HealthRoute,
   HiddenTruthRoute: HiddenTruthRoute,
+  IrisReaderRoute: IrisReaderRoute,
   MeditationsRoute: MeditationsRoute,
   NatureBookingRoute: NatureBookingRoute,
   PractitionersRoute: PractitionersRoute,
@@ -544,3 +565,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
