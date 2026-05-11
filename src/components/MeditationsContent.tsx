@@ -100,17 +100,132 @@ const meditations: Meditation[] = [
 ];
 
 function PlayModal({ meditation, onClose }: { meditation: Meditation; onClose: () => void }) {
+  const [script, setScript] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [speaking, setSpeaking] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const speakingSupported = typeof window !== "undefined" && "speechSynthesis" in window;
+
+  useEffect(() => {
+    let cancelled = false;
+    const generate = async () => {
+      setLoading(true);
+      setError(null);
+      setScript("");
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/meditation-generate`;
+        const resp = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          },
+          body: JSON.stringify({
+            feeling: "open and ready to receive",
+            shiftTarget: meditation.title,
+            pillar: meditation.category,
+          }),
+        });
+        if (!resp.ok || !resp.body) throw new Error(await resp.text());
+        const reader = resp.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let full = "";
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          if (cancelled) return;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop() || "";
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed.startsWith("data:")) continue;
+            const payload = trimmed.slice(5).trim();
+            if (payload === "[DONE]") continue;
+            try {
+              const json = JSON.parse(payload);
+              const delta = json.choices?.[0]?.delta?.content;
+              if (delta) {
+                full += delta;
+                if (!cancelled) setScript(full);
+              }
+            } catch {
+              /* partial chunk */
+            }
+          }
+        }
+      } catch (e) {
+        if (!cancelled) setError(e instanceof Error ? e.message : "Failed to generate meditation");
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+    generate();
+    return () => {
+      cancelled = true;
+      if (typeof window !== "undefined") window.speechSynthesis?.cancel();
+    };
+  }, [meditation.title, meditation.category]);
+
+  const handleSpeak = () => {
+    if (!speakingSupported || !script) return;
+    window.speechSynthesis.cancel();
+    const cleaned = script
+      .replace(/\[long pause\]/gi, ". . . . . .")
+      .replace(/\[pause\]/gi, ". . .")
+      .replace(/[#*_`>]/g, "");
+    const u = new SpeechSynthesisUtterance(cleaned);
+    u.rate = 0.85;
+    u.pitch = 0.95;
+    u.volume = 1;
+    const voices = window.speechSynthesis.getVoices();
+    const preferred =
+      voices.find((v) => /female|samantha|victoria|karen|moira/i.test(v.name)) ||
+      voices.find((v) => v.lang?.startsWith("en"));
+    if (preferred) u.voice = preferred;
+    u.onend = () => { setSpeaking(false); setPaused(false); };
+    u.onerror = () => { setSpeaking(false); setPaused(false); };
+    utterRef.current = u;
+    window.speechSynthesis.speak(u);
+    setSpeaking(true);
+    setPaused(false);
+  };
+
+  const handlePauseResume = () => {
+    if (!speakingSupported) return;
+    if (paused) { window.speechSynthesis.resume(); setPaused(false); }
+    else { window.speechSynthesis.pause(); setPaused(true); }
+  };
+
+  const handleStop = () => {
+    if (!speakingSupported) return;
+    window.speechSynthesis.cancel();
+    setSpeaking(false);
+    setPaused(false);
+  };
+
+  const handleClose = () => {
+    if (typeof window !== "undefined") window.speechSynthesis?.cancel();
+    onClose();
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4">
       <div
-        className="relative w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+        className="relative w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl border border-white/10 max-h-[90vh] flex flex-col"
         style={{ background: "linear-gradient(135deg, #0a0a0a 0%, #1a1205 100%)" }}
       >
-        <div className="relative h-52 w-full overflow-hidden">
+        <div className="relative h-52 w-full overflow-hidden flex-shrink-0">
           <img src={meditation.image} alt={meditation.title} className="w-full h-full object-cover opacity-80" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors bg-black/40 rounded-full p-1"
           >
             <X size={20} />
@@ -121,18 +236,66 @@ function PlayModal({ meditation, onClose }: { meditation: Meditation; onClose: (
             </span>
           </div>
         </div>
-        <div className="p-6">
+        <div className="p-6 overflow-y-auto">
           <h3 className="text-xl font-semibold text-white mb-1">{meditation.title}</h3>
           <div className="flex items-center gap-2 text-white/50 text-sm mb-4">
             <Clock size={13} />
             <span>{meditation.duration}</span>
           </div>
-          <p className="text-white/60 text-sm leading-relaxed mb-6">{meditation.description}</p>
-          {meditation.audioUrl && (
-            <audio controls className="w-full rounded-lg" style={{ filter: "invert(1) hue-rotate(180deg)" }}>
-              <source src={meditation.audioUrl} type="audio/mpeg" />
-            </audio>
+          <p className="text-white/60 text-sm leading-relaxed mb-5">{meditation.description}</p>
+
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            {loading && (
+              <span className="inline-flex items-center gap-2 text-amber-400/80 text-sm">
+                <Loader2 size={14} className="animate-spin" /> Generating your meditation…
+              </span>
+            )}
+            {!loading && script && !speaking && (
+              <button
+                onClick={handleSpeak}
+                disabled={!speakingSupported}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-amber-400/40 text-amber-400 hover:bg-amber-400/10 transition-colors text-sm disabled:opacity-40"
+              >
+                <Play size={14} /> Read Aloud
+              </button>
+            )}
+            {speaking && (
+              <>
+                <button
+                  onClick={handlePauseResume}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-amber-400/40 text-amber-400 hover:bg-amber-400/10 transition-colors text-sm"
+                >
+                  {paused ? <Play size={14} /> : <Pause size={14} />}
+                  {paused ? "Resume" : "Pause"}
+                </button>
+                <button
+                  onClick={handleStop}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/15 text-white/70 hover:bg-white/5 transition-colors text-sm"
+                >
+                  <Square size={14} /> Stop
+                </button>
+              </>
+            )}
+            {!speakingSupported && script && (
+              <span className="text-xs text-white/40">Text-to-speech unavailable in this browser.</span>
+            )}
+          </div>
+
+          {error && (
+            <div className="text-sm text-red-400/90 bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2 mb-4">
+              {error}
+            </div>
           )}
+
+          {script && (
+            <div className="bg-black/40 border border-white/10 rounded-lg p-4 max-h-[40vh] overflow-y-auto">
+              <pre className="whitespace-pre-wrap font-sans text-white/80 text-sm leading-relaxed">{script}</pre>
+            </div>
+          )}
+
+          <p className="mt-3 text-[11px] text-white/30 italic">
+            For educational and inspirational purposes only. Not medical advice.
+          </p>
         </div>
       </div>
     </div>
