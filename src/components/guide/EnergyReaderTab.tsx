@@ -347,10 +347,64 @@ function FingerprintResultCard({ r }: { r: FingerprintReading }) {
 
 export default function EnergyReaderTab() {
   const navigate = useNavigate();
+  const [firstName, setFirstName] = useState(() => {
+    if (typeof window === "undefined") return "";
+    try { return localStorage.getItem("soultrue_first_name") || ""; } catch { return ""; }
+  });
+  const [nameInput, setNameInput] = useState("");
   const [activeReader, setActiveReader] = useState<ReaderType>("aura");
   const [results, setResults] = useState<Results>({ aura: null, iris: null, fingerprint: null });
   const [loading, setLoading] = useState<ReaderType | null>(null);
   const [err, setErr] = useState("");
+
+  const submitName = (e: React.FormEvent) => {
+    e.preventDefault();
+    const v = nameInput.trim();
+    if (!v) return;
+    setFirstName(v);
+    try { localStorage.setItem("soultrue_first_name", v); } catch {}
+  };
+
+  if (!firstName) {
+    return (
+      <div className="mx-auto max-w-md py-16 text-center" style={{ color: C.text, fontFamily: fonts.body }}>
+        <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Energy Reading</p>
+        <h1
+          className="mt-4 text-3xl font-light leading-tight md:text-4xl"
+          style={{ color: C.goldLight, fontFamily: fonts.heading }}
+        >
+          Before we begin, <em>what shall we call you?</em>
+        </h1>
+        <p className="mx-auto mt-4 max-w-sm text-sm" style={{ color: C.muted }}>
+          Your name personalizes every reading.
+        </p>
+        <form onSubmit={submitName} className="mt-10 space-y-4">
+          <input
+            type="text"
+            autoFocus
+            value={nameInput}
+            onChange={(e) => setNameInput(e.target.value)}
+            placeholder="Your first name"
+            className="w-full border bg-transparent px-4 py-4 text-center text-base outline-none"
+            style={{ borderColor: C.border, color: C.text, borderRadius: 4 }}
+          />
+          <button
+            type="submit"
+            disabled={!nameInput.trim()}
+            className="w-full px-6 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
+            style={{
+              background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})`,
+              color: "#0D0F0E",
+              borderRadius: 4,
+            }}
+          >
+            Begin My Reading
+          </button>
+        </form>
+      </div>
+    );
+  }
+
 
   const handleCapture = async (readerType: ReaderType, imageBase64: string) => {
     setLoading(readerType);
