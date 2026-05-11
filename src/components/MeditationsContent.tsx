@@ -2,6 +2,17 @@ import { useState } from "react";
 import { Play, X, Clock } from "lucide-react";
 import MeditationGenerator from "@/components/MeditationGenerator";
 
+const IMAGE_HERO = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778449067909.png";
+const IMAGE_RELEASING_FEAR = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447312570.png";
+const IMAGE_LIVING_HEART = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448438907.png";
+const IMAGE_THETA = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447011088.png";
+const IMAGE_PURPOSE = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448859613.png";
+const IMAGE_ABUNDANCE = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447857528.png";
+const IMAGE_COHERENCE = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778448421456.png";
+const IMAGE_REWIRING = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778446922151.png";
+const IMAGE_PRESENT = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778449004974.png";
+const IMAGE_AI_GENERATOR = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778449001316.png";
+
 interface Meditation {
   id: string;
   title: string;
@@ -18,7 +29,7 @@ const meditations: Meditation[] = [
     title: "Releasing Fear & Scarcity",
     duration: "18 min",
     category: "Emotional Healing",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+    image: IMAGE_RELEASING_FEAR,
     audioUrl: "/audio/releasing-fear.mp3",
     description: "Dissolve deep-rooted fear and scarcity patterns. Let the chains fall away and rise into freedom.",
   },
@@ -27,7 +38,7 @@ const meditations: Meditation[] = [
     title: "Living from the Heart",
     duration: "22 min",
     category: "Heart Activation",
-    image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=800",
+    image: IMAGE_LIVING_HEART,
     audioUrl: "/audio/living-from-heart.mp3",
     description: "Open the heart as your true intelligence center. Radiate love as your natural frequency.",
   },
@@ -36,7 +47,7 @@ const meditations: Meditation[] = [
     title: "Theta Brainwave Journey",
     duration: "30 min",
     category: "Deep Mind",
-    image: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800",
+    image: IMAGE_THETA,
     audioUrl: "/audio/theta-journey.mp3",
     description: "Descend into theta — the gateway to the subconscious. Access deep healing and expanded awareness.",
   },
@@ -45,7 +56,7 @@ const meditations: Meditation[] = [
     title: "Purpose Activation",
     duration: "20 min",
     category: "Soul Alignment",
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800",
+    image: IMAGE_PURPOSE,
     audioUrl: "/audio/purpose-activation.mp3",
     description: "Call in your sacred mission. Align with the divine purpose that was meant for you.",
   },
@@ -54,7 +65,7 @@ const meditations: Meditation[] = [
     title: "Abundance Programming",
     duration: "25 min",
     category: "Wealth Consciousness",
-    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800",
+    image: IMAGE_ABUNDANCE,
     audioUrl: "/audio/abundance-programming.mp3",
     description: "Reprogram your relationship with abundance. Plant seeds of prosperity deep in the subconscious mind.",
   },
@@ -63,7 +74,7 @@ const meditations: Meditation[] = [
     title: "Heart Brain Coherence",
     duration: "15 min",
     category: "Integration",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800",
+    image: IMAGE_COHERENCE,
     audioUrl: "/audio/heart-brain-coherence.mp3",
     description: "Synchronize heart and mind into perfect coherence. Science meets soul in this powerful practice.",
   },
@@ -72,7 +83,7 @@ const meditations: Meditation[] = [
     title: "Rewiring the Subconscious",
     duration: "28 min",
     category: "Deep Mind",
-    image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800",
+    image: IMAGE_REWIRING,
     audioUrl: "/audio/rewiring-subconscious.mp3",
     description: "Break old neural patterns and lay down new golden pathways. Transform identity at the root level.",
   },
@@ -81,7 +92,7 @@ const meditations: Meditation[] = [
     title: "Living in the Present Moment",
     duration: "12 min",
     category: "Mindfulness",
-    image: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800",
+    image: IMAGE_PRESENT,
     audioUrl: "/audio/present-moment.mp3",
     description: "Return home to now. Let time dissolve into the sacred stillness that has always been here.",
   },
@@ -172,7 +183,7 @@ export default function MeditationsContent({ withHero = true }: { withHero?: boo
         <div className="relative h-72 flex items-end pb-10 px-6 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1200')" }}
+            style={{ backgroundImage: `url('${IMAGE_HERO}')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
           <div className="relative max-w-4xl mx-auto w-full">
