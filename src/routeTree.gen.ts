@@ -13,6 +13,7 @@ import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as VisitRouteImport } from './routes/visit'
 import { Route as TrueTimelineRouteImport } from './routes/true-timeline'
 import { Route as TeachingsRouteImport } from './routes/teachings'
+import { Route as SoulProfileRouteImport } from './routes/soul-profile'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealityMapRouteImport } from './routes/reality-map'
@@ -55,6 +56,11 @@ const TrueTimelineRoute = TrueTimelineRouteImport.update({
 const TeachingsRoute = TeachingsRouteImport.update({
   id: '/teachings',
   path: '/teachings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoulProfileRoute = SoulProfileRouteImport.update({
+  id: '/soul-profile',
+  path: '/soul-profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -196,6 +202,7 @@ export interface FileRoutesByFullPath {
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
+  '/soul-profile': typeof SoulProfileRoute
   '/teachings': typeof TeachingsRoute
   '/true-timeline': typeof TrueTimelineRoute
   '/visit': typeof VisitRoute
@@ -225,6 +232,7 @@ export interface FileRoutesByTo {
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
+  '/soul-profile': typeof SoulProfileRoute
   '/teachings': typeof TeachingsRoute
   '/true-timeline': typeof TrueTimelineRoute
   '/visit': typeof VisitRoute
@@ -255,6 +263,7 @@ export interface FileRoutesById {
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
+  '/soul-profile': typeof SoulProfileRoute
   '/teachings': typeof TeachingsRoute
   '/true-timeline': typeof TrueTimelineRoute
   '/visit': typeof VisitRoute
@@ -286,6 +295,7 @@ export interface FileRouteTypes {
     | '/reality-map'
     | '/services'
     | '/shop'
+    | '/soul-profile'
     | '/teachings'
     | '/true-timeline'
     | '/visit'
@@ -315,6 +325,7 @@ export interface FileRouteTypes {
     | '/reality-map'
     | '/services'
     | '/shop'
+    | '/soul-profile'
     | '/teachings'
     | '/true-timeline'
     | '/visit'
@@ -344,6 +355,7 @@ export interface FileRouteTypes {
     | '/reality-map'
     | '/services'
     | '/shop'
+    | '/soul-profile'
     | '/teachings'
     | '/true-timeline'
     | '/visit'
@@ -374,6 +386,7 @@ export interface RootRouteChildren {
   RealityMapRoute: typeof RealityMapRoute
   ServicesRoute: typeof ServicesRoute
   ShopRoute: typeof ShopRoute
+  SoulProfileRoute: typeof SoulProfileRoute
   TeachingsRoute: typeof TeachingsRoute
   TrueTimelineRoute: typeof TrueTimelineRoute
   VisitRoute: typeof VisitRoute
@@ -409,6 +422,13 @@ declare module '@tanstack/react-router' {
       path: '/teachings'
       fullPath: '/teachings'
       preLoaderRoute: typeof TeachingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soul-profile': {
+      id: '/soul-profile'
+      path: '/soul-profile'
+      fullPath: '/soul-profile'
+      preLoaderRoute: typeof SoulProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -598,6 +618,7 @@ const rootRouteChildren: RootRouteChildren = {
   RealityMapRoute: RealityMapRoute,
   ServicesRoute: ServicesRoute,
   ShopRoute: ShopRoute,
+  SoulProfileRoute: SoulProfileRoute,
   TeachingsRoute: TeachingsRoute,
   TrueTimelineRoute: TrueTimelineRoute,
   VisitRoute: VisitRoute,
