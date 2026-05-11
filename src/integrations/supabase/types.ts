@@ -179,6 +179,7 @@ export type Database = {
           id: string
           iris_result: Json | null
           mood_answers: Json | null
+          soul_profile_result: Json | null
           updated_at: string
           user_id: string | null
         }
@@ -190,6 +191,7 @@ export type Database = {
           id?: string
           iris_result?: Json | null
           mood_answers?: Json | null
+          soul_profile_result?: Json | null
           updated_at?: string
           user_id?: string | null
         }
@@ -201,6 +203,7 @@ export type Database = {
           id?: string
           iris_result?: Json | null
           mood_answers?: Json | null
+          soul_profile_result?: Json | null
           updated_at?: string
           user_id?: string | null
         }

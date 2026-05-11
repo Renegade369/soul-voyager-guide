@@ -1,0 +1,1 @@
+ALTER TABLE public.energy_reading_sessions ADD COLUMN IF NOT EXISTS soul_profile_result jsonb;
