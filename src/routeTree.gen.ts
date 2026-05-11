@@ -23,6 +23,7 @@ import { Route as IrisReaderRouteImport } from './routes/iris-reader'
 import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as GuideRouteImport } from './routes/guide'
+import { Route as FingerprintReaderRouteImport } from './routes/fingerprint-reader'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -106,6 +107,11 @@ const GuideRoute = GuideRouteImport.update({
   path: '/guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FingerprintReaderRoute = FingerprintReaderRouteImport.update({
+  id: '/fingerprint-reader',
+  path: '/fingerprint-reader',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventsRoute = EventsRouteImport.update({
   id: '/events',
   path: '/events',
@@ -179,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
+  '/fingerprint-reader': typeof FingerprintReaderRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
@@ -207,6 +214,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
+  '/fingerprint-reader': typeof FingerprintReaderRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
@@ -236,6 +244,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
+  '/fingerprint-reader': typeof FingerprintReaderRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
@@ -266,6 +275,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/discovery'
     | '/events'
+    | '/fingerprint-reader'
     | '/guide'
     | '/health'
     | '/hidden-truth'
@@ -294,6 +304,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/discovery'
     | '/events'
+    | '/fingerprint-reader'
     | '/guide'
     | '/health'
     | '/hidden-truth'
@@ -322,6 +333,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/discovery'
     | '/events'
+    | '/fingerprint-reader'
     | '/guide'
     | '/health'
     | '/hidden-truth'
@@ -351,6 +363,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   DiscoveryRoute: typeof DiscoveryRoute
   EventsRoute: typeof EventsRoute
+  FingerprintReaderRoute: typeof FingerprintReaderRoute
   GuideRoute: typeof GuideRoute
   HealthRoute: typeof HealthRoute
   HiddenTruthRoute: typeof HiddenTruthRoute
@@ -468,6 +481,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fingerprint-reader': {
+      id: '/fingerprint-reader'
+      path: '/fingerprint-reader'
+      fullPath: '/fingerprint-reader'
+      preLoaderRoute: typeof FingerprintReaderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/events': {
       id: '/events'
       path: '/events'
@@ -567,6 +587,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   DiscoveryRoute: DiscoveryRoute,
   EventsRoute: EventsRoute,
+  FingerprintReaderRoute: FingerprintReaderRoute,
   GuideRoute: GuideRoute,
   HealthRoute: HealthRoute,
   HiddenTruthRoute: HiddenTruthRoute,
