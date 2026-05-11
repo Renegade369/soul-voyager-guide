@@ -136,6 +136,7 @@ function GuidePage() {
           {active === "soulquiz" && <SoulQuizTab />}
           {active === "birthchart" && <BirthChartTab />}
           {active === "bloodtype" && <BloodTypeTab />}
+          {active === "energy" && <EnergyReaderTab />}
         </div>
       </div>
 
