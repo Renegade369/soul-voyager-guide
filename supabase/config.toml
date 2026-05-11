@@ -11,3 +11,6 @@ verify_jwt = false
 
 [functions.iris-reading]
 verify_jwt = false
+
+[functions.fingerprint-reading]
+verify_jwt = false
