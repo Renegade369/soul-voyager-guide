@@ -431,7 +431,7 @@ export default function EnergyReaderTab() {
     <div className="mx-auto max-w-2xl space-y-10 py-8" style={{ color: C.text }}>
       <div className="text-center">
         <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold, fontFamily: fonts.body }}>
-          Energy Reading
+          Energy Reading · {firstName}
         </p>
         <h1
           className="mt-3 text-4xl font-light leading-tight md:text-5xl"
@@ -440,7 +440,7 @@ export default function EnergyReaderTab() {
           A reflective reading of your <em>aura, iris, and soul blueprint</em>
         </h1>
         <p className="mx-auto mt-4 max-w-md text-sm" style={{ color: C.muted, fontFamily: fonts.body }}>
-          Complete all three to unlock your Soul Profile.
+          Welcome, {firstName}. Complete all three readings to unlock your Soul Profile.
         </p>
       </div>
 
