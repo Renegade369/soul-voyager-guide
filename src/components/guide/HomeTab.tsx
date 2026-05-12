@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Heart, Sprout, Sun, Flame, Brain, Rocket, RefreshCw, Shield, Sparkles, Compass, Zap } from "lucide-react";
 import { C, fonts, GoldRule, StepCard } from "./GuideShared";
 import { trackPageEnter, trackCTA } from "@/lib/analytics";
+import { EmberField } from "@/components/aesthetic/EmberField";
 
 function AnimatedBar({ label, pct, delay }: { label: string; pct: number; delay: number }) {
   const ref = useRef<HTMLDivElement>(null);
