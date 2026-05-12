@@ -54,6 +54,35 @@ function AstrologyPage() {
   const [step, setStep] = useState<"intake" | "loading" | "result" | "error">("intake");
   const [reading, setReading] = useState<Reading | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [emailState, setEmailState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const emailReading = async () => {
+    if (!reading) return;
+    setEmailState("sending");
+    const placements = [
+      ["Sun", reading.sun_sign], ["Moon", reading.moon_sign], ["Rising", reading.rising_sign],
+      ["Mercury", reading.mercury_sign], ["Venus", reading.venus_sign], ["Mars", reading.mars_sign],
+    ].filter(([, v]) => !!v).map(([l, v]) => `${l}: ${v}`).join("  ·  ");
+    const sections = [
+      { label: "Your Placements", body: placements },
+      { label: "Your Cosmic Blueprint", body: reading.cosmic_blueprint },
+      { label: "Your Sun", body: reading.your_sun },
+      { label: "Your Moon", body: reading.your_moon },
+      ...(reading.your_rising && reading.rising_sign ? [{ label: "Your Rising", body: reading.your_rising }] : []),
+      { label: "Your Inner Planets", body: reading.your_inner_planets },
+      { label: "Your Current Sky", body: reading.your_current_sky },
+      { label: "Your Cosmic Message", body: reading.cosmic_message },
+      { label: "From Soul True", body: reading.closing },
+    ];
+    try {
+      const { error } = await supabase.functions.invoke("send-reading-email", {
+        body: { email: email.trim().toLowerCase(), title: "Your Astrology Reading", sections },
+      });
+      setEmailState(error ? "error" : "sent");
+    } catch {
+      setEmailState("error");
+    }
+  };
 
   const submit = async () => {
     if (!birthDate || !birthPlace.trim() || !email.trim()) return;
