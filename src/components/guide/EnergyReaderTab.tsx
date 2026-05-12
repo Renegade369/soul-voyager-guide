@@ -106,16 +106,31 @@ function CameraCapture({
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const warmupTimerRef = useRef<number | null>(null);
   const [streaming, setStreaming] = useState(false);
   const [ready, setReady] = useState(false);
+  const [warmingUp, setWarmingUp] = useState(false);
   const [err, setErr] = useState("");
+
+  const markReadyWhenPainted = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.readyState === 4 && v.videoWidth > 0) {
+      setReady(true);
+      setWarmingUp(false);
+    } else {
+      window.setTimeout(markReadyWhenPainted, 150);
+    }
+  };
 
   const start = async () => {
     setErr("");
     setReady(false);
+    setWarmingUp(true);
     try {
       if (!navigator.mediaDevices?.getUserMedia) {
         setErr("Camera API not available in this browser. Please upload a photo instead.");
+        setWarmingUp(false);
         return;
       }
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -129,9 +144,15 @@ function CameraCapture({
         videoRef.current.onloadedmetadata = async () => {
           try {
             await videoRef.current?.play();
-            setReady(true);
+            // Hold "warming up" for at least 2s before enabling capture, and
+            // additionally wait until the video element reports readyState === 4.
+            if (warmupTimerRef.current) window.clearTimeout(warmupTimerRef.current);
+            warmupTimerRef.current = window.setTimeout(() => {
+              markReadyWhenPainted();
+            }, 2000);
           } catch {
             setErr("Couldn't start the camera preview. Please try again.");
+            setWarmingUp(false);
           }
         };
       }
@@ -154,24 +175,41 @@ function CameraCapture({
   const stop = () => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
+    if (warmupTimerRef.current) {
+      window.clearTimeout(warmupTimerRef.current);
+      warmupTimerRef.current = null;
+    }
     setStreaming(false);
     setReady(false);
+    setWarmingUp(false);
   };
 
-  const capture = () => {
+  const tryGrabFrame = (): string | null => {
     const v = videoRef.current;
-    if (!ready || !v || !v.videoWidth || !v.videoHeight) {
-      setErr("Camera not ready yet. Please wait a moment and try again.");
-      return;
-    }
+    if (!v || v.readyState !== 4 || !v.videoWidth || !v.videoHeight) return null;
     const canvas = document.createElement("canvas");
     canvas.width = v.videoWidth;
     canvas.height = v.videoHeight;
     const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!ctx) return null;
     ctx.drawImage(v, 0, 0);
     const dataUrl = canvas.toDataURL("image/jpeg", 0.85);
-    if (!dataUrl || dataUrl.length < 100) {
+    return dataUrl && dataUrl.length > 100 ? dataUrl : null;
+  };
+
+  const capture = async () => {
+    const v = videoRef.current;
+    if (!ready || !v || v.readyState !== 4) {
+      setErr("Camera not ready yet. Please wait a moment and try again.");
+      return;
+    }
+    let dataUrl: string | null = null;
+    for (let i = 0; i < 3; i++) {
+      dataUrl = tryGrabFrame();
+      if (dataUrl) break;
+      await new Promise((r) => setTimeout(r, 200));
+    }
+    if (!dataUrl) {
       setErr("Capture failed. Please try again or upload a photo.");
       return;
     }
@@ -210,8 +248,9 @@ function CameraCapture({
               style={{ transform: facing === "user" ? "scaleX(-1)" : undefined }}
             />
             {!ready && (
-              <div className="absolute inset-0 flex items-center justify-center text-xs" style={{ color: C.muted }}>
-                Starting camera…
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-xs" style={{ color: C.muted, backgroundColor: "rgba(0,0,0,0.35)" }}>
+                <Loader2 size={18} className="animate-spin" style={{ color: C.gold }} />
+                <span>{warmingUp ? "Camera warming up…" : "Starting camera…"}</span>
               </div>
             )}
           </>
@@ -246,7 +285,7 @@ function CameraCapture({
             className="col-span-2 flex items-center justify-center gap-2 px-4 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
             style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})`, color: "#0D0F0E", borderRadius: 4 }}
           >
-            <Sparkles size={16} /> {ready ? "Capture" : "Starting…"}
+            <Sparkles size={16} /> {ready ? "Capture" : warmingUp ? "Warming up…" : "Starting…"}
           </button>
         ) : (
           <button
