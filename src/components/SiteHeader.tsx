@@ -45,6 +45,30 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
+          <div className="group relative">
+            <button
+              className="text-[11px] font-normal uppercase tracking-[0.22em] transition-colors"
+              style={{ color: "rgba(245,240,232,0.6)" }}
+            >
+              Readings
+            </button>
+            <div
+              className="invisible absolute right-0 top-full z-50 mt-3 flex w-52 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
+              style={{ backgroundColor: "#141716", border: "1px solid rgba(212,175,100,0.18)" }}
+            >
+              {readings.map((r) => (
+                <Link
+                  key={r.to}
+                  to={r.to}
+                  className="px-5 py-3 text-[11px] uppercase tracking-[0.22em]"
+                  style={{ color: "rgba(245,240,232,0.7)" }}
+                  activeProps={{ style: { color: "#C9A84C" } }}
+                >
+                  {r.label}
+                </Link>
+              ))}
+            </div>
+          </div>
           <Link
             to="/guide"
             className="rounded-none px-5 py-2.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
