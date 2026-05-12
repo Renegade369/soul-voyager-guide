@@ -1,18 +1,21 @@
 import { useLocation } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import type { ReactNode } from "react";
 
-/** CSS-driven page entrance: fade + 12px upward slide on each route change. */
+/** Framer Motion page entrance: fade + 12px upward slide on each route change. */
 export function PageTransition({ children }: { children: ReactNode }) {
   const location = useLocation();
-  const [key, setKey] = useState(location.pathname);
-
-  useEffect(() => {
-    setKey(location.pathname);
-  }, [location.pathname]);
-
   return (
-    <div key={key} className="page-transition">
-      {children}
-    </div>
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 }
