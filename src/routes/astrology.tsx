@@ -226,10 +226,17 @@ function AstrologyPage() {
             <p className="mt-10 text-center text-sm leading-relaxed" style={{ color: C.muted }}>{reading.closing}</p>
 
             <div className="mt-12 text-center">
-              <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
-                style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
-                Get Your Full Soul Profile →
-              </Link>
+              <button onClick={emailReading} disabled={emailState === "sending" || emailState === "sent"}
+                className="mb-6 inline-block rounded-none border px-8 py-3 text-[11px] uppercase tracking-[0.22em] disabled:opacity-50"
+                style={{ borderColor: `${C.gold}`, color: C.gold, background: "transparent" }}>
+                {emailState === "sending" ? "Sending…" : emailState === "sent" ? "✓ Sent to your inbox" : emailState === "error" ? "Try again" : "Email me this reading"}
+              </button>
+              <div>
+                <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
+                  style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                  Get Your Full Soul Profile →
+                </Link>
+              </div>
             </div>
             <p className="mt-12 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: C.dim }}>
               For educational &amp; inspirational purposes only.
