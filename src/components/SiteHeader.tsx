@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
+import { ThemeToggle } from "./aesthetic/ThemeToggle";
 
 const links = [
   { to: "/about", label: "About" },
