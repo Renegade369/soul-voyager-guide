@@ -106,7 +106,13 @@ function AstrologyPage() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}
-      className="relative min-h-screen px-6 py-16" style={{ background: C.bg, color: C.text }}>
+      className="relative min-h-screen px-6 py-16"
+      style={{
+        background: step === "result"
+          ? `radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.05) 0%, ${C.bg} 60%)`
+          : C.bg,
+        color: C.text,
+      }}>
       {step === "result" && <StarField />}
       <div className="relative mx-auto max-w-2xl">
         <div className="mb-8 flex items-center justify-between">
