@@ -14,11 +14,13 @@ import { Route as VisitRouteImport } from './routes/visit'
 import { Route as TrueTimelineRouteImport } from './routes/true-timeline'
 import { Route as TeachingsRouteImport } from './routes/teachings'
 import { Route as SoulProfileRouteImport } from './routes/soul-profile'
+import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealityMapRouteImport } from './routes/reality-map'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
+import { Route as MyReadingsRouteImport } from './routes/my-readings'
 import { Route as MeditationsRouteImport } from './routes/meditations'
 import { Route as IrisReaderRouteImport } from './routes/iris-reader'
 import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
@@ -30,12 +32,14 @@ import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactWilliamRouteImport } from './routes/contact-william'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConsciousnessMapRouteImport } from './routes/consciousness-map'
 import { Route as BeginHereRouteImport } from './routes/begin-here'
 import { Route as AwakeningAssessmentRouteImport } from './routes/awakening-assessment'
 import { Route as AuraReaderRouteImport } from './routes/aura-reader'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 
 const WelcomeRoute = WelcomeRouteImport.update({
@@ -63,6 +67,11 @@ const SoulProfileRoute = SoulProfileRouteImport.update({
   path: '/soul-profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SignInRoute = SignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
@@ -86,6 +95,11 @@ const PractitionersRoute = PractitionersRouteImport.update({
 const NatureBookingRoute = NatureBookingRouteImport.update({
   id: '/nature-booking',
   path: '/nature-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyReadingsRoute = MyReadingsRouteImport.update({
+  id: '/my-readings',
+  path: '/my-readings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MeditationsRoute = MeditationsRouteImport.update({
@@ -143,6 +157,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsciousnessMapRoute = ConsciousnessMapRouteImport.update({
+  id: '/consciousness-map',
+  path: '/consciousness-map',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BeginHereRoute = BeginHereRouteImport.update({
   id: '/begin-here',
   path: '/begin-here',
@@ -173,6 +192,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileIdRoute = ProfileIdRouteImport.update({
+  id: '/profile/$id',
+  path: '/profile/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductHandleRoute = ProductHandleRouteImport.update({
   id: '/product/$handle',
   path: '/product/$handle',
@@ -186,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
+  '/consciousness-map': typeof ConsciousnessMapRoute
   '/contact': typeof ContactRoute
   '/contact-william': typeof ContactWilliamRoute
   '/dashboard': typeof DashboardRoute
@@ -197,17 +222,20 @@ export interface FileRoutesByFullPath {
   '/hidden-truth': typeof HiddenTruthRoute
   '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
+  '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
+  '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/teachings': typeof TeachingsRoute
   '/true-timeline': typeof TrueTimelineRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/product/$handle': typeof ProductHandleRoute
+  '/profile/$id': typeof ProfileIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -216,6 +244,7 @@ export interface FileRoutesByTo {
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
+  '/consciousness-map': typeof ConsciousnessMapRoute
   '/contact': typeof ContactRoute
   '/contact-william': typeof ContactWilliamRoute
   '/dashboard': typeof DashboardRoute
@@ -227,17 +256,20 @@ export interface FileRoutesByTo {
   '/hidden-truth': typeof HiddenTruthRoute
   '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
+  '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
+  '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/teachings': typeof TeachingsRoute
   '/true-timeline': typeof TrueTimelineRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/product/$handle': typeof ProductHandleRoute
+  '/profile/$id': typeof ProfileIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -247,6 +279,7 @@ export interface FileRoutesById {
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
+  '/consciousness-map': typeof ConsciousnessMapRoute
   '/contact': typeof ContactRoute
   '/contact-william': typeof ContactWilliamRoute
   '/dashboard': typeof DashboardRoute
@@ -258,17 +291,20 @@ export interface FileRoutesById {
   '/hidden-truth': typeof HiddenTruthRoute
   '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
+  '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/practitioners': typeof PractitionersRoute
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
   '/shop': typeof ShopRoute
+  '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/teachings': typeof TeachingsRoute
   '/true-timeline': typeof TrueTimelineRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/product/$handle': typeof ProductHandleRoute
+  '/profile/$id': typeof ProfileIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -279,6 +315,7 @@ export interface FileRouteTypes {
     | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
+    | '/consciousness-map'
     | '/contact'
     | '/contact-william'
     | '/dashboard'
@@ -290,17 +327,20 @@ export interface FileRouteTypes {
     | '/hidden-truth'
     | '/iris-reader'
     | '/meditations'
+    | '/my-readings'
     | '/nature-booking'
     | '/practitioners'
     | '/reality-map'
     | '/services'
     | '/shop'
+    | '/sign-in'
     | '/soul-profile'
     | '/teachings'
     | '/true-timeline'
     | '/visit'
     | '/welcome'
     | '/product/$handle'
+    | '/profile/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -309,6 +349,7 @@ export interface FileRouteTypes {
     | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
+    | '/consciousness-map'
     | '/contact'
     | '/contact-william'
     | '/dashboard'
@@ -320,17 +361,20 @@ export interface FileRouteTypes {
     | '/hidden-truth'
     | '/iris-reader'
     | '/meditations'
+    | '/my-readings'
     | '/nature-booking'
     | '/practitioners'
     | '/reality-map'
     | '/services'
     | '/shop'
+    | '/sign-in'
     | '/soul-profile'
     | '/teachings'
     | '/true-timeline'
     | '/visit'
     | '/welcome'
     | '/product/$handle'
+    | '/profile/$id'
   id:
     | '__root__'
     | '/'
@@ -339,6 +383,7 @@ export interface FileRouteTypes {
     | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
+    | '/consciousness-map'
     | '/contact'
     | '/contact-william'
     | '/dashboard'
@@ -350,17 +395,20 @@ export interface FileRouteTypes {
     | '/hidden-truth'
     | '/iris-reader'
     | '/meditations'
+    | '/my-readings'
     | '/nature-booking'
     | '/practitioners'
     | '/reality-map'
     | '/services'
     | '/shop'
+    | '/sign-in'
     | '/soul-profile'
     | '/teachings'
     | '/true-timeline'
     | '/visit'
     | '/welcome'
     | '/product/$handle'
+    | '/profile/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -370,6 +418,7 @@ export interface RootRouteChildren {
   AuraReaderRoute: typeof AuraReaderRoute
   AwakeningAssessmentRoute: typeof AwakeningAssessmentRoute
   BeginHereRoute: typeof BeginHereRoute
+  ConsciousnessMapRoute: typeof ConsciousnessMapRoute
   ContactRoute: typeof ContactRoute
   ContactWilliamRoute: typeof ContactWilliamRoute
   DashboardRoute: typeof DashboardRoute
@@ -381,17 +430,20 @@ export interface RootRouteChildren {
   HiddenTruthRoute: typeof HiddenTruthRoute
   IrisReaderRoute: typeof IrisReaderRoute
   MeditationsRoute: typeof MeditationsRoute
+  MyReadingsRoute: typeof MyReadingsRoute
   NatureBookingRoute: typeof NatureBookingRoute
   PractitionersRoute: typeof PractitionersRoute
   RealityMapRoute: typeof RealityMapRoute
   ServicesRoute: typeof ServicesRoute
   ShopRoute: typeof ShopRoute
+  SignInRoute: typeof SignInRoute
   SoulProfileRoute: typeof SoulProfileRoute
   TeachingsRoute: typeof TeachingsRoute
   TrueTimelineRoute: typeof TrueTimelineRoute
   VisitRoute: typeof VisitRoute
   WelcomeRoute: typeof WelcomeRoute
   ProductHandleRoute: typeof ProductHandleRoute
+  ProfileIdRoute: typeof ProfileIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -431,6 +483,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SoulProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sign-in': {
+      id: '/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof SignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
@@ -464,6 +523,13 @@ declare module '@tanstack/react-router' {
       path: '/nature-booking'
       fullPath: '/nature-booking'
       preLoaderRoute: typeof NatureBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-readings': {
+      id: '/my-readings'
+      path: '/my-readings'
+      fullPath: '/my-readings'
+      preLoaderRoute: typeof MyReadingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/meditations': {
@@ -543,6 +609,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consciousness-map': {
+      id: '/consciousness-map'
+      path: '/consciousness-map'
+      fullPath: '/consciousness-map'
+      preLoaderRoute: typeof ConsciousnessMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/begin-here': {
       id: '/begin-here'
       path: '/begin-here'
@@ -585,6 +658,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/$id': {
+      id: '/profile/$id'
+      path: '/profile/$id'
+      fullPath: '/profile/$id'
+      preLoaderRoute: typeof ProfileIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$handle': {
       id: '/product/$handle'
       path: '/product/$handle'
@@ -602,6 +682,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuraReaderRoute: AuraReaderRoute,
   AwakeningAssessmentRoute: AwakeningAssessmentRoute,
   BeginHereRoute: BeginHereRoute,
+  ConsciousnessMapRoute: ConsciousnessMapRoute,
   ContactRoute: ContactRoute,
   ContactWilliamRoute: ContactWilliamRoute,
   DashboardRoute: DashboardRoute,
@@ -613,27 +694,21 @@ const rootRouteChildren: RootRouteChildren = {
   HiddenTruthRoute: HiddenTruthRoute,
   IrisReaderRoute: IrisReaderRoute,
   MeditationsRoute: MeditationsRoute,
+  MyReadingsRoute: MyReadingsRoute,
   NatureBookingRoute: NatureBookingRoute,
   PractitionersRoute: PractitionersRoute,
   RealityMapRoute: RealityMapRoute,
   ServicesRoute: ServicesRoute,
   ShopRoute: ShopRoute,
+  SignInRoute: SignInRoute,
   SoulProfileRoute: SoulProfileRoute,
   TeachingsRoute: TeachingsRoute,
   TrueTimelineRoute: TrueTimelineRoute,
   VisitRoute: VisitRoute,
   WelcomeRoute: WelcomeRoute,
   ProductHandleRoute: ProductHandleRoute,
+  ProfileIdRoute: ProfileIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

@@ -21,30 +21,27 @@ export async function persistSoulProfile(
 ): Promise<{ shareId: string }> {
   const shareId = nanoid(12);
 
-  // 1. Create shared_profiles row
-  await supabase.from("shared_profiles").insert({
+  await supabase.from("shared_profiles").insert([{
     id: shareId,
-    profile_data: profile as unknown as Record<string, unknown>,
-  });
+    profile_data: profile as never,
+  }]);
 
-  // 2. Save to user history if logged in
   const { data: sessionData } = await supabase.auth.getUser();
   const userId = sessionData?.user?.id;
   if (userId) {
-    await supabase.from("user_readings").insert({
+    await supabase.from("user_readings").insert([{
       user_id: userId,
       reading_type: "soul_profile",
-      result_data: profile as unknown as Record<string, unknown>,
+      result_data: profile as never,
       shared_profile_id: shareId,
-    });
+    }]);
   }
 
-  // 3. Anonymous consciousness data
-  await supabase.from("consciousness_data").insert({
+  await supabase.from("consciousness_data").insert([{
     aura_color: extras?.aura_color ?? null,
     dominant_energy: extras?.dominant_energy ?? null,
     soul_archetype: profile.soul_name ?? null,
-  });
+  }]);
 
   return { shareId };
 }
@@ -52,16 +49,14 @@ export async function persistSoulProfile(
 export async function fetchSharedProfile(id: string): Promise<SoulProfile | null> {
   const { data, error } = await supabase
     .from("shared_profiles")
-    .select("profile_data")
+    .select("profile_data, view_count")
     .eq("id", id)
     .maybeSingle();
   if (error || !data) return null;
-  // Increment view_count (best-effort)
-  await supabase.rpc("increment_view_count" as never, { share_id: id } as never).catch(() => {});
-  // Fallback: read+write atomic-ish
-  await supabase.from("shared_profiles").select("view_count").eq("id", id).maybeSingle().then(async (r) => {
-    const vc = (r.data?.view_count ?? 0) + 1;
+  // Best-effort view increment
+  try {
+    const vc = ((data.view_count as number) ?? 0) + 1;
     await supabase.from("shared_profiles").update({ view_count: vc }).eq("id", id);
-  }).catch(() => {});
+  } catch { /* ignore */ }
   return data.profile_data as unknown as SoulProfile;
 }
