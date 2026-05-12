@@ -4,6 +4,7 @@ import { Heart, Sprout, Sun, Flame, Brain, Rocket, RefreshCw, Shield, Sparkles, 
 import { C, fonts, GoldRule, StepCard } from "./GuideShared";
 import { trackPageEnter, trackCTA } from "@/lib/analytics";
 import { EmberField } from "@/components/aesthetic/EmberField";
+import { EmailCapture } from "@/components/EmailCapture";
 
 function AnimatedBar({ label, pct, delay }: { label: string; pct: number; delay: number }) {
   const ref = useRef<HTMLDivElement>(null);
