@@ -135,6 +135,19 @@ export function SiteHeader() {
                 {l.label}
               </Link>
             ))}
+            <p className="mt-3 px-2 pt-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Readings</p>
+            {readings.map((r) => (
+              <Link
+                key={r.to}
+                to={r.to}
+                onClick={() => setOpen(false)}
+                className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]"
+                style={{ color: "rgba(245,240,232,0.7)" }}
+                activeProps={{ style: { color: "#F5F0E8" } }}
+              >
+                {r.label}
+              </Link>
+            ))}
             <Link
               to="/guide"
               onClick={() => setOpen(false)}
