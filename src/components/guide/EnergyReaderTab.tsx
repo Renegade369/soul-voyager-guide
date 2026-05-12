@@ -248,8 +248,9 @@ function CameraCapture({
               style={{ transform: facing === "user" ? "scaleX(-1)" : undefined }}
             />
             {!ready && (
-              <div className="absolute inset-0 flex items-center justify-center text-xs" style={{ color: C.muted }}>
-                Starting camera…
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-xs" style={{ color: C.muted, backgroundColor: "rgba(0,0,0,0.35)" }}>
+                <Loader2 size={18} className="animate-spin" style={{ color: C.gold }} />
+                <span>{warmingUp ? "Camera warming up…" : "Starting camera…"}</span>
               </div>
             )}
           </>
