@@ -60,6 +60,19 @@ export function SiteHeader() {
           >
             Begin Here
           </Link>
+          {user ? (
+            <Link to="/my-readings"
+              className="text-[11px] font-normal uppercase tracking-[0.22em]"
+              style={{ color: "rgba(245,240,232,0.7)" }}>
+              My Readings
+            </Link>
+          ) : (
+            <Link to="/sign-in"
+              className="text-[11px] font-normal uppercase tracking-[0.22em]"
+              style={{ color: "rgba(245,240,232,0.7)" }}>
+              Sign In
+            </Link>
+          )}
         </nav>
         <div className="flex items-center gap-3 lg:hidden">
           <CartDrawer />
