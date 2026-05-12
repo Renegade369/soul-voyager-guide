@@ -57,6 +57,8 @@ function SoulProfilePage() {
     if (!email.trim()) return;
     setStage("loading");
     try {
+      const currentYear = new Date().getFullYear();
+      const numerology = calculateAll(identity.fullName, identity.birthDate, currentYear);
       const { data, error } = await supabase.functions.invoke("soul-profile-v2", {
         body: {
           identity: {
@@ -68,7 +70,8 @@ function SoulProfilePage() {
           },
           lifeState,
           oneWord,
-          currentYear: new Date().getFullYear(),
+          numerology,
+          currentYear,
         },
       });
       if (error) throw new Error(error.message);
