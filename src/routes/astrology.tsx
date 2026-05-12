@@ -54,6 +54,35 @@ function AstrologyPage() {
   const [step, setStep] = useState<"intake" | "loading" | "result" | "error">("intake");
   const [reading, setReading] = useState<Reading | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [emailState, setEmailState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const emailReading = async () => {
+    if (!reading) return;
+    setEmailState("sending");
+    const placements = [
+      ["Sun", reading.sun_sign], ["Moon", reading.moon_sign], ["Rising", reading.rising_sign],
+      ["Mercury", reading.mercury_sign], ["Venus", reading.venus_sign], ["Mars", reading.mars_sign],
+    ].filter(([, v]) => !!v).map(([l, v]) => `${l}: ${v}`).join("  ·  ");
+    const sections = [
+      { label: "Your Placements", body: placements },
+      { label: "Your Cosmic Blueprint", body: reading.cosmic_blueprint },
+      { label: "Your Sun", body: reading.your_sun },
+      { label: "Your Moon", body: reading.your_moon },
+      ...(reading.your_rising && reading.rising_sign ? [{ label: "Your Rising", body: reading.your_rising }] : []),
+      { label: "Your Inner Planets", body: reading.your_inner_planets },
+      { label: "Your Current Sky", body: reading.your_current_sky },
+      { label: "Your Cosmic Message", body: reading.cosmic_message },
+      { label: "From Soul True", body: reading.closing },
+    ];
+    try {
+      const { error } = await supabase.functions.invoke("send-reading-email", {
+        body: { email: email.trim().toLowerCase(), title: "Your Astrology Reading", sections },
+      });
+      setEmailState(error ? "error" : "sent");
+    } catch {
+      setEmailState("error");
+    }
+  };
 
   const submit = async () => {
     if (!birthDate || !birthPlace.trim() || !email.trim()) return;
@@ -77,7 +106,13 @@ function AstrologyPage() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}
-      className="relative min-h-screen px-6 py-16" style={{ background: C.bg, color: C.text }}>
+      className="relative min-h-screen px-6 py-16"
+      style={{
+        background: step === "result"
+          ? `radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.05) 0%, ${C.bg} 60%)`
+          : C.bg,
+        color: C.text,
+      }}>
       {step === "result" && <StarField />}
       <div className="relative mx-auto max-w-2xl">
         <div className="mb-8 flex items-center justify-between">
@@ -121,7 +156,7 @@ function AstrologyPage() {
             </div>
             <label className="mt-6 flex cursor-pointer items-start gap-3 text-sm" style={{ color: C.muted }}>
               <input type="checkbox" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} className="mt-1" />
-              <span>Contribute my anonymized reading to the Soul True Consciousness Map.</span>
+              <span>Contribute my anonymized reading to the Soul True Consciousness Map. No personal information is ever stored with your reading data.</span>
             </label>
             <button onClick={submit} disabled={!birthDate || !birthPlace.trim() || !email.trim()}
               className="mt-8 block w-full rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
@@ -191,10 +226,17 @@ function AstrologyPage() {
             <p className="mt-10 text-center text-sm leading-relaxed" style={{ color: C.muted }}>{reading.closing}</p>
 
             <div className="mt-12 text-center">
-              <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
-                style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
-                Get Your Full Soul Profile →
-              </Link>
+              <button onClick={emailReading} disabled={emailState === "sending" || emailState === "sent"}
+                className="mb-6 inline-block rounded-none border px-8 py-3 text-[11px] uppercase tracking-[0.22em] disabled:opacity-50"
+                style={{ borderColor: `${C.gold}`, color: C.gold, background: "transparent" }}>
+                {emailState === "sending" ? "Sending…" : emailState === "sent" ? "✓ Sent to your inbox" : emailState === "error" ? "Try again" : "Email me this reading"}
+              </button>
+              <div>
+                <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
+                  style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                  Get Your Full Soul Profile →
+                </Link>
+              </div>
             </div>
             <p className="mt-12 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: C.dim }}>
               For educational &amp; inspirational purposes only.

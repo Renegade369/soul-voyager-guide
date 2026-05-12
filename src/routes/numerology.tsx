@@ -35,6 +35,28 @@ function NumerologyPage() {
   const [reading, setReading] = useState<Reading | null>(null);
   const [numbers, setNumbers] = useState<ReturnType<typeof calculateAll> | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [emailState, setEmailState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const emailReading = async () => {
+    if (!reading || !numbers) return;
+    setEmailState("sending");
+    const sections = [
+      { label: `Your Life Path · ${numbers.life_path}`, body: reading.life_path_meaning },
+      { label: `Your Expression · ${numbers.expression}`, body: reading.expression_meaning },
+      { label: `Your Soul Urge · ${numbers.soul_urge}`, body: reading.soul_urge_meaning },
+      { label: `Your Personality · ${numbers.personality}`, body: reading.personality_meaning },
+      { label: `This Year's Frequency · ${numbers.personal_year}`, body: reading.personal_year_meaning },
+      { label: "What Your Numbers Say", body: reading.number_message },
+    ];
+    try {
+      const { error } = await supabase.functions.invoke("send-reading-email", {
+        body: { email: email.trim().toLowerCase(), title: "Your Numerology Reading", name, sections },
+      });
+      setEmailState(error ? "error" : "sent");
+    } catch {
+      setEmailState("error");
+    }
+  };
 
   const submit = async () => {
     if (!name.trim() || !birthDate || !email.trim()) return;
@@ -100,7 +122,7 @@ function NumerologyPage() {
             </div>
             <label className="mt-6 flex cursor-pointer items-start gap-3 text-sm" style={{ color: C.muted }}>
               <input type="checkbox" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} className="mt-1" />
-              <span>Contribute my anonymized reading to the Soul True Consciousness Map.</span>
+              <span>Contribute my anonymized reading to the Soul True Consciousness Map. No personal information is ever stored with your reading data.</span>
             </label>
             <button onClick={submit} disabled={!name.trim() || !birthDate || !email.trim()}
               className="mt-8 block w-full rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
@@ -160,6 +182,11 @@ function NumerologyPage() {
             </motion.section>
 
             <div className="mt-12 text-center">
+              <button onClick={emailReading} disabled={emailState === "sending" || emailState === "sent"}
+                className="mb-6 inline-block rounded-none border px-8 py-3 text-[11px] uppercase tracking-[0.22em] disabled:opacity-50"
+                style={{ borderColor: `${C.gold}`, color: C.gold, background: "transparent" }}>
+                {emailState === "sending" ? "Sending…" : emailState === "sent" ? "✓ Sent to your inbox" : emailState === "error" ? "Try again" : "Email me this reading"}
+              </button>
               <p className="text-sm mb-4" style={{ color: C.muted }}>See how your numbers fit your complete soul picture.</p>
               <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
                 style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
