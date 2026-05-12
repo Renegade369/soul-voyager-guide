@@ -150,7 +150,7 @@ function AstrologyPage() {
             </div>
             <label className="mt-6 flex cursor-pointer items-start gap-3 text-sm" style={{ color: C.muted }}>
               <input type="checkbox" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} className="mt-1" />
-              <span>Contribute my anonymized reading to the Soul True Consciousness Map.</span>
+              <span>Contribute my anonymized reading to the Soul True Consciousness Map. No personal information is ever stored with your reading data.</span>
             </label>
             <button onClick={submit} disabled={!birthDate || !birthPlace.trim() || !email.trim()}
               className="mt-8 block w-full rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
