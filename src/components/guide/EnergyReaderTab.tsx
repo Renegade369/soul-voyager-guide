@@ -107,23 +107,47 @@ function CameraCapture({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const [streaming, setStreaming] = useState(false);
+  const [ready, setReady] = useState(false);
   const [err, setErr] = useState("");
 
   const start = async () => {
     setErr("");
+    setReady(false);
     try {
+      if (!navigator.mediaDevices?.getUserMedia) {
+        setErr("Camera API not available in this browser. Please upload a photo instead.");
+        return;
+      }
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: facing },
         audio: false,
       });
       streamRef.current = stream;
+      setStreaming(true);
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        await videoRef.current.play();
+        videoRef.current.onloadedmetadata = async () => {
+          try {
+            await videoRef.current?.play();
+            setReady(true);
+          } catch {
+            setErr("Couldn't start the camera preview. Please try again.");
+          }
+        };
       }
-      setStreaming(true);
-    } catch {
-      setErr("Camera unavailable. Please upload a photo instead.");
+    } catch (e) {
+      const name = (e as { name?: string })?.name;
+      if (name === "NotAllowedError" || name === "SecurityError") {
+        setErr("Camera access was blocked. Click the camera icon in your browser's address bar to enable it, then refresh.");
+      } else if (name === "NotFoundError" || name === "OverconstrainedError") {
+        setErr("No camera detected on this device.");
+      } else if (name === "NotReadableError" || name === "AbortError") {
+        setErr("Your camera is being used by another app. Close it and refresh.");
+      } else {
+        setErr("Camera unavailable. Please upload a photo instead.");
+      }
+      setStreaming(false);
+      setReady(false);
     }
   };
 
@@ -131,11 +155,12 @@ function CameraCapture({
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
     setStreaming(false);
+    setReady(false);
   };
 
   const capture = () => {
     const v = videoRef.current;
-    if (!v || !v.videoWidth || !v.videoHeight) {
+    if (!ready || !v || !v.videoWidth || !v.videoHeight) {
       setErr("Camera not ready yet. Please wait a moment and try again.");
       return;
     }
@@ -176,13 +201,20 @@ function CameraCapture({
         style={{ backgroundColor: "#000", border: `1px solid ${C.border}` }}
       >
         {streaming ? (
-          <video
-            ref={videoRef}
-            playsInline
-            muted
-            className="h-full w-full object-cover"
-            style={{ transform: facing === "user" ? "scaleX(-1)" : undefined }}
-          />
+          <>
+            <video
+              ref={videoRef}
+              playsInline
+              muted
+              className="h-full w-full object-cover"
+              style={{ transform: facing === "user" ? "scaleX(-1)" : undefined }}
+            />
+            {!ready && (
+              <div className="absolute inset-0 flex items-center justify-center text-xs" style={{ color: C.muted }}>
+                Starting camera…
+              </div>
+            )}
+          </>
         ) : (
           <div className="flex h-full w-full items-center justify-center text-xs" style={{ color: C.muted }}>
             Camera preview will appear here
@@ -193,16 +225,28 @@ function CameraCapture({
         </svg>
       </div>
 
-      {err && <p className="text-xs" style={{ color: "#FF8FB8" }}>{err}</p>}
+      {err && (
+        <div className="space-y-2">
+          <p className="text-xs" style={{ color: "#FF8FB8" }}>{err}</p>
+          <button
+            onClick={start}
+            className="inline-flex items-center gap-2 border px-3 py-2 text-[10px] uppercase tracking-[0.22em]"
+            style={{ borderColor: C.gold, color: C.gold, borderRadius: 4 }}
+          >
+            <RotateCcw size={12} /> Retry Camera
+          </button>
+        </div>
+      )}
 
       <div className="grid grid-cols-2 gap-3">
         {streaming ? (
           <button
             onClick={capture}
-            className="col-span-2 flex items-center justify-center gap-2 px-4 py-4 text-[11px] uppercase tracking-[0.22em]"
+            disabled={!ready}
+            className="col-span-2 flex items-center justify-center gap-2 px-4 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
             style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})`, color: "#0D0F0E", borderRadius: 4 }}
           >
-            <Sparkles size={16} /> Capture
+            <Sparkles size={16} /> {ready ? "Capture" : "Starting…"}
           </button>
         ) : (
           <button
