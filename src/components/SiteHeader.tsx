@@ -3,18 +3,21 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { ThemeToggle } from "./aesthetic/ThemeToggle";
+import { useAuth } from "@/hooks/useAuth";
 
 const links = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/teachings", label: "Teachings" },
   { to: "/aura-reader", label: "Aura Reader" },
+  { to: "/consciousness-map", label: "Map" },
   { to: "/events", label: "Events" },
   { to: "/visit", label: "Visit" },
 ] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
   return (
     <header
       className="sticky top-0 z-40 backdrop-blur-sm"
