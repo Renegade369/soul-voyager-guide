@@ -106,16 +106,31 @@ function CameraCapture({
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const warmupTimerRef = useRef<number | null>(null);
   const [streaming, setStreaming] = useState(false);
   const [ready, setReady] = useState(false);
+  const [warmingUp, setWarmingUp] = useState(false);
   const [err, setErr] = useState("");
+
+  const markReadyWhenPainted = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.readyState === 4 && v.videoWidth > 0) {
+      setReady(true);
+      setWarmingUp(false);
+    } else {
+      window.setTimeout(markReadyWhenPainted, 150);
+    }
+  };
 
   const start = async () => {
     setErr("");
     setReady(false);
+    setWarmingUp(true);
     try {
       if (!navigator.mediaDevices?.getUserMedia) {
         setErr("Camera API not available in this browser. Please upload a photo instead.");
+        setWarmingUp(false);
         return;
       }
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -129,9 +144,15 @@ function CameraCapture({
         videoRef.current.onloadedmetadata = async () => {
           try {
             await videoRef.current?.play();
-            setReady(true);
+            // Hold "warming up" for at least 2s before enabling capture, and
+            // additionally wait until the video element reports readyState === 4.
+            if (warmupTimerRef.current) window.clearTimeout(warmupTimerRef.current);
+            warmupTimerRef.current = window.setTimeout(() => {
+              markReadyWhenPainted();
+            }, 2000);
           } catch {
             setErr("Couldn't start the camera preview. Please try again.");
+            setWarmingUp(false);
           }
         };
       }
