@@ -95,24 +95,45 @@ export type Database = {
       consciousness_data: {
         Row: {
           aura_color: string | null
+          awakening_stage: string | null
           created_at: string
+          dominant_emotion: string | null
           dominant_energy: string | null
+          geographic_region: string | null
           id: string
+          life_path_number: number | null
+          primary_focus: string | null
+          reader_type: string | null
           soul_archetype: string | null
+          sun_sign: string | null
         }
         Insert: {
           aura_color?: string | null
+          awakening_stage?: string | null
           created_at?: string
+          dominant_emotion?: string | null
           dominant_energy?: string | null
+          geographic_region?: string | null
           id?: string
+          life_path_number?: number | null
+          primary_focus?: string | null
+          reader_type?: string | null
           soul_archetype?: string | null
+          sun_sign?: string | null
         }
         Update: {
           aura_color?: string | null
+          awakening_stage?: string | null
           created_at?: string
+          dominant_emotion?: string | null
           dominant_energy?: string | null
+          geographic_region?: string | null
           id?: string
+          life_path_number?: number | null
+          primary_focus?: string | null
+          reader_type?: string | null
           soul_archetype?: string | null
+          sun_sign?: string | null
         }
         Relationships: []
       }
@@ -509,19 +530,25 @@ export type Database = {
       subscribers: {
         Row: {
           email: string
+          first_name: string | null
           id: string
+          opted_in_consciousness_map: boolean
           source: string | null
           subscribed_at: string
         }
         Insert: {
           email: string
+          first_name?: string | null
           id?: string
+          opted_in_consciousness_map?: boolean
           source?: string | null
           subscribed_at?: string
         }
         Update: {
           email?: string
+          first_name?: string | null
           id?: string
+          opted_in_consciousness_map?: boolean
           source?: string | null
           subscribed_at?: string
         }
