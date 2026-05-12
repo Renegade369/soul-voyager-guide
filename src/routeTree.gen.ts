@@ -19,14 +19,13 @@ import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealityMapRouteImport } from './routes/reality-map'
 import { Route as PractitionersRouteImport } from './routes/practitioners'
+import { Route as NumerologyRouteImport } from './routes/numerology'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
 import { Route as MyReadingsRouteImport } from './routes/my-readings'
 import { Route as MeditationsRouteImport } from './routes/meditations'
-import { Route as IrisReaderRouteImport } from './routes/iris-reader'
 import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as GuideRouteImport } from './routes/guide'
-import { Route as FingerprintReaderRouteImport } from './routes/fingerprint-reader'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -36,6 +35,7 @@ import { Route as ConsciousnessMapRouteImport } from './routes/consciousness-map
 import { Route as BeginHereRouteImport } from './routes/begin-here'
 import { Route as AwakeningAssessmentRouteImport } from './routes/awakening-assessment'
 import { Route as AuraReaderRouteImport } from './routes/aura-reader'
+import { Route as AstrologyRouteImport } from './routes/astrology'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -92,6 +92,11 @@ const PractitionersRoute = PractitionersRouteImport.update({
   path: '/practitioners',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NumerologyRoute = NumerologyRouteImport.update({
+  id: '/numerology',
+  path: '/numerology',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NatureBookingRoute = NatureBookingRouteImport.update({
   id: '/nature-booking',
   path: '/nature-booking',
@@ -107,11 +112,6 @@ const MeditationsRoute = MeditationsRouteImport.update({
   path: '/meditations',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IrisReaderRoute = IrisReaderRouteImport.update({
-  id: '/iris-reader',
-  path: '/iris-reader',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const HiddenTruthRoute = HiddenTruthRouteImport.update({
   id: '/hidden-truth',
   path: '/hidden-truth',
@@ -125,11 +125,6 @@ const HealthRoute = HealthRouteImport.update({
 const GuideRoute = GuideRouteImport.update({
   id: '/guide',
   path: '/guide',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FingerprintReaderRoute = FingerprintReaderRouteImport.update({
-  id: '/fingerprint-reader',
-  path: '/fingerprint-reader',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EventsRoute = EventsRouteImport.update({
@@ -177,6 +172,11 @@ const AuraReaderRoute = AuraReaderRouteImport.update({
   path: '/aura-reader',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AstrologyRoute = AstrologyRouteImport.update({
+  id: '/astrology',
+  path: '/astrology',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -207,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/astrology': typeof AstrologyRoute
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
@@ -216,14 +217,13 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
-  '/fingerprint-reader': typeof FingerprintReaderRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
-  '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
   '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
+  '/numerology': typeof NumerologyRoute
   '/practitioners': typeof PractitionersRoute
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
@@ -241,6 +241,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/astrology': typeof AstrologyRoute
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
@@ -250,14 +251,13 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
-  '/fingerprint-reader': typeof FingerprintReaderRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
-  '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
   '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
+  '/numerology': typeof NumerologyRoute
   '/practitioners': typeof PractitionersRoute
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
@@ -276,6 +276,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/astrology': typeof AstrologyRoute
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
@@ -285,14 +286,13 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
-  '/fingerprint-reader': typeof FingerprintReaderRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
-  '/iris-reader': typeof IrisReaderRoute
   '/meditations': typeof MeditationsRoute
   '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
+  '/numerology': typeof NumerologyRoute
   '/practitioners': typeof PractitionersRoute
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
@@ -312,6 +312,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/astrology'
     | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
@@ -321,14 +322,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/discovery'
     | '/events'
-    | '/fingerprint-reader'
     | '/guide'
     | '/health'
     | '/hidden-truth'
-    | '/iris-reader'
     | '/meditations'
     | '/my-readings'
     | '/nature-booking'
+    | '/numerology'
     | '/practitioners'
     | '/reality-map'
     | '/services'
@@ -346,6 +346,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/astrology'
     | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
@@ -355,14 +356,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/discovery'
     | '/events'
-    | '/fingerprint-reader'
     | '/guide'
     | '/health'
     | '/hidden-truth'
-    | '/iris-reader'
     | '/meditations'
     | '/my-readings'
     | '/nature-booking'
+    | '/numerology'
     | '/practitioners'
     | '/reality-map'
     | '/services'
@@ -380,6 +380,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/astrology'
     | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
@@ -389,14 +390,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/discovery'
     | '/events'
-    | '/fingerprint-reader'
     | '/guide'
     | '/health'
     | '/hidden-truth'
-    | '/iris-reader'
     | '/meditations'
     | '/my-readings'
     | '/nature-booking'
+    | '/numerology'
     | '/practitioners'
     | '/reality-map'
     | '/services'
@@ -415,6 +415,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  AstrologyRoute: typeof AstrologyRoute
   AuraReaderRoute: typeof AuraReaderRoute
   AwakeningAssessmentRoute: typeof AwakeningAssessmentRoute
   BeginHereRoute: typeof BeginHereRoute
@@ -424,14 +425,13 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   DiscoveryRoute: typeof DiscoveryRoute
   EventsRoute: typeof EventsRoute
-  FingerprintReaderRoute: typeof FingerprintReaderRoute
   GuideRoute: typeof GuideRoute
   HealthRoute: typeof HealthRoute
   HiddenTruthRoute: typeof HiddenTruthRoute
-  IrisReaderRoute: typeof IrisReaderRoute
   MeditationsRoute: typeof MeditationsRoute
   MyReadingsRoute: typeof MyReadingsRoute
   NatureBookingRoute: typeof NatureBookingRoute
+  NumerologyRoute: typeof NumerologyRoute
   PractitionersRoute: typeof PractitionersRoute
   RealityMapRoute: typeof RealityMapRoute
   ServicesRoute: typeof ServicesRoute
@@ -518,6 +518,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PractitionersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/numerology': {
+      id: '/numerology'
+      path: '/numerology'
+      fullPath: '/numerology'
+      preLoaderRoute: typeof NumerologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nature-booking': {
       id: '/nature-booking'
       path: '/nature-booking'
@@ -539,13 +546,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MeditationsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/iris-reader': {
-      id: '/iris-reader'
-      path: '/iris-reader'
-      fullPath: '/iris-reader'
-      preLoaderRoute: typeof IrisReaderRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/hidden-truth': {
       id: '/hidden-truth'
       path: '/hidden-truth'
@@ -565,13 +565,6 @@ declare module '@tanstack/react-router' {
       path: '/guide'
       fullPath: '/guide'
       preLoaderRoute: typeof GuideRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/fingerprint-reader': {
-      id: '/fingerprint-reader'
-      path: '/fingerprint-reader'
-      fullPath: '/fingerprint-reader'
-      preLoaderRoute: typeof FingerprintReaderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/events': {
@@ -637,6 +630,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuraReaderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/astrology': {
+      id: '/astrology'
+      path: '/astrology'
+      fullPath: '/astrology'
+      preLoaderRoute: typeof AstrologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
@@ -679,6 +679,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  AstrologyRoute: AstrologyRoute,
   AuraReaderRoute: AuraReaderRoute,
   AwakeningAssessmentRoute: AwakeningAssessmentRoute,
   BeginHereRoute: BeginHereRoute,
@@ -688,14 +689,13 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   DiscoveryRoute: DiscoveryRoute,
   EventsRoute: EventsRoute,
-  FingerprintReaderRoute: FingerprintReaderRoute,
   GuideRoute: GuideRoute,
   HealthRoute: HealthRoute,
   HiddenTruthRoute: HiddenTruthRoute,
-  IrisReaderRoute: IrisReaderRoute,
   MeditationsRoute: MeditationsRoute,
   MyReadingsRoute: MyReadingsRoute,
   NatureBookingRoute: NatureBookingRoute,
+  NumerologyRoute: NumerologyRoute,
   PractitionersRoute: PractitionersRoute,
   RealityMapRoute: RealityMapRoute,
   ServicesRoute: ServicesRoute,
@@ -712,3 +712,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

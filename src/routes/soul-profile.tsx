@@ -1,582 +1,338 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { Check, Heart, Sparkles, Star, Mail, RotateCcw, Home } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
-import { persistSoulProfile } from "@/lib/profileSharing";
 import { ShareProfileButton } from "@/components/ShareProfileButton";
+import { persistSoulProfile, type SoulProfile as ShareableProfile } from "@/lib/profileSharing";
 
 export const Route = createFileRoute("/soul-profile")({
   head: () => ({
     meta: [
       { title: "Your Soul Profile — Soul True" },
-      { name: "description", content: "Your complete Soul Profile — the union of your Aura, Iris, and Fingerprint readings, woven into one sacred portrait." },
+      { name: "description", content: "The complete reading. Numerology, astrology, archetype, and life-state — woven into one Soul Profile." },
       { property: "og:title", content: "Your Soul Profile — Soul True" },
-      { property: "og:description", content: "The union of your three readings — one complete portrait of your soul." },
+      { property: "og:description", content: "Numerology, astrology, archetype, and life-state — one Soul Profile." },
     ],
   }),
   component: SoulProfilePage,
 });
 
 const C = {
-  bg: "#0a0a0a",
-  surface: "#141716",
-  border: "rgba(212,175,100,0.18)",
-  borderStrong: "rgba(212,175,100,0.4)",
-  gold: "#C9A84C",
-  goldLight: "#E8C87A",
-  text: "#F5F0E8",
-  muted: "rgba(245,240,232,0.65)",
-  dim: "rgba(245,240,232,0.4)",
+  bg: "#0A0A0A", gold: "#C9A84C", goldAlt: "#D4A017", text: "#F5F0E8",
+  glow: "#E8821A", deep: "#1A1209", muted: "rgba(245,240,232,0.65)", dim: "rgba(245,240,232,0.4)",
 };
 
-type Profile = {
-  soul_name: string;
-  soul_summary: string;
-  energetic_signature: string;
-  soul_gifts: string[];
-  life_path_themes: string[];
-  shadow_and_growth: string;
-  relationships_and_connection: string;
-  soul_mission: string;
-  activation_message: string;
-  next_step: string;
-};
-
-type Step = "loading" | "incomplete" | "processing" | "result" | "error";
-
-function getSession(): { id: string; email: string } | null {
-  try {
-    const raw = localStorage.getItem("soultrue_energy_session");
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-}
-
-// Mandala SVG — three symbols merged
-function Mandala({ size = 220, animated = true }: { size?: number; animated?: boolean }) {
-  return (
-    <div className="relative" style={{ width: size, height: size }}>
-      <svg viewBox="0 0 200 200" width={size} height={size} style={{ animation: animated ? "sp-spin 80s linear infinite" : undefined }}>
-        <defs>
-          <radialGradient id="sp-core" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#fff" stopOpacity="0.95" />
-            <stop offset="40%" stopColor={C.goldLight} stopOpacity="0.7" />
-            <stop offset="100%" stopColor={C.gold} stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        {/* Outer aura ring */}
-        <circle cx="100" cy="100" r="92" fill="none" stroke={C.gold} strokeWidth="0.5" opacity="0.6" />
-        <circle cx="100" cy="100" r="84" fill="none" stroke={C.goldLight} strokeWidth="0.3" opacity="0.4" />
-        {/* Iris radial lines */}
-        {Array.from({ length: 36 }).map((_, i) => {
-          const a = (Math.PI * 2 * i) / 36;
-          const x1 = 100 + Math.cos(a) * 40;
-          const y1 = 100 + Math.sin(a) * 40;
-          const x2 = 100 + Math.cos(a) * 76;
-          const y2 = 100 + Math.sin(a) * 76;
-          return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={C.goldLight} strokeWidth="0.25" opacity="0.5" />;
-        })}
-        {/* Fingerprint ridges */}
-        {Array.from({ length: 7 }).map((_, i) => {
-          const r = 14 + i * 4;
-          return (
-            <ellipse key={i} cx="100" cy={100 + i * 0.6} rx={r} ry={r * 0.9}
-              fill="none" stroke={C.gold} strokeWidth="0.5" opacity={0.85 - i * 0.08}
-              transform={`rotate(${i * 8} 100 100)`} />
-          );
-        })}
-        {/* Aura core */}
-        <circle cx="100" cy="100" r="34" fill="url(#sp-core)" />
-      </svg>
-      <div className="absolute -inset-6 rounded-full pointer-events-none"
-        style={{
-          background: `radial-gradient(circle, ${C.gold} 0%, transparent 70%)`,
-          filter: "blur(28px)", opacity: 0.4,
-          animation: animated ? "sp-pulse 5s ease-in-out infinite" : undefined,
-        }} />
-      <style>{`@keyframes sp-spin { from { transform: rotate(0); } to { transform: rotate(360deg); } } @keyframes sp-pulse { 0%,100% { opacity: 0.3; transform: scale(0.95); } 50% { opacity: 0.6; transform: scale(1.1); } }`}</style>
-    </div>
-  );
-}
-
-function FadeReveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { setTimeout(() => setShown(true), delay); io.disconnect(); } }),
-      { threshold: 0.12 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [delay]);
-  return (
-    <div ref={ref}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "translateY(0)" : "translateY(16px)",
-        transition: "opacity 900ms ease, transform 900ms ease",
-      }}>
-      {children}
-    </div>
-  );
-}
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <p className="text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: C.gold }}>{children}</p>;
-}
-
-const READER_LINKS: { key: "aura" | "iris" | "fingerprint"; label: string; to: "/aura-reader" | "/iris-reader" | "/fingerprint-reader" }[] = [
-  { key: "aura", label: "Aura Reading", to: "/aura-reader" },
-  { key: "iris", label: "Iris Reading", to: "/iris-reader" },
-  { key: "fingerprint", label: "Fingerprint Reading", to: "/fingerprint-reader" },
+const LIFE_STATE = [
+  { q: "Which word best describes your current energy?", k: "energy", options: ["Expansive", "Contracted", "Searching", "Rebuilding", "Awakening"] },
+  { q: "What area of life is calling for the most attention?", k: "focus", options: ["Purpose", "Relationships", "Abundance", "Health", "Spiritual Growth"] },
+  { q: "How connected do you feel to your true self right now?", k: "connection", options: ["Deeply connected", "Somewhat connected", "Disconnected", "Not sure"] },
+  { q: "What is the dominant emotion you carry most days?", k: "emotion", options: ["Peace", "Anxiety", "Excitement", "Grief", "Numbness", "Anticipation"] },
+  { q: "What do you most want to release?", k: "release", options: ["Fear", "Control", "The past", "A relationship", "A version of myself"] },
+  { q: "What are you most ready to step into?", k: "step_into", options: ["My purpose", "My power", "My authentic self", "A new chapter", "I don't know yet"] },
 ];
 
+type Profile = {
+  first_name: string;
+  life_path_number: string; expression_number: string; soul_urge_number: string; personal_year_number: string;
+  sun_sign: string; moon_sign: string; rising_sign: string;
+  soul_signature: string; your_numbers_speak: string; energetic_blueprint: string; primary_aura_color: string;
+  patterns_you_carry: string; primary_blocks: string; shift_available: string; path_to_highest_self: string;
+  meditation_prescription: { name: string; why: string }[];
+  awakening_stage: string; awakening_stage_description: string; soul_message: string; closing: string;
+};
+
 function SoulProfilePage() {
-  const navigate = useNavigate();
-  const [step, setStep] = useState<Step>("loading");
+  const [stage, setStage] = useState<"step1" | "step2" | "step3" | "loading" | "result" | "error">("step1");
+  const [identity, setIdentity] = useState({ fullName: "", birthDate: "", birthTime: "", unknownTime: false, birthPlace: "", currentCity: "" });
+  const [lifeState, setLifeState] = useState<Record<string, string>>({});
+  const [oneWord, setOneWord] = useState("");
+  const [email, setEmail] = useState("");
+  const [optIn, setOptIn] = useState(true);
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [email, setEmail] = useState<string>("");
-  const [errorMsg, setErrorMsg] = useState("");
-  const [sessionId, setSessionId] = useState<string>("");
-  const [savedAndSent, setSavedAndSent] = useState(false);
-  const [busy, setBusy] = useState(false);
-  const [phase, setPhase] = useState(0); // processing animation phases
-  const [missing, setMissing] = useState<typeof READER_LINKS>(READER_LINKS);
   const [shareId, setShareId] = useState<string | null>(null);
-  const ranRef = useRef(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  // Load session + readings, then generate
-  useEffect(() => {
-    if (ranRef.current) return;
-    ranRef.current = true;
-
-    (async () => {
-      // Debug: print all relevant localStorage values so we can verify what's stored
-      try {
-        const debugKeys = [
-          "soultrue_energy_session",
-          "soultrue_first_name",
-          "soultrue_aura",
-          "soultrue_iris",
-          "soultrue_fingerprint",
-        ];
-        const snapshot: Record<string, string | null> = {};
-        for (const k of debugKeys) snapshot[k] = localStorage.getItem(k);
-        // Also include any other soultrue_* keys in case naming drifted
-        for (let i = 0; i < localStorage.length; i++) {
-          const k = localStorage.key(i);
-          if (k && k.startsWith("soultrue_") && !(k in snapshot)) {
-            snapshot[k] = localStorage.getItem(k);
-          }
-        }
-        // eslint-disable-next-line no-console
-        console.log("[SoulProfile] localStorage snapshot:", snapshot);
-      } catch (e) {
-        // eslint-disable-next-line no-console
-        console.log("[SoulProfile] localStorage unavailable", e);
-      }
-
-      const session = getSession();
-      if (!session?.id) {
-        // eslint-disable-next-line no-console
-        console.log("[SoulProfile] No session id in localStorage — all readings missing");
-        setMissing(READER_LINKS);
-        setStep("incomplete");
-        return;
-      }
-      setSessionId(session.id);
-      setEmail(session.email || "");
-
-      const { data, error } = await supabase
-        .from("energy_reading_sessions")
-        .select("email, aura_result, iris_result, fingerprint_result, mood_answers, soul_profile_result")
-        .eq("id", session.id)
-        .maybeSingle();
-
-      if (error || !data) {
-        // eslint-disable-next-line no-console
-        console.log("[SoulProfile] Session row not found in DB", { error });
-        setMissing(READER_LINKS);
-        setStep("incomplete");
-        return;
-      }
-      if (data.email) setEmail(data.email);
-
-      // If profile already generated, show it directly
-      if (data.soul_profile_result) {
-        const p = data.soul_profile_result as Profile;
-        setProfile(p);
-        setStep("result");
-        try {
-          const auraColor = (data.aura_result as { aura_color?: string } | null)?.aura_color;
-          const { shareId: sid } = await persistSoulProfile(p, { aura_color: auraColor });
-          setShareId(sid);
-        } catch (e) { console.warn("persist soul profile failed", e); }
-        return;
-      }
-
-      const missingNow = READER_LINKS.filter((r) => {
-        if (r.key === "aura") return !data.aura_result;
-        if (r.key === "iris") return !data.iris_result;
-        return !data.fingerprint_result;
-      });
-      if (missingNow.length > 0) {
-        // eslint-disable-next-line no-console
-        console.log("[SoulProfile] Missing readings:", missingNow.map((m) => m.key));
-        setMissing(missingNow);
-        setStep("incomplete");
-        return;
-      }
-
-      // Begin ceremonial processing
-      setStep("processing");
-      const t1 = setTimeout(() => setPhase(1), 900);
-      const t2 = setTimeout(() => setPhase(2), 1800);
-      const t3 = setTimeout(() => setPhase(3), 2700);
-
-      // Kick off generation in parallel; ensure min 4.5s ceremony
-      const startedAt = Date.now();
-      try {
-        const { data: gen, error: genErr } = await supabase.functions.invoke("soul-profile-generate", {
-          body: {
-            aura_result: data.aura_result,
-            iris_result: data.iris_result,
-            fingerprint_result: data.fingerprint_result,
-            mood_answers: data.mood_answers,
-          },
-        });
-        if (genErr) throw new Error(genErr.message || "Generation failed");
-        if (gen?.error) throw new Error(gen.error);
-        if (!gen?.profile) throw new Error("No profile returned");
-
-        const elapsed = Date.now() - startedAt;
-        const wait = Math.max(0, 4500 - elapsed);
-        setTimeout(async () => {
-          const p = gen.profile as Profile;
-          setProfile(p);
-          setStep("result");
-          await supabase
-            .from("energy_reading_sessions")
-            .update({ soul_profile_result: gen.profile })
-            .eq("id", session.id);
-          try {
-            const auraColor = (data.aura_result as { aura_color?: string } | null)?.aura_color;
-            const { shareId: sid } = await persistSoulProfile(p, { aura_color: auraColor });
-            setShareId(sid);
-          } catch (e) { console.warn("persist soul profile failed", e); }
-        }, wait);
-      } catch (err) {
-        setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
-        setStep("error");
-      }
-      return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-    })();
-  }, []);
-
-  const saveAndEmail = async () => {
-    if (!profile || !sessionId) return;
-    setBusy(true);
-    setErrorMsg("");
+  const submitFinal = async () => {
+    if (!email.trim()) return;
+    setStage("loading");
     try {
-      // Profile is already saved on generation, but re-save defensively
-      await supabase
-        .from("energy_reading_sessions")
-        .update({ soul_profile_result: profile })
-        .eq("id", sessionId);
+      const { data, error } = await supabase.functions.invoke("soul-profile-v2", {
+        body: {
+          identity: {
+            full_name_at_birth: identity.fullName,
+            date_of_birth: identity.birthDate,
+            time_of_birth: identity.unknownTime ? "unknown" : identity.birthTime,
+            place_of_birth: identity.birthPlace,
+            current_city: identity.currentCity,
+          },
+          lifeState,
+          oneWord,
+          currentYear: new Date().getFullYear(),
+        },
+      });
+      if (error) throw new Error(error.message);
+      if (data?.error) throw new Error(data.error);
+      const p = data.profile as Profile;
+      setProfile(p);
+      setStage("result");
 
-      if (email) {
-        const { data, error } = await supabase.functions.invoke("send-soul-profile-email", {
-          body: { email, profile },
+      // Background: subscribe + log + persist shareable
+      void supabase.from("subscribers").insert({
+        email: email.trim().toLowerCase(),
+        first_name: p.first_name || identity.fullName.split(" ")[0],
+        source: "soul-profile",
+        opted_in_consciousness_map: optIn,
+      });
+      if (optIn) {
+        void supabase.from("consciousness_data").insert({
+          reader_type: "soul_profile",
+          aura_color: p.primary_aura_color,
+          dominant_energy: lifeState["energy"] ?? null,
+          soul_archetype: p.soul_signature?.split(".")[0]?.slice(0, 60) ?? null,
+          life_path_number: Number(p.life_path_number) || null,
+          sun_sign: p.sun_sign,
+          awakening_stage: p.awakening_stage,
+          dominant_emotion: lifeState["emotion"] ?? null,
+          primary_focus: lifeState["focus"] ?? null,
         });
-        if (error) throw new Error(error.message || "Email failed");
-        if (data?.error) throw new Error(data.error);
       }
-      setSavedAndSent(true);
-    } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : "Could not send email");
-    } finally {
-      setBusy(false);
+      // Shareable card
+      try {
+        const shareable: ShareableProfile = {
+          soul_name: p.first_name || "Your Soul",
+          soul_summary: p.soul_signature,
+          energetic_signature: p.energetic_blueprint,
+          soul_gifts: [p.your_numbers_speak.split(".")[0] + "."],
+          life_path_themes: [`Life Path ${p.life_path_number}`, `Sun in ${p.sun_sign}`, `Moon in ${p.moon_sign}`],
+          shadow_and_growth: p.primary_blocks,
+          relationships_and_connection: p.patterns_you_carry,
+          soul_mission: p.shift_available,
+          activation_message: p.soul_message,
+          next_step: p.path_to_highest_self,
+        };
+        const { shareId: sid } = await persistSoulProfile(shareable, { aura_color: p.primary_aura_color });
+        setShareId(sid);
+      } catch (e) { console.warn("share persist failed", e); }
+    } catch (e) {
+      setErrorMsg(e instanceof Error ? e.message : "Something went wrong");
+      setStage("error");
     }
   };
 
-  const startNew = () => {
-    try { localStorage.removeItem("soultrue_energy_session"); } catch {}
-    navigate({ to: "/aura-reader" });
-  };
+  const step1Ready = identity.fullName.trim() && identity.birthDate && identity.birthPlace.trim();
+  const step2Ready = LIFE_STATE.every((q) => lifeState[q.k]) && oneWord.trim();
 
-  // ============================== RENDER ==============================
   return (
-    <div className="min-h-screen w-full" style={{ backgroundColor: C.bg, color: C.text }}>
-      {/* ---------- LOADING ---------- */}
-      {step === "loading" && (
-        <div className="flex min-h-screen items-center justify-center">
-          <Mandala size={140} />
+    <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}
+      className="relative min-h-screen px-6 py-16" style={{ background: C.bg, color: C.text }}>
+      <div className="mx-auto max-w-2xl">
+        <div className="mb-8 flex items-center justify-between">
+          <Link to="/" className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.dim }}>← Soul True</Link>
+          <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Soul Profile</span>
         </div>
-      )}
 
-      {/* ---------- INCOMPLETE ---------- */}
-      {step === "incomplete" && (
-        <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 text-center">
-          <Mandala size={120} animated={false} />
-          <h1 className="mt-10 font-serif text-3xl font-light italic" style={{ color: C.goldLight }}>
-            {missing.length === 1 ? `Your ${missing[0].label} is missing` : `${missing.length} readings are missing`}
-          </h1>
-          <p className="mt-5 text-sm leading-relaxed" style={{ color: C.muted }}>
-            Your Soul Profile is woven from all three readings. Complete the {missing.length === 1 ? "one below" : "ones below"} to continue — your other readings are saved.
-          </p>
-          <div className="mt-10 flex w-full flex-col gap-3">
-            {missing.map((r, i) => (
-              <Link key={r.key} to={r.to}
-                className="rounded-none px-6 py-3 text-[11px] uppercase tracking-[0.22em]"
-                style={i === 0
-                  ? { color: "#0D0F0E", background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})` }
-                  : { color: C.gold, border: `1px solid ${C.gold}`, background: "transparent" }}>
-                Complete {r.label} →
-              </Link>
-            ))}
-          </div>
-          <button onClick={startNew}
-            className="mt-6 text-[10px] uppercase tracking-[0.22em]"
-            style={{ color: C.dim }}>
-            Or start a fresh session
-          </button>
-        </div>
-      )}
-
-      {/* ---------- PROCESSING ---------- */}
-      {step === "processing" && (
-        <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 text-center">
-          <div className="relative h-44 w-44">
-            {/* Phase 0: orb */}
-            <div className="absolute inset-0 transition-opacity duration-1000"
-              style={{ opacity: phase >= 3 ? 0 : phase === 0 ? 1 : 0.35 }}>
-              <div className="absolute inset-0 rounded-full"
-                style={{ background: `radial-gradient(circle, ${C.goldLight}, ${C.gold} 50%, transparent 75%)`, filter: "blur(8px)", animation: "sp-pulse 2.4s ease-in-out infinite" }} />
-            </div>
-            {/* Phase 1: eye */}
-            <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-1000"
-              style={{ opacity: phase >= 3 ? 0 : phase === 1 ? 1 : 0.35 }}>
-              <svg viewBox="0 0 100 100" className="h-32 w-32">
-                <ellipse cx="50" cy="50" rx="42" ry="22" fill="none" stroke={C.gold} strokeWidth="1" opacity="0.9" />
-                <circle cx="50" cy="50" r="14" fill="none" stroke={C.goldLight} strokeWidth="1" />
-                <circle cx="50" cy="50" r="5" fill={C.gold} />
-              </svg>
-            </div>
-            {/* Phase 2: fingerprint */}
-            <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-1000"
-              style={{ opacity: phase >= 3 ? 0 : phase === 2 ? 1 : 0 }}>
-              <svg viewBox="0 0 100 100" className="h-32 w-32">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <ellipse key={i} cx="50" cy={50 + i * 0.5} rx={10 + i * 5} ry={(10 + i * 5) * 0.9}
-                    fill="none" stroke={C.gold} strokeWidth="0.7" opacity={0.9 - i * 0.1} />
-                ))}
-              </svg>
-            </div>
-            {/* Phase 3: merged mandala */}
-            <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-1000"
-              style={{ opacity: phase >= 3 ? 1 : 0 }}>
-              <Mandala size={176} />
-            </div>
-          </div>
-          <p className="mt-12 font-serif text-xl font-light italic leading-relaxed" style={{ color: C.goldLight }}>
-            Weaving your three readings into<br />one complete Soul Profile…
-          </p>
-          <p className="mt-4 text-[10px] uppercase tracking-[0.3em]" style={{ color: C.muted }}>The synthesis is sacred</p>
-        </div>
-      )}
-
-      {/* ---------- ERROR ---------- */}
-      {step === "error" && (
-        <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 text-center">
-          <h1 className="font-serif text-3xl font-light italic" style={{ color: C.goldLight }}>
-            The synthesis didn't come through
-          </h1>
-          <p className="mt-4 text-sm" style={{ color: C.muted }}>{errorMsg}</p>
-          <button onClick={() => window.location.reload()}
-            className="mt-8 rounded-none px-6 py-3 text-[11px] uppercase tracking-[0.22em]"
-            style={{ color: "#0D0F0E", background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})` }}>
-            Try again
-          </button>
-        </div>
-      )}
-
-      {/* ---------- RESULT ---------- */}
-      {step === "result" && profile && (
-        <div className="mx-auto max-w-2xl px-5 pb-24 pt-12 sm:px-6">
-          {/* Header */}
-          <FadeReveal>
-            <div className="flex flex-col items-center text-center">
-              <Mandala size={200} />
-              <p className="mt-8 text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your Complete Soul Profile</p>
-              <h1 className="mt-5 font-serif text-5xl font-light italic md:text-6xl" style={{ color: C.goldLight, lineHeight: 1.1 }}>
-                {profile.soul_name}
-              </h1>
-              <p className="mt-6 text-[10px] uppercase tracking-[0.25em]" style={{ color: C.dim }}>
-                {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-              </p>
-            </div>
-          </FadeReveal>
-
-          <div className="my-14 h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${C.border}, transparent)` }} />
-
-          {/* 1. Soul Summary — large card */}
-          <FadeReveal>
-            <div className="rounded-none border p-7 sm:p-9" style={{ borderColor: C.borderStrong, background: "rgba(201,168,76,0.03)" }}>
-              <SectionLabel>Soul Summary</SectionLabel>
-              <p className="font-serif text-lg leading-relaxed sm:text-xl" style={{ color: C.text }}>
-                {profile.soul_summary}
-              </p>
-            </div>
-          </FadeReveal>
-
-          {/* 2. Energetic Signature — with aura glow */}
-          <FadeReveal delay={80}>
-            <div className="relative mt-12 px-2 py-6">
-              <div className="absolute inset-0 -z-0 pointer-events-none"
-                style={{ background: `radial-gradient(circle at 50% 50%, ${C.gold}22, transparent 70%)`, filter: "blur(40px)", animation: "sp-pulse 6s ease-in-out infinite" }} />
-              <div className="relative">
-                <SectionLabel>Energetic Signature</SectionLabel>
-                <p className="text-base leading-relaxed sm:text-lg" style={{ color: C.text }}>
-                  {profile.energetic_signature}
-                </p>
+        <AnimatePresence mode="wait">
+          {stage === "step1" && (
+            <motion.div key="s1" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35 }}>
+              <p className="text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: C.gold }}>Step 1 of 3 · Identity</p>
+              <h1 className="font-serif text-4xl font-light italic md:text-5xl">Who you are at the start.</h1>
+              <div className="mt-10 space-y-5">
+                <Field label="Full name at birth" value={identity.fullName} onChange={(v) => setIdentity({ ...identity, fullName: v })} placeholder="First Middle Last" />
+                <Field label="Date of birth" type="date" value={identity.birthDate} onChange={(v) => setIdentity({ ...identity, birthDate: v })} />
+                <div>
+                  <Field label="Time of birth (approximate is fine)" type="time" value={identity.birthTime} onChange={(v) => setIdentity({ ...identity, birthTime: v })} disabled={identity.unknownTime} />
+                  <label className="mt-2 flex cursor-pointer items-center gap-2 text-sm" style={{ color: C.muted }}>
+                    <input type="checkbox" checked={identity.unknownTime} onChange={(e) => setIdentity({ ...identity, unknownTime: e.target.checked })} />
+                    I don't know my birth time
+                  </label>
+                </div>
+                <Field label="Place of birth" value={identity.birthPlace} onChange={(v) => setIdentity({ ...identity, birthPlace: v })} placeholder="City, Country" />
+                <Field label="Current city of residence" value={identity.currentCity} onChange={(v) => setIdentity({ ...identity, currentCity: v })} placeholder="City, Country" />
               </div>
-            </div>
-          </FadeReveal>
-
-          {/* 3. Soul Gifts */}
-          <FadeReveal delay={80}>
-            <div className="mt-12">
-              <SectionLabel>Soul Gifts</SectionLabel>
-              <ul className="space-y-4">
-                {profile.soul_gifts.map((g, i) => (
-                  <li key={i} className="flex items-start gap-4">
-                    <Star size={14} strokeWidth={1.2} fill={C.gold} style={{ color: C.gold }} className="mt-1.5 flex-shrink-0" />
-                    <span className="text-base leading-relaxed sm:text-lg" style={{ color: C.text }}>{g}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeReveal>
-
-          {/* 4. Life Path Themes — chips */}
-          <FadeReveal delay={80}>
-            <div className="mt-12">
-              <SectionLabel>Life Path Themes</SectionLabel>
-              <div className="flex flex-wrap gap-3">
-                {profile.life_path_themes.map((t, i) => (
-                  <span key={i}
-                    className="rounded-none border px-4 py-2 text-sm"
-                    style={{ borderColor: C.gold, color: C.goldLight, background: "rgba(201,168,76,0.05)" }}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </FadeReveal>
-
-          {/* 5. Shadow & Growth */}
-          <FadeReveal delay={80}>
-            <div className="mt-12 rounded-none border p-7" style={{ borderColor: C.border, background: "rgba(201,168,76,0.06)" }}>
-              <SectionLabel>Shadow &amp; Growth</SectionLabel>
-              <p className="text-base leading-relaxed" style={{ color: C.text }}>
-                {profile.shadow_and_growth}
-              </p>
-            </div>
-          </FadeReveal>
-
-          {/* 6. Relationships & Connection */}
-          <FadeReveal delay={80}>
-            <div className="mt-12 rounded-none border p-7" style={{ borderColor: C.border, background: "rgba(201,168,76,0.03)" }}>
-              <div className="mb-3 flex items-center gap-3">
-                <Heart size={16} fill={C.gold} style={{ color: C.gold }} />
-                <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Relationships &amp; Connection</p>
-              </div>
-              <p className="text-base leading-relaxed" style={{ color: C.text }}>
-                {profile.relationships_and_connection}
-              </p>
-            </div>
-          </FadeReveal>
-
-          {/* 7. Soul Mission */}
-          <FadeReveal delay={80}>
-            <div className="mt-14 text-center">
-              <SectionLabel>Soul Mission</SectionLabel>
-              <p className="mx-auto max-w-xl font-serif text-2xl font-light leading-relaxed sm:text-3xl" style={{ color: C.text }}>
-                {profile.soul_mission}
-              </p>
-            </div>
-          </FadeReveal>
-
-          {/* 8. Activation Message — emotional peak */}
-          <FadeReveal delay={120}>
-            <div className="relative mt-16">
-              <div className="absolute -inset-3 -z-0 pointer-events-none"
-                style={{ background: `radial-gradient(ellipse, ${C.gold}33, transparent 70%)`, filter: "blur(30px)", animation: "sp-pulse 5s ease-in-out infinite" }} />
-              <div className="relative rounded-none border-2 px-7 py-12 text-center sm:px-12 sm:py-16"
-                style={{ borderColor: C.borderStrong, background: "rgba(0,0,0,0.5)" }}>
-                <p className="text-[10px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Activation</p>
-                <p className="mx-auto mt-7 max-w-xl font-serif text-2xl font-light italic leading-relaxed sm:text-3xl"
-                  style={{ color: C.goldLight }}>
-                  "{profile.activation_message}"
-                </p>
-              </div>
-            </div>
-          </FadeReveal>
-
-          {/* 9. Next Step */}
-          <FadeReveal delay={80}>
-            <div className="mt-14 text-center">
-              <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.muted }}>Your Next Step</p>
-              <p className="mx-auto mt-4 max-w-md text-base italic leading-relaxed" style={{ color: C.muted }}>
-                {profile.next_step}
-              </p>
-            </div>
-          </FadeReveal>
-
-          <div className="my-14 h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${C.border}, transparent)` }} />
-
-          {/* Footer actions */}
-          <FadeReveal>
-            <div className="flex flex-col gap-3">
-              <button onClick={saveAndEmail} disabled={busy || savedAndSent || !email}
-                className="flex items-center justify-center gap-2 rounded-none px-6 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-60"
-                style={{ color: "#0D0F0E", background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})` }}>
-                {savedAndSent ? <><Check size={14} /> Saved &amp; Sent to {email}</> : busy ? "Sending…" : <><Mail size={14} /> Save &amp; Email My Soul Profile</>}
+              <button onClick={() => setStage("step2")} disabled={!step1Ready}
+                className="mt-8 block w-full rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
+                style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                Continue →
               </button>
-              {errorMsg && <p className="text-center text-xs" style={{ color: "#FF8FB8" }}>{errorMsg}</p>}
-              {!email && <p className="text-center text-xs" style={{ color: C.muted }}>No email on file — saved to your session.</p>}
+            </motion.div>
+          )}
 
-              <ShareProfileButton shareId={shareId} soulName={profile.soul_name} />
-
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <button onClick={startNew}
-                  className="flex items-center justify-center gap-2 rounded-none border px-6 py-4 text-[11px] uppercase tracking-[0.22em]"
-                  style={{ borderColor: C.gold, color: C.gold }}>
-                  <RotateCcw size={13} /> Start a New Reading
-                </button>
-                <Link to="/guide"
-                  className="flex items-center justify-center gap-2 rounded-none border px-6 py-4 text-[11px] uppercase tracking-[0.22em]"
-                  style={{ borderColor: C.border, color: C.muted }}>
-                  <Home size={13} /> Return to Soul True
-                </Link>
+          {stage === "step2" && (
+            <motion.div key="s2" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35 }}>
+              <p className="text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: C.gold }}>Step 2 of 3 · Life State</p>
+              <h1 className="font-serif text-4xl font-light italic md:text-5xl">Where you stand right now.</h1>
+              <div className="mt-10 space-y-10">
+                {LIFE_STATE.map((q) => (
+                  <div key={q.k}>
+                    <p className="font-serif text-lg italic">{q.q}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {q.options.map((opt) => {
+                        const active = lifeState[q.k] === opt;
+                        return (
+                          <button key={opt} onClick={() => setLifeState({ ...lifeState, [q.k]: opt })}
+                            className="rounded-none border px-4 py-2 text-sm transition-all"
+                            style={{
+                              borderColor: active ? C.gold : `${C.gold}40`,
+                              background: active ? "rgba(201,168,76,0.12)" : "transparent",
+                              color: active ? C.text : C.muted,
+                            }}>
+                            {opt}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+                <div>
+                  <p className="font-serif text-lg italic">In one word — what does your soul most need right now?</p>
+                  <input type="text" maxLength={20} value={oneWord} onChange={(e) => setOneWord(e.target.value)}
+                    className="mt-4 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
+                    style={{ borderColor: `${C.gold}66`, color: C.text }} />
+                </div>
               </div>
-            </div>
+              <div className="mt-8 flex gap-3">
+                <button onClick={() => setStage("step1")} className="flex-1 rounded-none border px-6 py-4 text-[11px] uppercase tracking-[0.22em]"
+                  style={{ borderColor: `${C.gold}66`, color: C.gold }}>← Back</button>
+                <button onClick={() => setStage("step3")} disabled={!step2Ready}
+                  className="flex-[2] rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
+                  style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>Continue →</button>
+              </div>
+            </motion.div>
+          )}
 
-            <p className="mt-12 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: C.dim }}>
-              For educational &amp; inspirational purposes only. Not medical advice.
-            </p>
-            <div className="mt-8 flex items-center justify-center gap-2">
-              <Sparkles size={12} style={{ color: C.gold }} />
-              <p className="font-serif text-sm italic" style={{ color: C.gold }}>With love, Soul True</p>
-              <Sparkles size={12} style={{ color: C.gold }} />
+          {stage === "step3" && (
+            <motion.div key="s3" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35 }}>
+              <p className="text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: C.gold }}>Step 3 of 3</p>
+              <h1 className="font-serif text-4xl font-light italic md:text-5xl">Where shall we send your Soul Profile?</h1>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com"
+                className="mt-8 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
+                style={{ borderColor: `${C.gold}66`, color: C.text }} />
+              <label className="mt-4 flex cursor-pointer items-start gap-3 text-sm" style={{ color: C.muted }}>
+                <input type="checkbox" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} className="mt-1" />
+                <span>Contribute my anonymized reading to the Soul True Consciousness Map.</span>
+              </label>
+              <p className="mt-4 text-xs" style={{ color: C.dim }}>Personal information is never shared with anonymized data.</p>
+              <div className="mt-8 flex gap-3">
+                <button onClick={() => setStage("step2")} className="flex-1 rounded-none border px-6 py-4 text-[11px] uppercase tracking-[0.22em]"
+                  style={{ borderColor: `${C.gold}66`, color: C.gold }}>← Back</button>
+                <button onClick={submitFinal} disabled={!email.trim()}
+                  className="flex-[2] rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
+                  style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                  Reveal My Soul Profile →
+                </button>
+              </div>
+            </motion.div>
+          )}
+
+          {stage === "loading" && (
+            <motion.div key="load" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center py-24">
+              <div className="h-40 w-40 animate-pulse rounded-full" style={{ background: `radial-gradient(circle, ${C.glow}, ${C.gold} 40%, transparent 70%)`, filter: "blur(14px)" }} />
+              <p className="mt-12 font-serif text-2xl italic" style={{ color: C.gold }}>Weaving your Soul Profile…</p>
+              <p className="mt-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: C.muted }}>The synthesis is sacred</p>
+            </motion.div>
+          )}
+
+          {stage === "error" && (
+            <motion.div key="err" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-24 text-center">
+              <p className="font-serif text-2xl italic" style={{ color: C.gold }}>The synthesis didn't come through.</p>
+              <p className="mt-3 text-sm" style={{ color: C.muted }}>{errorMsg}</p>
+              <button onClick={() => setStage("step3")} className="mt-8 rounded-none px-8 py-3 text-[11px] uppercase tracking-[0.22em]"
+                style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>Try again</button>
+            </motion.div>
+          )}
+
+          {stage === "result" && profile && (
+            <ResultView profile={profile} shareId={shareId} />
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+}
+
+function Field({ label, value, onChange, type = "text", placeholder, disabled }: { label: string; value: string; onChange: (v: string) => void; type?: string; placeholder?: string; disabled?: boolean }) {
+  return (
+    <div>
+      <label className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>{label}</label>
+      <input type={type} value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} disabled={disabled}
+        className="mt-2 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none disabled:opacity-40"
+        style={{ borderColor: `${C.gold}66`, color: C.text, colorScheme: "dark" }} />
+    </div>
+  );
+}
+
+function Section({ label, children, delay = 0 }: { label: string; children: React.ReactNode; delay?: number }) {
+  return (
+    <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay }} className="mt-12">
+      <p className="text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: C.gold }}>{label}</p>
+      <div className="text-base leading-relaxed">{children}</div>
+    </motion.section>
+  );
+}
+
+function ResultView({ profile, shareId }: { profile: Profile; shareId: string | null }) {
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+      <div className="text-center">
+        <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your Soul Profile</p>
+        <h1 className="mt-4 font-serif text-5xl font-light italic uppercase tracking-wide" style={{ color: C.text }}>
+          {profile.first_name}
+        </h1>
+        <div className="mx-auto mt-6 h-px w-24" style={{ background: C.gold }} />
+      </div>
+
+      <Section label="1 · Soul Signature" delay={0.2}>{profile.soul_signature}</Section>
+      <Section label="2 · Your Numbers Speak" delay={0.35}>
+        <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {[
+            ["Life Path", profile.life_path_number], ["Expression", profile.expression_number],
+            ["Soul Urge", profile.soul_urge_number], ["Personal Year", profile.personal_year_number],
+          ].map(([l, v]) => (
+            <div key={l} className="rounded-none border p-3 text-center" style={{ borderColor: `${C.gold}40`, background: "rgba(201,168,76,0.04)" }}>
+              <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: C.gold }}>{l}</p>
+              <p className="mt-1 font-serif text-2xl">{v}</p>
             </div>
-          </FadeReveal>
+          ))}
+        </div>
+        {profile.your_numbers_speak}
+      </Section>
+      <Section label="3 · Your Energetic Blueprint" delay={0.5}>
+        <p className="mb-3 text-sm" style={{ color: C.gold }}>Primary aura color: <span style={{ color: C.text }}>{profile.primary_aura_color}</span></p>
+        {profile.energetic_blueprint}
+      </Section>
+      <Section label="4 · The Patterns You Carry" delay={0.65}>{profile.patterns_you_carry}</Section>
+      <Section label="5 · Your Primary Blocks" delay={0.8}>{profile.primary_blocks}</Section>
+      <Section label="6 · The Shift Available to You" delay={0.95}>{profile.shift_available}</Section>
+      <Section label="7 · Your Path to Highest Self" delay={1.1}>{profile.path_to_highest_self}</Section>
+      <Section label="8 · Meditation Prescription" delay={1.25}>
+        <ul className="space-y-4">
+          {profile.meditation_prescription?.map((m, i) => (
+            <li key={i} className="rounded-none border p-4" style={{ borderColor: `${C.gold}33` }}>
+              <p className="font-serif text-lg italic" style={{ color: C.goldAlt }}>{m.name}</p>
+              <p className="mt-2 text-sm" style={{ color: C.muted }}>{m.why}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+      <Section label={`9 · Your Awakening Stage · ${profile.awakening_stage}`} delay={1.4}>{profile.awakening_stage_description}</Section>
+
+      <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.55 }}
+        className="mt-14 rounded-none border p-8 text-center" style={{ borderColor: `${C.gold}66`, background: C.deep }}>
+        <p className="text-[10px] uppercase tracking-[0.3em] mb-5" style={{ color: C.gold }}>10 · A Message From Your Soul</p>
+        <p className="font-serif text-xl italic leading-relaxed">"{profile.soul_message}"</p>
+      </motion.section>
+
+      <p className="mt-10 text-center text-sm leading-relaxed" style={{ color: C.muted }}>{profile.closing}</p>
+
+      {shareId && (
+        <div className="mt-10 flex justify-center">
+          <ShareProfileButton shareId={shareId} />
         </div>
       )}
-    </div>
+
+      <p className="mt-12 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: C.dim }}>
+        For educational &amp; inspirational purposes only.
+      </p>
+    </motion.div>
   );
 }
