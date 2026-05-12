@@ -93,11 +93,22 @@ serve(async (req: Request) => {
       },
     }];
 
+    const numerologyBlock = numerology
+      ? `NUMEROLOGY NUMBERS (pre-calculated — use these exactly, do not recalculate):
+Life Path: ${numerology.life_path}
+Expression: ${numerology.expression}
+Soul Urge: ${numerology.soul_urge}
+Personality: ${numerology.personality}
+Personal Year: ${numerology.personal_year}
+`
+      : "";
+
     const userPrompt = `Generate the Soul Profile for the data below. Current year: ${currentYear}.
 
 IDENTITY:
 ${JSON.stringify(identity, null, 2)}
 
+${numerologyBlock}
 LIFE STATE ANSWERS:
 ${JSON.stringify(lifeState, null, 2)}
 
