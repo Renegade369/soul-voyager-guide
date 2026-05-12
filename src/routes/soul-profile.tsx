@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { ShareProfileButton } from "@/components/ShareProfileButton";
 import { persistSoulProfile, type SoulProfile as ShareableProfile } from "@/lib/profileSharing";
+import { calculateAll } from "@/lib/numerology";
 
 export const Route = createFileRoute("/soul-profile")({
   head: () => ({
