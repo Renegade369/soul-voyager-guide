@@ -201,13 +201,20 @@ function CameraCapture({
         style={{ backgroundColor: "#000", border: `1px solid ${C.border}` }}
       >
         {streaming ? (
-          <video
-            ref={videoRef}
-            playsInline
-            muted
-            className="h-full w-full object-cover"
-            style={{ transform: facing === "user" ? "scaleX(-1)" : undefined }}
-          />
+          <>
+            <video
+              ref={videoRef}
+              playsInline
+              muted
+              className="h-full w-full object-cover"
+              style={{ transform: facing === "user" ? "scaleX(-1)" : undefined }}
+            />
+            {!ready && (
+              <div className="absolute inset-0 flex items-center justify-center text-xs" style={{ color: C.muted }}>
+                Starting camera…
+              </div>
+            )}
+          </>
         ) : (
           <div className="flex h-full w-full items-center justify-center text-xs" style={{ color: C.muted }}>
             Camera preview will appear here
@@ -218,16 +225,28 @@ function CameraCapture({
         </svg>
       </div>
 
-      {err && <p className="text-xs" style={{ color: "#FF8FB8" }}>{err}</p>}
+      {err && (
+        <div className="space-y-2">
+          <p className="text-xs" style={{ color: "#FF8FB8" }}>{err}</p>
+          <button
+            onClick={start}
+            className="inline-flex items-center gap-2 border px-3 py-2 text-[10px] uppercase tracking-[0.22em]"
+            style={{ borderColor: C.gold, color: C.gold, borderRadius: 4 }}
+          >
+            <RotateCcw size={12} /> Retry Camera
+          </button>
+        </div>
+      )}
 
       <div className="grid grid-cols-2 gap-3">
         {streaming ? (
           <button
             onClick={capture}
-            className="col-span-2 flex items-center justify-center gap-2 px-4 py-4 text-[11px] uppercase tracking-[0.22em]"
+            disabled={!ready}
+            className="col-span-2 flex items-center justify-center gap-2 px-4 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
             style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})`, color: "#0D0F0E", borderRadius: 4 }}
           >
-            <Sparkles size={16} /> Capture
+            <Sparkles size={16} /> {ready ? "Capture" : "Starting…"}
           </button>
         ) : (
           <button
