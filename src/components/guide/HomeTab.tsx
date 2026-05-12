@@ -94,6 +94,9 @@ export function HomeTab() {
           <p className="mt-4 text-xs" style={{ fontFamily: fonts.body, color: "rgba(232,237,233,0.5)" }}>
             Free • No account needed • Instant results
           </p>
+          <div className="mt-6">
+            <EmailCapture source="home_hero" label="Free aura reading + weekly soul insights" cta="Begin →" />
+          </div>
         </div>
 
         <p
