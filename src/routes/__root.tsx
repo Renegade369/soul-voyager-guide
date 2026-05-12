@@ -119,11 +119,15 @@ function RootComponent() {
     <div className="flex min-h-screen flex-col">
       {!hideShell && <SiteHeader />}
       <main className="flex-1">
-        <Outlet />
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </main>
       {!hideShell && <SiteFooter />}
       <Toaster position="top-center" richColors closeButton />
       <PwaInstallPrompt />
+      <CursorGlow />
+      <AmbientAudio />
     </div>
   );
 }
