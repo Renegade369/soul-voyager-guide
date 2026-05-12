@@ -2,6 +2,8 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Check, Heart, Sparkles, Star, Mail, RotateCcw, Home } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { persistSoulProfile } from "@/lib/profileSharing";
+import { ShareProfileButton } from "@/components/ShareProfileButton";
 
 export const Route = createFileRoute("/soul-profile")({
   head: () => ({
@@ -144,6 +146,7 @@ function SoulProfilePage() {
   const [busy, setBusy] = useState(false);
   const [phase, setPhase] = useState(0); // processing animation phases
   const [missing, setMissing] = useState<typeof READER_LINKS>(READER_LINKS);
+  const [shareId, setShareId] = useState<string | null>(null);
   const ranRef = useRef(false);
 
   // Load session + readings, then generate
@@ -205,8 +208,14 @@ function SoulProfilePage() {
 
       // If profile already generated, show it directly
       if (data.soul_profile_result) {
-        setProfile(data.soul_profile_result as Profile);
+        const p = data.soul_profile_result as Profile;
+        setProfile(p);
         setStep("result");
+        try {
+          const auraColor = (data.aura_result as { aura_color?: string } | null)?.aura_color;
+          const { shareId: sid } = await persistSoulProfile(p, { aura_color: auraColor });
+          setShareId(sid);
+        } catch (e) { console.warn("persist soul profile failed", e); }
         return;
       }
 
@@ -247,13 +256,18 @@ function SoulProfilePage() {
         const elapsed = Date.now() - startedAt;
         const wait = Math.max(0, 4500 - elapsed);
         setTimeout(async () => {
-          setProfile(gen.profile as Profile);
+          const p = gen.profile as Profile;
+          setProfile(p);
           setStep("result");
-          // Persist immediately
           await supabase
             .from("energy_reading_sessions")
             .update({ soul_profile_result: gen.profile })
             .eq("id", session.id);
+          try {
+            const auraColor = (data.aura_result as { aura_color?: string } | null)?.aura_color;
+            const { shareId: sid } = await persistSoulProfile(p, { aura_color: auraColor });
+            setShareId(sid);
+          } catch (e) { console.warn("persist soul profile failed", e); }
         }, wait);
       } catch (err) {
         setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
@@ -535,6 +549,8 @@ function SoulProfilePage() {
               </button>
               {errorMsg && <p className="text-center text-xs" style={{ color: "#FF8FB8" }}>{errorMsg}</p>}
               {!email && <p className="text-center text-xs" style={{ color: C.muted }}>No email on file — saved to your session.</p>}
+
+              <ShareProfileButton shareId={shareId} soulName={profile.soul_name} />
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <button onClick={startNew}

@@ -92,6 +92,30 @@ export type Database = {
         }
         Relationships: []
       }
+      consciousness_data: {
+        Row: {
+          aura_color: string | null
+          created_at: string
+          dominant_energy: string | null
+          id: string
+          soul_archetype: string | null
+        }
+        Insert: {
+          aura_color?: string | null
+          created_at?: string
+          dominant_energy?: string | null
+          id?: string
+          soul_archetype?: string | null
+        }
+        Update: {
+          aura_color?: string | null
+          created_at?: string
+          dominant_energy?: string | null
+          id?: string
+          soul_archetype?: string | null
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           created_at: string
@@ -404,6 +428,27 @@ export type Database = {
         }
         Relationships: []
       }
+      shared_profiles: {
+        Row: {
+          created_at: string
+          id: string
+          profile_data: Json
+          view_count: number
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          profile_data: Json
+          view_count?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          profile_data?: Json
+          view_count?: number
+        }
+        Relationships: []
+      }
       soul_discovery_sessions: {
         Row: {
           created_at: string
@@ -461,6 +506,27 @@ export type Database = {
         }
         Relationships: []
       }
+      subscribers: {
+        Row: {
+          email: string
+          id: string
+          source: string | null
+          subscribed_at: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          source?: string | null
+          subscribed_at?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          source?: string | null
+          subscribed_at?: string
+        }
+        Relationships: []
+      }
       test_results: {
         Row: {
           answers: Json | null
@@ -493,6 +559,41 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      user_readings: {
+        Row: {
+          created_at: string
+          id: string
+          reading_type: string
+          result_data: Json
+          shared_profile_id: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          reading_type: string
+          result_data: Json
+          shared_profile_id?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          reading_type?: string
+          result_data?: Json
+          shared_profile_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_readings_shared_profile_id_fkey"
+            columns: ["shared_profile_id"]
+            isOneToOne: false
+            referencedRelation: "shared_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {

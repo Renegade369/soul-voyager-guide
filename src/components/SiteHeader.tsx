@@ -3,18 +3,21 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { ThemeToggle } from "./aesthetic/ThemeToggle";
+import { useAuth } from "@/hooks/useAuth";
 
 const links = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/teachings", label: "Teachings" },
   { to: "/aura-reader", label: "Aura Reader" },
+  { to: "/consciousness-map", label: "Map" },
   { to: "/events", label: "Events" },
   { to: "/visit", label: "Visit" },
 ] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
   return (
     <header
       className="sticky top-0 z-40 backdrop-blur-sm"
@@ -57,6 +60,19 @@ export function SiteHeader() {
           >
             Begin Here
           </Link>
+          {user ? (
+            <Link to="/my-readings"
+              className="text-[11px] font-normal uppercase tracking-[0.22em]"
+              style={{ color: "rgba(245,240,232,0.7)" }}>
+              My Readings
+            </Link>
+          ) : (
+            <Link to="/sign-in"
+              className="text-[11px] font-normal uppercase tracking-[0.22em]"
+              style={{ color: "rgba(245,240,232,0.7)" }}>
+              Sign In
+            </Link>
+          )}
         </nav>
         <div className="flex items-center gap-3 lg:hidden">
           <CartDrawer />
