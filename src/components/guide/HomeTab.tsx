@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Heart, Sprout, Sun, Flame, Brain, Rocket, RefreshCw, Shield, Sparkles, Compass, Zap } from "lucide-react";
 import { C, fonts, GoldRule, StepCard } from "./GuideShared";
 import { trackPageEnter, trackCTA } from "@/lib/analytics";
+import { EmberField } from "@/components/aesthetic/EmberField";
 
 function AnimatedBar({ label, pct, delay }: { label: string; pct: number; delay: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,9 +44,10 @@ export function HomeTab() {
       <div
         className="relative isolate -mx-4 overflow-hidden px-6 py-24 text-center md:py-36"
         style={{
-          background: `radial-gradient(ellipse at center, #1a1530 0%, #0f0d1f 45%, ${C.bg} 100%)`,
+          background: `radial-gradient(ellipse at 50% 100%, rgba(232,130,26,0.08) 0%, #0A0A0A 60%)`,
         }}
       >
+        <EmberField density={50} />
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2"
@@ -53,13 +55,14 @@ export function HomeTab() {
             width: 720,
             height: 720,
             background:
-              "radial-gradient(circle, rgba(180,140,255,0.22) 0%, rgba(201,168,76,0.12) 35%, transparent 70%)",
+              "radial-gradient(circle, rgba(232,130,26,0.18) 0%, rgba(201,168,76,0.10) 35%, transparent 70%)",
             filter: "blur(20px)",
             animation: "auraPulse 6s ease-in-out infinite",
           }}
         />
         <style>{`@keyframes auraPulse {0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}`}</style>
 
+        <div className="relative" style={{ zIndex: 10 }}>
         <h1
           className="mx-auto max-w-3xl text-4xl font-light leading-[1.1] md:text-6xl"
           style={{ fontFamily: fonts.display, color: C.text }}
@@ -99,6 +102,7 @@ export function HomeTab() {
         >
           Thousands of people have already seen what their energy reveals. Yours is waiting.
         </p>
+        </div>
       </div>
 
       {/* What Gets Revealed */}

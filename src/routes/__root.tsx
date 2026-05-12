@@ -7,6 +7,9 @@ import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { useCartSync } from "../hooks/useCartSync";
 import { PwaInstallPrompt } from "../components/PwaInstallPrompt";
+import { CursorGlow } from "../components/aesthetic/CursorGlow";
+import { AmbientAudio } from "../components/aesthetic/AmbientAudio";
+import { PageTransition } from "../components/aesthetic/PageTransition";
 
 function NotFoundComponent() {
   return (
@@ -116,11 +119,15 @@ function RootComponent() {
     <div className="flex min-h-screen flex-col">
       {!hideShell && <SiteHeader />}
       <main className="flex-1">
-        <Outlet />
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </main>
       {!hideShell && <SiteFooter />}
       <Toaster position="top-center" richColors closeButton />
       <PwaInstallPrompt />
+      <CursorGlow />
+      <AmbientAudio />
     </div>
   );
 }

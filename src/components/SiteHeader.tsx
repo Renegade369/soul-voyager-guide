@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
+import { ThemeToggle } from "./aesthetic/ThemeToggle";
 
 const links = [
   { to: "/about", label: "About" },
@@ -68,7 +69,8 @@ export function SiteHeader() {
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle />
           <CartDrawer />
         </div>
       </div>

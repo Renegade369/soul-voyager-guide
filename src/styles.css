@@ -268,4 +268,47 @@ section,
   .reveal { opacity: 1; }
   .reveal.is-visible { animation: none; }
   .tile-hover, .tile-hover .tile-bar, .tile-hover .tile-arrow { transition: none; }
+  .page-transition { animation: none !important; }
+}
+
+/* ── Ember drift for hero starfield ── */
+@keyframes ember-drift {
+  0%   { transform: translate(0, 0) scale(1);   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.6); opacity: 0; }
+}
+
+/* ── Page entrance transition (CSS-only, no framer-motion needed) ── */
+@keyframes page-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-transition {
+  animation: page-fade-up 0.35s ease-out both;
+}
+
+/* ── Sacred Gold theme variant — warmer, deeper candlelit ── */
+html[data-theme="sacred-gold"] {
+  --background: oklch(0.14 0.014 50);
+  --surface: oklch(0.22 0.018 45);
+  --card: oklch(0.22 0.018 45);
+  --foreground: oklch(0.92 0.025 80);
+  --primary: oklch(0.78 0.13 82);
+  --border: oklch(0.745 0.115 85 / 35%);
+  --muted-foreground: oklch(0.745 0.115 85);
+}
+html[data-theme="sacred-gold"] body {
+  background-color: #0D0906 !important;
+  background-image:
+    radial-gradient(ellipse at top, rgba(232,130,26,0.10), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(201,168,76,0.07), transparent 60%) !important;
+}
+html[data-theme="sacred-gold"] [style*="background-color: #1a1410"],
+html[data-theme="sacred-gold"] [style*="#1a1410"] {
+  background-color: #0D0906 !important;
+}
+html[data-theme="sacred-gold"] [style*="background-color: #2a1f1a"],
+html[data-theme="sacred-gold"] [style*="#2a1f1a"] {
+  background-color: #1A1209 !important;
 }
