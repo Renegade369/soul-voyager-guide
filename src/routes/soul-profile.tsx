@@ -127,6 +127,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: C.gold }}>{children}</p>;
 }
 
+const READER_LINKS: { key: "aura" | "iris" | "fingerprint"; label: string; to: "/aura-reader" | "/iris-reader" | "/fingerprint-reader" }[] = [
+  { key: "aura", label: "Aura Reading", to: "/aura-reader" },
+  { key: "iris", label: "Iris Reading", to: "/iris-reader" },
+  { key: "fingerprint", label: "Fingerprint Reading", to: "/fingerprint-reader" },
+];
+
 function SoulProfilePage() {
   const navigate = useNavigate();
   const [step, setStep] = useState<Step>("loading");
@@ -137,6 +143,7 @@ function SoulProfilePage() {
   const [savedAndSent, setSavedAndSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [phase, setPhase] = useState(0); // processing animation phases
+  const [missing, setMissing] = useState<typeof READER_LINKS>(READER_LINKS);
   const ranRef = useRef(false);
 
   // Load session + readings, then generate
@@ -145,8 +152,36 @@ function SoulProfilePage() {
     ranRef.current = true;
 
     (async () => {
+      // Debug: print all relevant localStorage values so we can verify what's stored
+      try {
+        const debugKeys = [
+          "soultrue_energy_session",
+          "soultrue_first_name",
+          "soultrue_aura",
+          "soultrue_iris",
+          "soultrue_fingerprint",
+        ];
+        const snapshot: Record<string, string | null> = {};
+        for (const k of debugKeys) snapshot[k] = localStorage.getItem(k);
+        // Also include any other soultrue_* keys in case naming drifted
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.startsWith("soultrue_") && !(k in snapshot)) {
+            snapshot[k] = localStorage.getItem(k);
+          }
+        }
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] localStorage snapshot:", snapshot);
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] localStorage unavailable", e);
+      }
+
       const session = getSession();
       if (!session?.id) {
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] No session id in localStorage — all readings missing");
+        setMissing(READER_LINKS);
         setStep("incomplete");
         return;
       }
@@ -160,6 +195,9 @@ function SoulProfilePage() {
         .maybeSingle();
 
       if (error || !data) {
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] Session row not found in DB", { error });
+        setMissing(READER_LINKS);
         setStep("incomplete");
         return;
       }
@@ -172,7 +210,15 @@ function SoulProfilePage() {
         return;
       }
 
-      if (!data.aura_result || !data.iris_result || !data.fingerprint_result) {
+      const missingNow = READER_LINKS.filter((r) => {
+        if (r.key === "aura") return !data.aura_result;
+        if (r.key === "iris") return !data.iris_result;
+        return !data.fingerprint_result;
+      });
+      if (missingNow.length > 0) {
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] Missing readings:", missingNow.map((m) => m.key));
+        setMissing(missingNow);
         setStep("incomplete");
         return;
       }
@@ -263,16 +309,27 @@ function SoulProfilePage() {
         <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 text-center">
           <Mandala size={120} animated={false} />
           <h1 className="mt-10 font-serif text-3xl font-light italic" style={{ color: C.goldLight }}>
-            One reading is missing
+            {missing.length === 1 ? `Your ${missing[0].label} is missing` : `${missing.length} readings are missing`}
           </h1>
           <p className="mt-5 text-sm leading-relaxed" style={{ color: C.muted }}>
-            It looks like one of your readings is incomplete. Your Soul Profile is woven from all three — let's begin again from the start.
+            Your Soul Profile is woven from all three readings. Complete the {missing.length === 1 ? "one below" : "ones below"} to continue — your other readings are saved.
           </p>
-          <Link to="/aura-reader"
-            className="mt-10 rounded-none px-6 py-3 text-[11px] uppercase tracking-[0.22em]"
-            style={{ color: "#0D0F0E", background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})` }}>
-            Return to Aura Reader
-          </Link>
+          <div className="mt-10 flex w-full flex-col gap-3">
+            {missing.map((r, i) => (
+              <Link key={r.key} to={r.to}
+                className="rounded-none px-6 py-3 text-[11px] uppercase tracking-[0.22em]"
+                style={i === 0
+                  ? { color: "#0D0F0E", background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})` }
+                  : { color: C.gold, border: `1px solid ${C.gold}`, background: "transparent" }}>
+                Complete {r.label} →
+              </Link>
+            ))}
+          </div>
+          <button onClick={startNew}
+            className="mt-6 text-[10px] uppercase tracking-[0.22em]"
+            style={{ color: C.dim }}>
+            Or start a fresh session
+          </button>
         </div>
       )}
 
