@@ -155,11 +155,12 @@ function CameraCapture({
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
     setStreaming(false);
+    setReady(false);
   };
 
   const capture = () => {
     const v = videoRef.current;
-    if (!v || !v.videoWidth || !v.videoHeight) {
+    if (!ready || !v || !v.videoWidth || !v.videoHeight) {
       setErr("Camera not ready yet. Please wait a moment and try again.");
       return;
     }
