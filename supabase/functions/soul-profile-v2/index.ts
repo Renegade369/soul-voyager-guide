@@ -18,10 +18,7 @@ LANGUAGE RULES:
 - If birth time not provided, use sun + moon sign only
 
 CALCULATE BEFORE WRITING:
-- Life Path Number (reduce birth date; keep 11/22/33)
-- Expression Number (Pythagorean A=1..Z=8 — full birth name)
-- Soul Urge Number (vowels only — full birth name)
-- Personal Year Number (birth month + birth day + current year)
+- Use the pre-calculated NUMEROLOGY NUMBERS provided in the user message exactly as given. Do not recalculate them. Echo them back in the corresponding fields (life_path_number, expression_number, soul_urge_number, personal_year_number).
 - Sun Sign, Moon Sign (approx), Rising (only if time provided)
 
 You MUST respond by calling return_soul_profile_v2 with structured fields. Do not respond in plain text.`;
@@ -30,7 +27,7 @@ serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { identity, lifeState, oneWord, currentYear } = await req.json();
+    const { identity, lifeState, oneWord, numerology, currentYear } = await req.json();
     if (!identity || !lifeState) return new Response(JSON.stringify({ error: "identity and lifeState required" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
@@ -96,11 +93,22 @@ serve(async (req: Request) => {
       },
     }];
 
+    const numerologyBlock = numerology
+      ? `NUMEROLOGY NUMBERS (pre-calculated — use these exactly, do not recalculate):
+Life Path: ${numerology.life_path}
+Expression: ${numerology.expression}
+Soul Urge: ${numerology.soul_urge}
+Personality: ${numerology.personality}
+Personal Year: ${numerology.personal_year}
+`
+      : "";
+
     const userPrompt = `Generate the Soul Profile for the data below. Current year: ${currentYear}.
 
 IDENTITY:
 ${JSON.stringify(identity, null, 2)}
 
+${numerologyBlock}
 LIFE STATE ANSWERS:
 ${JSON.stringify(lifeState, null, 2)}
 

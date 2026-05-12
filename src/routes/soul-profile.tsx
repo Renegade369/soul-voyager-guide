@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { ShareProfileButton } from "@/components/ShareProfileButton";
 import { persistSoulProfile, type SoulProfile as ShareableProfile } from "@/lib/profileSharing";
+import { calculateAll } from "@/lib/numerology";
 
 export const Route = createFileRoute("/soul-profile")({
   head: () => ({
@@ -56,6 +57,8 @@ function SoulProfilePage() {
     if (!email.trim()) return;
     setStage("loading");
     try {
+      const currentYear = new Date().getFullYear();
+      const numerology = calculateAll(identity.fullName, identity.birthDate, currentYear);
       const { data, error } = await supabase.functions.invoke("soul-profile-v2", {
         body: {
           identity: {
@@ -67,7 +70,8 @@ function SoulProfilePage() {
           },
           lifeState,
           oneWord,
-          currentYear: new Date().getFullYear(),
+          numerology,
+          currentYear,
         },
       });
       if (error) throw new Error(error.message);
