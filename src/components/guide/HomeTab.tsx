@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import { Heart, Sprout, Sun, Flame, Brain, Rocket, RefreshCw, Shield } from "lucide-react";
-import { C, fonts, GoldRule, StepCard, Emblem, Eyebrow, HeroTitle, GoldText } from "./GuideShared";
+import { Link } from "@tanstack/react-router";
+import { Heart, Sprout, Sun, Flame, Brain, Rocket, RefreshCw, Shield, Sparkles, Compass, Zap } from "lucide-react";
+import { C, fonts, GoldRule, StepCard } from "./GuideShared";
 import { trackPageEnter, trackCTA } from "@/lib/analytics";
-import heroMystical from "@/assets/hero-mystical.png";
 
 function AnimatedBar({ label, pct, delay }: { label: string; pct: number; delay: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -41,35 +41,100 @@ export function HomeTab() {
     <div style={{ color: C.text }}>
       {/* Hero */}
       <div
-        className="relative isolate -mx-4 overflow-hidden px-4 py-24 text-center md:py-32"
+        className="relative isolate -mx-4 overflow-hidden px-6 py-24 text-center md:py-36"
         style={{
-          backgroundImage: `url(${heroMystical})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: "#0d0906",
+          background: `radial-gradient(ellipse at center, #1a1530 0%, #0f0d1f 45%, ${C.bg} 100%)`,
         }}
       >
         <div
           aria-hidden
-          className="absolute inset-0 -z-10"
-          style={{ background: "rgba(0,0,0,0.45)" }}
+          className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2"
+          style={{
+            width: 720,
+            height: 720,
+            background:
+              "radial-gradient(circle, rgba(180,140,255,0.22) 0%, rgba(201,168,76,0.12) 35%, transparent 70%)",
+            filter: "blur(20px)",
+            animation: "auraPulse 6s ease-in-out infinite",
+          }}
         />
-        <Emblem icon={<Sun size={32} />} />
-        <Eyebrow>SOUL TRUE — OFFICIAL AI LIFE GUIDE</Eyebrow>
-        <HeroTitle>
-          You Were Built for <GoldText>More.</GoldText><br />
-          Now You Have the Tools.
-        </HeroTitle>
-        <p className="mx-auto mt-5 max-w-xl text-base" style={{ fontFamily: fonts.body, color: C.muted, fontWeight: 300 }}>
-          A free, AI-powered guide to transform every dimension of your life — physical, mental, spiritual, and professional.
+        <style>{`@keyframes auraPulse {0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}`}</style>
+
+        <h1
+          className="mx-auto max-w-3xl text-4xl font-light leading-[1.1] md:text-6xl"
+          style={{ fontFamily: fonts.display, color: C.text }}
+        >
+          Something in Your Energy Has Been{" "}
+          <em className="italic" style={{ color: C.gold }}>Waiting to Be Seen.</em>
+        </h1>
+        <p
+          className="mx-auto mt-7 max-w-xl text-base md:text-lg"
+          style={{ fontFamily: fonts.body, color: "rgba(232,237,233,0.78)", fontWeight: 300 }}
+        >
+          In 60 seconds, you'll know exactly what your soul is carrying right now.
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
-          {["Free to use", "No tech skills needed", "Start today"].map((b) => (
-            <span key={b} className="rounded-full px-4 py-1.5 text-xs" style={{ backgroundColor: `${C.teal}18`, color: C.teal, fontFamily: fonts.body }}>
-              {b}
-            </span>
+
+        <div className="mt-9">
+          <Link
+            to="/aura-reader"
+            onClick={() => trackCTA("hero_reveal_reading")}
+            className="inline-block rounded px-9 py-4 text-[12px] font-medium uppercase tracking-[0.22em] transition-transform hover:scale-[1.02]"
+            style={{
+              background: `linear-gradient(135deg, ${C.gold}, #E8C87A)`,
+              color: C.bg,
+              fontFamily: fonts.body,
+              boxShadow: `0 20px 50px -15px rgba(201,168,76,0.45)`,
+            }}
+          >
+            Reveal My Reading →
+          </Link>
+          <p className="mt-4 text-xs" style={{ fontFamily: fonts.body, color: "rgba(232,237,233,0.5)" }}>
+            Free • No account needed • Instant results
+          </p>
+        </div>
+
+        <p
+          className="mx-auto mt-10 max-w-md text-xs italic"
+          style={{ fontFamily: fonts.body, color: "rgba(232,237,233,0.45)" }}
+        >
+          Thousands of people have already seen what their energy reveals. Yours is waiting.
+        </p>
+      </div>
+
+      {/* What Gets Revealed */}
+      <div className="mx-auto mt-20 max-w-5xl">
+        <h2
+          className="mb-12 text-center text-3xl font-light md:text-4xl"
+          style={{ fontFamily: fonts.display, color: C.text }}
+        >
+          What Gets Revealed in <em className="italic" style={{ color: C.gold }}>Your Reading</em>
+        </h2>
+        <div className="grid gap-5 md:grid-cols-3">
+          {[
+            { icon: <Sparkles size={22} />, title: "Your Aura", desc: "See the colors and frequencies your energy field is broadcasting right now — and what they mean for your relationships, health, and path forward." },
+            { icon: <Compass size={22} />, title: "Your Soul Profile", desc: "Discover the deeper patterns shaping your life — your gifts, your blocks, and what your soul is here to do." },
+            { icon: <Zap size={22} />, title: "Your Energy Map", desc: "Get a clear picture of where your energy is flowing, where it's stuck, and what wants to shift." },
+          ].map((f) => (
+            <div key={f.title} className="rounded-xl border p-7" style={{ backgroundColor: C.card, borderColor: C.border }}>
+              <span style={{ color: C.gold }}>{f.icon}</span>
+              <h3 className="mt-4 text-xl font-medium" style={{ fontFamily: fonts.display, color: C.text }}>{f.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed" style={{ fontFamily: fonts.body, color: C.muted, fontWeight: 300 }}>{f.desc}</p>
+            </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="mb-5 text-base italic" style={{ fontFamily: fonts.display, color: C.text }}>
+            Ready to see what's there?
+          </p>
+          <Link
+            to="/aura-reader"
+            onClick={() => trackCTA("grid_start_reading")}
+            className="inline-block rounded px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.22em] transition-transform hover:scale-[1.02]"
+            style={{ background: `linear-gradient(135deg, ${C.gold}, #E8C87A)`, color: C.bg, fontFamily: fonts.body }}
+          >
+            Start My Free Reading →
+          </Link>
         </div>
       </div>
 
