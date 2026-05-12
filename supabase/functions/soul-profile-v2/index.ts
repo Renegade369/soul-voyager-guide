@@ -27,7 +27,7 @@ serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { identity, lifeState, oneWord, currentYear } = await req.json();
+    const { identity, lifeState, oneWord, numerology, currentYear } = await req.json();
     if (!identity || !lifeState) return new Response(JSON.stringify({ error: "identity and lifeState required" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
