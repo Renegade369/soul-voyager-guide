@@ -107,23 +107,47 @@ function CameraCapture({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const [streaming, setStreaming] = useState(false);
+  const [ready, setReady] = useState(false);
   const [err, setErr] = useState("");
 
   const start = async () => {
     setErr("");
+    setReady(false);
     try {
+      if (!navigator.mediaDevices?.getUserMedia) {
+        setErr("Camera API not available in this browser. Please upload a photo instead.");
+        return;
+      }
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: facing },
         audio: false,
       });
       streamRef.current = stream;
+      setStreaming(true);
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        await videoRef.current.play();
+        videoRef.current.onloadedmetadata = async () => {
+          try {
+            await videoRef.current?.play();
+            setReady(true);
+          } catch {
+            setErr("Couldn't start the camera preview. Please try again.");
+          }
+        };
       }
-      setStreaming(true);
-    } catch {
-      setErr("Camera unavailable. Please upload a photo instead.");
+    } catch (e) {
+      const name = (e as { name?: string })?.name;
+      if (name === "NotAllowedError" || name === "SecurityError") {
+        setErr("Camera access was blocked. Click the camera icon in your browser's address bar to enable it, then refresh.");
+      } else if (name === "NotFoundError" || name === "OverconstrainedError") {
+        setErr("No camera detected on this device.");
+      } else if (name === "NotReadableError" || name === "AbortError") {
+        setErr("Your camera is being used by another app. Close it and refresh.");
+      } else {
+        setErr("Camera unavailable. Please upload a photo instead.");
+      }
+      setStreaming(false);
+      setReady(false);
     }
   };
 
