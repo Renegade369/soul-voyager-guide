@@ -309,16 +309,27 @@ function SoulProfilePage() {
         <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 text-center">
           <Mandala size={120} animated={false} />
           <h1 className="mt-10 font-serif text-3xl font-light italic" style={{ color: C.goldLight }}>
-            One reading is missing
+            {missing.length === 1 ? `Your ${missing[0].label} is missing` : `${missing.length} readings are missing`}
           </h1>
           <p className="mt-5 text-sm leading-relaxed" style={{ color: C.muted }}>
-            It looks like one of your readings is incomplete. Your Soul Profile is woven from all three — let's begin again from the start.
+            Your Soul Profile is woven from all three readings. Complete the {missing.length === 1 ? "one below" : "ones below"} to continue — your other readings are saved.
           </p>
-          <Link to="/aura-reader"
-            className="mt-10 rounded-none px-6 py-3 text-[11px] uppercase tracking-[0.22em]"
-            style={{ color: "#0D0F0E", background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})` }}>
-            Return to Aura Reader
-          </Link>
+          <div className="mt-10 flex w-full flex-col gap-3">
+            {missing.map((r, i) => (
+              <Link key={r.key} to={r.to}
+                className="rounded-none px-6 py-3 text-[11px] uppercase tracking-[0.22em]"
+                style={i === 0
+                  ? { color: "#0D0F0E", background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})` }
+                  : { color: C.gold, border: `1px solid ${C.gold}`, background: "transparent" }}>
+                Complete {r.label} →
+              </Link>
+            ))}
+          </div>
+          <button onClick={startNew}
+            className="mt-6 text-[10px] uppercase tracking-[0.22em]"
+            style={{ color: C.dim }}>
+            Or start a fresh session
+          </button>
         </div>
       )}
 
