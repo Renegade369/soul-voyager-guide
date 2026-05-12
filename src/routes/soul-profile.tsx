@@ -152,8 +152,36 @@ function SoulProfilePage() {
     ranRef.current = true;
 
     (async () => {
+      // Debug: print all relevant localStorage values so we can verify what's stored
+      try {
+        const debugKeys = [
+          "soultrue_energy_session",
+          "soultrue_first_name",
+          "soultrue_aura",
+          "soultrue_iris",
+          "soultrue_fingerprint",
+        ];
+        const snapshot: Record<string, string | null> = {};
+        for (const k of debugKeys) snapshot[k] = localStorage.getItem(k);
+        // Also include any other soultrue_* keys in case naming drifted
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.startsWith("soultrue_") && !(k in snapshot)) {
+            snapshot[k] = localStorage.getItem(k);
+          }
+        }
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] localStorage snapshot:", snapshot);
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] localStorage unavailable", e);
+      }
+
       const session = getSession();
       if (!session?.id) {
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] No session id in localStorage — all readings missing");
+        setMissing(READER_LINKS);
         setStep("incomplete");
         return;
       }
@@ -167,6 +195,9 @@ function SoulProfilePage() {
         .maybeSingle();
 
       if (error || !data) {
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] Session row not found in DB", { error });
+        setMissing(READER_LINKS);
         setStep("incomplete");
         return;
       }
@@ -179,7 +210,15 @@ function SoulProfilePage() {
         return;
       }
 
-      if (!data.aura_result || !data.iris_result || !data.fingerprint_result) {
+      const missingNow = READER_LINKS.filter((r) => {
+        if (r.key === "aura") return !data.aura_result;
+        if (r.key === "iris") return !data.iris_result;
+        return !data.fingerprint_result;
+      });
+      if (missingNow.length > 0) {
+        // eslint-disable-next-line no-console
+        console.log("[SoulProfile] Missing readings:", missingNow.map((m) => m.key));
+        setMissing(missingNow);
         setStep("incomplete");
         return;
       }
