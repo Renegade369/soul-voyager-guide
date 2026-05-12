@@ -18,10 +18,7 @@ LANGUAGE RULES:
 - If birth time not provided, use sun + moon sign only
 
 CALCULATE BEFORE WRITING:
-- Life Path Number (reduce birth date; keep 11/22/33)
-- Expression Number (Pythagorean A=1..Z=8 — full birth name)
-- Soul Urge Number (vowels only — full birth name)
-- Personal Year Number (birth month + birth day + current year)
+- Use the pre-calculated NUMEROLOGY NUMBERS provided in the user message exactly as given. Do not recalculate them. Echo them back in the corresponding fields (life_path_number, expression_number, soul_urge_number, personal_year_number).
 - Sun Sign, Moon Sign (approx), Rising (only if time provided)
 
 You MUST respond by calling return_soul_profile_v2 with structured fields. Do not respond in plain text.`;
