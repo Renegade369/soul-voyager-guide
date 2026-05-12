@@ -102,6 +102,7 @@ export function HomeTab() {
         >
           Thousands of people have already seen what their energy reveals. Yours is waiting.
         </p>
+        </div>
       </div>
 
       {/* What Gets Revealed */}
