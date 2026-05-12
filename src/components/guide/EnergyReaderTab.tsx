@@ -175,24 +175,41 @@ function CameraCapture({
   const stop = () => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
+    if (warmupTimerRef.current) {
+      window.clearTimeout(warmupTimerRef.current);
+      warmupTimerRef.current = null;
+    }
     setStreaming(false);
     setReady(false);
+    setWarmingUp(false);
   };
 
-  const capture = () => {
+  const tryGrabFrame = (): string | null => {
     const v = videoRef.current;
-    if (!ready || !v || !v.videoWidth || !v.videoHeight) {
-      setErr("Camera not ready yet. Please wait a moment and try again.");
-      return;
-    }
+    if (!v || v.readyState !== 4 || !v.videoWidth || !v.videoHeight) return null;
     const canvas = document.createElement("canvas");
     canvas.width = v.videoWidth;
     canvas.height = v.videoHeight;
     const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!ctx) return null;
     ctx.drawImage(v, 0, 0);
     const dataUrl = canvas.toDataURL("image/jpeg", 0.85);
-    if (!dataUrl || dataUrl.length < 100) {
+    return dataUrl && dataUrl.length > 100 ? dataUrl : null;
+  };
+
+  const capture = async () => {
+    const v = videoRef.current;
+    if (!ready || !v || v.readyState !== 4) {
+      setErr("Camera not ready yet. Please wait a moment and try again.");
+      return;
+    }
+    let dataUrl: string | null = null;
+    for (let i = 0; i < 3; i++) {
+      dataUrl = tryGrabFrame();
+      if (dataUrl) break;
+      await new Promise((r) => setTimeout(r, 200));
+    }
+    if (!dataUrl) {
       setErr("Capture failed. Please try again or upload a photo.");
       return;
     }
