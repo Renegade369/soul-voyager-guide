@@ -305,27 +305,42 @@ function PlayModal({ meditation, onClose }: { meditation: Meditation; onClose: (
 function MeditationCard({ meditation, onPlay }: { meditation: Meditation; onPlay: (m: Meditation) => void }) {
   return (
     <div
-      className="group relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 hover:border-amber-400/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
-      style={{ minHeight: "280px" }}
+      className="group relative cursor-pointer overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+      style={{
+        minHeight: "280px",
+        borderRadius: 16,
+        border: "1px solid rgba(201,168,76,0.15)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.6)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+      }}
       onClick={() => onPlay(meditation)}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)";
+        e.currentTarget.style.boxShadow = "0 8px 40px rgba(232,130,26,0.18)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "rgba(201,168,76,0.15)";
+        e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.6)";
+      }}
     >
       <img
         src={meditation.image}
         alt={meditation.title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(26,18,9,0.5) 50%, rgba(26,18,9,0.1) 100%)" }} />
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="w-14 h-14 rounded-full bg-amber-400/20 border border-amber-400/50 flex items-center justify-center backdrop-blur-sm">
-          <Play size={22} className="text-amber-400 ml-1" />
+        <div className="w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm" style={{ background: "rgba(232,130,26,0.18)", border: "1px solid rgba(232,130,26,0.55)" }}>
+          <Play size={22} style={{ color: "#E8821A", marginLeft: 2 }} />
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 p-4">
-        <span className="text-xs font-medium text-amber-400/80 bg-amber-400/10 border border-amber-400/20 rounded-full px-2.5 py-0.5 mb-2 inline-block">
+        <span className="text-xs font-medium rounded-full px-2.5 py-0.5 mb-2 inline-block" style={{ color: "#C9A84C", background: "rgba(201,168,76,0.10)", border: "1px solid rgba(201,168,76,0.25)" }}>
           {meditation.category}
         </span>
-        <h3 className="text-white font-semibold text-base leading-tight mb-1">{meditation.title}</h3>
-        <div className="flex items-center gap-1.5 text-white/40 text-xs">
+        <h3 className="font-semibold text-base leading-tight mb-1" style={{ color: "#F5F0E8" }}>{meditation.title}</h3>
+        <div className="flex items-center gap-1.5 text-xs" style={{ color: "rgba(245,240,232,0.5)" }}>
           <Clock size={11} />
           <span>{meditation.duration}</span>
         </div>
