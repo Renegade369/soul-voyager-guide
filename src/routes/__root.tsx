@@ -7,6 +7,9 @@ import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { useCartSync } from "../hooks/useCartSync";
 import { PwaInstallPrompt } from "../components/PwaInstallPrompt";
+import { CursorGlow } from "../components/aesthetic/CursorGlow";
+import { AmbientAudio } from "../components/aesthetic/AmbientAudio";
+import { PageTransition } from "../components/aesthetic/PageTransition";
 
 function NotFoundComponent() {
   return (
