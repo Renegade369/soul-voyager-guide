@@ -182,6 +182,11 @@ function NumerologyPage() {
             </motion.section>
 
             <div className="mt-12 text-center">
+              <button onClick={emailReading} disabled={emailState === "sending" || emailState === "sent"}
+                className="mb-6 inline-block rounded-none border px-8 py-3 text-[11px] uppercase tracking-[0.22em] disabled:opacity-50"
+                style={{ borderColor: `${C.gold}`, color: C.gold, background: "transparent" }}>
+                {emailState === "sending" ? "Sending…" : emailState === "sent" ? "✓ Sent to your inbox" : emailState === "error" ? "Try again" : "Email me this reading"}
+              </button>
               <p className="text-sm mb-4" style={{ color: C.muted }}>See how your numbers fit your complete soul picture.</p>
               <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
                 style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
