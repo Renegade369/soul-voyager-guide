@@ -127,6 +127,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: C.gold }}>{children}</p>;
 }
 
+const READER_LINKS: { key: "aura" | "iris" | "fingerprint"; label: string; to: "/aura-reader" | "/iris-reader" | "/fingerprint-reader" }[] = [
+  { key: "aura", label: "Aura Reading", to: "/aura-reader" },
+  { key: "iris", label: "Iris Reading", to: "/iris-reader" },
+  { key: "fingerprint", label: "Fingerprint Reading", to: "/fingerprint-reader" },
+];
+
 function SoulProfilePage() {
   const navigate = useNavigate();
   const [step, setStep] = useState<Step>("loading");
@@ -137,6 +143,7 @@ function SoulProfilePage() {
   const [savedAndSent, setSavedAndSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [phase, setPhase] = useState(0); // processing animation phases
+  const [missing, setMissing] = useState<typeof READER_LINKS>(READER_LINKS);
   const ranRef = useRef(false);
 
   // Load session + readings, then generate
