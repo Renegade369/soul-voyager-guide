@@ -285,7 +285,7 @@ function CameraCapture({
             className="col-span-2 flex items-center justify-center gap-2 px-4 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
             style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldLight})`, color: "#0D0F0E", borderRadius: 4 }}
           >
-            <Sparkles size={16} /> {ready ? "Capture" : "Starting…"}
+            <Sparkles size={16} /> {ready ? "Capture" : warmingUp ? "Warming up…" : "Starting…"}
           </button>
         ) : (
           <button
