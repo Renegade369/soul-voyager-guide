@@ -9,10 +9,16 @@ const links = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/teachings", label: "Teachings" },
-  { to: "/aura-reader", label: "Aura Reader" },
   { to: "/consciousness-map", label: "Map" },
   { to: "/events", label: "Events" },
   { to: "/visit", label: "Visit" },
+] as const;
+
+const readings = [
+  { to: "/soul-profile", label: "Soul Profile" },
+  { to: "/aura-reader", label: "Aura Reader" },
+  { to: "/numerology", label: "Numerology" },
+  { to: "/astrology", label: "Astrology" },
 ] as const;
 
 export function SiteHeader() {
