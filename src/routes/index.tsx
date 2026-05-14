@@ -54,6 +54,7 @@ const sections: Section[] = [
   { title: "Energy Reader", desc: "See the light field that surrounds you", to: "/aura-reader", icon: Eye },
   { title: "Birth Chart", desc: "The sky at your first breath tells your whole story", to: "/readings", hash: "birth-chart", icon: Orbit },
   { title: "Soul Quiz", desc: "Free — discover your soul type in 5 minutes", to: "/readings", hash: "soul-quiz", icon: HelpCircle },
+  { title: "The Codex", desc: "Sacred teachings and ancient knowledge restored", to: "/teachings", icon: BookOpen },
 ];
 
 function HomePage() {
