@@ -156,8 +156,18 @@ function SoulProfilePage() {
                     I don't know my birth time
                   </label>
                 </div>
-                <Field label="Place of birth" value={identity.birthPlace} onChange={(v) => setIdentity({ ...identity, birthPlace: v })} placeholder="City, Country" />
-                <Field label="Current city of residence" value={identity.currentCity} onChange={(v) => setIdentity({ ...identity, currentCity: v })} placeholder="City, Country" />
+                <div className="space-y-3">
+                  <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Place of birth</p>
+                  <Field label="City" value={identity.birthCity} onChange={(v) => setIdentity({ ...identity, birthCity: v })} placeholder="City" />
+                  <Field label="State / Province (optional)" value={identity.birthState} onChange={(v) => setIdentity({ ...identity, birthState: v })} placeholder="State or Province" />
+                  <Field label="Country" value={identity.birthCountry} onChange={(v) => setIdentity({ ...identity, birthCountry: v })} placeholder="Country" />
+                </div>
+                <div className="space-y-3">
+                  <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Current residence</p>
+                  <Field label="City" value={identity.currentCity} onChange={(v) => setIdentity({ ...identity, currentCity: v })} placeholder="City" />
+                  <Field label="State / Province (optional)" value={identity.currentState} onChange={(v) => setIdentity({ ...identity, currentState: v })} placeholder="State or Province" />
+                  <Field label="Country" value={identity.currentCountry} onChange={(v) => setIdentity({ ...identity, currentCountry: v })} placeholder="Country" />
+                </div>
               </div>
               <button onClick={() => setStage("step2")} disabled={!step1Ready}
                 className="mt-8 block w-full rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
