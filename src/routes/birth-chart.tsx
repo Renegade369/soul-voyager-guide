@@ -100,8 +100,20 @@ function BirthChartPage() {
                 </label>
               </div>
               <div>
-                <label className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Place of birth</label>
-                <input type="text" value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} placeholder="City, Country"
+                <label className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>City of birth</label>
+                <input type="text" value={birthCity} onChange={(e) => setBirthCity(e.target.value)} placeholder="City"
+                  className="mt-2 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
+                  style={{ borderColor: `${C.gold}66`, color: C.text }} />
+              </div>
+              <div>
+                <label className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>State / Province <span style={{ color: C.dim }}>(optional)</span></label>
+                <input type="text" value={birthState} onChange={(e) => setBirthState(e.target.value)} placeholder="State or Province"
+                  className="mt-2 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
+                  style={{ borderColor: `${C.gold}66`, color: C.text }} />
+              </div>
+              <div>
+                <label className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Country of birth</label>
+                <input type="text" value={birthCountry} onChange={(e) => setBirthCountry(e.target.value)} placeholder="Country"
                   className="mt-2 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
                   style={{ borderColor: `${C.gold}66`, color: C.text }} />
               </div>
