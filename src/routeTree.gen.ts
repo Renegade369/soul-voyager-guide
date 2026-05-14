@@ -48,6 +48,9 @@ import { Route as AdminCodesRouteImport } from './routes/admin-codes'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WisdomTheTrueStoryOfJeshuaRouteImport } from './routes/wisdom_.the-true-story-of-jeshua'
+import { Route as WisdomSuppressedSacredTextsRouteImport } from './routes/wisdom_.suppressed-sacred-texts'
+import { Route as WisdomMatrixOriginsRouteImport } from './routes/wisdom_.matrix-origins'
 import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 
@@ -246,6 +249,23 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WisdomTheTrueStoryOfJeshuaRoute =
+  WisdomTheTrueStoryOfJeshuaRouteImport.update({
+    id: '/wisdom_/the-true-story-of-jeshua',
+    path: '/wisdom/the-true-story-of-jeshua',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WisdomSuppressedSacredTextsRoute =
+  WisdomSuppressedSacredTextsRouteImport.update({
+    id: '/wisdom_/suppressed-sacred-texts',
+    path: '/wisdom/suppressed-sacred-texts',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WisdomMatrixOriginsRoute = WisdomMatrixOriginsRouteImport.update({
+  id: '/wisdom_/matrix-origins',
+  path: '/wisdom/matrix-origins',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileIdRoute = ProfileIdRouteImport.update({
   id: '/profile/$id',
   path: '/profile/$id',
@@ -299,6 +319,9 @@ export interface FileRoutesByFullPath {
   '/wisdom': typeof WisdomRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
+  '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
+  '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -342,6 +365,9 @@ export interface FileRoutesByTo {
   '/wisdom': typeof WisdomRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
+  '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
+  '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -386,6 +412,9 @@ export interface FileRoutesById {
   '/wisdom': typeof WisdomRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/wisdom_/matrix-origins': typeof WisdomMatrixOriginsRoute
+  '/wisdom_/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
+  '/wisdom_/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -431,6 +460,9 @@ export interface FileRouteTypes {
     | '/wisdom'
     | '/product/$handle'
     | '/profile/$id'
+    | '/wisdom/matrix-origins'
+    | '/wisdom/suppressed-sacred-texts'
+    | '/wisdom/the-true-story-of-jeshua'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -474,6 +506,9 @@ export interface FileRouteTypes {
     | '/wisdom'
     | '/product/$handle'
     | '/profile/$id'
+    | '/wisdom/matrix-origins'
+    | '/wisdom/suppressed-sacred-texts'
+    | '/wisdom/the-true-story-of-jeshua'
   id:
     | '__root__'
     | '/'
@@ -517,6 +552,9 @@ export interface FileRouteTypes {
     | '/wisdom'
     | '/product/$handle'
     | '/profile/$id'
+    | '/wisdom_/matrix-origins'
+    | '/wisdom_/suppressed-sacred-texts'
+    | '/wisdom_/the-true-story-of-jeshua'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -561,6 +599,9 @@ export interface RootRouteChildren {
   WisdomRoute: typeof WisdomRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ProfileIdRoute: typeof ProfileIdRoute
+  WisdomMatrixOriginsRoute: typeof WisdomMatrixOriginsRoute
+  WisdomSuppressedSacredTextsRoute: typeof WisdomSuppressedSacredTextsRoute
+  WisdomTheTrueStoryOfJeshuaRoute: typeof WisdomTheTrueStoryOfJeshuaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -838,6 +879,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wisdom_/the-true-story-of-jeshua': {
+      id: '/wisdom_/the-true-story-of-jeshua'
+      path: '/wisdom/the-true-story-of-jeshua'
+      fullPath: '/wisdom/the-true-story-of-jeshua'
+      preLoaderRoute: typeof WisdomTheTrueStoryOfJeshuaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wisdom_/suppressed-sacred-texts': {
+      id: '/wisdom_/suppressed-sacred-texts'
+      path: '/wisdom/suppressed-sacred-texts'
+      fullPath: '/wisdom/suppressed-sacred-texts'
+      preLoaderRoute: typeof WisdomSuppressedSacredTextsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wisdom_/matrix-origins': {
+      id: '/wisdom_/matrix-origins'
+      path: '/wisdom/matrix-origins'
+      fullPath: '/wisdom/matrix-origins'
+      preLoaderRoute: typeof WisdomMatrixOriginsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile/$id': {
       id: '/profile/$id'
       path: '/profile/$id'
@@ -897,6 +959,9 @@ const rootRouteChildren: RootRouteChildren = {
   WisdomRoute: WisdomRoute,
   ProductHandleRoute: ProductHandleRoute,
   ProfileIdRoute: ProfileIdRoute,
+  WisdomMatrixOriginsRoute: WisdomMatrixOriginsRoute,
+  WisdomSuppressedSacredTextsRoute: WisdomSuppressedSacredTextsRoute,
+  WisdomTheTrueStoryOfJeshuaRoute: WisdomTheTrueStoryOfJeshuaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

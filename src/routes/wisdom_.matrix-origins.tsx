@@ -50,7 +50,7 @@ function Page() {
 
         <H>The Awakening</H>
         <P>Something is shifting. It has been building for decades and it is now undeniable. Millions of people across the world are simultaneously waking up to the same truth — that the reality they were handed is a construct, and that something deeper and more real exists beneath it. This is not coincidence. Ancient traditions predicted this moment. The end of the Kali Yuga. The return of the age of truth. The veils are thinning. The system is revealing itself through its own desperation. And a humanity that can see the cage is a humanity that can choose to walk out of it.</P>
-        <P style={{}}><em style={{ color: C.gold, fontFamily: fonts.display, fontSize: 22 }}>You are not here by accident. You woke up for a reason.</em></P>
+        <P><em style={{ color: C.gold, fontFamily: fonts.display, fontSize: 22 }}>You are not here by accident. You woke up for a reason.</em></P>
 
         <H>Sources &amp; Rabbit Holes</H>
         <ul className="space-y-3 text-[16px]" style={{ color: "rgba(245,240,232,0.8)" }}>
