@@ -51,7 +51,10 @@ function AstrologyPage() {
   const [birthDate, setBirthDate] = useState("");
   const [birthTime, setBirthTime] = useState("");
   const [unknownTime, setUnknownTime] = useState(false);
-  const [birthPlace, setBirthPlace] = useState("");
+  const [birthCity, setBirthCity] = useState("");
+  const [birthState, setBirthState] = useState("");
+  const [birthCountry, setBirthCountry] = useState("");
+  const birthPlace = [birthCity, birthState, birthCountry].map(s => s.trim()).filter(Boolean).join(", ");
   const [email, setEmail] = useState("");
   const [optIn, setOptIn] = useState(true);
   const [step, setStep] = useState<"intake" | "loading" | "result" | "error">("intake");
