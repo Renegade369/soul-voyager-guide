@@ -44,7 +44,13 @@ type Profile = {
 
 function SoulProfilePage() {
   const [stage, setStage] = useState<"step1" | "step2" | "step3" | "loading" | "result" | "error">("step1");
-  const [identity, setIdentity] = useState({ fullName: "", birthDate: "", birthTime: "", unknownTime: false, birthPlace: "", currentCity: "" });
+  const [identity, setIdentity] = useState({
+    fullName: "", birthDate: "", birthTime: "", unknownTime: false,
+    birthCity: "", birthState: "", birthCountry: "",
+    currentCity: "", currentState: "", currentCountry: "",
+  });
+  const birthPlace = [identity.birthCity, identity.birthState, identity.birthCountry].map(s => s.trim()).filter(Boolean).join(", ");
+  const currentLocation = [identity.currentCity, identity.currentState, identity.currentCountry].map(s => s.trim()).filter(Boolean).join(", ");
   const [lifeState, setLifeState] = useState<Record<string, string>>({});
   const [oneWord, setOneWord] = useState("");
   const [email, setEmail] = useState("");
