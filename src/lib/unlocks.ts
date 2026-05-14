@@ -61,7 +61,7 @@ export async function redeemCode(code: string, slug: ReaderSlug, email?: string)
     const { data, error } = await supabase.rpc("redeem_promo_code", {
       _code: code.trim(),
       _reader: slug,
-      _email: email?.trim().toLowerCase() ?? null,
+      _email: email?.trim().toLowerCase(),
     });
     if (error) return { ok: false, reason: "error", message: error.message };
     const r = data as { ok: boolean; unlocks?: string[]; reason?: string };
