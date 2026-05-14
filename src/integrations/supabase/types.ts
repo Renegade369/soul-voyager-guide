@@ -368,6 +368,80 @@ export type Database = {
         }
         Relationships: []
       }
+      promo_code_redemptions: {
+        Row: {
+          code: string
+          code_id: string | null
+          email: string | null
+          id: string
+          reader_slug: string
+          redeemed_at: string
+        }
+        Insert: {
+          code: string
+          code_id?: string | null
+          email?: string | null
+          id?: string
+          reader_slug: string
+          redeemed_at?: string
+        }
+        Update: {
+          code?: string
+          code_id?: string | null
+          email?: string | null
+          id?: string
+          reader_slug?: string
+          redeemed_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "promo_code_redemptions_code_id_fkey"
+            columns: ["code_id"]
+            isOneToOne: false
+            referencedRelation: "promo_codes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      promo_codes: {
+        Row: {
+          code: string
+          created_at: string
+          created_by: string | null
+          expires_at: string | null
+          id: string
+          is_active: boolean
+          max_uses: number | null
+          unlocks: string[]
+          updated_at: string
+          uses_count: number
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          created_by?: string | null
+          expires_at?: string | null
+          id?: string
+          is_active?: boolean
+          max_uses?: number | null
+          unlocks?: string[]
+          updated_at?: string
+          uses_count?: number
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          created_by?: string | null
+          expires_at?: string | null
+          id?: string
+          is_active?: boolean
+          max_uses?: number | null
+          unlocks?: string[]
+          updated_at?: string
+          uses_count?: number
+        }
+        Relationships: []
+      }
       saved_meditations: {
         Row: {
           content: string
@@ -654,6 +728,10 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      redeem_promo_code: {
+        Args: { _code: string; _email?: string; _reader: string }
+        Returns: Json
       }
     }
     Enums: {
