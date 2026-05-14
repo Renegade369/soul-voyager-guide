@@ -39,43 +39,206 @@ function TeachingImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-const categories = [
+const SUPA = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated";
+
+type Section = { h: string; p: React.ReactNode };
+type Category = {
+  t: string;
+  d: string;
+  items: string[];
+  img: string;
+  alt: string;
+  fullTitle: string;
+  intro: string;
+  sections: Section[];
+};
+
+const categories: Category[] = [
   {
     t: "The 3D World",
     d: "The hidden architecture of life on Earth — history rewritten, the nature of money and matter, the body as a sacred instrument.",
-    items: ["Lost human history", "The veiled nature of money", "The body as antenna"],
-    img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=70",
-    alt: "Earth seen from orbit — the 3D world.",
+    items: ["The veiled nature of money", "The body as antenna", "Lost human history"],
+    img: `${SUPA}/1778733538165.png`,
+    alt: "The 3D world — the hidden architecture of reality.",
+    fullTitle: "The 3D World — The Hidden Architecture of Reality",
+    intro: "Most of what we call reality was constructed — not discovered. The physical world we navigate daily is layered: a visible surface of cities, careers, economies, and social structures, and beneath it an invisible architecture of systems, frequencies, and agreements that most people never examine. The 3D world is not wrong or evil. It is simply incomplete. It is one layer of a much larger existence — and understanding how it was built is the first step to moving beyond its limitations.",
+    sections: [
+      {
+        h: "The Veiled Nature of Money",
+        p: <>Money is the most powerful belief system on Earth. Not because of what it is — it is paper, digits, agreed-upon abstraction — but because of what we have been convinced it means. The modern financial system was not designed for your freedom. It was designed for your perpetual participation. Debt-based currency ensures that more money is always owed than exists. Compound interest transfers wealth upward across generations. Inflation quietly taxes savings. None of this is hidden — it is in the textbooks of every economics department. What is hidden is the alternative: that sovereign individuals and communities have always had the capacity to create, exchange, and thrive outside the permission of central institutions.<br /><br />The veiled truth about money is not that it is evil. It is that it is optional — and the moment you understand its nature, your relationship with it changes entirely.</>,
+      },
+      {
+        h: "Lost Human History",
+        p: <>The history taught in schools begins around 3,000 BCE with the first civilizations of Sumer and Egypt. But the archaeological record tells a different story. Göbekli Tepe in Turkey dates to at least 12,000 BCE — a complex of massive carved stone pillars built by a civilization that, according to official history, should not have existed. The Sphinx enclosure shows water erosion patterns consistent with a wetter climate 10,000–7,000 BCE. Underwater structures off the coasts of Japan, India, and Cuba suggest advanced civilizations predating the last great geological shift. The Piri Reis map of 1513 accurately depicts the coastline of Antarctica — free of ice — centuries before its official discovery, suggesting it was copied from far older source maps.<br /><br />The honest position is this: we do not know how old human civilization is. We know that what we have been taught is incomplete. And a humanity that does not know its true history cannot make sense of its present — or claim its full future.</>,
+      },
+      {
+        h: "The Body as Antenna",
+        p: <>Your body is not a meat vehicle for your brain. It is a sophisticated electromagnetic instrument capable of receiving, transmitting, and processing frequencies far beyond what current mainstream science fully acknowledges. The heart generates an electromagnetic field 60 times stronger in amplitude than the brain — measurable several feet outside the body. The gut contains over 500 million neurons and produces more serotonin than the brain. The fascia — the connective tissue network running through the entire body — functions as a crystalline semiconductor, conducting piezoelectric signals throughout the system.<br /><br />Ancient traditions knew this. They built entire practices around the body as a sacred instrument: breathwork to alter consciousness, fasting to sharpen perception, movement to release trapped frequencies, sound to recalibrate the nervous system. Modern science is arriving at the same conclusions through different language. Your body is not a problem to be managed. It is a technology to be understood.</>,
+      },
+    ],
   },
   {
     t: "Beyond the Stars",
     d: "Other planets, star systems, and the civilizations seeded across the cosmos — what the elders and the new contactees agree upon.",
-    items: ["Pleiadian, Sirian & Arcturian lineages", "The Galactic federation question", "Star seeds & soul origins"],
-    img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=70",
-    alt: "Distant galaxy and stars — beyond the stars.",
+    items: ["Pleiadian, Sirian & Arcturian lineages", "The Galactic Federation question", "Star seeds & soul origins"],
+    img: `${SUPA}/1778733534808.png`,
+    alt: "Beyond the stars — civilizations across the cosmos.",
+    fullTitle: "Beyond the Stars — Civilizations Across the Cosmos",
+    intro: "The question of whether humanity is alone in the universe has been answered — not by governments, but by the convergence of indigenous elder traditions, ancient astronomical texts, credible whistleblowers, and the simple mathematics of probability. The Milky Way alone contains an estimated 400 billion stars. The observable universe contains more galaxies than there are grains of sand on every beach on Earth. The statistical likelihood of Earth being the singular location of conscious life is effectively zero. What remains is not whether other civilizations exist — but what their relationship to humanity has been, and what it is now.",
+    sections: [
+      {
+        h: "Pleiadian, Sirian & Arcturian Lineages",
+        p: <>Across dozens of unconnected indigenous traditions — the Hopi, the Dogon of Mali, the Cherokee, the ancient Egyptians, the Sumerians — specific star systems are named not as distant lights but as ancestral homelands. The Pleiades appear in the oral traditions of cultures on every inhabited continent, consistently described as a place of origin or a source of spiritual teaching. The Dogon people of Mali possessed detailed astronomical knowledge of the Sirius binary star system — including its invisible companion Sirius B — centuries before Western astronomy confirmed its existence.<br /><br />Contemporary accounts from credible sources — military personnel, aerospace engineers, government officials across multiple countries — describe contact with beings who identify themselves as originating from these same systems. The consistency across cultures and centuries is not coincidence. It is data.</>,
+      },
+      {
+        h: "The Galactic Federation Question",
+        p: <>Multiple whistleblowers, channeled sources, and indigenous traditions reference a governing body of cosmic civilizations — variously called the Galactic Federation, the Confederation of Worlds, or the Council of Light. The accounts vary in detail but agree on core points: that this body operates on principles of non-interference with developing civilizations, that Earth has been under a form of quarantine during its current developmental cycle, and that this quarantine is in the process of being lifted as human consciousness reaches a threshold frequency. Whether this is literal cosmic governance or a metaphorical framework for understanding the organization of consciousness across dimensions — the concept points toward a universe that is structured, inhabited, and paying attention.</>,
+      },
+      {
+        h: "Star Seeds & Soul Origins",
+        p: <>The concept of star seeds — souls that have incarnated in other star systems before choosing Earth — appears independently in Vedic cosmology, Gnostic texts, indigenous traditions, and contemporary spiritual communities. The common thread: some souls on Earth carry a cellular memory of other worlds, experience a persistent sense of not fully belonging here, feel a deep pull toward service and awakening, and often awaken to their nature during periods of collective upheaval. If souls are not created at birth but choose their incarnations — and if consciousness is not confined to one planet — then the origin of a soul is a legitimate and meaningful question. You may be older than you think. And home may be further away than the town you grew up in.</>,
+      },
+    ],
   },
   {
     t: "Intelligent Species",
     d: "The many forms consciousness takes — benevolent, neutral, and shadow. Discernment as spiritual practice.",
     items: ["Benevolent guardians", "Tricksters & service-to-self beings", "Inter-species communication"],
-    img: "https://images.unsplash.com/photo-1532009324734-20a7a5813719?auto=format&fit=crop&w=1200&q=70",
-    alt: "Colorful nebula — intelligent species across the cosmos.",
+    img: `${SUPA}/1778733542081.png`,
+    alt: "Intelligent species — the many forms consciousness takes.",
+    fullTitle: "Intelligent Species — The Many Forms Consciousness Takes",
+    intro: "Consciousness is not a human invention. It is the fundamental fabric of the universe — and it expresses itself in an infinite variety of forms. Some of those forms are physical. Many are not. Some are older than Earth. Some operate at frequencies so far above the human bandwidth that direct perception requires an expanded state of consciousness. The universe is not empty. It is extraordinarily full. And navigating it with wisdom requires what every spiritual tradition has always called discernment — the capacity to feel the quality of a presence, not just observe its appearance.",
+    sections: [
+      {
+        h: "Benevolent Guardians",
+        p: <>Across traditions, the presence of beings dedicated to the protection and evolution of humanity is consistently reported. Called angels in the Abrahamic traditions, devas in Hinduism, the Shining Ones in Celtic lore, and light beings in contemporary contact accounts — these presences share common characteristics: they do not override free will, they appear in moments of genuine crisis or spiritual threshold, they communicate through feeling and knowing as much as through words, and they leave the individual more empowered, not more dependent. Their agenda is the flourishing of consciousness. Their method is invitation, not control.</>,
+      },
+      {
+        h: "Tricksters & Service-to-Self Beings",
+        p: <>Not all non-human intelligence is oriented toward your highest good. The tradition of the trickster — the deceiver, the imitator, the being that presents as light while operating from manipulation — is as old as recorded spiritual history. The Archons of Gnostic cosmology, the Jinn of Islamic tradition, the skin-walkers and shape-shifters of indigenous accounts — all describe categories of intelligence that feed on fear, confusion, and misdirected devotion. In contemporary contact literature, the distinction between service-to-others and service-to-self orientations is one of the most consistently reported frameworks for understanding the full spectrum of non-human intelligence. The practice is not fear — it is discernment. You do not need to be afraid of the dark. You need to be able to see in it.</>,
+      },
+      {
+        h: "Inter-Species Communication",
+        p: <>Communication with non-human intelligence is not a new phenomenon. It is one of the oldest documented human experiences — present in every shamanic tradition, every mystery school, every major religious origin story. The burning bush. The angel at the tomb. The vision quest. The ayahuasca ceremony. The meditation that cracks the ceiling open. What changes across cultures and centuries is the framework used to interpret the experience — not the experience itself. The consistent elements: an expansion beyond ordinary consciousness, a transmission that arrives as knowing rather than words, information that could not have been assembled from prior experience, and a persistent transformation in the one who receives it. Inter-species communication is not science fiction. It is the oldest form of spiritual practice on Earth.</>,
+      },
+    ],
   },
   {
     t: "The Spirit World",
     d: "Ancestors, guides, departed loved ones, and the realms between lives. How to listen, and how to verify.",
-    items: ["Ancestral healing", "Working with guides", "Between-life realms"],
-    img: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1200&q=70",
-    alt: "Candle in darkness — the spirit world.",
+    items: ["Ancestral connection", "Working with guides", "Between-life realms"],
+    img: `${SUPA}/1778733542297.png`,
+    alt: "The spirit world — the realms between lives.",
+    fullTitle: "The Spirit World — The Realms Between Lives",
+    intro: "Death is not the end of consciousness. It is a transition — one that has been documented, mapped, and navigated by human beings across every culture in history. The evidence for consciousness surviving physical death is among the most extensively studied bodies of research in modern science, from the near-death experience research of Raymond Moody, Elisabeth Kübler-Ross, and Pim van Lommel, to the past-life memory studies of Ian Stevenson at the University of Virginia, to the remote viewing programs funded by the U.S. government for over two decades. The question is no longer whether something continues. The question is what that something is — and how to relate to it wisely.",
+    sections: [
+      {
+        h: "Ancestral Connection",
+        p: <>Your ancestors did not simply stop existing when they died. In every indigenous tradition on Earth, the relationship between the living and the ancestral lineage is understood as ongoing, dynamic, and consequential. Unresolved patterns do not disappear at death — they transmit forward through the lineage until someone in the family line chooses to face them consciously. The emerging field of epigenetics confirms what shamans have always known: that the experiences of our ancestors are encoded in our biology, shaping our stress responses, our emotional patterns, and our cellular expression. Ancestral work is not superstition. It is the recognition that you are not only yourself — you are the sum of everyone who came before you, and the threshold through which their unfinished business either continues forward or finally finds resolution.</>,
+      },
+      {
+        h: "Working with Guides",
+        p: <>Every human soul has access to non-physical guidance. This is not a belief — it is one of the most universally reported experiences in human history across every culture, religion, and spiritual tradition. The form the guidance takes varies: ancestors, angels, spirit animals, ascended teachers, higher self. The quality is consistent: it arrives with love, it does not override your will, it offers clarity rather than dependency, and it points you back toward your own inner knowing rather than toward reliance on an external authority. Working with guides is a practice — not a passive reception. It requires quieting the mind enough to hear the signal beneath the noise, developing the capacity to distinguish genuine guidance from fear or wishful thinking, and building a relationship of trust through consistent inner work.</>,
+      },
+      {
+        h: "Between-Life Realms",
+        p: <>The accounts of what exists between incarnations are remarkably consistent across thousands of independent sources — near-death experiences, past-life regressions, and accounts preserved in the Tibetan Book of the Dead, the Egyptian Book of the Dead, and Gnostic cosmological texts. Common elements: a review of the life just lived, experienced without judgment but with complete clarity; a reunion with souls from the current and previous lifetimes; a period of rest and integration; and eventually a process of choosing the next incarnation in alignment with the soul's ongoing purpose. The between-life realm is not a waiting room. It is an active dimension of existence where the work of the soul continues — and where the trajectory of future lives is shaped by the depth of understanding reached in the current one.</>,
+      },
+    ],
   },
   {
     t: "Heart-Brain Coherence",
-    d: "The measurable, sacred state where heart and mind synchronize — a doorway to intuition, healing, and remembrance.",
+    d: "The measurable, sacred state where heart and mind synchronize — a doorway to intuition, frequency wellness, and remembrance.",
     items: ["The heart's electromagnetic field", "Coherence breathing", "Group field amplification"],
-    img: "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1200&q=70",
-    alt: "Soft light through trees — heart coherence.",
+    img: `${SUPA}/1778733551970.png`,
+    alt: "Heart-brain coherence — where science meets the sacred.",
+    fullTitle: "Heart-Brain Coherence — Where Science Meets the Sacred",
+    intro: "There is a state of being that every tradition has pointed toward — called by different names but describing the same experience: the mind quiets, the heart opens, and something larger than ordinary awareness becomes accessible. Modern science has found it, measured it, and named it heart-brain coherence. It is not mysticism. It is physiology. And it is one of the most powerful tools available to an awakening human being.",
+    sections: [
+      {
+        h: "The Heart's Electromagnetic Field",
+        p: <>The HeartMath Institute has spent over thirty years studying the heart's role in human consciousness. Their findings are extraordinary. The heart generates an electromagnetic field 60 times greater in electrical amplitude than the brain — and up to 5,000 times stronger in magnetic strength. This field extends several feet beyond the physical body and is detectable by others. It changes measurably based on the emotional state of its generator. Feelings of love, gratitude, and appreciation produce a smooth, coherent wave pattern. Feelings of stress, fear, and anger produce a chaotic, incoherent one. The quality of your inner state is not private. It is broadcast — continuously — into the field around you. And it affects every person and system within range.</>,
+      },
+      {
+        h: "Coherence Breathing",
+        p: <>The most direct physical pathway into heart coherence is breath. The HeartMath protocol is simple: breathe in for 5–6 seconds, breathe out for 5–6 seconds, and while breathing, activate a genuine feeling of appreciation or love — not a thought about it, but the actual felt sense of it in the chest. Within 3–5 minutes, the heart rhythm entrains into a coherent wave pattern, the nervous system shifts from sympathetic (fight/flight) to parasympathetic (rest/restore), the prefrontal cortex comes fully online, and the intuitive intelligence of the heart becomes accessible in a way it cannot be under stress. This is not relaxation. It is activation — a shift into a higher-functioning state of consciousness that is simultaneously more calm and more capable.</>,
+      },
+      {
+        h: "Group Field Amplification",
+        p: <>Individual coherence is powerful. Group coherence is exponential. When multiple individuals enter heart coherence simultaneously, their electromagnetic fields interact and amplify. The HeartMath Institute's Global Coherence Initiative has documented measurable changes in the Earth's own magnetic field during large-scale events of synchronized human emotion — both positive and negative. This is the scientific foundation for what prayer circles, sacred ceremonies, and group meditations have always known: that consciousness is not isolated, that intention is not private, and that a group of people choosing love simultaneously creates something that cannot be generated individually. The implications for community, for frequency wellness, and for collective transformation are profound. You are never just meditating for yourself. You are contributing to the field.</>,
+      },
+    ],
   },
 ];
+
+const GOLD = "#C9A84C";
+const TEXT = "#F5F0E8";
+
+function CodexCard({ c }: { c: Category }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <article className="overflow-hidden rounded-none border" style={{ borderColor: "rgba(201,168,76,0.28)", backgroundColor: "#0A0A0A" }}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="block w-full text-left transition-colors hover:bg-[rgba(201,168,76,0.04)]"
+      >
+        <div className="md:grid md:grid-cols-[280px_1fr]">
+          <div className="relative h-56 w-full md:h-full">
+            <img src={c.img} alt={c.alt} loading="lazy" className="h-full w-full object-cover" />
+            <div aria-hidden className="pointer-events-none absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.45)" }} />
+          </div>
+          <div className="p-8">
+            <h2 className="font-serif text-3xl" style={{ color: TEXT }}>{c.t}</h2>
+            <p className="mt-3 text-base leading-relaxed" style={{ color: "rgba(245,240,232,0.78)" }}>{c.d}</p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {c.items.map((i) => (
+                <li
+                  key={i}
+                  className="rounded-full border px-3 py-1 text-xs"
+                  style={{ borderColor: "rgba(201,168,76,0.5)", color: GOLD }}
+                >
+                  {i}
+                </li>
+              ))}
+            </ul>
+            <span
+              className="mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em]"
+              style={{ color: GOLD }}
+            >
+              {open ? "Close" : "Explore"} <span aria-hidden>{open ? "↑" : "→"}</span>
+            </span>
+          </div>
+        </div>
+      </button>
+
+      {open && (
+        <div className="border-t px-6 py-10 md:px-12 md:py-14" style={{ borderColor: "rgba(201,168,76,0.22)" }}>
+          <div className="mx-auto max-w-[680px]">
+            <h3 className="font-serif text-3xl md:text-4xl" style={{ color: GOLD, fontWeight: 400 }}>
+              {c.fullTitle}
+            </h3>
+            <p className="mt-5 text-[17px] leading-[1.85]" style={{ color: "rgba(245,240,232,0.85)", fontWeight: 300 }}>
+              {c.intro}
+            </p>
+            {c.sections.map((s) => (
+              <div key={s.h} className="mt-10">
+                <h4 className="font-serif text-2xl md:text-3xl" style={{ color: GOLD, fontWeight: 400 }}>{s.h}</h4>
+                <p className="mt-4 text-[17px] leading-[1.85]" style={{ color: "rgba(245,240,232,0.85)", fontWeight: 300 }}>
+                  {s.p}
+                </p>
+              </div>
+            ))}
+            <p className="mt-12 text-[11px] italic" style={{ color: "rgba(245,240,232,0.4)" }}>
+              For educational and inspirational purposes only.
+            </p>
+          </div>
+        </div>
+      )}
+    </article>
+  );
+}
 
 function TeachingsPage() {
   return (
@@ -86,32 +249,7 @@ function TeachingsPage() {
     >
       <div className="space-y-8">
         {categories.map((c) => (
-          <article key={c.t} className="overflow-hidden rounded-none border border-border bg-card md:grid md:grid-cols-[260px_1fr]">
-            <div className="relative h-48 w-full md:h-full">
-              <img
-                src={c.img}
-                alt={c.alt}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0"
-                style={{ backgroundColor: "rgba(245,240,232,0.15)" }}
-              />
-            </div>
-            <div className="p-8">
-              <h2 className="font-serif text-3xl text-foreground">{c.t}</h2>
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground">{c.d}</p>
-              <ul className="mt-5 grid gap-2 sm:grid-cols-3">
-                {c.items.map((i) => (
-                  <li key={i} className="rounded-lg border border-border/60 bg-background px-4 py-3 text-sm text-foreground">
-                    {i}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </article>
+          <CodexCard key={c.t} c={c} />
         ))}
       </div>
       <section className="mt-16">
