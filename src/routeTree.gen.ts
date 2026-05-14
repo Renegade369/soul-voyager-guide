@@ -44,6 +44,7 @@ import { Route as BeginHereRouteImport } from './routes/begin-here'
 import { Route as AwakeningAssessmentRouteImport } from './routes/awakening-assessment'
 import { Route as AuraReaderRouteImport } from './routes/aura-reader'
 import { Route as AstrologyRouteImport } from './routes/astrology'
+import { Route as AdminCodesRouteImport } from './routes/admin-codes'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -225,6 +226,11 @@ const AstrologyRoute = AstrologyRouteImport.update({
   path: '/astrology',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminCodesRoute = AdminCodesRouteImport.update({
+  id: '/admin-codes',
+  path: '/admin-codes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -255,6 +261,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/admin-codes': typeof AdminCodesRoute
   '/astrology': typeof AstrologyRoute
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
@@ -297,6 +304,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/admin-codes': typeof AdminCodesRoute
   '/astrology': typeof AstrologyRoute
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
@@ -340,6 +348,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/admin-codes': typeof AdminCodesRoute
   '/astrology': typeof AstrologyRoute
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
@@ -384,6 +393,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/admin-codes'
     | '/astrology'
     | '/aura-reader'
     | '/awakening-assessment'
@@ -426,6 +436,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/admin-codes'
     | '/astrology'
     | '/aura-reader'
     | '/awakening-assessment'
@@ -468,6 +479,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/admin-codes'
     | '/astrology'
     | '/aura-reader'
     | '/awakening-assessment'
@@ -511,6 +523,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  AdminCodesRoute: typeof AdminCodesRoute
   AstrologyRoute: typeof AstrologyRoute
   AuraReaderRoute: typeof AuraReaderRoute
   AwakeningAssessmentRoute: typeof AwakeningAssessmentRoute
@@ -797,6 +810,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AstrologyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin-codes': {
+      id: '/admin-codes'
+      path: '/admin-codes'
+      fullPath: '/admin-codes'
+      preLoaderRoute: typeof AdminCodesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
@@ -839,6 +859,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  AdminCodesRoute: AdminCodesRoute,
   AstrologyRoute: AstrologyRoute,
   AuraReaderRoute: AuraReaderRoute,
   AwakeningAssessmentRoute: AwakeningAssessmentRoute,
