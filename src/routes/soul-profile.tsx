@@ -129,7 +129,7 @@ function SoulProfilePage() {
     }
   };
 
-  const step1Ready = identity.fullName.trim() && identity.birthDate && identity.birthPlace.trim();
+  const step1Ready = identity.fullName.trim() && identity.birthDate && identity.birthCity.trim() && identity.birthCountry.trim();
   const step2Ready = LIFE_STATE.every((q) => lifeState[q.k]) && oneWord.trim();
 
   return (
