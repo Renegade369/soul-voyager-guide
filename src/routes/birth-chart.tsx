@@ -36,7 +36,10 @@ function BirthChartPage() {
   const [birthDate, setBirthDate] = useState("");
   const [birthTime, setBirthTime] = useState("");
   const [unknownTime, setUnknownTime] = useState(false);
-  const [birthPlace, setBirthPlace] = useState("");
+  const [birthCity, setBirthCity] = useState("");
+  const [birthState, setBirthState] = useState("");
+  const [birthCountry, setBirthCountry] = useState("");
+  const birthPlace = [birthCity, birthState, birthCountry].map(s => s.trim()).filter(Boolean).join(", ");
   const [email, setEmail] = useState("");
   const [optIn, setOptIn] = useState(true);
   const [step, setStep] = useState<"intake" | "loading" | "result" | "error">("intake");
@@ -48,7 +51,7 @@ function BirthChartPage() {
   useEffect(() => { setUnlocked(isUnlocked("birth-chart")); }, []);
 
   const submit = async () => {
-    if (!birthDate || !birthPlace.trim() || !email.trim()) return;
+    if (!birthDate || !birthCity.trim() || !birthCountry.trim() || !email.trim()) return;
     setStep("loading");
     try {
       const { data, error } = await supabase.functions.invoke("birth-chart-generate", {
@@ -97,8 +100,20 @@ function BirthChartPage() {
                 </label>
               </div>
               <div>
-                <label className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Place of birth</label>
-                <input type="text" value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} placeholder="City, Country"
+                <label className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>City of birth</label>
+                <input type="text" value={birthCity} onChange={(e) => setBirthCity(e.target.value)} placeholder="City"
+                  className="mt-2 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
+                  style={{ borderColor: `${C.gold}66`, color: C.text }} />
+              </div>
+              <div>
+                <label className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>State / Province <span style={{ color: C.dim }}>(optional)</span></label>
+                <input type="text" value={birthState} onChange={(e) => setBirthState(e.target.value)} placeholder="State or Province"
+                  className="mt-2 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
+                  style={{ borderColor: `${C.gold}66`, color: C.text }} />
+              </div>
+              <div>
+                <label className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Country of birth</label>
+                <input type="text" value={birthCountry} onChange={(e) => setBirthCountry(e.target.value)} placeholder="Country"
                   className="mt-2 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
                   style={{ borderColor: `${C.gold}66`, color: C.text }} />
               </div>
@@ -113,7 +128,7 @@ function BirthChartPage() {
               <input type="checkbox" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} className="mt-1" />
               <span>Contribute my anonymized reading to the Soul True Consciousness Map. No personal information is ever stored with your reading data.</span>
             </label>
-            <button onClick={submit} disabled={!birthDate || !birthPlace.trim() || !email.trim()}
+            <button onClick={submit} disabled={!birthDate || !birthCity.trim() || !birthCountry.trim() || !email.trim()}
               className="mt-8 block w-full rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
               style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
               Decode My Chart →

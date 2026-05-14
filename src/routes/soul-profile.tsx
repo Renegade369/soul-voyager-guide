@@ -44,7 +44,13 @@ type Profile = {
 
 function SoulProfilePage() {
   const [stage, setStage] = useState<"step1" | "step2" | "step3" | "loading" | "result" | "error">("step1");
-  const [identity, setIdentity] = useState({ fullName: "", birthDate: "", birthTime: "", unknownTime: false, birthPlace: "", currentCity: "" });
+  const [identity, setIdentity] = useState({
+    fullName: "", birthDate: "", birthTime: "", unknownTime: false,
+    birthCity: "", birthState: "", birthCountry: "",
+    currentCity: "", currentState: "", currentCountry: "",
+  });
+  const birthPlace = [identity.birthCity, identity.birthState, identity.birthCountry].map(s => s.trim()).filter(Boolean).join(", ");
+  const currentLocation = [identity.currentCity, identity.currentState, identity.currentCountry].map(s => s.trim()).filter(Boolean).join(", ");
   const [lifeState, setLifeState] = useState<Record<string, string>>({});
   const [oneWord, setOneWord] = useState("");
   const [email, setEmail] = useState("");
@@ -65,8 +71,8 @@ function SoulProfilePage() {
             full_name_at_birth: identity.fullName,
             date_of_birth: identity.birthDate,
             time_of_birth: identity.unknownTime ? "unknown" : identity.birthTime,
-            place_of_birth: identity.birthPlace,
-            current_city: identity.currentCity,
+            place_of_birth: birthPlace,
+            current_city: currentLocation,
           },
           lifeState,
           oneWord,
@@ -123,7 +129,7 @@ function SoulProfilePage() {
     }
   };
 
-  const step1Ready = identity.fullName.trim() && identity.birthDate && identity.birthPlace.trim();
+  const step1Ready = identity.fullName.trim() && identity.birthDate && identity.birthCity.trim() && identity.birthCountry.trim();
   const step2Ready = LIFE_STATE.every((q) => lifeState[q.k]) && oneWord.trim();
 
   return (
@@ -150,8 +156,18 @@ function SoulProfilePage() {
                     I don't know my birth time
                   </label>
                 </div>
-                <Field label="Place of birth" value={identity.birthPlace} onChange={(v) => setIdentity({ ...identity, birthPlace: v })} placeholder="City, Country" />
-                <Field label="Current city of residence" value={identity.currentCity} onChange={(v) => setIdentity({ ...identity, currentCity: v })} placeholder="City, Country" />
+                <div className="space-y-3">
+                  <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Place of birth</p>
+                  <Field label="City" value={identity.birthCity} onChange={(v) => setIdentity({ ...identity, birthCity: v })} placeholder="City" />
+                  <Field label="State / Province (optional)" value={identity.birthState} onChange={(v) => setIdentity({ ...identity, birthState: v })} placeholder="State or Province" />
+                  <Field label="Country" value={identity.birthCountry} onChange={(v) => setIdentity({ ...identity, birthCountry: v })} placeholder="Country" />
+                </div>
+                <div className="space-y-3">
+                  <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Current residence</p>
+                  <Field label="City" value={identity.currentCity} onChange={(v) => setIdentity({ ...identity, currentCity: v })} placeholder="City" />
+                  <Field label="State / Province (optional)" value={identity.currentState} onChange={(v) => setIdentity({ ...identity, currentState: v })} placeholder="State or Province" />
+                  <Field label="Country" value={identity.currentCountry} onChange={(v) => setIdentity({ ...identity, currentCountry: v })} placeholder="Country" />
+                </div>
               </div>
               <button onClick={() => setStage("step2")} disabled={!step1Ready}
                 className="mt-8 block w-full rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
