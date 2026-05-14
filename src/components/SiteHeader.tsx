@@ -13,9 +13,9 @@ const wisdomLinks = [
 
 const readingsLinks = [
   { to: "/aura-reader", label: "Aura Reader" },
-  { to: "/readings", label: "Blood Type", hash: "blood-type" },
-  { to: "/readings", label: "Soul Quiz", hash: "soul-quiz" },
-  { to: "/readings", label: "Birth Chart", hash: "birth-chart" },
+  { to: "/blood-type", label: "Blood Type" },
+  { to: "/soul-quiz", label: "Soul Quiz" },
+  { to: "/birth-chart", label: "Birth Chart" },
   { to: "/numerology", label: "Numerology" },
   { to: "/astrology", label: "Astrology" },
 ] as const;
@@ -80,7 +80,6 @@ export function SiteHeader() {
                 <Link
                   key={r.label}
                   to={r.to}
-                  hash={(r as any).hash}
                   className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]"
                   style={{ color: "rgba(245,240,232,0.75)" }}
                 >
@@ -135,7 +134,7 @@ export function SiteHeader() {
             <p className="mt-3 px-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Readings</p>
             <Link to="/readings" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>All Readings</Link>
             {readingsLinks.map((r) => (
-              <Link key={r.label} to={r.to} hash={(r as any).hash} onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>{r.label}</Link>
+              <Link key={r.label} to={r.to} onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>{r.label}</Link>
             ))}
             <Link to="/meditations" onClick={() => setOpen(false)} className="mt-3 px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meditations</Link>
             <Link to="/the-sacred-journey" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Journey</Link>

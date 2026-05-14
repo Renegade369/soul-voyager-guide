@@ -591,7 +591,7 @@ export function BloodTypeTab() {
             className="block w-full rounded py-3 text-center text-[11px] uppercase tracking-[0.22em]"
             style={{ backgroundColor: C.gold, color: "#141716", fontFamily: fonts.body, fontWeight: 500 }}
           >
-            Book a Session with Kim Alfano →
+            Continue with Kim Alfano at Higher Vibes →
           </a>
 
           <button

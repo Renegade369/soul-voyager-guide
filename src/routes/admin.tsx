@@ -91,7 +91,10 @@ function AdminPage() {
             <p className="text-[11px] uppercase tracking-[0.22em]" style={{ ...body, color: C.teal }}>Soul True</p>
             <h1 className="mt-1 text-4xl font-light italic" style={heading}>Admin</h1>
           </div>
-          <button onClick={signOut} className="text-[11px] uppercase tracking-[0.22em]" style={{ ...body, color: C.muted }}>Sign out</button>
+          <div className="flex items-center gap-5">
+            <Link to="/admin-codes" className="text-[11px] uppercase tracking-[0.22em]" style={{ ...body, color: C.gold }}>Promo Codes →</Link>
+            <button onClick={signOut} className="text-[11px] uppercase tracking-[0.22em]" style={{ ...body, color: C.muted }}>Sign out</button>
+          </div>
         </header>
 
         <section>
