@@ -1,117 +1,120 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { ThemeToggle } from "./aesthetic/ThemeToggle";
 import { useAuth } from "@/hooks/useAuth";
 
-const links = [
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/teachings", label: "Teachings" },
-  { to: "/consciousness-map", label: "Map" },
-  { to: "/events", label: "Events" },
-  { to: "/visit", label: "Visit" },
+const wisdomLinks = [
+  { to: "/teachings", label: "Matrix Origins" },
+  { to: "/hidden-truth", label: "Suppressed Sacred Texts" },
+  { to: "/true-timeline", label: "True Story of Jeshua" },
 ] as const;
 
-const readings = [
-  { to: "/soul-profile", label: "Soul Profile" },
+const readingsLinks = [
   { to: "/aura-reader", label: "Aura Reader" },
+  { to: "/readings", label: "Blood Type", hash: "blood-type" },
+  { to: "/readings", label: "Soul Quiz", hash: "soul-quiz" },
+  { to: "/readings", label: "Birth Chart", hash: "birth-chart" },
   { to: "/numerology", label: "Numerology" },
   { to: "/astrology", label: "Astrology" },
 ] as const;
 
+const primary = [
+  { to: "/", label: "Home", exact: true },
+  { to: "/meditations", label: "Meditations" },
+  { to: "/the-sacred-journey", label: "Journey" },
+] as const;
+
+const navLinkStyle = { color: "rgba(245,240,232,0.7)" };
+const navLinkClass =
+  "text-[11px] font-normal uppercase tracking-[0.22em] transition-colors hover:text-[#F5F0E8]";
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
+
   return (
     <header
       className="sticky top-0 z-40 backdrop-blur-sm"
-      style={{ backgroundColor: "rgba(20,23,22,0.95)", borderBottom: "1px solid rgba(212,175,100,0.18)" }}
+      style={{ backgroundColor: "rgba(10,10,10,0.95)", borderBottom: "1px solid rgba(201,168,76,0.18)" }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10 xl:px-12">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
         <Link to="/" aria-label="Soul True home" style={{ color: "#C9A84C" }}>
           <span className="font-serif text-2xl font-normal tracking-tight">Soul True</span>
         </Link>
-        <nav className="hidden items-center gap-6 lg:flex xl:gap-10">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="text-[11px] font-normal uppercase tracking-[0.22em] transition-colors"
-              style={{ color: "rgba(245,240,232,0.6)" }}
-              activeProps={{ style: { color: "#F5F0E8" } }}
-            >
-              {l.label}
-            </Link>
-          ))}
+
+        <nav className="hidden items-center gap-8 lg:flex">
+          {/* Home */}
+          <Link to="/" className={navLinkClass} style={navLinkStyle} activeOptions={{ exact: true }} activeProps={{ style: { color: "#C9A84C" } }}>
+            Home
+          </Link>
+
+          {/* Wisdom dropdown */}
           <div className="group relative">
-            <button
-              className="text-[11px] font-normal uppercase tracking-[0.22em] transition-colors"
-              style={{ color: "rgba(245,240,232,0.6)" }}
-            >
-              Readings
+            <button className={`${navLinkClass} flex items-center gap-1`} style={navLinkStyle}>
+              Wisdom <ChevronDown size={12} />
             </button>
             <div
-              className="invisible absolute right-0 top-full z-50 mt-3 flex w-52 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
-              style={{ backgroundColor: "#141716", border: "1px solid rgba(212,175,100,0.18)" }}
+              className="invisible absolute left-1/2 top-full z-50 mt-3 flex w-60 -translate-x-1/2 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
+              style={{ backgroundColor: "#0A0A0A", border: "1px solid rgba(201,168,76,0.25)" }}
             >
-              {readings.map((r) => (
+              {wisdomLinks.map((r) => (
+                <Link key={r.to + r.label} to={r.to} className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.75)" }}>
+                  {r.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Readings dropdown */}
+          <div className="group relative">
+            <Link to="/readings" className={`${navLinkClass} flex items-center gap-1`} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+              Readings <ChevronDown size={12} />
+            </Link>
+            <div
+              className="invisible absolute left-1/2 top-full z-50 mt-3 flex w-60 -translate-x-1/2 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
+              style={{ backgroundColor: "#0A0A0A", border: "1px solid rgba(201,168,76,0.25)" }}
+            >
+              {readingsLinks.map((r) => (
                 <Link
-                  key={r.to}
+                  key={r.label}
                   to={r.to}
-                  className="px-5 py-3 text-[11px] uppercase tracking-[0.22em]"
-                  style={{ color: "rgba(245,240,232,0.7)" }}
-                  activeProps={{ style: { color: "#C9A84C" } }}
+                  hash={(r as any).hash}
+                  className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]"
+                  style={{ color: "rgba(245,240,232,0.75)" }}
                 >
                   {r.label}
                 </Link>
               ))}
             </div>
           </div>
-          <Link
-            to="/guide"
-            className="rounded-none px-5 py-2.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
-            style={{ color: "#C9A84C", border: "1px solid #C9A84C" }}
-          >
-            Guide
+
+          <Link to="/meditations" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Meditations
           </Link>
-          <Link
-            to="/awakening-assessment"
-            className="rounded-none px-5 py-2.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
-            style={{ color: "#C9A84C", border: "1px solid #C9A84C" }}
-          >
-            Discover Your Level
+          <Link to="/the-sacred-journey" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Journey
           </Link>
+
           <Link
             to="/begin-here"
-            className="rounded-none px-5 py-2.5 text-[11px] font-normal uppercase tracking-[0.22em] transition"
-            style={{ color: "#0D0F0E", background: "linear-gradient(135deg,#C9A84C,#E8C87A)", border: "1px solid #C9A84C" }}
+            className="rounded-none px-5 py-2.5 text-[11px] font-normal uppercase tracking-[0.22em] transition hover:shadow-[0_0_18px_rgba(232,130,26,0.45)]"
+            style={{ color: "#0A0A0A", background: "linear-gradient(135deg,#C9A84C,#D4A017)", border: "1px solid #C9A84C" }}
           >
             Begin Here
           </Link>
+
           {user ? (
-            <Link to="/my-readings"
-              className="text-[11px] font-normal uppercase tracking-[0.22em]"
-              style={{ color: "rgba(245,240,232,0.7)" }}>
-              My Readings
-            </Link>
+            <Link to="/my-readings" className={navLinkClass} style={navLinkStyle}>My Readings</Link>
           ) : (
-            <Link to="/sign-in"
-              className="text-[11px] font-normal uppercase tracking-[0.22em]"
-              style={{ color: "rgba(245,240,232,0.7)" }}>
-              Sign In
-            </Link>
+            <Link to="/sign-in" className={navLinkClass} style={navLinkStyle}>Sign In</Link>
           )}
         </nav>
+
         <div className="flex items-center gap-3 lg:hidden">
           <CartDrawer />
-          <button
-            aria-label="Toggle menu"
-            aria-expanded={open}
-            style={{ color: "#F5F0E8" }}
-            onClick={() => setOpen((s) => !s)}
-          >
+          <button aria-label="Toggle menu" aria-expanded={open} style={{ color: "#F5F0E8" }} onClick={() => setOpen((s) => !s)}>
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
@@ -120,55 +123,27 @@ export function SiteHeader() {
           <CartDrawer />
         </div>
       </div>
+
       {open && (
-        <div className="lg:hidden" style={{ backgroundColor: "#141716", borderTop: "1px solid rgba(212,175,100,0.18)" }}>
+        <div className="lg:hidden" style={{ backgroundColor: "#0A0A0A", borderTop: "1px solid rgba(201,168,76,0.18)" }}>
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                onClick={() => setOpen(false)}
-                className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]"
-                style={{ color: "rgba(245,240,232,0.7)" }}
-                activeProps={{ style: { color: "#F5F0E8" } }}
-              >
-                {l.label}
-              </Link>
+            <Link to="/" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Home</Link>
+            <p className="mt-3 px-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Wisdom</p>
+            {wisdomLinks.map((r) => (
+              <Link key={r.label} to={r.to} onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>{r.label}</Link>
             ))}
-            <p className="mt-3 px-2 pt-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Readings</p>
-            {readings.map((r) => (
-              <Link
-                key={r.to}
-                to={r.to}
-                onClick={() => setOpen(false)}
-                className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]"
-                style={{ color: "rgba(245,240,232,0.7)" }}
-                activeProps={{ style: { color: "#F5F0E8" } }}
-              >
-                {r.label}
-              </Link>
+            <p className="mt-3 px-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Readings</p>
+            <Link to="/readings" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>All Readings</Link>
+            {readingsLinks.map((r) => (
+              <Link key={r.label} to={r.to} hash={(r as any).hash} onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>{r.label}</Link>
             ))}
-            <Link
-              to="/guide"
-              onClick={() => setOpen(false)}
-              className="mt-3 px-5 py-3 text-center text-[11px] uppercase tracking-[0.22em]"
-              style={{ color: "#C9A84C", border: "1px solid #C9A84C" }}
-            >
-              Guide
-            </Link>
-            <Link
-              to="/awakening-assessment"
-              onClick={() => setOpen(false)}
-              className="mt-2 px-5 py-3 text-center text-[11px] uppercase tracking-[0.22em]"
-              style={{ color: "#C9A84C", border: "1px solid #C9A84C" }}
-            >
-              Discover Your Level
-            </Link>
+            <Link to="/meditations" onClick={() => setOpen(false)} className="mt-3 px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meditations</Link>
+            <Link to="/the-sacred-journey" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Journey</Link>
             <Link
               to="/begin-here"
               onClick={() => setOpen(false)}
-              className="mt-2 px-5 py-3 text-center text-[11px] uppercase tracking-[0.22em]"
-              style={{ color: "#0D0F0E", background: "linear-gradient(135deg,#C9A84C,#E8C87A)", border: "1px solid #C9A84C" }}
+              className="mt-3 px-5 py-3 text-center text-[11px] uppercase tracking-[0.22em]"
+              style={{ color: "#0A0A0A", background: "linear-gradient(135deg,#C9A84C,#D4A017)", border: "1px solid #C9A84C" }}
             >
               Begin Here
             </Link>
