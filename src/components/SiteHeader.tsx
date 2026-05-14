@@ -6,9 +6,9 @@ import { ThemeToggle } from "./aesthetic/ThemeToggle";
 import { useAuth } from "@/hooks/useAuth";
 
 const wisdomLinks = [
-  { to: "/teachings", label: "Matrix Origins" },
-  { to: "/hidden-truth", label: "Suppressed Sacred Texts" },
-  { to: "/true-timeline", label: "True Story of Jeshua" },
+  { to: "/wisdom/matrix-origins", label: "Matrix Origins" },
+  { to: "/wisdom/suppressed-sacred-texts", label: "Suppressed Sacred Texts" },
+  { to: "/wisdom/the-true-story-of-jeshua", label: "True Story of Jeshua" },
 ] as const;
 
 const readingsLinks = [
