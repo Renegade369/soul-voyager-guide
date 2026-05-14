@@ -8,46 +8,63 @@ export const Route = createFileRoute("/readings")({
   head: () => ({
     meta: [
       { title: "Readings — Soul True" },
-      { name: "description", content: "Discover your soul blueprint through AI-powered readers. Aura, blood type, soul quiz, birth chart, numerology, and astrology." },
+      { name: "description", content: "Six readers. One free Soul Quiz, five paid readings. Or unlock the full bundle for $29.99." },
       { property: "og:title", content: "Readings — Soul True" },
-      { property: "og:description", content: "Discover your soul blueprint through AI-powered readers." },
+      { property: "og:description", content: "Six readers. One free Soul Quiz, five paid." },
     ],
   }),
   component: ReadingsPage,
 });
 
-type Card = {
-  id: string;
-  to: string;
-  icon: React.ComponentType<{ size?: number }>;
-  title: string;
-  desc: string;
-  cta: string;
-};
+type Card = { id: string; to: string; icon: React.ComponentType<{ size?: number }>; title: string; desc: string; cta: string; price: "Free" | "$9.99"; };
 
 const cards: Card[] = [
-  { id: "aura", to: "/aura-reader", icon: Eye, title: "Aura Reader", desc: "See the colors and frequencies your energy field is broadcasting right now.", cta: "Read My Aura" },
-  { id: "blood-type", to: "/guide", icon: Droplet, title: "Blood Type", desc: "Your biology holds ancient wisdom — what your blood type reveals about your gifts and patterns.", cta: "Discover My Type" },
-  { id: "soul-quiz", to: "/guide", icon: HelpCircle, title: "Soul Quiz", desc: "Free — discover your soul type in 5 minutes through a guided set of questions.", cta: "Take The Quiz" },
-  { id: "birth-chart", to: "/guide", icon: Orbit, title: "Birth Chart", desc: "The sky at your first breath tells your whole story. Your full natal blueprint.", cta: "See My Chart" },
-  { id: "numerology", to: "/numerology", icon: Hash, title: "Numerology", desc: "Your life path, expression, and soul urge numbers — the frequencies in your name and birth date.", cta: "Calculate My Numbers" },
-  { id: "astrology", to: "/astrology", icon: Star, title: "Astrology", desc: "Your sun, moon, rising — and the current sky — read as a single living frequency.", cta: "Read The Sky" },
-  { id: "soul-profile", to: "/soul-profile", icon: Sparkles, title: "Soul Profile (v2)", desc: "All frameworks merged into one full reading. The deepest map we offer.", cta: "Build My Profile" },
+  { id: "soul-quiz", to: "/soul-quiz", icon: HelpCircle, title: "Soul Quiz", desc: "Discover your soul type in 5 minutes. No payment, no account.", cta: "Take The Quiz", price: "Free" },
+  { id: "aura", to: "/aura-reader", icon: Eye, title: "Aura Reader", desc: "Map your 3-layer energy field — emotional core, social presence, spiritual depth — plus full chakra alignment.", cta: "Read My Aura", price: "$9.99" },
+  { id: "blood-type", to: "/blood-type", icon: Droplet, title: "Blood Type", desc: "Unlock your ancestral blueprint — nourishment, immune signature, stress response, emotional architecture.", cta: "Discover My Type", price: "$9.99" },
+  { id: "birth-chart", to: "/birth-chart", icon: Orbit, title: "Birth Chart", desc: "Your soul's blueprint at first breath — Sun, Moon, Rising, inner planets, karmic themes.", cta: "Decode My Chart", price: "$9.99" },
+  { id: "numerology", to: "/numerology", icon: Hash, title: "Numerology", desc: "The frequency encoded in your name and birth date — Life Path, Expression, Soul Urge, Personal Year.", cta: "Calculate My Numbers", price: "$9.99" },
+  { id: "astrology", to: "/astrology", icon: Star, title: "Astrology", desc: "A precision energetic forecast from your natal chart against the current sky.", cta: "Read The Sky", price: "$9.99" },
 ];
 
 function ReadingsPage() {
   return (
     <div style={{ backgroundColor: C.bg, color: C.text, fontFamily: fonts.body }}>
-      <section className="mx-auto max-w-4xl px-6 py-24 text-center">
+      <section className="mx-auto max-w-4xl px-6 py-20 text-center">
         <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Readings</p>
         <h1 className="mt-4 text-5xl font-light leading-tight md:text-6xl" style={{ fontFamily: fonts.display }}>
           Your Soul, <em className="italic" style={{ color: C.gold }}>Mirrored.</em>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg" style={{ color: "rgba(245,240,232,0.8)", fontWeight: 300 }}>
-          Choose any door. Each reading is a different frequency through which your truth becomes visible.
+          Six readers. One free Soul Quiz, five paid readings. Each is a different frequency through which your truth becomes visible.
         </p>
         <p className="mx-auto mt-3 max-w-2xl text-xs italic" style={{ color: "rgba(245,240,232,0.5)" }}>
           For educational and inspirational purposes only.
+        </p>
+      </section>
+
+      {/* Bundle banner */}
+      <section className="mx-auto max-w-5xl px-6 pb-10">
+        <div className="rounded-none border p-7 text-center md:flex md:items-center md:justify-between md:text-left"
+          style={{ borderColor: C.gold, background: "linear-gradient(135deg, rgba(201,168,76,0.08), rgba(232,130,26,0.05))" }}>
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>The Bundle · $29.99</p>
+            <h2 className="mt-2 text-3xl" style={{ fontFamily: fonts.display, color: C.text }}>
+              Unlock <em className="italic" style={{ color: C.gold }}>Everything.</em>
+            </h2>
+            <p className="mt-2 text-sm" style={{ color: "rgba(245,240,232,0.75)" }}>
+              Birth Chart + Aura + Numerology + Blood Type. Your complete soul map.
+            </p>
+          </div>
+          <button disabled
+            className="mt-5 cursor-not-allowed rounded-none px-7 py-3 text-[11px] font-bold uppercase tracking-[0.22em] opacity-70 md:mt-0"
+            style={{ background: C.gold, color: C.bg }}
+            title="Payments coming soon">
+            Get the Bundle →
+          </button>
+        </div>
+        <p className="mt-2 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: "rgba(245,240,232,0.45)" }}>
+          Payments coming soon. Have an access code? Enter it on any reader.
         </p>
       </section>
 
@@ -55,26 +72,36 @@ function ReadingsPage() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((c) => {
             const Icon = c.icon;
+            const isFree = c.price === "Free";
             return (
-              <article
-                key={c.id}
-                id={c.id}
-                className="flex flex-col rounded-lg border p-7 transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_rgba(201,168,76,0.35)]"
-                style={{ backgroundColor: C.overlay, borderColor: C.border, scrollMarginTop: "100px" }}
-              >
+              <article key={c.id} id={c.id}
+                className="relative flex flex-col rounded-none border p-7 transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_rgba(201,168,76,0.35)]"
+                style={{ backgroundColor: C.overlay, borderColor: C.border, scrollMarginTop: "100px" }}>
+                <span className="absolute right-4 top-4 rounded-none border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em]"
+                  style={{
+                    color: isFree ? "#5BC97D" : C.gold,
+                    borderColor: isFree ? "rgba(91,201,125,0.5)" : `${C.gold}66`,
+                    background: isFree ? "rgba(91,201,125,0.08)" : "rgba(201,168,76,0.06)",
+                  }}>
+                  {c.price}
+                </span>
                 <span style={{ color: C.gold }}><Icon size={26} /></span>
                 <h3 className="mt-5 text-2xl" style={{ fontFamily: fonts.display }}>{c.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.7)" }}>{c.desc}</p>
-                <Link
-                  to={c.to}
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-[11px] font-bold uppercase tracking-[0.22em] transition-all hover:shadow-[0_0_24px_rgba(232,130,26,0.5)]"
-                  style={{ backgroundColor: C.gold, color: C.bg }}
-                >
+                <Link to={c.to}
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-none px-5 py-3 text-[11px] font-bold uppercase tracking-[0.22em] transition-all hover:shadow-[0_0_24px_rgba(232,130,26,0.5)]"
+                  style={{ backgroundColor: C.gold, color: C.bg }}>
                   {c.cta} <ArrowRight size={12} />
                 </Link>
               </article>
             );
           })}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link to="/soul-profile" className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] hover:underline" style={{ color: C.gold }}>
+            <Sparkles size={14} /> Want all frameworks in one reading? Get the Soul Profile →
+          </Link>
         </div>
       </section>
     </div>
