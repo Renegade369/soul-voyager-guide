@@ -51,7 +51,7 @@ function BirthChartPage() {
   useEffect(() => { setUnlocked(isUnlocked("birth-chart")); }, []);
 
   const submit = async () => {
-    if (!birthDate || !birthPlace.trim() || !email.trim()) return;
+    if (!birthDate || !birthCity.trim() || !birthCountry.trim() || !email.trim()) return;
     setStep("loading");
     try {
       const { data, error } = await supabase.functions.invoke("birth-chart-generate", {
@@ -128,7 +128,7 @@ function BirthChartPage() {
               <input type="checkbox" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} className="mt-1" />
               <span>Contribute my anonymized reading to the Soul True Consciousness Map. No personal information is ever stored with your reading data.</span>
             </label>
-            <button onClick={submit} disabled={!birthDate || !birthPlace.trim() || !email.trim()}
+            <button onClick={submit} disabled={!birthDate || !birthCity.trim() || !birthCountry.trim() || !email.trim()}
               className="mt-8 block w-full rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
               style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
               Decode My Chart →
