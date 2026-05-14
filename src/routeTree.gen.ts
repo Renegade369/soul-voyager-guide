@@ -15,6 +15,7 @@ import { Route as VisitRouteImport } from './routes/visit'
 import { Route as TrueTimelineRouteImport } from './routes/true-timeline'
 import { Route as TheSacredJourneyRouteImport } from './routes/the-sacred-journey'
 import { Route as TeachingsRouteImport } from './routes/teachings'
+import { Route as SoulQuizRouteImport } from './routes/soul-quiz'
 import { Route as SoulProfileRouteImport } from './routes/soul-profile'
 import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as ShopRouteImport } from './routes/shop'
@@ -37,6 +38,8 @@ import { Route as ContactWilliamRouteImport } from './routes/contact-william'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConsciousnessMapRouteImport } from './routes/consciousness-map'
 import { Route as ChallengeRouteImport } from './routes/challenge'
+import { Route as BloodTypeRouteImport } from './routes/blood-type'
+import { Route as BirthChartRouteImport } from './routes/birth-chart'
 import { Route as BeginHereRouteImport } from './routes/begin-here'
 import { Route as AwakeningAssessmentRouteImport } from './routes/awakening-assessment'
 import { Route as AuraReaderRouteImport } from './routes/aura-reader'
@@ -75,6 +78,11 @@ const TheSacredJourneyRoute = TheSacredJourneyRouteImport.update({
 const TeachingsRoute = TeachingsRouteImport.update({
   id: '/teachings',
   path: '/teachings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoulQuizRoute = SoulQuizRouteImport.update({
+  id: '/soul-quiz',
+  path: '/soul-quiz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SoulProfileRoute = SoulProfileRouteImport.update({
@@ -187,6 +195,16 @@ const ChallengeRoute = ChallengeRouteImport.update({
   path: '/challenge',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BloodTypeRoute = BloodTypeRouteImport.update({
+  id: '/blood-type',
+  path: '/blood-type',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BirthChartRoute = BirthChartRouteImport.update({
+  id: '/birth-chart',
+  path: '/birth-chart',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BeginHereRoute = BeginHereRouteImport.update({
   id: '/begin-here',
   path: '/begin-here',
@@ -241,6 +259,8 @@ export interface FileRoutesByFullPath {
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
+  '/birth-chart': typeof BirthChartRoute
+  '/blood-type': typeof BloodTypeRoute
   '/challenge': typeof ChallengeRoute
   '/consciousness-map': typeof ConsciousnessMapRoute
   '/contact': typeof ContactRoute
@@ -263,6 +283,7 @@ export interface FileRoutesByFullPath {
   '/shop': typeof ShopRoute
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
+  '/soul-quiz': typeof SoulQuizRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/true-timeline': typeof TrueTimelineRoute
@@ -280,6 +301,8 @@ export interface FileRoutesByTo {
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
+  '/birth-chart': typeof BirthChartRoute
+  '/blood-type': typeof BloodTypeRoute
   '/challenge': typeof ChallengeRoute
   '/consciousness-map': typeof ConsciousnessMapRoute
   '/contact': typeof ContactRoute
@@ -302,6 +325,7 @@ export interface FileRoutesByTo {
   '/shop': typeof ShopRoute
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
+  '/soul-quiz': typeof SoulQuizRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/true-timeline': typeof TrueTimelineRoute
@@ -320,6 +344,8 @@ export interface FileRoutesById {
   '/aura-reader': typeof AuraReaderRoute
   '/awakening-assessment': typeof AwakeningAssessmentRoute
   '/begin-here': typeof BeginHereRoute
+  '/birth-chart': typeof BirthChartRoute
+  '/blood-type': typeof BloodTypeRoute
   '/challenge': typeof ChallengeRoute
   '/consciousness-map': typeof ConsciousnessMapRoute
   '/contact': typeof ContactRoute
@@ -342,6 +368,7 @@ export interface FileRoutesById {
   '/shop': typeof ShopRoute
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
+  '/soul-quiz': typeof SoulQuizRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/true-timeline': typeof TrueTimelineRoute
@@ -361,6 +388,8 @@ export interface FileRouteTypes {
     | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
+    | '/birth-chart'
+    | '/blood-type'
     | '/challenge'
     | '/consciousness-map'
     | '/contact'
@@ -383,6 +412,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/sign-in'
     | '/soul-profile'
+    | '/soul-quiz'
     | '/teachings'
     | '/the-sacred-journey'
     | '/true-timeline'
@@ -400,6 +430,8 @@ export interface FileRouteTypes {
     | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
+    | '/birth-chart'
+    | '/blood-type'
     | '/challenge'
     | '/consciousness-map'
     | '/contact'
@@ -422,6 +454,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/sign-in'
     | '/soul-profile'
+    | '/soul-quiz'
     | '/teachings'
     | '/the-sacred-journey'
     | '/true-timeline'
@@ -439,6 +472,8 @@ export interface FileRouteTypes {
     | '/aura-reader'
     | '/awakening-assessment'
     | '/begin-here'
+    | '/birth-chart'
+    | '/blood-type'
     | '/challenge'
     | '/consciousness-map'
     | '/contact'
@@ -461,6 +496,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/sign-in'
     | '/soul-profile'
+    | '/soul-quiz'
     | '/teachings'
     | '/the-sacred-journey'
     | '/true-timeline'
@@ -479,6 +515,8 @@ export interface RootRouteChildren {
   AuraReaderRoute: typeof AuraReaderRoute
   AwakeningAssessmentRoute: typeof AwakeningAssessmentRoute
   BeginHereRoute: typeof BeginHereRoute
+  BirthChartRoute: typeof BirthChartRoute
+  BloodTypeRoute: typeof BloodTypeRoute
   ChallengeRoute: typeof ChallengeRoute
   ConsciousnessMapRoute: typeof ConsciousnessMapRoute
   ContactRoute: typeof ContactRoute
@@ -501,6 +539,7 @@ export interface RootRouteChildren {
   ShopRoute: typeof ShopRoute
   SignInRoute: typeof SignInRoute
   SoulProfileRoute: typeof SoulProfileRoute
+  SoulQuizRoute: typeof SoulQuizRoute
   TeachingsRoute: typeof TeachingsRoute
   TheSacredJourneyRoute: typeof TheSacredJourneyRoute
   TrueTimelineRoute: typeof TrueTimelineRoute
@@ -553,6 +592,13 @@ declare module '@tanstack/react-router' {
       path: '/teachings'
       fullPath: '/teachings'
       preLoaderRoute: typeof TeachingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soul-quiz': {
+      id: '/soul-quiz'
+      path: '/soul-quiz'
+      fullPath: '/soul-quiz'
+      preLoaderRoute: typeof SoulQuizRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/soul-profile': {
@@ -709,6 +755,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChallengeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blood-type': {
+      id: '/blood-type'
+      path: '/blood-type'
+      fullPath: '/blood-type'
+      preLoaderRoute: typeof BloodTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/birth-chart': {
+      id: '/birth-chart'
+      path: '/birth-chart'
+      fullPath: '/birth-chart'
+      preLoaderRoute: typeof BirthChartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/begin-here': {
       id: '/begin-here'
       path: '/begin-here'
@@ -783,6 +843,8 @@ const rootRouteChildren: RootRouteChildren = {
   AuraReaderRoute: AuraReaderRoute,
   AwakeningAssessmentRoute: AwakeningAssessmentRoute,
   BeginHereRoute: BeginHereRoute,
+  BirthChartRoute: BirthChartRoute,
+  BloodTypeRoute: BloodTypeRoute,
   ChallengeRoute: ChallengeRoute,
   ConsciousnessMapRoute: ConsciousnessMapRoute,
   ContactRoute: ContactRoute,
@@ -805,6 +867,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopRoute: ShopRoute,
   SignInRoute: SignInRoute,
   SoulProfileRoute: SoulProfileRoute,
+  SoulQuizRoute: SoulQuizRoute,
   TeachingsRoute: TeachingsRoute,
   TheSacredJourneyRoute: TheSacredJourneyRoute,
   TrueTimelineRoute: TrueTimelineRoute,
