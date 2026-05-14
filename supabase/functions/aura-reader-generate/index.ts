@@ -5,28 +5,43 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const SYSTEM_PROMPT = `You are Soul True's aura reader. Based on the 5 answers provided, determine this person's dominant aura color and generate a powerful personal reading.
+const SYSTEM_PROMPT = `You are Soul True's aura reader. Based on the answers, generate a powerful 3-layer aura reading PLUS a 7-chakra alignment assessment.
 
-AURA COLOR FRAMEWORK:
-- Gold/Yellow — solar, purposeful, leadership energy, here to lead and illuminate
-- Blue — communicator, truth-seeker, deep feeler, here to speak and be heard
-- Green — healer-presence, grounded, connected to life force, here to nurture and grow
-- Violet/Purple — visionary, highly intuitive, bridging worlds, here to see what others cannot
-- White — pure channel, transitioning, between chapters, here to reset and rebirth
-- Red — warrior, passionate, embodied power, here to act and create in the physical
-- Orange — creator, connector, magnetic, here to build and bring people together
-- Indigo — ancient soul, deep knowing, rare frequency, here to hold wisdom
+THE 3 LAYERS (always include all three):
+1. Emotional Core — what emotions are dominant, what is being processed, what feelings seek expression. Identify color(s) for this layer.
+2. Social Presence — how the energy projects outward, what others feel around them, where energy is magnetic vs. contracted. Identify color(s) for this layer.
+3. Spiritual Depth — soul purpose energy, spiritual gifts present, connection to higher guidance, active karmic themes. Identify color(s) for this layer.
+
+EXTENDED COLOR VOCABULARY (use these freely alongside the basic palette):
+Basic: Gold, Blue, Green, Violet, White, Red, Orange, Indigo
+Metallics: Gold (divine wisdom/spiritual mastery), Silver (intuition/lunar/psychic sensitivity), Platinum (rare high-frequency clarity), Copper (grounded transmission/earth connection)
+Crystalline: Diamond/Clear (pure consciousness), Opalescent (multidimensional awareness/creative flow), Iridescent (integration of polarities/rainbow bridge), Obsidian (protection/shadow integration/deep transformation)
+
+CHAKRA ASSESSMENT (all 7, in order — root, sacral, solar_plexus, heart, throat, third_eye, crown):
+For each: status ("Open" | "Partially Open" | "Blocked" | "Overactive"), 1-2 sentence description specific to this person, and 1 simple practice or awareness.
+
+DOMINANT AURA COLOR: Choose ONE primary aura color from the basic + extended palette that best represents this person right now.
 
 LANGUAGE RULES:
-- Positive and possibility-focused at all times
-- Never medical, never diagnostic
-- Never use the words: healing, heal, medicine, treatment, diagnose, cure, therapy. Use: frequency wellness, energetic alignment, vibrational shift, soul work, consciousness expansion
-- Speak directly to the person — use "you" and "your"
-- Be specific — not "you are intuitive" but "your intuition speaks loudest when you go quiet"
+- Positive and possibility-focused
+- Never use: healing, heal, medicine, treatment, diagnose, cure, therapy. Use: frequency wellness, energetic alignment, vibrational shift, soul work, consciousness expansion
+- Speak directly using "you" and "your"
+- Be specific, not generic
 
-Keep total reading under 400 words. Make every word count.
+Total reading should be substantive but not bloated. You MUST respond by calling return_aura_reading with structured fields.`;
 
-You MUST respond by calling return_aura_reading with structured fields. Do not respond in plain text.`;
+const CHAKRA_KEYS = ["root","sacral","solar_plexus","heart","throat","third_eye","crown"] as const;
+
+const chakraSchema = {
+  type: "object",
+  properties: {
+    status: { type: "string", enum: ["Open","Partially Open","Blocked","Overactive"] },
+    description: { type: "string" },
+    practice: { type: "string" },
+  },
+  required: ["status","description","practice"],
+  additionalProperties: false,
+};
 
 serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
@@ -45,18 +60,47 @@ serve(async (req: Request) => {
       type: "function",
       function: {
         name: "return_aura_reading",
-        description: "Return the structured aura reading.",
+        description: "Return the structured 3-layer aura reading plus chakra alignment.",
         parameters: {
           type: "object",
           properties: {
-            aura_color: { type: "string", enum: ["Gold", "Blue", "Green", "Violet", "White", "Red", "Orange", "Indigo"] },
-            color_meaning: { type: "string", description: "What this color means for THIS person specifically. 2-3 sentences." },
-            current_frequency: { type: "string", description: "What their energy field is doing right now based on answers. 2-3 sentences." },
-            your_gift: { type: "string", description: "The specific energetic gift this aura carries. 2-3 sentences." },
-            what_energy_needs: { type: "string", description: "One specific thing that would shift their frequency right now. 2-3 sentences." },
+            aura_color: { type: "string", description: "Primary dominant aura color (basic, metallic, or crystalline)." },
+            teaser: { type: "string", description: "2-3 sentence FREE preview that reveals the dominant color and gives a genuine taste, but stops before the full reading." },
+            emotional_core: {
+              type: "object",
+              properties: {
+                colors: { type: "array", items: { type: "string" } },
+                reading: { type: "string", description: "3-4 sentences on emotional core layer." },
+              },
+              required: ["colors","reading"], additionalProperties: false,
+            },
+            social_presence: {
+              type: "object",
+              properties: {
+                colors: { type: "array", items: { type: "string" } },
+                reading: { type: "string" },
+              },
+              required: ["colors","reading"], additionalProperties: false,
+            },
+            spiritual_depth: {
+              type: "object",
+              properties: {
+                colors: { type: "array", items: { type: "string" } },
+                reading: { type: "string" },
+              },
+              required: ["colors","reading"], additionalProperties: false,
+            },
+            chakras: {
+              type: "object",
+              properties: {
+                root: chakraSchema, sacral: chakraSchema, solar_plexus: chakraSchema,
+                heart: chakraSchema, throat: chakraSchema, third_eye: chakraSchema, crown: chakraSchema,
+              },
+              required: [...CHAKRA_KEYS], additionalProperties: false,
+            },
             soul_message: { type: "string", description: "2-3 sentences spoken directly. Make it land." },
           },
-          required: ["aura_color", "color_meaning", "current_frequency", "your_gift", "what_energy_needs", "soul_message"],
+          required: ["aura_color","teaser","emotional_core","social_presence","spiritual_depth","chakras","soul_message"],
           additionalProperties: false,
         },
       },
