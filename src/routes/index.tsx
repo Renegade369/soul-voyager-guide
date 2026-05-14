@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Sparkles, Headphones, Compass, Droplet, Eye, Orbit, HelpCircle, ArrowRight } from "lucide-react";
+import { Sparkles, Headphones, Compass, Droplet, Eye, Orbit, HelpCircle, ArrowRight, BookOpen } from "lucide-react";
 
 const HERO_BG =
   "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447858945.png";
