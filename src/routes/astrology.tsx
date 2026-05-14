@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
+import { PaywallModal } from "@/components/PaywallModal";
+import { KimAlfanoCard } from "@/components/KimAlfanoCard";
+import { isUnlocked } from "@/lib/unlocks";
 
 export const Route = createFileRoute("/astrology")({
   head: () => ({
@@ -55,6 +58,9 @@ function AstrologyPage() {
   const [reading, setReading] = useState<Reading | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [emailState, setEmailState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [paywallOpen, setPaywallOpen] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
+  useEffect(() => { setUnlocked(isUnlocked("astrology")); }, [step]);
 
   const emailReading = async () => {
     if (!reading) return;
@@ -204,46 +210,72 @@ function AstrologyPage() {
             <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
               className="mt-12 font-serif text-xl italic leading-relaxed">{reading.cosmic_blueprint}</motion.p>
 
-            {[
-              { label: "Your Sun", text: reading.your_sun },
-              { label: "Your Moon", text: reading.your_moon },
-              ...(reading.your_rising && reading.rising_sign ? [{ label: "Your Rising", text: reading.your_rising }] : []),
-              { label: "Your Inner Planets", text: reading.your_inner_planets },
-              { label: "Your Current Sky", text: reading.your_current_sky },
-            ].map((s, i) => (
+            {(unlocked
+              ? [
+                  { label: "Your Sun", text: reading.your_sun },
+                  { label: "Your Moon", text: reading.your_moon },
+                  ...(reading.your_rising && reading.rising_sign ? [{ label: "Your Rising", text: reading.your_rising }] : []),
+                  { label: "Your Inner Planets", text: reading.your_inner_planets },
+                  { label: "Your Current Sky", text: reading.your_current_sky },
+                ]
+              : [{ label: "Your Sun", text: reading.your_sun }]
+            ).map((s, i) => (
               <motion.section key={s.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 + i * 0.15 }} className="mt-12">
                 <p className="text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: C.gold }}>{s.label}</p>
                 <p className="text-base leading-relaxed">{s.text}</p>
               </motion.section>
             ))}
 
-            <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2 }}
-              className="mt-14 rounded-none border p-8 text-center" style={{ borderColor: `${C.gold}66`, background: C.deep }}>
-              <p className="text-[10px] uppercase tracking-[0.3em] mb-5" style={{ color: C.gold }}>Your cosmic message</p>
-              <p className="font-serif text-xl italic leading-relaxed">"{reading.cosmic_message}"</p>
-            </motion.section>
-
-            <p className="mt-10 text-center text-sm leading-relaxed" style={{ color: C.muted }}>{reading.closing}</p>
-
-            <div className="mt-12 text-center">
-              <button onClick={emailReading} disabled={emailState === "sending" || emailState === "sent"}
-                className="mb-6 inline-block rounded-none border px-8 py-3 text-[11px] uppercase tracking-[0.22em] disabled:opacity-50"
-                style={{ borderColor: `${C.gold}`, color: C.gold, background: "transparent" }}>
-                {emailState === "sending" ? "Sending…" : emailState === "sent" ? "✓ Sent to your inbox" : emailState === "error" ? "Try again" : "Email me this reading"}
-              </button>
-              <div>
-                <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
+            {!unlocked && (
+              <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
+                className="mt-12 rounded-none border p-8 text-center" style={{ borderColor: `${C.gold}66`, background: C.deep }}>
+                <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>The full chart awaits</p>
+                <p className="mt-4 text-base leading-relaxed" style={{ color: C.muted }}>
+                  Your Moon, Rising, inner planets, and current sky reading are calculated. Unlock the full reading to see what energies are active in your life right now.
+                </p>
+                <button onClick={() => setPaywallOpen(true)}
+                  className="mt-6 inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
                   style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
-                  Get Your Full Soul Profile →
-                </Link>
-              </div>
-            </div>
+                  Unlock Full Reading →
+                </button>
+              </motion.section>
+            )}
+
+            {unlocked && (
+              <>
+                <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2 }}
+                  className="mt-14 rounded-none border p-8 text-center" style={{ borderColor: `${C.gold}66`, background: C.deep }}>
+                  <p className="text-[10px] uppercase tracking-[0.3em] mb-5" style={{ color: C.gold }}>Your cosmic message</p>
+                  <p className="font-serif text-xl italic leading-relaxed">"{reading.cosmic_message}"</p>
+                </motion.section>
+
+                <p className="mt-10 text-center text-sm leading-relaxed" style={{ color: C.muted }}>{reading.closing}</p>
+
+                <div className="mt-12 text-center">
+                  <button onClick={emailReading} disabled={emailState === "sending" || emailState === "sent"}
+                    className="mb-6 inline-block rounded-none border px-8 py-3 text-[11px] uppercase tracking-[0.22em] disabled:opacity-50"
+                    style={{ borderColor: `${C.gold}`, color: C.gold, background: "transparent" }}>
+                    {emailState === "sending" ? "Sending…" : emailState === "sent" ? "✓ Sent to your inbox" : emailState === "error" ? "Try again" : "Email me this reading"}
+                  </button>
+                  <div>
+                    <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
+                      style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                      Get Your Full Soul Profile →
+                    </Link>
+                  </div>
+                </div>
+
+                <KimAlfanoCard />
+              </>
+            )}
+
             <p className="mt-12 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: C.dim }}>
               For educational &amp; inspirational purposes only.
             </p>
           </motion.div>
         )}
       </div>
+      <PaywallModal slug="astrology" open={paywallOpen} email={email} onClose={() => setPaywallOpen(false)} onUnlocked={() => { setUnlocked(true); setPaywallOpen(false); }} />
     </motion.div>
   );
 }

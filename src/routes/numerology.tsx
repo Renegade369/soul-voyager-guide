@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { calculateAll } from "@/lib/numerology";
+import { PaywallModal } from "@/components/PaywallModal";
+import { KimAlfanoCard } from "@/components/KimAlfanoCard";
+import { isUnlocked } from "@/lib/unlocks";
 
 export const Route = createFileRoute("/numerology")({
   head: () => ({
@@ -36,6 +39,9 @@ function NumerologyPage() {
   const [numbers, setNumbers] = useState<ReturnType<typeof calculateAll> | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [emailState, setEmailState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [paywallOpen, setPaywallOpen] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
+  useEffect(() => { setUnlocked(isUnlocked("numerology")); }, [step]);
 
   const emailReading = async () => {
     if (!reading || !numbers) return;
@@ -162,43 +168,69 @@ function NumerologyPage() {
               <NumberCard label="Personal Year" value={numbers.personal_year} />
             </div>
 
-            {[
-              { label: `Your Life Path · ${numbers.life_path}`, text: reading.life_path_meaning },
-              { label: `Your Expression · ${numbers.expression}`, text: reading.expression_meaning },
-              { label: `Your Soul Urge · ${numbers.soul_urge}`, text: reading.soul_urge_meaning },
-              { label: `Your Personality · ${numbers.personality}`, text: reading.personality_meaning },
-              { label: `This Year's Frequency · ${numbers.personal_year}`, text: reading.personal_year_meaning },
-            ].map((s, i) => (
+            {(unlocked
+              ? [
+                  { label: `Your Life Path · ${numbers.life_path}`, text: reading.life_path_meaning },
+                  { label: `Your Expression · ${numbers.expression}`, text: reading.expression_meaning },
+                  { label: `Your Soul Urge · ${numbers.soul_urge}`, text: reading.soul_urge_meaning },
+                  { label: `Your Personality · ${numbers.personality}`, text: reading.personality_meaning },
+                  { label: `This Year's Frequency · ${numbers.personal_year}`, text: reading.personal_year_meaning },
+                ]
+              : [{ label: `Your Life Path · ${numbers.life_path}`, text: reading.life_path_meaning }]
+            ).map((s, i) => (
               <motion.section key={s.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.15 }} className="mt-12">
                 <p className="text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: C.gold }}>{s.label}</p>
                 <p className="text-base leading-relaxed">{s.text}</p>
               </motion.section>
             ))}
 
-            <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }}
-              className="mt-14 rounded-none border p-8 text-center" style={{ borderColor: `${C.gold}66`, background: C.deep }}>
-              <p className="text-[10px] uppercase tracking-[0.3em] mb-5" style={{ color: C.gold }}>What your numbers say</p>
-              <p className="font-serif text-xl italic leading-relaxed">"{reading.number_message}"</p>
-            </motion.section>
+            {!unlocked && (
+              <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
+                className="mt-12 rounded-none border p-8 text-center" style={{ borderColor: `${C.gold}66`, background: C.deep }}>
+                <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>The full reading awaits</p>
+                <p className="mt-4 text-base leading-relaxed" style={{ color: C.muted }}>
+                  Your Expression, Soul Urge, Personality, and Personal Year frequencies are calculated and ready. Unlock to see how all five numbers weave the precise frequency of who you are this lifetime.
+                </p>
+                <button onClick={() => setPaywallOpen(true)}
+                  className="mt-6 inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
+                  style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                  Unlock Full Reading →
+                </button>
+              </motion.section>
+            )}
 
-            <div className="mt-12 text-center">
-              <button onClick={emailReading} disabled={emailState === "sending" || emailState === "sent"}
-                className="mb-6 inline-block rounded-none border px-8 py-3 text-[11px] uppercase tracking-[0.22em] disabled:opacity-50"
-                style={{ borderColor: `${C.gold}`, color: C.gold, background: "transparent" }}>
-                {emailState === "sending" ? "Sending…" : emailState === "sent" ? "✓ Sent to your inbox" : emailState === "error" ? "Try again" : "Email me this reading"}
-              </button>
-              <p className="text-sm mb-4" style={{ color: C.muted }}>See how your numbers fit your complete soul picture.</p>
-              <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
-                style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
-                Get Your Full Soul Profile →
-              </Link>
-            </div>
+            {unlocked && (
+              <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }}
+                className="mt-14 rounded-none border p-8 text-center" style={{ borderColor: `${C.gold}66`, background: C.deep }}>
+                <p className="text-[10px] uppercase tracking-[0.3em] mb-5" style={{ color: C.gold }}>What your numbers say</p>
+                <p className="font-serif text-xl italic leading-relaxed">"{reading.number_message}"</p>
+              </motion.section>
+            )}
+
+            {unlocked && (
+              <div className="mt-12 text-center">
+                <button onClick={emailReading} disabled={emailState === "sending" || emailState === "sent"}
+                  className="mb-6 inline-block rounded-none border px-8 py-3 text-[11px] uppercase tracking-[0.22em] disabled:opacity-50"
+                  style={{ borderColor: `${C.gold}`, color: C.gold, background: "transparent" }}>
+                  {emailState === "sending" ? "Sending…" : emailState === "sent" ? "✓ Sent to your inbox" : emailState === "error" ? "Try again" : "Email me this reading"}
+                </button>
+                <p className="text-sm mb-4" style={{ color: C.muted }}>See how your numbers fit your complete soul picture.</p>
+                <Link to="/soul-profile" className="inline-block rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em]"
+                  style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                  Get Your Full Soul Profile →
+                </Link>
+              </div>
+            )}
+
+            {unlocked && <KimAlfanoCard />}
+
             <p className="mt-12 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: C.dim }}>
               For educational &amp; inspirational purposes only.
             </p>
           </motion.div>
         )}
       </div>
+      <PaywallModal slug="numerology" open={paywallOpen} email={email} onClose={() => setPaywallOpen(false)} onUnlocked={() => { setUnlocked(true); setPaywallOpen(false); }} />
     </motion.div>
   );
 }

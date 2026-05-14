@@ -473,7 +473,7 @@ export function SoulQuizTab() {
             className="flex w-full items-center justify-center gap-2 rounded border px-6 py-3 text-xs font-medium uppercase tracking-[0.22em]"
             style={{ borderColor: C.border, color: C.text, fontFamily: fonts.body }}
           >
-            <Mail size={14} /> Book a Session with Kim Alfano
+            <Mail size={14} /> Continue with Kim Alfano at Higher Vibes
           </a>
         </div>
       </div>
