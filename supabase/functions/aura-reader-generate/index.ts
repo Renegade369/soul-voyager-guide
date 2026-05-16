@@ -47,7 +47,7 @@ serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { answers } = await req.json();
+    const { answers, imageBase64 } = await req.json();
     if (!answers) {
       return new Response(JSON.stringify({ error: "answers required" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
