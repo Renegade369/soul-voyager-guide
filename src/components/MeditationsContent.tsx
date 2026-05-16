@@ -202,6 +202,7 @@ export default function MeditationsContent({ withHero = true }: { withHero?: boo
         {filtered.map((m) => <MeditationCard key={m.id} meditation={m} onPlay={setPlaying} />)}
       </div>
       <MeditationGenerator />
+      <PlantImageBand src={PLANT_IMAGES.meditations} />
       {playing && <PlayModal meditation={playing} onClose={() => setPlaying(null)} />}
     </div>
   );
