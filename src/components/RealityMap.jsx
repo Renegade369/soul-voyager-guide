@@ -92,7 +92,7 @@ const NODES = [
     glow: "rgba(58,154,80,0.4)",
     x: 50, y: 86,
     size: 68,
-    description: "Everything is frequency. Your physical body, your emotional state, your mental patterns — all operate as vibrational fields that can be consciously elevated. Frequency wellness is not alternative medicine. It is the practical application of quantum understanding to daily human experience.",
+    description: "Everything is frequency. Your physical body, your emotional state, your mental patterns — all operate as vibrational fields that can be consciously elevated. Frequency wellness is not alternative wellness. It is the practical application of quantum understanding to daily human experience.",
     links: ["identity", "awakening", "quantum"],
     facts: [
       "Heart Math Institute: the heart generates the body's largest electromagnetic field",

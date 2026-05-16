@@ -210,7 +210,7 @@ function BeginHerePage() {
               className="font-serif text-lg font-light leading-[1.7] md:text-xl lg:text-[1.35rem]"
               style={{ color: "rgba(245,240,232,0.8)" }}
             >
-              Reconnecting with who you truly are at soul level is not just a healing journey — it is the most important work of your lifetime. It is the reason you are here. And it is the root cause beneath every challenge you are facing.
+              Reconnecting with who you truly are at soul level is not just a remembrance journey — it is the most important work of your lifetime. It is the reason you are here. And it is the root cause beneath every challenge you are facing.
             </p>
 
             <p

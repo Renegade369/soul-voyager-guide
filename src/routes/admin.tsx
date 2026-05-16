@@ -14,7 +14,7 @@ export const Route = createFileRoute("/admin")({
   component: AdminPage,
 });
 
-const C = { bg: "#0D0F0E", card: "#141716", border: "#1E2320", gold: "#C9A84C", goldLight: "#E8C87A", teal: "#2DD4BF", text: "#F5F0E8", muted: "#8A9A8E" };
+const C = { bg: "#0D0F0E", card: "#141716", border: "#1E2320", gold: "#C9A84C", goldLight: "#E8C87A", teal: "#C9A84C", text: "#F5F0E8", muted: "#8A9A8E" };
 const heading = { fontFamily: '"Cormorant Garamond", serif', color: C.gold };
 const body = { fontFamily: '"Outfit", sans-serif' };
 
@@ -98,7 +98,7 @@ function AdminPage() {
         </header>
 
         <section>
-          <h2 className="mb-4 text-2xl font-light" style={heading}>Nature Healing Bookings</h2>
+          <h2 className="mb-4 text-2xl font-light" style={heading}>Nature Connection Bookings</h2>
           {err && <p className="mb-4 text-sm" style={{ ...body, color: C.muted }}>{err}</p>}
           {bookings.length === 0 ? (
             <p style={{ ...body, color: C.muted }}>No bookings yet.</p>

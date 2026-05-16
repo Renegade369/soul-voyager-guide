@@ -11,9 +11,9 @@ import {
 export const Route = createFileRoute("/shop")({
   head: () =>
     makeRouteMeta({
-      title: "Soul True Shop — Apparel, Spiritual & Healing Goods",
+      title: "Soul True Shop — Apparel, Spiritual & Sacred Goods",
       description:
-        "Soul True branded shirts, hats, sweatshirts and mugs alongside spiritual, cleansing, and healing items — every purchase supports the sanctuary.",
+        "Soul True branded shirts, hats, sweatshirts and mugs alongside spiritual, cleansing, and sacred items — every purchase supports the sanctuary.",
     }),
   component: ShopPage,
 });
@@ -47,7 +47,7 @@ function ShopPage() {
     <PageShell
       eyebrow="Sacred Goods"
       title="The Shop"
-      intro="Branded Soul True apparel, sacred objects, cleansing tools, and healing companions — every item is chosen or made with intention. Proceeds support the sanctuary."
+      intro="Branded Soul True apparel, sacred objects, cleansing tools, and ceremonial companions — every item is chosen or made with intention. Proceeds support the sanctuary."
     >
       {loading && (
         <p className="text-center text-sm font-light italic text-muted-foreground">Gathering offerings…</p>

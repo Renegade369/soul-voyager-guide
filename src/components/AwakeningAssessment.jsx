@@ -60,7 +60,7 @@ const LEVELS = [
     glow: "rgba(212,184,74,0.4)",
     symbol: "☀",
     description: "Others are beginning to wake up because of you. You carry the truth without ego, without preaching, without needing to convince anyone. Your presence alone shifts the energy of a room. You have moved from seeking truth to being a demonstration of it.",
-    next: "Your work now is to share. Soul True community and contributing your story to the platform — what you've walked through is medicine for others.",
+    next: "Your work now is to share. Soul True community and contributing your story to the platform — what you've walked through is wisdom for others.",
   },
   {
     id: 7,
