@@ -3,6 +3,7 @@ import { Play, X, Clock, Loader2 } from "lucide-react";
 import MeditationGenerator from "@/components/MeditationGenerator";
 import MeditationPlayer from "@/components/MeditationPlayer";
 import { supabase } from "@/integrations/supabase/client";
+import { PlantImageBand, PLANT_IMAGES } from "@/components/PlantImageBand";
 
 const IMG = "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/";
 const IMAGE_HERO = `${IMG}1778539783382.png`;

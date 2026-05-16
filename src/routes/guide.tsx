@@ -11,6 +11,7 @@ import { ChallengeTab } from "@/components/guide/ChallengeTab";
 import { SoulQuizTab } from "@/components/guide/SoulQuizTab";
 import { BirthChartTab } from "@/components/guide/BirthChartTab";
 import { BloodTypeTab } from "@/components/guide/BloodTypeTab";
+import { PlantImageBand, PLANT_IMAGES } from "@/components/PlantImageBand";
 
 
 const C = { bg: "#0D0F0E", border: "#2E3A35", gold: "#C9A84C", text: "#E8EDE9", muted: "#8A9E94" };
@@ -136,6 +137,7 @@ function GuidePage() {
           {active === "birthchart" && <BirthChartTab />}
           {active === "bloodtype" && <BloodTypeTab />}
         </div>
+        <PlantImageBand src={PLANT_IMAGES.guide} />
       </div>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
