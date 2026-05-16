@@ -114,28 +114,18 @@ function AuraReaderPage() {
 
         <AnimatePresence mode="wait">
           {step === "intake" && (
-            <motion.div key={`q-${idx}`} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35 }}>
-              <p className="text-[10px] uppercase tracking-[0.3em] mb-6" style={{ color: C.gold }}>Question {idx + 1} of {QUESTIONS.length}</p>
-              <h1 className="font-serif text-3xl font-light italic md:text-4xl">{QUESTIONS[idx].q}</h1>
-              <div className="mt-10 space-y-3">
-                {QUESTIONS[idx].options.map((opt) => (
-                  <button key={opt} onClick={() => pick(opt)}
-                    className="block w-full rounded-none border px-6 py-4 text-left text-base"
-                    style={{ borderColor: `${C.gold}40`, color: C.text, background: "rgba(201,168,76,0.03)" }}>
-                    {opt}
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-          )}
+            <motion.div key="intake" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35 }}>
+              <p className="text-[10px] uppercase tracking-[0.3em] mb-6" style={{ color: C.gold }}>Begin</p>
+              <h1 className="font-serif text-3xl font-light italic md:text-4xl">{FEELING_QUESTION}</h1>
+              <textarea
+                value={feeling}
+                onChange={(e) => setFeeling(e.target.value)}
+                placeholder="Be honest. This is your space."
+                rows={6}
+                className="mt-8 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none resize-none"
+                style={{ borderColor: `${C.gold}66`, color: C.text, background: "rgba(201,168,76,0.03)" }}
+              />
 
-          {step === "email" && (
-            <motion.div key="email" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
-              <p className="text-[10px] uppercase tracking-[0.3em] mb-6" style={{ color: C.gold }}>Almost there</p>
-              <h1 className="font-serif text-3xl font-light italic md:text-4xl">Where shall we send your aura reading?</h1>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com"
-                className="mt-8 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
-                style={{ borderColor: `${C.gold}66`, color: C.text }} />
               <div className="mt-8">
                 <p className="text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: C.gold }}>Optional · Add your photo</p>
                 <p className="text-sm mb-4" style={{ color: C.muted }}>
@@ -174,6 +164,22 @@ function AuraReaderPage() {
                 <input ref={uploadInputRef} type="file" accept="image/*" className="hidden"
                   onChange={(e) => handlePhotoFile(e.target.files?.[0])} />
               </div>
+
+              <button onClick={goToEmail} disabled={!feeling.trim()}
+                className="mt-8 block w-full rounded-none px-10 py-4 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
+                style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                Continue →
+              </button>
+            </motion.div>
+          )}
+
+          {step === "email" && (
+            <motion.div key="email" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
+              <p className="text-[10px] uppercase tracking-[0.3em] mb-6" style={{ color: C.gold }}>Almost there</p>
+              <h1 className="font-serif text-3xl font-light italic md:text-4xl">Where shall we send your aura reading?</h1>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com"
+                className="mt-8 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
+                style={{ borderColor: `${C.gold}66`, color: C.text }} />
               <label className="mt-6 flex cursor-pointer items-start gap-3 text-sm" style={{ color: C.muted }}>
                 <input type="checkbox" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} className="mt-1" />
                 <span>Contribute my anonymized reading to the Soul True Consciousness Map. No personal information is ever stored with your reading data.</span>
@@ -197,7 +203,7 @@ function AuraReaderPage() {
             <motion.div key="err" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-24 text-center">
               <p className="font-serif text-2xl italic" style={{ color: C.gold }}>The reading didn't come through.</p>
               <p className="mt-3 text-sm" style={{ color: C.muted }}>{errorMsg}</p>
-              <button onClick={() => { setStep("intake"); setIdx(0); setAnswers([]); }}
+              <button onClick={() => { setStep("intake"); setFeeling(""); }}
                 className="mt-8 rounded-none px-8 py-3 text-[11px] uppercase tracking-[0.22em]"
                 style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>Try again</button>
             </motion.div>
