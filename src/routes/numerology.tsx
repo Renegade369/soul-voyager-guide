@@ -77,6 +77,7 @@ function NumerologyPage() {
       if (error) throw new Error(error.message);
       if (data?.error) throw new Error(data.error);
       setReading(data.reading as Reading);
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
       setStep("result");
       void supabase.from("subscribers").insert({ email: email.trim().toLowerCase(), first_name: name.trim().split(" ")[0], source: "numerology", opted_in_consciousness_map: optIn });
       if (optIn) void supabase.from("consciousness_data").insert({ reader_type: "numerology", life_path_number: Number(nums.life_path) });

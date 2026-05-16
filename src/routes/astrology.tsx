@@ -105,6 +105,7 @@ function AstrologyPage() {
       if (data?.error) throw new Error(data.error);
       const r = data.reading as Reading;
       setReading(r);
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
       setStep("result");
       void supabase.from("subscribers").insert({ email: email.trim().toLowerCase(), source: "astrology", opted_in_consciousness_map: optIn });
       if (optIn) void supabase.from("consciousness_data").insert({ reader_type: "astrology", sun_sign: r.sun_sign });
