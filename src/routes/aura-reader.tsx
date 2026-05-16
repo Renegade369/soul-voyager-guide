@@ -93,6 +93,7 @@ function AuraReaderPage() {
       if (data?.error) throw new Error(data.error);
       const r = data.reading as Reading;
       setReading(r);
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
       setStep("result");
       void supabase.from("subscribers").insert({ email: email.trim().toLowerCase(), source: "aura-reader", opted_in_consciousness_map: optIn });
       if (optIn) void supabase.from("consciousness_data").insert({ reader_type: "aura", aura_color: r.aura_color, dominant_energy: answers[4] ?? null });

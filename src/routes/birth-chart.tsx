@@ -61,6 +61,7 @@ function BirthChartPage() {
       if (error) throw new Error(error.message);
       if (data?.error) throw new Error(data.error);
       setReading(data.reading as Reading);
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
       setStep("result");
       void supabase.from("subscribers").insert({ email: email.trim().toLowerCase(), source: "birth-chart", opted_in_consciousness_map: optIn });
       if (optIn) void supabase.from("consciousness_data").insert({ reader_type: "birth-chart", sun_sign: (data.reading as Reading).sun_sign });

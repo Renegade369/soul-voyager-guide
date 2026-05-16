@@ -156,6 +156,7 @@ function SoulQuizPage() {
     } else {
       const res = calcResult(updated);
       setResultData(res);
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
       setAnswers(updated);
       setPhase("result");
       void supabase.from("consciousness_data").insert({ reader_type: "soul-quiz", soul_archetype: res.winner });

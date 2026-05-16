@@ -62,6 +62,7 @@ function BloodTypePage() {
       if (error) throw new Error(error.message);
       if (data?.error) throw new Error(data.error);
       setReading(data.reading as Reading);
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
       setStep("result");
       void supabase.from("subscribers").insert({ email: email.trim().toLowerCase(), first_name: name.trim().split(" ")[0], source: "blood-type", opted_in_consciousness_map: optIn });
     } catch (e) {
