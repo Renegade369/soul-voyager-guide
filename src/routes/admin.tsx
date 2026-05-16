@@ -14,7 +14,7 @@ export const Route = createFileRoute("/admin")({
   component: AdminPage,
 });
 
-const C = { bg: "#0D0F0E", card: "#141716", border: "#1E2320", gold: "#C9A84C", goldLight: "#E8C87A", teal: "#2DD4BF", text: "#F5F0E8", muted: "#8A9A8E" };
+const C = { bg: "#0D0F0E", card: "#141716", border: "#1E2320", gold: "#C9A84C", goldLight: "#E8C87A", teal: "#C9A84C", text: "#F5F0E8", muted: "#8A9A8E" };
 const heading = { fontFamily: '"Cormorant Garamond", serif', color: C.gold };
 const body = { fontFamily: '"Outfit", sans-serif' };
 

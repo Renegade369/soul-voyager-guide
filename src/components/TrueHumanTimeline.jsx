@@ -6,7 +6,7 @@ const T = {
   gold: "#c8a94a", goldBright: "#f0d060", amber: "#e07020",
   ocean: "#00c8ff", green: "#3a9a50", purple: "#9a6aaa",
   blood: "#8b1a1a", ash: "#888888", bone: "#d4c9a8", white: "#f0ece0",
-  teal: "#2a8a7a", rose: "#9a4a6a",
+  teal: "#8b6e3a", rose: "#9a4a6a",
 };
 
 // ─── ERA DEFINITIONS ─────────────────────────────────────────
