@@ -28,6 +28,8 @@ import { Route as NumerologyRouteImport } from './routes/numerology'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
 import { Route as MyReadingsRouteImport } from './routes/my-readings'
 import { Route as MeditationsRouteImport } from './routes/meditations'
+import { Route as KimAlfanoRouteImport } from './routes/kim-alfano'
+import { Route as HigherVibesRouteImport } from './routes/higher-vibes'
 import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as GuideRouteImport } from './routes/guide'
@@ -147,6 +149,16 @@ const MyReadingsRoute = MyReadingsRouteImport.update({
 const MeditationsRoute = MeditationsRouteImport.update({
   id: '/meditations',
   path: '/meditations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KimAlfanoRoute = KimAlfanoRouteImport.update({
+  id: '/kim-alfano',
+  path: '/kim-alfano',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HigherVibesRoute = HigherVibesRouteImport.update({
+  id: '/higher-vibes',
+  path: '/higher-vibes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HiddenTruthRoute = HiddenTruthRouteImport.update({
@@ -298,6 +310,8 @@ export interface FileRoutesByFullPath {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/higher-vibes': typeof HigherVibesRoute
+  '/kim-alfano': typeof KimAlfanoRoute
   '/meditations': typeof MeditationsRoute
   '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
@@ -344,6 +358,8 @@ export interface FileRoutesByTo {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/higher-vibes': typeof HigherVibesRoute
+  '/kim-alfano': typeof KimAlfanoRoute
   '/meditations': typeof MeditationsRoute
   '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
@@ -391,6 +407,8 @@ export interface FileRoutesById {
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
+  '/higher-vibes': typeof HigherVibesRoute
+  '/kim-alfano': typeof KimAlfanoRoute
   '/meditations': typeof MeditationsRoute
   '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
@@ -439,6 +457,8 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/higher-vibes'
+    | '/kim-alfano'
     | '/meditations'
     | '/my-readings'
     | '/nature-booking'
@@ -485,6 +505,8 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/higher-vibes'
+    | '/kim-alfano'
     | '/meditations'
     | '/my-readings'
     | '/nature-booking'
@@ -531,6 +553,8 @@ export interface FileRouteTypes {
     | '/guide'
     | '/health'
     | '/hidden-truth'
+    | '/higher-vibes'
+    | '/kim-alfano'
     | '/meditations'
     | '/my-readings'
     | '/nature-booking'
@@ -578,6 +602,8 @@ export interface RootRouteChildren {
   GuideRoute: typeof GuideRoute
   HealthRoute: typeof HealthRoute
   HiddenTruthRoute: typeof HiddenTruthRoute
+  HigherVibesRoute: typeof HigherVibesRoute
+  KimAlfanoRoute: typeof KimAlfanoRoute
   MeditationsRoute: typeof MeditationsRoute
   MyReadingsRoute: typeof MyReadingsRoute
   NatureBookingRoute: typeof NatureBookingRoute
@@ -737,6 +763,20 @@ declare module '@tanstack/react-router' {
       path: '/meditations'
       fullPath: '/meditations'
       preLoaderRoute: typeof MeditationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kim-alfano': {
+      id: '/kim-alfano'
+      path: '/kim-alfano'
+      fullPath: '/kim-alfano'
+      preLoaderRoute: typeof KimAlfanoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/higher-vibes': {
+      id: '/higher-vibes'
+      path: '/higher-vibes'
+      fullPath: '/higher-vibes'
+      preLoaderRoute: typeof HigherVibesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hidden-truth': {
@@ -938,6 +978,8 @@ const rootRouteChildren: RootRouteChildren = {
   GuideRoute: GuideRoute,
   HealthRoute: HealthRoute,
   HiddenTruthRoute: HiddenTruthRoute,
+  HigherVibesRoute: HigherVibesRoute,
+  KimAlfanoRoute: KimAlfanoRoute,
   MeditationsRoute: MeditationsRoute,
   MyReadingsRoute: MyReadingsRoute,
   NatureBookingRoute: NatureBookingRoute,
@@ -966,12 +1008,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

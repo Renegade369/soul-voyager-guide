@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Sparkles, Headphones, Compass, Droplet, Eye, Orbit, HelpCircle, ArrowRight, BookOpen } from "lucide-react";
-
-const HERO_BG =
-  "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/28235dc4-c0a4-4f98-9564-3437c82de253/generated/1778447858945.png";
+import HERO_BG from "@/assets/home-hero-mystical.png";
+const PLANT_BG =
+  "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1778962225130.png";
 
 const C = {
   bg: "#0A0A0A",
@@ -47,7 +47,7 @@ type Section = {
 };
 
 const sections: Section[] = [
-  { title: "Readings", desc: "Discover your soul blueprint through AI-powered readers", to: "/readings", icon: Sparkles },
+  { title: "Readings", desc: "Discover your soul blueprint through Soul True readers", to: "/readings", icon: Sparkles },
   { title: "Meditations", desc: "Eyes-closed audio journeys for the awakening mind", to: "/meditations", icon: Headphones },
   { title: "The Challenge", desc: "A structured path to sovereign living", to: "/the-sacred-journey", icon: Compass },
   { title: "Blood Type", desc: "Your biology holds ancient wisdom", to: "/readings", hash: "blood-type", icon: Droplet },
@@ -71,7 +71,7 @@ function HomePage() {
             backgroundPosition: "center",
           }}
         />
-        <div aria-hidden className="absolute inset-0 -z-10" style={{ backgroundColor: "rgba(0,0,0,0.55)" }} />
+        <div aria-hidden className="absolute inset-0 -z-10" style={{ background: "linear-gradient(180deg, rgba(10,11,9,0.3) 0%, rgba(10,11,9,0.6) 60%, rgba(10,11,9,1) 100%)" }} />
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
@@ -178,8 +178,23 @@ function HomePage() {
         </div>
       </section>
 
+      {/* SACRED PLANT IMAGE — psilocybin cosmic */}
+      <section className="relative w-full overflow-hidden" aria-hidden>
+        <img
+          src={PLANT_BG}
+          alt=""
+          className="block w-full"
+          style={{
+            opacity: 0.7,
+            objectFit: "cover",
+            maskImage: "linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%)",
+          }}
+        />
+      </section>
+
       {/* CLOSING */}
-      <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
+      <section className="mx-auto max-w-3xl px-6 pb-28 pt-16 text-center">
         <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>For educational & inspirational purposes only</p>
       </section>
     </div>
