@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { PaywallModal } from "@/components/PaywallModal";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
+import { PlantImageBand, PLANT_IMAGES } from "@/components/PlantImageBand";
 import { isUnlocked } from "@/lib/unlocks";
 
 export const Route = createFileRoute("/birth-chart")({
@@ -217,6 +218,7 @@ function BirthChartPage() {
             <p className="mt-12 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: C.dim }}>
               For educational &amp; inspirational purposes only.
             </p>
+            <PlantImageBand src={PLANT_IMAGES.birthChart} />
           </motion.div>
         )}
 

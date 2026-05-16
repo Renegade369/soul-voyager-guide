@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useAuth } from "@/hooks/useAuth";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { PlantImageBand, PLANT_IMAGES } from "@/components/PlantImageBand";
 
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
@@ -141,6 +142,7 @@ function DashboardPage() {
           </div>
         </div>
       </div>
+      <PlantImageBand src={PLANT_IMAGES.dashboard} />
     </div>
   );
 }

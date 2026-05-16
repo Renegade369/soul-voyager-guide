@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
+import { PlantImageBand, PLANT_IMAGES } from "@/components/PlantImageBand";
 
 export const Route = createFileRoute("/soul-quiz")({
   head: () => ({
@@ -266,6 +267,7 @@ function SoulQuizPage() {
               <p className="mt-10 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: C.dim }}>
                 For educational &amp; inspirational purposes only.
               </p>
+              <PlantImageBand src={PLANT_IMAGES.soulQuiz} />
             </motion.div>
           )}
         </AnimatePresence>
