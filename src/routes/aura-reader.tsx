@@ -35,13 +35,7 @@ function colorOf(name: string): string {
   return key ? AURA_HEX[key] : C.gold;
 }
 
-const QUESTIONS = [
-  { q: "Right now, how does your body feel?", options: ["Light", "Heavy", "Buzzing", "Tired", "Electric"] },
-  { q: "When you walk into a room, people tend to feel —", options: ["Calm", "Energized", "Seen", "Uncomfortable", "Nothing changes"] },
-  { q: "Your relationship with your emotions is —", options: ["I feel everything deeply", "I process slowly", "I keep them contained", "I'm not sure"] },
-  { q: "What color are you most drawn to right now?", options: ["Gold", "Deep blue", "Forest green", "Violet", "White", "Crimson"] },
-  { q: "What word lives in your chest most days?", options: ["Love", "Fear", "Power", "Peace", "Hunger", "Confusion"] },
-];
+const FEELING_QUESTION = "How are you feeling right now?";
 
 const CHAKRAS = [
   { key: "root", label: "Root", color: "#C9302C" },
@@ -64,8 +58,7 @@ type Reading = {
 
 function AuraReaderPage() {
   const [step, setStep] = useState<"intake" | "email" | "loading" | "result" | "error">("intake");
-  const [answers, setAnswers] = useState<string[]>([]);
-  const [idx, setIdx] = useState(0);
+  const [feeling, setFeeling] = useState("");
   const [email, setEmail] = useState("");
   const [optIn, setOptIn] = useState(true);
   const [reading, setReading] = useState<Reading | null>(null);
@@ -85,19 +78,16 @@ function AuraReaderPage() {
 
   useEffect(() => { setUnlocked(isUnlocked("aura")); }, []);
 
-  const pick = (opt: string) => {
-    const next = [...answers, opt];
-    setAnswers(next);
-    if (idx < QUESTIONS.length - 1) setIdx(idx + 1);
-    else setStep("email");
+  const goToEmail = () => {
+    if (!feeling.trim()) return;
+    setStep("email");
   };
 
   const submit = async () => {
     if (!email.trim()) return;
     setStep("loading");
     try {
-      const payload: Record<string, string> = {};
-      QUESTIONS.forEach((q, i) => { payload[q.q] = answers[i]; });
+      const payload: Record<string, string> = { [FEELING_QUESTION]: feeling.trim() };
       const { data, error } = await supabase.functions.invoke("aura-reader-generate", { body: { answers: payload, imageBase64: photo ?? undefined } });
       if (error) throw new Error(error.message);
       if (data?.error) throw new Error(data.error);
@@ -106,7 +96,7 @@ function AuraReaderPage() {
       if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
       setStep("result");
       void supabase.from("subscribers").insert({ email: email.trim().toLowerCase(), source: "aura-reader", opted_in_consciousness_map: optIn });
-      if (optIn) void supabase.from("consciousness_data").insert({ reader_type: "aura", aura_color: r.aura_color, dominant_energy: answers[4] ?? null });
+      if (optIn) void supabase.from("consciousness_data").insert({ reader_type: "aura", aura_color: r.aura_color, dominant_energy: feeling.trim().slice(0, 200) });
     } catch (e) {
       setErrorMsg(e instanceof Error ? e.message : "Something went wrong");
       setStep("error");
