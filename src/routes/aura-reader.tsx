@@ -98,7 +98,7 @@ function AuraReaderPage() {
     try {
       const payload: Record<string, string> = {};
       QUESTIONS.forEach((q, i) => { payload[q.q] = answers[i]; });
-      const { data, error } = await supabase.functions.invoke("aura-reader-generate", { body: { answers: payload } });
+      const { data, error } = await supabase.functions.invoke("aura-reader-generate", { body: { answers: payload, imageBase64: photo ?? undefined } });
       if (error) throw new Error(error.message);
       if (data?.error) throw new Error(data.error);
       const r = data.reading as Reading;
