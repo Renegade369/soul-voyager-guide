@@ -47,7 +47,7 @@ serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { answers } = await req.json();
+    const { answers, imageBase64 } = await req.json();
     if (!answers) {
       return new Response(JSON.stringify({ error: "answers required" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -113,7 +113,15 @@ serve(async (req: Request) => {
         model: "google/gemini-2.5-pro",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: `Answers:\n${JSON.stringify(answers, null, 2)}` },
+          {
+            role: "user",
+            content: imageBase64
+              ? [
+                  { type: "text", text: `Answers:\n${JSON.stringify(answers, null, 2)}\n\nThe user also shared a photo of themselves. Read their visible energetic presence (posture, gaze, expression, ambient light/color around them) as additional input to your aura reading. Do not describe the photo itself or comment on physical appearance — translate what you sense energetically.` },
+                  { type: "image_url", image_url: { url: imageBase64 } },
+                ]
+              : `Answers:\n${JSON.stringify(answers, null, 2)}`,
+          },
         ],
         tools,
         tool_choice: { type: "function", function: { name: "return_aura_reading" } },

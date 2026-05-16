@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { PaywallModal } from "@/components/PaywallModal";
@@ -72,6 +72,16 @@ function AuraReaderPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [paywallOpen, setPaywallOpen] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
+  const [photo, setPhoto] = useState<string | null>(null);
+  const cameraInputRef = useRef<HTMLInputElement | null>(null);
+  const uploadInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handlePhotoFile = (file?: File | null) => {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => setPhoto(reader.result as string);
+    reader.readAsDataURL(file);
+  };
 
   useEffect(() => { setUnlocked(isUnlocked("aura")); }, []);
 
@@ -88,7 +98,7 @@ function AuraReaderPage() {
     try {
       const payload: Record<string, string> = {};
       QUESTIONS.forEach((q, i) => { payload[q.q] = answers[i]; });
-      const { data, error } = await supabase.functions.invoke("aura-reader-generate", { body: { answers: payload } });
+      const { data, error } = await supabase.functions.invoke("aura-reader-generate", { body: { answers: payload, imageBase64: photo ?? undefined } });
       if (error) throw new Error(error.message);
       if (data?.error) throw new Error(data.error);
       const r = data.reading as Reading;
@@ -136,7 +146,45 @@ function AuraReaderPage() {
               <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com"
                 className="mt-8 w-full rounded-none border bg-transparent px-5 py-4 text-base outline-none"
                 style={{ borderColor: `${C.gold}66`, color: C.text }} />
-              <label className="mt-4 flex cursor-pointer items-start gap-3 text-sm" style={{ color: C.muted }}>
+              <div className="mt-8">
+                <p className="text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: C.gold }}>Optional · Add your photo</p>
+                <p className="text-sm mb-4" style={{ color: C.muted }}>
+                  Sharing a photo lets the reading sense your present energetic field. Entirely optional — the reading works beautifully without it.
+                </p>
+                {photo ? (
+                  <div className="flex items-center gap-4 rounded-none border p-4" style={{ borderColor: `${C.gold}55`, background: C.deep }}>
+                    <img src={photo} alt="Your photo" className="h-20 w-20 object-cover" style={{ border: `1px solid ${C.gold}55` }} />
+                    <div className="flex-1 flex flex-col gap-2">
+                      <button type="button" onClick={() => { setPhoto(null); cameraInputRef.current?.click(); }}
+                        className="text-[10px] uppercase tracking-[0.22em] text-left" style={{ color: C.gold }}>
+                        Retake / Replace
+                      </button>
+                      <button type="button" onClick={() => setPhoto(null)}
+                        className="text-[10px] uppercase tracking-[0.22em] text-left" style={{ color: C.dim }}>
+                        Remove photo
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-3">
+                    <button type="button" onClick={() => cameraInputRef.current?.click()}
+                      className="rounded-none border px-4 py-3 text-[11px] uppercase tracking-[0.22em]"
+                      style={{ borderColor: `${C.gold}66`, color: C.gold, background: "rgba(201,168,76,0.04)" }}>
+                      📷 Take Photo
+                    </button>
+                    <button type="button" onClick={() => uploadInputRef.current?.click()}
+                      className="rounded-none border px-4 py-3 text-[11px] uppercase tracking-[0.22em]"
+                      style={{ borderColor: `${C.gold}66`, color: C.gold, background: "rgba(201,168,76,0.04)" }}>
+                      📁 Upload Photo
+                    </button>
+                  </div>
+                )}
+                <input ref={cameraInputRef} type="file" accept="image/*" capture="user" className="hidden"
+                  onChange={(e) => handlePhotoFile(e.target.files?.[0])} />
+                <input ref={uploadInputRef} type="file" accept="image/*" className="hidden"
+                  onChange={(e) => handlePhotoFile(e.target.files?.[0])} />
+              </div>
+              <label className="mt-6 flex cursor-pointer items-start gap-3 text-sm" style={{ color: C.muted }}>
                 <input type="checkbox" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} className="mt-1" />
                 <span>Contribute my anonymized reading to the Soul True Consciousness Map. No personal information is ever stored with your reading data.</span>
               </label>
