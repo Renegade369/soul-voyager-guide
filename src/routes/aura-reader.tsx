@@ -72,6 +72,16 @@ function AuraReaderPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [paywallOpen, setPaywallOpen] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
+  const [photo, setPhoto] = useState<string | null>(null);
+  const cameraInputRef = useRef<HTMLInputElement | null>(null);
+  const uploadInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handlePhotoFile = (file?: File | null) => {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => setPhoto(reader.result as string);
+    reader.readAsDataURL(file);
+  };
 
   useEffect(() => { setUnlocked(isUnlocked("aura")); }, []);
 
