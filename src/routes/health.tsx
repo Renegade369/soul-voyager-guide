@@ -13,9 +13,9 @@ const pillars = [
   { t: "Nourishment", d: "Whole, living foods. Real water. Honoring the body's intelligence over trends." },
   { t: "Detoxification", d: "Gentle, ongoing release of what no longer serves — physically, energetically, emotionally." },
   { t: "Movement", d: "Yoga, qi gong, and somatic practices to keep life force flowing." },
-  { t: "Rest & Rhythm", d: "Sleep, stillness, and circadian alignment as foundational medicine." },
+  { t: "Rest & Rhythm", d: "Sleep, stillness, and circadian alignment as foundational practice." },
   { t: "Plant Allies", d: "Herbal traditions, adaptogens, and sacred plant wisdom." },
-  { t: "Nervous System", d: "Regulation as the gateway to healing, presence, and higher perception." },
+  { t: "Nervous System", d: "Regulation as the gateway to coherence, presence, and higher perception." },
 ];
 
 function HealthPage() {

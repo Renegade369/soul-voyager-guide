@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/nature-booking")({
   head: () =>
     makeRouteMeta({
-      title: "Book a Nature & Animal Healing Session — Soul True",
+      title: "Book a Nature & Animal Connection Session — Soul True",
       description:
         "Request an equine session, forest immersion, earthing practice, ocean ceremony, horse reiki, or animal companionship integration with William.",
     }),
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/nature-booking")({
 });
 
 const MODALITIES = [
-  { value: "equine", label: "Equine-Assisted Healing", blurb: "Held sessions with horses on the land — heart awakening, presence, mirror medicine." },
+  { value: "equine", label: "Equine-Assisted Connection", blurb: "Held sessions with horses on the land — heart awakening, presence, mirror wisdom." },
   { value: "horse_reiki", label: "Horse Reiki", blurb: "Energy work offered with and through the horses — for trauma, grief, and trust." },
   { value: "forest", label: "Forest & Land Immersion", blurb: "Guided 'forest bathing' walks on the sanctuary grounds — slow, sensory, prayerful." },
   { value: "earthing", label: "Earthing & Grounding", blurb: "Barefoot practice on the earth, often paired with breathwork and coherence training." },
@@ -165,7 +165,7 @@ function NatureBookingPage() {
 
   return (
     <PageShell
-      eyebrow="Nature & Animal Healing"
+      eyebrow="Nature & Animal Connection"
       title="Request a Session"
       intro="Tell us a little about who you are and what you are seeking. Every booking is hand-held — there is no automated calendar, because the land, the horses, and the tides ask to be honored."
     >
@@ -247,7 +247,7 @@ function NatureBookingPage() {
             rows={5}
             maxLength={2000}
             required
-            placeholder="Share what you are seeking, healing, grieving, or curious about. There is no wrong answer — William reads each one personally."
+            placeholder="Share what you are seeking, releasing, grieving, or curious about. There is no wrong answer — William reads each one personally."
             className={`${inputCls} resize-none`}
           />
           <p className="mt-2 text-xs font-light italic text-muted-foreground">{intention.length}/2000</p>

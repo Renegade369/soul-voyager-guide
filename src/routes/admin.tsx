@@ -98,7 +98,7 @@ function AdminPage() {
         </header>
 
         <section>
-          <h2 className="mb-4 text-2xl font-light" style={heading}>Nature Healing Bookings</h2>
+          <h2 className="mb-4 text-2xl font-light" style={heading}>Nature Connection Bookings</h2>
           {err && <p className="mb-4 text-sm" style={{ ...body, color: C.muted }}>{err}</p>}
           {bookings.length === 0 ? (
             <p style={{ ...body, color: C.muted }}>No bookings yet.</p>
