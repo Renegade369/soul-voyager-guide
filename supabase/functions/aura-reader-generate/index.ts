@@ -3,24 +3,33 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Content-Type": "application/json",
 };
 
-const GPT_SYSTEM = `You are an energy analyst. Analyze this person's current emotional and energetic state based on their words and photo if provided. Return structured raw insights about their energetic state, emotional patterns, blockages, and strengths. Be specific and observational. Return only raw insights — no poetic language, no preamble.`;
+const SYSTEM_PROMPT = `You are Soul True's sacred energy reader. Read this person's current emotional and energetic state from their own words and (if provided) their photo. Speak directly to the person with warm, truth-forward, possibility-focused language. Never use clinical or cold language.
 
-const CLAUDE_SYSTEM = `You are Soul True's sacred energy reader. A supporting AI has provided analytical insights below. Use those as one layer of input combined with your own deep reading of this person's words and photo if provided. Synthesize everything into one unified, powerful, spiritually grounded aura reading. Speak directly to the person. Use warm, truth-forward, possibility-focused language. Never use clinical or cold language.
+You MUST call the return_aura_reading function with the structured fields.
 
-OUTPUT STRUCTURE — you MUST call the return_aura_reading tool with these fields:
+COMPLIANCE: Never use the words healing, heal, medicine, treatment, diagnose, cure, therapy. Use frequency wellness, energetic alignment, vibrational shift, soul work, consciousness expansion instead.
+
+FIELD GUIDANCE:
 - aura_color: ONE primary aura color (Gold, Silver, Platinum, Copper, Blue, Green, Violet, White, Red, Orange, Indigo, Diamond, Clear, Opalescent, Iridescent, Obsidian, etc.)
-- teaser: 2-3 sentence free preview revealing the dominant color
-- emotional_core: { colors: string[], reading: 3-4 sentences }
-- social_presence: { colors: string[], reading: 3-4 sentences }
-- spiritual_depth: { colors: string[], reading: 3-4 sentences }
-- chakras: object with root, sacral, solar_plexus, heart, throat, third_eye, crown — each with { status: "Open"|"Partially Open"|"Blocked"|"Overactive", description: 1-2 sentences, practice: 1 simple practice }
-- soul_message: 2-3 sentences spoken directly. Make it land.
-
-COMPLIANCE: Never use the words healing, heal, medicine, treatment, diagnose, cure, therapy. Use frequency wellness, energetic alignment, vibrational shift, soul work, consciousness expansion instead.`;
+- teaser: 2-3 sentence preview revealing the dominant color
+- emotional_core / social_presence / spiritual_depth: each { colors: string[], reading: 3-4 sentences }
+- chakras: root, sacral, solar_plexus, heart, throat, third_eye, crown — each with { status: "Open"|"Partially Open"|"Blocked"|"Overactive", description: 1-2 sentences, practice: 1 simple practice }
+- soul_message: 2-3 sentences spoken directly. Make it land.`;
 
 const CHAKRA_KEYS = ["root","sacral","solar_plexus","heart","throat","third_eye","crown"] as const;
+
+const layerSchema = {
+  type: "object",
+  properties: {
+    colors: { type: "array", items: { type: "string" } },
+    reading: { type: "string" },
+  },
+  required: ["colors", "reading"],
+  additionalProperties: false,
+};
 
 const chakraSchema = {
   type: "object",
@@ -30,51 +39,35 @@ const chakraSchema = {
     practice: { type: "string" },
   },
   required: ["status","description","practice"],
+  additionalProperties: false,
 };
 
-const readingToolSchema = {
-  name: "return_aura_reading",
-  description: "Return the structured 3-layer aura reading plus chakra alignment.",
-  input_schema: {
-    type: "object",
-    properties: {
-      aura_color: { type: "string" },
-      teaser: { type: "string" },
-      emotional_core: {
-        type: "object",
-        properties: { colors: { type: "array", items: { type: "string" } }, reading: { type: "string" } },
-        required: ["colors","reading"],
-      },
-      social_presence: {
-        type: "object",
-        properties: { colors: { type: "array", items: { type: "string" } }, reading: { type: "string" } },
-        required: ["colors","reading"],
-      },
-      spiritual_depth: {
-        type: "object",
-        properties: { colors: { type: "array", items: { type: "string" } }, reading: { type: "string" } },
-        required: ["colors","reading"],
-      },
-      chakras: {
-        type: "object",
-        properties: {
-          root: chakraSchema, sacral: chakraSchema, solar_plexus: chakraSchema,
-          heart: chakraSchema, throat: chakraSchema, third_eye: chakraSchema, crown: chakraSchema,
+const readingFunction = {
+  type: "function",
+  function: {
+    name: "return_aura_reading",
+    description: "Return the structured 3-layer aura reading plus chakra alignment.",
+    parameters: {
+      type: "object",
+      properties: {
+        aura_color: { type: "string" },
+        teaser: { type: "string" },
+        emotional_core: layerSchema,
+        social_presence: layerSchema,
+        spiritual_depth: layerSchema,
+        chakras: {
+          type: "object",
+          properties: Object.fromEntries(CHAKRA_KEYS.map((k) => [k, chakraSchema])),
+          required: [...CHAKRA_KEYS],
+          additionalProperties: false,
         },
-        required: [...CHAKRA_KEYS],
+        soul_message: { type: "string" },
       },
-      soul_message: { type: "string" },
+      required: ["aura_color","teaser","emotional_core","social_presence","spiritual_depth","chakras","soul_message"],
+      additionalProperties: false,
     },
-    required: ["aura_color","teaser","emotional_core","social_presence","spiritual_depth","chakras","soul_message"],
   },
 };
-
-// Parse a data URL ("data:image/jpeg;base64,xxxx") into media type + raw base64
-function parseDataUrl(dataUrl: string): { mediaType: string; data: string } | null {
-  const m = dataUrl.match(/^data:(image\/[a-zA-Z+.-]+);base64,(.+)$/);
-  if (!m) return null;
-  return { mediaType: m[1], data: m[2] };
-}
 
 function userText(answers: unknown): string {
   if (typeof answers === "string") return answers;
@@ -86,119 +79,106 @@ function userText(answers: unknown): string {
   return String(answers ?? "");
 }
 
+function errorResponse(message: string, status = 200) {
+  // Return 200 with structured error so the frontend can show a graceful retry
+  return new Response(JSON.stringify({ error: message }), { status, headers: corsHeaders });
+}
+
 serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { answers, imageBase64 } = await req.json();
-    if (!answers) {
-      return new Response(JSON.stringify({ error: "answers required" }), {
-        status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+    let body: { answers?: unknown; imageBase64?: string };
+    try {
+      body = await req.json();
+    } catch (e) {
+      console.error("aura-reader-generate: invalid JSON body", e);
+      return errorResponse("Invalid request body", 400);
     }
 
-    const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
-    const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
-    if (!OPENAI_API_KEY) throw new Error("OPENAI_API_KEY not configured");
-    if (!ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY not configured");
+    const { answers, imageBase64 } = body;
+    if (!answers) {
+      console.error("aura-reader-generate: missing answers");
+      return errorResponse("answers required", 400);
+    }
+
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    if (!LOVABLE_API_KEY) {
+      console.error("aura-reader-generate: LOVABLE_API_KEY not configured");
+      return errorResponse("AI gateway not configured");
+    }
 
     const userResponse = userText(answers);
-    const parsedImage = imageBase64 ? parseDataUrl(imageBase64) : null;
 
-    // ---------- 1. GPT-4o: raw analytical insights ----------
-    const gptUserContent: unknown = parsedImage
+    // Validate image payload (data URL form expected from the client)
+    let imageUrl: string | null = null;
+    if (typeof imageBase64 === "string" && imageBase64.length > 0) {
+      const m = imageBase64.match(/^data:(image\/[a-zA-Z+.-]+);base64,(.+)$/);
+      if (!m) {
+        console.error("aura-reader-generate: image is not a valid data URL — ignoring");
+      } else {
+        // ~base64 size in bytes
+        const approxBytes = Math.floor((m[2].length * 3) / 4);
+        console.log(`aura-reader-generate: image accepted media=${m[1]} approxBytes=${approxBytes}`);
+        if (approxBytes > 6 * 1024 * 1024) {
+          console.error("aura-reader-generate: image too large", approxBytes);
+          return errorResponse("Image too large — please retake at a smaller size");
+        }
+        imageUrl = imageBase64;
+      }
+    }
+
+    const userContent: unknown = imageUrl
       ? [
           { type: "text", text: `User's open response:\n\n${userResponse}` },
-          { type: "image_url", image_url: { url: imageBase64 } },
+          { type: "image_url", image_url: { url: imageUrl } },
         ]
       : `User's open response:\n\n${userResponse}`;
 
-    const gptResp = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${OPENAI_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "gpt-4o",
-        messages: [
-          { role: "system", content: GPT_SYSTEM },
-          { role: "user", content: gptUserContent },
-        ],
-        temperature: 0.7,
-      }),
-    });
-
-    if (!gptResp.ok) {
-      const t = await gptResp.text();
-      console.error("OpenAI error", gptResp.status, t);
-      return new Response(JSON.stringify({ error: `OpenAI error: ${gptResp.status}` }), {
-        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-    const gptData = await gptResp.json();
-    const gpt_insights: string = gptData?.choices?.[0]?.message?.content ?? "";
-
-    // ---------- 2. Claude: synthesize into final structured reading ----------
-    const claudeUserBlocks: unknown[] = [];
-    if (parsedImage) {
-      claudeUserBlocks.push({
-        type: "image",
-        source: { type: "base64", media_type: parsedImage.mediaType, data: parsedImage.data },
-      });
-    }
-    claudeUserBlocks.push({
-      type: "text",
-      text:
-        `THE PERSON'S OWN WORDS:\n${userResponse}\n\n` +
-        `SUPPORTING ANALYTICAL INSIGHTS (from a supporting AI — use as one layer of input):\n${gpt_insights}\n\n` +
-        `Now synthesize everything into the unified aura reading by calling the return_aura_reading tool.`,
-    });
-
-    const claudeResp = await fetch("https://api.anthropic.com/v1/messages", {
+    const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
-        "x-api-key": ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 4096,
-        system: CLAUDE_SYSTEM,
-        tools: [readingToolSchema],
-        tool_choice: { type: "tool", name: "return_aura_reading" },
-        messages: [{ role: "user", content: claudeUserBlocks }],
+        model: "google/gemini-2.5-pro",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: userContent },
+        ],
+        tools: [readingFunction],
+        tool_choice: { type: "function", function: { name: "return_aura_reading" } },
       }),
     });
 
-    if (!claudeResp.ok) {
-      const t = await claudeResp.text();
-      console.error("Anthropic error", claudeResp.status, t);
-      if (claudeResp.status === 429) {
-        return new Response(JSON.stringify({ error: "Too many requests. Please wait a moment." }), {
-          status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-      }
-      return new Response(JSON.stringify({ error: `Anthropic error: ${claudeResp.status}` }), {
-        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+    if (!aiResp.ok) {
+      const t = await aiResp.text().catch(() => "");
+      console.error("aura-reader-generate: AI gateway error", aiResp.status, t.slice(0, 500));
+      if (aiResp.status === 429) return errorResponse("Too many requests. Please wait a moment and try again.");
+      if (aiResp.status === 402) return errorResponse("AI credits exhausted. Please add credits in workspace settings.");
+      return errorResponse(`AI gateway error: ${aiResp.status}`);
     }
 
-    const claudeData = await claudeResp.json();
-    const toolUse = (claudeData?.content ?? []).find((b: { type: string }) => b.type === "tool_use");
-    if (!toolUse?.input) {
-      console.error("Claude did not return tool_use", JSON.stringify(claudeData).slice(0, 500));
-      return new Response(JSON.stringify({ error: "No reading generated" }), {
-        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+    const data = await aiResp.json();
+    const toolCall = data?.choices?.[0]?.message?.tool_calls?.[0];
+    const argsStr = toolCall?.function?.arguments;
+    if (!argsStr) {
+      console.error("aura-reader-generate: no tool_call in response", JSON.stringify(data).slice(0, 500));
+      return errorResponse("No reading generated");
     }
 
-    const reading = toolUse.input;
-    return new Response(JSON.stringify({ reading }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    let reading: unknown;
+    try {
+      reading = JSON.parse(argsStr);
+    } catch (e) {
+      console.error("aura-reader-generate: failed to parse tool args", e, argsStr.slice(0, 500));
+      return errorResponse("Reading could not be parsed");
+    }
+
+    return new Response(JSON.stringify({ reading }), { headers: corsHeaders });
   } catch (e) {
-    console.error("aura-reader-generate error", e);
-    return new Response(JSON.stringify({ error: e instanceof Error ? e.message : "Unknown" }), {
-      status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    console.error("aura-reader-generate: unexpected error", e instanceof Error ? e.stack || e.message : e);
+    return errorResponse(e instanceof Error ? e.message : "Unknown error");
   }
 });
