@@ -69,10 +69,39 @@ function AuraReaderPage() {
   const cameraInputRef = useRef<HTMLInputElement | null>(null);
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
 
+  // Compress + resize an image dataURL to <= maxDim on the longest side, JPEG quality 0.82.
+  const compressImage = (dataUrl: string, maxDim = 1024, quality = 0.82): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        try {
+          const scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+          const w = Math.max(1, Math.round(img.width * scale));
+          const h = Math.max(1, Math.round(img.height * scale));
+          const canvas = document.createElement("canvas");
+          canvas.width = w; canvas.height = h;
+          const ctx = canvas.getContext("2d");
+          if (!ctx) return resolve(dataUrl);
+          ctx.drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL("image/jpeg", quality));
+        } catch (err) { reject(err); }
+      };
+      img.onerror = () => reject(new Error("Failed to load image"));
+      img.src = dataUrl;
+    });
+
   const handlePhotoFile = (file?: File | null) => {
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = () => setPhoto(reader.result as string);
+    reader.onload = async () => {
+      try {
+        const raw = reader.result as string;
+        const compressed = await compressImage(raw, 1024, 0.82);
+        setPhoto(compressed);
+      } catch {
+        setPhoto(reader.result as string);
+      }
+    };
     reader.readAsDataURL(file);
   };
 
@@ -86,18 +115,38 @@ function AuraReaderPage() {
   const submit = async () => {
     if (!email.trim()) return;
     setStep("loading");
+    setErrorMsg("");
     try {
+      // Ensure image is fully encoded + compressed before the API call.
+      let imageBase64: string | undefined = photo ?? undefined;
+      if (imageBase64) {
+        try { imageBase64 = await compressImage(imageBase64, 1024, 0.82); } catch { /* keep original */ }
+      }
+
       const payload: Record<string, string> = { [FEELING_QUESTION]: feeling.trim() };
-      const { data, error } = await supabase.functions.invoke("aura-reader-generate", { body: { answers: payload, imageBase64: photo ?? undefined } });
-      if (error) throw new Error(error.message);
-      if (data?.error) throw new Error(data.error);
-      const r = data.reading as Reading;
+
+      // 60s timeout guard
+      const TIMEOUT_MS = 60_000;
+      const invocation = supabase.functions.invoke("aura-reader-generate", {
+        body: { answers: payload, imageBase64 },
+      });
+      const timeout = new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error("TIMEOUT")), TIMEOUT_MS),
+      );
+      const { data, error } = await Promise.race([invocation, timeout]) as Awaited<typeof invocation>;
+
+      if (error) throw new Error(error.message || "Edge function error");
+      if (!data || data.error) throw new Error(data?.error || "No reading returned");
+      const r = data.reading as Reading | undefined;
+      if (!r) throw new Error("No reading returned");
+
       setReading(r);
       if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
       setStep("result");
       void supabase.from("subscribers").insert({ email: email.trim().toLowerCase(), source: "aura-reader", opted_in_consciousness_map: optIn });
       if (optIn) void supabase.from("consciousness_data").insert({ reader_type: "aura", aura_color: r.aura_color, dominant_energy: feeling.trim().slice(0, 200) });
     } catch (e) {
+      console.error("aura-reader submit error", e);
       setErrorMsg(e instanceof Error ? e.message : "Something went wrong");
       setStep("error");
     }
