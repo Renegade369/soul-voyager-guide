@@ -242,17 +242,33 @@ function AuraReaderPage() {
           )}
 
           {step === "loading" && (
-            <motion.div key="load" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center py-24">
+            <motion.div
+              key="load"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="fixed inset-0 z-50 flex flex-col items-center justify-center px-6"
+              style={{ background: "rgba(10,10,10,0.94)", backdropFilter: "blur(6px)", pointerEvents: "auto" }}
+              aria-busy="true"
+              aria-live="polite"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="h-32 w-32 animate-pulse rounded-full" style={{ background: `radial-gradient(circle, ${C.glow}, ${C.gold} 40%, transparent 70%)`, filter: "blur(10px)" }} />
-              <p className="mt-10 font-serif text-xl italic" style={{ color: C.gold }}>Reading your frequency…</p>
+              <p className="mt-10 font-serif text-xl italic text-center" style={{ color: C.gold }}>
+                Reading your aura field… please wait
+              </p>
+              <p className="mt-3 text-xs uppercase tracking-[0.25em]" style={{ color: C.dim }}>
+                This may take up to a minute
+              </p>
             </motion.div>
           )}
 
           {step === "error" && (
             <motion.div key="err" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-24 text-center">
-              <p className="font-serif text-2xl italic" style={{ color: C.gold }}>The reading didn't come through.</p>
-              <p className="mt-3 text-sm" style={{ color: C.muted }}>{errorMsg}</p>
-              <button onClick={() => { setStep("intake"); setFeeling(""); }}
+              <p className="font-serif text-2xl italic" style={{ color: C.gold }}>
+                We couldn't read your aura this time — please retake your photo and try again.
+              </p>
+              {errorMsg && <p className="mt-3 text-xs" style={{ color: C.dim }}>{errorMsg === "TIMEOUT" ? "The reading took too long to respond." : errorMsg}</p>}
+              <button onClick={() => { setStep("intake"); setErrorMsg(""); }}
                 className="mt-8 rounded-none px-8 py-3 text-[11px] uppercase tracking-[0.22em]"
                 style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>Try again</button>
             </motion.div>
