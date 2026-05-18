@@ -11,6 +11,7 @@ import HV_RETRO from "@/assets/higher-vibes-retro-mushroom.png";
 import HV_GOLDEN_BRAIN from "@/assets/higher-vibes-golden-brain.png";
 import HV_PATH from "@/assets/higher-vibes-path-of-remembrance.png";
 import HV_ASCENSION from "@/assets/higher-vibes-ascension-portal.png";
+import HV_CUSTOM_KIT from "@/assets/higher-vibes-custom-kit.png";
 
 const C = {
   bg: "#0A0B09",
