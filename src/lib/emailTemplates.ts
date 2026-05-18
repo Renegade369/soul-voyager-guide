@@ -118,7 +118,7 @@ export function certificateEmail(name: string, score: number): string {
         ${bodyText("🌿 <strong style='color:#E8EDE9;'>Get Your Birth Chart Reading</strong> — Discover what the stars encoded in your soul at the moment of birth.")}
         ${bodyText("🩸 <strong style='color:#E8EDE9;'>Blood Type Profile</strong> — Learn how your blood type shapes your personality, diet, and purpose.")}
         ${bodyText("✨ <strong style='color:#E8EDE9;'>Soul Origin Quiz</strong> — Find out your soul type — Starseed, Earth Angel, Lightworker, and more.")}
-        ${bodyText("🧘 <strong style='color:#E8EDE9;'>Personalized Meditation</strong> — AI-crafted meditation scripts designed for exactly where you are right now.")}
+        ${bodyText("🧘 <strong style='color:#E8EDE9;'>Personalized Meditation</strong> — Soul True-crafted meditation scripts designed for exactly where you are right now.")}
       </div>
     `)}
     ${goldButton("CONTINUE YOUR JOURNEY", "https://soul-true.com/guide")}
