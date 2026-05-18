@@ -3,6 +3,7 @@ import { Star, ArrowRight, Sparkles } from "lucide-react";
 import MUSHROOM_FOREST from "@/assets/rainbow-mushroom-forest.png";
 import KIM_HERO from "@/assets/kim-alfano-hero.png";
 import KIM_FOREST from "@/assets/kim-alfano-forest.png";
+import KIM_SUNFLOWERS from "@/assets/kim-alfano-sunflowers.png";
 
 const C = {
   bg: "#0A0B09",
@@ -283,7 +284,21 @@ function HigherVibesPage() {
         </p>
       </section>
 
-      <GoldRule />
+      {/* CINEMATIC DIVIDER — Kim in sunflowers */}
+      <section className="relative mt-20 w-full overflow-hidden" aria-hidden>
+        <img
+          src={KIM_SUNFLOWERS}
+          alt=""
+          className="block w-full"
+          style={{
+            height: 420,
+            objectFit: "cover",
+            objectPosition: "center 30%",
+            maskImage: "linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%)",
+          }}
+        />
+      </section>
 
       {/* SESSIONS */}
       <section className="mx-auto max-w-6xl px-6">
