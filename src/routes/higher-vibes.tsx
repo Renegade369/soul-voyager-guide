@@ -456,7 +456,38 @@ function HigherVibesPage() {
 
       <GoldRule />
 
-      {/* IS THIS YOU */}
+      {/* FLAGSHIP — Path of Remembrance */}
+      <section className="mx-auto max-w-4xl px-6 text-center">
+        <img
+          src={HV_PATH}
+          alt="Higher Vibes — The Path of Remembrance"
+          className="mx-auto h-72 w-72 object-contain md:h-96 md:w-96"
+          style={{ filter: `drop-shadow(0 0 80px ${C.glow}66)` }}
+          loading="lazy"
+        />
+        <p className="-mt-4 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Flagship Journey</p>
+        <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
+          The <em className="italic" style={{ color: C.gold }}>Path of Remembrance</em>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
+          A 4-week 1:1 guided journey home to your true self. Two hours of sacred time with Kim each week — subconscious reprogramming, shadow work, and the Magic of Microdosing woven into one transformative arc.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://shop.beacons.ai/higher_vibes/4afff2af-39be-479d-86d9-5118283a84d3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none px-10 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all"
+            style={{ background: C.gold, color: C.bg }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px rgba(232,130,26,0.5)`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+          >
+            Begin The Path <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
+      <GoldRule />
       <section className="mx-auto max-w-3xl px-6">
         <div className="text-center">
           <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Is This You?</p>
