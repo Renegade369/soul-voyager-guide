@@ -341,6 +341,33 @@ function HigherVibesPage() {
         <p className="mx-auto mt-8 max-w-xl text-sm italic leading-relaxed" style={{ color: C.dim }}>
           More connections mean more creativity, emotional flexibility, and the power to permanently shift old patterns.
         </p>
+
+        {/* TERENCE MCKENNA QUOTE */}
+        <figure
+          className="relative mx-auto mt-16 max-w-2xl px-6 py-12 text-left md:px-12 md:py-14"
+          style={{
+            background: `radial-gradient(ellipse at top, ${C.glow}10 0%, transparent 70%)`,
+            border: `1px solid ${C.borderSoft}`,
+            boxShadow: `0 0 60px -20px ${C.glow}33`,
+          }}
+        >
+          <span
+            aria-hidden
+            className="absolute left-6 top-0 -translate-y-1/2 px-3 font-serif text-5xl leading-none md:left-10 md:text-6xl"
+            style={{ background: C.bg, color: C.gold, fontFamily: fonts.display }}
+          >
+            &ldquo;
+          </span>
+          <blockquote
+            className="font-serif text-xl font-light italic leading-relaxed md:text-2xl md:leading-relaxed"
+            style={{ fontFamily: fonts.display, color: C.text }}
+          >
+            The mind is more powerful than any imaginable particle accelerator, more sensitive than any radio receiver or the largest optical telescope, more complete in its grasp of information than any computer: the <span style={{ color: C.gold }}>human body</span> — its organs, its voice, its powers of locomotion, and its imagination — is a more-than-sufficient means for the exploration of any place, time or energy level in the universe.
+          </blockquote>
+          <figcaption className="mt-6 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.muted }}>
+            — Terence McKenna
+          </figcaption>
+        </figure>
       </section>
 
       {/* CINEMATIC DIVIDER — Kim in sunflowers */}
