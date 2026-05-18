@@ -14,7 +14,7 @@ const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-se
 const COUNTRIES = ["United States","Canada","United Kingdom","Australia","India","Germany","France","Brazil","Mexico","Japan","Nigeria","South Africa","Philippines","Italy","Spain","Netherlands","Sweden","Norway","Denmark","New Zealand","Ireland","Singapore","UAE","Saudi Arabia","Other"];
 
 export const Route = createFileRoute("/welcome")({
-  head: () => ({ meta: [{ title: "Soul True — Your Transformation Starts Here" }, { name: "description", content: "Join thousands using AI to design their most fulfilled life. Free access to the Soul True guide." }, { property: "og:title", content: "Soul True — Your Transformation Starts Here" }, { property: "og:description", content: "Join thousands using AI to design their most fulfilled life." }] }),
+  head: () => ({ meta: [{ title: "Soul True — Your Transformation Starts Here" }, { name: "description", content: "Join thousands of souls using Soul True to design their most fulfilled life. Free access to the Soul True guide." }, { property: "og:title", content: "Soul True — Your Transformation Starts Here" }, { property: "og:description", content: "Join thousands using Soul True to design their most fulfilled life." }] }),
   component: WelcomePage,
 });
 
