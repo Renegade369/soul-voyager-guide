@@ -247,6 +247,39 @@ function HigherVibesPage() {
 
       <GoldRule />
 
+      {/* FEATURED QUOTE — Kim's Core */}
+      <section className="mx-auto max-w-4xl px-6 text-center">
+        <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Kim's Core Truth</p>
+        <figure
+          className="relative mt-8 px-6 py-14 md:px-14 md:py-20"
+          style={{
+            background: `radial-gradient(ellipse at center, ${C.glow}12 0%, transparent 70%)`,
+            border: `1px solid ${C.borderSoft}`,
+            boxShadow: `0 0 80px -20px ${C.glow}33, inset 0 0 60px -30px ${C.glow}22`,
+          }}
+        >
+          <span
+            aria-hidden
+            className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 px-4 font-serif text-6xl leading-none md:text-7xl"
+            style={{ background: C.bg, color: C.gold, fontFamily: fonts.display }}
+          >
+            &ldquo;
+          </span>
+          <blockquote
+            className="font-serif text-2xl font-light italic leading-snug md:text-4xl md:leading-snug"
+            style={{ fontFamily: fonts.display, color: C.text }}
+          >
+            People don't need to be <span style={{ color: C.gold }}>saved</span> or rescued.
+            <br className="hidden md:block" /> People need <span style={{ color: C.gold }}>knowledge of their own power</span> and how to access it.
+          </blockquote>
+          <figcaption className="mt-8 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.muted }}>
+            — Kim Alfano · Higher Vibes
+          </figcaption>
+        </figure>
+      </section>
+
+      <GoldRule />
+
       {/* WHY MICRODOSE */}
       <section className="mx-auto max-w-3xl px-6 text-center">
         <img
