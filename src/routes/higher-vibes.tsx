@@ -13,6 +13,7 @@ import HV_PATH from "@/assets/higher-vibes-path-of-remembrance.png";
 import HV_ASCENSION from "@/assets/higher-vibes-ascension-portal.png";
 import HV_CUSTOM_KIT from "@/assets/higher-vibes-custom-kit.png";
 import HV_ABUNDANCE from "@/assets/higher-vibes-abundance.png";
+import HV_SACRED from "@/assets/higher-vibes-sacred-ceremony.png";
 
 const C = {
   bg: "#0A0B09",
@@ -77,7 +78,7 @@ const sessions: { name: string; tag: string; desc: string; url: string }[] = [
   { name: "Ascension Portal", tag: "GUIDED GROUP JOURNEY", desc: "Group ceremony and collective consciousness expansion.", url: "https://shop.beacons.ai/higher_vibes/3ae584ad-48de-4a45-a570-85006a03611e" },
   { name: "Custom Microdosing Kit", tag: "6 MONTH SOLO JOURNEY", desc: "A fully personalized protocol for your unique path.", url: "https://shop.beacons.ai/higher_vibes/747cfcf8-39ea-4b17-a16b-7d38bca3f104" },
   { name: "Frequency of Abundance", tag: "1:1 GUIDED JOURNEY", desc: "Clear your money blocks and expand your prosperity frequency.", url: "https://shop.beacons.ai/higher_vibes/2af65f0f-91ed-4cbb-a1d6-e7d5330f4bc4" },
-  { name: "HigherVibes Wellness Ceremony", tag: "360 MIN · SACRED", desc: "A full ceremonial plant medicine experience in sacred circle.", url: "https://shop.beacons.ai/higher_vibes/12741891-34fd-4954-aef3-62e1e21591d9" },
+  { name: "The Sacred Ceremony", tag: "360 MIN · SACRED", desc: "A full ceremonial experience in sacred circle — fire, frequency, and remembrance.", url: "https://shop.beacons.ai/higher_vibes/12741891-34fd-4954-aef3-62e1e21591d9" },
   { name: "Why Microdose?", tag: "EDUCATIONAL GUIDE", desc: "Understand the science and soul behind intentional microdosing.", url: "https://shop.beacons.ai/higher_vibes/63468a37-44ea-4ffd-9ac5-b549152b70b9" },
   { name: "Subconscious Reprogramming", tag: "GUIDE", desc: "Rewire the deep programs running your life on autopilot.", url: "https://shop.beacons.ai/higher_vibes/f0429c83-4d0d-41fa-9710-c6c37963d7d0" },
   { name: "Quantum Sleep Leap", tag: "MANIFEST WHILE YOU SLEEP", desc: "Subconscious reprogramming activated during your sleep cycles.", url: "https://shop.beacons.ai/higher_vibes/31d8a66e-de77-4355-b496-2357ab5de94c" },
@@ -583,6 +584,41 @@ function HigherVibesPage() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
           >
             Open The Frequency <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
+      {/* FLAGSHIP — The Sacred Ceremony */}
+      <section className="mx-auto mt-20 max-w-4xl px-6 text-center">
+        <div
+          className="mx-auto h-64 w-64 overflow-hidden border md:h-80 md:w-80"
+          style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}66` }}
+        >
+          <img
+            src={HV_SACRED}
+            alt="Sacred ceremony — circle around fire by candlelight"
+            className="block h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <p className="mt-8 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>360 Min · Sacred Circle</p>
+        <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
+          The <em className="italic" style={{ color: C.gold }}>Sacred Ceremony</em>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
+          A full ceremonial experience held in sacred circle. Fire, frequency, candlelight, and ancestral practice — guided with intention, integration, and a soul-aligned community gathered to remember.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://shop.beacons.ai/higher_vibes/12741891-34fd-4954-aef3-62e1e21591d9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none px-10 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all"
+            style={{ background: C.gold, color: C.bg }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px rgba(232,130,26,0.5)`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+          >
+            Sit In Circle <ArrowRight size={14} />
           </a>
         </div>
       </section>
