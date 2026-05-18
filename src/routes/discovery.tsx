@@ -8,7 +8,7 @@ export const Route = createFileRoute("/discovery")({
     makeRouteMeta({
       title: "Soul Discovery — Soul True",
       description:
-        "An AI-guided sacred conversation to discover where you are spiritually, physically and mentally — so William can serve you well.",
+        "A sacred guided conversation to discover where you are spiritually, physically and mentally — so William can serve you well.",
     }),
   component: DiscoveryPage,
 });
