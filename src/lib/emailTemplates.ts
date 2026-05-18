@@ -88,7 +88,7 @@ export function challengeCompletedEmail(firstName: string): string {
     ${subheading("All 10 days completed. You are not the same person who started.")}
     ${GOLD_RULE}
     ${card(`
-      ${bodyText("Over the past 10 days, you've had real conversations with AI about your life, your vision, your beliefs, and your purpose.")}
+      ${bodyText("Over the past 10 days, you've had real, guided conversations about your life, your vision, your beliefs, and your purpose.")}
       ${bodyText("You've built a wellness plan, mapped your gifts, and created your 90-day Soul True blueprint.")}
       ${bodyText("Now it's time to prove what you've learned.")}
     `)}
