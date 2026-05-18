@@ -319,6 +319,13 @@ function HigherVibesPage() {
 
       {/* SCIENCE */}
       <section className="mx-auto max-w-3xl px-6 pt-8 text-center">
+        <img
+          src={HV_GOLDEN_BRAIN}
+          alt="Golden brain dissolving into stardust"
+          className="mx-auto mb-8 h-56 w-56 object-contain md:h-72 md:w-72"
+          style={{ filter: `drop-shadow(0 0 60px ${C.glow}66)` }}
+          loading="lazy"
+        />
         <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>The Science Behind It</p>
         <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
           Your Brain Can <em className="italic" style={{ color: C.gold }}>Rewire Itself</em>
