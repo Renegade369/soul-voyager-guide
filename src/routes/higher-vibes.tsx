@@ -16,6 +16,7 @@ import HV_ABUNDANCE from "@/assets/higher-vibes-abundance.png";
 import HV_SACRED from "@/assets/higher-vibes-sacred-ceremony.png";
 import HV_WHY_MICRO from "@/assets/higher-vibes-why-microdose.png";
 import HV_SUBCONSCIOUS from "@/assets/higher-vibes-subconscious-guide.png";
+import HV_SLEEP_LEAP from "@/assets/higher-vibes-sleep-leap.png";
 
 const C = {
   bg: "#0A0B09",
@@ -691,6 +692,41 @@ function HigherVibesPage() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
           >
             Begin Rewiring <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
+      {/* FLAGSHIP — Quantum Sleep Leap Guide */}
+      <section className="mx-auto mt-20 max-w-4xl px-6 text-center">
+        <div
+          className="mx-auto h-64 w-64 overflow-hidden border md:h-80 md:w-80"
+          style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}66` }}
+        >
+          <img
+            src={HV_SLEEP_LEAP}
+            alt="Quantum sleep leap — woman floating in cosmic waters beneath a glowing chalice"
+            className="block h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <p className="mt-8 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Dream State · Self-Guided</p>
+        <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
+          The Quantum <em className="italic" style={{ color: C.gold }}>Sleep Leap Guide</em>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
+          A practice for working with the threshold between waking and dream — using sleep as a portal for integration, reprogramming, and remembering. Quiet rituals and frequency tools to enter rest as a sacred act.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://shop.beacons.ai/higher_vibes/31d8a66e-de77-4355-b496-2357ab5de94c"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none px-10 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all"
+            style={{ background: C.gold, color: C.bg }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px rgba(232,130,26,0.5)`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+          >
+            Enter The Portal <ArrowRight size={14} />
           </a>
         </div>
       </section>
