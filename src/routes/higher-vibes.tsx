@@ -14,6 +14,7 @@ import HV_ASCENSION from "@/assets/higher-vibes-ascension-portal.png";
 import HV_CUSTOM_KIT from "@/assets/higher-vibes-custom-kit.png";
 import HV_ABUNDANCE from "@/assets/higher-vibes-abundance.png";
 import HV_SACRED from "@/assets/higher-vibes-sacred-ceremony.png";
+import HV_WHY_MICRO from "@/assets/higher-vibes-why-microdose.png";
 
 const C = {
   bg: "#0A0B09",
@@ -619,6 +620,41 @@ function HigherVibesPage() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
           >
             Sit In Circle <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
+      {/* FLAGSHIP — Why Microdose? */}
+      <section className="mx-auto mt-20 max-w-4xl px-6 text-center">
+        <div
+          className="mx-auto h-64 w-64 overflow-hidden border md:h-80 md:w-80"
+          style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}66` }}
+        >
+          <img
+            src={HV_WHY_MICRO}
+            alt="Why microdose — cosmic mushroom field beneath galaxies"
+            className="block h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <p className="mt-8 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Foundations · Begin Here</p>
+        <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
+          Why <em className="italic" style={{ color: C.gold }}>Microdose?</em>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
+          A grounded introduction to the practice — what microdosing is, how it's used as a tool for clarity and reconnection, and why so many are returning to this ancient frequency in modern life.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://shop.beacons.ai/higher_vibes/63468a37-44ea-4ffd-9ac5-b549152b70b9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none px-10 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all"
+            style={{ background: C.gold, color: C.bg }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px rgba(232,130,26,0.5)`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+          >
+            Learn The Practice <ArrowRight size={14} />
           </a>
         </div>
       </section>
