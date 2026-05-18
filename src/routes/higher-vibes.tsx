@@ -5,6 +5,7 @@ import KIM_HERO from "@/assets/kim-alfano-hero.png";
 import KIM_FOREST from "@/assets/kim-alfano-forest.png";
 import KIM_SUNFLOWERS from "@/assets/kim-alfano-sunflowers.png";
 import KIM_GODDESS from "@/assets/kim-alfano-goddess.png";
+import HV_LOGO from "@/assets/higher-vibes-logo.png";
 
 const C = {
   bg: "#0A0B09",
