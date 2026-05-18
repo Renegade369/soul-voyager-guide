@@ -304,6 +304,18 @@ function HigherVibesPage() {
             </a>
           ))}
         </div>
+
+        <div className="mt-12 flex justify-center">
+          <a
+            href="https://beacons.ai/higher_vibes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none border px-9 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-colors hover:bg-[#1A1209]"
+            style={{ borderColor: C.gold, color: C.gold, background: "transparent" }}
+          >
+            View All Services <ArrowRight size={14} />
+          </a>
+        </div>
       </section>
 
       <GoldRule />

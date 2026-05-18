@@ -180,7 +180,7 @@ export default function MeditationsContent({ withHero = true }: { withHero?: boo
             <p className="text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: "#C9A84C" }}>Soul True</p>
             <h1 className="text-5xl mb-2" style={{ fontFamily: '"Cormorant Garamond", serif', color: "#F5F0E8" }}>Sacred Meditations</h1>
             <p className="text-base max-w-lg" style={{ color: "rgba(245,240,232,0.6)" }}>
-              Guided journeys voiced by a warm human-feeling AI. Headphones recommended.
+              Guided journeys voiced in a warm, sacred tone. Headphones recommended.
             </p>
           </div>
         </div>

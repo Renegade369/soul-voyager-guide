@@ -14,7 +14,7 @@ const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-se
 const COUNTRIES = ["United States","Canada","United Kingdom","Australia","India","Germany","France","Brazil","Mexico","Japan","Nigeria","South Africa","Philippines","Italy","Spain","Netherlands","Sweden","Norway","Denmark","New Zealand","Ireland","Singapore","UAE","Saudi Arabia","Other"];
 
 export const Route = createFileRoute("/welcome")({
-  head: () => ({ meta: [{ title: "Soul True — Your Transformation Starts Here" }, { name: "description", content: "Join thousands using AI to design their most fulfilled life. Free access to the Soul True guide." }, { property: "og:title", content: "Soul True — Your Transformation Starts Here" }, { property: "og:description", content: "Join thousands using AI to design their most fulfilled life." }] }),
+  head: () => ({ meta: [{ title: "Soul True — Your Transformation Starts Here" }, { name: "description", content: "Join thousands of souls using Soul True to design their most fulfilled life. Free access to the Soul True guide." }, { property: "og:title", content: "Soul True — Your Transformation Starts Here" }, { property: "og:description", content: "Join thousands using Soul True to design their most fulfilled life." }] }),
   component: WelcomePage,
 });
 
@@ -58,10 +58,10 @@ function WelcomePage() {
           </div>
           <p className="mt-4 text-center text-[10px] uppercase tracking-[0.22em]" style={{ fontFamily: fonts.label, color: C.gold }}>SOUL TRUE</p>
           <h1 className="mt-3 text-center text-3xl" style={{ fontFamily: fonts.display, color: C.text }}>Your Transformation Starts Here.</h1>
-          <p className="mt-3 text-center text-xs leading-relaxed" style={{ fontFamily: fonts.body, color: C.muted }}>Join thousands of people using AI to design their most fulfilled life. Get free access to the complete Soul True guide, exclusive content, and early access.</p>
+          <p className="mt-3 text-center text-xs leading-relaxed" style={{ fontFamily: fonts.body, color: C.muted }}>Join thousands of souls using Soul True to design their most fulfilled life. Get free access to the complete Soul True guide, exclusive content, and early access.</p>
 
           <div className="mt-4 flex flex-wrap justify-center gap-2">
-            {["Free AI Life Guide", "Local content for your area", "Soul True center early access"].map((b) => (
+            {["Free Soul True Life Guide", "Local content for your area", "Soul True center early access"].map((b) => (
               <span key={b} className="rounded-full px-3 py-1 text-[10px]" style={{ backgroundColor: `${C.teal}15`, color: C.teal, fontFamily: fonts.body }}>{b}</span>
             ))}
           </div>

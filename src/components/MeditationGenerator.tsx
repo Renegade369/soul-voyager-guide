@@ -69,7 +69,7 @@ export default function MeditationGenerator() {
       <div className="border-t pt-12" style={{ borderColor: "rgba(201,168,76,0.18)" }}>
         <div className="text-center mb-8">
           <p className="text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: "#C9A84C" }}>
-            <Sparkles size={12} className="inline mr-1.5 -mt-0.5" /> AI Guided Practice
+            <Sparkles size={12} className="inline mr-1.5 -mt-0.5" /> Soul True Guided Practice
           </p>
           <h2 className="text-3xl sm:text-4xl mb-3" style={{ fontFamily: '"Cormorant Garamond", serif', color: "#F5F0E8" }}>
             Generate Your Own Sacred Meditation

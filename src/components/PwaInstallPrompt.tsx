@@ -93,7 +93,7 @@ export function PwaInstallPrompt() {
                 className="mt-1 text-xs leading-relaxed"
                 style={{ fontFamily: '"Outfit", sans-serif', color: "#8A9E94", fontWeight: 300 }}
               >
-                For instant access to your AI Life Guide
+                For instant access to your Soul True Life Guide
               </p>
             </div>
           </div>

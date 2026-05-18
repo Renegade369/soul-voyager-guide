@@ -66,14 +66,14 @@ export function welcomeEmail(firstName: string): string {
       ${bodyText("You've just taken the most important step — choosing to invest in yourself.")}
       ${bodyText("Inside the Soul True Guide, you'll find:")}
       <ul style="font-family:'Outfit',Arial,sans-serif;font-size:14px;color:#8A9E94;line-height:2;font-weight:300;padding-left:20px;margin:0 0 16px;">
-        <li>A 10-Day AI Life Challenge</li>
+        <li>A 10-Day Soul True Life Challenge</li>
         <li>Personalized birth chart readings</li>
         <li>Blood type personality profiles</li>
         <li>Soul Origin Quiz</li>
-        <li>AI-generated guided meditations</li>
+        <li>Soul True-generated guided meditations</li>
         <li>And much more</li>
       </ul>
-      ${bodyText("This is not another self-help program. This is a mirror — powered by AI — that reflects your deepest truth back to you.")}
+      ${bodyText("This is not another self-help program. This is a mirror — powered by Soul True — that reflects your deepest truth back to you.")}
     `)}
     ${goldButton("ENTER THE GUIDE", "https://soul-true.com/guide")}
     ${bodyText('<span style="color:#5A6E64;font-size:12px;">Soul True provides educational and inspirational content only. It is not a substitute for professional advice.</span>')}
@@ -88,7 +88,7 @@ export function challengeCompletedEmail(firstName: string): string {
     ${subheading("All 10 days completed. You are not the same person who started.")}
     ${GOLD_RULE}
     ${card(`
-      ${bodyText("Over the past 10 days, you've had real conversations with AI about your life, your vision, your beliefs, and your purpose.")}
+      ${bodyText("Over the past 10 days, you've had real, guided conversations about your life, your vision, your beliefs, and your purpose.")}
       ${bodyText("You've built a wellness plan, mapped your gifts, and created your 90-day Soul True blueprint.")}
       ${bodyText("Now it's time to prove what you've learned.")}
     `)}
@@ -118,7 +118,7 @@ export function certificateEmail(name: string, score: number): string {
         ${bodyText("🌿 <strong style='color:#E8EDE9;'>Get Your Birth Chart Reading</strong> — Discover what the stars encoded in your soul at the moment of birth.")}
         ${bodyText("🩸 <strong style='color:#E8EDE9;'>Blood Type Profile</strong> — Learn how your blood type shapes your personality, diet, and purpose.")}
         ${bodyText("✨ <strong style='color:#E8EDE9;'>Soul Origin Quiz</strong> — Find out your soul type — Starseed, Earth Angel, Lightworker, and more.")}
-        ${bodyText("🧘 <strong style='color:#E8EDE9;'>Personalized Meditation</strong> — AI-crafted meditation scripts designed for exactly where you are right now.")}
+        ${bodyText("🧘 <strong style='color:#E8EDE9;'>Personalized Meditation</strong> — Soul True-crafted meditation scripts designed for exactly where you are right now.")}
       </div>
     `)}
     ${goldButton("CONTINUE YOUR JOURNEY", "https://soul-true.com/guide")}
