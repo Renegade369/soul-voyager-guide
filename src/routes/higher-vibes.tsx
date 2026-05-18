@@ -588,8 +588,42 @@ function HigherVibesPage() {
         </div>
       </section>
 
+      {/* FLAGSHIP — The Sacred Ceremony */}
+      <section className="mx-auto mt-20 max-w-4xl px-6 text-center">
+        <div
+          className="mx-auto h-64 w-64 overflow-hidden border md:h-80 md:w-80"
+          style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}66` }}
+        >
+          <img
+            src={HV_SACRED}
+            alt="Sacred ceremony — circle around fire by candlelight"
+            className="block h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <p className="mt-8 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>360 Min · Sacred Circle</p>
+        <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
+          The <em className="italic" style={{ color: C.gold }}>Sacred Ceremony</em>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
+          A full ceremonial experience held in sacred circle. Fire, frequency, candlelight, and ancestral practice — guided with intention, integration, and a soul-aligned community gathered to remember.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://shop.beacons.ai/higher_vibes/12741891-34fd-4954-aef3-62e1e21591d9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none px-10 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all"
+            style={{ background: C.gold, color: C.bg }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px rgba(232,130,26,0.5)`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+          >
+            Sit In Circle <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
       <GoldRule />
-      <section className="mx-auto max-w-3xl px-6">
         <div className="text-center">
           <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Is This You?</p>
           <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
