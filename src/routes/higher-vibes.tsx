@@ -624,6 +624,7 @@ function HigherVibesPage() {
       </section>
 
       <GoldRule />
+      <section className="mx-auto max-w-3xl px-6">
         <div className="text-center">
           <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Is This You?</p>
           <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
