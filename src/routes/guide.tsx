@@ -40,10 +40,10 @@ const tabs = [
 export const Route = createFileRoute("/guide")({
   head: () => ({
     meta: [
-      { title: "Soul True — AI Life Guide" },
-      { name: "description", content: "A free, AI-powered guide to transform every dimension of your life. 10-day challenge, test, and certificate." },
-      { property: "og:title", content: "Soul True — AI Life Guide" },
-      { property: "og:description", content: "A free, AI-powered guide to transform every dimension of your life." },
+      { title: "Soul True — Life Guide" },
+      { name: "description", content: "A free, Soul True-powered guide to transform every dimension of your life. 10-day challenge, test, and certificate." },
+      { property: "og:title", content: "Soul True — Life Guide" },
+      { property: "og:description", content: "A free, Soul True-powered guide to transform every dimension of your life." },
     ],
   }),
   component: GuidePage,
