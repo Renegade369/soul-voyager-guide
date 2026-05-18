@@ -5,6 +5,7 @@ import KIM_HERO from "@/assets/kim-alfano-hero.png";
 import KIM_FOREST from "@/assets/kim-alfano-forest.png";
 import KIM_SUNFLOWERS from "@/assets/kim-alfano-sunflowers.png";
 import KIM_GODDESS from "@/assets/kim-alfano-goddess.png";
+import HV_LOGO from "@/assets/higher-vibes-logo.png";
 
 const C = {
   bg: "#0A0B09",
@@ -108,6 +109,13 @@ function HigherVibesPage() {
           }}
         />
         <div className="mx-auto max-w-4xl px-6 py-24 text-center md:py-32">
+          <img
+            src={HV_LOGO}
+            alt="Higher Vibes — Magic of Microdosing"
+            className="mx-auto mb-8 h-28 w-28 object-contain md:h-36 md:w-36"
+            style={{ filter: `drop-shadow(0 0 28px ${C.glow}55)` }}
+            loading="eager"
+          />
           <p className="mb-5 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>
             Soul True Partner
           </p>
