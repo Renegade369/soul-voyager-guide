@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, ScrollText, Star } from "lucide-react";
+import { ArrowRight, BookOpen, ScrollText, Star, Flame } from "lucide-react";
 
 const C = { bg: "#0A0A0A", gold: "#C9A84C", text: "#F5F0E8", overlay: "#1A1209", border: "rgba(201,168,76,0.22)" };
 const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-serif' };
