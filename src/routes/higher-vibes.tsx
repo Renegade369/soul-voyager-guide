@@ -4,6 +4,7 @@ import MUSHROOM_FOREST from "@/assets/rainbow-mushroom-forest.png";
 import KIM_HERO from "@/assets/kim-alfano-hero.png";
 import KIM_FOREST from "@/assets/kim-alfano-forest.png";
 import KIM_SUNFLOWERS from "@/assets/kim-alfano-sunflowers.png";
+import KIM_GODDESS from "@/assets/kim-alfano-goddess.png";
 
 const C = {
   bg: "#0A0B09",
@@ -215,7 +216,15 @@ function HigherVibesPage() {
 
         <div className="mt-16">
           <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>The HigherVibes Wellness Center</p>
-          <p className="mt-6 text-left text-base leading-relaxed md:text-lg">
+          <div className="mx-auto mt-8 w-full max-w-lg overflow-hidden border" style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}55` }}>
+            <img
+              src={KIM_GODDESS}
+              alt="Kim Alfano amongst sunflowers — goddess energy"
+              className="block h-auto w-full"
+              loading="lazy"
+            />
+          </div>
+          <p className="mt-8 text-left text-base leading-relaxed md:text-lg">
             Kim is building a real, physical sanctuary — a space where your nervous system can finally exhale. Plant medicine. Nervous system regulation. Subconscious reprogramming. Community. Connection. Integration. A home for souls who are ready to remember their power.
           </p>
         </div>
