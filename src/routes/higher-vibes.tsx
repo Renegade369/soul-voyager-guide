@@ -329,6 +329,14 @@ function HigherVibesPage() {
       {/* SESSIONS */}
       <section className="mx-auto max-w-6xl px-6">
         <div className="text-center">
+          <div className="mx-auto mb-10 w-44 overflow-hidden border md:w-56" style={{ borderColor: C.border, boxShadow: `0 0 50px -12px ${C.glow}55` }}>
+            <img
+              src={HV_RETRO}
+              alt="Higher Vibes retro mushroom illustration"
+              className="block h-auto w-full"
+              loading="lazy"
+            />
+          </div>
           <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Sessions & Offerings</p>
           <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
             Choose Your <em className="italic" style={{ color: C.gold }}>Path</em>
