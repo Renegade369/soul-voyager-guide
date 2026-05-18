@@ -66,14 +66,14 @@ export function welcomeEmail(firstName: string): string {
       ${bodyText("You've just taken the most important step — choosing to invest in yourself.")}
       ${bodyText("Inside the Soul True Guide, you'll find:")}
       <ul style="font-family:'Outfit',Arial,sans-serif;font-size:14px;color:#8A9E94;line-height:2;font-weight:300;padding-left:20px;margin:0 0 16px;">
-        <li>A 10-Day AI Life Challenge</li>
+        <li>A 10-Day Soul True Life Challenge</li>
         <li>Personalized birth chart readings</li>
         <li>Blood type personality profiles</li>
         <li>Soul Origin Quiz</li>
-        <li>AI-generated guided meditations</li>
+        <li>Soul True-generated guided meditations</li>
         <li>And much more</li>
       </ul>
-      ${bodyText("This is not another self-help program. This is a mirror — powered by AI — that reflects your deepest truth back to you.")}
+      ${bodyText("This is not another self-help program. This is a mirror — powered by Soul True — that reflects your deepest truth back to you.")}
     `)}
     ${goldButton("ENTER THE GUIDE", "https://soul-true.com/guide")}
     ${bodyText('<span style="color:#5A6E64;font-size:12px;">Soul True provides educational and inspirational content only. It is not a substitute for professional advice.</span>')}
