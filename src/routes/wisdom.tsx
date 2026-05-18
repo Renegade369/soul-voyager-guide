@@ -37,7 +37,7 @@ function WisdomPage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-28">
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((c) => {
             const Icon = c.icon;
             return (
