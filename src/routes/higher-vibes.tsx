@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Star, ArrowRight, Sparkles } from "lucide-react";
 import MUSHROOM_FOREST from "@/assets/rainbow-mushroom-forest.png";
 import KIM_HERO from "@/assets/kim-alfano-hero.png";
+import KIM_FOREST from "@/assets/kim-alfano-forest.png";
 
 const C = {
   bg: "#0A0B09",
@@ -190,6 +191,14 @@ function HigherVibesPage() {
         <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
           A modern-day <em className="italic" style={{ color: C.gold }}>quantum guide</em>
         </h2>
+        <div className="mx-auto mt-10 w-full max-w-lg overflow-hidden border" style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}55` }}>
+          <img
+            src={KIM_FOREST}
+            alt="Kim Alfano in the forest — reconnecting with nature"
+            className="block h-auto w-full"
+            loading="lazy"
+          />
+        </div>
         <div className="mt-10 space-y-6 text-left text-base leading-relaxed md:text-lg" style={{ color: C.text }}>
           <p>
             Kim Alfano is a modern-day quantum frequency guide and the visionary founder of HigherVibes — a global movement rooted in the power of plant medicine, frequency, and deep soul transformation. She blends neuroscience, quantum physics, and ancient wisdom into a revolutionary approach.
