@@ -7,6 +7,7 @@ import KIM_SUNFLOWERS from "@/assets/kim-alfano-sunflowers.png";
 import KIM_GODDESS from "@/assets/kim-alfano-goddess.png";
 import HV_LOGO from "@/assets/higher-vibes-logo.png";
 import HV_TAKE_MICRO from "@/assets/higher-vibes-take-your-micro.png";
+import HV_RETRO from "@/assets/higher-vibes-retro-mushroom.png";
 
 const C = {
   bg: "#0A0B09",
@@ -328,6 +329,14 @@ function HigherVibesPage() {
       {/* SESSIONS */}
       <section className="mx-auto max-w-6xl px-6">
         <div className="text-center">
+          <div className="mx-auto mb-10 w-44 overflow-hidden border md:w-56" style={{ borderColor: C.border, boxShadow: `0 0 50px -12px ${C.glow}55` }}>
+            <img
+              src={HV_RETRO}
+              alt="Higher Vibes retro mushroom illustration"
+              className="block h-auto w-full"
+              loading="lazy"
+            />
+          </div>
           <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Sessions & Offerings</p>
           <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
             Choose Your <em className="italic" style={{ color: C.gold }}>Path</em>
