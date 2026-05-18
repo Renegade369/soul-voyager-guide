@@ -6,6 +6,7 @@ import KIM_FOREST from "@/assets/kim-alfano-forest.png";
 import KIM_SUNFLOWERS from "@/assets/kim-alfano-sunflowers.png";
 import KIM_GODDESS from "@/assets/kim-alfano-goddess.png";
 import HV_LOGO from "@/assets/higher-vibes-logo.png";
+import HV_TAKE_MICRO from "@/assets/higher-vibes-take-your-micro.png";
 
 const C = {
   bg: "#0A0B09",
@@ -247,6 +248,13 @@ function HigherVibesPage() {
 
       {/* WHY MICRODOSE */}
       <section className="mx-auto max-w-3xl px-6 text-center">
+        <img
+          src={HV_TAKE_MICRO}
+          alt="Higher Vibes — Take Your Micro"
+          className="mx-auto mb-8 h-44 w-44 object-contain md:h-56 md:w-56"
+          style={{ filter: `drop-shadow(0 0 32px ${C.glow}55)` }}
+          loading="lazy"
+        />
         <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Sacred Frequency. Intentional Vibrational Wellness.</p>
         <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
           Why <em className="italic" style={{ color: C.gold }}>Microdose?</em>
