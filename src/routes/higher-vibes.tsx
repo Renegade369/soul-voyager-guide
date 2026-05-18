@@ -7,6 +7,7 @@ import KIM_SUNFLOWERS from "@/assets/kim-alfano-sunflowers.png";
 import KIM_GODDESS from "@/assets/kim-alfano-goddess.png";
 import HV_LOGO from "@/assets/higher-vibes-logo.png";
 import HV_TAKE_MICRO from "@/assets/higher-vibes-take-your-micro.png";
+import HV_RETRO from "@/assets/higher-vibes-retro-mushroom.png";
 
 const C = {
   bg: "#0A0B09",
