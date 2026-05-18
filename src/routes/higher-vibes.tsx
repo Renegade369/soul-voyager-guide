@@ -12,6 +12,7 @@ import HV_GOLDEN_BRAIN from "@/assets/higher-vibes-golden-brain.png";
 import HV_PATH from "@/assets/higher-vibes-path-of-remembrance.png";
 import HV_ASCENSION from "@/assets/higher-vibes-ascension-portal.png";
 import HV_CUSTOM_KIT from "@/assets/higher-vibes-custom-kit.png";
+import HV_ABUNDANCE from "@/assets/higher-vibes-abundance.png";
 
 const C = {
   bg: "#0A0B09",
@@ -547,6 +548,41 @@ function HigherVibesPage() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
           >
             Begin Your Kit <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
+      {/* FLAGSHIP — Frequency of Abundance */}
+      <section className="mx-auto mt-20 max-w-4xl px-6 text-center">
+        <div
+          className="mx-auto h-64 w-64 overflow-hidden border md:h-80 md:w-80"
+          style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}66` }}
+        >
+          <img
+            src={HV_ABUNDANCE}
+            alt="Higher Vibes — Frequency of Abundance"
+            className="block h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <p className="mt-8 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>1:1 Guided Journey</p>
+        <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
+          The <em className="italic" style={{ color: C.gold }}>Frequency of Abundance</em>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
+          Clear the unconscious money blocks running on autopilot. A 1:1 guided journey to recalibrate your relationship with prosperity — so resources flow toward you with the ease of leaves returning to a tree.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://shop.beacons.ai/higher_vibes/2af65f0f-91ed-4cbb-a1d6-e7d5330f4bc4"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none px-10 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all"
+            style={{ background: C.gold, color: C.bg }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px rgba(232,130,26,0.5)`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+          >
+            Open The Frequency <ArrowRight size={14} />
           </a>
         </div>
       </section>
