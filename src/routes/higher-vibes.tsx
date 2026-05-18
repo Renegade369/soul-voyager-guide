@@ -10,6 +10,7 @@ import HV_TAKE_MICRO from "@/assets/higher-vibes-take-your-micro.png";
 import HV_RETRO from "@/assets/higher-vibes-retro-mushroom.png";
 import HV_GOLDEN_BRAIN from "@/assets/higher-vibes-golden-brain.png";
 import HV_PATH from "@/assets/higher-vibes-path-of-remembrance.png";
+import HV_ASCENSION from "@/assets/higher-vibes-ascension-portal.png";
 
 const C = {
   bg: "#0A0B09",
@@ -483,6 +484,37 @@ function HigherVibesPage() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
           >
             Begin The Path <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
+      {/* FLAGSHIP — Ascension Portal */}
+      <section className="mx-auto mt-20 max-w-4xl px-6 text-center">
+        <img
+          src={HV_ASCENSION}
+          alt="Higher Vibes — The Ascension Portal"
+          className="mx-auto h-72 w-72 object-contain md:h-96 md:w-96"
+          style={{ filter: `drop-shadow(0 0 80px ${C.glow}66)` }}
+          loading="lazy"
+        />
+        <p className="-mt-4 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Guided Group Journey</p>
+        <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
+          The <em className="italic" style={{ color: C.gold }}>Ascension Portal</em>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
+          Step into sacred circle. A guided group journey of collective consciousness expansion — ceremony, frequency, and remembrance held together with Kim and a soul-aligned community.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://shop.beacons.ai/higher_vibes/3ae584ad-48de-4a45-a570-85006a03611e"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none px-10 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all"
+            style={{ background: C.gold, color: C.bg }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px rgba(232,130,26,0.5)`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+          >
+            Enter The Portal <ArrowRight size={14} />
           </a>
         </div>
       </section>
