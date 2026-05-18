@@ -15,6 +15,7 @@ import HV_CUSTOM_KIT from "@/assets/higher-vibes-custom-kit.png";
 import HV_ABUNDANCE from "@/assets/higher-vibes-abundance.png";
 import HV_SACRED from "@/assets/higher-vibes-sacred-ceremony.png";
 import HV_WHY_MICRO from "@/assets/higher-vibes-why-microdose.png";
+import HV_SUBCONSCIOUS from "@/assets/higher-vibes-subconscious-guide.png";
 
 const C = {
   bg: "#0A0B09",
@@ -655,6 +656,41 @@ function HigherVibesPage() {
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
           >
             Learn The Practice <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
+      {/* FLAGSHIP — Subconscious Reprogramming Guide */}
+      <section className="mx-auto mt-20 max-w-4xl px-6 text-center">
+        <div
+          className="mx-auto h-64 w-64 overflow-hidden border md:h-80 md:w-80"
+          style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}66` }}
+        >
+          <img
+            src={HV_SUBCONSCIOUS}
+            alt="Subconscious reprogramming — conscious mind and programming brain hemispheres"
+            className="block h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <p className="mt-8 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Inner Work · Self-Guided</p>
+        <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
+          The Subconscious <em className="italic" style={{ color: C.gold }}>Reprogramming Guide</em>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
+          A practical guide to recognizing the programs running beneath the surface — and the tools to rewrite them. Rewire old loops, soften protective patterns, and return to a frequency that feels like you.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://shop.beacons.ai/higher_vibes/f0429c83-4d0d-41fa-9710-c6c37963d7d0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none px-10 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all"
+            style={{ background: C.gold, color: C.bg }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px rgba(232,130,26,0.5)`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+          >
+            Begin Rewiring <ArrowRight size={14} />
           </a>
         </div>
       </section>
