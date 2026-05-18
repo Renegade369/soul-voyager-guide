@@ -122,7 +122,7 @@ function DashboardPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             {[
               { label: "Soul Quiz", desc: "Discover your soul origin type", tab: "soulquiz" },
-              { label: "Birth Chart", desc: "Get your AI-powered birth chart reading", tab: "birthchart" },
+              { label: "Birth Chart", desc: "Get your personalized birth chart reading", tab: "birthchart" },
               { label: "Blood Type Guide", desc: "Explore your blood lineage wisdom", tab: "bloodtype" },
               { label: "10-Day Challenge", desc: "Transform your daily habits", tab: "challenge" },
             ].map((item) => (
