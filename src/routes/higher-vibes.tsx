@@ -534,7 +534,7 @@ function HigherVibesPage() {
           The <em className="italic" style={{ color: C.gold }}>Custom Microdosing Kit</em>
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
-          A fully personalized protocol crafted for your unique path. Six months of intentional, frequency-grown medicine — cultivated in small batches, bathed in sound, and tailored to your soul's exact next chapter.
+          A fully personalized protocol crafted for your unique path. Six months of intentional, frequency-grown mushrooms — cultivated in small batches, bathed in sound, and tailored to your soul's exact next chapter.
         </p>
         <div className="mt-10 flex justify-center">
           <a
