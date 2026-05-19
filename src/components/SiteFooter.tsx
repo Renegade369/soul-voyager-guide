@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import soulTrueLogo from "@/assets/soul-true-logo.png";
 
 export function SiteFooter() {
   const linkStyle = { color: "rgba(245,240,232,0.35)" };
