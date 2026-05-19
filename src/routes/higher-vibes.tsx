@@ -17,6 +17,7 @@ import HV_SACRED from "@/assets/higher-vibes-sacred-ceremony.png";
 import HV_WHY_MICRO from "@/assets/higher-vibes-why-microdose.png";
 import HV_SUBCONSCIOUS from "@/assets/higher-vibes-subconscious-guide.png";
 import HV_SLEEP_LEAP from "@/assets/higher-vibes-sleep-leap.png";
+import HV_MONEY_BLOCKS from "@/assets/higher-vibes-money-blocks.png";
 
 const C = {
   bg: "#0A0B09",
