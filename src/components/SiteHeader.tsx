@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { ThemeToggle } from "./aesthetic/ThemeToggle";
+import soulTrueLogo from "@/assets/soul-true-logo.png";
 import { useAuth } from "@/hooks/useAuth";
 
 const wisdomLinks = [
