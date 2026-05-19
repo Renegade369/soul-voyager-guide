@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { ThemeToggle } from "./aesthetic/ThemeToggle";
+import soulTrueLogo from "@/assets/soul-true-logo.png";
 import { useAuth } from "@/hooks/useAuth";
 
 const wisdomLinks = [
@@ -42,8 +43,8 @@ export function SiteHeader() {
       style={{ backgroundColor: "rgba(10,10,10,0.95)", borderBottom: "1px solid rgba(201,168,76,0.18)" }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-        <Link to="/" aria-label="Soul True home" style={{ color: "#C9A84C" }}>
-          <span className="font-serif text-2xl font-normal tracking-tight">Soul True</span>
+        <Link to="/" aria-label="Soul True home" className="flex items-center">
+          <img src={soulTrueLogo} alt="Soul True" className="h-9 w-auto lg:h-12" />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
