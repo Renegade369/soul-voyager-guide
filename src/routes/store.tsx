@@ -6,6 +6,11 @@ import longSleeve from "@/assets/store-long-sleeve.jpg";
 import hoodie from "@/assets/store-hoodie.jpg";
 import mug from "@/assets/store-mug.jpg";
 import tumbler from "@/assets/store-tumbler.jpg";
+import classicTeeWhite from "@/assets/store-classic-tee-white.jpg";
+import longSleeveWhite from "@/assets/store-long-sleeve-white.jpg";
+import hoodieWhite from "@/assets/store-hoodie-white.jpg";
+import mugWhite from "@/assets/store-mug-white.jpg";
+import tumblerWhite from "@/assets/store-tumbler-white.jpg";
 
 export const Route = createFileRoute("/store")({
   head: () =>
