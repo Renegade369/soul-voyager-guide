@@ -1,12 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { makeRouteMeta } from "../components/PageShell";
 import soulTrueLogo from "@/assets/soul-true-logo.png";
-import mushroomDivider from "@/assets/store-mushroom-divider.jpg";
-import classicTee from "@/assets/store-classic-tee.jpg";
-import longSleeve from "@/assets/store-long-sleeve.jpg";
-import hoodie from "@/assets/store-hoodie.jpg";
-import mug from "@/assets/store-mug.jpg";
-import tumbler from "@/assets/store-tumbler.jpg";
 
 export const Route = createFileRoute("/store")({
   head: () =>
