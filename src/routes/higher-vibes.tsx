@@ -768,6 +768,28 @@ function HigherVibesPage() {
       </section>
 
       <GoldRule />
+
+      {/* View All Services */}
+      <section className="mx-auto max-w-3xl px-6 py-16 text-center">
+        <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>The Full Catalog</p>
+        <h2 className="mt-4 font-serif text-3xl font-light md:text-4xl" style={{ fontFamily: fonts.display }}>
+          Explore Every <em className="italic" style={{ color: C.gold }}>Offering.</em>
+        </h2>
+        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed" style={{ color: C.muted }}>
+          Sessions, ceremonies, masterclasses, and guides — the complete library of Higher Vibes resources in one place.
+        </p>
+        <a
+          href="https://beacons.ai/higher_vibes"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-10 inline-flex items-center gap-2 rounded-none px-9 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all hover:shadow-[0_0_36px_rgba(232,130,26,0.55)]"
+          style={{ backgroundColor: C.gold, color: C.bg }}
+        >
+          View All Services <ArrowRight size={14} />
+        </a>
+      </section>
+
+      <GoldRule />
       <section className="mx-auto max-w-3xl px-6">
         <div className="text-center">
           <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Is This You?</p>
