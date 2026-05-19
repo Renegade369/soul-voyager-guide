@@ -104,21 +104,11 @@ function StorePage() {
           </p>
         </div>
 
-        {/* Mushroom forest divider */}
-        <img
-          src={mushroomDivider}
-          alt=""
+        {/* Divider */}
+        <div
           aria-hidden
-          loading="lazy"
-          className="block w-full"
-          style={{
-            height: 300,
-            objectFit: "cover",
-            WebkitMaskImage:
-              "linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%)",
-            maskImage:
-              "linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%)",
-          }}
+          className="mx-auto h-px w-32"
+          style={{ background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)` }}
         />
       </section>
 
