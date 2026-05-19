@@ -27,6 +27,7 @@ const primary = [
   { to: "/", label: "Home", exact: true },
   { to: "/meditations", label: "Meditations" },
   { to: "/the-sacred-journey", label: "Journey" },
+  { to: "/store", label: "Store" },
 ] as const;
 
 const navLinkStyle = { color: "rgba(245,240,232,0.7)" };
