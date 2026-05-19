@@ -388,16 +388,17 @@ function HigherVibesPage() {
       </section>
 
       {/* CINEMATIC DIVIDER — Kim in sunflowers */}
-      <section className="relative mt-20 w-full overflow-hidden" aria-hidden>
-        <img
-          src={KIM_SUNFLOWERS}
-          alt=""
-          className="block h-[320px] w-full object-cover object-[center_top] sm:h-[420px] sm:object-[center_15%]"
-          style={{
-            maskImage: "linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%)",
-          }}
-        />
+      <section className="relative mt-20 w-full overflow-hidden px-6 py-10" aria-hidden>
+        <div
+          className="mx-auto max-w-3xl overflow-hidden border"
+          style={{ borderColor: C.border, boxShadow: `0 0 80px -24px ${C.glow}66` }}
+        >
+          <img
+            src={KIM_SUNFLOWERS}
+            alt=""
+            className="block h-auto w-full"
+          />
+        </div>
       </section>
 
 
