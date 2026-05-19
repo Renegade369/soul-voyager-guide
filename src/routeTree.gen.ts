@@ -15,6 +15,7 @@ import { Route as VisitRouteImport } from './routes/visit'
 import { Route as TrueTimelineRouteImport } from './routes/true-timeline'
 import { Route as TheSacredJourneyRouteImport } from './routes/the-sacred-journey'
 import { Route as TeachingsRouteImport } from './routes/teachings'
+import { Route as StoreRouteImport } from './routes/store'
 import { Route as SoulQuizRouteImport } from './routes/soul-quiz'
 import { Route as SoulProfileRouteImport } from './routes/soul-profile'
 import { Route as SignInRouteImport } from './routes/sign-in'
@@ -85,6 +86,11 @@ const TheSacredJourneyRoute = TheSacredJourneyRouteImport.update({
 const TeachingsRoute = TeachingsRouteImport.update({
   id: '/teachings',
   path: '/teachings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoreRoute = StoreRouteImport.update({
+  id: '/store',
+  path: '/store',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SoulQuizRoute = SoulQuizRouteImport.update({
@@ -331,6 +337,7 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/soul-quiz': typeof SoulQuizRoute
+  '/store': typeof StoreRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/true-timeline': typeof TrueTimelineRoute
@@ -380,6 +387,7 @@ export interface FileRoutesByTo {
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/soul-quiz': typeof SoulQuizRoute
+  '/store': typeof StoreRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/true-timeline': typeof TrueTimelineRoute
@@ -430,6 +438,7 @@ export interface FileRoutesById {
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/soul-quiz': typeof SoulQuizRoute
+  '/store': typeof StoreRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/true-timeline': typeof TrueTimelineRoute
@@ -481,6 +490,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/soul-profile'
     | '/soul-quiz'
+    | '/store'
     | '/teachings'
     | '/the-sacred-journey'
     | '/true-timeline'
@@ -530,6 +540,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/soul-profile'
     | '/soul-quiz'
+    | '/store'
     | '/teachings'
     | '/the-sacred-journey'
     | '/true-timeline'
@@ -579,6 +590,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/soul-profile'
     | '/soul-quiz'
+    | '/store'
     | '/teachings'
     | '/the-sacred-journey'
     | '/true-timeline'
@@ -629,6 +641,7 @@ export interface RootRouteChildren {
   SignInRoute: typeof SignInRoute
   SoulProfileRoute: typeof SoulProfileRoute
   SoulQuizRoute: typeof SoulQuizRoute
+  StoreRoute: typeof StoreRoute
   TeachingsRoute: typeof TeachingsRoute
   TheSacredJourneyRoute: typeof TheSacredJourneyRoute
   TrueTimelineRoute: typeof TrueTimelineRoute
@@ -685,6 +698,13 @@ declare module '@tanstack/react-router' {
       path: '/teachings'
       fullPath: '/teachings'
       preLoaderRoute: typeof TeachingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/store': {
+      id: '/store'
+      path: '/store'
+      fullPath: '/store'
+      preLoaderRoute: typeof StoreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/soul-quiz': {
@@ -1013,6 +1033,7 @@ const rootRouteChildren: RootRouteChildren = {
   SignInRoute: SignInRoute,
   SoulProfileRoute: SoulProfileRoute,
   SoulQuizRoute: SoulQuizRoute,
+  StoreRoute: StoreRoute,
   TeachingsRoute: TeachingsRoute,
   TheSacredJourneyRoute: TheSacredJourneyRoute,
   TrueTimelineRoute: TrueTimelineRoute,
