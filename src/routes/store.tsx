@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { makeRouteMeta } from "../components/PageShell";
 import soulTrueLogo from "@/assets/soul-true-logo.png";
+import classicTee from "@/assets/store-classic-tee.jpg";
+import longSleeve from "@/assets/store-long-sleeve.jpg";
+import hoodie from "@/assets/store-hoodie.jpg";
+import mug from "@/assets/store-mug.jpg";
+import tumbler from "@/assets/store-tumbler.jpg";
 
 export const Route = createFileRoute("/store")({
   head: () =>
@@ -35,35 +40,35 @@ type Product = {
 const products: Product[] = [
   {
     name: "Classic Tee — Black/Gold",
-    image: soulTrueLogo,
+    image: classicTee,
     description:
       "Ultra-soft, lightweight tee for the seeker who wears their truth. Simple on the outside. Everything on the inside. Let's Go Deeper. — Soul-True.com",
     url: "#",
   },
   {
     name: "Long Sleeve Tee — Black/Gold",
-    image: soulTrueLogo,
+    image: longSleeve,
     description:
       "For the ones who go further than most. Premium soft long sleeve built for comfort on the journey inward. Let's Go Deeper. — Soul-True.com",
     url: "#",
   },
   {
     name: "Hoodie — Black/Gold",
-    image: soulTrueLogo,
+    image: hoodie,
     description:
       "Wrap yourself in the work. Our signature heavyweight hoodie for the soul doing the real thing. Wear it like armor. Wear it like a reminder. Let's Go Deeper. — Soul-True.com",
     url: "#",
   },
   {
     name: "Coffee Mug — Black/Gold",
-    image: soulTrueLogo,
+    image: mug,
     description:
       "Every morning is an invitation. Start yours with intention. Because the inner work begins before the world wakes up. Let's Go Deeper. — Soul-True.com",
     url: "#",
   },
   {
     name: "Tumbler — Black/Gold",
-    image: soulTrueLogo,
+    image: tumbler,
     description:
       "Stay hydrated on the journey. Double-wall insulated tumbler keeps your drink cold or hot — wherever the path takes you. Let's Go Deeper. — Soul-True.com",
     url: "#",
@@ -204,8 +209,7 @@ function ProductCard({ product }: { product: Product }) {
           loading="lazy"
           width={1024}
           height={1024}
-          className="h-full w-full object-contain p-12"
-          style={{ filter: `drop-shadow(0 0 30px rgba(232,130,26,0.3))` }}
+          className="h-full w-full object-cover"
         />
       </div>
       <div className="flex flex-1 flex-col px-7 py-8">
