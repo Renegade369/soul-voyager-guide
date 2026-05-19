@@ -392,16 +392,14 @@ function HigherVibesPage() {
         <img
           src={KIM_SUNFLOWERS}
           alt=""
-          className="block w-full"
+          className="block h-[320px] w-full object-cover object-[center_top] sm:h-[420px] sm:object-[center_15%]"
           style={{
-            height: 420,
-            objectFit: "cover",
-            objectPosition: "center 30%",
             maskImage: "linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%)",
           }}
         />
       </section>
+
 
       {/* SESSIONS */}
       <section className="mx-auto max-w-6xl px-6">
