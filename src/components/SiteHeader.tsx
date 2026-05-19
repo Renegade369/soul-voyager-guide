@@ -27,6 +27,7 @@ const primary = [
   { to: "/", label: "Home", exact: true },
   { to: "/meditations", label: "Meditations" },
   { to: "/the-sacred-journey", label: "Journey" },
+  { to: "/store", label: "Store" },
 ] as const;
 
 const navLinkStyle = { color: "rgba(245,240,232,0.7)" };
@@ -98,6 +99,9 @@ export function SiteHeader() {
           <Link to="/the-sacred-journey" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Journey
           </Link>
+          <Link to="/store" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Store
+          </Link>
           <Link to="/higher-vibes" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Higher Vibes
           </Link>
@@ -144,6 +148,7 @@ export function SiteHeader() {
             ))}
             <Link to="/meditations" onClick={() => setOpen(false)} className="mt-3 px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meditations</Link>
             <Link to="/the-sacred-journey" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Journey</Link>
+            <Link to="/store" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Store</Link>
             <Link to="/higher-vibes" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Higher Vibes</Link>
             <Link
               to="/begin-here"
