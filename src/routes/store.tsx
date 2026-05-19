@@ -204,7 +204,8 @@ function ProductCard({ product }: { product: Product }) {
           loading="lazy"
           width={1024}
           height={1024}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain p-12"
+          style={{ filter: `drop-shadow(0 0 30px rgba(232,130,26,0.3))` }}
         />
       </div>
       <div className="flex flex-1 flex-col px-7 py-8">
