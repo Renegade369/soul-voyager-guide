@@ -6,6 +6,11 @@ import longSleeve from "@/assets/store-long-sleeve.jpg";
 import hoodie from "@/assets/store-hoodie.jpg";
 import mug from "@/assets/store-mug.jpg";
 import tumbler from "@/assets/store-tumbler.jpg";
+import classicTeeWhite from "@/assets/store-classic-tee-white.jpg";
+import longSleeveWhite from "@/assets/store-long-sleeve-white.jpg";
+import hoodieWhite from "@/assets/store-hoodie-white.jpg";
+import mugWhite from "@/assets/store-mug-white.jpg";
+import tumblerWhite from "@/assets/store-tumbler-white.jpg";
 
 export const Route = createFileRoute("/store")({
   head: () =>
@@ -69,6 +74,44 @@ const products: Product[] = [
   {
     name: "Tumbler — Black/Gold",
     image: tumbler,
+    description:
+      "Stay hydrated on the journey. Double-wall insulated tumbler keeps your drink cold or hot — wherever the path takes you. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+];
+
+const productsWhite: Product[] = [
+  {
+    name: "Classic Tee — White/Gold",
+    image: classicTeeWhite,
+    description:
+      "Ultra-soft, lightweight tee for the seeker who wears their truth. Simple on the outside. Everything on the inside. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+  {
+    name: "Long Sleeve Tee — White/Gold",
+    image: longSleeveWhite,
+    description:
+      "For the ones who go further than most. Premium soft long sleeve built for comfort on the journey inward. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+  {
+    name: "Hoodie — White/Gold",
+    image: hoodieWhite,
+    description:
+      "Wrap yourself in the work. Our signature heavyweight hoodie for the soul doing the real thing. Wear it like armor. Wear it like a reminder. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+  {
+    name: "Coffee Mug — White/Gold",
+    image: mugWhite,
+    description:
+      "Every morning is an invitation. Start yours with intention. Because the inner work begins before the world wakes up. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+  {
+    name: "Tumbler — White/Gold",
+    image: tumblerWhite,
     description:
       "Stay hydrated on the journey. Double-wall insulated tumbler keeps your drink cold or hot — wherever the path takes you. Let's Go Deeper. — Soul-True.com",
     url: "#",
@@ -142,6 +185,41 @@ function StorePage() {
 
         <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12">
           {products.map((p) => (
+            <ProductCard key={p.name} product={p} />
+          ))}
+        </div>
+      </section>
+
+      {/* SOUL TRUE COLLECTION — WHITE/GOLD */}
+      <section className="mx-auto max-w-6xl px-6 pb-20 md:pb-28">
+        <div
+          aria-hidden
+          className="mx-auto mb-20 h-px w-32"
+          style={{ background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)` }}
+        />
+        <div className="mx-auto max-w-2xl text-center">
+          <p
+            className="text-[11px] font-normal uppercase tracking-[0.32em]"
+            style={{ color: C.gold }}
+          >
+            The Collection
+          </p>
+          <h2
+            className="mt-6 text-4xl font-light md:text-5xl"
+            style={{ fontFamily: fonts.display, color: C.text }}
+          >
+            Soul True Collection — White/Gold
+          </h2>
+          <p
+            className="mt-5 text-lg italic md:text-xl"
+            style={{ fontFamily: fonts.display, color: C.gold, opacity: 0.9 }}
+          >
+            Light bearer. Same truth.
+          </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12">
+          {productsWhite.map((p) => (
             <ProductCard key={p.name} product={p} />
           ))}
         </div>
