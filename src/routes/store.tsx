@@ -80,6 +80,44 @@ const products: Product[] = [
   },
 ];
 
+const productsWhite: Product[] = [
+  {
+    name: "Classic Tee — White/Gold",
+    image: classicTeeWhite,
+    description:
+      "Ultra-soft, lightweight tee for the seeker who wears their truth. Simple on the outside. Everything on the inside. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+  {
+    name: "Long Sleeve Tee — White/Gold",
+    image: longSleeveWhite,
+    description:
+      "For the ones who go further than most. Premium soft long sleeve built for comfort on the journey inward. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+  {
+    name: "Hoodie — White/Gold",
+    image: hoodieWhite,
+    description:
+      "Wrap yourself in the work. Our signature heavyweight hoodie for the soul doing the real thing. Wear it like armor. Wear it like a reminder. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+  {
+    name: "Coffee Mug — White/Gold",
+    image: mugWhite,
+    description:
+      "Every morning is an invitation. Start yours with intention. Because the inner work begins before the world wakes up. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+  {
+    name: "Tumbler — White/Gold",
+    image: tumblerWhite,
+    description:
+      "Stay hydrated on the journey. Double-wall insulated tumbler keeps your drink cold or hot — wherever the path takes you. Let's Go Deeper. — Soul-True.com",
+    url: "#",
+  },
+];
+
 function StorePage() {
   return (
     <div style={{ backgroundColor: C.bg, color: C.text, fontFamily: fonts.body }}>
