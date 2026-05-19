@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="mt-32" style={{ backgroundColor: "#0D0F0E" }}>
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-3 md:px-12">
         <div>
-          <h3 className="font-serif text-2xl font-normal" style={{ color: "#C9A84C" }}>Soul True</h3>
+          <img src={soulTrueLogo} alt="Soul True" className="h-12 w-auto" />
           <p className="mt-5 max-w-xs text-sm font-light leading-relaxed" style={linkStyle}>
             A sanctuary for holistic wellness and the quiet unfolding of remembrance.
           </p>
