@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star, ArrowRight, Sparkles } from "lucide-react";
 import MUSHROOM_FOREST from "@/assets/rainbow-mushroom-forest.png";
-import KIM_HERO from "@/assets/kim-alfano-hero.png";
 import KIM_FOREST from "@/assets/kim-alfano-forest.png";
 import KIM_SUNFLOWERS from "@/assets/kim-alfano-sunflowers.png";
 import KIM_GODDESS from "@/assets/kim-alfano-goddess.png";
@@ -131,10 +130,10 @@ function HigherVibesPage() {
           <p className="mb-5 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>
             Soul True Partner
           </p>
-          <div className="mx-auto mb-10 w-full max-w-md overflow-hidden border" style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}55` }}>
+          <div className="mx-auto mb-10 w-full max-w-sm overflow-hidden border md:max-w-md" style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}55` }}>
             <img
-              src={KIM_HERO}
-              alt="Kim Alfano — Plant Medicine Facilitator, Spiritual Guide, Quantum Frequency Guide"
+              src={KIM_SUNFLOWERS}
+              alt="Kim Alfano in a sunflower field"
               className="block h-auto w-full"
               loading="eager"
             />
@@ -388,16 +387,17 @@ function HigherVibesPage() {
       </section>
 
       {/* CINEMATIC DIVIDER — Kim in sunflowers */}
-      <section className="relative mt-20 w-full overflow-hidden" aria-hidden>
-        <img
-          src={KIM_SUNFLOWERS}
-          alt=""
-          className="block h-[320px] w-full object-cover object-[center_top] sm:h-[420px] sm:object-[center_15%]"
-          style={{
-            maskImage: "linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 18%, black 82%, transparent 100%)",
-          }}
-        />
+      <section className="relative mt-20 w-full overflow-hidden px-6 py-10" aria-hidden>
+        <div
+          className="mx-auto max-w-3xl overflow-hidden border"
+          style={{ borderColor: C.border, boxShadow: `0 0 80px -24px ${C.glow}66` }}
+        >
+          <img
+            src={KIM_SUNFLOWERS}
+            alt=""
+            className="block h-auto w-full"
+          />
+        </div>
       </section>
 
 
