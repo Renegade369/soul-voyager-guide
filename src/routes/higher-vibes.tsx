@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star, ArrowRight, Sparkles } from "lucide-react";
 import MUSHROOM_FOREST from "@/assets/rainbow-mushroom-forest.png";
-import KIM_HERO from "@/assets/kim-alfano-hero.png";
 import KIM_FOREST from "@/assets/kim-alfano-forest.png";
 import KIM_SUNFLOWERS from "@/assets/kim-alfano-sunflowers.png";
 import KIM_GODDESS from "@/assets/kim-alfano-goddess.png";
@@ -131,10 +130,10 @@ function HigherVibesPage() {
           <p className="mb-5 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>
             Soul True Partner
           </p>
-          <div className="mx-auto mb-10 w-full max-w-md overflow-hidden border" style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}55` }}>
+          <div className="mx-auto mb-10 w-full max-w-sm overflow-hidden border md:max-w-md" style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}55` }}>
             <img
-              src={KIM_HERO}
-              alt="Kim Alfano — Plant Medicine Facilitator, Spiritual Guide, Quantum Frequency Guide"
+              src={KIM_SUNFLOWERS}
+              alt="Kim Alfano in a sunflower field"
               className="block h-auto w-full"
               loading="eager"
             />
