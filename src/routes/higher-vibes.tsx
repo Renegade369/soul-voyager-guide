@@ -732,6 +732,41 @@ function HigherVibesPage() {
         </div>
       </section>
 
+      {/* FLAGSHIP — Money Blocks Masterclass */}
+      <section className="mx-auto mt-20 max-w-4xl px-6 text-center">
+        <div
+          className="mx-auto h-64 w-64 overflow-hidden border md:h-80 md:w-80"
+          style={{ borderColor: C.border, boxShadow: `0 0 60px -10px ${C.glow}66` }}
+        >
+          <img
+            src={HV_MONEY_BLOCKS}
+            alt="Money blocks masterclass — illustrated brain held by hands surrounded by abundance symbols"
+            className="block h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <p className="mt-8 text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Masterclass · 8 Gates Of Abundance</p>
+        <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl" style={{ fontFamily: fonts.display }}>
+          Clear Your <em className="italic" style={{ color: C.gold }}>Money Blocks</em>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: C.muted }}>
+          A masterclass through the 8 Gates of Abundance — identifying the inherited stories, subconscious patterns, and frequency mismatches that keep prosperity at arm's length, and rewriting them at the root.
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://shop.beacons.ai/higher_vibes/b0a2531c-7004-41d7-bd9a-e7e4d2d33e76"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-none px-10 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all"
+            style={{ background: C.gold, color: C.bg }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 40px rgba(232,130,26,0.5)`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+          >
+            Open The Gates <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
       <GoldRule />
       <section className="mx-auto max-w-3xl px-6">
         <div className="text-center">
