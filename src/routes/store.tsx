@@ -190,6 +190,41 @@ function StorePage() {
         </div>
       </section>
 
+      {/* SOUL TRUE COLLECTION — WHITE/GOLD */}
+      <section className="mx-auto max-w-6xl px-6 pb-20 md:pb-28">
+        <div
+          aria-hidden
+          className="mx-auto mb-20 h-px w-32"
+          style={{ background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)` }}
+        />
+        <div className="mx-auto max-w-2xl text-center">
+          <p
+            className="text-[11px] font-normal uppercase tracking-[0.32em]"
+            style={{ color: C.gold }}
+          >
+            The Collection
+          </p>
+          <h2
+            className="mt-6 text-4xl font-light md:text-5xl"
+            style={{ fontFamily: fonts.display, color: C.text }}
+          >
+            Soul True Collection — White/Gold
+          </h2>
+          <p
+            className="mt-5 text-lg italic md:text-xl"
+            style={{ fontFamily: fonts.display, color: C.gold, opacity: 0.9 }}
+          >
+            Light bearer. Same truth.
+          </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12">
+          {productsWhite.map((p) => (
+            <ProductCard key={p.name} product={p} />
+          ))}
+        </div>
+      </section>
+
       {/* HIGHER VIBES COLLECTION — placeholder */}
       <section className="mx-auto max-w-4xl px-6 pb-28">
         <div className="mx-auto max-w-2xl text-center">
