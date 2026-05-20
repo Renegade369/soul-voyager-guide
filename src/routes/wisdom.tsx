@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, ScrollText, Star, Flame } from "lucide-react";
+import { ArrowRight, BookOpen, ScrollText, Star, Flame, Leaf } from "lucide-react";
 
 const C = { bg: "#0A0A0A", gold: "#C9A84C", text: "#F5F0E8", overlay: "#1A1209", border: "rgba(201,168,76,0.22)" };
 const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-serif' };
@@ -21,6 +21,7 @@ const cards = [
   { to: "/wisdom/matrix-origins", icon: BookOpen, title: "Matrix Origins", desc: "How the system was built — and how to see through it with clear eyes." },
   { to: "/wisdom/suppressed-sacred-texts", icon: ScrollText, title: "Suppressed Sacred Texts", desc: "What the gatekeepers removed, hid, or rewrote — and why it matters now." },
   { to: "/wisdom/the-true-story-of-jeshua", icon: Star, title: "The True Story of Jeshua", desc: "The teacher, the man, the frequency — restored beyond institutional distortion." },
+  { to: "/wisdom/sacred-plants", icon: Leaf, title: "Sacred Plant Allies", desc: "The ancient frequencies they tried to silence — and why they matter now." },
 ];
 
 function WisdomPage() {
