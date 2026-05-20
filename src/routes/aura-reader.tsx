@@ -251,7 +251,7 @@ function AuraReaderPage() {
                   <div className="flex items-center gap-4 rounded-none border p-4" style={{ borderColor: `${C.gold}55`, background: C.deep }}>
                     <img src={photo} alt="Your photo" className="h-20 w-20 object-cover" style={{ border: `1px solid ${C.gold}55` }} />
                     <div className="flex-1 flex flex-col gap-2">
-                      <button type="button" onClick={() => { setPhoto(null); cameraInputRef.current?.click(); }}
+                      <button type="button" onClick={() => { setPhoto(null); void openCamera(); }}
                         className="text-[10px] uppercase tracking-[0.22em] text-left" style={{ color: C.gold }}>
                         Retake / Replace
                       </button>
@@ -263,20 +263,18 @@ function AuraReaderPage() {
                   </div>
                 ) : (
                   <div className="grid grid-cols-2 gap-3">
-                    <button type="button" onClick={() => cameraInputRef.current?.click()}
+                    <button type="button" onClick={() => void openCamera()}
                       className="rounded-none border px-4 py-3 text-[11px] uppercase tracking-[0.22em]"
                       style={{ borderColor: `${C.gold}66`, color: C.gold, background: "rgba(201,168,76,0.04)" }}>
-                      📷 Take Photo
+                      📷 Take a Picture
                     </button>
                     <button type="button" onClick={() => uploadInputRef.current?.click()}
                       className="rounded-none border px-4 py-3 text-[11px] uppercase tracking-[0.22em]"
                       style={{ borderColor: `${C.gold}66`, color: C.gold, background: "rgba(201,168,76,0.04)" }}>
-                      📁 Upload Photo
+                      📁 Upload from Files
                     </button>
                   </div>
                 )}
-                <input ref={cameraInputRef} type="file" accept="image/*" capture="user" className="hidden"
-                  onChange={(e) => handlePhotoFile(e.target.files?.[0])} />
                 <input ref={uploadInputRef} type="file" accept="image/*" className="hidden"
                   onChange={(e) => handlePhotoFile(e.target.files?.[0])} />
               </div>
