@@ -119,17 +119,17 @@ function Page() {
         <Divider />
 
         <H>Organizations Doing the Work</H>
-        <div className="mt-6 grid gap-5 md:grid-cols-3">
+        <div className="mt-6 grid gap-5 grid-cols-1 md:[grid-template-columns:repeat(3,minmax(0,1fr))]">
           {[
             { name: "MAPS", url: "https://maps.org", domain: "maps.org", desc: "Multidisciplinary Association for Psychedelic Studies — pioneering research and policy work on psychedelic-assisted vibrational support." },
             { name: "Decriminalize Nature", url: "https://decriminalizenature.org", domain: "decriminalizenature.org", desc: "A grassroots movement working to decriminalize sacred plant allies at the municipal and state level." },
             { name: "Chacruna Institute", url: "https://chacruna.net", domain: "chacruna.net", desc: "Advancing plant sacrament policy reform and indigenous reciprocity." },
           ].map((o) => (
-            <a key={o.name} href={o.url} target="_blank" rel="noopener noreferrer" className="flex flex-col rounded-lg border p-6 transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_rgba(201,168,76,0.35)]" style={{ background: C.overlay, borderColor: C.border }}>
+            <a key={o.name} href={o.url} target="_blank" rel="noopener noreferrer" className="flex min-w-0 flex-col overflow-hidden rounded-lg border p-6 transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_rgba(201,168,76,0.35)] [overflow-wrap:anywhere] [word-break:break-word]" style={{ background: C.overlay, borderColor: C.border }}>
               <span style={{ color: C.gold }}><Leaf size={22} /></span>
-              <h3 className="mt-4 text-xl" style={{ fontFamily: fonts.display, color: C.text }}>{o.name}</h3>
-              <p className="mt-1 text-[11px] uppercase tracking-[0.2em]" style={{ color: C.gold }}>{o.domain}</p>
-              <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.7)" }}>{o.desc}</p>
+              <h3 className="mt-4 text-xl [overflow-wrap:anywhere] [word-break:break-word]" style={{ fontFamily: fonts.display, color: C.text }}>{o.name}</h3>
+              <p className="mt-1 text-[11px] uppercase tracking-[0.2em] [overflow-wrap:anywhere] [word-break:break-all]" style={{ color: C.gold }}>{o.domain}</p>
+              <p className="mt-3 text-sm leading-relaxed [overflow-wrap:anywhere] [word-break:break-word]" style={{ color: "rgba(245,240,232,0.7)" }}>{o.desc}</p>
             </a>
           ))}
         </div>
