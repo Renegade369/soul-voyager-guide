@@ -22,6 +22,7 @@ const cards = [
   { to: "/wisdom/suppressed-sacred-texts", icon: ScrollText, title: "Suppressed Sacred Texts", desc: "What the gatekeepers removed, hid, or rewrote — and why it matters now." },
   { to: "/wisdom/the-true-story-of-jeshua", icon: Star, title: "The True Story of Jeshua", desc: "The teacher, the man, the frequency — restored beyond institutional distortion." },
   { to: "/wisdom/sacred-plants", icon: Leaf, title: "Sacred Plant Allies", desc: "The ancient frequencies they tried to silence — and why they matter now." },
+  { to: "/wisdom/plant-medicines", icon: Leaf, title: "The Plant Allies", desc: "An encyclopedia of Earth's ancient consciousness frequencies." },
 ];
 
 function WisdomPage() {
