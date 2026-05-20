@@ -54,6 +54,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as WisdomTheTrueStoryOfJeshuaRouteImport } from './routes/wisdom_.the-true-story-of-jeshua'
 import { Route as WisdomSuppressedSacredTextsRouteImport } from './routes/wisdom_.suppressed-sacred-texts'
 import { Route as WisdomSacredPlantsRouteImport } from './routes/wisdom_.sacred-plants'
+import { Route as WisdomPlantMedicinesRouteImport } from './routes/wisdom_.plant-medicines'
 import { Route as WisdomOriginsRouteImport } from './routes/wisdom_.origins'
 import { Route as WisdomMatrixOriginsRouteImport } from './routes/wisdom_.matrix-origins'
 import { Route as ProfileIdRouteImport } from './routes/profile.$id'
@@ -286,6 +287,11 @@ const WisdomSacredPlantsRoute = WisdomSacredPlantsRouteImport.update({
   path: '/wisdom/sacred-plants',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WisdomPlantMedicinesRoute = WisdomPlantMedicinesRouteImport.update({
+  id: '/wisdom_/plant-medicines',
+  path: '/wisdom/plant-medicines',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WisdomOriginsRoute = WisdomOriginsRouteImport.update({
   id: '/wisdom_/origins',
   path: '/wisdom/origins',
@@ -354,6 +360,7 @@ export interface FileRoutesByFullPath {
   '/profile/$id': typeof ProfileIdRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom/origins': typeof WisdomOriginsRoute
+  '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
@@ -405,6 +412,7 @@ export interface FileRoutesByTo {
   '/profile/$id': typeof ProfileIdRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom/origins': typeof WisdomOriginsRoute
+  '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
@@ -457,6 +465,7 @@ export interface FileRoutesById {
   '/profile/$id': typeof ProfileIdRoute
   '/wisdom_/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom_/origins': typeof WisdomOriginsRoute
+  '/wisdom_/plant-medicines': typeof WisdomPlantMedicinesRoute
   '/wisdom_/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom_/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom_/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
@@ -510,6 +519,7 @@ export interface FileRouteTypes {
     | '/profile/$id'
     | '/wisdom/matrix-origins'
     | '/wisdom/origins'
+    | '/wisdom/plant-medicines'
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
@@ -561,6 +571,7 @@ export interface FileRouteTypes {
     | '/profile/$id'
     | '/wisdom/matrix-origins'
     | '/wisdom/origins'
+    | '/wisdom/plant-medicines'
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
@@ -612,6 +623,7 @@ export interface FileRouteTypes {
     | '/profile/$id'
     | '/wisdom_/matrix-origins'
     | '/wisdom_/origins'
+    | '/wisdom_/plant-medicines'
     | '/wisdom_/sacred-plants'
     | '/wisdom_/suppressed-sacred-texts'
     | '/wisdom_/the-true-story-of-jeshua'
@@ -664,6 +676,7 @@ export interface RootRouteChildren {
   ProfileIdRoute: typeof ProfileIdRoute
   WisdomMatrixOriginsRoute: typeof WisdomMatrixOriginsRoute
   WisdomOriginsRoute: typeof WisdomOriginsRoute
+  WisdomPlantMedicinesRoute: typeof WisdomPlantMedicinesRoute
   WisdomSacredPlantsRoute: typeof WisdomSacredPlantsRoute
   WisdomSuppressedSacredTextsRoute: typeof WisdomSuppressedSacredTextsRoute
   WisdomTheTrueStoryOfJeshuaRoute: typeof WisdomTheTrueStoryOfJeshuaRoute
@@ -986,6 +999,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WisdomSacredPlantsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wisdom_/plant-medicines': {
+      id: '/wisdom_/plant-medicines'
+      path: '/wisdom/plant-medicines'
+      fullPath: '/wisdom/plant-medicines'
+      preLoaderRoute: typeof WisdomPlantMedicinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wisdom_/origins': {
       id: '/wisdom_/origins'
       path: '/wisdom/origins'
@@ -1064,6 +1084,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileIdRoute: ProfileIdRoute,
   WisdomMatrixOriginsRoute: WisdomMatrixOriginsRoute,
   WisdomOriginsRoute: WisdomOriginsRoute,
+  WisdomPlantMedicinesRoute: WisdomPlantMedicinesRoute,
   WisdomSacredPlantsRoute: WisdomSacredPlantsRoute,
   WisdomSuppressedSacredTextsRoute: WisdomSuppressedSacredTextsRoute,
   WisdomTheTrueStoryOfJeshuaRoute: WisdomTheTrueStoryOfJeshuaRoute,
