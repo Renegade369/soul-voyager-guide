@@ -66,8 +66,75 @@ function AuraReaderPage() {
   const [paywallOpen, setPaywallOpen] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
   const [photo, setPhoto] = useState<string | null>(null);
-  const cameraInputRef = useRef<HTMLInputElement | null>(null);
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Live camera capture state
+  const [cameraOpen, setCameraOpen] = useState(false);
+  const [cameraError, setCameraError] = useState<string>("");
+  const [captured, setCaptured] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+
+  const stopCamera = () => {
+    streamRef.current?.getTracks().forEach((t) => t.stop());
+    streamRef.current = null;
+  };
+
+  const openCamera = async () => {
+    setCameraError("");
+    setCaptured(null);
+    setCameraOpen(true);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "user" },
+        audio: false,
+      });
+      streamRef.current = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        await videoRef.current.play().catch(() => {});
+      }
+    } catch (e) {
+      console.error("getUserMedia failed", e);
+      setCameraError(
+        e instanceof Error && e.name === "NotAllowedError"
+          ? "Camera access was denied. Please allow camera permission and try again."
+          : "Could not access your camera. You can upload a photo instead.",
+      );
+    }
+  };
+
+  const closeCamera = () => {
+    stopCamera();
+    setCameraOpen(false);
+    setCaptured(null);
+    setCameraError("");
+  };
+
+  const capturePhoto = () => {
+    const video = videoRef.current;
+    if (!video || !video.videoWidth) return;
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    setCaptured(canvas.toDataURL("image/jpeg", 0.92));
+  };
+
+  const useCaptured = async () => {
+    if (!captured) return;
+    try {
+      const compressed = await compressImage(captured, 1024, 0.82);
+      setPhoto(compressed);
+    } catch {
+      setPhoto(captured);
+    }
+    closeCamera();
+  };
+
+  useEffect(() => () => stopCamera(), []);
 
   // Compress + resize an image dataURL to <= maxDim on the longest side, JPEG quality 0.82.
   const compressImage = (dataUrl: string, maxDim = 1024, quality = 0.82): Promise<string> =>
@@ -184,7 +251,7 @@ function AuraReaderPage() {
                   <div className="flex items-center gap-4 rounded-none border p-4" style={{ borderColor: `${C.gold}55`, background: C.deep }}>
                     <img src={photo} alt="Your photo" className="h-20 w-20 object-cover" style={{ border: `1px solid ${C.gold}55` }} />
                     <div className="flex-1 flex flex-col gap-2">
-                      <button type="button" onClick={() => { setPhoto(null); cameraInputRef.current?.click(); }}
+                      <button type="button" onClick={() => { setPhoto(null); void openCamera(); }}
                         className="text-[10px] uppercase tracking-[0.22em] text-left" style={{ color: C.gold }}>
                         Retake / Replace
                       </button>
@@ -196,20 +263,18 @@ function AuraReaderPage() {
                   </div>
                 ) : (
                   <div className="grid grid-cols-2 gap-3">
-                    <button type="button" onClick={() => cameraInputRef.current?.click()}
+                    <button type="button" onClick={() => void openCamera()}
                       className="rounded-none border px-4 py-3 text-[11px] uppercase tracking-[0.22em]"
                       style={{ borderColor: `${C.gold}66`, color: C.gold, background: "rgba(201,168,76,0.04)" }}>
-                      📷 Take Photo
+                      📷 Take a Picture
                     </button>
                     <button type="button" onClick={() => uploadInputRef.current?.click()}
                       className="rounded-none border px-4 py-3 text-[11px] uppercase tracking-[0.22em]"
                       style={{ borderColor: `${C.gold}66`, color: C.gold, background: "rgba(201,168,76,0.04)" }}>
-                      📁 Upload Photo
+                      📁 Upload from Files
                     </button>
                   </div>
                 )}
-                <input ref={cameraInputRef} type="file" accept="image/*" capture="user" className="hidden"
-                  onChange={(e) => handlePhotoFile(e.target.files?.[0])} />
                 <input ref={uploadInputRef} type="file" accept="image/*" className="hidden"
                   onChange={(e) => handlePhotoFile(e.target.files?.[0])} />
               </div>
@@ -364,6 +429,63 @@ function AuraReaderPage() {
         </AnimatePresence>
 
         <PaywallModal slug="aura" open={paywallOpen} email={email} onClose={() => setPaywallOpen(false)} onUnlocked={() => { setUnlocked(true); setPaywallOpen(false); }} />
+
+        {cameraOpen && (
+          <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center px-4 py-6"
+            style={{ background: "rgba(10,10,10,0.95)", backdropFilter: "blur(8px)" }}>
+            <div className="w-full max-w-lg rounded-none border p-5" style={{ borderColor: `${C.gold}66`, background: C.deep }}>
+              <div className="mb-4 flex items-center justify-between">
+                <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>
+                  {captured ? "Preview" : "Live Camera"}
+                </p>
+                <button type="button" onClick={closeCamera}
+                  className="text-[10px] uppercase tracking-[0.22em]" style={{ color: C.dim }}>
+                  Close ✕
+                </button>
+              </div>
+
+              {cameraError ? (
+                <p className="py-10 text-center text-sm" style={{ color: C.muted }}>{cameraError}</p>
+              ) : captured ? (
+                <img src={captured} alt="Captured preview" className="mx-auto block max-h-[60vh] w-auto" style={{ border: `1px solid ${C.gold}55` }} />
+              ) : (
+                <video ref={videoRef} autoPlay playsInline muted
+                  className="mx-auto block w-full max-h-[60vh] bg-black"
+                  style={{ border: `1px solid ${C.gold}55`, transform: "scaleX(-1)" }} />
+              )}
+
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                {captured ? (
+                  <>
+                    <button type="button" onClick={() => setCaptured(null)}
+                      className="rounded-none border px-4 py-3 text-[11px] uppercase tracking-[0.22em]"
+                      style={{ borderColor: `${C.gold}66`, color: C.gold }}>
+                      Retake
+                    </button>
+                    <button type="button" onClick={() => void useCaptured()}
+                      className="rounded-none px-4 py-3 text-[11px] uppercase tracking-[0.22em]"
+                      style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                      Use This Photo →
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button type="button" onClick={closeCamera}
+                      className="rounded-none border px-4 py-3 text-[11px] uppercase tracking-[0.22em]"
+                      style={{ borderColor: `${C.gold}66`, color: C.gold }}>
+                      Cancel
+                    </button>
+                    <button type="button" onClick={capturePhoto} disabled={!!cameraError}
+                      className="rounded-none px-4 py-3 text-[11px] uppercase tracking-[0.22em] disabled:opacity-40"
+                      style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.goldAlt})`, color: C.bg }}>
+                      Capture Photo
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </motion.div>
   );
