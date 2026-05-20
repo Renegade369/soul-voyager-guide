@@ -66,8 +66,75 @@ function AuraReaderPage() {
   const [paywallOpen, setPaywallOpen] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
   const [photo, setPhoto] = useState<string | null>(null);
-  const cameraInputRef = useRef<HTMLInputElement | null>(null);
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Live camera capture state
+  const [cameraOpen, setCameraOpen] = useState(false);
+  const [cameraError, setCameraError] = useState<string>("");
+  const [captured, setCaptured] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+
+  const stopCamera = () => {
+    streamRef.current?.getTracks().forEach((t) => t.stop());
+    streamRef.current = null;
+  };
+
+  const openCamera = async () => {
+    setCameraError("");
+    setCaptured(null);
+    setCameraOpen(true);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "user" },
+        audio: false,
+      });
+      streamRef.current = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        await videoRef.current.play().catch(() => {});
+      }
+    } catch (e) {
+      console.error("getUserMedia failed", e);
+      setCameraError(
+        e instanceof Error && e.name === "NotAllowedError"
+          ? "Camera access was denied. Please allow camera permission and try again."
+          : "Could not access your camera. You can upload a photo instead.",
+      );
+    }
+  };
+
+  const closeCamera = () => {
+    stopCamera();
+    setCameraOpen(false);
+    setCaptured(null);
+    setCameraError("");
+  };
+
+  const capturePhoto = () => {
+    const video = videoRef.current;
+    if (!video || !video.videoWidth) return;
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    setCaptured(canvas.toDataURL("image/jpeg", 0.92));
+  };
+
+  const useCaptured = async () => {
+    if (!captured) return;
+    try {
+      const compressed = await compressImage(captured, 1024, 0.82);
+      setPhoto(compressed);
+    } catch {
+      setPhoto(captured);
+    }
+    closeCamera();
+  };
+
+  useEffect(() => () => stopCamera(), []);
 
   // Compress + resize an image dataURL to <= maxDim on the longest side, JPEG quality 0.82.
   const compressImage = (dataUrl: string, maxDim = 1024, quality = 0.82): Promise<string> =>
