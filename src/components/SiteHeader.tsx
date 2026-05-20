@@ -12,6 +12,7 @@ const wisdomLinks = [
   { to: "/wisdom/suppressed-sacred-texts", label: "Suppressed Sacred Texts" },
   { to: "/wisdom/the-true-story-of-jeshua", label: "True Story of Jeshua" },
   { to: "/wisdom/sacred-plants", label: "Sacred Plant Allies" },
+  { to: "/wisdom/plant-medicines", label: "The Plant Allies" },
   { to: "/teachings", label: "The Codex" },
 ] as const;
 
