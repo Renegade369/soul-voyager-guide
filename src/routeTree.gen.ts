@@ -29,6 +29,7 @@ import { Route as PillarsRouteImport } from './routes/pillars'
 import { Route as NumerologyRouteImport } from './routes/numerology'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
 import { Route as MyReadingsRouteImport } from './routes/my-readings'
+import { Route as MeetWilliamRouteImport } from './routes/meet-william'
 import { Route as MeditationsRouteImport } from './routes/meditations'
 import { Route as KimAlfanoRouteImport } from './routes/kim-alfano'
 import { Route as HigherVibesRouteImport } from './routes/higher-vibes'
@@ -43,6 +44,7 @@ import { Route as ContactWilliamRouteImport } from './routes/contact-william'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConsciousnessMapRouteImport } from './routes/consciousness-map'
 import { Route as ChallengeRouteImport } from './routes/challenge'
+import { Route as BookSessionRouteImport } from './routes/book-session'
 import { Route as BloodTypeRouteImport } from './routes/blood-type'
 import { Route as BirthChartRouteImport } from './routes/birth-chart'
 import { Route as BeginHereRouteImport } from './routes/begin-here'
@@ -162,6 +164,11 @@ const MyReadingsRoute = MyReadingsRouteImport.update({
   path: '/my-readings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MeetWilliamRoute = MeetWilliamRouteImport.update({
+  id: '/meet-william',
+  path: '/meet-william',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MeditationsRoute = MeditationsRouteImport.update({
   id: '/meditations',
   path: '/meditations',
@@ -230,6 +237,11 @@ const ConsciousnessMapRoute = ConsciousnessMapRouteImport.update({
 const ChallengeRoute = ChallengeRouteImport.update({
   id: '/challenge',
   path: '/challenge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookSessionRoute = BookSessionRouteImport.update({
+  id: '/book-session',
+  path: '/book-session',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BloodTypeRoute = BloodTypeRouteImport.update({
@@ -336,6 +348,7 @@ export interface FileRoutesByFullPath {
   '/begin-here': typeof BeginHereRoute
   '/birth-chart': typeof BirthChartRoute
   '/blood-type': typeof BloodTypeRoute
+  '/book-session': typeof BookSessionRoute
   '/challenge': typeof ChallengeRoute
   '/consciousness-map': typeof ConsciousnessMapRoute
   '/contact': typeof ContactRoute
@@ -350,6 +363,7 @@ export interface FileRoutesByFullPath {
   '/higher-vibes': typeof HigherVibesRoute
   '/kim-alfano': typeof KimAlfanoRoute
   '/meditations': typeof MeditationsRoute
+  '/meet-william': typeof MeetWilliamRoute
   '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/numerology': typeof NumerologyRoute
@@ -390,6 +404,7 @@ export interface FileRoutesByTo {
   '/begin-here': typeof BeginHereRoute
   '/birth-chart': typeof BirthChartRoute
   '/blood-type': typeof BloodTypeRoute
+  '/book-session': typeof BookSessionRoute
   '/challenge': typeof ChallengeRoute
   '/consciousness-map': typeof ConsciousnessMapRoute
   '/contact': typeof ContactRoute
@@ -404,6 +419,7 @@ export interface FileRoutesByTo {
   '/higher-vibes': typeof HigherVibesRoute
   '/kim-alfano': typeof KimAlfanoRoute
   '/meditations': typeof MeditationsRoute
+  '/meet-william': typeof MeetWilliamRoute
   '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/numerology': typeof NumerologyRoute
@@ -445,6 +461,7 @@ export interface FileRoutesById {
   '/begin-here': typeof BeginHereRoute
   '/birth-chart': typeof BirthChartRoute
   '/blood-type': typeof BloodTypeRoute
+  '/book-session': typeof BookSessionRoute
   '/challenge': typeof ChallengeRoute
   '/consciousness-map': typeof ConsciousnessMapRoute
   '/contact': typeof ContactRoute
@@ -459,6 +476,7 @@ export interface FileRoutesById {
   '/higher-vibes': typeof HigherVibesRoute
   '/kim-alfano': typeof KimAlfanoRoute
   '/meditations': typeof MeditationsRoute
+  '/meet-william': typeof MeetWilliamRoute
   '/my-readings': typeof MyReadingsRoute
   '/nature-booking': typeof NatureBookingRoute
   '/numerology': typeof NumerologyRoute
@@ -501,6 +519,7 @@ export interface FileRouteTypes {
     | '/begin-here'
     | '/birth-chart'
     | '/blood-type'
+    | '/book-session'
     | '/challenge'
     | '/consciousness-map'
     | '/contact'
@@ -515,6 +534,7 @@ export interface FileRouteTypes {
     | '/higher-vibes'
     | '/kim-alfano'
     | '/meditations'
+    | '/meet-william'
     | '/my-readings'
     | '/nature-booking'
     | '/numerology'
@@ -555,6 +575,7 @@ export interface FileRouteTypes {
     | '/begin-here'
     | '/birth-chart'
     | '/blood-type'
+    | '/book-session'
     | '/challenge'
     | '/consciousness-map'
     | '/contact'
@@ -569,6 +590,7 @@ export interface FileRouteTypes {
     | '/higher-vibes'
     | '/kim-alfano'
     | '/meditations'
+    | '/meet-william'
     | '/my-readings'
     | '/nature-booking'
     | '/numerology'
@@ -609,6 +631,7 @@ export interface FileRouteTypes {
     | '/begin-here'
     | '/birth-chart'
     | '/blood-type'
+    | '/book-session'
     | '/challenge'
     | '/consciousness-map'
     | '/contact'
@@ -623,6 +646,7 @@ export interface FileRouteTypes {
     | '/higher-vibes'
     | '/kim-alfano'
     | '/meditations'
+    | '/meet-william'
     | '/my-readings'
     | '/nature-booking'
     | '/numerology'
@@ -664,6 +688,7 @@ export interface RootRouteChildren {
   BeginHereRoute: typeof BeginHereRoute
   BirthChartRoute: typeof BirthChartRoute
   BloodTypeRoute: typeof BloodTypeRoute
+  BookSessionRoute: typeof BookSessionRoute
   ChallengeRoute: typeof ChallengeRoute
   ConsciousnessMapRoute: typeof ConsciousnessMapRoute
   ContactRoute: typeof ContactRoute
@@ -678,6 +703,7 @@ export interface RootRouteChildren {
   HigherVibesRoute: typeof HigherVibesRoute
   KimAlfanoRoute: typeof KimAlfanoRoute
   MeditationsRoute: typeof MeditationsRoute
+  MeetWilliamRoute: typeof MeetWilliamRoute
   MyReadingsRoute: typeof MyReadingsRoute
   NatureBookingRoute: typeof NatureBookingRoute
   NumerologyRoute: typeof NumerologyRoute
@@ -850,6 +876,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MyReadingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/meet-william': {
+      id: '/meet-william'
+      path: '/meet-william'
+      fullPath: '/meet-william'
+      preLoaderRoute: typeof MeetWilliamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/meditations': {
       id: '/meditations'
       path: '/meditations'
@@ -946,6 +979,13 @@ declare module '@tanstack/react-router' {
       path: '/challenge'
       fullPath: '/challenge'
       preLoaderRoute: typeof ChallengeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-session': {
+      id: '/book-session'
+      path: '/book-session'
+      fullPath: '/book-session'
+      preLoaderRoute: typeof BookSessionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blood-type': {
@@ -1088,6 +1128,7 @@ const rootRouteChildren: RootRouteChildren = {
   BeginHereRoute: BeginHereRoute,
   BirthChartRoute: BirthChartRoute,
   BloodTypeRoute: BloodTypeRoute,
+  BookSessionRoute: BookSessionRoute,
   ChallengeRoute: ChallengeRoute,
   ConsciousnessMapRoute: ConsciousnessMapRoute,
   ContactRoute: ContactRoute,
@@ -1102,6 +1143,7 @@ const rootRouteChildren: RootRouteChildren = {
   HigherVibesRoute: HigherVibesRoute,
   KimAlfanoRoute: KimAlfanoRoute,
   MeditationsRoute: MeditationsRoute,
+  MeetWilliamRoute: MeetWilliamRoute,
   MyReadingsRoute: MyReadingsRoute,
   NatureBookingRoute: NatureBookingRoute,
   NumerologyRoute: NumerologyRoute,

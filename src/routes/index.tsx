@@ -193,6 +193,20 @@ function HomePage() {
         />
       </section>
 
+      {/* MEET WILLIAM */}
+      <section className="mx-auto max-w-3xl px-6 pt-16 text-center">
+        <Link
+          to="/meet-william"
+          className="inline-block px-8 py-4 text-[11px] uppercase tracking-[0.22em] transition"
+          style={{
+            color: C.gold,
+            border: "1px solid rgba(201,168,76,0.45)",
+          }}
+        >
+          Meet Your Guide — William
+        </Link>
+      </section>
+
       {/* CLOSING */}
       <section className="mx-auto max-w-3xl px-6 pb-28 pt-16 text-center">
         <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>For educational & inspirational purposes only</p>
