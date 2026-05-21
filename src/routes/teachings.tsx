@@ -1142,11 +1142,6 @@ function TeachingsPage() {
         </div>
       </section>
 
-      <section className="hidden">
-        <div>{/* anchor preserved */}</div>
-        </div>
-      </section>
-
       <section className="mt-16">
         <div className="border border-border bg-card p-10 md:p-14">
           <TeachingImage
