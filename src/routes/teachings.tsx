@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
+import { DispenzaPromoCallout } from "@/components/DispenzaPromoCallout";
 
 export const Route = createFileRoute("/teachings")({
   head: () => makeRouteMeta({
