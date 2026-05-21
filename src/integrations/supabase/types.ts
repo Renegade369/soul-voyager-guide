@@ -661,6 +661,63 @@ export type Database = {
         }
         Relationships: []
       }
+      transmission_credits: {
+        Row: {
+          all_access: boolean
+          credits: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          all_access?: boolean
+          credits?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          all_access?: boolean
+          credits?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      transmissions: {
+        Row: {
+          audio_path: string | null
+          created_at: string
+          emotional_state: string
+          id: string
+          intention: string
+          profile_snapshot: Json | null
+          script: string
+          seal: string | null
+          user_id: string
+        }
+        Insert: {
+          audio_path?: string | null
+          created_at?: string
+          emotional_state: string
+          id?: string
+          intention: string
+          profile_snapshot?: Json | null
+          script: string
+          seal?: string | null
+          user_id: string
+        }
+        Update: {
+          audio_path?: string | null
+          created_at?: string
+          emotional_state?: string
+          id?: string
+          intention?: string
+          profile_snapshot?: Json | null
+          script?: string
+          seal?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_readings: {
         Row: {
           created_at: string
