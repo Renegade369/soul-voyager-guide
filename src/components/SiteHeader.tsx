@@ -105,9 +105,23 @@ export function SiteHeader() {
           <Link to="/store" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Store
           </Link>
+          <Link
+            to="/transmissions"
+            className="text-[11px] font-normal uppercase tracking-[0.22em] transition-all"
+            style={{ color: "#C9A84C", textShadow: "0 0 12px rgba(232,130,26,0.45)", animation: "transmissionsPulse 3.5s ease-in-out infinite" }}
+            activeProps={{ style: { color: "#E8C87A" } }}
+          >
+            Transmissions
+          </Link>
           <Link to="/higher-vibes" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Higher Vibes
           </Link>
+          <style>{`
+            @keyframes transmissionsPulse {
+              0%, 100% { text-shadow: 0 0 8px rgba(232,130,26,0.35); }
+              50% { text-shadow: 0 0 16px rgba(232,130,26,0.7); }
+            }
+          `}</style>
 
           <Link
             to="/begin-here"
@@ -152,6 +166,9 @@ export function SiteHeader() {
             <Link to="/meditations" onClick={() => setOpen(false)} className="mt-3 px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meditations</Link>
             <Link to="/the-sacred-journey" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Journey</Link>
             <Link to="/store" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Store</Link>
+            <Link to="/transmissions" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={{ color: "#C9A84C", textShadow: "0 0 10px rgba(232,130,26,0.4)" }}>
+              ✦ Transmissions
+            </Link>
             <Link to="/higher-vibes" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Higher Vibes</Link>
             <Link
               to="/begin-here"
