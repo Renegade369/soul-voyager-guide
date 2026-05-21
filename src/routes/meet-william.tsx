@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { WilliamIntro, PartnerCallout } from "@/components/WilliamIntro";
+import williamPhoto from "@/assets/william-rythmia.png";
 
 export const Route = createFileRoute("/meet-william")({
   head: () => ({
@@ -27,36 +28,29 @@ function MeetWilliamPage() {
       {/* HERO */}
       <section className="relative">
         <div className="mx-auto max-w-3xl px-6 pt-16 pb-8 text-center sm:pt-24">
-          {/* Photo slot */}
+          {/* William's Rythmia photo — taken after an all-night ayahuasca ceremony.
+              Both William and the shaman intentionally in frame. No heavy filters. */}
           <div
-            className="mx-auto mb-10 flex aspect-[3/4] w-full max-w-md items-center justify-center overflow-hidden"
+            className="relative mx-auto mb-10 w-full max-w-md overflow-hidden"
             style={{
-              backgroundColor: "#1A1209",
               border: "1px solid rgba(201,168,76,0.35)",
+              boxShadow: "0 30px 80px -30px rgba(201,168,76,0.35)",
             }}
           >
-            {/* [Upload: William's Rythmia photo] — replace this block with the uploaded image.
-                Keep BOTH William and the shaman in frame. No heavy filters.
-                A subtle dark overlay is OK for legibility. Portrait orientation, centered. */}
-            <div className="px-6 text-center">
-              <p
-                className="text-[10px] uppercase tracking-[0.3em]"
-                style={{ color: "#C9A84C" }}
-              >
-                [Upload: William's Rythmia photo]
-              </p>
-              <p
-                className="mt-3 text-sm"
-                style={{
-                  color: "rgba(245,240,232,0.55)",
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontStyle: "italic",
-                }}
-              >
-                William and the shaman at Rythmia, Costa Rica — taken after an
-                all-night ayahuasca ceremony. Keep both in frame, unedited.
-              </p>
-            </div>
+            <img
+              src={williamPhoto}
+              alt="William with a shaman at Rythmia Life Advancement Center, Costa Rica, after an all-night ceremony"
+              className="block h-auto w-full"
+              loading="eager"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(10,11,9,0.15) 0%, rgba(10,11,9,0) 35%, rgba(10,11,9,0.45) 100%)",
+              }}
+            />
           </div>
 
           <h1

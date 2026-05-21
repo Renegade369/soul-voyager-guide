@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { WilliamIntro, PartnerCallout } from "@/components/WilliamIntro";
+import williamPhoto from "@/assets/william-rythmia.png";
 
 export const Route = createFileRoute("/book-session")({
   head: () => ({
@@ -108,22 +109,28 @@ export default function BookSessionPage() {
             and start moving.
           </p>
 
-          {/* Optional photo slot */}
+          {/* William's Rythmia photo — same image as /meet-william, both in frame, unedited */}
           <div
-            className="mx-auto mt-12 flex aspect-[3/4] w-full max-w-sm items-center justify-center overflow-hidden"
+            className="relative mx-auto mt-12 w-full max-w-sm overflow-hidden"
             style={{
-              backgroundColor: "#1A1209",
               border: "1px solid rgba(201,168,76,0.35)",
+              boxShadow: "0 30px 80px -30px rgba(201,168,76,0.35)",
             }}
           >
-            {/* [Upload: William's Rythmia photo] — same photo as /meet-william.
-                Keep BOTH William and the shaman in frame. No heavy filters. */}
-            <p
-              className="px-6 text-center text-[10px] uppercase tracking-[0.3em]"
-              style={{ color: "#C9A84C" }}
-            >
-              [Upload: William's Rythmia photo]
-            </p>
+            <img
+              src={williamPhoto}
+              alt="William with a shaman at Rythmia, Costa Rica"
+              className="block h-auto w-full"
+              loading="lazy"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(10,11,9,0.15) 0%, rgba(10,11,9,0) 35%, rgba(10,11,9,0.45) 100%)",
+              }}
+            />
           </div>
         </div>
       </section>
