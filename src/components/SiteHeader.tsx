@@ -116,6 +116,9 @@ export function SiteHeader() {
           <Link to="/higher-vibes" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Higher Vibes
           </Link>
+          <Link to="/meet-william" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Meet William
+          </Link>
           <style>{`
             @keyframes transmissionsPulse {
               0%, 100% { text-shadow: 0 0 8px rgba(232,130,26,0.35); }
@@ -170,6 +173,9 @@ export function SiteHeader() {
               ✦ Transmissions
             </Link>
             <Link to="/higher-vibes" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Higher Vibes</Link>
+            <p className="mt-3 px-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>About</p>
+            <Link to="/meet-william" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meet William</Link>
+            <Link to="/book-session" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Book a Session</Link>
             <Link
               to="/begin-here"
               onClick={() => setOpen(false)}
