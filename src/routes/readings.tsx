@@ -44,6 +44,43 @@ function ReadingsPage() {
         </p>
       </section>
 
+      {/* Featured: Frequency Transmissions — signature offering */}
+      <section className="mx-auto max-w-5xl px-6 pb-10">
+        <Link to="/transmissions"
+          className="group relative block overflow-hidden rounded-none border p-8 transition-all hover:-translate-y-1 md:p-12"
+          style={{
+            borderColor: C.gold,
+            background: "linear-gradient(135deg, rgba(201,168,76,0.10), rgba(232,130,26,0.06) 60%, rgba(10,10,10,0.9))",
+            boxShadow: "0 0 60px -20px rgba(232,130,26,0.45)",
+            animation: "transmissionGlow 4s ease-in-out infinite",
+          }}>
+          <span className="absolute right-4 top-4 rounded-none border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.22em]"
+            style={{ color: C.gold, borderColor: C.gold, background: "rgba(201,168,76,0.1)" }}>
+            ✦ Signature
+          </span>
+          <p className="text-[10px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>The Soul True Signature Offering</p>
+          <h2 className="mt-3 text-4xl font-light leading-tight md:text-5xl" style={{ fontFamily: fonts.display }}>
+            Frequency <em className="italic" style={{ color: C.gold }}>Transmissions.</em>
+          </h2>
+          <p className="mt-4 max-w-2xl text-base italic md:text-lg" style={{ color: "rgba(245,240,232,0.85)", fontFamily: fonts.display }}>
+            A personalized spoken transmission drawn from the depths of your soul profile.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm" style={{ color: "rgba(245,240,232,0.65)" }}>
+            Check in. Set your intention. Receive your unique frequency — spoken aloud, sealed for you alone.
+          </p>
+          <span className="mt-7 inline-flex items-center gap-2 rounded-none px-7 py-3 text-[11px] font-bold uppercase tracking-[0.22em] transition group-hover:shadow-[0_0_24px_rgba(232,130,26,0.6)]"
+            style={{ background: `linear-gradient(135deg, ${C.gold}, #D4A017)`, color: C.bg }}>
+            Receive My Transmission →
+          </span>
+        </Link>
+        <style>{`
+          @keyframes transmissionGlow {
+            0%, 100% { box-shadow: 0 0 40px -22px rgba(232,130,26,0.35); }
+            50% { box-shadow: 0 0 70px -16px rgba(232,130,26,0.6); }
+          }
+        `}</style>
+      </section>
+
       {/* Bundle banner */}
       <section className="mx-auto max-w-5xl px-6 pb-10">
         <div className="rounded-none border p-7 text-center md:flex md:items-center md:justify-between md:text-left"
