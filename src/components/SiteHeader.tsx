@@ -23,6 +23,7 @@ const readingsLinks = [
   { to: "/birth-chart", label: "Birth Chart" },
   { to: "/numerology", label: "Numerology" },
   { to: "/astrology", label: "Astrology" },
+  { to: "/gene-keys", label: "Gene Keys" },
 ] as const;
 
 const primary = [
