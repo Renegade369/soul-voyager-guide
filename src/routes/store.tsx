@@ -225,47 +225,6 @@ function StorePage() {
         </div>
       </section>
 
-      {/* HIGHER VIBES COLLECTION — placeholder */}
-      <section className="mx-auto max-w-4xl px-6 pb-28">
-        <div className="mx-auto max-w-2xl text-center">
-          <p
-            className="text-[11px] font-normal uppercase tracking-[0.32em]"
-            style={{ color: C.gold }}
-          >
-            Collaboration
-          </p>
-          <h2
-            className="mt-6 text-4xl font-light md:text-5xl"
-            style={{ fontFamily: fonts.display, color: C.text }}
-          >
-            Higher Vibes Collection
-          </h2>
-          <p
-            className="mt-5 text-lg italic md:text-xl"
-            style={{ fontFamily: fonts.display, color: C.gold, opacity: 0.9 }}
-          >
-            Coming Soon — Kim Alfano × Soul True
-          </p>
-        </div>
-
-        <div
-          className="mt-12 px-8 py-16 text-center"
-          style={{
-            backgroundColor: C.bg,
-            border: `1px solid ${C.border}`,
-            boxShadow: "0 0 40px rgba(232,130,26,0.08) inset",
-          }}
-        >
-          <p
-            className="mx-auto max-w-xl text-base font-light leading-relaxed md:text-lg"
-            style={{ color: C.text, opacity: 0.78 }}
-          >
-            Sacred merch from Kim Alfano at Higher Vibes.
-            <br />
-            Content coming soon.
-          </p>
-        </div>
-      </section>
     </div>
   );
 }

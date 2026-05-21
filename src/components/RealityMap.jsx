@@ -100,7 +100,7 @@ const NODES = [
       "Sound frequencies (432Hz, 528Hz) demonstrably affect cellular behavior",
       "Meditation measurably changes brain structure within 8 weeks",
     ],
-    cta: { label: "Connect With Higher Vibes", path: "mailto:highervibrations36@gmail.com" },
+    cta: { label: "Connect With Higher Vibes", path: "mailto:HigherVibration36@gmail.com" },
   },
   {
     id: "identity",

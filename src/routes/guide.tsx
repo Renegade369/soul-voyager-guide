@@ -472,7 +472,7 @@ function SovereignCreatorGuide() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:highervibrations36@gmail.com?subject=Soul%20True%20sent%20me"
+              href="mailto:HigherVibration36@gmail.com?subject=Soul%20True%20sent%20me"
               className="rounded-none px-7 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition hover:shadow-[0_0_18px_rgba(232,130,26,0.5)]"
               style={{
                 color: "#0A0A0A",

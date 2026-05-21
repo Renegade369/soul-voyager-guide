@@ -222,7 +222,7 @@ export function HomeTab() {
       <div className="mx-auto mt-16 max-w-lg rounded-xl border p-8 text-center" style={{ backgroundColor: C.card, borderColor: C.border, boxShadow: `0 20px 60px -20px ${C.teal}22` }}>
         <h3 className="text-2xl" style={{ fontFamily: fonts.display }}>Ready to Go Deeper?</h3>
         <a
-          href="mailto:highervibrations36@gmail.com"
+          href="mailto:HigherVibration36@gmail.com"
           onClick={() => trackCTA("kim_alfano_home")}
           className="mt-6 inline-block rounded-lg px-8 py-3 text-sm font-medium"
           style={{ background: `linear-gradient(135deg, ${C.goldDark}, ${C.gold})`, color: C.bg, fontFamily: fonts.body }}

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell, makeRouteMeta } from "../components/PageShell";
+import { DispenzaPromoCallout } from "@/components/DispenzaPromoCallout";
 
 export const Route = createFileRoute("/teachings")({
   head: () => makeRouteMeta({
@@ -1137,6 +1138,8 @@ function TeachingsPage() {
               <li>📖 <em>Becoming Supernatural</em> · <em>Breaking the Habit of Being Yourself</em> · <em>You Are the Placebo</em></li>
             </ul>
           </div>
+
+          <DispenzaPromoCallout />
         </div>
       </section>
 

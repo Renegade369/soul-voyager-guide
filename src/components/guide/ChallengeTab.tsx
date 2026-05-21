@@ -465,7 +465,7 @@ export function ChallengeTab() {
           Print / Save Certificate
         </button>
         <a
-          href="mailto:highervibrations36@gmail.com"
+          href="mailto:HigherVibration36@gmail.com"
           onClick={() => trackCTA("kim_alfano_cert")}
           className="flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-medium"
           style={{ background: `linear-gradient(135deg, ${C.goldDark}, ${C.gold})`, color: C.bg, fontFamily: fonts.body }}

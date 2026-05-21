@@ -728,7 +728,7 @@ export default function AwakeningAssessment() {
               <p style={{ fontSize: 14, color: "#888", lineHeight: 1.7, marginBottom: 20, fontWeight: 300, maxWidth: 480, margin: "0 auto 20px" }}>
                 The shift from knowing to embodying is where a guide changes everything. Connect with Kim Alfano at Higher Vibes for personalized coaching.
               </p>
-              <a href="mailto:highervibrations36@gmail.com" style={{ display: "inline-block", fontFamily: "'Rajdhani', sans-serif", fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", padding: "14px 36px", border: "1px solid #c8a94a", color: "#c8a94a", textDecoration: "none", fontWeight: 700 }}>
+              <a href="mailto:HigherVibration36@gmail.com" style={{ display: "inline-block", fontFamily: "'Rajdhani', sans-serif", fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", padding: "14px 36px", border: "1px solid #c8a94a", color: "#c8a94a", textDecoration: "none", fontWeight: 700 }}>
                 Connect With Kim →
               </a>
             </div>

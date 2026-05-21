@@ -79,7 +79,7 @@ serve(async (req: Request) => {
             awakening_stage: { type: "string", enum: ["Asleep", "Stirring", "Awakening", "Integrating", "Embodying"] },
             awakening_stage_description: { type: "string", description: "What stage means for them + what next stage looks like." },
             soul_message: { type: "string", description: "Section 10. Direct message from highest self. 4-6 sentences. Make it stop them." },
-            closing: { type: "string", description: 'Exactly: "Your next step is a conversation. Kim Alfano at Higher Vibes works with souls exactly where you are right now. Reach her at highervibrations36@gmail.com — tell her Soul True sent you."' },
+            closing: { type: "string", description: 'Exactly: "Your next step is a conversation. Kim Alfano at Higher Vibes works with souls exactly where you are right now. Reach her at HigherVibration36@gmail.com — tell her Soul True sent you."' },
           },
           required: [
             "first_name", "life_path_number", "expression_number", "soul_urge_number", "personal_year_number",

@@ -469,7 +469,7 @@ export function SoulQuizTab() {
             <RotateCcw size={14} /> Retake Quiz
           </button>
           <a
-            href="mailto:highervibrations36@gmail.com?subject=Soul%20True%20Session%20Inquiry"
+            href="mailto:HigherVibration36@gmail.com?subject=Soul%20True%20Session%20Inquiry"
             className="flex w-full items-center justify-center gap-2 rounded border px-6 py-3 text-xs font-medium uppercase tracking-[0.22em]"
             style={{ borderColor: C.border, color: C.text, fontFamily: fonts.body }}
           >
