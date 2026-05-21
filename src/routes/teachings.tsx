@@ -1137,6 +1137,13 @@ function TeachingsPage() {
               <li>📖 <em>Becoming Supernatural</em> · <em>Breaking the Habit of Being Yourself</em> · <em>You Are the Placebo</em></li>
             </ul>
           </div>
+
+          <DispenzaPromoCallout />
+        </div>
+      </section>
+
+      <section className="hidden">
+        <div>{/* anchor preserved */}</div>
         </div>
       </section>
 
