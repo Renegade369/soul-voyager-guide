@@ -587,7 +587,7 @@ export function BloodTypeTab() {
           </button>
 
           <a
-            href="mailto:highervibrations36@gmail.com"
+            href="mailto:HigherVibration36@gmail.com"
             className="block w-full rounded py-3 text-center text-[11px] uppercase tracking-[0.22em]"
             style={{ backgroundColor: C.gold, color: "#141716", fontFamily: fonts.body, fontWeight: 500 }}
           >

@@ -132,7 +132,7 @@ function SacredJourneyPage() {
             body="You were not born to trade your hours for survival. You were born with a specific set of gifts that the world needs. The convergence of new technology, sovereignty, and soul purpose is the greatest economic opportunity in human history — for those who are awake enough to see it."
             links={[
               { label: "Explore Work Tools", to: "/readings" },
-              { label: "Work With Kim Alfano at Higher Vibes", href: "mailto:highervibrations36@gmail.com" },
+              { label: "Work With Kim Alfano at Higher Vibes", href: "mailto:HigherVibration36@gmail.com" },
             ]}
           />
         </div>

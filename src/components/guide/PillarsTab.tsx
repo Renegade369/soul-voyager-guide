@@ -177,7 +177,7 @@ export function PillarsTab() {
       {/* CTA */}
       <div className="mx-auto mt-16 max-w-lg text-center">
         <a
-          href="mailto:highervibrations36@gmail.com"
+          href="mailto:HigherVibration36@gmail.com"
           onClick={() => trackCTA("kim_alfano_pillars")}
           className="inline-block rounded-lg px-8 py-3 text-sm font-medium"
           style={{ background: `linear-gradient(135deg, ${C.goldDark}, ${C.gold})`, color: C.bg, fontFamily: fonts.body }}

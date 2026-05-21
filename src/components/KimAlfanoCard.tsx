@@ -17,11 +17,11 @@ export function KimAlfanoCard() {
         works with souls exactly where you are right now — ready to move, ready to align, ready to build the life that matches who you're becoming.
       </p>
       <a
-        href="mailto:highervibrations36@gmail.com?subject=Soul%20True%20sent%20me"
+        href="mailto:HigherVibration36@gmail.com?subject=Soul%20True%20sent%20me"
         className="mt-5 inline-block text-[11px] uppercase tracking-[0.22em] underline-offset-4 hover:underline"
         style={{ color: C.gold }}
       >
-        ✉ highervibrations36@gmail.com — tell her Soul True sent you
+        ✉ HigherVibration36@gmail.com — tell her Soul True sent you
       </a>
     </section>
   );

@@ -18,7 +18,7 @@ Calculate or estimate the relevant placements yourself based on the birth data:
 IF birth time provided: Sun sign + house, Moon sign + house, Rising/Ascendant, Mercury, Venus, Mars, any major aspects.
 IF birth time NOT provided: Sun, Moon (approximate), Mercury, Venus, Mars only.
 
-End with: "The stars show the weather — you choose where to walk. If you're ready to move with intention, Kim Alfano at Higher Vibes can help you do exactly that. highervibrations36@gmail.com"
+End with: "The stars show the weather — you choose where to walk. If you're ready to move with intention, Kim Alfano at Higher Vibes can help you do exactly that. HigherVibration36@gmail.com"
 
 Under 600 words. Every sentence earns its place.
 

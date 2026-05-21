@@ -524,7 +524,7 @@ export function BirthChartTab() {
                 <RotateCcw size={14} /> Generate Another Reading
               </button>
               <a
-                href="mailto:highervibrations36@gmail.com?subject=Soul%20True%20Birth%20Chart%20Session"
+                href="mailto:HigherVibration36@gmail.com?subject=Soul%20True%20Birth%20Chart%20Session"
                 className="flex w-full items-center justify-center gap-2 rounded border px-6 py-3 text-xs font-medium uppercase tracking-[0.22em]"
                 style={{ borderColor: C.border, color: C.text, fontFamily: fonts.body }}
               >

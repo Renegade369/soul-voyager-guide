@@ -63,7 +63,7 @@ ${isRhNeg ? '10. A special section about Rh negative blood being rare and myster
    - Discover Your Soul Origin: https://soul-true.com/guide (Soul Quiz tab)
    - Generate Your Personal Meditation: https://soul-true.com/guide (Meditations tab)
    - Read Your Birth Chart: https://soul-true.com/guide (Birth Chart tab)
-12. CTA: "Ready for deeper guidance? Book a session with Kim Alfano at Higher Vibes — highervibrations36@gmail.com"
+12. CTA: "Ready for deeper guidance? Book a session with Kim Alfano at Higher Vibes — HigherVibration36@gmail.com"
 13. Footer: "Live Your Truth." and "Soul True — soul-true.com"
 
 Return ONLY the complete HTML email content, no markdown wrapping. All CSS must be inline. Make it look premium and sacred.`;

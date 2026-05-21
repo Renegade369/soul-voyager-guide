@@ -825,7 +825,7 @@ function HigherVibesPage() {
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="mailto:highervibrations36@gmail.com?subject=Book%20a%20Session%20%E2%80%94%20Soul%20True%20sent%20me"
+            href="mailto:HigherVibration36@gmail.com?subject=Book%20a%20Session%20%E2%80%94%20Soul%20True%20sent%20me"
             className="inline-flex items-center gap-2 rounded-none px-9 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition-all hover:shadow-[0_0_36px_rgba(232,130,26,0.55)]"
             style={{ backgroundColor: C.gold, color: C.bg }}
           >
