@@ -34,6 +34,7 @@ import { Route as HigherVibesRouteImport } from './routes/higher-vibes'
 import { Route as HiddenTruthRouteImport } from './routes/hidden-truth'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as GuideRouteImport } from './routes/guide'
+import { Route as GeneKeysRouteImport } from './routes/gene-keys'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -185,6 +186,11 @@ const GuideRoute = GuideRouteImport.update({
   path: '/guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GeneKeysRoute = GeneKeysRouteImport.update({
+  id: '/gene-keys',
+  path: '/gene-keys',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventsRoute = EventsRouteImport.update({
   id: '/events',
   path: '/events',
@@ -331,6 +337,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
+  '/gene-keys': typeof GeneKeysRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
@@ -383,6 +390,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
+  '/gene-keys': typeof GeneKeysRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
@@ -436,6 +444,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
   '/events': typeof EventsRoute
+  '/gene-keys': typeof GeneKeysRoute
   '/guide': typeof GuideRoute
   '/health': typeof HealthRoute
   '/hidden-truth': typeof HiddenTruthRoute
@@ -490,6 +499,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/discovery'
     | '/events'
+    | '/gene-keys'
     | '/guide'
     | '/health'
     | '/hidden-truth'
@@ -542,6 +552,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/discovery'
     | '/events'
+    | '/gene-keys'
     | '/guide'
     | '/health'
     | '/hidden-truth'
@@ -594,6 +605,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/discovery'
     | '/events'
+    | '/gene-keys'
     | '/guide'
     | '/health'
     | '/hidden-truth'
@@ -647,6 +659,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   DiscoveryRoute: typeof DiscoveryRoute
   EventsRoute: typeof EventsRoute
+  GeneKeysRoute: typeof GeneKeysRoute
   GuideRoute: typeof GuideRoute
   HealthRoute: typeof HealthRoute
   HiddenTruthRoute: typeof HiddenTruthRoute
@@ -859,6 +872,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gene-keys': {
+      id: '/gene-keys'
+      path: '/gene-keys'
+      fullPath: '/gene-keys'
+      preLoaderRoute: typeof GeneKeysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/events': {
       id: '/events'
       path: '/events'
@@ -1055,6 +1075,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   DiscoveryRoute: DiscoveryRoute,
   EventsRoute: EventsRoute,
+  GeneKeysRoute: GeneKeysRoute,
   GuideRoute: GuideRoute,
   HealthRoute: HealthRoute,
   HiddenTruthRoute: HiddenTruthRoute,
