@@ -26,3 +26,15 @@ verify_jwt = false
 
 [functions.gene-key-reading]
 verify_jwt = false
+
+[functions.generate-transmission-text]
+verify_jwt = false
+
+[functions.generate-transmission-audio]
+verify_jwt = true
+
+[functions.save-transmission]
+verify_jwt = true
+
+[functions.sign-transmission]
+verify_jwt = true
