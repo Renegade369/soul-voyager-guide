@@ -248,10 +248,6 @@ function HigherVibesPage() {
           </p>
         </div>
 
-        <blockquote className="mx-auto mt-12 max-w-2xl border-l-2 pl-6 text-left font-serif text-xl italic leading-relaxed md:text-2xl" style={{ borderColor: C.gold, color: C.gold, fontFamily: fonts.display }}>
-          "People don't need to be saved or rescued. People need knowledge of their own power and how to access it."
-          <footer className="mt-3 text-[11px] not-italic uppercase tracking-[0.22em]" style={{ color: C.muted }}>— Kim Alfano, Higher Vibes</footer>
-        </blockquote>
       </section>
 
       <GoldRule />
