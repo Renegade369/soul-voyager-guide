@@ -27,6 +27,9 @@ verify_jwt = false
 [functions.gene-key-reading]
 verify_jwt = false
 
+[functions.horoscope-generate]
+verify_jwt = false
+
 [functions.generate-transmission-text]
 verify_jwt = false
 
