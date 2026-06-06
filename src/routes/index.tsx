@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Sparkles, Headphones, Compass, Droplet, Eye, Orbit, HelpCircle, ArrowRight, BookOpen } from "lucide-react";
+import { Sparkles, Headphones, Compass, Droplet, Eye, Orbit, HelpCircle, ArrowRight, BookOpen, Star } from "lucide-react";
 import HERO_BG from "@/assets/home-hero-mystical.png";
 const PLANT_BG =
   "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1778962225130.png";
@@ -54,6 +54,7 @@ const sections: Section[] = [
   { title: "Energy Reader", desc: "See the light field that surrounds you", to: "/aura-reader", icon: Eye },
   { title: "Birth Chart", desc: "The sky at your first breath tells your whole story", to: "/readings", hash: "birth-chart", icon: Orbit },
   { title: "Soul Quiz", desc: "Free — discover your soul type in 5 minutes", to: "/readings", hash: "soul-quiz", icon: HelpCircle },
+  { title: "Daily Horoscope", desc: "A free oracle preview every day — your sign, your frequency", to: "/horoscope", icon: Star },
   { title: "The Codex", desc: "Sacred teachings and ancient knowledge restored", to: "/teachings", icon: BookOpen },
 ];
 
