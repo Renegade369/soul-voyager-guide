@@ -326,8 +326,6 @@ function HoroscopePage() {
                 </div>
               </div>
             )}
-
-            <KimAlfanoCard />
           </div>
         )}
 
