@@ -48,13 +48,13 @@ type Section = {
 
 const sections: Section[] = [
   { title: "Readings", desc: "Discover your soul blueprint through Soul True readers", to: "/readings", icon: Sparkles },
+  { title: "Daily Horoscope", desc: "A free oracle preview every day — your sign, your frequency", to: "/horoscope", icon: Star },
   { title: "Meditations", desc: "Eyes-closed audio journeys for the awakening mind", to: "/meditations", icon: Headphones },
   { title: "The Challenge", desc: "A structured path to sovereign living", to: "/the-sacred-journey", icon: Compass },
   { title: "Blood Type", desc: "Your biology holds ancient wisdom", to: "/readings", hash: "blood-type", icon: Droplet },
   { title: "Energy Reader", desc: "See the light field that surrounds you", to: "/aura-reader", icon: Eye },
   { title: "Birth Chart", desc: "The sky at your first breath tells your whole story", to: "/readings", hash: "birth-chart", icon: Orbit },
   { title: "Soul Quiz", desc: "Free — discover your soul type in 5 minutes", to: "/readings", hash: "soul-quiz", icon: HelpCircle },
-  { title: "Daily Horoscope", desc: "A free oracle preview every day — your sign, your frequency", to: "/horoscope", icon: Star },
   { title: "The Codex", desc: "Sacred teachings and ancient knowledge restored", to: "/teachings", icon: BookOpen },
 ];
 

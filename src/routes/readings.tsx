@@ -19,9 +19,9 @@ export const Route = createFileRoute("/readings")({
 type Card = { id: string; to: string; icon: React.ComponentType<{ size?: number }>; title: string; desc: string; cta: string; price: "Free" | "$0.99" | "$9.99" | "$9.36"; };
 
 const cards: Card[] = [
+  { id: "horoscope", to: "/horoscope", icon: Star, title: "Daily Horoscope", desc: "A free oracle preview every day — theme, energy, shadow, and a soul activation. Go deeper for the full transmission.", cta: "Read My Day", price: "$0.99" },
   { id: "gene-keys", to: "/gene-keys", icon: KeyRound, title: "Gene Key Reading", desc: "Discover the 6 sacred keys encoded in your birth — Life's Work, Evolution, Radiance, Purpose, Pearl, Venus.", cta: "Reveal My Keys", price: "$9.36" },
   { id: "soul-quiz", to: "/soul-quiz", icon: HelpCircle, title: "Soul Quiz", desc: "Discover your soul type in 5 minutes. No payment, no account.", cta: "Take The Quiz", price: "Free" },
-  { id: "horoscope", to: "/horoscope", icon: Star, title: "Daily Horoscope", desc: "A free oracle preview every day — theme, energy, shadow, and a soul activation. Go deeper for the full transmission.", cta: "Read My Day", price: "$0.99" },
   { id: "aura", to: "/aura-reader", icon: Eye, title: "Aura Reader", desc: "Map your 3-layer energy field — emotional core, social presence, spiritual depth — plus full chakra alignment.", cta: "Read My Aura", price: "$9.99" },
   { id: "blood-type", to: "/blood-type", icon: Droplet, title: "Blood Type", desc: "Unlock your ancestral blueprint — nourishment, immune signature, stress response, emotional architecture.", cta: "Discover My Type", price: "$9.99" },
   { id: "birth-chart", to: "/birth-chart", icon: Orbit, title: "Birth Chart", desc: "Your soul's blueprint at first breath — Sun, Moon, Rising, inner planets, karmic themes.", cta: "Decode My Chart", price: "$9.99" },
