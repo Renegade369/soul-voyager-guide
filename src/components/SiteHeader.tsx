@@ -17,6 +17,7 @@ const wisdomLinks = [
 ] as const;
 
 const readingsLinks = [
+  { to: "/horoscope", label: "Daily Horoscope" },
   { to: "/aura-reader", label: "Aura Reader" },
   { to: "/blood-type", label: "Blood Type" },
   { to: "/soul-quiz", label: "Soul Quiz" },
@@ -24,7 +25,6 @@ const readingsLinks = [
   { to: "/numerology", label: "Numerology" },
   { to: "/astrology", label: "Astrology" },
   { to: "/gene-keys", label: "Gene Keys" },
-  { to: "/horoscope", label: "Daily Horoscope" },
 ] as const;
 
 const primary = [
