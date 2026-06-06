@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { PaywallModal } from "@/components/PaywallModal";
-import { KimAlfanoCard } from "@/components/KimAlfanoCard";
+
 import { isUnlocked } from "@/lib/unlocks";
 
 export const Route = createFileRoute("/horoscope")({
@@ -326,8 +326,6 @@ function HoroscopePage() {
                 </div>
               </div>
             )}
-
-            <KimAlfanoCard />
           </div>
         )}
 
