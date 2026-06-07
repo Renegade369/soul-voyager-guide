@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useServerFn } from "@tanstack/react-start";
 import { sendEmail } from "@/lib/email.functions";
 import { soulQuizEmail } from "@/lib/emailTemplates";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 /* ───── soul types ───── */
 const SOUL_TYPES = ["Starseed","Earth Angel","Lightworker","Indigo Child","Crystal Being","Rainbow Warrior","Ancient Soul"] as const;
@@ -226,6 +227,7 @@ export function SoulQuizTab() {
   const { user } = useAuth();
   const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<"intro"|"quiz"|"result">("intro");
+  useScrollTopOnChange([phase]);
   const [qi, setQi] = useState(0);
   const [answers, setAnswers] = useState<number[][]>([]);
   const [selected, setSelected] = useState<Set<number>>(new Set());
