@@ -444,8 +444,8 @@ export default function EnergyReaderTab() {
   });
   const [nameInput, setNameInput] = useState("");
   const [activeReader, setActiveReader] = useState<ReaderType>("aura");
-  useScrollTopOnChange([activeReader, results]);
   const [results, setResults] = useState<Results>({ aura: null, iris: null, fingerprint: null });
+  useScrollTopOnChange([activeReader, results]);
   const [loading, setLoading] = useState<ReaderType | null>(null);
   const [err, setErr] = useState("");
 

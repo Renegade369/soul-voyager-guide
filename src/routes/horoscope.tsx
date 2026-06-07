@@ -62,8 +62,8 @@ function HoroscopePage() {
 
   const [selectedSign, setSelectedSign] = useState<Sign | null>(null);
   const [freeReading, setFreeReading] = useState<FreeReading | null>(null);
-  useScrollTopOnChange([freeReading, deepReading]);
   const [deepReading, setDeepReading] = useState<DeepReading | null>(null);
+  useScrollTopOnChange([freeReading, deepReading]);
   const [loading, setLoading] = useState(false);
   const [loadingDeep, setLoadingDeep] = useState(false);
   const [error, setError] = useState<string | null>(null);
