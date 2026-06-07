@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Eye, Droplet, HelpCircle, Orbit, Hash, Star, KeyRound } from "lucide-react";
+import { ArrowRight, Sparkles, Eye, Droplet, HelpCircle, Orbit, Hash, Star, KeyRound, X } from "lucide-react";
+import { StripeEmbeddedCheckout } from "@/components/StripeEmbeddedCheckout";
+import { BUNDLE_PRICE_ID } from "@/lib/unlocks";
 
 const C = { bg: "#0A0A0A", gold: "#C9A84C", text: "#F5F0E8", overlay: "#1A1209", border: "rgba(201,168,76,0.22)" };
 const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-serif' };
@@ -30,8 +33,36 @@ const cards: Card[] = [
 ];
 
 function ReadingsPage() {
+  const [showBundleCheckout, setShowBundleCheckout] = useState(false);
   return (
     <div style={{ backgroundColor: C.bg, color: C.text, fontFamily: fonts.body }}>
+      {showBundleCheckout && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          style={{ background: "rgba(0,0,0,0.85)" }}
+          onClick={() => setShowBundleCheckout(false)}
+        >
+          <div
+            className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-none border p-8"
+            style={{ background: C.bg, borderColor: `${C.gold}66`, color: C.text }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowBundleCheckout(false)}
+              aria-label="Close"
+              className="absolute right-4 top-4"
+              style={{ color: "rgba(245,240,232,0.4)" }}
+            >
+              <X size={18} />
+            </button>
+            <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Secure Checkout</p>
+            <h2 className="mt-3 text-2xl font-light italic" style={{ fontFamily: fonts.display }}>All Readers Bundle — $29.99</h2>
+            <div className="mt-5">
+              <StripeEmbeddedCheckout priceId={BUNDLE_PRICE_ID} />
+            </div>
+          </div>
+        </div>
+      )}
       <section className="mx-auto max-w-4xl px-6 py-20 text-center">
         <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Readings</p>
         <h1 className="mt-4 text-5xl font-light leading-tight md:text-6xl" style={{ fontFamily: fonts.display }}>
@@ -95,15 +126,15 @@ function ReadingsPage() {
               Birth Chart + Aura + Numerology + Blood Type. Your complete soul map.
             </p>
           </div>
-          <button disabled
-            className="mt-5 cursor-not-allowed rounded-none px-7 py-3 text-[11px] font-bold uppercase tracking-[0.22em] opacity-70 md:mt-0"
-            style={{ background: C.gold, color: C.bg }}
-            title="Payments coming soon">
+          <button
+            onClick={() => setShowBundleCheckout(true)}
+            className="mt-5 rounded-none px-7 py-3 text-[11px] font-bold uppercase tracking-[0.22em] transition hover:shadow-[0_0_24px_rgba(232,130,26,0.5)] md:mt-0"
+            style={{ background: C.gold, color: C.bg }}>
             Get the Bundle →
           </button>
         </div>
         <p className="mt-2 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: "rgba(245,240,232,0.45)" }}>
-          Payments coming soon. Have an access code? Enter it on any reader.
+          Have an access code? Enter it on any reader.
         </p>
       </section>
 

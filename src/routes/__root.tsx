@@ -11,6 +11,7 @@ import { CursorGlow } from "../components/aesthetic/CursorGlow";
 import { AmbientAudio } from "../components/aesthetic/AmbientAudio";
 import { PageTransition } from "../components/aesthetic/PageTransition";
 import { scrollToTopSmooth } from "../hooks/useScrollTop";
+import { PaymentTestModeBanner } from "../components/PaymentTestModeBanner";
 
 function NotFoundComponent() {
   return (
@@ -125,6 +126,7 @@ function RootComponent() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <PaymentTestModeBanner />
       {!hideShell && <SiteHeader />}
       <main className="flex-1">
         <PageTransition>
