@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Orbit, ArrowRight, Star, RotateCcw, Mail, Download } from "lucide-react";
 import { C, fonts, Emblem, Eyebrow, HeroTitle, GoldText, GoldRule } from "./GuideShared";
 import { calculateBirthChart, COUNTRIES, TIMEZONE_OFFSETS, getApproxCoords, type BirthChart } from "@/lib/astrology";
@@ -494,15 +494,32 @@ export function BirthChartTab() {
                   </div>
                 );
               }
-              // Regular paragraph — render bold/italic inline
+              // Regular paragraph — render bold/italic inline using safe React nodes
+              const renderInline = (text: string): React.ReactNode[] => {
+                const nodes: React.ReactNode[] = [];
+                // Tokenize **bold** and *italic*; everything else is plain text
+                const regex = /\*\*(.+?)\*\*|\*(.+?)\*/g;
+                let lastIndex = 0;
+                let m: RegExpExecArray | null;
+                let key = 0;
+                while ((m = regex.exec(text)) !== null) {
+                  if (m.index > lastIndex) nodes.push(text.slice(lastIndex, m.index));
+                  if (m[1] !== undefined) {
+                    nodes.push(
+                      <strong key={`b${key++}`} style={{ color: C.gold, fontWeight: 500 }}>{m[1]}</strong>
+                    );
+                  } else if (m[2] !== undefined) {
+                    nodes.push(<em key={`i${key++}`}>{m[2]}</em>);
+                  }
+                  lastIndex = m.index + m[0].length;
+                }
+                if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+                return nodes;
+              };
               return (
-                <p key={i} className="text-sm leading-relaxed" style={{ fontWeight: 300 }}
-                  dangerouslySetInnerHTML={{
-                    __html: trimmed
-                      .replace(/\*\*(.*?)\*\*/g, `<strong style="color:${C.gold};font-weight:500">$1</strong>`)
-                      .replace(/\*(.*?)\*/g, `<em>$1</em>`),
-                  }}
-                />
+                <p key={i} className="text-sm leading-relaxed" style={{ fontWeight: 300 }}>
+                  {renderInline(trimmed)}
+                </p>
               );
             })}
             {!streamDone && (

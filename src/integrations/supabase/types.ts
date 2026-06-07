@@ -786,6 +786,10 @@ export type Database = {
         }
         Returns: boolean
       }
+      increment_shared_profile_views: {
+        Args: { _id: string }
+        Returns: undefined
+      }
       redeem_promo_code: {
         Args: { _code: string; _email?: string; _reader: string }
         Returns: Json
