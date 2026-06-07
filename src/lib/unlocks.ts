@@ -28,16 +28,18 @@ export function unlock(slugs: ReaderSlug[] | "all") {
 }
 
 export const READER_PRICES = {
-  aura: 9.99,
-  "blood-type": 9.99,
-  "birth-chart": 9.99,
-  numerology: 9.99,
-  astrology: 9.99,
-  "gene-keys": 9.36,
+  aura: 9.63,
+  "blood-type": 9.63,
+  "birth-chart": 9.63,
+  numerology: 9.63,
+  astrology: 9.63,
+  "gene-keys": 9.63,
   horoscope: 0.99,
 } as const;
 
-export const BUNDLE_PRICE = 29.99;
+export const BUNDLE_PRICE = 96.33;
+export const BUNDLE_3_PRICE = 26.39;
+export const MEMBERSHIP_MONTHLY = 36.99;
 
 // Stripe price lookup_keys (created via batch_create_product).
 export const PRICE_ID_FOR_SLUG: Record<ReaderSlug, string> = {

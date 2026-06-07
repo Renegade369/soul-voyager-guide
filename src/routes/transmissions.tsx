@@ -352,7 +352,7 @@ function Paywall({ onUnlocked, script }: { onUnlocked: () => void; script: strin
       <div className="mt-10 grid gap-4 md:grid-cols-2">
         <PaywallCard title="Single Transmission" price="$3.69" desc="Receive this transmission now."
           highlight={false} />
-        <PaywallCard title="3-Pack" price="$9.36" desc="Receive 3 transmissions — use anytime."
+        <PaywallCard title="3-Pack" price="$26.39" desc="Receive 3 transmissions — use anytime."
           highlight={true} />
       </div>
 

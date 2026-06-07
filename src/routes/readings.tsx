@@ -11,7 +11,7 @@ export const Route = createFileRoute("/readings")({
   head: () => ({
     meta: [
       { title: "Readings — Soul True" },
-      { name: "description", content: "Six readers. One free Soul Quiz, five paid readings. Or unlock the full bundle for $29.99." },
+      { name: "description", content: "Six readers. One free Soul Quiz, five paid readings. Or unlock the full bundle for $96.33." },
       { property: "og:title", content: "Readings — Soul True" },
       { property: "og:description", content: "Six readers. One free Soul Quiz, five paid." },
     ],
@@ -19,17 +19,17 @@ export const Route = createFileRoute("/readings")({
   component: ReadingsPage,
 });
 
-type Card = { id: string; to: string; icon: React.ComponentType<{ size?: number }>; title: string; desc: string; cta: string; price: "Free" | "$0.99" | "$9.99" | "$9.36"; };
+type Card = { id: string; to: string; icon: React.ComponentType<{ size?: number }>; title: string; desc: string; cta: string; price: "Free" | "$0.99" | "$9.63"; };
 
 const cards: Card[] = [
   { id: "horoscope", to: "/horoscope", icon: Star, title: "Daily Horoscope", desc: "A free oracle preview every day — theme, energy, shadow, and a soul activation. Go deeper for the full transmission.", cta: "Read My Day", price: "$0.99" },
-  { id: "gene-keys", to: "/gene-keys", icon: KeyRound, title: "Gene Key Reading", desc: "Discover the 6 sacred keys encoded in your birth — Life's Work, Evolution, Radiance, Purpose, Pearl, Venus.", cta: "Reveal My Keys", price: "$9.36" },
+  { id: "gene-keys", to: "/gene-keys", icon: KeyRound, title: "Gene Key Reading", desc: "Discover the 6 sacred keys encoded in your birth — Life's Work, Evolution, Radiance, Purpose, Pearl, Venus.", cta: "Reveal My Keys", price: "$9.63" },
   { id: "soul-quiz", to: "/soul-quiz", icon: HelpCircle, title: "Soul Quiz", desc: "Discover your soul type in 5 minutes. No payment, no account.", cta: "Take The Quiz", price: "Free" },
-  { id: "aura", to: "/aura-reader", icon: Eye, title: "Aura Reader", desc: "Map your 3-layer energy field — emotional core, social presence, spiritual depth — plus full chakra alignment.", cta: "Read My Aura", price: "$9.99" },
-  { id: "blood-type", to: "/blood-type", icon: Droplet, title: "Blood Type", desc: "Unlock your ancestral blueprint — nourishment, immune signature, stress response, emotional architecture.", cta: "Discover My Type", price: "$9.99" },
-  { id: "birth-chart", to: "/birth-chart", icon: Orbit, title: "Birth Chart", desc: "Your soul's blueprint at first breath — Sun, Moon, Rising, inner planets, karmic themes.", cta: "Decode My Chart", price: "$9.99" },
-  { id: "numerology", to: "/numerology", icon: Hash, title: "Numerology", desc: "The frequency encoded in your name and birth date — Life Path, Expression, Soul Urge, Personal Year.", cta: "Calculate My Numbers", price: "$9.99" },
-  { id: "astrology", to: "/astrology", icon: Star, title: "Astrology", desc: "A precision energetic forecast from your natal chart against the current sky.", cta: "Read The Sky", price: "$9.99" },
+  { id: "aura", to: "/aura-reader", icon: Eye, title: "Aura Reader", desc: "Map your 3-layer energy field — emotional core, social presence, spiritual depth — plus full chakra alignment.", cta: "Read My Aura", price: "$9.63" },
+  { id: "blood-type", to: "/blood-type", icon: Droplet, title: "Blood Type", desc: "Unlock your ancestral blueprint — nourishment, immune signature, stress response, emotional architecture.", cta: "Discover My Type", price: "$9.63" },
+  { id: "birth-chart", to: "/birth-chart", icon: Orbit, title: "Birth Chart", desc: "Your soul's blueprint at first breath — Sun, Moon, Rising, inner planets, karmic themes.", cta: "Decode My Chart", price: "$9.63" },
+  { id: "numerology", to: "/numerology", icon: Hash, title: "Numerology", desc: "The frequency encoded in your name and birth date — Life Path, Expression, Soul Urge, Personal Year.", cta: "Calculate My Numbers", price: "$9.63" },
+  { id: "astrology", to: "/astrology", icon: Star, title: "Astrology", desc: "A precision energetic forecast from your natal chart against the current sky.", cta: "Read The Sky", price: "$9.63" },
 ];
 
 function ReadingsPage() {
@@ -56,7 +56,7 @@ function ReadingsPage() {
               <X size={18} />
             </button>
             <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Secure Checkout</p>
-            <h2 className="mt-3 text-2xl font-light italic" style={{ fontFamily: fonts.display }}>All Readers Bundle — $29.99</h2>
+            <h2 className="mt-3 text-2xl font-light italic" style={{ fontFamily: fonts.display }}>All Readers Bundle — $96.33</h2>
             <div className="mt-5">
               <StripeEmbeddedCheckout priceId={BUNDLE_PRICE_ID} />
             </div>
@@ -118,7 +118,7 @@ function ReadingsPage() {
         <div className="rounded-none border p-7 text-center md:flex md:items-center md:justify-between md:text-left"
           style={{ borderColor: C.gold, background: "linear-gradient(135deg, rgba(201,168,76,0.08), rgba(232,130,26,0.05))" }}>
           <div>
-            <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>The Bundle · $29.99</p>
+            <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>The Bundle · $96.33</p>
             <h2 className="mt-2 text-3xl" style={{ fontFamily: fonts.display, color: C.text }}>
               Unlock <em className="italic" style={{ color: C.gold }}>Everything.</em>
             </h2>

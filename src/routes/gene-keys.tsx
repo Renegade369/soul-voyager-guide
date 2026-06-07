@@ -98,7 +98,7 @@ function GeneKeysPage() {
       <div className="mx-auto max-w-2xl">
         <div className="mb-8 flex items-center justify-between">
           <Link to="/readings" className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.dim }}>← All Readings</Link>
-          <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Gene Keys · $9.36</span>
+          <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Gene Keys · $9.63</span>
         </div>
 
         <AnimatePresence mode="wait">
