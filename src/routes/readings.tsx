@@ -19,7 +19,7 @@ export const Route = createFileRoute("/readings")({
   component: ReadingsPage,
 });
 
-type Card = { id: string; to: string; icon: React.ComponentType<{ size?: number }>; title: string; desc: string; cta: string; price: "Free" | "$0.99" | "$9.63" | "$9.63"; };
+type Card = { id: string; to: string; icon: React.ComponentType<{ size?: number }>; title: string; desc: string; cta: string; price: "Free" | "$0.99" | "$9.63"; };
 
 const cards: Card[] = [
   { id: "horoscope", to: "/horoscope", icon: Star, title: "Daily Horoscope", desc: "A free oracle preview every day — theme, energy, shadow, and a soul activation. Go deeper for the full transmission.", cta: "Read My Day", price: "$0.99" },
