@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Orbit, ArrowRight, Star, RotateCcw, Mail, Download } from "lucide-react";
 import { C, fonts, Emblem, Eyebrow, HeroTitle, GoldText, GoldRule } from "./GuideShared";
 import { calculateBirthChart, COUNTRIES, TIMEZONE_OFFSETS, getApproxCoords, type BirthChart } from "@/lib/astrology";
