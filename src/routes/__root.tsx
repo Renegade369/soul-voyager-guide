@@ -88,11 +88,11 @@ function RootComponent() {
   const appRoutes = ["/guide", "/dashboard", "/admin", "/welcome"];
   const hideShell = appRoutes.some(r => location.pathname === r || location.pathname.startsWith(r + "/"));
 
-  // Global scroll-to-top on every route change
+  // Global smooth scroll-to-top on every route change
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (location.hash) return; // allow in-page anchor scroll
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    scrollToTopSmooth();
   }, [location.pathname]);
 
   // Register service worker (only in production, never in iframes/preview)
