@@ -10,6 +10,7 @@ import { PwaInstallPrompt } from "../components/PwaInstallPrompt";
 import { CursorGlow } from "../components/aesthetic/CursorGlow";
 import { AmbientAudio } from "../components/aesthetic/AmbientAudio";
 import { PageTransition } from "../components/aesthetic/PageTransition";
+import { scrollToTopSmooth } from "../hooks/useScrollTop";
 
 function NotFoundComponent() {
   return (
