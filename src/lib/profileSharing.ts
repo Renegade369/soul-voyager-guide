@@ -53,10 +53,9 @@ export async function fetchSharedProfile(id: string): Promise<SoulProfile | null
     .eq("id", id)
     .maybeSingle();
   if (error || !data) return null;
-  // Best-effort view increment
+  // Best-effort view increment via security-definer RPC (only mutates view_count)
   try {
-    const vc = ((data.view_count as number) ?? 0) + 1;
-    await supabase.from("shared_profiles").update({ view_count: vc }).eq("id", id);
+    await supabase.rpc("increment_shared_profile_views", { _id: id });
   } catch { /* ignore */ }
   return data.profile_data as unknown as SoulProfile;
 }
