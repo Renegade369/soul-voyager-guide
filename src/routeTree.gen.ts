@@ -64,6 +64,8 @@ import { Route as WisdomOriginsRouteImport } from './routes/wisdom_.origins'
 import { Route as WisdomMatrixOriginsRouteImport } from './routes/wisdom_.matrix-origins'
 import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
+import { Route as CheckoutReturnRouteImport } from './routes/checkout.return'
+import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 
 const WisdomRoute = WisdomRouteImport.update({
   id: '/wisdom',
@@ -342,6 +344,17 @@ const ProductHandleRoute = ProductHandleRouteImport.update({
   path: '/product/$handle',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutReturnRoute = CheckoutReturnRouteImport.update({
+  id: '/checkout/return',
+  path: '/checkout/return',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicPaymentsWebhookRoute =
+  ApiPublicPaymentsWebhookRouteImport.update({
+    id: '/api/public/payments/webhook',
+    path: '/api/public/payments/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -391,6 +404,7 @@ export interface FileRoutesByFullPath {
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
+  '/checkout/return': typeof CheckoutReturnRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
@@ -399,6 +413,7 @@ export interface FileRoutesByFullPath {
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -448,6 +463,7 @@ export interface FileRoutesByTo {
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
+  '/checkout/return': typeof CheckoutReturnRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
@@ -456,6 +472,7 @@ export interface FileRoutesByTo {
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -506,6 +523,7 @@ export interface FileRoutesById {
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
+  '/checkout/return': typeof CheckoutReturnRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
   '/wisdom_/matrix-origins': typeof WisdomMatrixOriginsRoute
@@ -514,6 +532,7 @@ export interface FileRoutesById {
   '/wisdom_/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom_/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom_/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -565,6 +584,7 @@ export interface FileRouteTypes {
     | '/visit'
     | '/welcome'
     | '/wisdom'
+    | '/checkout/return'
     | '/product/$handle'
     | '/profile/$id'
     | '/wisdom/matrix-origins'
@@ -573,6 +593,7 @@ export interface FileRouteTypes {
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
+    | '/api/public/payments/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -622,6 +643,7 @@ export interface FileRouteTypes {
     | '/visit'
     | '/welcome'
     | '/wisdom'
+    | '/checkout/return'
     | '/product/$handle'
     | '/profile/$id'
     | '/wisdom/matrix-origins'
@@ -630,6 +652,7 @@ export interface FileRouteTypes {
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
+    | '/api/public/payments/webhook'
   id:
     | '__root__'
     | '/'
@@ -679,6 +702,7 @@ export interface FileRouteTypes {
     | '/visit'
     | '/welcome'
     | '/wisdom'
+    | '/checkout/return'
     | '/product/$handle'
     | '/profile/$id'
     | '/wisdom_/matrix-origins'
@@ -687,6 +711,7 @@ export interface FileRouteTypes {
     | '/wisdom_/sacred-plants'
     | '/wisdom_/suppressed-sacred-texts'
     | '/wisdom_/the-true-story-of-jeshua'
+    | '/api/public/payments/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -737,6 +762,7 @@ export interface RootRouteChildren {
   VisitRoute: typeof VisitRoute
   WelcomeRoute: typeof WelcomeRoute
   WisdomRoute: typeof WisdomRoute
+  CheckoutReturnRoute: typeof CheckoutReturnRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ProfileIdRoute: typeof ProfileIdRoute
   WisdomMatrixOriginsRoute: typeof WisdomMatrixOriginsRoute
@@ -745,6 +771,7 @@ export interface RootRouteChildren {
   WisdomSacredPlantsRoute: typeof WisdomSacredPlantsRoute
   WisdomSuppressedSacredTextsRoute: typeof WisdomSuppressedSacredTextsRoute
   WisdomTheTrueStoryOfJeshuaRoute: typeof WisdomTheTrueStoryOfJeshuaRoute
+  ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1134,6 +1161,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductHandleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkout/return': {
+      id: '/checkout/return'
+      path: '/checkout/return'
+      fullPath: '/checkout/return'
+      preLoaderRoute: typeof CheckoutReturnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/payments/webhook': {
+      id: '/api/public/payments/webhook'
+      path: '/api/public/payments/webhook'
+      fullPath: '/api/public/payments/webhook'
+      preLoaderRoute: typeof ApiPublicPaymentsWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1185,6 +1226,7 @@ const rootRouteChildren: RootRouteChildren = {
   VisitRoute: VisitRoute,
   WelcomeRoute: WelcomeRoute,
   WisdomRoute: WisdomRoute,
+  CheckoutReturnRoute: CheckoutReturnRoute,
   ProductHandleRoute: ProductHandleRoute,
   ProfileIdRoute: ProfileIdRoute,
   WisdomMatrixOriginsRoute: WisdomMatrixOriginsRoute,
@@ -1193,16 +1235,8 @@ const rootRouteChildren: RootRouteChildren = {
   WisdomSacredPlantsRoute: WisdomSacredPlantsRoute,
   WisdomSuppressedSacredTextsRoute: WisdomSuppressedSacredTextsRoute,
   WisdomTheTrueStoryOfJeshuaRoute: WisdomTheTrueStoryOfJeshuaRoute,
+  ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

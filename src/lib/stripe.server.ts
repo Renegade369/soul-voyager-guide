@@ -39,7 +39,7 @@ export function createStripeClient(env: StripeEnv): Stripe {
     port: 443,
     httpClient: Stripe.createFetchHttpClient(gatewayFetch(stripeKey, lovableKey)),
     // Pin a recent API version
-    apiVersion: "2024-12-18.acacia" as Stripe.LatestApiVersion,
+    apiVersion: "2024-12-18.acacia" as Stripe.StripeConfig["apiVersion"],
   });
 }
 
