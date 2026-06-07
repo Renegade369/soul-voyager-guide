@@ -33,8 +33,36 @@ const cards: Card[] = [
 ];
 
 function ReadingsPage() {
+  const [showBundleCheckout, setShowBundleCheckout] = useState(false);
   return (
     <div style={{ backgroundColor: C.bg, color: C.text, fontFamily: fonts.body }}>
+      {showBundleCheckout && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          style={{ background: "rgba(0,0,0,0.85)" }}
+          onClick={() => setShowBundleCheckout(false)}
+        >
+          <div
+            className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-none border p-8"
+            style={{ background: C.bg, borderColor: `${C.gold}66`, color: C.text }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowBundleCheckout(false)}
+              aria-label="Close"
+              className="absolute right-4 top-4"
+              style={{ color: "rgba(245,240,232,0.4)" }}
+            >
+              <X size={18} />
+            </button>
+            <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Secure Checkout</p>
+            <h2 className="mt-3 text-2xl font-light italic" style={{ fontFamily: fonts.display }}>All Readers Bundle — $29.99</h2>
+            <div className="mt-5">
+              <StripeEmbeddedCheckout priceId={BUNDLE_PRICE_ID} />
+            </div>
+          </div>
+        </div>
+      )}
       <section className="mx-auto max-w-4xl px-6 py-20 text-center">
         <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>Readings</p>
         <h1 className="mt-4 text-5xl font-light leading-tight md:text-6xl" style={{ fontFamily: fonts.display }}>
