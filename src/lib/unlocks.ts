@@ -39,6 +39,18 @@ export const READER_PRICES = {
 
 export const BUNDLE_PRICE = 29.99;
 
+// Stripe price lookup_keys (created via batch_create_product).
+export const PRICE_ID_FOR_SLUG: Record<ReaderSlug, string> = {
+  aura: "aura_onetime",
+  "blood-type": "blood_type_onetime",
+  "birth-chart": "birth_chart_onetime",
+  numerology: "numerology_onetime",
+  astrology: "astrology_onetime",
+  "gene-keys": "gene_keys_onetime",
+  horoscope: "horoscope_onetime",
+};
+export const BUNDLE_PRICE_ID = "bundle_onetime";
+
 export const PAYWALL_COPY: Record<ReaderSlug, string> = {
   aura: "Your aura is a living record — every emotion you've carried, every wound you haven't released, every gift waiting to emerge. The full reading maps all three layers of your energy field: your emotional core, your social presence, and your spiritual depth. It tells you what your body is holding that your mind hasn't fully processed yet. This is not metaphor. This is your energy, mapped precisely.",
   "blood-type": "Your blood type is one of the oldest biological codes you carry. The full reading connects your specific blood type to your ancestral nutrition blueprint, your immune tendencies, your stress response, your optimal movement style, and your emotional architecture. Ancient traditions built entire wisdom systems around this knowledge. Most people never access it.",
