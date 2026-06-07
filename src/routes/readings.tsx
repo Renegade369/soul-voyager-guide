@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Eye, Droplet, HelpCircle, Orbit, Hash, Star, KeyRound } from "lucide-react";
+import { ArrowRight, Sparkles, Eye, Droplet, HelpCircle, Orbit, Hash, Star, KeyRound, X } from "lucide-react";
+import { StripeEmbeddedCheckout } from "@/components/StripeEmbeddedCheckout";
+import { BUNDLE_PRICE_ID } from "@/lib/unlocks";
 
 const C = { bg: "#0A0A0A", gold: "#C9A84C", text: "#F5F0E8", overlay: "#1A1209", border: "rgba(201,168,76,0.22)" };
 const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-serif' };
@@ -95,15 +98,15 @@ function ReadingsPage() {
               Birth Chart + Aura + Numerology + Blood Type. Your complete soul map.
             </p>
           </div>
-          <button disabled
-            className="mt-5 cursor-not-allowed rounded-none px-7 py-3 text-[11px] font-bold uppercase tracking-[0.22em] opacity-70 md:mt-0"
-            style={{ background: C.gold, color: C.bg }}
-            title="Payments coming soon">
+          <button
+            onClick={() => setShowBundleCheckout(true)}
+            className="mt-5 rounded-none px-7 py-3 text-[11px] font-bold uppercase tracking-[0.22em] transition hover:shadow-[0_0_24px_rgba(232,130,26,0.5)] md:mt-0"
+            style={{ background: C.gold, color: C.bg }}>
             Get the Bundle →
           </button>
         </div>
         <p className="mt-2 text-center text-[10px] uppercase tracking-[0.25em]" style={{ color: "rgba(245,240,232,0.45)" }}>
-          Payments coming soon. Have an access code? Enter it on any reader.
+          Have an access code? Enter it on any reader.
         </p>
       </section>
 
