@@ -6,6 +6,7 @@ import { PaywallModal } from "@/components/PaywallModal";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
 import { PlantImageBand, PLANT_IMAGES } from "@/components/PlantImageBand";
 import { isUnlocked } from "@/lib/unlocks";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 export const Route = createFileRoute("/birth-chart")({
   head: () => ({
@@ -44,6 +45,7 @@ function BirthChartPage() {
   const [email, setEmail] = useState("");
   const [optIn, setOptIn] = useState(true);
   const [step, setStep] = useState<"intake" | "loading" | "result" | "error">("intake");
+  useScrollTopOnChange([step]);
   const [reading, setReading] = useState<Reading | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [paywallOpen, setPaywallOpen] = useState(false);

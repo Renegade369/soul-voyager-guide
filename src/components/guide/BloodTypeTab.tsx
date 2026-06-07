@@ -7,6 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useServerFn } from "@tanstack/react-start";
 import { sendEmail } from "@/lib/email.functions";
 import { bloodTypeEmail as bloodTypeEmailTemplate } from "@/lib/emailTemplates";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 /* ── Phases ── */
 type Phase = "input" | "loading" | "result";
@@ -93,6 +94,7 @@ function TraitBadge({ label }: { label: string }) {
 export function BloodTypeTab() {
   const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<Phase>("input");
+  useScrollTopOnChange([phase]);
   const [bloodType, setBloodType] = useState<string | null>(null);
   const [rhFactor, setRhFactor] = useState<"positive" | "negative" | null>(null);
   const [fullName, setFullName] = useState("");

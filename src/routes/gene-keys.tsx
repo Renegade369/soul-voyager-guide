@@ -6,6 +6,7 @@ import { PaywallModal } from "@/components/PaywallModal";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
 import { isUnlocked } from "@/lib/unlocks";
 import { calculateGeneKeys, GENE_KEY_TITLES, SPHERE_LABELS, type GeneKeySet } from "@/lib/geneKeys";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 export const Route = createFileRoute("/gene-keys")({
   head: () => ({
@@ -32,6 +33,7 @@ const SPHERE_ORDER: SphereKey[] = ["lifeWork", "evolution", "radiance", "purpose
 
 function GeneKeysPage() {
   const [step, setStep] = useState<"intake" | "loading" | "result" | "error">("intake");
+  useScrollTopOnChange([step]);
   const [birthDate, setBirthDate] = useState("");
   const [birthTime, setBirthTime] = useState("");
   const [birthCity, setBirthCity] = useState("");

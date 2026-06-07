@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useServerFn } from "@tanstack/react-start";
 import { sendEmail } from "@/lib/email.functions";
 import { birthChartEmail } from "@/lib/emailTemplates";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 /* ═══════ CONSTANTS ═══════ */
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -107,6 +108,7 @@ function TextInput({ label, value, onChange, placeholder, required, type = "text
 export function BirthChartTab() {
   const sendEmailFn = useServerFn(sendEmail);
   const [phase, setPhase] = useState<"form" | "loading" | "reading">("form");
+  useScrollTopOnChange([phase]);
 
   /* form state */
   const [fullName, setFullName] = useState("");

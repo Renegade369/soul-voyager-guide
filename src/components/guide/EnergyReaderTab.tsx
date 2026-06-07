@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Camera, Eye, Fingerprint, Sparkles, ChevronRight, RotateCcw, Check, Loader2, Upload } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 const C = {
   bg: "#0D0F0E",
@@ -443,6 +444,7 @@ export default function EnergyReaderTab() {
   });
   const [nameInput, setNameInput] = useState("");
   const [activeReader, setActiveReader] = useState<ReaderType>("aura");
+  useScrollTopOnChange([activeReader, results]);
   const [results, setResults] = useState<Results>({ aura: null, iris: null, fingerprint: null });
   const [loading, setLoading] = useState<ReaderType | null>(null);
   const [err, setErr] = useState("");

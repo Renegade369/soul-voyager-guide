@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { PaywallModal } from "@/components/PaywallModal";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
 import { isUnlocked } from "@/lib/unlocks";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 export const Route = createFileRoute("/aura-reader")({
   head: () => ({
@@ -58,6 +59,7 @@ type Reading = {
 
 function AuraReaderPage() {
   const [step, setStep] = useState<"intake" | "email" | "loading" | "result" | "error">("intake");
+  useScrollTopOnChange([step]);
   const [feeling, setFeeling] = useState("");
   const [email, setEmail] = useState("");
   const [optIn, setOptIn] = useState(true);

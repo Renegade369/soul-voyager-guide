@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
 import { PlantImageBand, PLANT_IMAGES } from "@/components/PlantImageBand";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 export const Route = createFileRoute("/soul-quiz")({
   head: () => ({
@@ -126,6 +127,7 @@ function calcResult(answers: number[][]): { winner: SoulType; tied: SoulType[]; 
 
 function SoulQuizPage() {
   const [phase, setPhase] = useState<"intro" | "quiz" | "result">("intro");
+  useScrollTopOnChange([phase]);
   const [qi, setQi] = useState(0);
   const [answers, setAnswers] = useState<number[][]>([]);
   const [selected, setSelected] = useState<Set<number>>(new Set());

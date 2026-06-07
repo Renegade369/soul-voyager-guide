@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { PaywallModal } from "@/components/PaywallModal";
 
 import { isUnlocked } from "@/lib/unlocks";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 export const Route = createFileRoute("/horoscope")({
   head: () => ({
@@ -61,6 +62,7 @@ function HoroscopePage() {
 
   const [selectedSign, setSelectedSign] = useState<Sign | null>(null);
   const [freeReading, setFreeReading] = useState<FreeReading | null>(null);
+  useScrollTopOnChange([freeReading, deepReading]);
   const [deepReading, setDeepReading] = useState<DeepReading | null>(null);
   const [loading, setLoading] = useState(false);
   const [loadingDeep, setLoadingDeep] = useState(false);

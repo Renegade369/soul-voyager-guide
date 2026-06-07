@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { ShareProfileButton } from "@/components/ShareProfileButton";
 import { persistSoulProfile, type SoulProfile as ShareableProfile } from "@/lib/profileSharing";
 import { calculateAll } from "@/lib/numerology";
+import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 export const Route = createFileRoute("/soul-profile")({
   head: () => ({
@@ -44,6 +45,7 @@ type Profile = {
 
 function SoulProfilePage() {
   const [stage, setStage] = useState<"step1" | "step2" | "step3" | "loading" | "result" | "error">("step1");
+  useScrollTopOnChange([stage]);
   const [identity, setIdentity] = useState({
     fullName: "", birthDate: "", birthTime: "", unknownTime: false,
     birthCity: "", birthState: "", birthCountry: "",
