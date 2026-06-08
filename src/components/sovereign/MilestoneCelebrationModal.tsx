@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+
 
 const C = {
   bg: "rgba(10,10,10,0.96)",
@@ -90,14 +90,14 @@ export function MilestoneCelebrationModal({
         </p>
         <div className="mt-10 flex flex-col gap-4 items-center">
           {nextHref && (
-            <Link
-              to={nextHref}
+            <a
+              href={nextHref}
               onClick={onDismiss}
               className="px-8 py-3 text-[11px] font-bold uppercase tracking-[0.22em]"
-              style={{ background: C.gold, color: "#0A0A0A" }}
+              style={{ background: C.gold, color: "#0A0A0A", textDecoration: "none" }}
             >
               {nextLabel ?? "Continue the work"}
-            </Link>
+            </a>
           )}
           <button
             onClick={onDismiss}
