@@ -190,7 +190,7 @@ function ReflectionPage() {
             <div className="space-y-6">
               <div className="p-6" style={{ background: C.card, border: `1px solid rgba(201,168,76,0.25)` }}>
                 <p className="text-base font-light leading-relaxed" style={{ color: C.text }}>
-                  I'm here to support you through the 90-day program. Ask me anything about the modules, the exercises, or the practices. If I can't help, I'll loop William in.
+                  I'm here to support you through the 120-day program. Ask me anything about the modules, the exercises, or the practices. If I can't help, I'll loop William in.
                 </p>
                 <p className="mt-4 italic text-sm" style={{ color: C.gold, fontFamily: fonts.display }}>
                   Let's Go Deeper.
