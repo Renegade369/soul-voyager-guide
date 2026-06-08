@@ -80,6 +80,7 @@ import { Route as SovereignPortalCommunityRouteImport } from './routes/sovereign
 import { Route as SovereignPortalAudioRouteImport } from './routes/sovereign.portal.audio'
 import { Route as SovereignPortalModulesIndexRouteImport } from './routes/sovereign.portal.modules.index'
 import { Route as SovereignPortalModulesSlugRouteImport } from './routes/sovereign.portal.modules.$slug'
+import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 
 const WisdomRoute = WisdomRouteImport.update({
@@ -447,6 +448,12 @@ const SovereignPortalModulesSlugRoute =
     path: '/portal/modules/$slug',
     getParentRoute: () => SovereignRoute,
   } as any)
+const LovableEmailQueueProcessRoute =
+  LovableEmailQueueProcessRouteImport.update({
+    id: '/lovable/email/queue/process',
+    path: '/lovable/email/queue/process',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicPaymentsWebhookRoute =
   ApiPublicPaymentsWebhookRouteImport.update({
     id: '/api/public/payments/webhook',
@@ -525,6 +532,7 @@ export interface FileRoutesByFullPath {
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/sovereign/portal/modules/$slug': typeof SovereignPortalModulesSlugRoute
   '/sovereign/portal/modules/': typeof SovereignPortalModulesIndexRoute
 }
@@ -598,6 +606,7 @@ export interface FileRoutesByTo {
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal': typeof SovereignPortalIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/sovereign/portal/modules/$slug': typeof SovereignPortalModulesSlugRoute
   '/sovereign/portal/modules': typeof SovereignPortalModulesIndexRoute
 }
@@ -673,6 +682,7 @@ export interface FileRoutesById {
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/sovereign/portal/modules/$slug': typeof SovereignPortalModulesSlugRoute
   '/sovereign/portal/modules/': typeof SovereignPortalModulesIndexRoute
 }
@@ -749,6 +759,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal/'
     | '/api/public/payments/webhook'
+    | '/lovable/email/queue/process'
     | '/sovereign/portal/modules/$slug'
     | '/sovereign/portal/modules/'
   fileRoutesByTo: FileRoutesByTo
@@ -822,6 +833,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal'
     | '/api/public/payments/webhook'
+    | '/lovable/email/queue/process'
     | '/sovereign/portal/modules/$slug'
     | '/sovereign/portal/modules'
   id:
@@ -896,6 +908,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal/'
     | '/api/public/payments/webhook'
+    | '/lovable/email/queue/process'
     | '/sovereign/portal/modules/$slug'
     | '/sovereign/portal/modules/'
   fileRoutesById: FileRoutesById
@@ -959,6 +972,7 @@ export interface RootRouteChildren {
   WisdomSuppressedSacredTextsRoute: typeof WisdomSuppressedSacredTextsRoute
   WisdomTheTrueStoryOfJeshuaRoute: typeof WisdomTheTrueStoryOfJeshuaRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
+  LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1460,6 +1474,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignPortalModulesSlugRouteImport
       parentRoute: typeof SovereignRoute
     }
+    '/lovable/email/queue/process': {
+      id: '/lovable/email/queue/process'
+      path: '/lovable/email/queue/process'
+      fullPath: '/lovable/email/queue/process'
+      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/payments/webhook': {
       id: '/api/public/payments/webhook'
       path: '/api/public/payments/webhook'
@@ -1567,6 +1588,7 @@ const rootRouteChildren: RootRouteChildren = {
   WisdomSuppressedSacredTextsRoute: WisdomSuppressedSacredTextsRoute,
   WisdomTheTrueStoryOfJeshuaRoute: WisdomTheTrueStoryOfJeshuaRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
+  LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
