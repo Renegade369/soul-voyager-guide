@@ -26,7 +26,6 @@ import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealityMapRouteImport } from './routes/reality-map'
 import { Route as ReadingsRouteImport } from './routes/readings'
-import { Route as PractitionersRouteImport } from './routes/practitioners'
 import { Route as PillarsRouteImport } from './routes/pillars'
 import { Route as NumerologyRouteImport } from './routes/numerology'
 import { Route as NatureBookingRouteImport } from './routes/nature-booking'
@@ -59,7 +58,9 @@ import { Route as AdminCodesRouteImport } from './routes/admin-codes'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WellnessIndexRouteImport } from './routes/wellness.index'
 import { Route as SovereignIndexRouteImport } from './routes/sovereign.index'
+import { Route as PractitionersIndexRouteImport } from './routes/practitioners.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as WisdomTheTrueStoryOfJeshuaRouteImport } from './routes/wisdom_.the-true-story-of-jeshua'
 import { Route as WisdomSuppressedSacredTextsRouteImport } from './routes/wisdom_.suppressed-sacred-texts'
@@ -67,11 +68,13 @@ import { Route as WisdomSacredPlantsRouteImport } from './routes/wisdom_.sacred-
 import { Route as WisdomPlantMedicinesRouteImport } from './routes/wisdom_.plant-medicines'
 import { Route as WisdomOriginsRouteImport } from './routes/wisdom_.origins'
 import { Route as WisdomMatrixOriginsRouteImport } from './routes/wisdom_.matrix-origins'
+import { Route as WellnessSlugRouteImport } from './routes/wellness.$slug'
 import { Route as SovereignWelcomeRouteImport } from './routes/sovereign.welcome'
 import { Route as SovereignVipWaitlistRouteImport } from './routes/sovereign.vip-waitlist'
 import { Route as SovereignTermsRouteImport } from './routes/sovereign.terms'
 import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
+import { Route as PractitionersSlugRouteImport } from './routes/practitioners.$slug'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as CheckoutReturnRouteImport } from './routes/checkout.return'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -176,11 +179,6 @@ const RealityMapRoute = RealityMapRouteImport.update({
 const ReadingsRoute = ReadingsRouteImport.update({
   id: '/readings',
   path: '/readings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PractitionersRoute = PractitionersRouteImport.update({
-  id: '/practitioners',
-  path: '/practitioners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PillarsRoute = PillarsRouteImport.update({
@@ -343,10 +341,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WellnessIndexRoute = WellnessIndexRouteImport.update({
+  id: '/wellness/',
+  path: '/wellness/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SovereignIndexRoute = SovereignIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => SovereignRoute,
+} as any)
+const PractitionersIndexRoute = PractitionersIndexRouteImport.update({
+  id: '/practitioners/',
+  path: '/practitioners/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
@@ -385,6 +393,11 @@ const WisdomMatrixOriginsRoute = WisdomMatrixOriginsRouteImport.update({
   path: '/wisdom/matrix-origins',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WellnessSlugRoute = WellnessSlugRouteImport.update({
+  id: '/wellness/$slug',
+  path: '/wellness/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SovereignWelcomeRoute = SovereignWelcomeRouteImport.update({
   id: '/welcome',
   path: '/welcome',
@@ -408,6 +421,11 @@ const ProfileIdRoute = ProfileIdRouteImport.update({
 const ProductHandleRoute = ProductHandleRouteImport.update({
   id: '/product/$handle',
   path: '/product/$handle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PractitionersSlugRoute = PractitionersSlugRouteImport.update({
+  id: '/practitioners/$slug',
+  path: '/practitioners/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
@@ -556,7 +574,6 @@ export interface FileRoutesByFullPath {
   '/nature-booking': typeof NatureBookingRoute
   '/numerology': typeof NumerologyRoute
   '/pillars': typeof PillarsRoute
-  '/practitioners': typeof PractitionersRoute
   '/readings': typeof ReadingsRoute
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
@@ -577,11 +594,13 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/checkout/return': typeof CheckoutReturnRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/practitioners/$slug': typeof PractitionersSlugRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
   '/sovereign/terms': typeof SovereignTermsRoute
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
+  '/wellness/$slug': typeof WellnessSlugRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom/origins': typeof WisdomOriginsRoute
   '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
@@ -589,7 +608,9 @@ export interface FileRoutesByFullPath {
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/blog/': typeof BlogIndexRoute
+  '/practitioners/': typeof PractitionersIndexRoute
   '/sovereign/': typeof SovereignIndexRoute
+  '/wellness/': typeof WellnessIndexRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
@@ -641,7 +662,6 @@ export interface FileRoutesByTo {
   '/nature-booking': typeof NatureBookingRoute
   '/numerology': typeof NumerologyRoute
   '/pillars': typeof PillarsRoute
-  '/practitioners': typeof PractitionersRoute
   '/readings': typeof ReadingsRoute
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
@@ -661,11 +681,13 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/checkout/return': typeof CheckoutReturnRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/practitioners/$slug': typeof PractitionersSlugRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
   '/sovereign/terms': typeof SovereignTermsRoute
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
+  '/wellness/$slug': typeof WellnessSlugRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom/origins': typeof WisdomOriginsRoute
   '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
@@ -673,7 +695,9 @@ export interface FileRoutesByTo {
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/blog': typeof BlogIndexRoute
+  '/practitioners': typeof PractitionersIndexRoute
   '/sovereign': typeof SovereignIndexRoute
+  '/wellness': typeof WellnessIndexRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
@@ -726,7 +750,6 @@ export interface FileRoutesById {
   '/nature-booking': typeof NatureBookingRoute
   '/numerology': typeof NumerologyRoute
   '/pillars': typeof PillarsRoute
-  '/practitioners': typeof PractitionersRoute
   '/readings': typeof ReadingsRoute
   '/reality-map': typeof RealityMapRoute
   '/services': typeof ServicesRoute
@@ -747,11 +770,13 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/checkout/return': typeof CheckoutReturnRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/practitioners/$slug': typeof PractitionersSlugRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
   '/sovereign/terms': typeof SovereignTermsRoute
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
+  '/wellness/$slug': typeof WellnessSlugRoute
   '/wisdom_/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom_/origins': typeof WisdomOriginsRoute
   '/wisdom_/plant-medicines': typeof WisdomPlantMedicinesRoute
@@ -759,7 +784,9 @@ export interface FileRoutesById {
   '/wisdom_/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom_/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/blog/': typeof BlogIndexRoute
+  '/practitioners/': typeof PractitionersIndexRoute
   '/sovereign/': typeof SovereignIndexRoute
+  '/wellness/': typeof WellnessIndexRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
@@ -813,7 +840,6 @@ export interface FileRouteTypes {
     | '/nature-booking'
     | '/numerology'
     | '/pillars'
-    | '/practitioners'
     | '/readings'
     | '/reality-map'
     | '/services'
@@ -834,11 +860,13 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/checkout/return'
     | '/email/unsubscribe'
+    | '/practitioners/$slug'
     | '/product/$handle'
     | '/profile/$id'
     | '/sovereign/terms'
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
+    | '/wellness/$slug'
     | '/wisdom/matrix-origins'
     | '/wisdom/origins'
     | '/wisdom/plant-medicines'
@@ -846,7 +874,9 @@ export interface FileRouteTypes {
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
     | '/blog/'
+    | '/practitioners/'
     | '/sovereign/'
+    | '/wellness/'
     | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/community'
@@ -898,7 +928,6 @@ export interface FileRouteTypes {
     | '/nature-booking'
     | '/numerology'
     | '/pillars'
-    | '/practitioners'
     | '/readings'
     | '/reality-map'
     | '/services'
@@ -918,11 +947,13 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/checkout/return'
     | '/email/unsubscribe'
+    | '/practitioners/$slug'
     | '/product/$handle'
     | '/profile/$id'
     | '/sovereign/terms'
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
+    | '/wellness/$slug'
     | '/wisdom/matrix-origins'
     | '/wisdom/origins'
     | '/wisdom/plant-medicines'
@@ -930,7 +961,9 @@ export interface FileRouteTypes {
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
     | '/blog'
+    | '/practitioners'
     | '/sovereign'
+    | '/wellness'
     | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/community'
@@ -982,7 +1015,6 @@ export interface FileRouteTypes {
     | '/nature-booking'
     | '/numerology'
     | '/pillars'
-    | '/practitioners'
     | '/readings'
     | '/reality-map'
     | '/services'
@@ -1003,11 +1035,13 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/checkout/return'
     | '/email/unsubscribe'
+    | '/practitioners/$slug'
     | '/product/$handle'
     | '/profile/$id'
     | '/sovereign/terms'
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
+    | '/wellness/$slug'
     | '/wisdom_/matrix-origins'
     | '/wisdom_/origins'
     | '/wisdom_/plant-medicines'
@@ -1015,7 +1049,9 @@ export interface FileRouteTypes {
     | '/wisdom_/suppressed-sacred-texts'
     | '/wisdom_/the-true-story-of-jeshua'
     | '/blog/'
+    | '/practitioners/'
     | '/sovereign/'
+    | '/wellness/'
     | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/community'
@@ -1068,7 +1104,6 @@ export interface RootRouteChildren {
   NatureBookingRoute: typeof NatureBookingRoute
   NumerologyRoute: typeof NumerologyRoute
   PillarsRoute: typeof PillarsRoute
-  PractitionersRoute: typeof PractitionersRoute
   ReadingsRoute: typeof ReadingsRoute
   RealityMapRoute: typeof RealityMapRoute
   ServicesRoute: typeof ServicesRoute
@@ -1089,8 +1124,10 @@ export interface RootRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
   CheckoutReturnRoute: typeof CheckoutReturnRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
+  PractitionersSlugRoute: typeof PractitionersSlugRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ProfileIdRoute: typeof ProfileIdRoute
+  WellnessSlugRoute: typeof WellnessSlugRoute
   WisdomMatrixOriginsRoute: typeof WisdomMatrixOriginsRoute
   WisdomOriginsRoute: typeof WisdomOriginsRoute
   WisdomPlantMedicinesRoute: typeof WisdomPlantMedicinesRoute
@@ -1098,6 +1135,8 @@ export interface RootRouteChildren {
   WisdomSuppressedSacredTextsRoute: typeof WisdomSuppressedSacredTextsRoute
   WisdomTheTrueStoryOfJeshuaRoute: typeof WisdomTheTrueStoryOfJeshuaRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  PractitionersIndexRoute: typeof PractitionersIndexRoute
+  WellnessIndexRoute: typeof WellnessIndexRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -1226,13 +1265,6 @@ declare module '@tanstack/react-router' {
       path: '/readings'
       fullPath: '/readings'
       preLoaderRoute: typeof ReadingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/practitioners': {
-      id: '/practitioners'
-      path: '/practitioners'
-      fullPath: '/practitioners'
-      preLoaderRoute: typeof PractitionersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pillars': {
@@ -1459,12 +1491,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wellness/': {
+      id: '/wellness/'
+      path: '/wellness'
+      fullPath: '/wellness/'
+      preLoaderRoute: typeof WellnessIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sovereign/': {
       id: '/sovereign/'
       path: '/'
       fullPath: '/sovereign/'
       preLoaderRoute: typeof SovereignIndexRouteImport
       parentRoute: typeof SovereignRoute
+    }
+    '/practitioners/': {
+      id: '/practitioners/'
+      path: '/practitioners'
+      fullPath: '/practitioners/'
+      preLoaderRoute: typeof PractitionersIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/blog/': {
       id: '/blog/'
@@ -1515,6 +1561,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WisdomMatrixOriginsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wellness/$slug': {
+      id: '/wellness/$slug'
+      path: '/wellness/$slug'
+      fullPath: '/wellness/$slug'
+      preLoaderRoute: typeof WellnessSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sovereign/welcome': {
       id: '/sovereign/welcome'
       path: '/welcome'
@@ -1548,6 +1601,13 @@ declare module '@tanstack/react-router' {
       path: '/product/$handle'
       fullPath: '/product/$handle'
       preLoaderRoute: typeof ProductHandleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/practitioners/$slug': {
+      id: '/practitioners/$slug'
+      path: '/practitioners/$slug'
+      fullPath: '/practitioners/$slug'
+      preLoaderRoute: typeof PractitionersSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/email/unsubscribe': {
@@ -1764,7 +1824,6 @@ const rootRouteChildren: RootRouteChildren = {
   NatureBookingRoute: NatureBookingRoute,
   NumerologyRoute: NumerologyRoute,
   PillarsRoute: PillarsRoute,
-  PractitionersRoute: PractitionersRoute,
   ReadingsRoute: ReadingsRoute,
   RealityMapRoute: RealityMapRoute,
   ServicesRoute: ServicesRoute,
@@ -1785,8 +1844,10 @@ const rootRouteChildren: RootRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
   CheckoutReturnRoute: CheckoutReturnRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
+  PractitionersSlugRoute: PractitionersSlugRoute,
   ProductHandleRoute: ProductHandleRoute,
   ProfileIdRoute: ProfileIdRoute,
+  WellnessSlugRoute: WellnessSlugRoute,
   WisdomMatrixOriginsRoute: WisdomMatrixOriginsRoute,
   WisdomOriginsRoute: WisdomOriginsRoute,
   WisdomPlantMedicinesRoute: WisdomPlantMedicinesRoute,
@@ -1794,6 +1855,8 @@ const rootRouteChildren: RootRouteChildren = {
   WisdomSuppressedSacredTextsRoute: WisdomSuppressedSacredTextsRoute,
   WisdomTheTrueStoryOfJeshuaRoute: WisdomTheTrueStoryOfJeshuaRoute,
   BlogIndexRoute: BlogIndexRoute,
+  PractitionersIndexRoute: PractitionersIndexRoute,
+  WellnessIndexRoute: WellnessIndexRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,

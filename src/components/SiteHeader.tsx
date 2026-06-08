@@ -101,6 +101,15 @@ export function SiteHeader() {
           <Link to="/meditations" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Meditations
           </Link>
+          <Link to="/wellness" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Wellness
+          </Link>
+          <Link to="/blog" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Journal
+          </Link>
+          <Link to="/practitioners" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Practitioners
+          </Link>
           <Link to="/the-sacred-journey" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Journey
           </Link>
@@ -169,6 +178,9 @@ export function SiteHeader() {
               <Link key={r.label} to={r.to} onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>{r.label}</Link>
             ))}
             <Link to="/meditations" onClick={() => setOpen(false)} className="mt-3 px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meditations</Link>
+            <Link to="/wellness" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Wellness</Link>
+            <Link to="/blog" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Journal</Link>
+            <Link to="/practitioners" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Practitioners</Link>
             <Link to="/the-sacred-journey" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Journey</Link>
             <Link to="/store" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Store</Link>
             <Link to="/transmissions" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={{ color: "#C9A84C", textShadow: "0 0 10px rgba(232,130,26,0.4)" }}>
