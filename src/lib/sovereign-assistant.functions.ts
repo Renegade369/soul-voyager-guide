@@ -16,7 +16,7 @@ export interface AssistantMessage {
   escalation_id?: string;
 }
 
-const WINDOW_DAYS = 90;
+const WINDOW_DAYS = 120;
 
 function buildCurriculumContext(moduleSlug: string | null): string {
   const mod = SOVEREIGN_MODULES.find((m) => m.slug === moduleSlug) ?? SOVEREIGN_MODULES[0];
