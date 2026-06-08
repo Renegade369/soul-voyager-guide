@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Body, Button, Container, Head, Heading, Html, Img, Link, Preview, Section, Text } from '@react-email/components'
-import { main, container, headerStrip, logoImg, LOGO_URL, LOGO_ALT, h1, text, link, button, footer} from './_brand'
+import { main, container, headerStrip, logoImg, innerPadding, LOGO_URL, LOGO_ALT, h1, text, link, button, footer} from './_brand'
 
 interface EmailChangeEmailProps {
   siteName: string
@@ -17,6 +17,7 @@ export const EmailChangeEmail = ({ oldEmail, newEmail, confirmationUrl }: EmailC
     <Body style={main}>
       <Container style={container}>
         <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
+        <Section style={innerPadding}>
         <Heading style={h1}>Confirm your email change</Heading>
         <Text style={text}>
           You requested to change your Soul True email from{' '}
@@ -27,6 +28,7 @@ export const EmailChangeEmail = ({ oldEmail, newEmail, confirmationUrl }: EmailC
         <Text style={footer}>
           If you didn't request this, please secure your account immediately.
         </Text>
+      </Section>
       </Container>
     </Body>
   </Html>

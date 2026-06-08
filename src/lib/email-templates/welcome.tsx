@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Body, Button, Container, Head, Heading, Html, Img, Link, Preview, Section, Text } from '@react-email/components'
-import { main, container, headerStrip, logoImg, LOGO_URL, LOGO_ALT, h1, text, link, button, footer} from './_brand'
+import { main, container, headerStrip, logoImg, innerPadding, LOGO_URL, LOGO_ALT, h1, text, link, button, footer} from './_brand'
 import type { TemplateEntry } from './registry'
 
 interface WelcomeProps {
@@ -15,6 +15,7 @@ export const WelcomeEmail = ({ name, siteUrl = 'https://soul-true.com' }: Welcom
     <Body style={main}>
       <Container style={container}>
         <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
+        <Section style={innerPadding}>
         <Heading style={h1}>{name ? `Welcome, ${name}` : 'Welcome, traveler'}</Heading>
         <Text style={text}>
           You've stepped into Soul True — a quiet space for frequency, reflection, and the practices that help you return to yourself.
@@ -27,6 +28,7 @@ export const WelcomeEmail = ({ name, siteUrl = 'https://soul-true.com' }: Welcom
           Soul True content is for educational and inspirational purposes only.{' '}
           <Link href={siteUrl} style={link}>soul-true.com</Link>
         </Text>
+      </Section>
       </Container>
     </Body>
   </Html>

@@ -2,7 +2,7 @@ import * as React from 'react'
 import {
   Body, Button, Container, Head, Heading, Html, Img, Link, Preview, Section, Text,
 } from '@react-email/components'
-import { main, container, headerStrip, logoImg, LOGO_URL, LOGO_ALT, h1, text, link, button, footer} from './_brand'
+import { main, container, headerStrip, logoImg, innerPadding, LOGO_URL, LOGO_ALT, h1, text, link, button, footer} from './_brand'
 
 interface SignupEmailProps {
   siteName: string
@@ -18,6 +18,7 @@ export const SignupEmail = ({ siteUrl, recipient, confirmationUrl }: SignupEmail
     <Body style={main}>
       <Container style={container}>
         <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
+        <Section style={innerPadding}>
         <Heading style={h1}>Welcome, traveler</Heading>
         <Text style={text}>
           Thank you for stepping into <Link href={siteUrl} style={link}>Soul True</Link>. Please confirm{' '}
@@ -27,6 +28,7 @@ export const SignupEmail = ({ siteUrl, recipient, confirmationUrl }: SignupEmail
         <Text style={footer}>
           If you didn't create an account, you can safely ignore this message. Soul True content is for educational and inspirational purposes only.
         </Text>
+      </Section>
       </Container>
     </Body>
   </Html>
