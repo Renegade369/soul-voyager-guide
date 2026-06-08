@@ -80,6 +80,7 @@ import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe
 import { Route as CheckoutReturnRouteImport } from './routes/checkout.return'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as SovereignPortalIndexRouteImport } from './routes/sovereign.portal.index'
+import { Route as AdminEscalationsIndexRouteImport } from './routes/admin.escalations.index'
 import { Route as SovereignPortalOnboardingRouteImport } from './routes/sovereign.portal.onboarding'
 import { Route as SovereignPortalMorningRitualRouteImport } from './routes/sovereign.portal.morning-ritual'
 import { Route as SovereignPortalLiveCallsRouteImport } from './routes/sovereign.portal.live-calls'
@@ -88,6 +89,7 @@ import { Route as SovereignPortalDashboardRouteImport } from './routes/sovereign
 import { Route as SovereignPortalCommunityRouteImport } from './routes/sovereign.portal.community'
 import { Route as SovereignPortalAudioRouteImport } from './routes/sovereign.portal.audio'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
+import { Route as AdminEscalationsIdRouteImport } from './routes/admin.escalations.$id'
 import { Route as SovereignPortalModulesIndexRouteImport } from './routes/sovereign.portal.modules.index'
 import { Route as SovereignPortalModulesSlugRouteImport } from './routes/sovereign.portal.modules.$slug'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
@@ -455,6 +457,11 @@ const SovereignPortalIndexRoute = SovereignPortalIndexRouteImport.update({
   path: '/portal/',
   getParentRoute: () => SovereignRoute,
 } as any)
+const AdminEscalationsIndexRoute = AdminEscalationsIndexRouteImport.update({
+  id: '/escalations/',
+  path: '/escalations/',
+  getParentRoute: () => AdminRoute,
+} as any)
 const SovereignPortalOnboardingRoute =
   SovereignPortalOnboardingRouteImport.update({
     id: '/portal/onboarding',
@@ -500,6 +507,11 @@ const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
   id: '/lovable/email/suppression',
   path: '/lovable/email/suppression',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AdminEscalationsIdRoute = AdminEscalationsIdRouteImport.update({
+  id: '/escalations/$id',
+  path: '/escalations/$id',
+  getParentRoute: () => AdminRoute,
 } as any)
 const SovereignPortalModulesIndexRoute =
   SovereignPortalModulesIndexRouteImport.update({
@@ -557,7 +569,7 @@ const ApiPublicHooksSendMonthlyJournalRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/admin-codes': typeof AdminCodesRoute
   '/astrology': typeof AstrologyRoute
   '/aura-reader': typeof AuraReaderRoute
@@ -625,6 +637,7 @@ export interface FileRoutesByFullPath {
   '/practitioners/': typeof PractitionersIndexRoute
   '/sovereign/': typeof SovereignIndexRoute
   '/wellness/': typeof WellnessIndexRoute
+  '/admin/escalations/$id': typeof AdminEscalationsIdRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
@@ -633,6 +646,7 @@ export interface FileRoutesByFullPath {
   '/sovereign/portal/live-calls': typeof SovereignPortalLiveCallsRoute
   '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
+  '/admin/escalations/': typeof AdminEscalationsIndexRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
   '/api/public/hooks/send-monthly-journal': typeof ApiPublicHooksSendMonthlyJournalRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
@@ -647,7 +661,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/admin-codes': typeof AdminCodesRoute
   '/astrology': typeof AstrologyRoute
   '/aura-reader': typeof AuraReaderRoute
@@ -714,6 +728,7 @@ export interface FileRoutesByTo {
   '/practitioners': typeof PractitionersIndexRoute
   '/sovereign': typeof SovereignIndexRoute
   '/wellness': typeof WellnessIndexRoute
+  '/admin/escalations/$id': typeof AdminEscalationsIdRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
@@ -722,6 +737,7 @@ export interface FileRoutesByTo {
   '/sovereign/portal/live-calls': typeof SovereignPortalLiveCallsRoute
   '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
+  '/admin/escalations': typeof AdminEscalationsIndexRoute
   '/sovereign/portal': typeof SovereignPortalIndexRoute
   '/api/public/hooks/send-monthly-journal': typeof ApiPublicHooksSendMonthlyJournalRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
@@ -737,7 +753,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/admin-codes': typeof AdminCodesRoute
   '/astrology': typeof AstrologyRoute
   '/aura-reader': typeof AuraReaderRoute
@@ -805,6 +821,7 @@ export interface FileRoutesById {
   '/practitioners/': typeof PractitionersIndexRoute
   '/sovereign/': typeof SovereignIndexRoute
   '/wellness/': typeof WellnessIndexRoute
+  '/admin/escalations/$id': typeof AdminEscalationsIdRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
@@ -813,6 +830,7 @@ export interface FileRoutesById {
   '/sovereign/portal/live-calls': typeof SovereignPortalLiveCallsRoute
   '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
+  '/admin/escalations/': typeof AdminEscalationsIndexRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
   '/api/public/hooks/send-monthly-journal': typeof ApiPublicHooksSendMonthlyJournalRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
@@ -897,6 +915,7 @@ export interface FileRouteTypes {
     | '/practitioners/'
     | '/sovereign/'
     | '/wellness/'
+    | '/admin/escalations/$id'
     | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/community'
@@ -905,6 +924,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/live-calls'
     | '/sovereign/portal/morning-ritual'
     | '/sovereign/portal/onboarding'
+    | '/admin/escalations/'
     | '/sovereign/portal/'
     | '/api/public/hooks/send-monthly-journal'
     | '/api/public/payments/webhook'
@@ -986,6 +1006,7 @@ export interface FileRouteTypes {
     | '/practitioners'
     | '/sovereign'
     | '/wellness'
+    | '/admin/escalations/$id'
     | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/community'
@@ -994,6 +1015,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/live-calls'
     | '/sovereign/portal/morning-ritual'
     | '/sovereign/portal/onboarding'
+    | '/admin/escalations'
     | '/sovereign/portal'
     | '/api/public/hooks/send-monthly-journal'
     | '/api/public/payments/webhook'
@@ -1076,6 +1098,7 @@ export interface FileRouteTypes {
     | '/practitioners/'
     | '/sovereign/'
     | '/wellness/'
+    | '/admin/escalations/$id'
     | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/community'
@@ -1084,6 +1107,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/live-calls'
     | '/sovereign/portal/morning-ritual'
     | '/sovereign/portal/onboarding'
+    | '/admin/escalations/'
     | '/sovereign/portal/'
     | '/api/public/hooks/send-monthly-journal'
     | '/api/public/payments/webhook'
@@ -1099,7 +1123,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AdminCodesRoute: typeof AdminCodesRoute
   AstrologyRoute: typeof AstrologyRoute
   AuraReaderRoute: typeof AuraReaderRoute
@@ -1671,6 +1695,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignPortalIndexRouteImport
       parentRoute: typeof SovereignRoute
     }
+    '/admin/escalations/': {
+      id: '/admin/escalations/'
+      path: '/escalations'
+      fullPath: '/admin/escalations/'
+      preLoaderRoute: typeof AdminEscalationsIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/sovereign/portal/onboarding': {
       id: '/sovereign/portal/onboarding'
       path: '/portal/onboarding'
@@ -1726,6 +1757,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/lovable/email/suppression'
       preLoaderRoute: typeof LovableEmailSuppressionRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/admin/escalations/$id': {
+      id: '/admin/escalations/$id'
+      path: '/escalations/$id'
+      fullPath: '/admin/escalations/$id'
+      preLoaderRoute: typeof AdminEscalationsIdRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/sovereign/portal/modules/': {
       id: '/sovereign/portal/modules/'
@@ -1793,6 +1831,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminEscalationsIdRoute: typeof AdminEscalationsIdRoute
+  AdminEscalationsIndexRoute: typeof AdminEscalationsIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminEscalationsIdRoute: AdminEscalationsIdRoute,
+  AdminEscalationsIndexRoute: AdminEscalationsIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface SovereignRouteChildren {
   SovereignReflectionRoute: typeof SovereignReflectionRoute
   SovereignTermsRoute: typeof SovereignTermsRoute
@@ -1836,7 +1886,7 @@ const SovereignRouteWithChildren = SovereignRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   AdminCodesRoute: AdminCodesRoute,
   AstrologyRoute: AstrologyRoute,
   AuraReaderRoute: AuraReaderRoute,

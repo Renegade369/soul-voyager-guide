@@ -115,7 +115,7 @@ function EscalationDetail() {
 
           {escalation.william_reply ? (
             <div className="p-5" style={{ background: C.card, border: `2px solid ${C.gold}` }}>
-              <p className="text-[11px] uppercase tracking-[0.32em] mb-2" style={{ color: C.gold }}>Your reply (sent {new Date(escalation.replied_at).toLocaleString()})</p>
+              <p className="text-[11px] uppercase tracking-[0.32em] mb-2" style={{ color: C.gold }}>Your reply (sent {escalation.replied_at ? new Date(escalation.replied_at).toLocaleString() : ""})</p>
               <p className="font-light whitespace-pre-line">{escalation.william_reply}</p>
               {escalation.status !== "resolved" && (
                 <button onClick={handleResolve} className="mt-4 px-4 py-2 text-[10px] uppercase tracking-[0.22em]" style={{ border: `1px solid ${C.gold}`, color: C.gold }}>

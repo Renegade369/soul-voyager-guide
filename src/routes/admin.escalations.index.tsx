@@ -8,7 +8,7 @@ import { listEscalations, checkIsAdmin } from "@/lib/sovereign-assistant";
 const C = { bg: "#0A0A0A", card: "#1A1209", gold: "#C9A84C", text: "#F5F0E8", muted: "rgba(245,240,232,0.7)", dim: "rgba(245,240,232,0.4)" };
 const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-serif' };
 
-export const Route = createFileRoute("/admin/escalations")({
+export const Route = createFileRoute("/admin/escalations/")({
   head: () => ({ meta: [{ title: "Escalations — Admin" }] }),
   component: EscalationsList,
 });
