@@ -994,6 +994,30 @@ export type Database = {
         }
         Relationships: []
       }
+      sovereign_milestones: {
+        Row: {
+          earned_at: string
+          id: string
+          milestone: string
+          module_slug: string | null
+          user_id: string
+        }
+        Insert: {
+          earned_at?: string
+          id?: string
+          milestone: string
+          module_slug?: string | null
+          user_id: string
+        }
+        Update: {
+          earned_at?: string
+          id?: string
+          milestone?: string
+          module_slug?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       sovereign_module_progress: {
         Row: {
           completed_at: string
@@ -1023,6 +1047,57 @@ export type Database = {
           module_slug?: string
           notes?: string | null
           updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sovereign_module_responses: {
+        Row: {
+          created_at: string
+          exercise_id: string
+          id: string
+          module_slug: string
+          response_text: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          exercise_id: string
+          id?: string
+          module_slug: string
+          response_text?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          exercise_id?: string
+          id?: string
+          module_slug?: string
+          response_text?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sovereign_module_unlocks: {
+        Row: {
+          id: string
+          module_slug: string
+          unlocked_at: string
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          module_slug: string
+          unlocked_at?: string
+          user_id: string
+        }
+        Update: {
+          id?: string
+          module_slug?: string
+          unlocked_at?: string
           user_id?: string
         }
         Relationships: []

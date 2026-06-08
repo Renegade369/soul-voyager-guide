@@ -72,6 +72,7 @@ import { Route as WellnessSlugRouteImport } from './routes/wellness.$slug'
 import { Route as SovereignWelcomeRouteImport } from './routes/sovereign.welcome'
 import { Route as SovereignVipWaitlistRouteImport } from './routes/sovereign.vip-waitlist'
 import { Route as SovereignTermsRouteImport } from './routes/sovereign.terms'
+import { Route as SovereignReflectionRouteImport } from './routes/sovereign.reflection'
 import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 import { Route as PractitionersSlugRouteImport } from './routes/practitioners.$slug'
@@ -414,6 +415,11 @@ const SovereignTermsRoute = SovereignTermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => SovereignRoute,
 } as any)
+const SovereignReflectionRoute = SovereignReflectionRouteImport.update({
+  id: '/reflection',
+  path: '/reflection',
+  getParentRoute: () => SovereignRoute,
+} as any)
 const ProfileIdRoute = ProfileIdRouteImport.update({
   id: '/profile/$id',
   path: '/profile/$id',
@@ -604,6 +610,7 @@ export interface FileRoutesByFullPath {
   '/practitioners/$slug': typeof PractitionersSlugRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/sovereign/reflection': typeof SovereignReflectionRoute
   '/sovereign/terms': typeof SovereignTermsRoute
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
@@ -692,6 +699,7 @@ export interface FileRoutesByTo {
   '/practitioners/$slug': typeof PractitionersSlugRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/sovereign/reflection': typeof SovereignReflectionRoute
   '/sovereign/terms': typeof SovereignTermsRoute
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
@@ -782,6 +790,7 @@ export interface FileRoutesById {
   '/practitioners/$slug': typeof PractitionersSlugRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/sovereign/reflection': typeof SovereignReflectionRoute
   '/sovereign/terms': typeof SovereignTermsRoute
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
@@ -873,6 +882,7 @@ export interface FileRouteTypes {
     | '/practitioners/$slug'
     | '/product/$handle'
     | '/profile/$id'
+    | '/sovereign/reflection'
     | '/sovereign/terms'
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
@@ -961,6 +971,7 @@ export interface FileRouteTypes {
     | '/practitioners/$slug'
     | '/product/$handle'
     | '/profile/$id'
+    | '/sovereign/reflection'
     | '/sovereign/terms'
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
@@ -1050,6 +1061,7 @@ export interface FileRouteTypes {
     | '/practitioners/$slug'
     | '/product/$handle'
     | '/profile/$id'
+    | '/sovereign/reflection'
     | '/sovereign/terms'
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
@@ -1603,6 +1615,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignTermsRouteImport
       parentRoute: typeof SovereignRoute
     }
+    '/sovereign/reflection': {
+      id: '/sovereign/reflection'
+      path: '/reflection'
+      fullPath: '/sovereign/reflection'
+      preLoaderRoute: typeof SovereignReflectionRouteImport
+      parentRoute: typeof SovereignRoute
+    }
     '/profile/$id': {
       id: '/profile/$id'
       path: '/profile/$id'
@@ -1775,6 +1794,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface SovereignRouteChildren {
+  SovereignReflectionRoute: typeof SovereignReflectionRoute
   SovereignTermsRoute: typeof SovereignTermsRoute
   SovereignVipWaitlistRoute: typeof SovereignVipWaitlistRoute
   SovereignWelcomeRoute: typeof SovereignWelcomeRoute
@@ -1792,6 +1812,7 @@ interface SovereignRouteChildren {
 }
 
 const SovereignRouteChildren: SovereignRouteChildren = {
+  SovereignReflectionRoute: SovereignReflectionRoute,
   SovereignTermsRoute: SovereignTermsRoute,
   SovereignVipWaitlistRoute: SovereignVipWaitlistRoute,
   SovereignWelcomeRoute: SovereignWelcomeRoute,

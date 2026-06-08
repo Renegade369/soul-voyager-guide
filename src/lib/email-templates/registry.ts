@@ -19,8 +19,10 @@ export interface TemplateEntry {
  */
 import { template as welcomeTemplate } from './welcome'
 import { template as sovereignWelcomeTimeMachine } from './sovereign-welcome-time-machine'
+import { template as sovereignMilestone } from './sovereign-milestone'
 
 export const TEMPLATES: Record<string, TemplateEntry> = {
   welcome: welcomeTemplate,
   'sovereign-welcome-time-machine': sovereignWelcomeTimeMachine,
+  'sovereign-milestone': sovereignMilestone,
 }
