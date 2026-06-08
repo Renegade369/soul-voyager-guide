@@ -155,7 +155,7 @@ export const sendAssistantMessage = createServerFn({ method: "POST" })
       .limit(1)
       .maybeSingle();
     if (!enrollment) throw new Error("Not enrolled");
-    if (enrollment.tier !== "complete") throw new Error("Complete tier required");
+    if (!enrollment) throw new Error("Not enrolled");
     const enrolledAt = new Date(enrollment.created_at);
     const windowEnd = new Date(enrolledAt.getTime() + WINDOW_DAYS * 86_400_000);
     if (new Date() >= windowEnd) throw new Error("Program window ended");
