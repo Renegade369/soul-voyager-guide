@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Loader2, Sunrise, Moon, BookOpen, Sparkles, Users, Headphones } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { usePortalStatus, usePortalGuard } from "@/hooks/usePortalStatus";
+import { SOVEREIGN_MODULES } from "@/lib/sovereign-curriculum";
 
 const C = {
   bg: "#0A0A0A",
@@ -155,32 +156,34 @@ function DashboardPage() {
           </Panel>
 
           <Panel>
-            <PanelHeading icon={<BookOpen size={18} color={C.gold} />} title="Modules" />
+            <PanelHeading icon={<BookOpen size={18} color={C.gold} />} title="The Curriculum" />
             <p className="mt-3 text-sm" style={{ color: C.muted }}>
               Six modules. Six layers. Self-paced.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {[
-                "Module 1 — The Architecture of Sleep",
-                "Module 2 — Sovereignty of the Body",
-                "Module 3 — Sovereignty of the Mind",
-                "Module 4 — Sovereignty of the Heart",
-                "Module 5 — Sovereignty of the Spirit",
-                "Module 6 — Walking Free",
-              ].map((m, i) => (
-                <div
-                  key={i}
-                  className="p-4 text-sm font-light"
+              {SOVEREIGN_MODULES.map((m) => (
+                <Link
+                  key={m.slug}
+                  to="/sovereign/portal/modules/$slug"
+                  params={{ slug: m.slug }}
+                  className="p-4 text-sm font-light transition-opacity hover:opacity-80 block"
                   style={{ background: C.bg, border: `1px solid rgba(201,168,76,0.2)` }}
                 >
-                  <span style={{ color: C.gold }}>0{i + 1}</span>
-                  <p className="mt-1" style={{ color: C.dim }}>{m.split("— ")[1]}</p>
+                  <span style={{ color: C.gold }}>0{m.number}</span>
+                  <p className="mt-1" style={{ color: C.text, fontFamily: fonts.display, fontSize: "1.05rem" }}>{m.title}</p>
                   <p className="mt-2 text-[10px] uppercase tracking-[0.22em]" style={{ color: C.dim }}>
-                    Coming soon
+                    {m.lessons.length} lessons →
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
+            <Link
+              to="/sovereign/portal/modules"
+              className="mt-6 inline-block border px-6 py-3 text-[11px] uppercase tracking-[0.22em]"
+              style={{ borderColor: C.gold, color: C.gold }}
+            >
+              All Modules
+            </Link>
           </Panel>
         </div>
 
@@ -212,13 +215,20 @@ function DashboardPage() {
             )}
           </Panel>
 
-          <Panel locked={!isComplete} icon={<Headphones size={18} color={isComplete ? C.gold : C.dim} />}>
-            <PanelHeading title="Audio Transmissions" muted={!isComplete} />
+          <Panel icon={<Headphones size={18} color={C.gold} />}>
+            <PanelHeading title="Audio Transmissions" />
             <p className="mt-3 text-sm" style={{ color: C.muted }}>
               {isComplete
-                ? "Guided audio drops here as each module unlocks."
-                : "Complete-tier only. Upgrade for $200."}
+                ? "Guided practices and transmissions from William."
+                : "Preview the library — full access on the Complete tier."}
             </p>
+            <Link
+              to="/sovereign/portal/audio"
+              className="mt-4 inline-block border px-5 py-2 text-[11px] uppercase tracking-[0.22em]"
+              style={{ borderColor: C.gold, color: C.gold }}
+            >
+              Open Library
+            </Link>
           </Panel>
 
           <Panel locked={!isComplete} icon={<Users size={18} color={isComplete ? C.gold : C.dim} />}>
