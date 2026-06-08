@@ -9,7 +9,7 @@ import {
 } from "@/lib/directory";
 import { makeRouteMeta } from "@/components/PageShell";
 
-export const Route = createFileRoute("/practitioners")({
+export const Route = createFileRoute("/practitioners/")({
   head: () =>
     makeRouteMeta({
       title: "Trusted Practitioners — Soul True",
