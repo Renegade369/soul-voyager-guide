@@ -17,7 +17,7 @@ export const SignupEmail = ({ siteUrl, recipient, confirmationUrl }: SignupEmail
     <Preview>Confirm your email to begin your Soul True journey</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Text style={brandMark}>{SITE_NAME_DISPLAY}</Text>
+        <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
         <Heading style={h1}>Welcome, traveler</Heading>
         <Text style={text}>
           Thank you for stepping into <Link href={siteUrl} style={link}>Soul True</Link>. Please confirm{' '}

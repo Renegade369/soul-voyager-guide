@@ -14,7 +14,7 @@ export const InviteEmail = ({ siteUrl, confirmationUrl }: InviteEmailProps) => (
     <Preview>You've been invited to Soul True</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Text style={brandMark}>{SITE_NAME_DISPLAY}</Text>
+        <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
         <Heading style={h1}>You've been invited</Heading>
         <Text style={text}>
           You've been invited to join <Link href={siteUrl} style={link}><strong>Soul True</strong></Link>. Accept below to create your sanctuary.

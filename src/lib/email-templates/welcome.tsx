@@ -14,7 +14,7 @@ export const WelcomeEmail = ({ name, siteUrl = 'https://soul-true.com' }: Welcom
     <Preview>Welcome to Soul True — your sanctuary awaits</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Text style={brandMark}>{SITE_NAME_DISPLAY}</Text>
+        <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
         <Heading style={h1}>{name ? `Welcome, ${name}` : 'Welcome, traveler'}</Heading>
         <Text style={text}>
           You've stepped into Soul True — a quiet space for frequency, reflection, and the practices that help you return to yourself.

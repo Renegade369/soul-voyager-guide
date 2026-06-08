@@ -13,7 +13,7 @@ export const RecoveryEmail = ({ confirmationUrl }: RecoveryEmailProps) => (
     <Preview>Reset your Soul True password</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Text style={brandMark}>{SITE_NAME_DISPLAY}</Text>
+        <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
         <Heading style={h1}>Reset your password</Heading>
         <Text style={text}>
           We received a request to reset your Soul True password. Choose a new one with the button below.

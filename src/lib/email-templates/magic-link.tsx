@@ -13,7 +13,7 @@ export const MagicLinkEmail = ({ confirmationUrl }: MagicLinkEmailProps) => (
     <Preview>Your Soul True sign-in link</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Text style={brandMark}>{SITE_NAME_DISPLAY}</Text>
+        <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
         <Heading style={h1}>Your sign-in link</Heading>
         <Text style={text}>
           Tap below to enter Soul True. This link expires shortly for your security.
