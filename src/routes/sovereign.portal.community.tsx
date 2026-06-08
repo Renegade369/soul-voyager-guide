@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BrandLoader } from "@/components/BrandLoader";
 import { useEffect, useState } from "react";
 import { Loader2, ArrowLeft, Users, Lock, Trash2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -97,7 +98,7 @@ function CommunityPage() {
   if (status.state !== "ready") {
     return (
       <div style={{ background: C.bg, minHeight: "80vh" }} className="flex items-center justify-center">
-        <Loader2 className="animate-spin" size={32} color={C.gold} />
+        <BrandLoader size={56} />
       </div>
     );
   }
@@ -179,7 +180,7 @@ function CommunityPage() {
 
         <div>
           {posts === null ? (
-            <div className="flex justify-center py-12"><Loader2 className="animate-spin" size={24} color={C.gold} /></div>
+            <div className="flex justify-center py-12"><BrandLoader size={44} /></div>
           ) : posts.length === 0 ? (
             <div className="text-center py-16" style={{ color: C.muted }}>
               <Users size={32} color={C.dim} className="mx-auto" />

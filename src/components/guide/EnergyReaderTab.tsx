@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { BrandLoader } from "@/components/BrandLoader";
 import { Camera, Eye, Fingerprint, Sparkles, ChevronRight, RotateCcw, Check, Loader2, Upload } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
@@ -570,7 +571,7 @@ export default function EnergyReaderTab() {
       <div className="border p-6 md:p-8" style={{ borderColor: C.border, backgroundColor: C.surface, borderRadius: 4 }}>
         {loading === activeReader ? (
           <div className="flex flex-col items-center gap-4 py-12">
-            <Loader2 size={28} className="animate-spin" style={{ color: C.gold }} />
+            <BrandLoader size={48} />
             <p className="text-sm italic" style={{ color: C.goldLight, fontFamily: fonts.heading }}>
               Reading your energy field…
             </p>

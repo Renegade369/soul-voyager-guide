@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
+import { BrandLoader } from "@/components/BrandLoader";
 import { useEffect } from "react";
 import { Loader2 } from "lucide-react";
 import { usePortalStatus } from "@/hooks/usePortalStatus";
@@ -28,7 +29,7 @@ function PortalEntry() {
       <section className="mx-auto max-w-xl px-6 py-24 text-center">
         {status.state === "loading" && (
           <>
-            <Loader2 className="mx-auto animate-spin" size={36} color={C.gold} />
+            <BrandLoader size={64} />
             <p className="mt-6 text-sm uppercase tracking-[0.3em]" style={{ color: C.muted }}>
               Entering the portal…
             </p>

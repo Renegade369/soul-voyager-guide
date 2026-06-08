@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BrandLoader } from "@/components/BrandLoader";
 import { useEffect, useRef, useState } from "react";
 import { Loader2, ArrowLeft, Play, Pause, Lock, Headphones } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -100,7 +101,7 @@ function AudioLibraryPage() {
   if (status.state !== "ready") {
     return (
       <div style={{ background: C.bg, minHeight: "80vh" }} className="flex items-center justify-center">
-        <Loader2 className="animate-spin" size={32} color={C.gold} />
+        <BrandLoader size={56} />
       </div>
     );
   }
@@ -138,7 +139,7 @@ function AudioLibraryPage() {
 
       <div className="mx-auto max-w-4xl px-6 py-12">
         {items === null ? (
-          <div className="flex justify-center py-20"><Loader2 className="animate-spin" size={28} color={C.gold} /></div>
+          <div className="flex justify-center py-20"><BrandLoader size={48} /></div>
         ) : items.length === 0 ? (
           <div className="text-center py-20" style={{ color: C.muted }}>
             <Headphones size={32} color={C.dim} className="mx-auto" />

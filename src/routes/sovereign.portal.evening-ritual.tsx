@@ -1,4 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { BrandLoader } from "@/components/BrandLoader";
 import { useEffect, useState } from "react";
 import { Loader2, CheckCircle2, ArrowLeft, Moon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -89,7 +90,7 @@ function EveningRitualPage() {
   if (status.state !== "ready") {
     return (
       <div style={{ background: C.bg, minHeight: "80vh" }} className="flex items-center justify-center">
-        <Loader2 className="animate-spin" size={32} color={C.gold} />
+        <BrandLoader size={56} />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BrandLoader } from "@/components/BrandLoader";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { getSessionUnlock } from "@/lib/payments.functions";
@@ -83,7 +84,7 @@ function CheckoutReturn() {
       <section className="mx-auto max-w-2xl px-6 py-24 text-center">
         {state === "loading" && (
           <>
-            <Loader2 className="mx-auto animate-spin" size={36} color={C.gold} />
+            <BrandLoader size={64} />
             <p className="mt-6 text-sm uppercase tracking-[0.3em]" style={{ color: C.muted }}>
               Confirming your payment…
             </p>

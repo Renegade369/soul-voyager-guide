@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BrandLoader } from "@/components/BrandLoader";
 import { useEffect, useState } from "react";
 import { Loader2, Sunrise, Moon, BookOpen, Sparkles, Users, Headphones } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -93,7 +94,7 @@ function DashboardPage() {
   if (status.state !== "ready") {
     return (
       <div style={{ background: C.bg, minHeight: "80vh" }} className="flex items-center justify-center">
-        <Loader2 className="animate-spin" size={32} color={C.gold} />
+        <BrandLoader size={56} />
       </div>
     );
   }
