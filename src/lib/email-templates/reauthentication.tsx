@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Body, Container, Head, Heading, Html, Preview, Text } from '@react-email/components'
-import { main, container, brandMark, h1, text, codeStyle, footer, SITE_NAME_DISPLAY } from './_brand'
+import { Body, Container, Head, Heading, Html, Img, Preview, Section, Text } from '@react-email/components'
+import { main, container, headerStrip, logoImg, LOGO_URL, LOGO_ALT, h1, text, codeStyle, footer} from './_brand'
 
 interface ReauthenticationEmailProps {
   token: string

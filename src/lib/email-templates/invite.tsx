@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Body, Button, Container, Head, Heading, Html, Link, Preview, Text } from '@react-email/components'
-import { main, container, brandMark, h1, text, link, button, footer, SITE_NAME_DISPLAY } from './_brand'
+import { Body, Button, Container, Head, Heading, Html, Img, Link, Preview, Section, Text } from '@react-email/components'
+import { main, container, headerStrip, logoImg, LOGO_URL, LOGO_ALT, h1, text, link, button, footer} from './_brand'
 
 interface InviteEmailProps {
   siteName: string
