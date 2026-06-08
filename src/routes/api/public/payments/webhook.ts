@@ -50,6 +50,22 @@ async function recordSovereignEnrollment(session: any, env: StripeEnv) {
   }
 }
 
+async function autoSubscribeFromStripe(session: any, source: string) {
+  try {
+    const email = session?.customer_details?.email ?? session?.customer_email ?? null;
+    if (!email) return;
+    const name = session?.customer_details?.name ?? null;
+    await getAdmin()
+      .from("subscribers")
+      .upsert(
+        { email: String(email).toLowerCase().trim(), first_name: name, source, is_active: true, unsubscribed_at: null },
+        { onConflict: "email" }
+      );
+  } catch (e) {
+    console.error("[subscribe] autoSubscribeFromStripe error", e);
+  }
+}
+
 async function handleEvent(event: { type: string; data: { object: any } }, env: StripeEnv) {
   switch (event.type) {
     case "checkout.session.completed": {
@@ -61,6 +77,11 @@ async function handleEvent(event: { type: string; data: { object: any } }, env: 
         priceId: session?.metadata?.priceId ?? null,
       });
       await recordSovereignEnrollment(session, env);
+      await autoSubscribeFromStripe(session, "stripe_checkout");
+      break;
+    }
+    case "customer.subscription.created": {
+      await autoSubscribeFromStripe(event.data.object, "stripe_subscription");
       break;
     }
     case "checkout.session.async_payment_succeeded":

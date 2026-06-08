@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { PageShell, makeRouteMeta } from "@/components/PageShell";
 import { BrandLoader } from "@/components/BrandLoader";
 import { fetchPublishedPosts, formatPublishedDate, type BlogPostCard } from "@/lib/blog";
+import { SubscribeForm } from "@/components/blog/SubscribeForm";
 
 export const Route = createFileRoute("/blog/")({
   head: () =>
@@ -43,6 +44,18 @@ function BlogIndex() {
       title="Let's Go Deeper."
       intro="Sacred writing on energy, frequency, vibration, awakening, numerology, and the practices that change everything."
     >
+      <div className="mb-16 border-y px-6 py-10 text-center" style={{ borderColor: "rgba(201,168,76,0.18)", backgroundColor: "rgba(26,18,9,0.4)" }}>
+        <p className="font-serif text-xl italic" style={{ color: "#C9A84C" }}>
+          Get the monthly Journal in your inbox.
+        </p>
+        <p className="mt-2 text-sm font-light" style={{ color: "rgba(245,240,232,0.65)" }}>
+          One letter on the 1st of each month. Unsubscribe anytime.
+        </p>
+        <div className="mx-auto mt-6 max-w-xl">
+          <SubscribeForm source="blog_form" />
+        </div>
+      </div>
+
       {error ? (
         <p className="text-center text-sm text-muted-foreground">{error}</p>
       ) : posts === null ? (
