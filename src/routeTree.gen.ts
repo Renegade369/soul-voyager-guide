@@ -17,6 +17,7 @@ import { Route as TransmissionsRouteImport } from './routes/transmissions'
 import { Route as TheSacredJourneyRouteImport } from './routes/the-sacred-journey'
 import { Route as TeachingsRouteImport } from './routes/teachings'
 import { Route as StoreRouteImport } from './routes/store'
+import { Route as SovereignRouteImport } from './routes/sovereign'
 import { Route as SoulQuizRouteImport } from './routes/soul-quiz'
 import { Route as SoulProfileRouteImport } from './routes/soul-profile'
 import { Route as SignInRouteImport } from './routes/sign-in'
@@ -113,6 +114,11 @@ const TeachingsRoute = TeachingsRouteImport.update({
 const StoreRoute = StoreRouteImport.update({
   id: '/store',
   path: '/store',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SovereignRoute = SovereignRouteImport.update({
+  id: '/sovereign',
+  path: '/sovereign',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SoulQuizRoute = SoulQuizRouteImport.update({
@@ -311,9 +317,9 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const SovereignIndexRoute = SovereignIndexRouteImport.update({
-  id: '/sovereign/',
-  path: '/sovereign/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => SovereignRoute,
 } as any)
 const WisdomTheTrueStoryOfJeshuaRoute =
   WisdomTheTrueStoryOfJeshuaRouteImport.update({
@@ -348,9 +354,9 @@ const WisdomMatrixOriginsRoute = WisdomMatrixOriginsRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const SovereignWelcomeRoute = SovereignWelcomeRouteImport.update({
-  id: '/sovereign/welcome',
-  path: '/sovereign/welcome',
-  getParentRoute: () => rootRouteImport,
+  id: '/welcome',
+  path: '/welcome',
+  getParentRoute: () => SovereignRoute,
 } as any)
 const SovereignVipWaitlistRoute = SovereignVipWaitlistRouteImport.update({
   id: '/vip-waitlist',
@@ -447,6 +453,7 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/soul-quiz': typeof SoulQuizRoute
+  '/sovereign': typeof SovereignRouteWithChildren
   '/store': typeof StoreRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
@@ -582,6 +589,7 @@ export interface FileRoutesById {
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/soul-quiz': typeof SoulQuizRoute
+  '/sovereign': typeof SovereignRouteWithChildren
   '/store': typeof StoreRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
@@ -651,6 +659,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/soul-profile'
     | '/soul-quiz'
+    | '/sovereign'
     | '/store'
     | '/teachings'
     | '/the-sacred-journey'
@@ -785,6 +794,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/soul-profile'
     | '/soul-quiz'
+    | '/sovereign'
     | '/store'
     | '/teachings'
     | '/the-sacred-journey'
@@ -853,6 +863,7 @@ export interface RootRouteChildren {
   SignInRoute: typeof SignInRoute
   SoulProfileRoute: typeof SoulProfileRoute
   SoulQuizRoute: typeof SoulQuizRoute
+  SovereignRoute: typeof SovereignRouteWithChildren
   StoreRoute: typeof StoreRoute
   TeachingsRoute: typeof TeachingsRoute
   TheSacredJourneyRoute: typeof TheSacredJourneyRoute
@@ -864,14 +875,12 @@ export interface RootRouteChildren {
   CheckoutReturnRoute: typeof CheckoutReturnRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ProfileIdRoute: typeof ProfileIdRoute
-  SovereignWelcomeRoute: typeof SovereignWelcomeRoute
   WisdomMatrixOriginsRoute: typeof WisdomMatrixOriginsRoute
   WisdomOriginsRoute: typeof WisdomOriginsRoute
   WisdomPlantMedicinesRoute: typeof WisdomPlantMedicinesRoute
   WisdomSacredPlantsRoute: typeof WisdomSacredPlantsRoute
   WisdomSuppressedSacredTextsRoute: typeof WisdomSuppressedSacredTextsRoute
   WisdomTheTrueStoryOfJeshuaRoute: typeof WisdomTheTrueStoryOfJeshuaRoute
-  SovereignIndexRoute: typeof SovereignIndexRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
 }
 
@@ -931,6 +940,13 @@ declare module '@tanstack/react-router' {
       path: '/store'
       fullPath: '/store'
       preLoaderRoute: typeof StoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sovereign': {
+      id: '/sovereign'
+      path: '/sovereign'
+      fullPath: '/sovereign'
+      preLoaderRoute: typeof SovereignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/soul-quiz': {
@@ -1208,10 +1224,10 @@ declare module '@tanstack/react-router' {
     }
     '/sovereign/': {
       id: '/sovereign/'
-      path: '/sovereign'
+      path: '/'
       fullPath: '/sovereign/'
       preLoaderRoute: typeof SovereignIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof SovereignRoute
     }
     '/wisdom_/the-true-story-of-jeshua': {
       id: '/wisdom_/the-true-story-of-jeshua'
@@ -1257,10 +1273,10 @@ declare module '@tanstack/react-router' {
     }
     '/sovereign/welcome': {
       id: '/sovereign/welcome'
-      path: '/sovereign/welcome'
+      path: '/welcome'
       fullPath: '/sovereign/welcome'
       preLoaderRoute: typeof SovereignWelcomeRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof SovereignRoute
     }
     '/sovereign/vip-waitlist': {
       id: '/sovereign/vip-waitlist'
@@ -1335,6 +1351,32 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface SovereignRouteChildren {
+  SovereignTermsRoute: typeof SovereignTermsRoute
+  SovereignVipWaitlistRoute: typeof SovereignVipWaitlistRoute
+  SovereignWelcomeRoute: typeof SovereignWelcomeRoute
+  SovereignIndexRoute: typeof SovereignIndexRoute
+  SovereignPortalDashboardRoute: typeof SovereignPortalDashboardRoute
+  SovereignPortalMorningRitualRoute: typeof SovereignPortalMorningRitualRoute
+  SovereignPortalOnboardingRoute: typeof SovereignPortalOnboardingRoute
+  SovereignPortalIndexRoute: typeof SovereignPortalIndexRoute
+}
+
+const SovereignRouteChildren: SovereignRouteChildren = {
+  SovereignTermsRoute: SovereignTermsRoute,
+  SovereignVipWaitlistRoute: SovereignVipWaitlistRoute,
+  SovereignWelcomeRoute: SovereignWelcomeRoute,
+  SovereignIndexRoute: SovereignIndexRoute,
+  SovereignPortalDashboardRoute: SovereignPortalDashboardRoute,
+  SovereignPortalMorningRitualRoute: SovereignPortalMorningRitualRoute,
+  SovereignPortalOnboardingRoute: SovereignPortalOnboardingRoute,
+  SovereignPortalIndexRoute: SovereignPortalIndexRoute,
+}
+
+const SovereignRouteWithChildren = SovereignRoute._addFileChildren(
+  SovereignRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -1375,6 +1417,7 @@ const rootRouteChildren: RootRouteChildren = {
   SignInRoute: SignInRoute,
   SoulProfileRoute: SoulProfileRoute,
   SoulQuizRoute: SoulQuizRoute,
+  SovereignRoute: SovereignRouteWithChildren,
   StoreRoute: StoreRoute,
   TeachingsRoute: TeachingsRoute,
   TheSacredJourneyRoute: TheSacredJourneyRoute,
@@ -1386,25 +1429,14 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutReturnRoute: CheckoutReturnRoute,
   ProductHandleRoute: ProductHandleRoute,
   ProfileIdRoute: ProfileIdRoute,
-  SovereignWelcomeRoute: SovereignWelcomeRoute,
   WisdomMatrixOriginsRoute: WisdomMatrixOriginsRoute,
   WisdomOriginsRoute: WisdomOriginsRoute,
   WisdomPlantMedicinesRoute: WisdomPlantMedicinesRoute,
   WisdomSacredPlantsRoute: WisdomSacredPlantsRoute,
   WisdomSuppressedSacredTextsRoute: WisdomSuppressedSacredTextsRoute,
   WisdomTheTrueStoryOfJeshuaRoute: WisdomTheTrueStoryOfJeshuaRoute,
-  SovereignIndexRoute: SovereignIndexRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
