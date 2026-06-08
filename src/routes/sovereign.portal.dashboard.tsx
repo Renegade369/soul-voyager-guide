@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Loader2, Sunrise, Moon, BookOpen, Sparkles, Users, Headphones } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { usePortalStatus, usePortalGuard } from "@/hooks/usePortalStatus";
+import { SOVEREIGN_MODULES } from "@/lib/sovereign-curriculum";
 
 const C = {
   bg: "#0A0A0A",
