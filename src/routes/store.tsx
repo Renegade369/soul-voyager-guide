@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { makeRouteMeta } from "../components/PageShell";
-import soulTrueLogo from "@/assets/soul-true-logo.png";
+import soulTrueLogoAsset from "@/assets/soul-true-logo-tagline.png.asset.json";
+const soulTrueLogo = soulTrueLogoAsset.url;
 import classicTee from "@/assets/store-classic-tee.jpg";
 import longSleeve from "@/assets/store-long-sleeve.jpg";
 import hoodie from "@/assets/store-hoodie.jpg";
