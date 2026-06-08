@@ -601,6 +601,72 @@ export type Database = {
         }
         Relationships: []
       }
+      sovereign_enrollments: {
+        Row: {
+          amount_cents: number | null
+          created_at: string
+          currency: string | null
+          email: string
+          environment: string
+          id: string
+          status: string
+          stripe_customer_id: string | null
+          stripe_session_id: string | null
+          tier: string
+          updated_at: string
+        }
+        Insert: {
+          amount_cents?: number | null
+          created_at?: string
+          currency?: string | null
+          email: string
+          environment?: string
+          id?: string
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_session_id?: string | null
+          tier: string
+          updated_at?: string
+        }
+        Update: {
+          amount_cents?: number | null
+          created_at?: string
+          currency?: string | null
+          email?: string
+          environment?: string
+          id?: string
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_session_id?: string | null
+          tier?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      sovereign_vip_waitlist: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string | null
+          id: string
+          notes: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name?: string | null
+          id?: string
+          notes?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string | null
+          id?: string
+          notes?: string | null
+        }
+        Relationships: []
+      }
       subscribers: {
         Row: {
           email: string

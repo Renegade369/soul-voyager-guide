@@ -1,23 +1,66 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createClient } from "@supabase/supabase-js";
 
 type StripeEnv = "sandbox" | "live";
+
+// Map of Stripe price lookup_keys → Sovereignty Code tier
+const SOVEREIGN_PRICE_TO_TIER: Record<string, "digital" | "complete"> = {
+  sovereign_digital_onetime: "digital",
+  sovereign_complete_onetime: "complete",
+};
+
+let _admin: any = null;
+function getAdmin(): any {
+  if (!_admin) {
+    _admin = createClient(
+      process.env.SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+  }
+  return _admin;
+}
+
+async function recordSovereignEnrollment(session: any, env: StripeEnv) {
+  try {
+    const priceId = session?.metadata?.priceId ?? null;
+    const tier = priceId ? SOVEREIGN_PRICE_TO_TIER[priceId] : undefined;
+    if (!tier) return; // not a Sovereignty Code purchase
+    const email = session?.customer_details?.email ?? session?.customer_email ?? null;
+    if (!email) {
+      console.warn("[sovereign] no email on session", session?.id);
+      return;
+    }
+    const { error } = await getAdmin().from("sovereign_enrollments").upsert(
+      {
+        email,
+        tier,
+        stripe_session_id: session.id,
+        stripe_customer_id: session.customer ?? null,
+        amount_cents: session.amount_total ?? null,
+        currency: session.currency ?? "usd",
+        environment: env,
+        status: "active",
+      },
+      { onConflict: "stripe_session_id" }
+    );
+    if (error) console.error("[sovereign] enrollment insert error", error);
+    else console.log("[sovereign] enrollment recorded", { email, tier, env });
+  } catch (e) {
+    console.error("[sovereign] recordSovereignEnrollment error", e);
+  }
+}
 
 async function handleEvent(event: { type: string; data: { object: any } }, env: StripeEnv) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object;
-      const sessionId = session?.id;
-      const email = session?.customer_details?.email ?? session?.customer_email ?? null;
-      const priceId = session?.metadata?.priceId ?? null;
       console.log("[payments] checkout.session.completed", {
         env,
-        sessionId,
-        email,
-        priceId,
+        sessionId: session?.id,
+        email: session?.customer_details?.email ?? session?.customer_email ?? null,
+        priceId: session?.metadata?.priceId ?? null,
       });
-      // Unlock state is granted client-side on the /checkout/return page
-      // via getSessionUnlock(), which is authoritative (re-fetches the
-      // session from Stripe). This webhook is logged for auditability.
+      await recordSovereignEnrollment(session, env);
       break;
     }
     case "checkout.session.async_payment_succeeded":
