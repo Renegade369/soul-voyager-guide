@@ -9,6 +9,7 @@ const C = {
   bg: "#0A0A0A",
   card: "#1A1209",
   gold: "#C9A84C",
+  amber: "#E8821A",
   text: "#F5F0E8",
   muted: "rgba(245,240,232,0.7)",
   dim: "rgba(245,240,232,0.4)",
