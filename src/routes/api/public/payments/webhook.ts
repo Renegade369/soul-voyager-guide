@@ -9,8 +9,8 @@ const SOVEREIGN_PRICE_TO_TIER: Record<string, "digital" | "complete"> = {
   sovereign_complete_onetime: "complete",
 };
 
-let _admin: ReturnType<typeof createClient> | null = null;
-function getAdmin() {
+let _admin: any = null;
+function getAdmin(): any {
   if (!_admin) {
     _admin = createClient(
       process.env.SUPABASE_URL!,

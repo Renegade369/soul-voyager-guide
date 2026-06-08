@@ -17,6 +17,7 @@ import { Route as TransmissionsRouteImport } from './routes/transmissions'
 import { Route as TheSacredJourneyRouteImport } from './routes/the-sacred-journey'
 import { Route as TeachingsRouteImport } from './routes/teachings'
 import { Route as StoreRouteImport } from './routes/store'
+import { Route as SovereignRouteImport } from './routes/sovereign'
 import { Route as SoulQuizRouteImport } from './routes/soul-quiz'
 import { Route as SoulProfileRouteImport } from './routes/soul-profile'
 import { Route as SignInRouteImport } from './routes/sign-in'
@@ -62,6 +63,9 @@ import { Route as WisdomSacredPlantsRouteImport } from './routes/wisdom_.sacred-
 import { Route as WisdomPlantMedicinesRouteImport } from './routes/wisdom_.plant-medicines'
 import { Route as WisdomOriginsRouteImport } from './routes/wisdom_.origins'
 import { Route as WisdomMatrixOriginsRouteImport } from './routes/wisdom_.matrix-origins'
+import { Route as SovereignWelcomeRouteImport } from './routes/sovereign.welcome'
+import { Route as SovereignVipWaitlistRouteImport } from './routes/sovereign.vip-waitlist'
+import { Route as SovereignTermsRouteImport } from './routes/sovereign.terms'
 import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 import { Route as CheckoutReturnRouteImport } from './routes/checkout.return'
@@ -105,6 +109,11 @@ const TeachingsRoute = TeachingsRouteImport.update({
 const StoreRoute = StoreRouteImport.update({
   id: '/store',
   path: '/store',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SovereignRoute = SovereignRouteImport.update({
+  id: '/sovereign',
+  path: '/sovereign',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SoulQuizRoute = SoulQuizRouteImport.update({
@@ -334,6 +343,21 @@ const WisdomMatrixOriginsRoute = WisdomMatrixOriginsRouteImport.update({
   path: '/wisdom/matrix-origins',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SovereignWelcomeRoute = SovereignWelcomeRouteImport.update({
+  id: '/welcome',
+  path: '/welcome',
+  getParentRoute: () => SovereignRoute,
+} as any)
+const SovereignVipWaitlistRoute = SovereignVipWaitlistRouteImport.update({
+  id: '/vip-waitlist',
+  path: '/vip-waitlist',
+  getParentRoute: () => SovereignRoute,
+} as any)
+const SovereignTermsRoute = SovereignTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => SovereignRoute,
+} as any)
 const ProfileIdRoute = ProfileIdRouteImport.update({
   id: '/profile/$id',
   path: '/profile/$id',
@@ -396,6 +420,7 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/soul-quiz': typeof SoulQuizRoute
+  '/sovereign': typeof SovereignRouteWithChildren
   '/store': typeof StoreRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
@@ -407,6 +432,9 @@ export interface FileRoutesByFullPath {
   '/checkout/return': typeof CheckoutReturnRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/sovereign/terms': typeof SovereignTermsRoute
+  '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
+  '/sovereign/welcome': typeof SovereignWelcomeRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom/origins': typeof WisdomOriginsRoute
   '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
@@ -455,6 +483,7 @@ export interface FileRoutesByTo {
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/soul-quiz': typeof SoulQuizRoute
+  '/sovereign': typeof SovereignRouteWithChildren
   '/store': typeof StoreRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
@@ -466,6 +495,9 @@ export interface FileRoutesByTo {
   '/checkout/return': typeof CheckoutReturnRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/sovereign/terms': typeof SovereignTermsRoute
+  '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
+  '/sovereign/welcome': typeof SovereignWelcomeRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom/origins': typeof WisdomOriginsRoute
   '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
@@ -515,6 +547,7 @@ export interface FileRoutesById {
   '/sign-in': typeof SignInRoute
   '/soul-profile': typeof SoulProfileRoute
   '/soul-quiz': typeof SoulQuizRoute
+  '/sovereign': typeof SovereignRouteWithChildren
   '/store': typeof StoreRoute
   '/teachings': typeof TeachingsRoute
   '/the-sacred-journey': typeof TheSacredJourneyRoute
@@ -526,6 +559,9 @@ export interface FileRoutesById {
   '/checkout/return': typeof CheckoutReturnRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/sovereign/terms': typeof SovereignTermsRoute
+  '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
+  '/sovereign/welcome': typeof SovereignWelcomeRoute
   '/wisdom_/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom_/origins': typeof WisdomOriginsRoute
   '/wisdom_/plant-medicines': typeof WisdomPlantMedicinesRoute
@@ -576,6 +612,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/soul-profile'
     | '/soul-quiz'
+    | '/sovereign'
     | '/store'
     | '/teachings'
     | '/the-sacred-journey'
@@ -587,6 +624,9 @@ export interface FileRouteTypes {
     | '/checkout/return'
     | '/product/$handle'
     | '/profile/$id'
+    | '/sovereign/terms'
+    | '/sovereign/vip-waitlist'
+    | '/sovereign/welcome'
     | '/wisdom/matrix-origins'
     | '/wisdom/origins'
     | '/wisdom/plant-medicines'
@@ -635,6 +675,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/soul-profile'
     | '/soul-quiz'
+    | '/sovereign'
     | '/store'
     | '/teachings'
     | '/the-sacred-journey'
@@ -646,6 +687,9 @@ export interface FileRouteTypes {
     | '/checkout/return'
     | '/product/$handle'
     | '/profile/$id'
+    | '/sovereign/terms'
+    | '/sovereign/vip-waitlist'
+    | '/sovereign/welcome'
     | '/wisdom/matrix-origins'
     | '/wisdom/origins'
     | '/wisdom/plant-medicines'
@@ -694,6 +738,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/soul-profile'
     | '/soul-quiz'
+    | '/sovereign'
     | '/store'
     | '/teachings'
     | '/the-sacred-journey'
@@ -705,6 +750,9 @@ export interface FileRouteTypes {
     | '/checkout/return'
     | '/product/$handle'
     | '/profile/$id'
+    | '/sovereign/terms'
+    | '/sovereign/vip-waitlist'
+    | '/sovereign/welcome'
     | '/wisdom_/matrix-origins'
     | '/wisdom_/origins'
     | '/wisdom_/plant-medicines'
@@ -754,6 +802,7 @@ export interface RootRouteChildren {
   SignInRoute: typeof SignInRoute
   SoulProfileRoute: typeof SoulProfileRoute
   SoulQuizRoute: typeof SoulQuizRoute
+  SovereignRoute: typeof SovereignRouteWithChildren
   StoreRoute: typeof StoreRoute
   TeachingsRoute: typeof TeachingsRoute
   TheSacredJourneyRoute: typeof TheSacredJourneyRoute
@@ -830,6 +879,13 @@ declare module '@tanstack/react-router' {
       path: '/store'
       fullPath: '/store'
       preLoaderRoute: typeof StoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sovereign': {
+      id: '/sovereign'
+      path: '/sovereign'
+      fullPath: '/sovereign'
+      preLoaderRoute: typeof SovereignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/soul-quiz': {
@@ -1147,6 +1203,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WisdomMatrixOriginsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sovereign/welcome': {
+      id: '/sovereign/welcome'
+      path: '/welcome'
+      fullPath: '/sovereign/welcome'
+      preLoaderRoute: typeof SovereignWelcomeRouteImport
+      parentRoute: typeof SovereignRoute
+    }
+    '/sovereign/vip-waitlist': {
+      id: '/sovereign/vip-waitlist'
+      path: '/vip-waitlist'
+      fullPath: '/sovereign/vip-waitlist'
+      preLoaderRoute: typeof SovereignVipWaitlistRouteImport
+      parentRoute: typeof SovereignRoute
+    }
+    '/sovereign/terms': {
+      id: '/sovereign/terms'
+      path: '/terms'
+      fullPath: '/sovereign/terms'
+      preLoaderRoute: typeof SovereignTermsRouteImport
+      parentRoute: typeof SovereignRoute
+    }
     '/profile/$id': {
       id: '/profile/$id'
       path: '/profile/$id'
@@ -1177,6 +1254,22 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface SovereignRouteChildren {
+  SovereignTermsRoute: typeof SovereignTermsRoute
+  SovereignVipWaitlistRoute: typeof SovereignVipWaitlistRoute
+  SovereignWelcomeRoute: typeof SovereignWelcomeRoute
+}
+
+const SovereignRouteChildren: SovereignRouteChildren = {
+  SovereignTermsRoute: SovereignTermsRoute,
+  SovereignVipWaitlistRoute: SovereignVipWaitlistRoute,
+  SovereignWelcomeRoute: SovereignWelcomeRoute,
+}
+
+const SovereignRouteWithChildren = SovereignRoute._addFileChildren(
+  SovereignRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -1218,6 +1311,7 @@ const rootRouteChildren: RootRouteChildren = {
   SignInRoute: SignInRoute,
   SoulProfileRoute: SoulProfileRoute,
   SoulQuizRoute: SoulQuizRoute,
+  SovereignRoute: SovereignRouteWithChildren,
   StoreRoute: StoreRoute,
   TeachingsRoute: TeachingsRoute,
   TheSacredJourneyRoute: TheSacredJourneyRoute,
