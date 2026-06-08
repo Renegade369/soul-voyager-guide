@@ -1,0 +1,28 @@
+import * as React from 'react'
+import { Body, Button, Container, Head, Heading, Html, Preview, Text } from '@react-email/components'
+import { main, container, brandMark, h1, text, button, footer, SITE_NAME_DISPLAY } from './_brand'
+
+interface MagicLinkEmailProps {
+  siteName: string
+  confirmationUrl: string
+}
+
+export const MagicLinkEmail = ({ confirmationUrl }: MagicLinkEmailProps) => (
+  <Html lang="en" dir="ltr">
+    <Head />
+    <Preview>Your Soul True sign-in link</Preview>
+    <Body style={main}>
+      <Container style={container}>
+        <Text style={brandMark}>{SITE_NAME_DISPLAY}</Text>
+        <Heading style={h1}>Your sign-in link</Heading>
+        <Text style={text}>
+          Tap below to enter Soul True. This link expires shortly for your security.
+        </Text>
+        <Button style={button} href={confirmationUrl}>Sign In</Button>
+        <Text style={footer}>If you didn't request this link, you can safely ignore this email.</Text>
+      </Container>
+    </Body>
+  </Html>
+)
+
+export default MagicLinkEmail
