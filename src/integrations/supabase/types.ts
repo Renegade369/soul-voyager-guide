@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          body: string
+          category: string
+          created_at: string
+          excerpt: string | null
+          hero_image_url: string | null
+          hook: string | null
+          id: string
+          meta_description: string | null
+          meta_title: string | null
+          primary_reader: string | null
+          published_at: string | null
+          reading_time_minutes: number
+          slug: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body: string
+          category: string
+          created_at?: string
+          excerpt?: string | null
+          hero_image_url?: string | null
+          hook?: string | null
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          primary_reader?: string | null
+          published_at?: string | null
+          reading_time_minutes?: number
+          slug: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string
+          category?: string
+          created_at?: string
+          excerpt?: string | null
+          hero_image_url?: string | null
+          hook?: string | null
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          primary_reader?: string | null
+          published_at?: string | null
+          reading_time_minutes?: number
+          slug?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       blood_type_results: {
         Row: {
           blood_type: string
