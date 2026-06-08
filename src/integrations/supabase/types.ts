@@ -796,6 +796,116 @@ export type Database = {
         }
         Relationships: []
       }
+      sovereign_assistant_escalations: {
+        Row: {
+          ai_attempted_answer: string | null
+          confidence_score: number | null
+          escalated_at: string
+          escalation_reason: string
+          id: string
+          module_slug: string | null
+          question: string
+          replied_at: string | null
+          resolved_at: string | null
+          status: string
+          thread_id: string
+          user_id: string
+          william_reply: string | null
+        }
+        Insert: {
+          ai_attempted_answer?: string | null
+          confidence_score?: number | null
+          escalated_at?: string
+          escalation_reason: string
+          id?: string
+          module_slug?: string | null
+          question: string
+          replied_at?: string | null
+          resolved_at?: string | null
+          status?: string
+          thread_id: string
+          user_id: string
+          william_reply?: string | null
+        }
+        Update: {
+          ai_attempted_answer?: string | null
+          confidence_score?: number | null
+          escalated_at?: string
+          escalation_reason?: string
+          id?: string
+          module_slug?: string | null
+          question?: string
+          replied_at?: string | null
+          resolved_at?: string | null
+          status?: string
+          thread_id?: string
+          user_id?: string
+          william_reply?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sovereign_assistant_escalations_thread_id_fkey"
+            columns: ["thread_id"]
+            isOneToOne: false
+            referencedRelation: "sovereign_assistant_threads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sovereign_assistant_settings: {
+        Row: {
+          last_activity_at: string
+          tier_at_enrollment: string
+          total_messages: number
+          user_id: string
+          window_end: string
+          window_start: string
+        }
+        Insert: {
+          last_activity_at?: string
+          tier_at_enrollment: string
+          total_messages?: number
+          user_id: string
+          window_end: string
+          window_start: string
+        }
+        Update: {
+          last_activity_at?: string
+          tier_at_enrollment?: string
+          total_messages?: number
+          user_id?: string
+          window_end?: string
+          window_start?: string
+        }
+        Relationships: []
+      }
+      sovereign_assistant_threads: {
+        Row: {
+          created_at: string
+          id: string
+          messages: Json
+          module_slug: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          messages?: Json
+          module_slug?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          messages?: Json
+          module_slug?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       sovereign_audio_plays: {
         Row: {
           completed_at: string | null
