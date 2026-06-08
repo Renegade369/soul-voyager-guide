@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WisdomRouteImport } from './routes/wisdom'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as VisitRouteImport } from './routes/visit'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as TrueTimelineRouteImport } from './routes/true-timeline'
 import { Route as TransmissionsRouteImport } from './routes/transmissions'
 import { Route as TheSacredJourneyRouteImport } from './routes/the-sacred-journey'
@@ -70,6 +71,7 @@ import { Route as SovereignVipWaitlistRouteImport } from './routes/sovereign.vip
 import { Route as SovereignTermsRouteImport } from './routes/sovereign.terms'
 import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
+import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as CheckoutReturnRouteImport } from './routes/checkout.return'
 import { Route as SovereignPortalIndexRouteImport } from './routes/sovereign.portal.index'
 import { Route as SovereignPortalOnboardingRouteImport } from './routes/sovereign.portal.onboarding'
@@ -79,8 +81,11 @@ import { Route as SovereignPortalEveningRitualRouteImport } from './routes/sover
 import { Route as SovereignPortalDashboardRouteImport } from './routes/sovereign.portal.dashboard'
 import { Route as SovereignPortalCommunityRouteImport } from './routes/sovereign.portal.community'
 import { Route as SovereignPortalAudioRouteImport } from './routes/sovereign.portal.audio'
+import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as SovereignPortalModulesIndexRouteImport } from './routes/sovereign.portal.modules.index'
 import { Route as SovereignPortalModulesSlugRouteImport } from './routes/sovereign.portal.modules.$slug'
+import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
@@ -99,6 +104,11 @@ const WelcomeRoute = WelcomeRouteImport.update({
 const VisitRoute = VisitRouteImport.update({
   id: '/visit',
   path: '/visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrueTimelineRoute = TrueTimelineRouteImport.update({
@@ -393,6 +403,11 @@ const ProductHandleRoute = ProductHandleRouteImport.update({
   path: '/product/$handle',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
+  id: '/email/unsubscribe',
+  path: '/email/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CheckoutReturnRoute = CheckoutReturnRouteImport.update({
   id: '/checkout/return',
   path: '/checkout/return',
@@ -444,6 +459,11 @@ const SovereignPortalAudioRoute = SovereignPortalAudioRouteImport.update({
   path: '/portal/audio',
   getParentRoute: () => SovereignRoute,
 } as any)
+const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
+  id: '/lovable/email/suppression',
+  path: '/lovable/email/suppression',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SovereignPortalModulesIndexRoute =
   SovereignPortalModulesIndexRouteImport.update({
     id: '/portal/modules/',
@@ -455,6 +475,18 @@ const SovereignPortalModulesSlugRoute =
     id: '/portal/modules/$slug',
     path: '/portal/modules/$slug',
     getParentRoute: () => SovereignRoute,
+  } as any)
+const LovableEmailTransactionalSendRoute =
+  LovableEmailTransactionalSendRouteImport.update({
+    id: '/lovable/email/transactional/send',
+    path: '/lovable/email/transactional/send',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const LovableEmailQueueProcessRoute =
   LovableEmailQueueProcessRouteImport.update({
@@ -526,10 +558,12 @@ export interface FileRoutesByFullPath {
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/transmissions': typeof TransmissionsRoute
   '/true-timeline': typeof TrueTimelineRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
   '/checkout/return': typeof CheckoutReturnRoute
+  '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
   '/sovereign/terms': typeof SovereignTermsRoute
@@ -542,6 +576,7 @@ export interface FileRoutesByFullPath {
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/sovereign/': typeof SovereignIndexRoute
+  '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
   '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
@@ -554,6 +589,8 @@ export interface FileRoutesByFullPath {
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
+  '/lovable/email/transactional/send': typeof LovableEmailTransactionalSendRoute
   '/sovereign/portal/modules/$slug': typeof SovereignPortalModulesSlugRoute
   '/sovereign/portal/modules/': typeof SovereignPortalModulesIndexRoute
 }
@@ -603,10 +640,12 @@ export interface FileRoutesByTo {
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/transmissions': typeof TransmissionsRoute
   '/true-timeline': typeof TrueTimelineRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
   '/checkout/return': typeof CheckoutReturnRoute
+  '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
   '/sovereign/terms': typeof SovereignTermsRoute
@@ -619,6 +658,7 @@ export interface FileRoutesByTo {
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/sovereign': typeof SovereignIndexRoute
+  '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
   '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
@@ -631,6 +671,8 @@ export interface FileRoutesByTo {
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
+  '/lovable/email/transactional/send': typeof LovableEmailTransactionalSendRoute
   '/sovereign/portal/modules/$slug': typeof SovereignPortalModulesSlugRoute
   '/sovereign/portal/modules': typeof SovereignPortalModulesIndexRoute
 }
@@ -682,10 +724,12 @@ export interface FileRoutesById {
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/transmissions': typeof TransmissionsRoute
   '/true-timeline': typeof TrueTimelineRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
   '/checkout/return': typeof CheckoutReturnRoute
+  '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
   '/sovereign/terms': typeof SovereignTermsRoute
@@ -698,6 +742,7 @@ export interface FileRoutesById {
   '/wisdom_/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom_/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/sovereign/': typeof SovereignIndexRoute
+  '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
   '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
@@ -710,6 +755,8 @@ export interface FileRoutesById {
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
+  '/lovable/email/transactional/send': typeof LovableEmailTransactionalSendRoute
   '/sovereign/portal/modules/$slug': typeof SovereignPortalModulesSlugRoute
   '/sovereign/portal/modules/': typeof SovereignPortalModulesIndexRoute
 }
@@ -762,10 +809,12 @@ export interface FileRouteTypes {
     | '/the-sacred-journey'
     | '/transmissions'
     | '/true-timeline'
+    | '/unsubscribe'
     | '/visit'
     | '/welcome'
     | '/wisdom'
     | '/checkout/return'
+    | '/email/unsubscribe'
     | '/product/$handle'
     | '/profile/$id'
     | '/sovereign/terms'
@@ -778,6 +827,7 @@ export interface FileRouteTypes {
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
     | '/sovereign/'
+    | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/community'
     | '/sovereign/portal/dashboard'
@@ -790,6 +840,8 @@ export interface FileRouteTypes {
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
+    | '/lovable/email/transactional/preview'
+    | '/lovable/email/transactional/send'
     | '/sovereign/portal/modules/$slug'
     | '/sovereign/portal/modules/'
   fileRoutesByTo: FileRoutesByTo
@@ -839,10 +891,12 @@ export interface FileRouteTypes {
     | '/the-sacred-journey'
     | '/transmissions'
     | '/true-timeline'
+    | '/unsubscribe'
     | '/visit'
     | '/welcome'
     | '/wisdom'
     | '/checkout/return'
+    | '/email/unsubscribe'
     | '/product/$handle'
     | '/profile/$id'
     | '/sovereign/terms'
@@ -855,6 +909,7 @@ export interface FileRouteTypes {
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
     | '/sovereign'
+    | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/community'
     | '/sovereign/portal/dashboard'
@@ -867,6 +922,8 @@ export interface FileRouteTypes {
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
+    | '/lovable/email/transactional/preview'
+    | '/lovable/email/transactional/send'
     | '/sovereign/portal/modules/$slug'
     | '/sovereign/portal/modules'
   id:
@@ -917,10 +974,12 @@ export interface FileRouteTypes {
     | '/the-sacred-journey'
     | '/transmissions'
     | '/true-timeline'
+    | '/unsubscribe'
     | '/visit'
     | '/welcome'
     | '/wisdom'
     | '/checkout/return'
+    | '/email/unsubscribe'
     | '/product/$handle'
     | '/profile/$id'
     | '/sovereign/terms'
@@ -933,6 +992,7 @@ export interface FileRouteTypes {
     | '/wisdom_/suppressed-sacred-texts'
     | '/wisdom_/the-true-story-of-jeshua'
     | '/sovereign/'
+    | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/community'
     | '/sovereign/portal/dashboard'
@@ -945,6 +1005,8 @@ export interface FileRouteTypes {
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
+    | '/lovable/email/transactional/preview'
+    | '/lovable/email/transactional/send'
     | '/sovereign/portal/modules/$slug'
     | '/sovereign/portal/modules/'
   fileRoutesById: FileRoutesById
@@ -996,10 +1058,12 @@ export interface RootRouteChildren {
   TheSacredJourneyRoute: typeof TheSacredJourneyRoute
   TransmissionsRoute: typeof TransmissionsRoute
   TrueTimelineRoute: typeof TrueTimelineRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   VisitRoute: typeof VisitRoute
   WelcomeRoute: typeof WelcomeRoute
   WisdomRoute: typeof WisdomRoute
   CheckoutReturnRoute: typeof CheckoutReturnRoute
+  EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ProfileIdRoute: typeof ProfileIdRoute
   WisdomMatrixOriginsRoute: typeof WisdomMatrixOriginsRoute
@@ -1008,10 +1072,13 @@ export interface RootRouteChildren {
   WisdomSacredPlantsRoute: typeof WisdomSacredPlantsRoute
   WisdomSuppressedSacredTextsRoute: typeof WisdomSuppressedSacredTextsRoute
   WisdomTheTrueStoryOfJeshuaRoute: typeof WisdomTheTrueStoryOfJeshuaRoute
+  LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
+  LovableEmailTransactionalSendRoute: typeof LovableEmailTransactionalSendRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1035,6 +1102,13 @@ declare module '@tanstack/react-router' {
       path: '/visit'
       fullPath: '/visit'
       preLoaderRoute: typeof VisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/true-timeline': {
@@ -1443,6 +1517,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductHandleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/email/unsubscribe': {
+      id: '/email/unsubscribe'
+      path: '/email/unsubscribe'
+      fullPath: '/email/unsubscribe'
+      preLoaderRoute: typeof EmailUnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/checkout/return': {
       id: '/checkout/return'
       path: '/checkout/return'
@@ -1506,6 +1587,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignPortalAudioRouteImport
       parentRoute: typeof SovereignRoute
     }
+    '/lovable/email/suppression': {
+      id: '/lovable/email/suppression'
+      path: '/lovable/email/suppression'
+      fullPath: '/lovable/email/suppression'
+      preLoaderRoute: typeof LovableEmailSuppressionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sovereign/portal/modules/': {
       id: '/sovereign/portal/modules/'
       path: '/portal/modules'
@@ -1519,6 +1607,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/sovereign/portal/modules/$slug'
       preLoaderRoute: typeof SovereignPortalModulesSlugRouteImport
       parentRoute: typeof SovereignRoute
+    }
+    '/lovable/email/transactional/send': {
+      id: '/lovable/email/transactional/send'
+      path: '/lovable/email/transactional/send'
+      fullPath: '/lovable/email/transactional/send'
+      preLoaderRoute: typeof LovableEmailTransactionalSendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/lovable/email/queue/process': {
       id: '/lovable/email/queue/process'
@@ -1636,10 +1738,12 @@ const rootRouteChildren: RootRouteChildren = {
   TheSacredJourneyRoute: TheSacredJourneyRoute,
   TransmissionsRoute: TransmissionsRoute,
   TrueTimelineRoute: TrueTimelineRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   VisitRoute: VisitRoute,
   WelcomeRoute: WelcomeRoute,
   WisdomRoute: WisdomRoute,
   CheckoutReturnRoute: CheckoutReturnRoute,
+  EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   ProductHandleRoute: ProductHandleRoute,
   ProfileIdRoute: ProfileIdRoute,
   WisdomMatrixOriginsRoute: WisdomMatrixOriginsRoute,
@@ -1648,20 +1752,14 @@ const rootRouteChildren: RootRouteChildren = {
   WisdomSacredPlantsRoute: WisdomSacredPlantsRoute,
   WisdomSuppressedSacredTextsRoute: WisdomSuppressedSacredTextsRoute,
   WisdomTheTrueStoryOfJeshuaRoute: WisdomTheTrueStoryOfJeshuaRoute,
+  LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
+  LovableEmailTransactionalSendRoute: LovableEmailTransactionalSendRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
