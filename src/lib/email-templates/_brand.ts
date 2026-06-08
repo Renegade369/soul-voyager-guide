@@ -3,10 +3,16 @@ export const BRAND = {
   gold: '#C9A84C',
   goldAlt: '#D4A017',
   amber: '#E8821A',
-  dark: '#0A0A0A',
+  dark: '#0A0B09',
   deep: '#1A1209',
   body: '#F5F0E8',
 } as const;
+
+// Canonical Soul True lockup (wordmark + Tree of Life + "Let's Go Deeper." tagline baked in).
+// Use the full absolute URL so it loads inside email clients.
+export const LOGO_URL = 'https://soul-true.com/__l5e/assets-v1/d5ae6fc8-9567-446a-b8f4-929e6cdab663/soul-true-logo-tagline.png';
+export const LOGO_ALT = "Soul True — Let's Go Deeper.";
+export const SITE_URL_DISPLAY = 'Soul-True.com';
 
 export const main = {
   backgroundColor: '#ffffff',
@@ -18,21 +24,37 @@ export const main = {
 export const container = {
   backgroundColor: BRAND.dark,
   borderRadius: '4px',
-  padding: '48px 40px',
+  padding: '0',
   maxWidth: '560px',
   margin: '0 auto',
   border: `1px solid ${BRAND.gold}33`,
+  overflow: 'hidden' as const,
 };
 
-export const brandMark = {
-  fontFamily: "'Cormorant Garamond', 'Georgia', serif",
-  fontSize: '28px',
-  fontWeight: 400,
-  color: BRAND.gold,
-  letterSpacing: '0.18em',
-  textTransform: 'uppercase' as const,
+export const headerStrip = {
+  backgroundColor: BRAND.dark,
+  padding: '36px 24px 12px',
   textAlign: 'center' as const,
-  margin: '0 0 32px',
+};
+
+export const logoImg = {
+  width: '180px',
+  height: 'auto',
+  display: 'block',
+  margin: '0 auto',
+};
+
+export const siteUrlText = {
+  fontSize: '12px',
+  color: BRAND.body,
+  letterSpacing: '0.15em',
+  textAlign: 'center' as const,
+  margin: '14px 0 0',
+  fontWeight: 400,
+};
+
+export const innerPadding = {
+  padding: '8px 40px 48px',
 };
 
 export const h1 = {
