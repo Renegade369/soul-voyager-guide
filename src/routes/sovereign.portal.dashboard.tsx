@@ -215,13 +215,20 @@ function DashboardPage() {
             )}
           </Panel>
 
-          <Panel locked={!isComplete} icon={<Headphones size={18} color={isComplete ? C.gold : C.dim} />}>
-            <PanelHeading title="Audio Transmissions" muted={!isComplete} />
+          <Panel icon={<Headphones size={18} color={C.gold} />}>
+            <PanelHeading title="Audio Transmissions" />
             <p className="mt-3 text-sm" style={{ color: C.muted }}>
               {isComplete
-                ? "Guided audio drops here as each module unlocks."
-                : "Complete-tier only. Upgrade for $200."}
+                ? "Guided practices and transmissions from William."
+                : "Preview the library — full access on the Complete tier."}
             </p>
+            <Link
+              to="/sovereign/portal/audio"
+              className="mt-4 inline-block border px-5 py-2 text-[11px] uppercase tracking-[0.22em]"
+              style={{ borderColor: C.gold, color: C.gold }}
+            >
+              Open Library
+            </Link>
           </Panel>
 
           <Panel locked={!isComplete} icon={<Users size={18} color={isComplete ? C.gold : C.dim} />}>
