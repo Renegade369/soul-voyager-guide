@@ -601,6 +601,84 @@ export type Database = {
         }
         Relationships: []
       }
+      sovereign_audio_plays: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          id: string
+          last_position_seconds: number
+          play_count: number
+          transmission_slug: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          last_position_seconds?: number
+          play_count?: number
+          transmission_slug: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          last_position_seconds?: number
+          play_count?: number
+          transmission_slug?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sovereign_audio_transmissions: {
+        Row: {
+          audio_url: string
+          created_at: string
+          description: string | null
+          duration_seconds: number | null
+          id: string
+          is_published: boolean
+          module_slug: string | null
+          slug: string
+          sort_order: number
+          tier_required: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          audio_url: string
+          created_at?: string
+          description?: string | null
+          duration_seconds?: number | null
+          id?: string
+          is_published?: boolean
+          module_slug?: string | null
+          slug: string
+          sort_order?: number
+          tier_required?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          audio_url?: string
+          created_at?: string
+          description?: string | null
+          duration_seconds?: number | null
+          id?: string
+          is_published?: boolean
+          module_slug?: string | null
+          slug?: string
+          sort_order?: number
+          tier_required?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       sovereign_enrollments: {
         Row: {
           amount_cents: number | null
@@ -640,6 +718,39 @@ export type Database = {
           stripe_session_id?: string | null
           tier?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      sovereign_module_progress: {
+        Row: {
+          completed_at: string
+          created_at: string
+          id: string
+          lesson_slug: string
+          module_slug: string
+          notes: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          created_at?: string
+          id?: string
+          lesson_slug: string
+          module_slug: string
+          notes?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          created_at?: string
+          id?: string
+          lesson_slug?: string
+          module_slug?: string
+          notes?: string | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
