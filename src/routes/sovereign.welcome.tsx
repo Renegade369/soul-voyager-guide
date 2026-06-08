@@ -4,8 +4,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { getSessionUnlock } from "@/lib/payments.functions";
 import { getStripeEnvironment } from "@/lib/stripe";
+import { TIME_MACHINE_ANCHOR } from "@/lib/time-machine-frames";
 
-const C = { bg: "#0A0A0A", gold: "#C9A84C", text: "#F5F0E8", muted: "rgba(245,240,232,0.7)" };
+const C = { bg: "#0A0A0A", gold: "#C9A84C", glow: "#E8821A", text: "#F5F0E8", muted: "rgba(245,240,232,0.7)" };
 const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-serif' };
 
 const PRICE_TO_TIER: Record<string, "Digital" | "Complete"> = {
@@ -25,6 +26,8 @@ function SovereignWelcome() {
   const [state, setState] = useState<"loading" | "paid" | "unpaid" | "error">("loading");
   const [tier, setTier] = useState<string>("");
   const [err, setErr] = useState("");
+  // 4a — Time-Machine anchor moment shown once before the standard welcome content.
+  const [anchorDismissed, setAnchorDismissed] = useState(false);
 
   useEffect(() => {
     if (!sessionId) {
