@@ -93,20 +93,23 @@ function SovereignWelcome() {
             </p>
             <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
               <Link
-                to="/"
+                to="/sovereign/portal"
                 className="inline-block px-7 py-3 text-[11px] font-bold uppercase tracking-[0.22em]"
                 style={{ background: C.gold, color: C.bg }}
               >
-                Back to Soul True
+                Enter Your Portal
               </Link>
               <Link
-                to="/sovereign"
+                to="/sign-in"
                 className="inline-block border px-7 py-3 text-[11px] uppercase tracking-[0.22em]"
                 style={{ borderColor: C.gold, color: C.gold }}
               >
-                Program Details
+                Sign In With Email
               </Link>
             </div>
+            <p className="mt-6 text-xs" style={{ color: C.muted }}>
+              Sign in with the same email you used at checkout to access the portal.
+            </p>
           </>
         )}
 
