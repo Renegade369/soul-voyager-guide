@@ -30,6 +30,7 @@ function DashboardPage() {
   usePortalGuard(status, true);
 
   const [ritualDone, setRitualDone] = useState<boolean | null>(null);
+  const [eveningDone, setEveningDone] = useState<boolean | null>(null);
   const [streak, setStreak] = useState<number>(0);
   const [intentions, setIntentions] = useState<string[]>([]);
 
@@ -40,11 +41,12 @@ function DashboardPage() {
       const today = todayKey();
       const { data: ritualRow } = await supabase
         .from("sovereign_rituals")
-        .select("morning_completed_at")
+        .select("morning_completed_at, evening_completed_at")
         .eq("user_id", userId)
         .eq("ritual_date", today)
         .maybeSingle();
       setRitualDone(!!ritualRow?.morning_completed_at);
+      setEveningDone(!!ritualRow?.evening_completed_at);
 
       // Quick streak: count consecutive past days with morning_completed_at, ending today/yesterday.
       const { data: recent } = await supabase
