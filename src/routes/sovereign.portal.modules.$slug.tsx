@@ -5,6 +5,7 @@ import { Loader2, ArrowLeft, Check, Circle, Headphones } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { usePortalStatus, usePortalGuard } from "@/hooks/usePortalStatus";
 import { getModule, SOVEREIGN_MODULES } from "@/lib/sovereign-curriculum";
+import { MODULE_LOSS_FRAMES, moduleEndPrompt } from "@/lib/time-machine-frames";
 
 const C = {
   bg: "#0A0A0A",
@@ -123,6 +124,15 @@ function ModuleDetailPage() {
           <p className="mt-4 text-base font-light max-w-2xl" style={{ color: C.muted }}>
             {mod.description}
           </p>
+          {/* 4e — Time-Machine loss frame */}
+          {MODULE_LOSS_FRAMES[mod.number] && (
+            <p
+              className="mt-6 max-w-2xl text-lg italic font-light leading-relaxed"
+              style={{ fontFamily: fonts.display, color: C.gold, opacity: 0.9 }}
+            >
+              {MODULE_LOSS_FRAMES[mod.number]}
+            </p>
+          )}
         </div>
       </section>
 
@@ -202,6 +212,23 @@ function ModuleDetailPage() {
         })}
 
         <div className="pt-8 mt-8 border-t" style={{ borderColor: "rgba(201,168,76,0.15)" }}>
+          {/* 4f — Module-end reflection prompt (when all lessons complete) */}
+          {mod.lessons.every((l) => doneLessons.has(l.slug)) && (
+            <div
+              className="mb-8 p-6"
+              style={{ background: C.card, border: `1px solid rgba(232,130,26,0.3)` }}
+            >
+              <p className="text-[10px] uppercase tracking-[0.32em]" style={{ color: C.glow }}>
+                Module Complete · Reflection
+              </p>
+              <p
+                className="mt-3 text-lg italic font-light leading-relaxed"
+                style={{ fontFamily: fonts.display, color: C.text }}
+              >
+                {moduleEndPrompt(mod.title)}
+              </p>
+            </div>
+          )}
           <Link
             to="/sovereign/portal/audio"
             className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] mb-8"
