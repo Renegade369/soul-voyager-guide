@@ -233,20 +233,54 @@ function DashboardPage() {
             </Link>
           </Panel>
 
-          <Panel locked={!isComplete} icon={<Users size={18} color={isComplete ? C.gold : C.dim} />}>
-            <PanelHeading title="Community & Live Calls" muted={!isComplete} />
-            <p className="mt-3 text-sm" style={{ color: C.muted }}>
-              {isComplete
-                ? "Monthly calls with William, plus the private space for initiates."
-                : "Complete-tier only."}
-            </p>
+          <Panel icon={<Moon size={18} color={C.amber} />}>
+            <PanelHeading title="Evening Reflection" />
+            {eveningDone === null ? (
+              <Loader2 className="animate-spin mt-3" size={18} color={C.gold} />
+            ) : eveningDone ? (
+              <p className="mt-3 text-sm italic" style={{ color: C.muted, fontFamily: fonts.display }}>
+                Sealed for the night. Rest well.
+              </p>
+            ) : (
+              <p className="mt-3 text-sm" style={{ color: C.muted }}>
+                Four stages. Release the day, then enter sleep as sovereign.
+              </p>
+            )}
+            <Link
+              to="/sovereign/portal/evening-ritual"
+              className="mt-4 inline-block border px-5 py-2 text-[11px] uppercase tracking-[0.22em]"
+              style={{ borderColor: C.amber, color: C.amber }}
+            >
+              {eveningDone ? "Revisit Reflection" : "Begin Evening Ritual"}
+            </Link>
           </Panel>
 
-          <Panel locked icon={<Moon size={18} color={C.dim} />}>
-            <PanelHeading title="Evening Reflection" muted />
+          <Panel icon={<Users size={18} color={C.gold} />}>
+            <PanelHeading title="The Council" />
             <p className="mt-3 text-sm" style={{ color: C.muted }}>
-              Opens at sundown each day. Coming soon.
+              Read the council. {isComplete ? "Share what is alive in your practice." : "Posting on Complete tier."}
             </p>
+            <Link
+              to="/sovereign/portal/community"
+              className="mt-4 inline-block border px-5 py-2 text-[11px] uppercase tracking-[0.22em]"
+              style={{ borderColor: C.gold, color: C.gold }}
+            >
+              Enter Council
+            </Link>
+          </Panel>
+
+          <Panel icon={<Users size={18} color={C.gold} />}>
+            <PanelHeading title="Live Calls" />
+            <p className="mt-3 text-sm" style={{ color: C.muted }}>
+              Monthly gatherings with William. {isComplete ? "" : "Complete tier."}
+            </p>
+            <Link
+              to="/sovereign/portal/live-calls"
+              className="mt-4 inline-block border px-5 py-2 text-[11px] uppercase tracking-[0.22em]"
+              style={{ borderColor: C.gold, color: C.gold }}
+            >
+              View Schedule
+            </Link>
           </Panel>
         </div>
       </div>
