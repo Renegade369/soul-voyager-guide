@@ -95,6 +95,7 @@ import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/e
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
+import { Route as ApiPublicHooksSendMonthlyJournalRouteImport } from './routes/api/public/hooks/send-monthly-journal'
 
 const WisdomRoute = WisdomRouteImport.update({
   id: '/wisdom',
@@ -540,6 +541,12 @@ const ApiPublicPaymentsWebhookRoute =
     path: '/api/public/payments/webhook',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicHooksSendMonthlyJournalRoute =
+  ApiPublicHooksSendMonthlyJournalRouteImport.update({
+    id: '/api/public/hooks/send-monthly-journal',
+    path: '/api/public/hooks/send-monthly-journal',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -620,6 +627,7 @@ export interface FileRoutesByFullPath {
   '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
+  '/api/public/hooks/send-monthly-journal': typeof ApiPublicHooksSendMonthlyJournalRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -707,6 +715,7 @@ export interface FileRoutesByTo {
   '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal': typeof SovereignPortalIndexRoute
+  '/api/public/hooks/send-monthly-journal': typeof ApiPublicHooksSendMonthlyJournalRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -796,6 +805,7 @@ export interface FileRoutesById {
   '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
+  '/api/public/hooks/send-monthly-journal': typeof ApiPublicHooksSendMonthlyJournalRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -886,6 +896,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/morning-ritual'
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal/'
+    | '/api/public/hooks/send-monthly-journal'
     | '/api/public/payments/webhook'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -973,6 +984,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/morning-ritual'
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal'
+    | '/api/public/hooks/send-monthly-journal'
     | '/api/public/payments/webhook'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -1061,6 +1073,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/morning-ritual'
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal/'
+    | '/api/public/hooks/send-monthly-journal'
     | '/api/public/payments/webhook'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -1138,6 +1151,7 @@ export interface RootRouteChildren {
   PractitionersIndexRoute: typeof PractitionersIndexRoute
   WellnessIndexRoute: typeof WellnessIndexRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
+  ApiPublicHooksSendMonthlyJournalRoute: typeof ApiPublicHooksSendMonthlyJournalRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
@@ -1750,6 +1764,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicPaymentsWebhookRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/hooks/send-monthly-journal': {
+      id: '/api/public/hooks/send-monthly-journal'
+      path: '/api/public/hooks/send-monthly-journal'
+      fullPath: '/api/public/hooks/send-monthly-journal'
+      preLoaderRoute: typeof ApiPublicHooksSendMonthlyJournalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1858,6 +1879,7 @@ const rootRouteChildren: RootRouteChildren = {
   PractitionersIndexRoute: PractitionersIndexRoute,
   WellnessIndexRoute: WellnessIndexRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
+  ApiPublicHooksSendMonthlyJournalRoute: ApiPublicHooksSendMonthlyJournalRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
