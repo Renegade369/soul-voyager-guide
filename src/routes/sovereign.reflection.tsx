@@ -145,18 +145,8 @@ function ReflectionPage() {
     return (
       <GateScreen
         title="The AI Assistant is for Sovereignty Code members."
-        body="Join The Sovereignty Code to access the 90-day AI Assistant and direct line to William."
+        body="Join The Sovereignty Code to access the 120-day AI Assistant and direct line to William."
         cta={{ label: "Explore the program", to: "/sovereign" }}
-      />
-    );
-  }
-
-  if (state.gate === "needs-upgrade") {
-    return (
-      <GateScreen
-        title="The AI Assistant is included with Complete."
-        body="The Digital tier gives you the full 6-module curriculum. The Complete tier adds the 90-day AI Assistant and direct escalation to William."
-        cta={{ label: "Upgrade to Complete", to: "/sovereign" }}
       />
     );
   }
@@ -164,12 +154,13 @@ function ReflectionPage() {
   if (state.gate === "graduated") {
     return (
       <GateScreen
-        title="Your 90 days are complete."
-        body="The chat surface closes at day 90, but you don't. Your Sovereignty Plan and Sovereignty Call are waiting. Reach out anytime."
+        title="Your 120 days are complete."
+        body="The chat surface closes at day 120, but you don't. Your Sovereignty Plan and Sovereignty Call are waiting. Reach out anytime."
         cta={{ label: "Open the graduation portal", to: "/sovereign/portal/dashboard" }}
       />
     );
   }
+
 
   return (
     <div style={{ background: C.bg, color: C.text, fontFamily: fonts.body, minHeight: "100vh" }} className="flex flex-col">
