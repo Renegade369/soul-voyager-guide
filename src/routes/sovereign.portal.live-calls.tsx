@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BrandLoader } from "@/components/BrandLoader";
 import { useEffect, useState } from "react";
 import { Loader2, ArrowLeft, Calendar, ExternalLink, Play, Lock } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -65,7 +66,7 @@ function LiveCallsPage() {
   if (status.state !== "ready") {
     return (
       <div style={{ background: C.bg, minHeight: "80vh" }} className="flex items-center justify-center">
-        <Loader2 className="animate-spin" size={32} color={C.gold} />
+        <BrandLoader size={56} />
       </div>
     );
   }
@@ -108,7 +109,7 @@ function LiveCallsPage() {
         <div>
           <h2 className="text-[11px] uppercase tracking-[0.32em]" style={{ color: C.gold }}>Upcoming</h2>
           {calls === null ? (
-            <div className="flex justify-center py-12"><Loader2 className="animate-spin" size={24} color={C.gold} /></div>
+            <div className="flex justify-center py-12"><BrandLoader size={44} /></div>
           ) : upcoming.length === 0 ? (
             <p className="mt-4 text-sm italic" style={{ color: C.muted, fontFamily: fonts.display }}>
               The next call will be announced soon. You'll be notified by email.
