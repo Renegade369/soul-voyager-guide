@@ -40,6 +40,7 @@ import { Route as HealthRouteImport } from './routes/health'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as GeneKeysRouteImport } from './routes/gene-keys'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as EmailDnsRouteImport } from './routes/email-dns'
 import { Route as DiscoveryRouteImport } from './routes/discovery'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactWilliamRouteImport } from './routes/contact-william'
@@ -236,6 +237,11 @@ const GeneKeysRoute = GeneKeysRouteImport.update({
 const EventsRoute = EventsRouteImport.update({
   id: '/events',
   path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailDnsRoute = EmailDnsRouteImport.update({
+  id: '/email-dns',
+  path: '/email-dns',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DiscoveryRoute = DiscoveryRouteImport.update({
@@ -479,6 +485,7 @@ export interface FileRoutesByFullPath {
   '/contact-william': typeof ContactWilliamRoute
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
+  '/email-dns': typeof EmailDnsRoute
   '/events': typeof EventsRoute
   '/gene-keys': typeof GeneKeysRoute
   '/guide': typeof GuideRoute
@@ -554,6 +561,7 @@ export interface FileRoutesByTo {
   '/contact-william': typeof ContactWilliamRoute
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
+  '/email-dns': typeof EmailDnsRoute
   '/events': typeof EventsRoute
   '/gene-keys': typeof GeneKeysRoute
   '/guide': typeof GuideRoute
@@ -629,6 +637,7 @@ export interface FileRoutesById {
   '/contact-william': typeof ContactWilliamRoute
   '/dashboard': typeof DashboardRoute
   '/discovery': typeof DiscoveryRoute
+  '/email-dns': typeof EmailDnsRoute
   '/events': typeof EventsRoute
   '/gene-keys': typeof GeneKeysRoute
   '/guide': typeof GuideRoute
@@ -706,6 +715,7 @@ export interface FileRouteTypes {
     | '/contact-william'
     | '/dashboard'
     | '/discovery'
+    | '/email-dns'
     | '/events'
     | '/gene-keys'
     | '/guide'
@@ -781,6 +791,7 @@ export interface FileRouteTypes {
     | '/contact-william'
     | '/dashboard'
     | '/discovery'
+    | '/email-dns'
     | '/events'
     | '/gene-keys'
     | '/guide'
@@ -855,6 +866,7 @@ export interface FileRouteTypes {
     | '/contact-william'
     | '/dashboard'
     | '/discovery'
+    | '/email-dns'
     | '/events'
     | '/gene-keys'
     | '/guide'
@@ -931,6 +943,7 @@ export interface RootRouteChildren {
   ContactWilliamRoute: typeof ContactWilliamRoute
   DashboardRoute: typeof DashboardRoute
   DiscoveryRoute: typeof DiscoveryRoute
+  EmailDnsRoute: typeof EmailDnsRoute
   EventsRoute: typeof EventsRoute
   GeneKeysRoute: typeof GeneKeysRoute
   GuideRoute: typeof GuideRoute
@@ -1192,6 +1205,13 @@ declare module '@tanstack/react-router' {
       path: '/events'
       fullPath: '/events'
       preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email-dns': {
+      id: '/email-dns'
+      path: '/email-dns'
+      fullPath: '/email-dns'
+      preLoaderRoute: typeof EmailDnsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/discovery': {
@@ -1547,6 +1567,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactWilliamRoute: ContactWilliamRoute,
   DashboardRoute: DashboardRoute,
   DiscoveryRoute: DiscoveryRoute,
+  EmailDnsRoute: EmailDnsRoute,
   EventsRoute: EventsRoute,
   GeneKeysRoute: GeneKeysRoute,
   GuideRoute: GuideRoute,
