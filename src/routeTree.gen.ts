@@ -69,6 +69,10 @@ import { Route as SovereignTermsRouteImport } from './routes/sovereign.terms'
 import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 import { Route as CheckoutReturnRouteImport } from './routes/checkout.return'
+import { Route as SovereignPortalIndexRouteImport } from './routes/sovereign.portal.index'
+import { Route as SovereignPortalOnboardingRouteImport } from './routes/sovereign.portal.onboarding'
+import { Route as SovereignPortalMorningRitualRouteImport } from './routes/sovereign.portal.morning-ritual'
+import { Route as SovereignPortalDashboardRouteImport } from './routes/sovereign.portal.dashboard'
 import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 
 const WisdomRoute = WisdomRouteImport.update({
@@ -373,6 +377,29 @@ const CheckoutReturnRoute = CheckoutReturnRouteImport.update({
   path: '/checkout/return',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SovereignPortalIndexRoute = SovereignPortalIndexRouteImport.update({
+  id: '/portal/',
+  path: '/portal/',
+  getParentRoute: () => SovereignRoute,
+} as any)
+const SovereignPortalOnboardingRoute =
+  SovereignPortalOnboardingRouteImport.update({
+    id: '/portal/onboarding',
+    path: '/portal/onboarding',
+    getParentRoute: () => SovereignRoute,
+  } as any)
+const SovereignPortalMorningRitualRoute =
+  SovereignPortalMorningRitualRouteImport.update({
+    id: '/portal/morning-ritual',
+    path: '/portal/morning-ritual',
+    getParentRoute: () => SovereignRoute,
+  } as any)
+const SovereignPortalDashboardRoute =
+  SovereignPortalDashboardRouteImport.update({
+    id: '/portal/dashboard',
+    path: '/portal/dashboard',
+    getParentRoute: () => SovereignRoute,
+  } as any)
 const ApiPublicPaymentsWebhookRoute =
   ApiPublicPaymentsWebhookRouteImport.update({
     id: '/api/public/payments/webhook',
@@ -441,6 +468,10 @@ export interface FileRoutesByFullPath {
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
+  '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
+  '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
+  '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
+  '/sovereign/portal/': typeof SovereignPortalIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesByTo {
@@ -504,6 +535,10 @@ export interface FileRoutesByTo {
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
+  '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
+  '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
+  '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
+  '/sovereign/portal': typeof SovereignPortalIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesById {
@@ -568,6 +603,10 @@ export interface FileRoutesById {
   '/wisdom_/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom_/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom_/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
+  '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
+  '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
+  '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
+  '/sovereign/portal/': typeof SovereignPortalIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRouteTypes {
@@ -633,6 +672,10 @@ export interface FileRouteTypes {
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
+    | '/sovereign/portal/dashboard'
+    | '/sovereign/portal/morning-ritual'
+    | '/sovereign/portal/onboarding'
+    | '/sovereign/portal/'
     | '/api/public/payments/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -696,6 +739,10 @@ export interface FileRouteTypes {
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
+    | '/sovereign/portal/dashboard'
+    | '/sovereign/portal/morning-ritual'
+    | '/sovereign/portal/onboarding'
+    | '/sovereign/portal'
     | '/api/public/payments/webhook'
   id:
     | '__root__'
@@ -759,6 +806,10 @@ export interface FileRouteTypes {
     | '/wisdom_/sacred-plants'
     | '/wisdom_/suppressed-sacred-texts'
     | '/wisdom_/the-true-story-of-jeshua'
+    | '/sovereign/portal/dashboard'
+    | '/sovereign/portal/morning-ritual'
+    | '/sovereign/portal/onboarding'
+    | '/sovereign/portal/'
     | '/api/public/payments/webhook'
   fileRoutesById: FileRoutesById
 }
@@ -1245,6 +1296,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutReturnRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sovereign/portal/': {
+      id: '/sovereign/portal/'
+      path: '/portal'
+      fullPath: '/sovereign/portal/'
+      preLoaderRoute: typeof SovereignPortalIndexRouteImport
+      parentRoute: typeof SovereignRoute
+    }
+    '/sovereign/portal/onboarding': {
+      id: '/sovereign/portal/onboarding'
+      path: '/portal/onboarding'
+      fullPath: '/sovereign/portal/onboarding'
+      preLoaderRoute: typeof SovereignPortalOnboardingRouteImport
+      parentRoute: typeof SovereignRoute
+    }
+    '/sovereign/portal/morning-ritual': {
+      id: '/sovereign/portal/morning-ritual'
+      path: '/portal/morning-ritual'
+      fullPath: '/sovereign/portal/morning-ritual'
+      preLoaderRoute: typeof SovereignPortalMorningRitualRouteImport
+      parentRoute: typeof SovereignRoute
+    }
+    '/sovereign/portal/dashboard': {
+      id: '/sovereign/portal/dashboard'
+      path: '/portal/dashboard'
+      fullPath: '/sovereign/portal/dashboard'
+      preLoaderRoute: typeof SovereignPortalDashboardRouteImport
+      parentRoute: typeof SovereignRoute
+    }
     '/api/public/payments/webhook': {
       id: '/api/public/payments/webhook'
       path: '/api/public/payments/webhook'
@@ -1259,12 +1338,20 @@ interface SovereignRouteChildren {
   SovereignTermsRoute: typeof SovereignTermsRoute
   SovereignVipWaitlistRoute: typeof SovereignVipWaitlistRoute
   SovereignWelcomeRoute: typeof SovereignWelcomeRoute
+  SovereignPortalDashboardRoute: typeof SovereignPortalDashboardRoute
+  SovereignPortalMorningRitualRoute: typeof SovereignPortalMorningRitualRoute
+  SovereignPortalOnboardingRoute: typeof SovereignPortalOnboardingRoute
+  SovereignPortalIndexRoute: typeof SovereignPortalIndexRoute
 }
 
 const SovereignRouteChildren: SovereignRouteChildren = {
   SovereignTermsRoute: SovereignTermsRoute,
   SovereignVipWaitlistRoute: SovereignVipWaitlistRoute,
   SovereignWelcomeRoute: SovereignWelcomeRoute,
+  SovereignPortalDashboardRoute: SovereignPortalDashboardRoute,
+  SovereignPortalMorningRitualRoute: SovereignPortalMorningRitualRoute,
+  SovereignPortalOnboardingRoute: SovereignPortalOnboardingRoute,
+  SovereignPortalIndexRoute: SovereignPortalIndexRoute,
 }
 
 const SovereignRouteWithChildren = SovereignRoute._addFileChildren(
