@@ -1219,6 +1219,57 @@ export type Database = {
         }
         Relationships: []
       }
+      trusted_practitioners: {
+        Row: {
+          bio: string | null
+          booking_url: string | null
+          created_at: string
+          display_order: number
+          how_william_knows_them: string | null
+          id: string
+          is_featured: boolean
+          location: string | null
+          name: string
+          photo: string | null
+          slug: string
+          specialty: Database["public"]["Enums"]["practitioner_specialty"]
+          updated_at: string
+          what_they_offer: string | null
+        }
+        Insert: {
+          bio?: string | null
+          booking_url?: string | null
+          created_at?: string
+          display_order?: number
+          how_william_knows_them?: string | null
+          id?: string
+          is_featured?: boolean
+          location?: string | null
+          name: string
+          photo?: string | null
+          slug: string
+          specialty?: Database["public"]["Enums"]["practitioner_specialty"]
+          updated_at?: string
+          what_they_offer?: string | null
+        }
+        Update: {
+          bio?: string | null
+          booking_url?: string | null
+          created_at?: string
+          display_order?: number
+          how_william_knows_them?: string | null
+          id?: string
+          is_featured?: boolean
+          location?: string | null
+          name?: string
+          photo?: string | null
+          slug?: string
+          specialty?: Database["public"]["Enums"]["practitioner_specialty"]
+          updated_at?: string
+          what_they_offer?: string | null
+        }
+        Relationships: []
+      }
       user_readings: {
         Row: {
           created_at: string
@@ -1275,6 +1326,54 @@ export type Database = {
         }
         Relationships: []
       }
+      wellness_products: {
+        Row: {
+          buy_url: string | null
+          category: Database["public"]["Enums"]["wellness_category"]
+          created_at: string
+          description: string | null
+          display_order: number
+          how_to_use: string | null
+          id: string
+          image: string | null
+          is_featured: boolean
+          name: string
+          slug: string
+          updated_at: string
+          why_william_uses_it: string | null
+        }
+        Insert: {
+          buy_url?: string | null
+          category?: Database["public"]["Enums"]["wellness_category"]
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          how_to_use?: string | null
+          id?: string
+          image?: string | null
+          is_featured?: boolean
+          name: string
+          slug: string
+          updated_at?: string
+          why_william_uses_it?: string | null
+        }
+        Update: {
+          buy_url?: string | null
+          category?: Database["public"]["Enums"]["wellness_category"]
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          how_to_use?: string | null
+          id?: string
+          image?: string | null
+          is_featured?: boolean
+          name?: string
+          slug?: string
+          updated_at?: string
+          why_william_uses_it?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -1323,6 +1422,20 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      practitioner_specialty:
+        | "healer"
+        | "coach"
+        | "bodyworker"
+        | "energy_worker"
+        | "therapist"
+        | "other"
+      wellness_category:
+        | "supplement"
+        | "tool"
+        | "book"
+        | "candle"
+        | "accessory"
+        | "other"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -1451,6 +1564,22 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      practitioner_specialty: [
+        "healer",
+        "coach",
+        "bodyworker",
+        "energy_worker",
+        "therapist",
+        "other",
+      ],
+      wellness_category: [
+        "supplement",
+        "tool",
+        "book",
+        "candle",
+        "accessory",
+        "other",
+      ],
     },
   },
 } as const
