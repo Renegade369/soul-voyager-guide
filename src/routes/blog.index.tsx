@@ -4,7 +4,7 @@ import { PageShell, makeRouteMeta } from "@/components/PageShell";
 import { BrandLoader } from "@/components/BrandLoader";
 import { fetchPublishedPosts, formatPublishedDate, type BlogPostCard } from "@/lib/blog";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () =>
     makeRouteMeta({
       title: "The Journal — Soul True",

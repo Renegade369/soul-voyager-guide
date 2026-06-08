@@ -60,6 +60,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SovereignIndexRouteImport } from './routes/sovereign.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as WisdomTheTrueStoryOfJeshuaRouteImport } from './routes/wisdom_.the-true-story-of-jeshua'
 import { Route as WisdomSuppressedSacredTextsRouteImport } from './routes/wisdom_.suppressed-sacred-texts'
 import { Route as WisdomSacredPlantsRouteImport } from './routes/wisdom_.sacred-plants'
@@ -73,6 +74,7 @@ import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as CheckoutReturnRouteImport } from './routes/checkout.return'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as SovereignPortalIndexRouteImport } from './routes/sovereign.portal.index'
 import { Route as SovereignPortalOnboardingRouteImport } from './routes/sovereign.portal.onboarding'
 import { Route as SovereignPortalMorningRitualRouteImport } from './routes/sovereign.portal.morning-ritual'
@@ -346,6 +348,11 @@ const SovereignIndexRoute = SovereignIndexRouteImport.update({
   path: '/',
   getParentRoute: () => SovereignRoute,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WisdomTheTrueStoryOfJeshuaRoute =
   WisdomTheTrueStoryOfJeshuaRouteImport.update({
     id: '/wisdom_/the-true-story-of-jeshua',
@@ -411,6 +418,11 @@ const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
 const CheckoutReturnRoute = CheckoutReturnRouteImport.update({
   id: '/checkout/return',
   path: '/checkout/return',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SovereignPortalIndexRoute = SovereignPortalIndexRouteImport.update({
@@ -562,6 +574,7 @@ export interface FileRoutesByFullPath {
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/checkout/return': typeof CheckoutReturnRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/product/$handle': typeof ProductHandleRoute
@@ -575,6 +588,7 @@ export interface FileRoutesByFullPath {
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
+  '/blog/': typeof BlogIndexRoute
   '/sovereign/': typeof SovereignIndexRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
@@ -644,6 +658,7 @@ export interface FileRoutesByTo {
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/checkout/return': typeof CheckoutReturnRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/product/$handle': typeof ProductHandleRoute
@@ -657,6 +672,7 @@ export interface FileRoutesByTo {
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
+  '/blog': typeof BlogIndexRoute
   '/sovereign': typeof SovereignIndexRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
@@ -728,6 +744,7 @@ export interface FileRoutesById {
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/checkout/return': typeof CheckoutReturnRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/product/$handle': typeof ProductHandleRoute
@@ -741,6 +758,7 @@ export interface FileRoutesById {
   '/wisdom_/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom_/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
   '/wisdom_/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
+  '/blog/': typeof BlogIndexRoute
   '/sovereign/': typeof SovereignIndexRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
@@ -813,6 +831,7 @@ export interface FileRouteTypes {
     | '/visit'
     | '/welcome'
     | '/wisdom'
+    | '/blog/$slug'
     | '/checkout/return'
     | '/email/unsubscribe'
     | '/product/$handle'
@@ -826,6 +845,7 @@ export interface FileRouteTypes {
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
+    | '/blog/'
     | '/sovereign/'
     | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
@@ -895,6 +915,7 @@ export interface FileRouteTypes {
     | '/visit'
     | '/welcome'
     | '/wisdom'
+    | '/blog/$slug'
     | '/checkout/return'
     | '/email/unsubscribe'
     | '/product/$handle'
@@ -908,6 +929,7 @@ export interface FileRouteTypes {
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
     | '/wisdom/the-true-story-of-jeshua'
+    | '/blog'
     | '/sovereign'
     | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
@@ -978,6 +1000,7 @@ export interface FileRouteTypes {
     | '/visit'
     | '/welcome'
     | '/wisdom'
+    | '/blog/$slug'
     | '/checkout/return'
     | '/email/unsubscribe'
     | '/product/$handle'
@@ -991,6 +1014,7 @@ export interface FileRouteTypes {
     | '/wisdom_/sacred-plants'
     | '/wisdom_/suppressed-sacred-texts'
     | '/wisdom_/the-true-story-of-jeshua'
+    | '/blog/'
     | '/sovereign/'
     | '/lovable/email/suppression'
     | '/sovereign/portal/audio'
@@ -1062,6 +1086,7 @@ export interface RootRouteChildren {
   VisitRoute: typeof VisitRoute
   WelcomeRoute: typeof WelcomeRoute
   WisdomRoute: typeof WisdomRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   CheckoutReturnRoute: typeof CheckoutReturnRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   ProductHandleRoute: typeof ProductHandleRoute
@@ -1072,6 +1097,7 @@ export interface RootRouteChildren {
   WisdomSacredPlantsRoute: typeof WisdomSacredPlantsRoute
   WisdomSuppressedSacredTextsRoute: typeof WisdomSuppressedSacredTextsRoute
   WisdomTheTrueStoryOfJeshuaRoute: typeof WisdomTheTrueStoryOfJeshuaRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -1440,6 +1466,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignIndexRouteImport
       parentRoute: typeof SovereignRoute
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wisdom_/the-true-story-of-jeshua': {
       id: '/wisdom_/the-true-story-of-jeshua'
       path: '/wisdom/the-true-story-of-jeshua'
@@ -1529,6 +1562,13 @@ declare module '@tanstack/react-router' {
       path: '/checkout/return'
       fullPath: '/checkout/return'
       preLoaderRoute: typeof CheckoutReturnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sovereign/portal/': {
@@ -1742,6 +1782,7 @@ const rootRouteChildren: RootRouteChildren = {
   VisitRoute: VisitRoute,
   WelcomeRoute: WelcomeRoute,
   WisdomRoute: WisdomRoute,
+  BlogSlugRoute: BlogSlugRoute,
   CheckoutReturnRoute: CheckoutReturnRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   ProductHandleRoute: ProductHandleRoute,
@@ -1752,6 +1793,7 @@ const rootRouteChildren: RootRouteChildren = {
   WisdomSacredPlantsRoute: WisdomSacredPlantsRoute,
   WisdomSuppressedSacredTextsRoute: WisdomSuppressedSacredTextsRoute,
   WisdomTheTrueStoryOfJeshuaRoute: WisdomTheTrueStoryOfJeshuaRoute,
+  BlogIndexRoute: BlogIndexRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
