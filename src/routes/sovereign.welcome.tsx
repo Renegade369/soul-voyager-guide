@@ -77,7 +77,43 @@ function SovereignWelcome() {
           </>
         )}
 
-        {state === "paid" && (
+        {state === "paid" && !anchorDismissed && (
+          <div
+            className="mx-auto"
+            style={{
+              maxWidth: "640px",
+              padding: "32px 24px",
+              minHeight: "60vh",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <p className="text-[11px] uppercase tracking-[0.32em]" style={{ color: C.gold }}>
+              The Door
+            </p>
+            <p
+              className="mt-8 text-2xl md:text-3xl font-light italic leading-relaxed"
+              style={{
+                fontFamily: fonts.display,
+                color: C.text,
+                textShadow: `0 0 24px ${C.glow}55`,
+              }}
+            >
+              {TIME_MACHINE_ANCHOR}
+            </p>
+            <button
+              onClick={() => setAnchorDismissed(true)}
+              className="mt-12 px-9 py-4 text-[11px] font-bold uppercase tracking-[0.22em] transition hover:shadow-[0_0_18px_rgba(232,130,26,0.5)]"
+              style={{ background: C.gold, color: C.bg }}
+            >
+              Begin the Work
+            </button>
+          </div>
+        )}
+
+        {state === "paid" && anchorDismissed && (
           <>
             <CheckCircle2 className="mx-auto" size={52} color={C.gold} />
             <p className="mt-6 text-[11px] uppercase tracking-[0.32em]" style={{ color: C.gold }}>
