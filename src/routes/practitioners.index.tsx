@@ -1,4 +1,4 @@
-import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   fetchPractitioners,
@@ -16,15 +16,8 @@ export const Route = createFileRoute("/practitioners/")({
       description:
         "The healers, coaches, and teachers William trusts. Personal referrals from Soul True. Let's Go Deeper.",
     }),
-  component: PractitionersLayout,
+  component: PractitionersIndex,
 });
-
-function PractitionersLayout() {
-  const matches = useMatches();
-  const isChild = matches.some((m) => m.routeId === "/practitioners/$slug");
-  if (isChild) return <Outlet />;
-  return <PractitionersIndex />;
-}
 
 function PractitionersIndex() {
   const [items, setItems] = useState<Practitioner[]>([]);
