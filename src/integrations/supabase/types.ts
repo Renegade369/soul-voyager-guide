@@ -679,6 +679,39 @@ export type Database = {
         }
         Relationships: []
       }
+      sovereign_community_posts: {
+        Row: {
+          author_display_name: string
+          body: string
+          created_at: string
+          id: string
+          is_hidden: boolean
+          title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          author_display_name: string
+          body: string
+          created_at?: string
+          id?: string
+          is_hidden?: boolean
+          title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          author_display_name?: string
+          body?: string
+          created_at?: string
+          id?: string
+          is_hidden?: boolean
+          title?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       sovereign_enrollments: {
         Row: {
           amount_cents: number | null
@@ -717,6 +750,51 @@ export type Database = {
           stripe_customer_id?: string | null
           stripe_session_id?: string | null
           tier?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      sovereign_live_calls: {
+        Row: {
+          created_at: string
+          description: string | null
+          duration_minutes: number
+          id: string
+          is_published: boolean
+          join_url: string | null
+          recording_url: string | null
+          scheduled_at: string
+          slug: string
+          tier_required: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number
+          id?: string
+          is_published?: boolean
+          join_url?: string | null
+          recording_url?: string | null
+          scheduled_at: string
+          slug: string
+          tier_required?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number
+          id?: string
+          is_published?: boolean
+          join_url?: string | null
+          recording_url?: string | null
+          scheduled_at?: string
+          slug?: string
+          tier_required?: string
+          title?: string
           updated_at?: string
         }
         Relationships: []
@@ -800,6 +878,7 @@ export type Database = {
         Row: {
           created_at: string
           evening_completed_at: string | null
+          evening_reflection: string | null
           id: string
           morning_completed_at: string | null
           reflection: string | null
@@ -810,6 +889,7 @@ export type Database = {
         Insert: {
           created_at?: string
           evening_completed_at?: string | null
+          evening_reflection?: string | null
           id?: string
           morning_completed_at?: string | null
           reflection?: string | null
@@ -820,6 +900,7 @@ export type Database = {
         Update: {
           created_at?: string
           evening_completed_at?: string | null
+          evening_reflection?: string | null
           id?: string
           morning_completed_at?: string | null
           reflection?: string | null
