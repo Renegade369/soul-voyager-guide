@@ -1,100 +1,98 @@
-import { createFileRoute, useSearch } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { validateUnsubscribeToken, unsubscribeByToken } from "@/lib/subscribe.functions";
+import { makeRouteMeta } from "@/components/PageShell";
+import { z } from "zod";
 
-export const Route = createFileRoute('/unsubscribe')({
-  validateSearch: (search: Record<string, unknown>) => ({
-    token: typeof search.token === 'string' ? search.token : '',
-  }),
+export const Route = createFileRoute("/unsubscribe")({
+  head: () =>
+    makeRouteMeta({
+      title: "Unsubscribe — Soul True Journal",
+      description: "Unsubscribe from the Soul True monthly Journal email.",
+    }),
+  validateSearch: (search: Record<string, unknown>) =>
+    z.object({ token: z.string().optional() }).parse(search),
   component: UnsubscribePage,
-})
-
-type Status = 'loading' | 'ready' | 'already' | 'invalid' | 'done' | 'error'
+});
 
 function UnsubscribePage() {
-  const { token } = useSearch({ from: '/unsubscribe' })
-  const [status, setStatus] = useState<Status>('loading')
-  const [submitting, setSubmitting] = useState(false)
+  const { token } = Route.useSearch();
+  const validate = useServerFn(validateUnsubscribeToken);
+  const unsub = useServerFn(unsubscribeByToken);
+
+  const [state, setState] = useState<"loading" | "confirm" | "done" | "already" | "invalid" | "error">("loading");
+  const [email, setEmail] = useState<string>("");
 
   useEffect(() => {
     if (!token) {
-      setStatus('invalid')
-      return
+      setState("invalid");
+      return;
     }
-    fetch(`/email/unsubscribe?token=${encodeURIComponent(token)}`)
-      .then(async (res) => {
-        const body = await res.json().catch(() => ({}))
-        if (!res.ok) return setStatus('invalid')
-        if (body.valid === false && body.reason === 'already_unsubscribed') return setStatus('already')
-        if (body.valid === true) return setStatus('ready')
-        setStatus('invalid')
+    validate({ data: { token } })
+      .then((res) => {
+        if (!res.ok) {
+          setState("invalid");
+          return;
+        }
+        setEmail(res.email);
+        setState(res.alreadyUnsubscribed ? "already" : "confirm");
       })
-      .catch(() => setStatus('error'))
-  }, [token])
+      .catch(() => setState("error"));
+  }, [token]);
 
-  const confirm = async () => {
-    setSubmitting(true)
+  async function handleConfirm() {
+    if (!token) return;
+    setState("loading");
     try {
-      const res = await fetch('/email/unsubscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token }),
-      })
-      const body = await res.json().catch(() => ({}))
-      if (res.ok && body.success) setStatus('done')
-      else if (body?.reason === 'already_unsubscribed') setStatus('already')
-      else setStatus('error')
+      const res = await unsub({ data: { token } });
+      if (!res.ok) {
+        setState("invalid");
+        return;
+      }
+      setEmail(res.email);
+      setState("done");
     } catch {
-      setStatus('error')
-    } finally {
-      setSubmitting(false)
+      setState("error");
     }
   }
 
   return (
-    <main className="min-h-screen bg-background flex items-center justify-center px-6 py-20">
-      <div className="max-w-md w-full bg-card border border-primary/20 rounded p-10 text-center">
-        <p className="text-primary tracking-[0.22em] uppercase text-xs mb-6 font-light">Soul True</p>
-        {status === 'loading' && <p className="text-foreground/80 font-light">Validating your request…</p>}
-        {status === 'ready' && (
-          <>
-            <h1 className="font-serif italic text-3xl text-foreground mb-4">Unsubscribe?</h1>
-            <p className="text-foreground/70 font-light mb-8 leading-relaxed">
-              Confirm to stop receiving emails from Soul True. You can resubscribe anytime by contacting us.
-            </p>
-            <button
-              onClick={confirm}
-              disabled={submitting}
-              className="bg-primary text-background uppercase tracking-[0.22em] text-[11px] font-bold px-8 py-4 rounded hover:shadow-[0_0_24px_rgba(232,130,26,0.5)] transition-shadow disabled:opacity-60"
-            >
-              {submitting ? 'Processing…' : 'Confirm Unsubscribe'}
-            </button>
-          </>
-        )}
-        {status === 'done' && (
-          <>
-            <h1 className="font-serif italic text-3xl text-foreground mb-4">You're unsubscribed</h1>
-            <p className="text-foreground/70 font-light">You will no longer receive emails from Soul True.</p>
-          </>
-        )}
-        {status === 'already' && (
-          <>
-            <h1 className="font-serif italic text-3xl text-foreground mb-4">Already unsubscribed</h1>
-            <p className="text-foreground/70 font-light">This email address has already been removed from our list.</p>
-          </>
-        )}
-        {status === 'invalid' && (
-          <>
-            <h1 className="font-serif italic text-3xl text-foreground mb-4">Invalid link</h1>
-            <p className="text-foreground/70 font-light">This unsubscribe link is invalid or has expired.</p>
-          </>
-        )}
-        {status === 'error' && (
-          <>
-            <h1 className="font-serif italic text-3xl text-foreground mb-4">Something went wrong</h1>
-            <p className="text-foreground/70 font-light">Please try again in a moment.</p>
-          </>
-        )}
+    <div className="min-h-[70vh] px-6 py-24" style={{ backgroundColor: "#0A0A0A", color: "#F5F0E8" }}>
+      <div className="mx-auto max-w-xl text-center">
+        <p className="text-[11px] uppercase tracking-[0.28em]" style={{ color: "#C9A84C" }}>Soul True Journal</p>
+        <h1 className="mt-6 font-serif text-4xl font-light leading-tight md:text-5xl">
+          {state === "done" || state === "already" ? "You're unsubscribed." : "Unsubscribe"}
+        </h1>
+
+        <div className="mt-10 text-base font-light leading-relaxed" style={{ color: "rgba(245,240,232,0.78)" }}>
+          {state === "loading" && <p>Working…</p>}
+          {state === "invalid" && (
+            <p>This unsubscribe link is invalid or has expired. You can manage your preferences by reaching us at <a href="mailto:William@Soul-True.com" style={{ color: "#C9A84C" }}>William@Soul-True.com</a>.</p>
+          )}
+          {state === "error" && <p>Something went wrong. Please try again in a moment.</p>}
+          {state === "confirm" && (
+            <>
+              <p>Unsubscribe <strong style={{ color: "#F5F0E8" }}>{email}</strong> from the monthly Journal?</p>
+              <button
+                onClick={handleConfirm}
+                className="mt-8 rounded-none px-8 py-3 text-[11px] uppercase tracking-[0.22em]"
+                style={{ color: "#0A0A0A", background: "linear-gradient(135deg,#C9A84C,#D4A017)" }}
+              >
+                Confirm Unsubscribe
+              </button>
+            </>
+          )}
+          {(state === "done" || state === "already") && (
+            <>
+              <p>
+                {email && <>Your address <strong style={{ color: "#F5F0E8" }}>{email}</strong> has been removed. </>}
+                You can resubscribe anytime at <Link to="/blog" style={{ color: "#C9A84C" }}>soul-true.com/blog</Link>.
+              </p>
+            </>
+          )}
+        </div>
       </div>
-    </main>
-  )
+    </div>
+  );
 }
