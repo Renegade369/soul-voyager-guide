@@ -96,9 +96,8 @@ export const loadAssistantState = createServerFn({ method: "GET" })
     if (!enrollment) {
       return { gate: "not-enrolled" as const, firstName };
     }
-    if (enrollment.tier !== "complete") {
-      return { gate: "needs-upgrade" as const, firstName, tier: enrollment.tier };
-    }
+    // Gate: any active enrollment (Free, Digital, Complete) passes
+
 
     const enrolledAt = new Date(enrollment.created_at);
     const windowEnd = new Date(enrolledAt.getTime() + WINDOW_DAYS * 86_400_000);
