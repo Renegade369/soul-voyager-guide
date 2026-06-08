@@ -73,6 +73,7 @@ import { Route as CheckoutReturnRouteImport } from './routes/checkout.return'
 import { Route as SovereignPortalIndexRouteImport } from './routes/sovereign.portal.index'
 import { Route as SovereignPortalOnboardingRouteImport } from './routes/sovereign.portal.onboarding'
 import { Route as SovereignPortalMorningRitualRouteImport } from './routes/sovereign.portal.morning-ritual'
+import { Route as SovereignPortalEveningRitualRouteImport } from './routes/sovereign.portal.evening-ritual'
 import { Route as SovereignPortalDashboardRouteImport } from './routes/sovereign.portal.dashboard'
 import { Route as SovereignPortalAudioRouteImport } from './routes/sovereign.portal.audio'
 import { Route as SovereignPortalModulesIndexRouteImport } from './routes/sovereign.portal.modules.index'
@@ -403,6 +404,12 @@ const SovereignPortalMorningRitualRoute =
     path: '/portal/morning-ritual',
     getParentRoute: () => SovereignRoute,
   } as any)
+const SovereignPortalEveningRitualRoute =
+  SovereignPortalEveningRitualRouteImport.update({
+    id: '/portal/evening-ritual',
+    path: '/portal/evening-ritual',
+    getParentRoute: () => SovereignRoute,
+  } as any)
 const SovereignPortalDashboardRoute =
   SovereignPortalDashboardRouteImport.update({
     id: '/portal/dashboard',
@@ -497,6 +504,7 @@ export interface FileRoutesByFullPath {
   '/sovereign/': typeof SovereignIndexRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
+  '/sovereign/portal/evening-ritual': typeof SovereignPortalEveningRitualRoute
   '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
@@ -567,6 +575,7 @@ export interface FileRoutesByTo {
   '/sovereign': typeof SovereignIndexRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
+  '/sovereign/portal/evening-ritual': typeof SovereignPortalEveningRitualRoute
   '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal': typeof SovereignPortalIndexRoute
@@ -639,6 +648,7 @@ export interface FileRoutesById {
   '/sovereign/': typeof SovereignIndexRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
   '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
+  '/sovereign/portal/evening-ritual': typeof SovereignPortalEveningRitualRoute
   '/sovereign/portal/morning-ritual': typeof SovereignPortalMorningRitualRoute
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
@@ -712,6 +722,7 @@ export interface FileRouteTypes {
     | '/sovereign/'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/dashboard'
+    | '/sovereign/portal/evening-ritual'
     | '/sovereign/portal/morning-ritual'
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal/'
@@ -782,6 +793,7 @@ export interface FileRouteTypes {
     | '/sovereign'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/dashboard'
+    | '/sovereign/portal/evening-ritual'
     | '/sovereign/portal/morning-ritual'
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal'
@@ -853,6 +865,7 @@ export interface FileRouteTypes {
     | '/sovereign/'
     | '/sovereign/portal/audio'
     | '/sovereign/portal/dashboard'
+    | '/sovereign/portal/evening-ritual'
     | '/sovereign/portal/morning-ritual'
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal/'
@@ -1372,6 +1385,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignPortalMorningRitualRouteImport
       parentRoute: typeof SovereignRoute
     }
+    '/sovereign/portal/evening-ritual': {
+      id: '/sovereign/portal/evening-ritual'
+      path: '/portal/evening-ritual'
+      fullPath: '/sovereign/portal/evening-ritual'
+      preLoaderRoute: typeof SovereignPortalEveningRitualRouteImport
+      parentRoute: typeof SovereignRoute
+    }
     '/sovereign/portal/dashboard': {
       id: '/sovereign/portal/dashboard'
       path: '/portal/dashboard'
@@ -1417,6 +1437,7 @@ interface SovereignRouteChildren {
   SovereignIndexRoute: typeof SovereignIndexRoute
   SovereignPortalAudioRoute: typeof SovereignPortalAudioRoute
   SovereignPortalDashboardRoute: typeof SovereignPortalDashboardRoute
+  SovereignPortalEveningRitualRoute: typeof SovereignPortalEveningRitualRoute
   SovereignPortalMorningRitualRoute: typeof SovereignPortalMorningRitualRoute
   SovereignPortalOnboardingRoute: typeof SovereignPortalOnboardingRoute
   SovereignPortalIndexRoute: typeof SovereignPortalIndexRoute
@@ -1431,6 +1452,7 @@ const SovereignRouteChildren: SovereignRouteChildren = {
   SovereignIndexRoute: SovereignIndexRoute,
   SovereignPortalAudioRoute: SovereignPortalAudioRoute,
   SovereignPortalDashboardRoute: SovereignPortalDashboardRoute,
+  SovereignPortalEveningRitualRoute: SovereignPortalEveningRitualRoute,
   SovereignPortalMorningRitualRoute: SovereignPortalMorningRitualRoute,
   SovereignPortalOnboardingRoute: SovereignPortalOnboardingRoute,
   SovereignPortalIndexRoute: SovereignPortalIndexRoute,
