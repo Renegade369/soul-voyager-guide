@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WisdomRouteImport } from './routes/wisdom'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as VisitRouteImport } from './routes/visit'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as TrueTimelineRouteImport } from './routes/true-timeline'
 import { Route as TransmissionsRouteImport } from './routes/transmissions'
 import { Route as TheSacredJourneyRouteImport } from './routes/the-sacred-journey'
@@ -103,6 +104,11 @@ const WelcomeRoute = WelcomeRouteImport.update({
 const VisitRoute = VisitRouteImport.update({
   id: '/visit',
   path: '/visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrueTimelineRoute = TrueTimelineRouteImport.update({
@@ -552,6 +558,7 @@ export interface FileRoutesByFullPath {
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/transmissions': typeof TransmissionsRoute
   '/true-timeline': typeof TrueTimelineRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
@@ -633,6 +640,7 @@ export interface FileRoutesByTo {
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/transmissions': typeof TransmissionsRoute
   '/true-timeline': typeof TrueTimelineRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
@@ -716,6 +724,7 @@ export interface FileRoutesById {
   '/the-sacred-journey': typeof TheSacredJourneyRoute
   '/transmissions': typeof TransmissionsRoute
   '/true-timeline': typeof TrueTimelineRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/visit': typeof VisitRoute
   '/welcome': typeof WelcomeRoute
   '/wisdom': typeof WisdomRoute
@@ -800,6 +809,7 @@ export interface FileRouteTypes {
     | '/the-sacred-journey'
     | '/transmissions'
     | '/true-timeline'
+    | '/unsubscribe'
     | '/visit'
     | '/welcome'
     | '/wisdom'
@@ -881,6 +891,7 @@ export interface FileRouteTypes {
     | '/the-sacred-journey'
     | '/transmissions'
     | '/true-timeline'
+    | '/unsubscribe'
     | '/visit'
     | '/welcome'
     | '/wisdom'
@@ -963,6 +974,7 @@ export interface FileRouteTypes {
     | '/the-sacred-journey'
     | '/transmissions'
     | '/true-timeline'
+    | '/unsubscribe'
     | '/visit'
     | '/welcome'
     | '/wisdom'
@@ -1046,6 +1058,7 @@ export interface RootRouteChildren {
   TheSacredJourneyRoute: typeof TheSacredJourneyRoute
   TransmissionsRoute: typeof TransmissionsRoute
   TrueTimelineRoute: typeof TrueTimelineRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   VisitRoute: typeof VisitRoute
   WelcomeRoute: typeof WelcomeRoute
   WisdomRoute: typeof WisdomRoute
@@ -1089,6 +1102,13 @@ declare module '@tanstack/react-router' {
       path: '/visit'
       fullPath: '/visit'
       preLoaderRoute: typeof VisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/true-timeline': {
@@ -1718,6 +1738,7 @@ const rootRouteChildren: RootRouteChildren = {
   TheSacredJourneyRoute: TheSacredJourneyRoute,
   TransmissionsRoute: TransmissionsRoute,
   TrueTimelineRoute: TrueTimelineRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   VisitRoute: VisitRoute,
   WelcomeRoute: WelcomeRoute,
   WisdomRoute: WisdomRoute,
