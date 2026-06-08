@@ -101,6 +101,15 @@ export function SiteHeader() {
           <Link to="/meditations" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Meditations
           </Link>
+          <Link to="/wellness" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Wellness
+          </Link>
+          <Link to="/blog" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Journal
+          </Link>
+          <Link to="/practitioners" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
+            Practitioners
+          </Link>
           <Link to="/the-sacred-journey" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Journey
           </Link>
