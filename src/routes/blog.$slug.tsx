@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { BrandLoader } from "@/components/BrandLoader";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { GoDeeperBlock } from "@/components/blog/GoDeeperBlock";
+import { JournalSpotlights } from "@/components/blog/JournalSpotlights";
 import {
   fetchPostBySlug,
   fetchRelatedPosts,
@@ -108,6 +109,7 @@ function BlogPostPage() {
       {/* Body */}
       <div className="px-6 pb-20 pt-16 md:pt-24">
         <BlogBody body={post.body} />
+        <JournalSpotlights postId={post.id} />
         <GoDeeperBlock />
       </div>
 
