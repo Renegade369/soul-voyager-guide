@@ -5,6 +5,7 @@ import { Loader2, Sunrise, Moon, BookOpen, Sparkles, Users, Headphones } from "l
 import { supabase } from "@/integrations/supabase/client";
 import { usePortalStatus, usePortalGuard } from "@/hooks/usePortalStatus";
 import { SOVEREIGN_MODULES } from "@/lib/sovereign-curriculum";
+import { pickGreeting, streakFrame, WEEKLY_REFLECTION_PROMPT, isSundayLocal } from "@/lib/time-machine-frames";
 
 const C = {
   bg: "#0A0A0A",
@@ -116,8 +117,32 @@ function DashboardPage() {
           <p className="mt-2 text-sm" style={{ color: C.muted }}>
             {email} · <span style={{ textTransform: "capitalize" }}>{tier}</span> tier
           </p>
+          {/* 4b — Time-Machine greeting line */}
+          <p
+            className="mt-6 max-w-2xl text-base italic font-light leading-relaxed"
+            style={{ fontFamily: fonts.display, color: C.gold, opacity: 0.8 }}
+          >
+            {pickGreeting(streak || 1)}
+          </p>
         </div>
       </section>
+
+      {/* 4f — Weekly reflection prompt (Sundays only) */}
+      {isSundayLocal() && (
+        <section className="border-b" style={{ borderColor: "rgba(201,168,76,0.2)" }}>
+          <div className="mx-auto max-w-6xl px-6 py-6">
+            <p className="text-[10px] uppercase tracking-[0.32em]" style={{ color: C.amber }}>
+              Sunday Reflection
+            </p>
+            <p
+              className="mt-2 text-lg italic font-light leading-relaxed"
+              style={{ fontFamily: fonts.display, color: C.text }}
+            >
+              {WEEKLY_REFLECTION_PROMPT}
+            </p>
+          </div>
+        </section>
+      )}
 
       <div className="mx-auto max-w-6xl px-6 py-12 grid gap-8 md:grid-cols-3">
         {/* Today panel */}
@@ -200,6 +225,13 @@ function DashboardPage() {
             </p>
             <p className="text-xs uppercase tracking-[0.22em]" style={{ color: C.muted }}>
               {streak === 1 ? "Day" : "Days"} of practice
+            </p>
+            {/* 4c — Time-Machine streak frame */}
+            <p
+              className="mt-4 text-sm italic font-light leading-relaxed"
+              style={{ fontFamily: fonts.display, color: C.gold, opacity: 0.85 }}
+            >
+              {streakFrame(streak)}
             </p>
           </Panel>
 

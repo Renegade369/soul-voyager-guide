@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Loader2, CheckCircle2, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { usePortalStatus, usePortalGuard } from "@/hooks/usePortalStatus";
+import { pickMorningOpener, DAILY_REFLECTION_PROMPT } from "@/lib/time-machine-frames";
 
 const C = {
   bg: "#0A0A0A",
@@ -156,6 +157,21 @@ function MorningRitualPage() {
               </p>
             </div>
           )}
+          {/* 4f — Daily reflection prompt after ritual */}
+          <div
+            className="mt-6 p-6 text-left"
+            style={{ background: C.card, border: `1px solid rgba(232,130,26,0.25)` }}
+          >
+            <p className="text-[10px] uppercase tracking-[0.32em]" style={{ color: C.amber }}>
+              Carry this with you
+            </p>
+            <p
+              className="mt-3 text-lg font-light italic leading-relaxed"
+              style={{ fontFamily: fonts.display, color: C.text }}
+            >
+              {DAILY_REFLECTION_PROMPT}
+            </p>
+          </div>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Link
               to="/sovereign/portal/dashboard"
@@ -200,6 +216,13 @@ function MorningRitualPage() {
         </div>
 
         <section className="mt-10">
+          {/* 4d — Time-Machine morning opener */}
+          <p
+            className="mb-6 text-base italic font-light leading-relaxed"
+            style={{ fontFamily: fonts.display, color: C.gold, opacity: 0.85 }}
+          >
+            {pickMorningOpener()}
+          </p>
           <p className="text-[11px] uppercase tracking-[0.32em]" style={{ color: C.gold }}>
             {stage.label}
           </p>
