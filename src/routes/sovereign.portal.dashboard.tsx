@@ -9,6 +9,7 @@ const C = {
   bg: "#0A0A0A",
   card: "#1A1209",
   gold: "#C9A84C",
+  amber: "#E8821A",
   text: "#F5F0E8",
   muted: "rgba(245,240,232,0.7)",
   dim: "rgba(245,240,232,0.4)",
@@ -30,6 +31,7 @@ function DashboardPage() {
   usePortalGuard(status, true);
 
   const [ritualDone, setRitualDone] = useState<boolean | null>(null);
+  const [eveningDone, setEveningDone] = useState<boolean | null>(null);
   const [streak, setStreak] = useState<number>(0);
   const [intentions, setIntentions] = useState<string[]>([]);
 
@@ -40,11 +42,12 @@ function DashboardPage() {
       const today = todayKey();
       const { data: ritualRow } = await supabase
         .from("sovereign_rituals")
-        .select("morning_completed_at")
+        .select("morning_completed_at, evening_completed_at")
         .eq("user_id", userId)
         .eq("ritual_date", today)
         .maybeSingle();
       setRitualDone(!!ritualRow?.morning_completed_at);
+      setEveningDone(!!ritualRow?.evening_completed_at);
 
       // Quick streak: count consecutive past days with morning_completed_at, ending today/yesterday.
       const { data: recent } = await supabase
@@ -231,20 +234,54 @@ function DashboardPage() {
             </Link>
           </Panel>
 
-          <Panel locked={!isComplete} icon={<Users size={18} color={isComplete ? C.gold : C.dim} />}>
-            <PanelHeading title="Community & Live Calls" muted={!isComplete} />
-            <p className="mt-3 text-sm" style={{ color: C.muted }}>
-              {isComplete
-                ? "Monthly calls with William, plus the private space for initiates."
-                : "Complete-tier only."}
-            </p>
+          <Panel icon={<Moon size={18} color={C.amber} />}>
+            <PanelHeading title="Evening Reflection" />
+            {eveningDone === null ? (
+              <Loader2 className="animate-spin mt-3" size={18} color={C.gold} />
+            ) : eveningDone ? (
+              <p className="mt-3 text-sm italic" style={{ color: C.muted, fontFamily: fonts.display }}>
+                Sealed for the night. Rest well.
+              </p>
+            ) : (
+              <p className="mt-3 text-sm" style={{ color: C.muted }}>
+                Four stages. Release the day, then enter sleep as sovereign.
+              </p>
+            )}
+            <Link
+              to="/sovereign/portal/evening-ritual"
+              className="mt-4 inline-block border px-5 py-2 text-[11px] uppercase tracking-[0.22em]"
+              style={{ borderColor: C.amber, color: C.amber }}
+            >
+              {eveningDone ? "Revisit Reflection" : "Begin Evening Ritual"}
+            </Link>
           </Panel>
 
-          <Panel locked icon={<Moon size={18} color={C.dim} />}>
-            <PanelHeading title="Evening Reflection" muted />
+          <Panel icon={<Users size={18} color={C.gold} />}>
+            <PanelHeading title="The Council" />
             <p className="mt-3 text-sm" style={{ color: C.muted }}>
-              Opens at sundown each day. Coming soon.
+              Read the council. {isComplete ? "Share what is alive in your practice." : "Posting on Complete tier."}
             </p>
+            <Link
+              to="/sovereign/portal/community"
+              className="mt-4 inline-block border px-5 py-2 text-[11px] uppercase tracking-[0.22em]"
+              style={{ borderColor: C.gold, color: C.gold }}
+            >
+              Enter Council
+            </Link>
+          </Panel>
+
+          <Panel icon={<Users size={18} color={C.gold} />}>
+            <PanelHeading title="Live Calls" />
+            <p className="mt-3 text-sm" style={{ color: C.muted }}>
+              Monthly gatherings with William. {isComplete ? "" : "Complete tier."}
+            </p>
+            <Link
+              to="/sovereign/portal/live-calls"
+              className="mt-4 inline-block border px-5 py-2 text-[11px] uppercase tracking-[0.22em]"
+              style={{ borderColor: C.gold, color: C.gold }}
+            >
+              View Schedule
+            </Link>
           </Panel>
         </div>
       </div>
