@@ -424,9 +424,9 @@ const ProductHandleRoute = ProductHandleRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const PractitionersSlugRoute = PractitionersSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => PractitionersRoute,
+  id: '/practitioners/$slug',
+  path: '/practitioners/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
   id: '/email/unsubscribe',
@@ -1124,6 +1124,7 @@ export interface RootRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
   CheckoutReturnRoute: typeof CheckoutReturnRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
+  PractitionersSlugRoute: typeof PractitionersSlugRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ProfileIdRoute: typeof ProfileIdRoute
   WellnessSlugRoute: typeof WellnessSlugRoute
@@ -1604,10 +1605,10 @@ declare module '@tanstack/react-router' {
     }
     '/practitioners/$slug': {
       id: '/practitioners/$slug'
-      path: '/$slug'
+      path: '/practitioners/$slug'
       fullPath: '/practitioners/$slug'
       preLoaderRoute: typeof PractitionersSlugRouteImport
-      parentRoute: typeof PractitionersRoute
+      parentRoute: typeof rootRouteImport
     }
     '/email/unsubscribe': {
       id: '/email/unsubscribe'
@@ -1843,6 +1844,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
   CheckoutReturnRoute: CheckoutReturnRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
+  PractitionersSlugRoute: PractitionersSlugRoute,
   ProductHandleRoute: ProductHandleRoute,
   ProfileIdRoute: ProfileIdRoute,
   WellnessSlugRoute: WellnessSlugRoute,
@@ -1866,12 +1868,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
