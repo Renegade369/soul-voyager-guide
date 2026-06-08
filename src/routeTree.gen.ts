@@ -75,6 +75,7 @@ import { Route as SovereignPortalOnboardingRouteImport } from './routes/sovereig
 import { Route as SovereignPortalMorningRitualRouteImport } from './routes/sovereign.portal.morning-ritual'
 import { Route as SovereignPortalDashboardRouteImport } from './routes/sovereign.portal.dashboard'
 import { Route as SovereignPortalModulesIndexRouteImport } from './routes/sovereign.portal.modules.index'
+import { Route as SovereignPortalModulesSlugRouteImport } from './routes/sovereign.portal.modules.$slug'
 import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 
 const WisdomRoute = WisdomRouteImport.update({
@@ -413,6 +414,12 @@ const SovereignPortalModulesIndexRoute =
     path: '/portal/modules/',
     getParentRoute: () => SovereignRoute,
   } as any)
+const SovereignPortalModulesSlugRoute =
+  SovereignPortalModulesSlugRouteImport.update({
+    id: '/portal/modules/$slug',
+    path: '/portal/modules/$slug',
+    getParentRoute: () => SovereignRoute,
+  } as any)
 const ApiPublicPaymentsWebhookRoute =
   ApiPublicPaymentsWebhookRouteImport.update({
     id: '/api/public/payments/webhook',
@@ -487,6 +494,7 @@ export interface FileRoutesByFullPath {
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/sovereign/portal/modules/$slug': typeof SovereignPortalModulesSlugRoute
   '/sovereign/portal/modules/': typeof SovereignPortalModulesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -555,6 +563,7 @@ export interface FileRoutesByTo {
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal': typeof SovereignPortalIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/sovereign/portal/modules/$slug': typeof SovereignPortalModulesSlugRoute
   '/sovereign/portal/modules': typeof SovereignPortalModulesIndexRoute
 }
 export interface FileRoutesById {
@@ -625,6 +634,7 @@ export interface FileRoutesById {
   '/sovereign/portal/onboarding': typeof SovereignPortalOnboardingRoute
   '/sovereign/portal/': typeof SovereignPortalIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/sovereign/portal/modules/$slug': typeof SovereignPortalModulesSlugRoute
   '/sovereign/portal/modules/': typeof SovereignPortalModulesIndexRoute
 }
 export interface FileRouteTypes {
@@ -696,6 +706,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal/'
     | '/api/public/payments/webhook'
+    | '/sovereign/portal/modules/$slug'
     | '/sovereign/portal/modules/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -764,6 +775,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal'
     | '/api/public/payments/webhook'
+    | '/sovereign/portal/modules/$slug'
     | '/sovereign/portal/modules'
   id:
     | '__root__'
@@ -833,6 +845,7 @@ export interface FileRouteTypes {
     | '/sovereign/portal/onboarding'
     | '/sovereign/portal/'
     | '/api/public/payments/webhook'
+    | '/sovereign/portal/modules/$slug'
     | '/sovereign/portal/modules/'
   fileRoutesById: FileRoutesById
 }
@@ -1361,6 +1374,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignPortalModulesIndexRouteImport
       parentRoute: typeof SovereignRoute
     }
+    '/sovereign/portal/modules/$slug': {
+      id: '/sovereign/portal/modules/$slug'
+      path: '/portal/modules/$slug'
+      fullPath: '/sovereign/portal/modules/$slug'
+      preLoaderRoute: typeof SovereignPortalModulesSlugRouteImport
+      parentRoute: typeof SovereignRoute
+    }
     '/api/public/payments/webhook': {
       id: '/api/public/payments/webhook'
       path: '/api/public/payments/webhook'
@@ -1380,6 +1400,7 @@ interface SovereignRouteChildren {
   SovereignPortalMorningRitualRoute: typeof SovereignPortalMorningRitualRoute
   SovereignPortalOnboardingRoute: typeof SovereignPortalOnboardingRoute
   SovereignPortalIndexRoute: typeof SovereignPortalIndexRoute
+  SovereignPortalModulesSlugRoute: typeof SovereignPortalModulesSlugRoute
   SovereignPortalModulesIndexRoute: typeof SovereignPortalModulesIndexRoute
 }
 
@@ -1392,6 +1413,7 @@ const SovereignRouteChildren: SovereignRouteChildren = {
   SovereignPortalMorningRitualRoute: SovereignPortalMorningRitualRoute,
   SovereignPortalOnboardingRoute: SovereignPortalOnboardingRoute,
   SovereignPortalIndexRoute: SovereignPortalIndexRoute,
+  SovereignPortalModulesSlugRoute: SovereignPortalModulesSlugRoute,
   SovereignPortalModulesIndexRoute: SovereignPortalModulesIndexRoute,
 }
 
