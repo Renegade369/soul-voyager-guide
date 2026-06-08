@@ -76,6 +76,7 @@ import { Route as SovereignPortalMorningRitualRouteImport } from './routes/sover
 import { Route as SovereignPortalLiveCallsRouteImport } from './routes/sovereign.portal.live-calls'
 import { Route as SovereignPortalEveningRitualRouteImport } from './routes/sovereign.portal.evening-ritual'
 import { Route as SovereignPortalDashboardRouteImport } from './routes/sovereign.portal.dashboard'
+import { Route as SovereignPortalCommunityRouteImport } from './routes/sovereign.portal.community'
 import { Route as SovereignPortalAudioRouteImport } from './routes/sovereign.portal.audio'
 import { Route as SovereignPortalModulesIndexRouteImport } from './routes/sovereign.portal.modules.index'
 import { Route as SovereignPortalModulesSlugRouteImport } from './routes/sovereign.portal.modules.$slug'
@@ -423,6 +424,12 @@ const SovereignPortalDashboardRoute =
     path: '/portal/dashboard',
     getParentRoute: () => SovereignRoute,
   } as any)
+const SovereignPortalCommunityRoute =
+  SovereignPortalCommunityRouteImport.update({
+    id: '/portal/community',
+    path: '/portal/community',
+    getParentRoute: () => SovereignRoute,
+  } as any)
 const SovereignPortalAudioRoute = SovereignPortalAudioRouteImport.update({
   id: '/portal/audio',
   path: '/portal/audio',
@@ -510,6 +517,7 @@ export interface FileRoutesByFullPath {
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/sovereign/': typeof SovereignIndexRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
+  '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
   '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
   '/sovereign/portal/evening-ritual': typeof SovereignPortalEveningRitualRoute
   '/sovereign/portal/live-calls': typeof SovereignPortalLiveCallsRoute
@@ -582,6 +590,7 @@ export interface FileRoutesByTo {
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/sovereign': typeof SovereignIndexRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
+  '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
   '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
   '/sovereign/portal/evening-ritual': typeof SovereignPortalEveningRitualRoute
   '/sovereign/portal/live-calls': typeof SovereignPortalLiveCallsRoute
@@ -656,6 +665,7 @@ export interface FileRoutesById {
   '/wisdom_/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/sovereign/': typeof SovereignIndexRoute
   '/sovereign/portal/audio': typeof SovereignPortalAudioRoute
+  '/sovereign/portal/community': typeof SovereignPortalCommunityRoute
   '/sovereign/portal/dashboard': typeof SovereignPortalDashboardRoute
   '/sovereign/portal/evening-ritual': typeof SovereignPortalEveningRitualRoute
   '/sovereign/portal/live-calls': typeof SovereignPortalLiveCallsRoute
@@ -731,6 +741,7 @@ export interface FileRouteTypes {
     | '/wisdom/the-true-story-of-jeshua'
     | '/sovereign/'
     | '/sovereign/portal/audio'
+    | '/sovereign/portal/community'
     | '/sovereign/portal/dashboard'
     | '/sovereign/portal/evening-ritual'
     | '/sovereign/portal/live-calls'
@@ -803,6 +814,7 @@ export interface FileRouteTypes {
     | '/wisdom/the-true-story-of-jeshua'
     | '/sovereign'
     | '/sovereign/portal/audio'
+    | '/sovereign/portal/community'
     | '/sovereign/portal/dashboard'
     | '/sovereign/portal/evening-ritual'
     | '/sovereign/portal/live-calls'
@@ -876,6 +888,7 @@ export interface FileRouteTypes {
     | '/wisdom_/the-true-story-of-jeshua'
     | '/sovereign/'
     | '/sovereign/portal/audio'
+    | '/sovereign/portal/community'
     | '/sovereign/portal/dashboard'
     | '/sovereign/portal/evening-ritual'
     | '/sovereign/portal/live-calls'
@@ -1419,6 +1432,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignPortalDashboardRouteImport
       parentRoute: typeof SovereignRoute
     }
+    '/sovereign/portal/community': {
+      id: '/sovereign/portal/community'
+      path: '/portal/community'
+      fullPath: '/sovereign/portal/community'
+      preLoaderRoute: typeof SovereignPortalCommunityRouteImport
+      parentRoute: typeof SovereignRoute
+    }
     '/sovereign/portal/audio': {
       id: '/sovereign/portal/audio'
       path: '/portal/audio'
@@ -1456,6 +1476,7 @@ interface SovereignRouteChildren {
   SovereignWelcomeRoute: typeof SovereignWelcomeRoute
   SovereignIndexRoute: typeof SovereignIndexRoute
   SovereignPortalAudioRoute: typeof SovereignPortalAudioRoute
+  SovereignPortalCommunityRoute: typeof SovereignPortalCommunityRoute
   SovereignPortalDashboardRoute: typeof SovereignPortalDashboardRoute
   SovereignPortalEveningRitualRoute: typeof SovereignPortalEveningRitualRoute
   SovereignPortalLiveCallsRoute: typeof SovereignPortalLiveCallsRoute
@@ -1472,6 +1493,7 @@ const SovereignRouteChildren: SovereignRouteChildren = {
   SovereignWelcomeRoute: SovereignWelcomeRoute,
   SovereignIndexRoute: SovereignIndexRoute,
   SovereignPortalAudioRoute: SovereignPortalAudioRoute,
+  SovereignPortalCommunityRoute: SovereignPortalCommunityRoute,
   SovereignPortalDashboardRoute: SovereignPortalDashboardRoute,
   SovereignPortalEveningRitualRoute: SovereignPortalEveningRitualRoute,
   SovereignPortalLiveCallsRoute: SovereignPortalLiveCallsRoute,
