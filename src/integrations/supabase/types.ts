@@ -431,6 +431,57 @@ export type Database = {
         }
         Relationships: []
       }
+      journal_email_sends: {
+        Row: {
+          email: string
+          error: string | null
+          id: string
+          post_id: string | null
+          post_slug: string | null
+          resend_id: string | null
+          sent_at: string
+          status: string
+          subscriber_id: string | null
+        }
+        Insert: {
+          email: string
+          error?: string | null
+          id?: string
+          post_id?: string | null
+          post_slug?: string | null
+          resend_id?: string | null
+          sent_at?: string
+          status?: string
+          subscriber_id?: string | null
+        }
+        Update: {
+          email?: string
+          error?: string | null
+          id?: string
+          post_id?: string | null
+          post_slug?: string | null
+          resend_id?: string | null
+          sent_at?: string
+          status?: string
+          subscriber_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "journal_email_sends_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "blog_posts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "journal_email_sends_subscriber_id_fkey"
+            columns: ["subscriber_id"]
+            isOneToOne: false
+            referencedRelation: "subscribers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       nature_healing_bookings: {
         Row: {
           accessibility_notes: string | null
@@ -1083,25 +1134,34 @@ export type Database = {
           email: string
           first_name: string | null
           id: string
+          is_active: boolean
           opted_in_consciousness_map: boolean
           source: string | null
           subscribed_at: string
+          unsubscribe_token: string
+          unsubscribed_at: string | null
         }
         Insert: {
           email: string
           first_name?: string | null
           id?: string
+          is_active?: boolean
           opted_in_consciousness_map?: boolean
           source?: string | null
           subscribed_at?: string
+          unsubscribe_token?: string
+          unsubscribed_at?: string | null
         }
         Update: {
           email?: string
           first_name?: string | null
           id?: string
+          is_active?: boolean
           opted_in_consciousness_map?: boolean
           source?: string | null
           subscribed_at?: string
+          unsubscribe_token?: string
+          unsubscribed_at?: string | null
         }
         Relationships: []
       }
