@@ -643,6 +643,81 @@ export type Database = {
         }
         Relationships: []
       }
+      sovereign_onboarding: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          email: string
+          id: string
+          intention_one: string | null
+          intention_three: string | null
+          intention_two: string | null
+          sacred_contract_signed_at: string | null
+          updated_at: string
+          user_id: string
+          why_now: string | null
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          intention_one?: string | null
+          intention_three?: string | null
+          intention_two?: string | null
+          sacred_contract_signed_at?: string | null
+          updated_at?: string
+          user_id: string
+          why_now?: string | null
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          intention_one?: string | null
+          intention_three?: string | null
+          intention_two?: string | null
+          sacred_contract_signed_at?: string | null
+          updated_at?: string
+          user_id?: string
+          why_now?: string | null
+        }
+        Relationships: []
+      }
+      sovereign_rituals: {
+        Row: {
+          created_at: string
+          evening_completed_at: string | null
+          id: string
+          morning_completed_at: string | null
+          reflection: string | null
+          ritual_date: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          evening_completed_at?: string | null
+          id?: string
+          morning_completed_at?: string | null
+          reflection?: string | null
+          ritual_date?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          evening_completed_at?: string | null
+          id?: string
+          morning_completed_at?: string | null
+          reflection?: string | null
+          ritual_date?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       sovereign_vip_waitlist: {
         Row: {
           created_at: string
