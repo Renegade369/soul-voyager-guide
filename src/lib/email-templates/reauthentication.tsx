@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Body, Container, Head, Heading, Html, Preview, Text } from '@react-email/components'
-import { main, container, brandMark, h1, text, codeStyle, footer, SITE_NAME_DISPLAY } from './_brand'
+import { Body, Container, Head, Heading, Html, Img, Preview, Section, Text } from '@react-email/components'
+import { main, container, headerStrip, logoImg, innerPadding, LOGO_URL, LOGO_ALT, h1, text, codeStyle, footer} from './_brand'
 
 interface ReauthenticationEmailProps {
   token: string
@@ -12,13 +12,15 @@ export const ReauthenticationEmail = ({ token }: ReauthenticationEmailProps) => 
     <Preview>Your Soul True verification code</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Text style={brandMark}>{SITE_NAME_DISPLAY}</Text>
+        <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
+        <Section style={innerPadding}>
         <Heading style={h1}>Confirm it's you</Heading>
         <Text style={text}>Use the code below to confirm your identity:</Text>
         <Text style={codeStyle}>{token}</Text>
         <Text style={footer}>
           This code expires shortly. If you didn't request it, you can safely ignore this email.
         </Text>
+      </Section>
       </Container>
     </Body>
   </Html>

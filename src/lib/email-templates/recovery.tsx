@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Body, Button, Container, Head, Heading, Html, Preview, Text } from '@react-email/components'
-import { main, container, brandMark, h1, text, button, footer, SITE_NAME_DISPLAY } from './_brand'
+import { Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text } from '@react-email/components'
+import { main, container, headerStrip, logoImg, innerPadding, LOGO_URL, LOGO_ALT, h1, text, button, footer} from './_brand'
 
 interface RecoveryEmailProps {
   siteName: string
@@ -13,7 +13,8 @@ export const RecoveryEmail = ({ confirmationUrl }: RecoveryEmailProps) => (
     <Preview>Reset your Soul True password</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Text style={brandMark}>{SITE_NAME_DISPLAY}</Text>
+        <Section style={headerStrip}><Img src={LOGO_URL} alt={LOGO_ALT} style={logoImg} /></Section>
+        <Section style={innerPadding}>
         <Heading style={h1}>Reset your password</Heading>
         <Text style={text}>
           We received a request to reset your Soul True password. Choose a new one with the button below.
@@ -22,6 +23,7 @@ export const RecoveryEmail = ({ confirmationUrl }: RecoveryEmailProps) => (
         <Text style={footer}>
           Didn't request this? You can safely ignore this email — your password will not change.
         </Text>
+      </Section>
       </Container>
     </Body>
   </Html>
