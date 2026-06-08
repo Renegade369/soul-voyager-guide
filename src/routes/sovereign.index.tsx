@@ -61,7 +61,7 @@ const FAQ: Array<{ q: string; a: string }> = [
   },
 ];
 
-export const Route = createFileRoute("/sovereign")({
+export const Route = createFileRoute("/sovereign/")({
   head: () => ({
     meta: [
       { title: "The Sovereignty Code — Soul True" },
