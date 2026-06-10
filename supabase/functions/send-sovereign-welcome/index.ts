@@ -25,7 +25,7 @@ serve(async (req: Request) => {
     const resp = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ from: `${SENDER_NAME} <${SENDER_EMAIL}>`, to: [email], subject: "You're in. Let's begin.", html }),
+      body: JSON.stringify({ from: `${SENDER_NAME} <${SENDER_EMAIL}>`, reply_to: "william@soul-true.com", to: [email], subject: "You're in. Let's begin.", html }),
     });
     if (!resp.ok) {
       const t = await resp.text();
