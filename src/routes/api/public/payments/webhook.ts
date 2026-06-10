@@ -66,7 +66,7 @@ async function autoSubscribeFromStripe(session: any, source: string) {
   }
 }
 
-async function handleEvent(event: { type: string; data: { object: any } }, env: StripeEnv) {
+async function handleEvent(event: { type: string; data: { object: any } }, env: StripeEnv, request: Request) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object;
@@ -127,7 +127,7 @@ export const Route = createFileRoute("/api/public/payments/webhook")({
         try {
           const { verifyWebhook } = await import("@/lib/stripe.server");
           const event = await verifyWebhook(request, env);
-          await handleEvent(event, env);
+          await handleEvent(event, env, request);
           return Response.json({ received: true });
         } catch (e) {
           console.error("[payments] webhook error:", e);
