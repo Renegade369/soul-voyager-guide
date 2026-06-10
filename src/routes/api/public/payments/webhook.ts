@@ -78,6 +78,23 @@ async function handleEvent(event: { type: string; data: { object: any } }, env: 
       });
       await recordSovereignEnrollment(session, env);
       await autoSubscribeFromStripe(session, "stripe_checkout");
+      // Best-effort welcome email — log failures but don't fail the webhook
+      try {
+        const customerEmail = session.customer_details?.email ?? session.customer_email;
+        const firstName = (session.customer_details?.name?.split(" ")[0]) ?? "friend";
+        const tier = (session.metadata?.tier as "free" | "digital" | "complete") ?? "digital";
+        const loginUrl = new URL(request.url).origin + "/sovereign/portal";
+        await fetch(process.env.SUPABASE_URL + "/functions/v1/send-sovereign-welcome", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + process.env.SUPABASE_SERVICE_ROLE_KEY,
+          },
+          body: JSON.stringify({ email: customerEmail, firstName, tier, loginUrl }),
+        });
+      } catch (emailErr) {
+        console.error("[sovereign-welcome] email send failed (non-fatal):", emailErr);
+      }
       break;
     }
     case "customer.subscription.created": {
