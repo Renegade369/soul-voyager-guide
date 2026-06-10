@@ -66,7 +66,7 @@ async function autoSubscribeFromStripe(session: any, source: string) {
   }
 }
 
-async function handleEvent(event: { type: string; data: { object: any } }, env: StripeEnv) {
+async function handleEvent(event: { type: string; data: { object: any } }, env: StripeEnv, request: Request) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object;
