@@ -127,7 +127,7 @@ export const Route = createFileRoute("/api/public/payments/webhook")({
         try {
           const { verifyWebhook } = await import("@/lib/stripe.server");
           const event = await verifyWebhook(request, env);
-          await handleEvent(event, env);
+          await handleEvent(event, env, request);
           return Response.json({ received: true });
         } catch (e) {
           console.error("[payments] webhook error:", e);
