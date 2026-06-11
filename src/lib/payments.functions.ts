@@ -1,5 +1,35 @@
 import { createServerFn } from "@tanstack/react-start";
 
+type EnrollmentResult =
+  | { enrollment: { tier: "digital" | "complete"; status: string } | null }
+  | { error: string };
+
+export const getEnrollmentByEmail = createServerFn({ method: "POST" })
+  .inputValidator((data: { email: string }) => {
+    if (!data.email || !data.email.includes("@")) throw new Error("Invalid email");
+    return data;
+  })
+  .handler(async ({ data }): Promise<EnrollmentResult> => {
+    try {
+      const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+      const { data: rows, error } = await supabaseAdmin
+        .from("sovereign_enrollments")
+        .select("tier, status")
+        .ilike("email", data.email)
+        .eq("status", "active")
+        .order("created_at", { ascending: false })
+        .limit(1);
+      if (error) throw error;
+      const row = rows?.[0];
+      if (!row) return { enrollment: null };
+      return { enrollment: { tier: row.tier as "digital" | "complete", status: row.status } };
+    } catch (error) {
+      console.error("getEnrollmentByEmail error:", error);
+      return { error: error instanceof Error ? error.message : "Unknown error" };
+    }
+  });
+
+
 type StripeEnv = "sandbox" | "live";
 
 type CheckoutSessionResult =
