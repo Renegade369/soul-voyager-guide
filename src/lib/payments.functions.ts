@@ -43,7 +43,7 @@ export const createCheckoutSession = createServerFn({ method: "POST" })
       const session = await stripe.checkout.sessions.create({
         line_items: [{ price: stripePrice.id, quantity: 1 }],
         mode: "payment",
-        ui_mode: "embedded_page",
+        ui_mode: "embedded",
         return_url: data.returnUrl,
         ...(data.customerEmail && { customer_email: data.customerEmail }),
         payment_intent_data: { description: product.name },
