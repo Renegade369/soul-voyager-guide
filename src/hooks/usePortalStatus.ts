@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
+import { getEnrollmentByEmail } from "@/lib/payments.functions";
+
 
 export type PortalStatus =
   | { state: "loading" }
@@ -31,22 +33,16 @@ export function usePortalStatus(): PortalStatus {
       }
       const email = user.email;
 
-      // Check enrollment by email (RLS allows the user to see their own row).
-      const { data: enrollment } = await supabase
-        .from("sovereign_enrollments")
-        .select("tier, status")
-        .ilike("email", email)
-        .eq("status", "active")
-        .order("created_at", { ascending: false })
-        .limit(1)
-        .maybeSingle();
+      const result = await getEnrollmentByEmail({ data: { email } });
+      const enrollment = "enrollment" in result ? result.enrollment : null;
 
       if (!enrollment) {
         if (!cancelled) setStatus({ state: "not-enrolled", email });
         return;
       }
 
-      const tier = enrollment.tier as "digital" | "complete";
+      const tier = enrollment.tier;
+
 
       const { data: onboarding } = await supabase
         .from("sovereign_onboarding")
