@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { supabase } from "@/integrations/supabase/client";
+import { getEnrollmentByEmail } from "@/lib/payments.functions";
 
 export type PortalStatus =
   | { state: "loading" }
