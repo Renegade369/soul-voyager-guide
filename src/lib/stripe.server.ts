@@ -1,4 +1,5 @@
 // Server-only Stripe client routed through the Lovable connector gateway.
+// Redeploy marker: pin apiVersion 2026-03-25.dahlia (rev 2026-06-11).
 // NEVER import this from client-reachable code at module scope.
 import Stripe from "stripe";
 
