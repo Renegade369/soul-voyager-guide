@@ -8,6 +8,7 @@ export function CursorGlow() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setEnabled(true);
 
     const el = ref.current;
