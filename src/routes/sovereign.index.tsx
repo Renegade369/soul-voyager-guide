@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, X, ChevronDown, ChevronUp } from "lucide-react";
 import { StripeEmbeddedCheckout } from "@/components/StripeEmbeddedCheckout";
+import { LogoMark } from "@/components/LogoMark";
 
 const C = {
   bg: "#0A0A0A",
