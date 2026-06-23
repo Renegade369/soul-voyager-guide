@@ -158,7 +158,7 @@ function NumerologyPage() {
         )}
 
         {step === "result" && reading && numbers && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+          <motion.div data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
             <div className="text-center">
               <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your core numbers</p>
               <h1 className="mt-4 font-serif text-4xl font-light italic" style={{ color: C.text }}>{name}</h1>

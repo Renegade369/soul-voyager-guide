@@ -189,7 +189,7 @@ function HoroscopePage() {
         {error && <div style={{ textAlign: "center", padding: "40px", color: "rgba(245,240,232,0.4)", fontStyle: "italic" }}>{error}</div>}
 
         {freeReading && !loading && (
-          <div style={{ opacity: revealed ? 1 : 0, transform: revealed ? "translateY(0)" : "translateY(16px)", transition: "all 0.6s ease" }}>
+          <div data-animate="fade-up" style={{ opacity: revealed ? 1 : 0, transform: revealed ? "translateY(0)" : "translateY(16px)", transition: "all 0.6s ease" }}>
 
             {/* Theme + Energy */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "28px", flexWrap: "wrap", gap: 16 }}>

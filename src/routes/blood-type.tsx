@@ -155,7 +155,7 @@ function BloodTypePage() {
         )}
 
         {step === "result" && reading && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+          <motion.div data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
             <div className="text-center">
               <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your blueprint</p>
               <h1 className="mt-4 font-serif text-6xl font-light italic" style={{ color: C.text, textShadow: `0 0 30px ${C.glow}40` }}>
