@@ -1,7 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, ScrollText, Star, Flame, Leaf } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 
-const C = { bg: "#0A0A0A", gold: "#C9A84C", text: "#F5F0E8", overlay: "#1A1209", border: "rgba(201,168,76,0.22)" };
+const C = { bg: "#0A0A0A", gold: "#C9A84C", text: "#F5F0E8", overlay: "#1A1209", border: "rgba(201,168,76,0.35)" };
 const fonts = { display: '"Cormorant Garamond", serif', body: '"Outfit", sans-serif' };
 
 export const Route = createFileRoute("/wisdom")({
@@ -16,22 +16,63 @@ export const Route = createFileRoute("/wisdom")({
   component: WisdomPage,
 });
 
-const cards = [
-  { to: "/wisdom/origins", icon: Flame, title: "Origins", desc: "The truth they buried. The history they rewrote. The lineage you forgot." },
-  { to: "/wisdom/matrix-origins", icon: BookOpen, title: "Matrix Origins", desc: "How the system was built — and how to see through it with clear eyes." },
-  { to: "/wisdom/suppressed-sacred-texts", icon: ScrollText, title: "Suppressed Sacred Texts", desc: "What the gatekeepers removed, hid, or rewrote — and why it matters now." },
-  { to: "/wisdom/the-true-story-of-jeshua", icon: Star, title: "The True Story of Jeshua", desc: "The teacher, the man, the frequency — restored beyond institutional distortion." },
-  { to: "/wisdom/sacred-plants", icon: Leaf, title: "Sacred Plant Allies", desc: "The ancient frequencies they tried to silence — and why they matter now." },
-  { to: "/wisdom/plant-medicines", icon: Leaf, title: "The Plant Allies", desc: "An encyclopedia of Earth's ancient consciousness frequencies." },
-];
+type CodexCard = {
+  to: string;
+  image: string;
+  title: string;
+  tagline: string;
+  tags: string[];
+};
 
-const featureCards = [
+const cards: CodexCard[] = [
+  {
+    to: "/wisdom/matrix-origins",
+    image: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1782248125945.png",
+    title: "Matrix Origins",
+    tagline: "The hidden architecture of control — how the ancient blueprint became the modern cage.",
+    tags: ["The Ancient Blueprint", "The Handoff", "The Modern Matrix", "The Awakening"],
+  },
+  {
+    to: "/wisdom/suppressed-sacred-texts",
+    image: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1782248123755.png",
+    title: "Suppressed Sacred Texts",
+    tagline: "The gospels, scrolls, and teachings they removed from the canon — and why.",
+    tags: ["The Essenes", "Mary Magdalene's True Role", "The Gospel of Thomas", "The Council of Nicaea"],
+  },
+  {
+    to: "/wisdom/the-true-story-of-jeshua",
+    image: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1782248125055.png",
+    title: "The True Story of Jeshua",
+    tagline: "His name, his Essene roots, what he actually taught — and why the true story was buried.",
+    tags: ["His Name", "His Essene Roots", "The Missing Years", "What He Actually Taught"],
+  },
+  {
+    to: "/sacred-plants",
+    image: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1782249056192.png",
+    title: "Sacred Plant Allies",
+    tagline: "The ancient frequencies they tried to silence — and why they matter now.",
+    tags: ["The Suppression", "Cannabis", "The War on Consciousness", "Reclaiming the Frequencies"],
+  },
+  {
+    to: "/wisdom/the-3d-world",
+    image: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1782249057418.png",
+    title: "The 3D World",
+    tagline: "The hidden architecture of life on Earth — history rewritten, the nature of money and matter, the body as a sacred instrument.",
+    tags: ["The Veiled Nature of Money", "The Body as Antenna", "Lost Human History"],
+  },
+  {
+    to: "/wisdom/beyond-the-stars",
+    image: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1782249058873.png",
+    title: "Beyond the Stars",
+    tagline: "Other planets, star systems, and the civilizations seeded across the cosmos — what the elders and the new contactees agree upon.",
+    tags: ["Pleiadian, Sirian & Arcturian Lineages", "The Galactic Federation", "Star Seeds & Soul Origins"],
+  },
   {
     to: "/wisdom/book-of-enoch",
     image: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1782244787586.png",
     title: "The Book of Enoch",
     tagline: "The forbidden scroll they removed from your Bible — and why the angels still speak through it.",
-    tags: ["The Watchers", "The Nephilim", "The 200 Angels", "Solar calendar", "Why Rome removed it"],
+    tags: ["The Watchers", "The Nephilim", "The 200 Angels", "Solar Calendar", "Why Rome Removed It"],
   },
   {
     to: "/wisdom/mary-magdalene",
@@ -55,36 +96,12 @@ function WisdomPage() {
         </p>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map((c) => {
-            const Icon = c.icon;
-            return (
-              <Link
-                key={c.to}
-                to={c.to}
-                className="group flex flex-col rounded-lg border p-7 transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_rgba(201,168,76,0.35)]"
-                style={{ backgroundColor: C.overlay, borderColor: C.border }}
-              >
-                <span style={{ color: C.gold }}><Icon size={26} /></span>
-                <h3 className="mt-5 text-2xl" style={{ fontFamily: fonts.display }}>{c.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.7)" }}>{c.desc}</p>
-                <span className="mt-5 inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.22em]" style={{ color: C.gold }}>
-                  Enter <ArrowRight size={12} />
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-6 pb-28">
-        <p className="mb-6 text-center text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>New in the Codex</p>
-        <div className="grid gap-6 md:grid-cols-2">
-          {featureCards.map((f) => (
-            <Link
+      <section className="mx-auto max-w-6xl px-6 pb-28">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {cards.map((f) => (
+            <a
               key={f.to}
-              to={f.to}
+              href={f.to}
               className="group flex flex-col overflow-hidden rounded-lg border transition-all hover:-translate-y-1 hover:shadow-[0_18px_50px_-14px_rgba(201,168,76,0.45)]"
               style={{ backgroundColor: C.overlay, borderColor: C.border }}
             >
@@ -94,6 +111,10 @@ function WisdomPage() {
                   alt={f.title}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0"
+                  style={{ background: "rgba(0,0,0,0.45)" }}
                 />
                 <div
                   className="pointer-events-none absolute inset-0"
@@ -122,7 +143,7 @@ function WisdomPage() {
                   Read More <ArrowRight size={12} />
                 </span>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
