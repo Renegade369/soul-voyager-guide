@@ -34,7 +34,7 @@ function PillarCard({
   links: { label: string; to?: string; href?: string }[];
 }) {
   return (
-    <div className="rounded-lg border p-8" style={{ backgroundColor: C.overlay, borderColor: C.border }}>
+    <div data-animate="fade-up" className="rounded-lg border p-8" style={{ backgroundColor: C.overlay, borderColor: C.border }}>
       <div className="flex items-center gap-3">
         <span style={{ color: C.gold }}><Icon size={26} /></span>
         <span className="text-[11px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>{num}</span>

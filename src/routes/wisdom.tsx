@@ -102,6 +102,7 @@ function WisdomPage() {
             <a
               key={f.to}
               href={f.to}
+              data-animate="fade-up"
               className="group flex flex-col overflow-hidden rounded-lg border transition-all hover:-translate-y-1 hover:shadow-[0_18px_50px_-14px_rgba(201,168,76,0.45)]"
               style={{ backgroundColor: C.overlay, borderColor: C.border }}
             >

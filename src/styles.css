@@ -381,3 +381,18 @@ html[data-theme="sacred-gold"] [style*="#2a1f1a"] {
     transition: none !important;
   }
 }
+
+/* ── Glassmorphism meditation cards ── */
+.meditation-glass-card {
+  background: rgba(26, 18, 9, 0.7);
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.meditation-glass-card:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  box-shadow: 0 8px 40px rgba(232, 130, 26, 0.18);
+  transform: scale(1.02);
+}
