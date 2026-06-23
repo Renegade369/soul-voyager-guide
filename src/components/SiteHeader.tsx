@@ -59,48 +59,26 @@ export function SiteHeader() {
             Home
           </Link>
 
-          {/* Wisdom dropdown */}
+          {/* Explore — collapsed dropdown for Wisdom / Readings / Meditations */}
           <div className="group relative">
             <button className={`${navLinkClass} flex items-center gap-1`} style={navLinkStyle}>
-              Wisdom <ChevronDown size={12} />
+              Explore <ChevronDown size={12} />
             </button>
             <div
-              className="invisible absolute left-1/2 top-full z-50 mt-3 flex w-60 -translate-x-1/2 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
-              style={{ backgroundColor: "#0A0A0A", border: "1px solid rgba(201,168,76,0.25)" }}
+              className="invisible absolute left-1/2 top-full z-50 mt-3 flex w-56 -translate-x-1/2 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
+              style={{ backgroundColor: "#0A0A0A", border: "1px solid #C9A84C", boxShadow: "0 18px 40px -16px rgba(201,168,76,0.45)" }}
             >
-              {wisdomLinks.map((r) => (
-                <Link key={r.to + r.label} to={r.to} className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.75)" }}>
-                  {r.label}
-                </Link>
-              ))}
+              <Link to="/wisdom" className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.85)" }}>
+                Wisdom Codex
+              </Link>
+              <Link to="/readings" className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.85)" }}>
+                Readings
+              </Link>
+              <Link to="/meditations" className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.85)" }}>
+                Meditations
+              </Link>
             </div>
           </div>
-
-          {/* Readings dropdown */}
-          <div className="group relative">
-            <Link to="/readings" className={`${navLinkClass} flex items-center gap-1`} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-              Readings <ChevronDown size={12} />
-            </Link>
-            <div
-              className="invisible absolute left-1/2 top-full z-50 mt-3 flex w-60 -translate-x-1/2 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
-              style={{ backgroundColor: "#0A0A0A", border: "1px solid rgba(201,168,76,0.25)" }}
-            >
-              {readingsLinks.map((r) => (
-                <Link
-                  key={r.label}
-                  to={r.to}
-                  className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]"
-                  style={{ color: "rgba(245,240,232,0.75)" }}
-                >
-                  {r.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <Link to="/meditations" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-            Meditations
-          </Link>
           <Link to="/wellness" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Wellness
           </Link>
