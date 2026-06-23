@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BrandLoader } from "@/components/BrandLoader";
+import { LogoMark } from "@/components/LogoMark";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, BookOpen, Lock, Check, Award } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
