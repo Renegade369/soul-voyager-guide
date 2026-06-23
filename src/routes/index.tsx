@@ -92,7 +92,7 @@ function HomePage() {
             className="text-5xl font-light leading-[1.05] md:text-7xl"
             style={{ fontFamily: fonts.display, color: C.text }}
           >
-            You Didn&apos;t Come Here to{" "}
+            You Didn&apos;t Come Here to<br />
             <em className="italic" style={{ color: C.gold }}>Fit In.</em>
           </h1>
           <p
