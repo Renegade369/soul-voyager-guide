@@ -3,6 +3,7 @@ import { Sparkles, Headphones, Compass, Droplet, Eye, Orbit, HelpCircle, ArrowRi
 import HERO_BG from "@/assets/home-hero-mystical.png";
 import { Reveal } from "@/components/Reveal";
 import { EmberField } from "@/components/aesthetic/EmberField";
+import { MusicToggle } from "@/components/MusicToggle";
 const PLANT_BG =
   "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1778962225130.png";
 
@@ -317,6 +318,8 @@ function HomePage() {
       <section className="mx-auto max-w-3xl px-6 pb-28 pt-16 text-center">
         <p className="text-[11px] uppercase tracking-[0.4em]" style={{ color: C.gold }}>For educational & inspirational purposes only</p>
       </section>
+
+      <MusicToggle />
     </div>
   );
 }
