@@ -1020,42 +1020,54 @@ export type Database = {
       sovereign_enrollments: {
         Row: {
           amount_cents: number | null
+          cert_name: string | null
           created_at: string
           currency: string | null
           email: string
           environment: string
           id: string
+          meditation_voice: string | null
           status: string
           stripe_customer_id: string | null
           stripe_session_id: string | null
           tier: string
+          timezone: string | null
           updated_at: string
+          wake_time: string | null
         }
         Insert: {
           amount_cents?: number | null
+          cert_name?: string | null
           created_at?: string
           currency?: string | null
           email: string
           environment?: string
           id?: string
+          meditation_voice?: string | null
           status?: string
           stripe_customer_id?: string | null
           stripe_session_id?: string | null
           tier: string
+          timezone?: string | null
           updated_at?: string
+          wake_time?: string | null
         }
         Update: {
           amount_cents?: number | null
+          cert_name?: string | null
           created_at?: string
           currency?: string | null
           email?: string
           environment?: string
           id?: string
+          meditation_voice?: string | null
           status?: string
           stripe_customer_id?: string | null
           stripe_session_id?: string | null
           tier?: string
+          timezone?: string | null
           updated_at?: string
+          wake_time?: string | null
         }
         Relationships: []
       }
@@ -1214,6 +1226,7 @@ export type Database = {
       }
       sovereign_onboarding: {
         Row: {
+          cert_name: string | null
           completed_at: string | null
           created_at: string
           email: string
@@ -1221,12 +1234,16 @@ export type Database = {
           intention_one: string | null
           intention_three: string | null
           intention_two: string | null
+          meditation_voice: string | null
           sacred_contract_signed_at: string | null
+          timezone: string | null
           updated_at: string
           user_id: string
+          wake_time: string | null
           why_now: string | null
         }
         Insert: {
+          cert_name?: string | null
           completed_at?: string | null
           created_at?: string
           email: string
@@ -1234,12 +1251,16 @@ export type Database = {
           intention_one?: string | null
           intention_three?: string | null
           intention_two?: string | null
+          meditation_voice?: string | null
           sacred_contract_signed_at?: string | null
+          timezone?: string | null
           updated_at?: string
           user_id: string
+          wake_time?: string | null
           why_now?: string | null
         }
         Update: {
+          cert_name?: string | null
           completed_at?: string | null
           created_at?: string
           email?: string
@@ -1247,12 +1268,53 @@ export type Database = {
           intention_one?: string | null
           intention_three?: string | null
           intention_two?: string | null
+          meditation_voice?: string | null
           sacred_contract_signed_at?: string | null
+          timezone?: string | null
           updated_at?: string
           user_id?: string
+          wake_time?: string | null
           why_now?: string | null
         }
         Relationships: []
+      }
+      sovereign_ritual_completions: {
+        Row: {
+          completed_at: string
+          created_at: string
+          day_number: number | null
+          enrollment_id: string | null
+          id: string
+          skipped: boolean
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          created_at?: string
+          day_number?: number | null
+          enrollment_id?: string | null
+          id?: string
+          skipped?: boolean
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          created_at?: string
+          day_number?: number | null
+          enrollment_id?: string | null
+          id?: string
+          skipped?: boolean
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sovereign_ritual_completions_enrollment_id_fkey"
+            columns: ["enrollment_id"]
+            isOneToOne: false
+            referencedRelation: "sovereign_enrollments"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       sovereign_rituals: {
         Row: {
