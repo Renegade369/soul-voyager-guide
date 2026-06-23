@@ -312,3 +312,53 @@ html[data-theme="sacred-gold"] [style*="background-color: #2a1f1a"],
 html[data-theme="sacred-gold"] [style*="#2a1f1a"] {
   background-color: #1A1209 !important;
 }
+
+/* ── Hero ambient: golden particles + candlelight flicker + slow parallax ── */
+@keyframes hero-particle-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(0.9); opacity: 0; }
+  15%  { opacity: 0.85; }
+  85%  { opacity: 0.6; }
+  100% { transform: translate3d(var(--px, 20px), -120vh, 0) scale(1.05); opacity: 0; }
+}
+@keyframes hero-candle-flicker {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  20%      { opacity: 0.72; transform: scale(1.02); }
+  35%      { opacity: 0.48; }
+  55%      { opacity: 0.66; transform: scale(1.015); }
+  75%      { opacity: 0.52; }
+}
+@keyframes hero-parallax-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.08); }
+  50%      { transform: translate3d(0, -1.5%, 0) scale(1.10); }
+}
+.hero-parallax-layer {
+  animation: hero-parallax-drift 28s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-flicker-layer {
+  animation: hero-candle-flicker 7s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+.hero-particle {
+  position: absolute;
+  bottom: -10px;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(232,200,122,0.95) 0%, rgba(201,168,76,0.4) 50%, transparent 70%);
+  box-shadow: 0 0 6px rgba(232,130,26,0.55);
+  opacity: 0;
+  animation: hero-particle-drift var(--dur, 14s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-parallax-layer,
+  .hero-flicker-layer,
+  .hero-particle {
+    animation: none !important;
+  }
+  .hero-particle { display: none; }
+}
