@@ -18,7 +18,7 @@ function PortalEntry() {
 
   useEffect(() => {
     if (status.state === "ready") {
-      navigate({ to: "/sovereign/portal/dashboard", replace: true });
+      navigate({ to: "/sovereign/dashboard", replace: true });
     } else if (status.state === "needs-onboarding") {
       navigate({ to: "/sovereign/portal/onboarding", replace: true });
     }
