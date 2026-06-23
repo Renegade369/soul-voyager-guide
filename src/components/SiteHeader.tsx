@@ -8,13 +8,13 @@ const soulTrueLogo = soulTrueLogoAsset.url;
 import { useAuth } from "@/hooks/useAuth";
 
 // Primary top-level nav (locked order — June 2026 update)
-const primary = [
+const primary: ReadonlyArray<{ to: string; label: string; exact?: boolean }> = [
   { to: "/", label: "Home", exact: true },
   { to: "/wisdom", label: "Wisdom" },
   { to: "/readings", label: "Readings" },
   { to: "/meditations", label: "Meditations" },
   { to: "/the-sacred-journey", label: "Journey" },
-] as const;
+];
 
 // Explore dropdown
 const exploreLinks = [
