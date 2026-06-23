@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { PaywallModal } from "@/components/PaywallModal";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
+import { LogoMark } from "@/components/LogoMark";
 import { isUnlocked } from "@/lib/unlocks";
 import { calculateGeneKeys, GENE_KEY_TITLES, SPHERE_LABELS, type GeneKeySet } from "@/lib/geneKeys";
 import { useScrollTopOnChange } from "@/hooks/useScrollTop";
@@ -179,7 +180,8 @@ function GeneKeysPage() {
           )}
 
           {step === "result" && reading && keys && (
-            <motion.div key="result" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <motion.div className="relative" key="result" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+              <LogoMark size={36} position="top-right" />
               {/* All 6 key numbers preview */}
               <div className="text-center">
                 <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your 6 Gene Keys</p>

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { PaywallModal } from "@/components/PaywallModal";
+import { LogoMark } from "@/components/LogoMark";
 
 import { isUnlocked } from "@/lib/unlocks";
 import { useScrollTopOnChange } from "@/hooks/useScrollTop";
@@ -189,7 +190,8 @@ function HoroscopePage() {
         {error && <div style={{ textAlign: "center", padding: "40px", color: "rgba(245,240,232,0.4)", fontStyle: "italic" }}>{error}</div>}
 
         {freeReading && !loading && (
-          <div data-animate="fade-up" style={{ opacity: revealed ? 1 : 0, transform: revealed ? "translateY(0)" : "translateY(16px)", transition: "all 0.6s ease" }}>
+          <div data-animate="fade-up" className="relative" style={{ opacity: revealed ? 1 : 0, transform: revealed ? "translateY(0)" : "translateY(16px)", transition: "all 0.6s ease" }}>
+            <LogoMark size={36} position="top-right" />
 
             {/* Theme + Energy */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "28px", flexWrap: "wrap", gap: 16 }}>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
 import { PlantImageBand, PLANT_IMAGES } from "@/components/PlantImageBand";
+import { LogoMark } from "@/components/LogoMark";
 import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
 export const Route = createFileRoute("/soul-quiz")({
@@ -227,7 +228,8 @@ function SoulQuizPage() {
           )}
 
           {phase === "result" && result && resultData && (
-            <motion.div key="result" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <motion.div className="relative" key="result" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+              <LogoMark size={36} position="top-right" />
               <p className="text-center text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your soul type</p>
               <h1 className="mt-4 text-center font-serif text-5xl font-light italic" style={{ color: C.text }}>{result.title}</h1>
 

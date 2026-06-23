@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { PaywallModal } from "@/components/PaywallModal";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
+import { LogoMark } from "@/components/LogoMark";
 import { isUnlocked } from "@/lib/unlocks";
 import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
@@ -342,7 +343,8 @@ function AuraReaderPage() {
           )}
 
           {step === "result" && reading && (
-            <motion.div key="result" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <motion.div className="relative" key="result" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+              <LogoMark size={36} position="top-right" />
               <div className="text-center">
                 <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your dominant aura</p>
                 <div className="relative mx-auto mt-8 h-44 w-44">

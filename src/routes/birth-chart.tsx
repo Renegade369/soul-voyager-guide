@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { PaywallModal } from "@/components/PaywallModal";
 import { KimAlfanoCard } from "@/components/KimAlfanoCard";
 import { PlantImageBand, PLANT_IMAGES } from "@/components/PlantImageBand";
+import { LogoMark } from "@/components/LogoMark";
 import { isUnlocked } from "@/lib/unlocks";
 import { useScrollTopOnChange } from "@/hooks/useScrollTop";
 
@@ -157,7 +158,8 @@ function BirthChartPage() {
         )}
 
         {step === "result" && reading && (
-          <motion.div data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+          <motion.div className="relative" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <LogoMark size={36} position="top-right" />
             <div className="text-center">
               <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your placements</p>
               <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-6">
