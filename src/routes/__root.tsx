@@ -143,6 +143,7 @@ function RootComponent() {
       <PwaInstallPrompt />
       <CursorGlow />
       <AmbientAudio />
+      {!hideAssistant && <SiteAssistantWidget />}
     </div>
   );
 }
