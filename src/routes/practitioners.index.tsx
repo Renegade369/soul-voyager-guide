@@ -43,9 +43,6 @@ function PractitionersIndex() {
         <h1 className="mx-auto mt-6 max-w-3xl font-serif text-5xl font-light leading-[1.05] md:text-6xl">
           The healers, coaches, and teachers William trusts.
         </h1>
-        <p className="mx-auto mt-6 font-serif text-xl italic" style={{ color: "#C9A84C" }}>
-          Let's Go Deeper.
-        </p>
       </section>
 
       {featured.length > 0 && (
