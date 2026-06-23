@@ -316,6 +316,7 @@ function TierCard({
         boxShadow: highlight ? `0 0 40px rgba(232,130,26,0.15)` : "none",
       }}
     >
+      <LogoMark size={32} position="top-left" opacity={0.7} />
       {highlight && (
         <div
           className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em]"
