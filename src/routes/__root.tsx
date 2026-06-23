@@ -12,6 +12,7 @@ import { AmbientAudio } from "../components/aesthetic/AmbientAudio";
 import { PageTransition } from "../components/aesthetic/PageTransition";
 import { scrollToTopSmooth } from "../hooks/useScrollTop";
 import { PaymentTestModeBanner } from "../components/PaymentTestModeBanner";
+import { SiteAssistantWidget } from "../components/SiteAssistantWidget";
 
 function NotFoundComponent() {
   return (
@@ -89,6 +90,10 @@ function RootComponent() {
   const location = useLocation();
   const appRoutes = ["/guide", "/dashboard", "/admin", "/welcome"];
   const hideShell = appRoutes.some(r => location.pathname === r || location.pathname.startsWith(r + "/"));
+  const hideAssistant =
+    hideShell ||
+    location.pathname.startsWith("/sovereign/reflection") ||
+    location.pathname.startsWith("/sovereign/portal");
 
   // Global smooth scroll-to-top on every route change
   useEffect(() => {
@@ -138,6 +143,7 @@ function RootComponent() {
       <PwaInstallPrompt />
       <CursorGlow />
       <AmbientAudio />
+      {!hideAssistant && <SiteAssistantWidget />}
     </div>
   );
 }
