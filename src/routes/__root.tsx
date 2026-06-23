@@ -12,6 +12,7 @@ import { AmbientAudio } from "../components/aesthetic/AmbientAudio";
 import { PageTransition } from "../components/aesthetic/PageTransition";
 import { scrollToTopSmooth } from "../hooks/useScrollTop";
 import { PaymentTestModeBanner } from "../components/PaymentTestModeBanner";
+import { SiteAssistantWidget } from "../components/SiteAssistantWidget";
 
 function NotFoundComponent() {
   return (
