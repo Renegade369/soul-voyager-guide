@@ -47,7 +47,7 @@ const cards: CodexCard[] = [
     tags: ["His Name", "His Essene Roots", "The Missing Years", "What He Actually Taught"],
   },
   {
-    to: "/sacred-plants",
+    to: "/wisdom/sacred-plants",
     image: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1782249056192.png",
     title: "Sacred Plant Allies",
     tagline: "The ancient frequencies they tried to silence — and why they matter now.",

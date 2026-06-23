@@ -20,19 +20,19 @@ export function pickGreeting(streakDay: number, seed: number = 0): string {
   return DASHBOARD_GREETINGS[idx](streakDay);
 }
 
-// 4c — streak copy escalates with the streak.
+// 4c — streak copy escalates with the streak (120-day window).
 export function streakFrame(streak: number): string {
   if (streak === 0)
     return "Day 0. The chain is broken. The work resets. How many more times will you start over before you don't stop?";
   if (streak <= 7)
     return "You started. The hardest part. Tomorrow, the version of you that stayed stuck falls further behind.";
-  if (streak <= 30)
+  if (streak <= 40)
     return "You're building something. Don't break the chain. The version of you that quits here is the same version that always quits.";
-  if (streak <= 60)
-    return "Halfway. The next 30 days decide who you are. Stop now and the streak resets to zero — and so does the momentum.";
-  if (streak <= 89)
-    return "Almost there. Don't let 60+ days of work die for the sake of one skipped day. The cost of breaking is much higher than the cost of showing up.";
-  return "90 days. You did it. You are the person who did the work. That person is not the same one who started. Now: do you stop, or do you keep going?";
+  if (streak <= 80)
+    return "Two-thirds in. The next 40 days decide who you are. Stop now and the streak resets to zero — and so does the momentum.";
+  if (streak <= 119)
+    return "Almost there. Don't let 80+ days of work die for the sake of one skipped day. The cost of breaking is much higher than the cost of showing up.";
+  return "120 days. You did it. You are the person who did the work. That person is not the same one who started. Now: do you stop, or do you keep going?";
 }
 
 // 4d — rotating morning ritual openers.
@@ -61,7 +61,7 @@ export const MODULE_LOSS_FRAMES: Record<number, string> = {
 
 // 4f — reflection prompts.
 export const DAILY_REFLECTION_PROMPT =
-  "What did you do today that the version of you from 90 days ago wouldn't recognize? What did you skip that they wouldn't be proud of?";
+  "What did you do today that the version of you from 120 days ago wouldn't recognize? What did you skip that they wouldn't be proud of?";
 
 export const WEEKLY_REFLECTION_PROMPT =
   "Look back at the week. What did the work cost you? What did it give you? If you keep going for a year, where will you be?";
