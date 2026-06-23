@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { ShareProfileButton } from "@/components/ShareProfileButton";
+import { LogoMark } from "@/components/LogoMark";
 import { persistSoulProfile, type SoulProfile as ShareableProfile } from "@/lib/profileSharing";
 import { calculateAll } from "@/lib/numerology";
 import { useScrollTopOnChange } from "@/hooks/useScrollTop";
@@ -294,7 +295,8 @@ function Section({ label, children, delay = 0 }: { label: string; children: Reac
 
 function ResultView({ profile, shareId }: { profile: Profile; shareId: string | null }) {
   return (
-    <motion.div data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+    <motion.div className="relative" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+      <LogoMark size={36} position="top-right" />
       <div className="text-center">
         <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your Soul Profile</p>
         <h1 className="mt-4 font-serif text-5xl font-light italic uppercase tracking-wide" style={{ color: C.text }}>
