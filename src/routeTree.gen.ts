@@ -71,6 +71,7 @@ import { Route as WisdomOriginsRouteImport } from './routes/wisdom_.origins'
 import { Route as WisdomMatrixOriginsRouteImport } from './routes/wisdom_.matrix-origins'
 import { Route as WisdomMaryMagdaleneRouteImport } from './routes/wisdom_.mary-magdalene'
 import { Route as WisdomBookOfEnochRouteImport } from './routes/wisdom_.book-of-enoch'
+import { Route as WisdomBeyondTheStarsRouteImport } from './routes/wisdom_.beyond-the-stars'
 import { Route as WellnessSlugRouteImport } from './routes/wellness.$slug'
 import { Route as SovereignWelcomeRouteImport } from './routes/sovereign.welcome'
 import { Route as SovereignVipWaitlistRouteImport } from './routes/sovereign.vip-waitlist'
@@ -415,6 +416,11 @@ const WisdomBookOfEnochRoute = WisdomBookOfEnochRouteImport.update({
   path: '/wisdom/book-of-enoch',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WisdomBeyondTheStarsRoute = WisdomBeyondTheStarsRouteImport.update({
+  id: '/wisdom_/beyond-the-stars',
+  path: '/wisdom/beyond-the-stars',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WellnessSlugRoute = WellnessSlugRouteImport.update({
   id: '/wellness/$slug',
   path: '/wellness/$slug',
@@ -645,6 +651,7 @@ export interface FileRoutesByFullPath {
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
   '/wellness/$slug': typeof WellnessSlugRoute
+  '/wisdom/beyond-the-stars': typeof WisdomBeyondTheStarsRoute
   '/wisdom/book-of-enoch': typeof WisdomBookOfEnochRoute
   '/wisdom/mary-magdalene': typeof WisdomMaryMagdaleneRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
@@ -739,6 +746,7 @@ export interface FileRoutesByTo {
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
   '/wellness/$slug': typeof WellnessSlugRoute
+  '/wisdom/beyond-the-stars': typeof WisdomBeyondTheStarsRoute
   '/wisdom/book-of-enoch': typeof WisdomBookOfEnochRoute
   '/wisdom/mary-magdalene': typeof WisdomMaryMagdaleneRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
@@ -835,6 +843,7 @@ export interface FileRoutesById {
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
   '/wellness/$slug': typeof WellnessSlugRoute
+  '/wisdom_/beyond-the-stars': typeof WisdomBeyondTheStarsRoute
   '/wisdom_/book-of-enoch': typeof WisdomBookOfEnochRoute
   '/wisdom_/mary-magdalene': typeof WisdomMaryMagdaleneRoute
   '/wisdom_/matrix-origins': typeof WisdomMatrixOriginsRoute
@@ -932,6 +941,7 @@ export interface FileRouteTypes {
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
     | '/wellness/$slug'
+    | '/wisdom/beyond-the-stars'
     | '/wisdom/book-of-enoch'
     | '/wisdom/mary-magdalene'
     | '/wisdom/matrix-origins'
@@ -1026,6 +1036,7 @@ export interface FileRouteTypes {
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
     | '/wellness/$slug'
+    | '/wisdom/beyond-the-stars'
     | '/wisdom/book-of-enoch'
     | '/wisdom/mary-magdalene'
     | '/wisdom/matrix-origins'
@@ -1121,6 +1132,7 @@ export interface FileRouteTypes {
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
     | '/wellness/$slug'
+    | '/wisdom_/beyond-the-stars'
     | '/wisdom_/book-of-enoch'
     | '/wisdom_/mary-magdalene'
     | '/wisdom_/matrix-origins'
@@ -1213,6 +1225,7 @@ export interface RootRouteChildren {
   ProductHandleRoute: typeof ProductHandleRoute
   ProfileIdRoute: typeof ProfileIdRoute
   WellnessSlugRoute: typeof WellnessSlugRoute
+  WisdomBeyondTheStarsRoute: typeof WisdomBeyondTheStarsRoute
   WisdomBookOfEnochRoute: typeof WisdomBookOfEnochRoute
   WisdomMaryMagdaleneRoute: typeof WisdomMaryMagdaleneRoute
   WisdomMatrixOriginsRoute: typeof WisdomMatrixOriginsRoute
@@ -1671,6 +1684,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WisdomBookOfEnochRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wisdom_/beyond-the-stars': {
+      id: '/wisdom_/beyond-the-stars'
+      path: '/wisdom/beyond-the-stars'
+      fullPath: '/wisdom/beyond-the-stars'
+      preLoaderRoute: typeof WisdomBeyondTheStarsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wellness/$slug': {
       id: '/wellness/$slug'
       path: '/wellness/$slug'
@@ -2000,6 +2020,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductHandleRoute: ProductHandleRoute,
   ProfileIdRoute: ProfileIdRoute,
   WellnessSlugRoute: WellnessSlugRoute,
+  WisdomBeyondTheStarsRoute: WisdomBeyondTheStarsRoute,
   WisdomBookOfEnochRoute: WisdomBookOfEnochRoute,
   WisdomMaryMagdaleneRoute: WisdomMaryMagdaleneRoute,
   WisdomMatrixOriginsRoute: WisdomMatrixOriginsRoute,
