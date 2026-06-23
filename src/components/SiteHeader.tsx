@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { ThemeToggle } from "./aesthetic/ThemeToggle";
@@ -7,126 +7,157 @@ import soulTrueLogoAsset from "@/assets/soul-true-logo-tagline.png.asset.json";
 const soulTrueLogo = soulTrueLogoAsset.url;
 import { useAuth } from "@/hooks/useAuth";
 
-const wisdomLinks = [
-  { to: "/wisdom/origins", label: "Origins" },
-  { to: "/wisdom/matrix-origins", label: "Matrix Origins" },
-  { to: "/wisdom/suppressed-sacred-texts", label: "Suppressed Sacred Texts" },
-  { to: "/wisdom/the-true-story-of-jeshua", label: "True Story of Jeshua" },
-  { to: "/wisdom/sacred-plants", label: "Sacred Plant Allies" },
-  { to: "/wisdom/plant-medicines", label: "The Plant Allies" },
-  { to: "/teachings", label: "The Codex" },
-] as const;
-
-const readingsLinks = [
-  { to: "/horoscope", label: "Daily Horoscope" },
-  { to: "/aura-reader", label: "Aura Reader" },
-  { to: "/blood-type", label: "Blood Type" },
-  { to: "/soul-quiz", label: "Soul Quiz" },
-  { to: "/birth-chart", label: "Birth Chart" },
-  { to: "/numerology", label: "Numerology" },
-  { to: "/astrology", label: "Astrology" },
-  { to: "/gene-keys", label: "Gene Keys" },
-] as const;
-
+// Primary top-level nav (locked order — June 2026 update)
 const primary = [
   { to: "/", label: "Home", exact: true },
+  { to: "/wisdom", label: "Wisdom" },
+  { to: "/readings", label: "Readings" },
   { to: "/meditations", label: "Meditations" },
   { to: "/the-sacred-journey", label: "Journey" },
-  { to: "/store", label: "Store" },
 ] as const;
 
-const navLinkStyle = { color: "rgba(245,240,232,0.7)" };
-const navLinkClass =
-  "text-[11px] font-normal uppercase tracking-[0.22em] transition-colors hover:text-[#F5F0E8]";
+// Explore dropdown
+const exploreLinks = [
+  { to: "/sovereign", label: "The Sovereignty Code" },
+  { to: "/blog", label: "The Journal" },
+  { to: "/store", label: "The Store" },
+  { to: "/book-session", label: "Sit With William" },
+  { to: "/meet-william", label: "About William" },
+] as const;
+
+const navLinkStyle = { color: "rgba(245,240,232,0.78)" };
+const navLinkBase =
+  "relative pb-1 text-[11px] font-normal uppercase tracking-[0.22em] transition-colors hover:text-[#F5F0E8]";
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // mobile drawer
+  const [exploreOpen, setExploreOpen] = useState(false);
+  const exploreRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // Close Explore dropdown on outside click or Escape
+  useEffect(() => {
+    if (!exploreOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (exploreRef.current && !exploreRef.current.contains(e.target as Node)) {
+        setExploreOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setExploreOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [exploreOpen]);
+
+  const isActive = (to: string, exact = false) =>
+    exact ? pathname === to : pathname === to || pathname.startsWith(to + "/");
+
+  const exploreActive = exploreLinks.some((l) => isActive(l.to));
 
   return (
     <header
-      className="sticky top-0 z-40 backdrop-blur-sm"
-      style={{ backgroundColor: "rgba(10,10,10,0.95)", borderBottom: "1px solid rgba(201,168,76,0.18)" }}
+      className="sticky top-0 z-40"
+      style={{
+        backgroundColor: "rgba(10,10,10,0.85)",
+        backdropFilter: "blur(12px)",
+        borderBottom: "1px solid rgba(201,168,76,0.18)",
+      }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
         <Link to="/" aria-label="Soul True — Let's Go Deeper. — home" className="flex items-center">
-          <img src={soulTrueLogo} alt="Soul True — Let's Go Deeper. — home" className="h-10 w-auto lg:h-12" />
+          <img src={soulTrueLogo} alt="Soul True — Let's Go Deeper." className="h-10 w-auto lg:h-12" />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {/* Home */}
-          <Link to="/" className={navLinkClass} style={navLinkStyle} activeOptions={{ exact: true }} activeProps={{ style: { color: "#C9A84C" } }}>
-            Home
-          </Link>
+          {primary.map((item) => {
+            const active = isActive(item.to, item.exact);
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={navLinkBase}
+                style={{
+                  ...navLinkStyle,
+                  color: active ? "#F5F0E8" : navLinkStyle.color,
+                  borderBottom: active ? "2px solid #C9A84C" : "2px solid transparent",
+                }}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
 
-          {/* Explore — collapsed dropdown for Wisdom / Readings / Meditations */}
-          <div className="group relative">
-            <button className={`${navLinkClass} flex items-center gap-1`} style={navLinkStyle}>
-              Explore <ChevronDown size={12} />
-            </button>
-            <div
-              className="invisible absolute left-1/2 top-full z-50 mt-3 flex w-56 -translate-x-1/2 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
-              style={{ backgroundColor: "#0A0A0A", border: "1px solid #C9A84C", boxShadow: "0 18px 40px -16px rgba(201,168,76,0.45)" }}
+          {/* Explore dropdown — click-based */}
+          <div className="relative" ref={exploreRef}>
+            <button
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded={exploreOpen}
+              onClick={() => setExploreOpen((s) => !s)}
+              className={`${navLinkBase} flex items-center gap-1`}
+              style={{
+                ...navLinkStyle,
+                color: exploreActive || exploreOpen ? "#F5F0E8" : navLinkStyle.color,
+                borderBottom: exploreActive ? "2px solid #C9A84C" : "2px solid transparent",
+              }}
             >
-              <Link to="/wisdom" className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.85)" }}>
-                Wisdom Codex
-              </Link>
-              <Link to="/readings" className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.85)" }}>
-                Readings
-              </Link>
-              <Link to="/meditations" className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.85)" }}>
-                Meditations
-              </Link>
-            </div>
+              Explore <ChevronDown size={12} style={{ transform: exploreOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+            </button>
+            {exploreOpen && (
+              <div
+                role="menu"
+                className="absolute right-0 top-full z-50 mt-3 flex w-60 flex-col"
+                style={{
+                  backgroundColor: "#1A1209",
+                  border: "1px solid rgba(201,168,76,0.2)",
+                  boxShadow: "0 18px 40px -16px rgba(0,0,0,0.7)",
+                }}
+              >
+                {exploreLinks.map((l) => (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    role="menuitem"
+                    onClick={() => setExploreOpen(false)}
+                    className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] transition-all"
+                    style={{
+                      color: "#F5F0E8",
+                      borderLeft: "2px solid transparent",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderLeft = "2px solid #C9A84C";
+                      (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(201,168,76,0.06)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderLeft = "2px solid transparent";
+                      (e.currentTarget as HTMLElement).style.backgroundColor = "transparent";
+                    }}
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
-          <Link to="/wellness" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-            Wellness
-          </Link>
-          <Link to="/blog" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-            Journal
-          </Link>
-          <Link to="/practitioners" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-            Practitioners
-          </Link>
-          <Link to="/the-sacred-journey" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-            Journey
-          </Link>
-          <Link to="/store" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-            Store
-          </Link>
-          <Link
-            to="/transmissions"
-            className="text-[11px] font-normal uppercase tracking-[0.22em] transition-all"
-            style={{ color: "#C9A84C", textShadow: "0 0 12px rgba(232,130,26,0.45)", animation: "transmissionsPulse 3.5s ease-in-out infinite" }}
-            activeProps={{ style: { color: "#E8C87A" } }}
-          >
-            Transmissions
-          </Link>
-          <Link to="/higher-vibes" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-            Higher Vibes
-          </Link>
-          <Link to="/meet-william" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-            Meet William
-          </Link>
-          <style>{`
-            @keyframes transmissionsPulse {
-              0%, 100% { text-shadow: 0 0 8px rgba(232,130,26,0.35); }
-              50% { text-shadow: 0 0 16px rgba(232,130,26,0.7); }
-            }
-          `}</style>
 
           <Link
             to="/begin-here"
-            className="rounded-none px-5 py-2.5 text-[11px] font-normal uppercase tracking-[0.22em] transition hover:shadow-[0_0_18px_rgba(232,130,26,0.45)]"
+            className="rounded-none px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.22em] transition hover:shadow-[0_0_18px_rgba(232,130,26,0.5)]"
             style={{ color: "#0A0A0A", background: "linear-gradient(135deg,#C9A84C,#D4A017)", border: "1px solid #C9A84C" }}
           >
             Begin Here
           </Link>
 
           {user ? (
-            <Link to="/my-readings" className={navLinkClass} style={navLinkStyle}>My Readings</Link>
+            <Link to="/my-readings" className={navLinkBase} style={navLinkStyle}>My Readings</Link>
           ) : (
-            <Link to="/sign-in" className={navLinkClass} style={navLinkStyle}>Sign In</Link>
+            <Link to="/sign-in" className={navLinkBase} style={navLinkStyle}>Sign In</Link>
           )}
         </nav>
 
@@ -145,31 +176,45 @@ export function SiteHeader() {
       {open && (
         <div className="lg:hidden" style={{ backgroundColor: "#0A0A0A", borderTop: "1px solid rgba(201,168,76,0.18)" }}>
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
-            <Link to="/" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Home</Link>
+            {primary.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]"
+                style={{
+                  ...navLinkStyle,
+                  color: isActive(item.to, item.exact) ? "#C9A84C" : navLinkStyle.color,
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
             <p className="mt-3 px-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Explore</p>
-            <Link to="/wisdom" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Wisdom Codex</Link>
-            <Link to="/readings" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Readings</Link>
-            <Link to="/meditations" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meditations</Link>
-            <Link to="/wellness" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Wellness</Link>
-            <Link to="/blog" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Journal</Link>
-            <Link to="/practitioners" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Practitioners</Link>
-            <Link to="/the-sacred-journey" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Journey</Link>
-            <Link to="/store" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Store</Link>
-            <Link to="/transmissions" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={{ color: "#C9A84C", textShadow: "0 0 10px rgba(232,130,26,0.4)" }}>
-              ✦ Transmissions
-            </Link>
-            <Link to="/higher-vibes" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Higher Vibes</Link>
-            <p className="mt-3 px-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>About</p>
-            <Link to="/meet-william" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meet William</Link>
-            <Link to="/book-session" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Book a Session</Link>
+            {exploreLinks.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                onClick={() => setOpen(false)}
+                className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]"
+                style={navLinkStyle}
+              >
+                {l.label}
+              </Link>
+            ))}
             <Link
               to="/begin-here"
               onClick={() => setOpen(false)}
-              className="mt-3 px-5 py-3 text-center text-[11px] uppercase tracking-[0.22em]"
+              className="mt-3 px-5 py-3 text-center text-[11px] font-bold uppercase tracking-[0.22em]"
               style={{ color: "#0A0A0A", background: "linear-gradient(135deg,#C9A84C,#D4A017)", border: "1px solid #C9A84C" }}
             >
               Begin Here
             </Link>
+            {user ? (
+              <Link to="/my-readings" onClick={() => setOpen(false)} className="mt-2 px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>My Readings</Link>
+            ) : (
+              <Link to="/sign-in" onClick={() => setOpen(false)} className="mt-2 px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Sign In</Link>
+            )}
           </nav>
         </div>
       )}
