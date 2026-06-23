@@ -68,6 +68,8 @@ import { Route as WisdomSacredPlantsRouteImport } from './routes/wisdom_.sacred-
 import { Route as WisdomPlantMedicinesRouteImport } from './routes/wisdom_.plant-medicines'
 import { Route as WisdomOriginsRouteImport } from './routes/wisdom_.origins'
 import { Route as WisdomMatrixOriginsRouteImport } from './routes/wisdom_.matrix-origins'
+import { Route as WisdomMaryMagdaleneRouteImport } from './routes/wisdom_.mary-magdalene'
+import { Route as WisdomBookOfEnochRouteImport } from './routes/wisdom_.book-of-enoch'
 import { Route as WellnessSlugRouteImport } from './routes/wellness.$slug'
 import { Route as SovereignWelcomeRouteImport } from './routes/sovereign.welcome'
 import { Route as SovereignVipWaitlistRouteImport } from './routes/sovereign.vip-waitlist'
@@ -397,6 +399,16 @@ const WisdomMatrixOriginsRoute = WisdomMatrixOriginsRouteImport.update({
   path: '/wisdom/matrix-origins',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WisdomMaryMagdaleneRoute = WisdomMaryMagdaleneRouteImport.update({
+  id: '/wisdom_/mary-magdalene',
+  path: '/wisdom/mary-magdalene',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WisdomBookOfEnochRoute = WisdomBookOfEnochRouteImport.update({
+  id: '/wisdom_/book-of-enoch',
+  path: '/wisdom/book-of-enoch',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WellnessSlugRoute = WellnessSlugRouteImport.update({
   id: '/wellness/$slug',
   path: '/wellness/$slug',
@@ -627,6 +639,8 @@ export interface FileRoutesByFullPath {
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
   '/wellness/$slug': typeof WellnessSlugRoute
+  '/wisdom/book-of-enoch': typeof WisdomBookOfEnochRoute
+  '/wisdom/mary-magdalene': typeof WisdomMaryMagdaleneRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom/origins': typeof WisdomOriginsRoute
   '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
@@ -718,6 +732,8 @@ export interface FileRoutesByTo {
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
   '/wellness/$slug': typeof WellnessSlugRoute
+  '/wisdom/book-of-enoch': typeof WisdomBookOfEnochRoute
+  '/wisdom/mary-magdalene': typeof WisdomMaryMagdaleneRoute
   '/wisdom/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom/origins': typeof WisdomOriginsRoute
   '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
@@ -811,6 +827,8 @@ export interface FileRoutesById {
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
   '/wellness/$slug': typeof WellnessSlugRoute
+  '/wisdom_/book-of-enoch': typeof WisdomBookOfEnochRoute
+  '/wisdom_/mary-magdalene': typeof WisdomMaryMagdaleneRoute
   '/wisdom_/matrix-origins': typeof WisdomMatrixOriginsRoute
   '/wisdom_/origins': typeof WisdomOriginsRoute
   '/wisdom_/plant-medicines': typeof WisdomPlantMedicinesRoute
@@ -905,6 +923,8 @@ export interface FileRouteTypes {
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
     | '/wellness/$slug'
+    | '/wisdom/book-of-enoch'
+    | '/wisdom/mary-magdalene'
     | '/wisdom/matrix-origins'
     | '/wisdom/origins'
     | '/wisdom/plant-medicines'
@@ -996,6 +1016,8 @@ export interface FileRouteTypes {
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
     | '/wellness/$slug'
+    | '/wisdom/book-of-enoch'
+    | '/wisdom/mary-magdalene'
     | '/wisdom/matrix-origins'
     | '/wisdom/origins'
     | '/wisdom/plant-medicines'
@@ -1088,6 +1110,8 @@ export interface FileRouteTypes {
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
     | '/wellness/$slug'
+    | '/wisdom_/book-of-enoch'
+    | '/wisdom_/mary-magdalene'
     | '/wisdom_/matrix-origins'
     | '/wisdom_/origins'
     | '/wisdom_/plant-medicines'
@@ -1177,6 +1201,8 @@ export interface RootRouteChildren {
   ProductHandleRoute: typeof ProductHandleRoute
   ProfileIdRoute: typeof ProfileIdRoute
   WellnessSlugRoute: typeof WellnessSlugRoute
+  WisdomBookOfEnochRoute: typeof WisdomBookOfEnochRoute
+  WisdomMaryMagdaleneRoute: typeof WisdomMaryMagdaleneRoute
   WisdomMatrixOriginsRoute: typeof WisdomMatrixOriginsRoute
   WisdomOriginsRoute: typeof WisdomOriginsRoute
   WisdomPlantMedicinesRoute: typeof WisdomPlantMedicinesRoute
@@ -1611,6 +1637,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WisdomMatrixOriginsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wisdom_/mary-magdalene': {
+      id: '/wisdom_/mary-magdalene'
+      path: '/wisdom/mary-magdalene'
+      fullPath: '/wisdom/mary-magdalene'
+      preLoaderRoute: typeof WisdomMaryMagdaleneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wisdom_/book-of-enoch': {
+      id: '/wisdom_/book-of-enoch'
+      path: '/wisdom/book-of-enoch'
+      fullPath: '/wisdom/book-of-enoch'
+      preLoaderRoute: typeof WisdomBookOfEnochRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wellness/$slug': {
       id: '/wellness/$slug'
       path: '/wellness/$slug'
@@ -1940,6 +1980,8 @@ const rootRouteChildren: RootRouteChildren = {
   ProductHandleRoute: ProductHandleRoute,
   ProfileIdRoute: ProfileIdRoute,
   WellnessSlugRoute: WellnessSlugRoute,
+  WisdomBookOfEnochRoute: WisdomBookOfEnochRoute,
+  WisdomMaryMagdaleneRoute: WisdomMaryMagdaleneRoute,
   WisdomMatrixOriginsRoute: WisdomMatrixOriginsRoute,
   WisdomOriginsRoute: WisdomOriginsRoute,
   WisdomPlantMedicinesRoute: WisdomPlantMedicinesRoute,
