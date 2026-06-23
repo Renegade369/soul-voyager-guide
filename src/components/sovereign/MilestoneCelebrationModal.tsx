@@ -21,7 +21,7 @@ const DESCRIPTIONS: Record<string, string> = {
   Sovereign:
     "You finished the architecture. You have the Laws. You have the practice. The work is now yours to keep.",
   Graduated:
-    "You completed The Sovereignty Code. You are not the person who started 90 days ago.",
+    "You completed The Sovereignty Code. You are not the person who started 120 days ago.",
 };
 
 export type MilestoneCelebrationModalProps = {

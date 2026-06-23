@@ -77,7 +77,7 @@ const whatsNew: NewItem[] = [
   {
     title: "Sacred Plant Allies",
     desc: "The frequencies they tried to silence — and why they matter now.",
-    to: "/sacred-plants",
+    to: "/wisdom/sacred-plants",
     image: "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1782249056192.png",
   },
 ];
