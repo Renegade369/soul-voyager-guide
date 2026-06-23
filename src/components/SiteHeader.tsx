@@ -59,48 +59,26 @@ export function SiteHeader() {
             Home
           </Link>
 
-          {/* Wisdom dropdown */}
+          {/* Explore — collapsed dropdown for Wisdom / Readings / Meditations */}
           <div className="group relative">
             <button className={`${navLinkClass} flex items-center gap-1`} style={navLinkStyle}>
-              Wisdom <ChevronDown size={12} />
+              Explore <ChevronDown size={12} />
             </button>
             <div
-              className="invisible absolute left-1/2 top-full z-50 mt-3 flex w-60 -translate-x-1/2 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
-              style={{ backgroundColor: "#0A0A0A", border: "1px solid rgba(201,168,76,0.25)" }}
+              className="invisible absolute left-1/2 top-full z-50 mt-3 flex w-56 -translate-x-1/2 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
+              style={{ backgroundColor: "#0A0A0A", border: "1px solid #C9A84C", boxShadow: "0 18px 40px -16px rgba(201,168,76,0.45)" }}
             >
-              {wisdomLinks.map((r) => (
-                <Link key={r.to + r.label} to={r.to} className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.75)" }}>
-                  {r.label}
-                </Link>
-              ))}
+              <Link to="/wisdom" className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.85)" }}>
+                Wisdom Codex
+              </Link>
+              <Link to="/readings" className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.85)" }}>
+                Readings
+              </Link>
+              <Link to="/meditations" className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]" style={{ color: "rgba(245,240,232,0.85)" }}>
+                Meditations
+              </Link>
             </div>
           </div>
-
-          {/* Readings dropdown */}
-          <div className="group relative">
-            <Link to="/readings" className={`${navLinkClass} flex items-center gap-1`} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-              Readings <ChevronDown size={12} />
-            </Link>
-            <div
-              className="invisible absolute left-1/2 top-full z-50 mt-3 flex w-60 -translate-x-1/2 flex-col opacity-0 transition-all group-hover:visible group-hover:opacity-100"
-              style={{ backgroundColor: "#0A0A0A", border: "1px solid rgba(201,168,76,0.25)" }}
-            >
-              {readingsLinks.map((r) => (
-                <Link
-                  key={r.label}
-                  to={r.to}
-                  className="px-5 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-[#1A1209]"
-                  style={{ color: "rgba(245,240,232,0.75)" }}
-                >
-                  {r.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <Link to="/meditations" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
-            Meditations
-          </Link>
           <Link to="/wellness" className={navLinkClass} style={navLinkStyle} activeProps={{ style: { color: "#C9A84C" } }}>
             Wellness
           </Link>
@@ -168,16 +146,10 @@ export function SiteHeader() {
         <div className="lg:hidden" style={{ backgroundColor: "#0A0A0A", borderTop: "1px solid rgba(201,168,76,0.18)" }}>
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
             <Link to="/" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Home</Link>
-            <p className="mt-3 px-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Wisdom</p>
-            {wisdomLinks.map((r) => (
-              <Link key={r.label} to={r.to} onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>{r.label}</Link>
-            ))}
-            <p className="mt-3 px-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Readings</p>
-            <Link to="/readings" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>All Readings</Link>
-            {readingsLinks.map((r) => (
-              <Link key={r.label} to={r.to} onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>{r.label}</Link>
-            ))}
-            <Link to="/meditations" onClick={() => setOpen(false)} className="mt-3 px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meditations</Link>
+            <p className="mt-3 px-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: "#C9A84C" }}>Explore</p>
+            <Link to="/wisdom" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Wisdom Codex</Link>
+            <Link to="/readings" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Readings</Link>
+            <Link to="/meditations" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Meditations</Link>
             <Link to="/wellness" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Wellness</Link>
             <Link to="/blog" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Journal</Link>
             <Link to="/practitioners" onClick={() => setOpen(false)} className="px-2 py-3 text-[11px] uppercase tracking-[0.22em]" style={navLinkStyle}>Practitioners</Link>
