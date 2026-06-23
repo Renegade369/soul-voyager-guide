@@ -29,7 +29,7 @@ function isoToday(): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-type ReflectionRow = { prompt: string | null; response: string | null; created_at: string };
+type ReflectionRow = { module_slug: string | null; exercise_id: string | null; response_text: string | null; created_at: string };
 
 function DashboardPage() {
   const status = usePortalStatus();
@@ -54,7 +54,7 @@ function DashboardPage() {
           .limit(200),
         supabase
           .from("sovereign_module_responses")
-          .select("prompt, response, created_at")
+          .select("module_slug, exercise_id, response_text, created_at")
           .eq("user_id", status.userId)
           .order("created_at", { ascending: false })
           .limit(3),
@@ -221,13 +221,13 @@ function DashboardPage() {
               <ul className="mt-4 space-y-4">
                 {reflections.map((r, i) => (
                   <li key={i} className="border-l-2 pl-4" style={{ borderColor: "rgba(201,168,76,0.4)" }}>
-                    {r.prompt && (
-                      <p className="text-xs" style={{ color: C.muted }}>
-                        {r.prompt}
+                    {(r.module_slug || r.exercise_id) && (
+                      <p className="text-xs uppercase tracking-[0.22em]" style={{ color: C.muted }}>
+                        {r.module_slug ?? ""}{r.exercise_id ? ` · ${r.exercise_id}` : ""}
                       </p>
                     )}
                     <p className="mt-1 text-sm font-light italic" style={{ fontFamily: fonts.display, color: C.text }}>
-                      {r.response ? `"${r.response}"` : "—"}
+                      {r.response_text ? `"${r.response_text}"` : "—"}
                     </p>
                   </li>
                 ))}
