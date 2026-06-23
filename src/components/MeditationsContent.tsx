@@ -140,11 +140,12 @@ function MeditationCard({ meditation, onPlay }: { meditation: Meditation; onPlay
   return (
     <button
       onClick={() => onPlay(meditation)}
-      className="group relative text-left overflow-hidden transition-all hover:scale-[1.02]"
-      style={{ minHeight: 280, border: "1px solid rgba(201,168,76,0.18)", background: "#1A1209" }}
+      data-animate="fade-up"
+      className="group relative text-left overflow-hidden meditation-glass-card"
+      style={{ minHeight: 280 }}
     >
-      <img src={meditation.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60" />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.95), rgba(10,10,10,0.2))" }} />
+      <img src={meditation.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-40" />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.95), rgba(26,18,9,0.2))" }} />
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
         <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: "rgba(232,130,26,0.2)", border: "1px solid #E8821A" }}>
           <Play size={22} style={{ color: "#E8821A", marginLeft: 2 }} />
@@ -171,7 +172,7 @@ export default function MeditationsContent({ withHero = true }: { withHero?: boo
   const filtered = activeCategory === "All" ? meditations : meditations.filter((m) => m.category === activeCategory);
 
   return (
-    <div style={{ background: "#0A0A0A" }} className="min-h-full">
+    <div style={{ background: "radial-gradient(ellipse at 50% 100%, rgba(232,130,26,0.06) 0%, #0A0A0A 60%)" }} className="min-h-full">
       {withHero && (
         <div className="relative h-72 flex items-end pb-10 px-6 overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: `url('${IMAGE_HERO}')` }} />

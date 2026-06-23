@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Sparkles, Headphones, Compass, Droplet, Eye, Orbit, HelpCircle, ArrowRight, BookOpen, Star } from "lucide-react";
 import HERO_BG from "@/assets/home-hero-mystical.png";
 import { Reveal } from "@/components/Reveal";
+import { EmberField } from "@/components/aesthetic/EmberField";
 const PLANT_BG =
   "https://bruavyiflwngsurtjfet.supabase.co/storage/v1/object/public/ac-avatars/871ba365-dcd8-4243-9d95-49574c518a8b/generated/1778962225130.png";
 
@@ -88,14 +89,6 @@ const beginSteps: BeginStep[] = [
   { n: "03", title: "Find Your Stillness", desc: "Try a guided meditation built for the awakening mind.", to: "/meditations" },
 ];
 
-// Pre-computed particle positions (CSS-only, deterministic — no hydration drift)
-const PARTICLES = Array.from({ length: 22 }, (_, i) => {
-  const left = (i * 37) % 100;
-  const dur = 12 + ((i * 7) % 14); // 12s..26s
-  const delay = (i * 1.3) % 18;
-  const px = ((i % 5) - 2) * 18; // -36..36px horizontal drift
-  return { left, dur, delay, px, key: i };
-});
 
 function HomePage() {
   return (
@@ -124,20 +117,9 @@ function HomePage() {
             background: `radial-gradient(ellipse at 50% 78%, rgba(232,130,26,0.32) 0%, rgba(201,168,76,0.12) 30%, rgba(10,10,10,0) 65%)`,
           }}
         />
-        {/* Drifting golden particles */}
+        {/* Parallax ember starfield (tsparticles) */}
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          {PARTICLES.map((p) => (
-            <span
-              key={p.key}
-              className="hero-particle"
-              style={{
-                left: `${p.left}%`,
-                ["--dur" as never]: `${p.dur}s`,
-                ["--delay" as never]: `${p.delay}s`,
-                ["--px" as never]: `${p.px}px`,
-              }}
-            />
-          ))}
+          <EmberField density={50} />
         </div>
 
         <div className="mx-auto max-w-4xl px-6 py-28 text-center md:py-40">
