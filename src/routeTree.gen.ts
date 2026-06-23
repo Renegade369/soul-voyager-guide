@@ -76,7 +76,10 @@ import { Route as WellnessSlugRouteImport } from './routes/wellness.$slug'
 import { Route as SovereignWelcomeRouteImport } from './routes/sovereign.welcome'
 import { Route as SovereignVipWaitlistRouteImport } from './routes/sovereign.vip-waitlist'
 import { Route as SovereignTermsRouteImport } from './routes/sovereign.terms'
+import { Route as SovereignRitualRouteImport } from './routes/sovereign.ritual'
 import { Route as SovereignReflectionRouteImport } from './routes/sovereign.reflection'
+import { Route as SovereignOnboardingRouteImport } from './routes/sovereign.onboarding'
+import { Route as SovereignDashboardRouteImport } from './routes/sovereign.dashboard'
 import { Route as ProfileIdRouteImport } from './routes/profile.$id'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 import { Route as PractitionersSlugRouteImport } from './routes/practitioners.$slug'
@@ -441,9 +444,24 @@ const SovereignTermsRoute = SovereignTermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => SovereignRoute,
 } as any)
+const SovereignRitualRoute = SovereignRitualRouteImport.update({
+  id: '/ritual',
+  path: '/ritual',
+  getParentRoute: () => SovereignRoute,
+} as any)
 const SovereignReflectionRoute = SovereignReflectionRouteImport.update({
   id: '/reflection',
   path: '/reflection',
+  getParentRoute: () => SovereignRoute,
+} as any)
+const SovereignOnboardingRoute = SovereignOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => SovereignRoute,
+} as any)
+const SovereignDashboardRoute = SovereignDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => SovereignRoute,
 } as any)
 const ProfileIdRoute = ProfileIdRouteImport.update({
@@ -646,7 +664,10 @@ export interface FileRoutesByFullPath {
   '/practitioners/$slug': typeof PractitionersSlugRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/sovereign/dashboard': typeof SovereignDashboardRoute
+  '/sovereign/onboarding': typeof SovereignOnboardingRoute
   '/sovereign/reflection': typeof SovereignReflectionRoute
+  '/sovereign/ritual': typeof SovereignRitualRoute
   '/sovereign/terms': typeof SovereignTermsRoute
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
@@ -741,7 +762,10 @@ export interface FileRoutesByTo {
   '/practitioners/$slug': typeof PractitionersSlugRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/sovereign/dashboard': typeof SovereignDashboardRoute
+  '/sovereign/onboarding': typeof SovereignOnboardingRoute
   '/sovereign/reflection': typeof SovereignReflectionRoute
+  '/sovereign/ritual': typeof SovereignRitualRoute
   '/sovereign/terms': typeof SovereignTermsRoute
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
@@ -838,7 +862,10 @@ export interface FileRoutesById {
   '/practitioners/$slug': typeof PractitionersSlugRoute
   '/product/$handle': typeof ProductHandleRoute
   '/profile/$id': typeof ProfileIdRoute
+  '/sovereign/dashboard': typeof SovereignDashboardRoute
+  '/sovereign/onboarding': typeof SovereignOnboardingRoute
   '/sovereign/reflection': typeof SovereignReflectionRoute
+  '/sovereign/ritual': typeof SovereignRitualRoute
   '/sovereign/terms': typeof SovereignTermsRoute
   '/sovereign/vip-waitlist': typeof SovereignVipWaitlistRoute
   '/sovereign/welcome': typeof SovereignWelcomeRoute
@@ -936,7 +963,10 @@ export interface FileRouteTypes {
     | '/practitioners/$slug'
     | '/product/$handle'
     | '/profile/$id'
+    | '/sovereign/dashboard'
+    | '/sovereign/onboarding'
     | '/sovereign/reflection'
+    | '/sovereign/ritual'
     | '/sovereign/terms'
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
@@ -1031,7 +1061,10 @@ export interface FileRouteTypes {
     | '/practitioners/$slug'
     | '/product/$handle'
     | '/profile/$id'
+    | '/sovereign/dashboard'
+    | '/sovereign/onboarding'
     | '/sovereign/reflection'
+    | '/sovereign/ritual'
     | '/sovereign/terms'
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
@@ -1127,7 +1160,10 @@ export interface FileRouteTypes {
     | '/practitioners/$slug'
     | '/product/$handle'
     | '/profile/$id'
+    | '/sovereign/dashboard'
+    | '/sovereign/onboarding'
     | '/sovereign/reflection'
+    | '/sovereign/ritual'
     | '/sovereign/terms'
     | '/sovereign/vip-waitlist'
     | '/sovereign/welcome'
@@ -1719,11 +1755,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignTermsRouteImport
       parentRoute: typeof SovereignRoute
     }
+    '/sovereign/ritual': {
+      id: '/sovereign/ritual'
+      path: '/ritual'
+      fullPath: '/sovereign/ritual'
+      preLoaderRoute: typeof SovereignRitualRouteImport
+      parentRoute: typeof SovereignRoute
+    }
     '/sovereign/reflection': {
       id: '/sovereign/reflection'
       path: '/reflection'
       fullPath: '/sovereign/reflection'
       preLoaderRoute: typeof SovereignReflectionRouteImport
+      parentRoute: typeof SovereignRoute
+    }
+    '/sovereign/onboarding': {
+      id: '/sovereign/onboarding'
+      path: '/onboarding'
+      fullPath: '/sovereign/onboarding'
+      preLoaderRoute: typeof SovereignOnboardingRouteImport
+      parentRoute: typeof SovereignRoute
+    }
+    '/sovereign/dashboard': {
+      id: '/sovereign/dashboard'
+      path: '/dashboard'
+      fullPath: '/sovereign/dashboard'
+      preLoaderRoute: typeof SovereignDashboardRouteImport
       parentRoute: typeof SovereignRoute
     }
     '/profile/$id': {
@@ -1924,7 +1981,10 @@ const AdminRouteChildren: AdminRouteChildren = {
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface SovereignRouteChildren {
+  SovereignDashboardRoute: typeof SovereignDashboardRoute
+  SovereignOnboardingRoute: typeof SovereignOnboardingRoute
   SovereignReflectionRoute: typeof SovereignReflectionRoute
+  SovereignRitualRoute: typeof SovereignRitualRoute
   SovereignTermsRoute: typeof SovereignTermsRoute
   SovereignVipWaitlistRoute: typeof SovereignVipWaitlistRoute
   SovereignWelcomeRoute: typeof SovereignWelcomeRoute
@@ -1942,7 +2002,10 @@ interface SovereignRouteChildren {
 }
 
 const SovereignRouteChildren: SovereignRouteChildren = {
+  SovereignDashboardRoute: SovereignDashboardRoute,
+  SovereignOnboardingRoute: SovereignOnboardingRoute,
   SovereignReflectionRoute: SovereignReflectionRoute,
+  SovereignRitualRoute: SovereignRitualRoute,
   SovereignTermsRoute: SovereignTermsRoute,
   SovereignVipWaitlistRoute: SovereignVipWaitlistRoute,
   SovereignWelcomeRoute: SovereignWelcomeRoute,
