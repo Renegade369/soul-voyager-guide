@@ -90,6 +90,10 @@ function RootComponent() {
   const location = useLocation();
   const appRoutes = ["/guide", "/dashboard", "/admin", "/welcome"];
   const hideShell = appRoutes.some(r => location.pathname === r || location.pathname.startsWith(r + "/"));
+  const hideAssistant =
+    hideShell ||
+    location.pathname.startsWith("/sovereign/reflection") ||
+    location.pathname.startsWith("/sovereign/portal");
 
   // Global smooth scroll-to-top on every route change
   useEffect(() => {
