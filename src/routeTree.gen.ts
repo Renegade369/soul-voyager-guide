@@ -63,6 +63,7 @@ import { Route as SovereignIndexRouteImport } from './routes/sovereign.index'
 import { Route as PractitionersIndexRouteImport } from './routes/practitioners.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as WisdomTheTrueStoryOfJeshuaRouteImport } from './routes/wisdom_.the-true-story-of-jeshua'
+import { Route as WisdomThe3dWorldRouteImport } from './routes/wisdom_.the-3d-world'
 import { Route as WisdomSuppressedSacredTextsRouteImport } from './routes/wisdom_.suppressed-sacred-texts'
 import { Route as WisdomSacredPlantsRouteImport } from './routes/wisdom_.sacred-plants'
 import { Route as WisdomPlantMedicinesRouteImport } from './routes/wisdom_.plant-medicines'
@@ -373,6 +374,11 @@ const WisdomTheTrueStoryOfJeshuaRoute =
     path: '/wisdom/the-true-story-of-jeshua',
     getParentRoute: () => rootRouteImport,
   } as any)
+const WisdomThe3dWorldRoute = WisdomThe3dWorldRouteImport.update({
+  id: '/wisdom_/the-3d-world',
+  path: '/wisdom/the-3d-world',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WisdomSuppressedSacredTextsRoute =
   WisdomSuppressedSacredTextsRouteImport.update({
     id: '/wisdom_/suppressed-sacred-texts',
@@ -646,6 +652,7 @@ export interface FileRoutesByFullPath {
   '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
+  '/wisdom/the-3d-world': typeof WisdomThe3dWorldRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/blog/': typeof BlogIndexRoute
   '/practitioners/': typeof PractitionersIndexRoute
@@ -739,6 +746,7 @@ export interface FileRoutesByTo {
   '/wisdom/plant-medicines': typeof WisdomPlantMedicinesRoute
   '/wisdom/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
+  '/wisdom/the-3d-world': typeof WisdomThe3dWorldRoute
   '/wisdom/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/blog': typeof BlogIndexRoute
   '/practitioners': typeof PractitionersIndexRoute
@@ -834,6 +842,7 @@ export interface FileRoutesById {
   '/wisdom_/plant-medicines': typeof WisdomPlantMedicinesRoute
   '/wisdom_/sacred-plants': typeof WisdomSacredPlantsRoute
   '/wisdom_/suppressed-sacred-texts': typeof WisdomSuppressedSacredTextsRoute
+  '/wisdom_/the-3d-world': typeof WisdomThe3dWorldRoute
   '/wisdom_/the-true-story-of-jeshua': typeof WisdomTheTrueStoryOfJeshuaRoute
   '/blog/': typeof BlogIndexRoute
   '/practitioners/': typeof PractitionersIndexRoute
@@ -930,6 +939,7 @@ export interface FileRouteTypes {
     | '/wisdom/plant-medicines'
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
+    | '/wisdom/the-3d-world'
     | '/wisdom/the-true-story-of-jeshua'
     | '/blog/'
     | '/practitioners/'
@@ -1023,6 +1033,7 @@ export interface FileRouteTypes {
     | '/wisdom/plant-medicines'
     | '/wisdom/sacred-plants'
     | '/wisdom/suppressed-sacred-texts'
+    | '/wisdom/the-3d-world'
     | '/wisdom/the-true-story-of-jeshua'
     | '/blog'
     | '/practitioners'
@@ -1117,6 +1128,7 @@ export interface FileRouteTypes {
     | '/wisdom_/plant-medicines'
     | '/wisdom_/sacred-plants'
     | '/wisdom_/suppressed-sacred-texts'
+    | '/wisdom_/the-3d-world'
     | '/wisdom_/the-true-story-of-jeshua'
     | '/blog/'
     | '/practitioners/'
@@ -1208,6 +1220,7 @@ export interface RootRouteChildren {
   WisdomPlantMedicinesRoute: typeof WisdomPlantMedicinesRoute
   WisdomSacredPlantsRoute: typeof WisdomSacredPlantsRoute
   WisdomSuppressedSacredTextsRoute: typeof WisdomSuppressedSacredTextsRoute
+  WisdomThe3dWorldRoute: typeof WisdomThe3dWorldRoute
   WisdomTheTrueStoryOfJeshuaRoute: typeof WisdomTheTrueStoryOfJeshuaRoute
   BlogIndexRoute: typeof BlogIndexRoute
   PractitionersIndexRoute: typeof PractitionersIndexRoute
@@ -1602,6 +1615,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WisdomTheTrueStoryOfJeshuaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wisdom_/the-3d-world': {
+      id: '/wisdom_/the-3d-world'
+      path: '/wisdom/the-3d-world'
+      fullPath: '/wisdom/the-3d-world'
+      preLoaderRoute: typeof WisdomThe3dWorldRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wisdom_/suppressed-sacred-texts': {
       id: '/wisdom_/suppressed-sacred-texts'
       path: '/wisdom/suppressed-sacred-texts'
@@ -1987,6 +2007,7 @@ const rootRouteChildren: RootRouteChildren = {
   WisdomPlantMedicinesRoute: WisdomPlantMedicinesRoute,
   WisdomSacredPlantsRoute: WisdomSacredPlantsRoute,
   WisdomSuppressedSacredTextsRoute: WisdomSuppressedSacredTextsRoute,
+  WisdomThe3dWorldRoute: WisdomThe3dWorldRoute,
   WisdomTheTrueStoryOfJeshuaRoute: WisdomTheTrueStoryOfJeshuaRoute,
   BlogIndexRoute: BlogIndexRoute,
   PractitionersIndexRoute: PractitionersIndexRoute,
