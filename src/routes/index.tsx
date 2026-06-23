@@ -89,14 +89,6 @@ const beginSteps: BeginStep[] = [
   { n: "03", title: "Find Your Stillness", desc: "Try a guided meditation built for the awakening mind.", to: "/meditations" },
 ];
 
-// Pre-computed particle positions (CSS-only, deterministic — no hydration drift)
-const PARTICLES = Array.from({ length: 22 }, (_, i) => {
-  const left = (i * 37) % 100;
-  const dur = 12 + ((i * 7) % 14); // 12s..26s
-  const delay = (i * 1.3) % 18;
-  const px = ((i % 5) - 2) * 18; // -36..36px horizontal drift
-  return { left, dur, delay, px, key: i };
-});
 
 function HomePage() {
   return (
