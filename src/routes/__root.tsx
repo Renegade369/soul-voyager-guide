@@ -102,6 +102,40 @@ function RootComponent() {
     scrollToTopSmooth();
   }, [location.pathname]);
 
+  // Global scroll-triggered reveal for [data-animate="fade-up"]
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const prefersReduced =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+    if (typeof IntersectionObserver === "undefined") return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.15 },
+    );
+
+    const scan = () => {
+      document
+        .querySelectorAll<HTMLElement>('[data-animate="fade-up"]:not(.is-visible)')
+        .forEach((el) => io.observe(el));
+    };
+    // Wait for the route's new DOM to mount
+    const t = window.setTimeout(scan, 50);
+    return () => {
+      window.clearTimeout(t);
+      io.disconnect();
+    };
+  }, [location.pathname]);
+
   // Register service worker (only in production, never in iframes/preview)
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
