@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { FlowerOfLife } from "./SacredGeometry";
+import { LogoWatermark } from "./LogoMark";
 
 export function PageShell({ eyebrow, title, intro, children }: { eyebrow?: string; title: string; intro?: string; children: ReactNode }) {
   return (
@@ -13,6 +14,12 @@ export function PageShell({ eyebrow, title, intro, children }: { eyebrow?: strin
           className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         >
           <FlowerOfLife size={520} color="#C9A84C" opacity={0.11} strokeWidth={0.5} />
+        </div>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-6 top-6 hidden md:block"
+        >
+          <LogoWatermark size={180} opacity={0.09} />
         </div>
         <div className="relative mx-auto max-w-3xl px-6 py-28 text-center md:py-40">
           {eyebrow && (

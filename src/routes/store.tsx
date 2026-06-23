@@ -139,14 +139,8 @@ function StorePage() {
             className="h-40 w-auto md:h-56"
             style={{ filter: `drop-shadow(0 0 40px rgba(232,130,26,0.35))` }}
           />
-          <h1
-            className="mt-10 text-4xl font-light italic md:text-6xl"
-            style={{ fontFamily: fonts.display, color: C.gold }}
-          >
-            Let's Go Deeper.
-          </h1>
           <p
-            className="mt-5 text-sm font-light uppercase tracking-[0.3em] md:text-base"
+            className="mt-10 text-sm font-light uppercase tracking-[0.3em] md:text-base"
             style={{ color: C.text, opacity: 0.75 }}
           >
             Soul-True.com
