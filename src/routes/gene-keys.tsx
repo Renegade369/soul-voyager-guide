@@ -179,7 +179,7 @@ function GeneKeysPage() {
           )}
 
           {step === "result" && reading && keys && (
-            <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <motion.div key="result" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
               {/* All 6 key numbers preview */}
               <div className="text-center">
                 <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your 6 Gene Keys</p>

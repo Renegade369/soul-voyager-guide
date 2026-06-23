@@ -342,7 +342,7 @@ function AuraReaderPage() {
           )}
 
           {step === "result" && reading && (
-            <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <motion.div key="result" data-animate="fade-up" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
               <div className="text-center">
                 <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: C.gold }}>Your dominant aura</p>
                 <div className="relative mx-auto mt-8 h-44 w-44">
