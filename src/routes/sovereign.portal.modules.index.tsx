@@ -160,7 +160,7 @@ function ModulesIndexPage() {
 
                   const card = (
                     <div
-                      className="block p-6 transition-opacity"
+                      className="relative block p-6 transition-opacity"
                       style={{
                         background: C.card,
                         border: `1px solid ${
@@ -175,6 +175,7 @@ function ModulesIndexPage() {
                         opacity: locked ? 0.55 : 1,
                       }}
                     >
+                      <LogoMark size={32} position="top-right" opacity={0.7} />
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-3 flex-wrap">
