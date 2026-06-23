@@ -10,7 +10,7 @@ export const BRAND = {
 
 // Canonical Soul True lockup (wordmark + Tree of Life + "Let's Go Deeper." tagline baked in).
 // Use the full absolute URL so it loads inside email clients.
-export const LOGO_URL = 'https://soul-true.com/__l5e/assets-v1/393e95a3-4989-4b5c-9053-5eea3f72deea/soul-true-logo-tagline.png';
+export const LOGO_URL = 'https://soul-true.com/__l5e/assets-v1/fbcb1487-0a96-4f4e-9ea9-c9d4dd65c3e4/soul-true-logo.png';
 export const LOGO_ALT = "Soul True — Let's Go Deeper.";
 export const SITE_URL_DISPLAY = 'Soul-True.com';
 
