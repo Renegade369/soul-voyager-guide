@@ -2,7 +2,7 @@
 
 const LOGO = `
 <div style="text-align:center;padding:40px 0 20px;">
-  <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:32px;font-weight:300;color:#C9A84C;letter-spacing:0.1em;">SOUL TRUE</span>
+  <img src="https://soul-true.com/__l5e/assets-v1/fbcb1487-0a96-4f4e-9ea9-c9d4dd65c3e4/soul-true-logo.png" alt="Soul True — Let's Go Deeper." width="220" style="display:inline-block;max-width:80%;height:auto;border:0;outline:none;text-decoration:none;" />
 </div>`;
 
 const FOOTER = `

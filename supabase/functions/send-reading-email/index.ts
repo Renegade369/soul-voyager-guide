@@ -21,7 +21,7 @@ function renderHtml(title: string, name: string | undefined, sections: Section[]
 <html><body style="margin:0;padding:24px;background:#0A0A0A;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;margin:0 auto;background:#0A0A0A;border:1px solid rgba(201,168,76,0.3);">
     <tr><td style="padding:40px 32px 8px 32px;text-align:center;">
-      <p style="margin:0;font-family:Georgia,serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#C9A84C;">Soul True</p>
+      <img src="https://soul-true.com/__l5e/assets-v1/fbcb1487-0a96-4f4e-9ea9-c9d4dd65c3e4/soul-true-logo.png" alt="Soul True — Let's Go Deeper." width="240" style="display:inline-block;max-width:80%;height:auto;border:0;outline:none;text-decoration:none;margin:0 0 8px 0;" />
       <h1 style="margin:18px 0 6px 0;font-family:Georgia,serif;font-style:italic;font-weight:300;font-size:34px;color:#F5F0E8;">${esc(title)}</h1>
       ${name ? `<p style="margin:0;font-family:Georgia,serif;font-size:14px;color:rgba(245,240,232,0.65);">${esc(name)} · ${esc(date)}</p>` : `<p style="margin:0;font-family:Georgia,serif;font-size:14px;color:rgba(245,240,232,0.65);">${esc(date)}</p>`}
     </td></tr>
