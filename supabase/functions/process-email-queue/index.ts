@@ -66,6 +66,19 @@ serve(async (req: Request) => {
       });
     }
 
+    // Fetch onboarding first_name for personalization, keyed by enrollment_id
+    const enrollmentIds = Array.from(new Set((due ?? []).map((r: any) => r.enrollment_id).filter(Boolean)));
+    const firstNameByEnrollment: Record<string, string | null> = {};
+    if (enrollmentIds.length > 0) {
+      const { data: onboardingRows } = await supabase
+        .from("sovereign_onboarding")
+        .select("enrollment_id, first_name")
+        .in("enrollment_id", enrollmentIds);
+      for (const o of onboardingRows ?? []) {
+        if (o.enrollment_id) firstNameByEnrollment[o.enrollment_id as string] = (o.first_name as string | null) ?? null;
+      }
+    }
+
     let sent = 0;
     let failed = 0;
     let skipped = 0;
@@ -73,7 +86,10 @@ serve(async (req: Request) => {
       const enr = (row as any).sovereign_enrollments ?? {};
       const email: string | null = enr.email ?? null;
       const certName: string | null = enr.cert_name ?? null;
-      const firstName: string | null = certName ? certName.split(" ")[0] : null;
+      const onboardingFirst: string | null = firstNameByEnrollment[(row as any).enrollment_id] ?? null;
+      const firstName: string | null =
+        (onboardingFirst && onboardingFirst.trim()) ||
+        (certName ? certName.split(" ")[0] : null);
       try {
         const renderer = TEMPLATES[row.email_key as string];
         if (!renderer) {
