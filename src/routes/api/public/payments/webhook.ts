@@ -20,17 +20,17 @@ function getAdmin(): any {
   return _admin;
 }
 
-async function recordSovereignEnrollment(session: any, env: StripeEnv) {
+async function recordSovereignEnrollment(session: any, env: StripeEnv): Promise<string | null> {
   try {
     const priceId = session?.metadata?.priceId ?? null;
     const tier = priceId ? SOVEREIGN_PRICE_TO_TIER[priceId] : undefined;
-    if (!tier) return; // not a Sovereignty Code purchase
+    if (!tier) return null;
     const email = session?.customer_details?.email ?? session?.customer_email ?? null;
     if (!email) {
       console.warn("[sovereign] no email on session", session?.id);
-      return;
+      return null;
     }
-    const { error } = await getAdmin().from("sovereign_enrollments").upsert(
+    const { data, error } = await getAdmin().from("sovereign_enrollments").upsert(
       {
         email,
         tier,
@@ -42,11 +42,32 @@ async function recordSovereignEnrollment(session: any, env: StripeEnv) {
         status: "active",
       },
       { onConflict: "stripe_session_id" }
-    );
-    if (error) console.error("[sovereign] enrollment insert error", error);
-    else console.log("[sovereign] enrollment recorded", { email, tier, env });
+    ).select("id").maybeSingle();
+    if (error) {
+      console.error("[sovereign] enrollment insert error", error);
+      return null;
+    }
+    console.log("[sovereign] enrollment recorded", { email, tier, env });
+    return data?.id ?? null;
   } catch (e) {
     console.error("[sovereign] recordSovereignEnrollment error", e);
+    return null;
+  }
+}
+
+async function enqueueEmailSequence(enrollmentId: string) {
+  try {
+    const res = await fetch(process.env.SUPABASE_URL + "/functions/v1/enqueue-email-sequence", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + process.env.SUPABASE_SERVICE_ROLE_KEY,
+      },
+      body: JSON.stringify({ enrollment_id: enrollmentId }),
+    });
+    if (!res.ok) console.error("[sovereign] enqueue-email-sequence failed", res.status, await res.text());
+  } catch (e) {
+    console.error("[sovereign] enqueueEmailSequence error", e);
   }
 }
 
@@ -76,9 +97,8 @@ async function handleEvent(event: { type: string; data: { object: any } }, env: 
         email: session?.customer_details?.email ?? session?.customer_email ?? null,
         priceId: session?.metadata?.priceId ?? null,
       });
-      await recordSovereignEnrollment(session, env);
+      const enrollmentId = await recordSovereignEnrollment(session, env);
       await autoSubscribeFromStripe(session, "stripe_checkout");
-      // Best-effort welcome email — log failures but don't fail the webhook
       try {
         const customerEmail = session.customer_details?.email ?? session.customer_email;
         const firstName = (session.customer_details?.name?.split(" ")[0]) ?? "friend";
@@ -95,6 +115,7 @@ async function handleEvent(event: { type: string; data: { object: any } }, env: 
       } catch (emailErr) {
         console.error("[sovereign-welcome] email send failed (non-fatal):", emailErr);
       }
+      if (enrollmentId) await enqueueEmailSequence(enrollmentId);
       break;
     }
     case "customer.subscription.created": {
