@@ -97,9 +97,8 @@ async function handleEvent(event: { type: string; data: { object: any } }, env: 
         email: session?.customer_details?.email ?? session?.customer_email ?? null,
         priceId: session?.metadata?.priceId ?? null,
       });
-      await recordSovereignEnrollment(session, env);
+      const enrollmentId = await recordSovereignEnrollment(session, env);
       await autoSubscribeFromStripe(session, "stripe_checkout");
-      // Best-effort welcome email — log failures but don't fail the webhook
       try {
         const customerEmail = session.customer_details?.email ?? session.customer_email;
         const firstName = (session.customer_details?.name?.split(" ")[0]) ?? "friend";
@@ -116,6 +115,7 @@ async function handleEvent(event: { type: string; data: { object: any } }, env: 
       } catch (emailErr) {
         console.error("[sovereign-welcome] email send failed (non-fatal):", emailErr);
       }
+      if (enrollmentId) await enqueueEmailSequence(enrollmentId);
       break;
     }
     case "customer.subscription.created": {
