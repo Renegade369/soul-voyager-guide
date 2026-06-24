@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 import { welcomeDigital } from "../_email-templates/welcome_digital.ts";
 import { welcomeComplete } from "../_email-templates/welcome_complete.ts";
+import { day3 } from "../_email-templates/day_3.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -18,6 +19,7 @@ type Renderer = (input: { firstName?: string | null; email: string; certName?: s
 const TEMPLATES: Record<string, Renderer> = {
   welcome_digital: welcomeDigital,
   welcome_complete: welcomeComplete,
+  day_3: day3,
 };
 
 async function sendViaResend(to: string, subject: string, html: string, text: string): Promise<void> {
