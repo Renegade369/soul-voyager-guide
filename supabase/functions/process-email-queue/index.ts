@@ -5,6 +5,8 @@ import { welcomeComplete } from "../_email-templates/welcome_complete.ts";
 import { day3 } from "../_email-templates/day_3.ts";
 import { day7 } from "../_email-templates/day_7.ts";
 import { day14 } from "../_email-templates/day_14.ts";
+import { day30 } from "../_email-templates/day_30.ts";
+import { day60 } from "../_email-templates/day_60.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -24,6 +26,8 @@ const TEMPLATES: Record<string, Renderer> = {
   day_3: day3,
   day_7: day7,
   day_14: day14,
+  day_30: day30,
+  day_60: day60,
 };
 
 async function sendViaResend(to: string, subject: string, html: string, text: string): Promise<void> {
