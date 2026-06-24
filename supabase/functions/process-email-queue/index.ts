@@ -3,6 +3,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 import { welcomeDigital } from "../_email-templates/welcome_digital.ts";
 import { welcomeComplete } from "../_email-templates/welcome_complete.ts";
 import { day3 } from "../_email-templates/day_3.ts";
+import { day7 } from "../_email-templates/day_7.ts";
+import { day14 } from "../_email-templates/day_14.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
