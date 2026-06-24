@@ -22,6 +22,8 @@ const TEMPLATES: Record<string, Renderer> = {
   welcome_digital: welcomeDigital,
   welcome_complete: welcomeComplete,
   day_3: day3,
+  day_7: day7,
+  day_14: day14,
 };
 
 async function sendViaResend(to: string, subject: string, html: string, text: string): Promise<void> {
