@@ -1017,6 +1017,50 @@ export type Database = {
         }
         Relationships: []
       }
+      sovereign_email_sequence: {
+        Row: {
+          created_at: string
+          email_key: string
+          enrollment_id: string
+          error_message: string | null
+          id: string
+          scheduled_for: string
+          sent_at: string | null
+          status: string
+          tier: string
+        }
+        Insert: {
+          created_at?: string
+          email_key: string
+          enrollment_id: string
+          error_message?: string | null
+          id?: string
+          scheduled_for: string
+          sent_at?: string | null
+          status?: string
+          tier: string
+        }
+        Update: {
+          created_at?: string
+          email_key?: string
+          enrollment_id?: string
+          error_message?: string | null
+          id?: string
+          scheduled_for?: string
+          sent_at?: string | null
+          status?: string
+          tier?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sovereign_email_sequence_enrollment_id_fkey"
+            columns: ["enrollment_id"]
+            isOneToOne: false
+            referencedRelation: "sovereign_enrollments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       sovereign_enrollments: {
         Row: {
           amount_cents: number | null
