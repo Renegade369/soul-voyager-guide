@@ -1,10 +1,45 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
+import { welcomeDigital } from "../_email-templates/welcome_digital.ts";
+import { welcomeComplete } from "../_email-templates/welcome_complete.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
+
+const SENDER_EMAIL = Deno.env.get("SENDER_EMAIL") ?? "notify@soul-true.com";
+const SENDER_NAME = Deno.env.get("SENDER_NAME") ?? "Soul True";
+
+type Renderer = (input: { firstName?: string | null; email: string; certName?: string | null; tier?: string | null }) => {
+  subject: string; previewText: string; htmlBody: string; textBody: string;
+};
+
+const TEMPLATES: Record<string, Renderer> = {
+  welcome_digital: welcomeDigital,
+  welcome_complete: welcomeComplete,
+};
+
+async function sendViaResend(to: string, subject: string, html: string, text: string): Promise<void> {
+  const apiKey = Deno.env.get("RESEND_API_KEY");
+  if (!apiKey) throw new Error("RESEND_API_KEY not configured");
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from: `${SENDER_NAME} <${SENDER_EMAIL}>`,
+      reply_to: "william@soul-true.com",
+      to: [to],
+      subject,
+      html,
+      text,
+    }),
+  });
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Resend ${res.status}: ${body}`);
+  }
+}
 
 serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
@@ -17,7 +52,7 @@ serve(async (req: Request) => {
     const nowIso = new Date().toISOString();
     const { data: due, error } = await supabase
       .from("sovereign_email_sequence")
-      .select("id, enrollment_id, email_key, tier, sovereign_enrollments!inner(email)")
+      .select("id, enrollment_id, email_key, tier, sovereign_enrollments!inner(email, cert_name)")
       .eq("status", "pending")
       .lte("scheduled_for", nowIso)
       .limit(100);
@@ -31,11 +66,22 @@ serve(async (req: Request) => {
 
     let sent = 0;
     let failed = 0;
+    let skipped = 0;
     for (const row of due ?? []) {
+      const enr = (row as any).sovereign_enrollments ?? {};
+      const email: string | null = enr.email ?? null;
+      const certName: string | null = enr.cert_name ?? null;
+      const firstName: string | null = certName ? certName.split(" ")[0] : null;
       try {
-        // Placeholder: real template dispatch lands later.
-        const email = (row as any).sovereign_enrollments?.email ?? "unknown";
-        console.log(`[process-email-queue] would send ${row.email_key} to ${email} (tier=${row.tier})`);
+        const renderer = TEMPLATES[row.email_key as string];
+        if (!renderer) {
+          console.log(`[process-email-queue] would send ${row.email_key} to ${email} (tier=${row.tier})`);
+          skipped++;
+          continue;
+        }
+        if (!email) throw new Error("enrollment has no email");
+        const { subject, htmlBody, textBody } = renderer({ firstName, email, certName, tier: row.tier as string });
+        await sendViaResend(email, subject, htmlBody, textBody);
 
         const { error: uErr } = await supabase
           .from("sovereign_email_sequence")
@@ -56,7 +102,7 @@ serve(async (req: Request) => {
       }
     }
 
-    return new Response(JSON.stringify({ ok: true, processed: due?.length ?? 0, sent, failed }), {
+    return new Response(JSON.stringify({ ok: true, processed: due?.length ?? 0, sent, failed, skipped }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {

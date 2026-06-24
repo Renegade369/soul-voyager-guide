@@ -54,13 +54,23 @@ serve(async (req: Request) => {
     }
 
     const base = new Date(enrollment.created_at as string).getTime();
-    const rows = DAYS.map((d) => ({
-      enrollment_id,
-      email_key: `day_${d}`,
-      scheduled_for: new Date(base + d * 86400 * 1000).toISOString(),
-      tier,
-      status: "pending",
-    }));
+    const welcomeKey = tier === "complete" ? "welcome_complete" : "welcome_digital";
+    const rows = [
+      {
+        enrollment_id,
+        email_key: welcomeKey,
+        scheduled_for: new Date(base + 86400 * 1000).toISOString(),
+        tier,
+        status: "pending",
+      },
+      ...DAYS.map((d) => ({
+        enrollment_id,
+        email_key: `day_${d}`,
+        scheduled_for: new Date(base + d * 86400 * 1000).toISOString(),
+        tier,
+        status: "pending",
+      })),
+    ];
 
     const { error: insErr } = await supabase
       .from("sovereign_email_sequence")
