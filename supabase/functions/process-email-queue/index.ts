@@ -52,7 +52,7 @@ serve(async (req: Request) => {
     const nowIso = new Date().toISOString();
     const { data: due, error } = await supabase
       .from("sovereign_email_sequence")
-      .select("id, enrollment_id, email_key, tier, sovereign_enrollments!inner(email, first_name, cert_name)")
+      .select("id, enrollment_id, email_key, tier, sovereign_enrollments!inner(email, cert_name)")
       .eq("status", "pending")
       .lte("scheduled_for", nowIso)
       .limit(100);
