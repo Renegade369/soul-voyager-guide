@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 import { welcomeDigital } from "../_email-templates/welcome_digital.ts";
 import { welcomeComplete } from "../_email-templates/welcome_complete.ts";
+import { day3 } from "../_email-templates/day_3.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -18,6 +19,7 @@ type Renderer = (input: { firstName?: string | null; email: string; certName?: s
 const TEMPLATES: Record<string, Renderer> = {
   welcome_digital: welcomeDigital,
   welcome_complete: welcomeComplete,
+  day_3: day3,
 };
 
 async function sendViaResend(to: string, subject: string, html: string, text: string): Promise<void> {
@@ -64,6 +66,19 @@ serve(async (req: Request) => {
       });
     }
 
+    // Fetch onboarding first_name for personalization, keyed by enrollment_id
+    const enrollmentIds = Array.from(new Set((due ?? []).map((r: any) => r.enrollment_id).filter(Boolean)));
+    const firstNameByEnrollment: Record<string, string | null> = {};
+    if (enrollmentIds.length > 0) {
+      const { data: onboardingRows } = await supabase
+        .from("sovereign_onboarding")
+        .select("enrollment_id, first_name")
+        .in("enrollment_id", enrollmentIds);
+      for (const o of onboardingRows ?? []) {
+        if (o.enrollment_id) firstNameByEnrollment[o.enrollment_id as string] = (o.first_name as string | null) ?? null;
+      }
+    }
+
     let sent = 0;
     let failed = 0;
     let skipped = 0;
@@ -71,7 +86,10 @@ serve(async (req: Request) => {
       const enr = (row as any).sovereign_enrollments ?? {};
       const email: string | null = enr.email ?? null;
       const certName: string | null = enr.cert_name ?? null;
-      const firstName: string | null = certName ? certName.split(" ")[0] : null;
+      const onboardingFirst: string | null = firstNameByEnrollment[(row as any).enrollment_id] ?? null;
+      const firstName: string | null =
+        (onboardingFirst && onboardingFirst.trim()) ||
+        (certName ? certName.split(" ")[0] : null);
       try {
         const renderer = TEMPLATES[row.email_key as string];
         if (!renderer) {
