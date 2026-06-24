@@ -70,8 +70,8 @@ serve(async (req: Request) => {
     for (const row of due ?? []) {
       const enr = (row as any).sovereign_enrollments ?? {};
       const email: string | null = enr.email ?? null;
-      const firstName: string | null = enr.first_name ?? null;
       const certName: string | null = enr.cert_name ?? null;
+      const firstName: string | null = certName ? certName.split(" ")[0] : null;
       try {
         const renderer = TEMPLATES[row.email_key as string];
         if (!renderer) {
